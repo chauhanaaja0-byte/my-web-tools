@@ -1,0 +1,31 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'sitemap.xml'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Generate Sitemap
+        uses: treosh/sitemap-generator@v1
+        with:
+          sitemap-path: 'sitemap.xml'
+          base-url: 'https://usa.simpletoollab.com'
+
+      - name: Commit Sitemap
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated sitemap update"
+          file_pattern: sitemap.xml
+
