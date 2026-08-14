@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'sitemap.xml'
   workflow_dispatch:
 
 permissions:
@@ -15,7 +13,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Generate Sitemap
@@ -27,5 +25,5 @@ jobs:
       - name: Commit Sitemap
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated sitemap update"
+          commit_message: "Automatic sitemap update"
           file_pattern: sitemap.xml
