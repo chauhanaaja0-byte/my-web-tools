@@ -10,17 +10,17 @@ permissions:
   contents: write
 
 jobs:
-  generate:
+  sitemap_job:
     runs-on: ubuntu-latest
+    name: Generate Sitemap
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Generate Sitemap
-        uses: treosh/sitemap-generator@v1
+        uses: cicirello/generate-sitemap@v1
         with:
-          sitemap-path: 'sitemap.xml'
-          base-url: 'https://simpletoollab.com'
+          baseUrl: 'https://simpletoollab.com/'
 
       - name: Commit Sitemap
         uses: stefanzweifel/git-auto-commit-action@v5
