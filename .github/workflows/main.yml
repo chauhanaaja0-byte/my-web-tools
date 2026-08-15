@@ -20,7 +20,7 @@ jobs:
         uses: treosh/sitemap-generator@v1
         with:
           sitemap-path: 'sitemap.xml'
-          base-url: 'https://usa.simpletoollab.com'
+          base-url: 'https://simpletoollab.com'
 
       - name: Commit Sitemap
         uses: stefanzweifel/git-auto-commit-action@v5
