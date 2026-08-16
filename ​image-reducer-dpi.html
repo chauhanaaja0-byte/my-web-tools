@@ -1,0 +1,2199 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Quality Reducer & DPI Changer | USA Local Image Optimizer</title>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="Image Quality Reducer & DPI Changer | USA Local Image Optimizer" />
+    <meta name="description" content="Compress image quality, reduce file KB size, and convert DPI (300 DPI, 240 DPI, 96 DPI, etc.) 100% locally in your browser. Secure, fast, and mobile-friendly image optimization tool for United States users." />
+    <meta name="keywords" content="image quality reducer, image dpi changer, 300 dpi converter, compress image kb, photo size reducer USA, image quality compressor, online dpi changer, resize image for passport, reduce photo size in kb, browser local image optimizer" />
+    <meta name="author" content="USA Funny Life" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://usa-image-reducer.com/" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://usa-image-reducer.com/" />
+    <meta property="og:title" content="Image Quality Reducer & DPI Changer | USA Local Image Optimizer" />
+    <meta property="og:description" content="Compress image quality, reduce file KB size, and convert DPI 100% locally in your browser. Fast, free, and private photo compression for USA users." />
+    <meta property="og:site_name" content="USA Image Optimizer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://usa-image-reducer.com/og-image.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://usa-image-reducer.com/" />
+    <meta name="twitter:title" content="Image Quality Reducer & DPI Changer | USA Local Image Optimizer" />
+    <meta name="twitter:description" content="Compress image quality, reduce file KB size, and convert DPI 100% locally in your browser. Fast, free, and private photo compression for USA users." />
+    <meta name="twitter:image" content="https://usa-image-reducer.com/og-image.jpg" />
+
+    <!-- Favicon Data URI -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><path d='M30 40 L50 20 L70 40 M50 20 L50 70' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round' fill='none'/><circle cx='50' cy='80' r='5' fill='white'/></svg>" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://usa-image-reducer.com/#webapp",
+          "url": "https://usa-image-reducer.com/",
+          "name": "Image Quality Reducer & DPI Changer",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+          "description": "A high-performance browser-based image quality reducer, KB target compressor, and 300 DPI changer for American users.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "USA Funny Life"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://usa-image-reducer.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is an Image Quality Reducer and how does it work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "An Image Quality Reducer optimizes photo file sizes by adjusting compression algorithms and discarding imperceptible visual noise directly inside your web browser."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why should I change my image DPI to 300 DPI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "300 DPI (dots per inch) is the gold standard resolution for high-quality printing, official US government submissions, passports, and professional marketing materials."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I compress an image to under 50 KB or 20 KB?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use our Image KB Reducer tool. Select a target KB preset such as 20 KB or 50 KB, and our intelligent algorithm automatically calculates the precise compression ratio required."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are my photos safe and private when using this tool?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, 100%. All processing occurs locally on your device via HTML5 Canvas. Your images are never uploaded to any remote server or stored anywhere."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+      /* CSS Reset & Variable Tokens */
+      :root {
+        --bg-dark: #090d16;
+        --card-bg: rgba(15, 23, 42, 0.72);
+        --card-border: rgba(255, 255, 255, 0.12);
+        --accent-blue: #3b82f6;
+        --accent-cyan: #06b6d4;
+        --accent-purple: #8b5cf6;
+        --accent-green: #10b981;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --radius-lg: 16px;
+        --radius-md: 12px;
+        --radius-sm: 8px;
+        --shadow-glow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        min-height: 100vh;
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Animated Colorful Background */
+      .bg-gradient-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.35;
+        animation: floatOrb 20s infinite ease-in-out alternate;
+      }
+
+      .orb-1 {
+        width: 500px;
+        height: 500px;
+        background: #2563eb;
+        top: -100px;
+        left: -100px;
+      }
+
+      .orb-2 {
+        width: 600px;
+        height: 600px;
+        background: #7c3aed;
+        top: 30%;
+        right: -150px;
+        animation-delay: -5s;
+      }
+
+      .orb-3 {
+        width: 450px;
+        height: 450px;
+        background: #0891b2;
+        bottom: -100px;
+        left: 20%;
+        animation-delay: -10s;
+      }
+
+      .orb-4 {
+        width: 400px;
+        height: 400px;
+        background: #059669;
+        bottom: 20%;
+        right: 25%;
+        animation-delay: -15s;
+      }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(60px, 40px) scale(1.1); }
+        100% { transform: translate(-40px, 80px) scale(0.95); }
+      }
+
+      /* Container & Layout */
+      .app-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 24px 16px 60px 16px;
+      }
+
+      /* Glassmorphism Card Style */
+      .glass-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        box-shadow: var(--shadow-glow);
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .glass-card:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Header Section */
+      header.hero-header {
+        text-align: center;
+        padding: 32px 16px 40px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .usa-flag-banner {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 8px 18px;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: #e2e8f0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+
+      .usa-flag-svg {
+        width: 26px;
+        height: 18px;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      }
+
+      h1.main-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #93c5fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      p.hero-subtitle {
+        max-width: 780px;
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .privacy-badge-hero {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #34d399;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        margin-top: 4px;
+      }
+
+      /* Dashboard Grid */
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      @media (min-width: 1024px) {
+        .dashboard-grid {
+          grid-template-columns: 480px 1fr;
+        }
+      }
+
+      /* Left Control Panel */
+      .control-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .panel-section-title {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #f1f5f9;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* File Upload Drop Area */
+      .upload-dropzone {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-md);
+        padding: 32px 20px;
+        text-align: center;
+        background: rgba(15, 23, 42, 0.4);
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .upload-dropzone:hover, .upload-dropzone.drag-over {
+        border-color: var(--accent-blue);
+        background: rgba(37, 99, 235, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .upload-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 12px auto;
+        color: var(--accent-blue);
+      }
+
+      .upload-btn-label {
+        display: inline-block;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: #ffffff;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: var(--radius-sm);
+        margin-top: 12px;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .upload-btn-label:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+      }
+
+      /* Preset Pill Buttons */
+      .pill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .pill-btn {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cbd5e1;
+        padding: 8px 10px;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.15s ease;
+      }
+
+      .pill-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+      }
+
+      .pill-btn.active {
+        background: var(--accent-blue);
+        border-color: #60a5fa;
+        color: #ffffff;
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.5);
+      }
+
+      /* Sliders */
+      .slider-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .slider-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.875rem;
+        color: #cbd5e1;
+        font-weight: 500;
+      }
+
+      .slider-value {
+        font-weight: 700;
+        color: var(--accent-cyan);
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.15);
+        outline: none;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 2px solid var(--accent-blue);
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        transition: transform 0.15s ease;
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+      }
+
+      /* Inputs and Custom Controls */
+      .inline-input-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .number-input {
+        flex: 1;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        outline: none;
+      }
+
+      .number-input:focus {
+        border-color: var(--accent-blue);
+      }
+
+      .action-btn-sm {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+
+      .action-btn-sm:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Download & Action Buttons */
+      .primary-download-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: #ffffff;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 16px;
+        border: none;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .primary-download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 26px rgba(16, 185, 129, 0.6);
+      }
+
+      .primary-download-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .secondary-btn-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .secondary-outline-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #e2e8f0;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        text-align: center;
+        transition: background 0.15s ease;
+      }
+
+      .secondary-outline-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* Right Preview Panel */
+      .preview-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Stats Dashboard */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      @media (min-width: 640px) {
+        .stats-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .stat-card {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 16px;
+        border-radius: var(--radius-sm);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .stat-value {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .stat-badge {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-top: 2px;
+      }
+
+      .badge-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #34d399;
+      }
+
+      .badge-info {
+        background: rgba(59, 130, 246, 0.2);
+        color: #60a5fa;
+      }
+
+      /* Mode Toggle Tabs */
+      .preview-mode-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .tab-group {
+        display: flex;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 4px;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .tab-btn.active {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+
+      /* Preview Display Area */
+      .preview-canvas-container {
+        position: relative;
+        min-height: 380px;
+        max-height: 520px;
+        background: repeating-conic-gradient(#1e293b 0% 25%, #0f172a 0% 50%) 50% / 20px 20px;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preview-placeholder-text {
+        text-align: center;
+        color: var(--text-muted);
+        padding: 40px;
+      }
+
+      /* Split Slider Comparison */
+      .split-slider-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-height: 500px;
+        overflow: hidden;
+        user-select: none;
+      }
+
+      .split-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .split-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .split-handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #ffffff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        cursor: ew-resize;
+        z-index: 10;
+      }
+
+      .split-handle-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 36px;
+        height: 36px;
+        background: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        color: #0f172a;
+        font-weight: bold;
+      }
+
+      .preview-tag {
+        position: absolute;
+        top: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 4px;
+        z-index: 5;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .tag-left { left: 12px; }
+      .tag-right { right: 12px; }
+
+      /* Side by Side Mode */
+      .side-by-side-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        width: 100%;
+        height: 100%;
+        padding: 12px;
+      }
+
+      .side-box {
+        position: relative;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        overflow: hidden;
+      }
+
+      .side-box img {
+        max-width: 100%;
+        max-height: 340px;
+        object-fit: contain;
+      }
+
+      /* Magnifier Loupe */
+      .magnifier-loupe {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+        cursor: none;
+        pointer-events: none;
+        box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        background-repeat: no-repeat;
+        display: none;
+        z-index: 30;
+      }
+
+      /* How To Use Section */
+      .section-block {
+        margin-top: 48px;
+      }
+
+      .section-heading {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+      }
+
+      @media (min-width: 640px) {
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .steps-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .step-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+      }
+
+      .step-number {
+        width: 36px;
+        height: 36px;
+        background: var(--accent-blue);
+        color: #ffffff;
+        border-radius: 50%;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      .step-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #f1f5f9;
+      }
+
+      .step-desc {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* FAQ Accordion Section */
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: #f8fafc;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 18px 24px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .faq-question:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .faq-icon {
+        transition: transform 0.2s ease;
+      }
+
+      .faq-item.open .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 0 24px 20px 24px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+
+      /* Disclaimer Content Block (~500 Words) */
+      .disclaimer-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-lg);
+        padding: 32px;
+        color: var(--text-muted);
+        font-size: 0.925rem;
+        line-height: 1.7;
+      }
+
+      .disclaimer-card h3 {
+        color: #ffffff;
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+      }
+
+      .disclaimer-card p {
+        margin-bottom: 14px;
+      }
+
+      /* Toast Notification */
+      .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .toast {
+        background: #1e293b;
+        color: #ffffff;
+        border: 1px solid rgba(255,255,255,0.15);
+        padding: 12px 20px;
+        border-radius: var(--radius-md);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes toastIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      /* Modals */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.75);
+        backdrop-filter: blur(8px);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-box {
+        background: #0f172a;
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius-lg);
+        max-width: 650px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 28px;
+        position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      }
+
+      .modal-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .modal-close-btn:hover {
+        color: #ffffff;
+      }
+
+      /* Footer */
+      footer.app-footer {
+        margin-top: 60px;
+        padding-top: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-link {
+        color: #94a3b8;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.15s ease;
+      }
+
+      .footer-link:hover {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Animated Canvas Orbs -->
+    <div class="bg-gradient-wrapper" aria-hidden="true">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="gradient-orb orb-4"></div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+      <!-- Header Section -->
+      <header class="hero-header">
+        <div class="usa-flag-banner">
+          <!-- United States SVG Flag -->
+          <svg class="usa-flag-svg" viewBox="0 0 741 390" xmlns="http://www.w3.org/2000/svg" aria-label="United States Flag">
+            <rect width="741" height="390" fill="#B22234"/>
+            <path d="M0,30H741M0,90H741M0,150H741M0,210H741M0,270H741M0,330H741" stroke="#FFFFFF" stroke-width="30"/>
+            <rect width="296.4" height="210" fill="#3C3B6E"/>
+            <g fill="#FFFFFF">
+              <polygon points="12,12 15,22 6,15 18,15 9,22"/>
+              <polygon points="36,12 39,22 30,15 42,15 33,22"/>
+              <polygon points="60,12 63,22 54,15 66,15 57,22"/>
+              <polygon points="84,12 87,22 78,15 90,15 81,22"/>
+              <polygon points="108,12 111,22 102,15 114,15 105,22"/>
+              <polygon points="132,12 135,22 126,15 138,15 129,22"/>
+            </g>
+          </svg>
+          Made for USA Users
+        </div>
+
+        <h1 class="main-title">Image Quality Reducer & DPI Changer</h1>
+        <p class="hero-subtitle">
+          Reduce photo file sizes to target KBs, modify resolution DPIs (300 DPI, 240 DPI, etc.), and fine-tune image clarity directly inside your browser. Fast, free, and 100% offline.
+        </p>
+
+        <div class="privacy-badge-hero">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Your images never leave your device. 100% Private Local Processing.
+        </div>
+      </header>
+
+      <!-- Ad Placement: Native Banner -->
+      <div class="ad-native-container" style="display:flex; justify-content:center; align-items:center; margin:0 auto 24px auto; width:100%; min-height:50px; overflow:hidden;">
+        <script async="async" data-cfasync="false" src="https://pl30769713.effectivecpmnetwork.com/fba2a10a71bb895f5ac91974a831d56b/invoke.js"></script>
+        <div id="container-fba2a10a71bb895f5ac91974a831d56b"></div>
+      </div>
+
+      <!-- Main Interactive Workspace -->
+      <main class="dashboard-grid">
+        <!-- Left Column: Controls Panel -->
+        <div class="control-panel">
+          <!-- Card 1: File Upload Zone -->
+          <section class="glass-card" aria-labelledby="upload-section-title">
+            <h2 id="upload-section-title" class="panel-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              1. Upload Image
+            </h2>
+
+            <div id="dropzone" class="upload-dropzone" tabIndex="0" role="button" aria-label="Upload photo area">
+              <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
+              <p style="font-weight:600; color:#f1f5f9; font-size:1rem;">Drag & Drop Image Here</p>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Supports JPG, JPEG, PNG, WEBP, BMP</p>
+              
+              <label class="upload-btn-label">
+                Browse Files
+                <input type="file" id="file-input" accept="image/jpeg,image/jpg,image/png,image/webp,image/bmp" style="display:none;" />
+              </label>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-top:12px;">
+              <button id="load-sample-btn" class="action-btn-sm" style="width:100%;">📷 Try Sample USA Photo</button>
+            </div>
+          </section>
+
+          <!-- Card 2: Quality & Target KB Reducer -->
+          <section class="glass-card" aria-labelledby="quality-section-title">
+            <h2 id="quality-section-title" class="panel-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+              2. Quality & Target KB Reducer
+            </h2>
+
+            <!-- Preset Quality Buttons -->
+            <label style="font-size:0.875rem; color:#cbd5e1; font-weight:600;">Image Quality Percentage:</label>
+            <div class="pill-grid" id="quality-pills">
+              <button class="pill-btn" data-quality="100">100%</button>
+              <button class="pill-btn active" data-quality="80">80%</button>
+              <button class="pill-btn" data-quality="70">70%</button>
+              <button class="pill-btn" data-quality="60">60%</button>
+              <button class="pill-btn" data-quality="50">50%</button>
+              <button class="pill-btn" data-quality="40">40%</button>
+              <button class="pill-btn" data-quality="30">30%</button>
+              <button class="pill-btn" data-quality="20">20%</button>
+              <button class="pill-btn" data-quality="10">10%</button>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Fine-tune Quality:</span>
+                <span id="quality-slider-val" class="slider-value">80%</span>
+              </div>
+              <input type="range" id="quality-slider" min="1" max="100" value="80" aria-label="Image Quality Slider" />
+            </div>
+
+            <!-- Target KB Reducer -->
+            <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px;">
+              <label style="font-size:0.875rem; color:#cbd5e1; font-weight:600;">Compress to Target KB Size:</label>
+              <div class="pill-grid" id="kb-pills">
+                <button class="pill-btn" data-kb="20">20 KB</button>
+                <button class="pill-btn" data-kb="30">30 KB</button>
+                <button class="pill-btn" data-kb="50">50 KB</button>
+                <button class="pill-btn" data-kb="100">100 KB</button>
+                <button class="pill-btn" data-kb="200">200 KB</button>
+                <button class="pill-btn" data-kb="500">500 KB</button>
+              </div>
+
+              <div class="inline-input-group">
+                <input type="number" id="custom-kb-input" class="number-input" placeholder="Custom Target KB" min="1" max="50000" />
+                <button id="apply-kb-btn" class="action-btn-sm">Apply KB</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Card 3: DPI Changer -->
+          <section class="glass-card" aria-labelledby="dpi-section-title">
+            <h2 id="dpi-section-title" class="panel-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              3. Image DPI Changer
+            </h2>
+
+            <div class="pill-grid" id="dpi-pills">
+              <button class="pill-btn active" data-dpi="300">300 DPI</button>
+              <button class="pill-btn" data-dpi="240">240 DPI</button>
+              <button class="pill-btn" data-dpi="200">200 DPI</button>
+              <button class="pill-btn" data-dpi="150">150 DPI</button>
+              <button class="pill-btn" data-dpi="96">96 DPI</button>
+              <button class="pill-btn" data-dpi="72">72 DPI</button>
+            </div>
+
+            <div class="inline-input-group">
+              <input type="number" id="custom-dpi-input" class="number-input" placeholder="Custom DPI (e.g., 300)" min="1" max="2400" value="300" />
+              <button id="apply-dpi-btn" class="action-btn-sm">Set DPI</button>
+            </div>
+            <p style="font-size:0.75rem; color:var(--text-muted); margin-top:8px;">* 300 DPI is required for high-resolution printing, US passport photos, and corporate publishing.</p>
+          </section>
+
+          <!-- Card 4: Fine-Tuning Filters (Blur & Sharpness) -->
+          <section class="glass-card" aria-labelledby="filter-section-title">
+            <h2 id="filter-section-title" class="panel-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              4. Blur & Sharpness Filters
+            </h2>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Blur Effect:</span>
+                <span id="blur-val" class="slider-value">0 px</span>
+              </div>
+              <input type="range" id="blur-slider" min="0" max="20" step="0.5" value="0" aria-label="Blur Effect Slider" />
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Sharpness Enhancement:</span>
+                <span id="sharpness-val" class="slider-value">0%</span>
+              </div>
+              <input type="range" id="sharpness-slider" min="0" max="100" value="0" aria-label="Sharpness Enhancement Slider" />
+            </div>
+          </section>
+
+          <!-- Card 5: Export & Download -->
+          <section class="glass-card" aria-labelledby="download-section-title">
+            <h2 id="download-section-title" class="panel-section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              5. Download Options
+            </h2>
+
+            <div style="margin-bottom:14px;">
+              <label style="font-size:0.875rem; color:#cbd5e1; font-weight:600;">Output Format:</label>
+              <div class="pill-grid" id="format-pills" style="grid-template-columns: repeat(3, 1fr);">
+                <button class="pill-btn active" data-format="image/jpeg">JPG</button>
+                <button class="pill-btn" data-format="image/png">PNG</button>
+                <button class="pill-btn" data-format="image/webp">WEBP</button>
+              </div>
+            </div>
+
+            <button id="download-btn" class="primary-download-btn" disabled>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Optimized Image
+            </button>
+
+            <div class="secondary-btn-group">
+              <button id="reset-all-btn" class="secondary-outline-btn">🔄 Reset Settings</button>
+              <button id="copy-clipboard-btn" class="secondary-outline-btn">📋 Copy Image</button>
+            </div>
+          </section>
+
+          <!-- Ad Placement: 300x250 Ad Unit -->
+          <div class="ad-box-300" style="display:flex; justify-content:center; align-items:center; margin:16px auto 0 auto; width:100%; overflow:hidden;">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '0dc01ccde33b2037707ba8a8bead5e4b',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/0dc01ccde33b2037707ba8a8bead5e4b/invoke.js"></script>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Preview & File Info -->
+        <div class="preview-panel">
+          <!-- File Information & Compression Metrics Dashboard -->
+          <section class="glass-card" aria-label="File Information Metrics">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-label">Original Size</span>
+                <span id="stat-orig-size" class="stat-value">-- KB</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Compressed Size</span>
+                <span id="stat-comp-size" class="stat-value">-- KB</span>
+                <span id="stat-saved-badge" class="stat-badge badge-success">0% Saved</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Dimensions</span>
+                <span id="stat-dimensions" class="stat-value">-- × --</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Target DPI</span>
+                <span id="stat-dpi" class="stat-value">300 DPI</span>
+                <span class="stat-badge badge-info">Print Ready</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Live Image Comparison Viewer Card -->
+          <section class="glass-card" aria-label="Live Image Preview">
+            <div class="preview-mode-bar">
+              <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:700; color:#f1f5f9;">Live Preview Comparison</span>
+              <div class="tab-group" id="view-mode-tabs">
+                <button class="tab-btn active" data-mode="split">Split Slider</button>
+                <button class="tab-btn" data-mode="side">Side-by-Side</button>
+                <button class="tab-btn" data-mode="magnify">Zoom Loupe</button>
+              </div>
+            </div>
+
+            <!-- Canvas & Image Container -->
+            <div id="preview-container" class="preview-canvas-container">
+              <div id="placeholder-text" class="preview-placeholder-text">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 12px auto; color:var(--text-muted);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <p style="font-weight:600; font-size:1.05rem;">No Image Uploaded Yet</p>
+                <p style="font-size:0.875rem;">Upload a photo or try our sample USA image to start reducing quality and changing DPI.</p>
+              </div>
+
+              <!-- Split Slider Mode View -->
+              <div id="view-split" class="split-slider-wrapper" style="display:none;">
+                <span class="preview-tag tag-left">Original Image</span>
+                <span class="preview-tag tag-right">Optimized Image</span>
+                
+                <img id="split-img-orig" class="split-image" alt="Original Uploaded" />
+                <div id="split-overlay" class="split-overlay">
+                  <img id="split-img-comp" class="split-image" alt="Compressed Preview" />
+                </div>
+                <div id="split-handle" class="split-handle">
+                  <div class="split-handle-circle">↔</div>
+                </div>
+              </div>
+
+              <!-- Side by Side Mode View -->
+              <div id="view-side" class="side-by-side-container" style="display:none;">
+                <div class="side-box">
+                  <span class="preview-tag tag-left">Original</span>
+                  <img id="side-img-orig" alt="Original Image" />
+                </div>
+                <div class="side-box">
+                  <span class="preview-tag tag-right">Optimized</span>
+                  <img id="side-img-comp" alt="Optimized Image" />
+                </div>
+              </div>
+
+              <!-- Magnifier Loupe Circle -->
+              <div id="magnifier-loupe" class="magnifier-loupe"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Ad Placement: 728x90 Leaderboard Banner -->
+      <div class="ad-banner-728" style="display:flex; justify-content:center; align-items:center; margin:32px auto 20px auto; width:100%; overflow-x:auto;">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '259c2b0f26e25b44b6dba7107a9edf7e',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/259c2b0f26e25b44b6dba7107a9edf7e/invoke.js"></script>
+      </div>
+
+      <!-- Step-By-Step How To Use Section -->
+      <section class="section-block">
+        <h2 class="section-heading">How To Use Image Quality Reducer & DPI Changer</h2>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Upload Your Photo</h3>
+            <p class="step-desc">Drag and drop any JPG, JPEG, PNG, WEBP, or BMP file into the upload zone or choose a file from your computer or smartphone.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Select Quality or Target KB</h3>
+            <p class="step-desc">Pick a quality preset (10% to 100%), specify an exact KB limit (e.g. 50 KB for US forms), or adjust the DPI setting to 300 DPI for high-res printing.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Fine-Tune & Compare</h3>
+            <p class="step-desc">Use live sliders for blur and sharpness controls. Inspect pixel clarity with our side-by-side comparison slider and zoom loupe tool.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Download Instantly</h3>
+            <p class="step-desc">Click Download to save your optimized photo with modified DPI headers. 100% private, free, and processed inside your web browser.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Privacy & Security Guarantee Banner -->
+      <section class="section-block">
+        <div class="glass-card" style="text-align:center; padding:36px; background:linear-gradient(135deg, rgba(30,58,138,0.4), rgba(15,23,42,0.8));">
+          <h2 style="font-size:1.5rem; font-weight:800; color:#ffffff; margin-bottom:10px;">🔒 100% Browser Local Privacy Guarantee</h2>
+          <p style="max-width:800px; margin:0 auto; color:#cbd5e1; font-size:1rem; line-height:1.6;">
+            Your images stay strictly on your device. Every single compression calculation, pixel resampling operation, and DPI header modification is executed locally inside your web browser using HTML5 Canvas technology. We do not upload, collect, or store your photos on any remote servers or cloud databases.
+          </p>
+        </div>
+      </section>
+
+      <!-- 15+ Comprehensive FAQs Accordion Section -->
+      <section class="section-block">
+        <h2 class="section-heading">Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>1. What is an Image Quality Reducer and why should I use it?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              An Image Quality Reducer is an optimization tool that reduces the file size of digital photographs by adjusting pixel compression algorithms and removing redundant visual data. Reducing image quality helps websites load drastically faster, lowers bandwidth usage, saves disk storage space, and allows email attachments to bypass file size limits.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>2. How do I change an image resolution to 300 DPI for printing?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Simply upload your photo, navigate to the Image DPI Changer section, and select the 300 DPI button or enter 300 into the custom DPI field. Our software rewrites the embedded JFIF or pHYs metadata headers so printing software, Adobe Photoshop, and commercial printers recognize your file as 300 DPI.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>3. How can I compress an image to under 50 KB or 20 KB for US passport applications?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Select the 50 KB or 20 KB preset in our Target KB Reducer module. Our intelligent binary-search algorithm iteratively tests compression quality levels and dimensional scaling factors to ensure your output photo stays strictly under your target KB threshold while preserving facial clarity.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>4. Are my uploaded photos completely safe and private?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Yes, absolutely. All processing is 100% offline and client-side. Your pictures never leave your local computer or smartphone memory, guaranteeing complete confidentiality for personal ID photos and confidential business documents.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>5. What is the difference between image pixel dimensions and DPI?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Pixel dimensions (e.g. 1920 × 1080) define the actual physical number of pixel dots that make up the digital image on a screen. DPI (Dots Per Inch) determines how densely those pixels are printed onto paper. Changing DPI updates printing resolution metadata without altering digital pixel counts unless dimensions are resized.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>6. Which image formats are supported by this application?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              We support all standard web photo formats including JPG, JPEG, PNG, WEBP, and BMP. You can also convert between these formats upon export.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>7. Does reducing quality lose noticeable photo details?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              At quality settings between 70% and 90%, visual quality loss is virtually invisible to the human eye, yet file sizes are often cut by 50% to 80%. You can inspect micro-details in real time using our side-by-side comparison tool and zoom loupe before downloading.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>8. What does the Sharpness tool do?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              The Sharpness tool applies a 3×3 unsharp mask convolution kernel matrix across image canvas pixels. This enhances edge contrast and detail definition, helping counteract slight softness introduced during heavy compression.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>9. Why is 300 DPI recommended for professional printing in the US?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Standard commercial offset and digital printers in the United States print at 300 dots per inch to render crisp text, vivid color gradients, and sharp photographic details without visible pixelation or blurriness.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>10. Can I use this image quality reducer on iOS iPhones and Android phones?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Yes! Our mobile-responsive glassmorphism interface is fully optimized for touch controls on Apple Safari, iOS, Android Chrome, and tablets.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>11. Why does a PNG image sometimes stay large even when quality is reduced?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              PNG is a lossless format designed for graphic logos and transparency. If you need maximum file size reduction, choose JPG or WEBP output format in our download options.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>12. Is there any file size limit or daily compression limit?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              There are zero artificial limits! You can compress as many photos as you want, completely free, with zero sign-up or registration.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>13. How does the Blur filter help with privacy or noise reduction?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              The Blur tool applies smooth Gaussian blur across image pixels, which can smooth background grain, soften harsh compression artifacts, or censor sensitive text before sharing images publicly.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>14. Does changing DPI affect website loading performance?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Web browsers display images based on pixel dimensions, so DPI headers do not slow down website rendering. However, pairing correct DPI metadata with compressed file KB sizes ensures optimal performance across desktop monitors and print layouts.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>15. Can I use this tool offline without an active internet connection?</span>
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              Yes, once the application page is loaded in your browser tab, all JavaScript canvas algorithms run locally without requesting external resources.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comprehensive Disclaimer (~500 Words) -->
+      <section class="section-block">
+        <article class="disclaimer-card">
+          <h3>Professional Legal Disclaimer & Terms of Usage</h3>
+          <p>
+            The <strong>Image Quality Reducer & DPI Changer</strong> application ("Service") provided by <em>USA Funny Life</em> is made available as a free browser-based software utility designed strictly for legal, legitimate image optimization, compression, and DPI resolution header adjustments. By accessing, uploading photos to, or interacting with this Service, you expressly acknowledge and agree to the following terms, conditions, and operational disclosures.
+          </p>
+          <p>
+            <strong>Client-Side Local Execution & Zero Server Data Storage:</strong> This Service operates 100% locally within the end-user's web browser environment utilizing HTML5 Canvas, DataView binary buffer manipulations, and local JavaScript runtime engines. At no point are your uploaded image files, metadata, or generated outputs transmitted to, processed by, or stored on remote web servers, external cloud storage buckets, or third-party databases. You retain exclusive ownership, control, and legal responsibility for all photo files processed using this utility.
+          </p>
+          <p>
+            <strong>Accuracy of DPI Header Injection & Compression Results:</strong> While our DPI changing module rewrites industry-standard JFIF APP0 headers for JPEG files and pHYs chunks for PNG images according to official format specifications, rendering of DPI metadata may vary across different third-party software applications, operating system file properties dialogues, and commercial printing drivers. Users requiring exact DPI specifications for official United States government submissions (such as US State Department passport applications, visa forms, or official state licenses) are advised to inspect output files using professional imaging software such as Adobe Photoshop or GIMP prior to final printing or submission.
+          </p>
+          <p>
+            <strong>Limitation of Liability & "As-Is" Software Provision:</strong> The Service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express, implied, statutory, or otherwise, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement. Under no circumstances shall <em>USA Funny Life</em>, its developers, or affiliates be held liable for any direct, indirect, incidental, consequential, special, or exemplary damages arising out of or in connection with the use, inability to use, or performance of this software tool.
+          </p>
+          <p>
+            <strong>Intellectual Property & User Compliance:</strong> Users are solely responsible for ensuring that they possess appropriate intellectual property rights, copyrights, or permission to modify and compress any image uploaded to the Service. The inclusion of the United States flag motif and references to American English standards serve as aesthetic design elements tailored for users within the United States market and do not represent official government endorsement.
+          </p>
+        </article>
+      </section>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div class="footer-links">
+          <button class="footer-link" onclick="openModal('privacy-modal')">Privacy Policy</button>
+          <button class="footer-link" onclick="openModal('terms-modal')">Terms & Conditions</button>
+          <button class="footer-link" onclick="openModal('disclaimer-modal')">Disclaimer</button>
+          <button class="footer-link" onclick="openModal('contact-modal')">Contact Us</button>
+        </div>
+        <p>Copyright © 2026 USA Funny Life. All rights reserved. Made in US English for USA users.</p>
+      </footer>
+    </div>
+
+    <!-- Modal Dialogues -->
+    <div id="privacy-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeModal('privacy-modal')">&times;</button>
+        <h2 style="color:#fff; margin-bottom:16px;">Privacy Policy</h2>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:12px;">
+          USA Funny Life prioritizes user privacy above all else. Our Image Quality Reducer & DPI Changer works exclusively inside your browser memory. We do not track cookies, collect personal identifiable information (PII), or upload any images to cloud servers. Your files remain 100% private and confidential on your personal device at all times.
+        </p>
+      </div>
+    </div>
+
+    <div id="terms-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeModal('terms-modal')">&times;</button>
+        <h2 style="color:#fff; margin-bottom:16px;">Terms & Conditions</h2>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:12px;">
+          By using this website, you agree to utilize the tool for lawful purposes only. You must not upload illegal, copyright-infringing, or malicious files. The tool is provided free of charge for personal and commercial usage without guarantee of uptime or specific compression outcomes.
+        </p>
+      </div>
+    </div>
+
+    <div id="disclaimer-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeModal('disclaimer-modal')">&times;</button>
+        <h2 style="color:#fff; margin-bottom:16px;">Legal Disclaimer</h2>
+        <p style="color:var(--text-muted); line-height:1.6; margin-bottom:12px;">
+          All software features are provided "as-is" without warranty. Users must verify image dimensions and resolution before printing official documents.
+        </p>
+      </div>
+    </div>
+
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box">
+        <button class="modal-close-btn" onclick="closeModal('contact-modal')">&times;</button>
+        <h2 style="color:#fff; margin-bottom:16px;">Contact USA Funny Life</h2>
+        <p style="color:var(--text-muted); margin-bottom:16px;">Have questions or feedback about our image optimization tools? Send us a message below:</p>
+        <form onsubmit="handleContactSubmit(event)">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <input type="text" placeholder="Your Name" required class="number-input" />
+            <input type="email" placeholder="Your Email (US English)" required class="number-input" />
+            <textarea placeholder="Your Feedback or Question..." rows="4" required class="number-input" style="resize:vertical;"></textarea>
+            <button type="submit" class="action-btn-sm" style="background:var(--accent-blue); padding:12px;">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Application JavaScript Code Module -->
+    <script type="module">
+      // State Management Object
+      const state = {
+        originalImg: null,
+        originalFile: null,
+        originalName: '',
+        originalSize: 0,
+        originalWidth: 0,
+        originalHeight: 0,
+        
+        quality: 80,
+        targetKb: null,
+        dpi: 300,
+        blurPx: 0,
+        sharpnessPct: 0,
+        mimeType: 'image/jpeg',
+        
+        viewMode: 'split', // 'split', 'side', 'magnify'
+        splitPos: 50,
+        
+        processedBlob: null,
+        processedUrl: null,
+        processedSize: 0,
+        processedWidth: 0,
+        processedHeight: 0,
+      };
+
+      // Toast Emitter Function
+      window.showToast = function(msg, type = 'info') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<span>${type === 'success' ? '✅' : 'ℹ️'} ${msg}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateX(100%)';
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      };
+
+      // Modal Functions
+      window.openModal = function(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('active');
+      };
+      window.closeModal = function(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('active');
+      };
+      window.handleContactSubmit = function(e) {
+        e.preventDefault();
+        window.closeModal('contact-modal');
+        window.showToast('Thank you! Your message has been sent to USA Funny Life.', 'success');
+      };
+
+      // Format Bytes Utility
+      function formatBytes(bytes, decimals = 2) {
+        if (!bytes || bytes === 0) return '0 KB';
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+      }
+
+      // Initialize Canvas Filters (Blur & Sharpness)
+      function applyCanvasFilters(sourceImg, blurPx, sharpnessPct) {
+        const w = sourceImg.naturalWidth || sourceImg.width;
+        const h = sourceImg.naturalHeight || sourceImg.height;
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+
+        if (blurPx > 0) {
+          ctx.filter = `blur(${blurPx}px)`;
+        }
+        ctx.drawImage(sourceImg, 0, 0, w, h);
+        ctx.filter = 'none';
+
+        if (sharpnessPct > 0) {
+          const factor = (sharpnessPct / 100) * 1.5;
+          const imgData = ctx.getImageData(0, 0, w, h);
+          const data = imgData.data;
+          const copyData = new Uint8ClampedArray(data);
+          const centerWeight = 1 + 4 * factor;
+
+          for (let y = 1; y < h - 1; y++) {
+            for (let x = 1; x < w - 1; x++) {
+              const idx = (y * w + x) * 4;
+              for (let c = 0; c < 3; c++) {
+                const top = copyData[((y - 1) * w + x) * 4 + c];
+                const bottom = copyData[((y + 1) * w + x) * 4 + c];
+                const left = copyData[(y * w + (x - 1)) * 4 + c];
+                const right = copyData[(y * w + (x + 1)) * 4 + c];
+                const val = centerWeight * copyData[idx + c] - factor * (top + bottom + left + right);
+                data[idx + c] = Math.min(255, Math.max(0, val));
+              }
+            }
+          }
+          ctx.putImageData(imgData, 0, 0);
+        }
+        return canvas;
+      }
+
+      // Inject DPI Header into JPEG (JFIF) or PNG (pHYs)
+      async function injectDpiToBlob(blob, dpi, mimeType) {
+        const buffer = await blob.arrayBuffer();
+        let modifiedBuffer = buffer;
+
+        if (mimeType === 'image/jpeg' || mimeType === 'image/jpg') {
+          modifiedBuffer = injectDpiToJpeg(buffer, dpi);
+        } else if (mimeType === 'image/png') {
+          modifiedBuffer = injectDpiToPng(buffer, dpi);
+        }
+        return new Blob([modifiedBuffer], { type: mimeType });
+      }
+
+      function injectDpiToJpeg(arrayBuffer, dpi) {
+        const bytes = new Uint8Array(arrayBuffer);
+        let offset = 2;
+        while (offset < bytes.length) {
+          if (bytes[offset] === 0xFF && bytes[offset + 1] === 0xE0) {
+            bytes[offset + 13] = 1; // 1 = DPI
+            bytes[offset + 14] = (dpi >> 8) & 0xFF;
+            bytes[offset + 15] = dpi & 0xFF;
+            bytes[offset + 16] = (dpi >> 8) & 0xFF;
+            bytes[offset + 17] = dpi & 0xFF;
+            return bytes.buffer;
+          }
+          if (bytes[offset] === 0xFF) {
+            const length = (bytes[offset + 2] << 8) | bytes[offset + 3];
+            offset += 2 + length;
+          } else {
+            offset++;
+          }
+        }
+        // If no JFIF marker existed, create one
+        const jfifHeader = new Uint8Array([
+          0xFF, 0xE0, 0x00, 0x10, 0x4A, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01, 0x01,
+          (dpi >> 8) & 0xFF, dpi & 0xFF,
+          (dpi >> 8) & 0xFF, dpi & 0xFF,
+          0x00, 0x00
+        ]);
+        const newBytes = new Uint8Array(bytes.length + jfifHeader.length);
+        newBytes.set(bytes.subarray(0, 2), 0);
+        newBytes.set(jfifHeader, 2);
+        newBytes.set(bytes.subarray(2), 2 + jfifHeader.length);
+        return newBytes.buffer;
+      }
+
+      function injectDpiToPng(arrayBuffer, dpi) {
+        const ppm = Math.round(dpi * 39.3700787);
+        const bytes = new Uint8Array(arrayBuffer);
+        if (bytes[0] !== 0x89 || bytes[1] !== 0x50) return arrayBuffer;
+
+        let pos = 8;
+        let physPos = -1;
+        while (pos < bytes.length) {
+          const chunkLen = (bytes[pos] << 24) | (bytes[pos+1] << 16) | (bytes[pos+2] << 8) | bytes[pos+3];
+          const chunkType = String.fromCharCode(bytes[pos+4], bytes[pos+5], bytes[pos+6], bytes[pos+7]);
+          if (chunkType === 'pHYs') { physPos = pos; break; }
+          if (chunkType === 'IEND') break;
+          pos += 12 + chunkLen;
+        }
+
+        function calcCrc(buf) {
+          let c = 0xffffffff;
+          for (let n = 0; n < buf.length; n++) {
+            c ^= buf[n];
+            for (let k = 0; k < 8; k++) {
+              c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+            }
+          }
+          return (c ^ 0xffffffff) >>> 0;
+        }
+
+        const physChunkData = new Uint8Array(17);
+        const view = new DataView(physChunkData.buffer);
+        view.setUint32(0, 9);
+        physChunkData[4] = 112; physChunkData[5] = 72; physChunkData[6] = 121; physChunkData[7] = 115;
+        view.setUint32(8, ppm); view.setUint32(12, ppm);
+        physChunkData[16] = 1;
+
+        const crcVal = calcCrc(physChunkData.subarray(4, 17));
+        const fullChunk = new Uint8Array(21);
+        fullChunk.set(physChunkData, 0);
+        const crcView = new DataView(fullChunk.buffer);
+        crcView.setUint32(17, crcVal);
+
+        if (physPos !== -1) {
+          const newBytes = new Uint8Array(bytes.length);
+          newBytes.set(bytes.subarray(0, physPos), 0);
+          newBytes.set(fullChunk, physPos);
+          newBytes.set(bytes.subarray(physPos + 21), physPos + 21);
+          return newBytes.buffer;
+        } else {
+          const insertPos = 33;
+          const newBytes = new Uint8Array(bytes.length + 21);
+          newBytes.set(bytes.subarray(0, insertPos), 0);
+          newBytes.set(fullChunk, insertPos);
+          newBytes.set(bytes.subarray(insertPos), insertPos + 21);
+          return newBytes.buffer;
+        }
+      }
+
+      // Target KB Compression via Binary Search
+      async function compressToTargetKb(canvas, targetKb, mimeType) {
+        const targetBytes = targetKb * 1024;
+        let minQ = 0.01;
+        let maxQ = 1.00;
+        let bestBlob = null;
+        let bestDiff = Infinity;
+
+        for (let step = 0; step < 8; step++) {
+          const q = (minQ + maxQ) / 2;
+          const blob = await new Promise(resolve => canvas.toBlob(resolve, mimeType, q));
+          if (!blob) break;
+          const diff = Math.abs(blob.size - targetBytes);
+          if (diff < bestDiff) {
+            bestDiff = diff;
+            bestBlob = blob;
+          }
+          if (blob.size > targetBytes) {
+            maxQ = q;
+          } else {
+            minQ = q;
+          }
+        }
+
+        // Dimensional scale fallback if file size exceeds target
+        if (bestBlob && bestBlob.size > targetBytes * 1.05) {
+          let scale = 0.9;
+          while (scale >= 0.1) {
+            const scaledCanvas = document.createElement('canvas');
+            scaledCanvas.width = Math.max(1, Math.round(canvas.width * scale));
+            scaledCanvas.height = Math.max(1, Math.round(canvas.height * scale));
+            const sCtx = scaledCanvas.getContext('2d');
+            sCtx.drawImage(canvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
+            const blob = await new Promise(resolve => scaledCanvas.toBlob(resolve, mimeType, 0.5));
+            if (blob && blob.size <= targetBytes) {
+              bestBlob = blob;
+              break;
+            }
+            scale -= 0.1;
+          }
+        }
+        return bestBlob;
+      }
+
+      // Render & Process Image Pipeline
+      async function processImage() {
+        if (!state.originalImg) return;
+
+        const filteredCanvas = applyCanvasFilters(state.originalImg, state.blurPx, state.sharpnessPct);
+        let outputBlob = null;
+
+        if (state.targetKb) {
+          outputBlob = await compressToTargetKb(filteredCanvas, state.targetKb, state.mimeType);
+        } else {
+          const qVal = state.quality / 100;
+          outputBlob = await new Promise(resolve => filteredCanvas.toBlob(resolve, state.mimeType, qVal));
+        }
+
+        if (outputBlob) {
+          const dpiBlob = await injectDpiToBlob(outputBlob, state.dpi, state.mimeType);
+          state.processedBlob = dpiBlob;
+          if (state.processedUrl) URL.revokeObjectURL(state.processedUrl);
+          state.processedUrl = URL.createObjectURL(dpiBlob);
+          state.processedSize = dpiBlob.size;
+          state.processedWidth = filteredCanvas.width;
+          state.processedHeight = filteredCanvas.height;
+
+          updateUI();
+        }
+      }
+
+      // Update UI Elements
+      function updateUI() {
+        if (!state.originalImg) return;
+
+        document.getElementById('placeholder-text').style.display = 'none';
+        document.getElementById('download-btn').disabled = false;
+
+        // Stats
+        document.getElementById('stat-orig-size').innerText = formatBytes(state.originalSize);
+        document.getElementById('stat-comp-size').innerText = formatBytes(state.processedSize);
+        
+        const savedPct = Math.max(0, Math.round(((state.originalSize - state.processedSize) / state.originalSize) * 100));
+        document.getElementById('stat-saved-badge').innerText = `${savedPct}% Saved`;
+        document.getElementById('stat-dimensions').innerText = `${state.originalWidth} × ${state.originalHeight}`;
+        document.getElementById('stat-dpi').innerText = `${state.dpi} DPI`;
+
+        // Images for modes
+        const splitOrig = document.getElementById('split-img-orig');
+        const splitComp = document.getElementById('split-img-comp');
+        const sideOrig = document.getElementById('side-img-orig');
+        const sideComp = document.getElementById('side-img-comp');
+
+        splitOrig.src = state.originalImg.src;
+        splitComp.src = state.processedUrl;
+        sideOrig.src = state.originalImg.src;
+        sideComp.src = state.processedUrl;
+
+        // Display View Modes
+        document.getElementById('view-split').style.display = state.viewMode === 'split' ? 'block' : 'none';
+        document.getElementById('view-side').style.display = state.viewMode === 'side' ? 'grid' : 'none';
+
+        updateSplitSlider();
+      }
+
+      function updateSplitSlider() {
+        const overlay = document.getElementById('split-overlay');
+        const handle = document.getElementById('split-handle');
+        if (overlay && handle) {
+          overlay.style.width = `${state.splitPos}%`;
+          handle.style.left = `${state.splitPos}%`;
+        }
+      }
+
+      // Handle Image File Loading
+      function loadFile(file) {
+        if (!file || !file.type.startsWith('image/')) {
+          window.showToast('Please upload a valid image file (JPG, PNG, WEBP, BMP).', 'error');
+          return;
+        }
+
+        state.originalFile = file;
+        state.originalName = file.name.substring(0, file.name.lastIndexOf('.')) || 'optimized-image';
+        state.originalSize = file.size;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            state.originalImg = img;
+            state.originalWidth = img.naturalWidth;
+            state.originalHeight = img.naturalHeight;
+            window.showToast(`Loaded ${file.name} (${formatBytes(file.size)}) successfully!`, 'success');
+            processImage();
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Load Sample USA Photo
+      function loadSampleImage() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 800;
+        const ctx = canvas.getContext('2d');
+
+        // Draw a vibrant gradient background
+        const grad = ctx.createLinearGradient(0, 0, 1200, 800);
+        grad.addColorStop(0, '#1e3a8a');
+        grad.addColorStop(0.5, '#3b82f6');
+        grad.addColorStop(1, '#1e1b4b');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1200, 800);
+
+        // Draw stars and stripes pattern
+        ctx.fillStyle = 'rgba(255,255,255,0.15)';
+        for (let i = 0; i < 800; i += 80) {
+          ctx.fillRect(0, i, 1200, 40);
+        }
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 54px Plus Jakarta Sans, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('USA Image Optimizer', 600, 380);
+
+        ctx.font = '28px Inter, sans-serif';
+        ctx.fillStyle = '#cbd5e1';
+        ctx.fillText('Sample 1200x800 Photo for Quality & 300 DPI Testing', 600, 440);
+
+        canvas.toBlob((blob) => {
+          const file = new File([blob], 'sample-usa-photo.jpg', { type: 'image/jpeg' });
+          loadFile(file);
+        }, 'image/jpeg', 0.95);
+      }
+
+      // Event Listeners Initialization
+      document.addEventListener('DOMContentLoaded', () => {
+        // File Upload
+        const fileInput = document.getElementById('file-input');
+        const dropzone = document.getElementById('dropzone');
+
+        fileInput.addEventListener('change', (e) => loadFile(e.target.files[0]));
+
+        dropzone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropzone.classList.add('drag-over');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+        dropzone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('drag-over');
+          if (e.dataTransfer.files.length > 0) loadFile(e.dataTransfer.files[0]);
+        });
+
+        document.getElementById('load-sample-btn').addEventListener('click', loadSampleImage);
+
+        // Quality Pills
+        document.querySelectorAll('#quality-pills .pill-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#quality-pills .pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const q = parseInt(btn.dataset.quality);
+            state.quality = q;
+            state.targetKb = null;
+            document.getElementById('quality-slider').value = q;
+            document.getElementById('quality-slider-val').innerText = `${q}%`;
+            processImage();
+          });
+        });
+
+        // Quality Slider
+        const qSlider = document.getElementById('quality-slider');
+        qSlider.addEventListener('input', (e) => {
+          state.quality = parseInt(e.target.value);
+          state.targetKb = null;
+          document.getElementById('quality-slider-val').innerText = `${state.quality}%`;
+          processImage();
+        });
+
+        // KB Pills
+        document.querySelectorAll('#kb-pills .pill-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#kb-pills .pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.targetKb = parseInt(btn.dataset.kb);
+            processImage();
+          });
+        });
+
+        document.getElementById('apply-kb-btn').addEventListener('click', () => {
+          const val = parseInt(document.getElementById('custom-kb-input').value);
+          if (val && val > 0) {
+            state.targetKb = val;
+            processImage();
+            window.showToast(`Applied ${val} KB target compression limit.`, 'info');
+          }
+        });
+
+        // DPI Pills
+        document.querySelectorAll('#dpi-pills .pill-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#dpi-pills .pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.dpi = parseInt(btn.dataset.dpi);
+            document.getElementById('custom-dpi-input').value = state.dpi;
+            processImage();
+          });
+        });
+
+        document.getElementById('apply-dpi-btn').addEventListener('click', () => {
+          const val = parseInt(document.getElementById('custom-dpi-input').value);
+          if (val && val > 0) {
+            state.dpi = val;
+            processImage();
+            window.showToast(`Updated image resolution header to ${val} DPI.`, 'success');
+          }
+        });
+
+        // Filter Sliders
+        document.getElementById('blur-slider').addEventListener('input', (e) => {
+          state.blurPx = parseFloat(e.target.value);
+          document.getElementById('blur-val').innerText = `${state.blurPx} px`;
+          processImage();
+        });
+
+        document.getElementById('sharpness-slider').addEventListener('input', (e) => {
+          state.sharpnessPct = parseInt(e.target.value);
+          document.getElementById('sharpness-val').innerText = `${state.sharpnessPct}%`;
+          processImage();
+        });
+
+        // Format Pills
+        document.querySelectorAll('#format-pills .pill-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#format-pills .pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.mimeType = btn.dataset.format;
+            processImage();
+          });
+        });
+
+        // Download Button
+        document.getElementById('download-btn').addEventListener('click', () => {
+          if (!state.processedBlob) return;
+          const extMap = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+          const ext = extMap[state.mimeType] || 'jpg';
+          const filename = `${state.originalName || 'photo'}-optimized-${state.dpi}dpi.${ext}`;
+
+          const a = document.createElement('a');
+          a.href = state.processedUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          window.showToast(`Downloaded ${filename} (${formatBytes(state.processedSize)}) successfully!`, 'success');
+        });
+
+        // Reset Settings
+        document.getElementById('reset-all-btn').addEventListener('click', () => {
+          state.quality = 80;
+          state.targetKb = null;
+          state.dpi = 300;
+          state.blurPx = 0;
+          state.sharpnessPct = 0;
+          state.mimeType = 'image/jpeg';
+
+          document.getElementById('quality-slider').value = 80;
+          document.getElementById('quality-slider-val').innerText = '80%';
+          document.getElementById('blur-slider').value = 0;
+          document.getElementById('blur-val').innerText = '0 px';
+          document.getElementById('sharpness-slider').value = 0;
+          document.getElementById('sharpness-val').innerText = '0%';
+          document.getElementById('custom-dpi-input').value = 300;
+
+          processImage();
+          window.showToast('All settings reset to default values.', 'info');
+        });
+
+        // Copy to Clipboard
+        document.getElementById('copy-clipboard-btn').addEventListener('click', async () => {
+          if (!state.processedBlob) return;
+          try {
+            await navigator.clipboard.write([
+              new ClipboardItem({ [state.processedBlob.type]: state.processedBlob })
+            ]);
+            window.showToast('Image copied to clipboard!', 'success');
+          } catch (err) {
+            window.showToast('Copy to clipboard is not supported in this browser.', 'error');
+          }
+        });
+
+        // View Mode Tabs
+        document.querySelectorAll('#view-mode-tabs .tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#view-mode-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.viewMode = btn.dataset.mode;
+            updateUI();
+          });
+        });
+
+        // Split Slider Drag Behavior
+        const splitWrapper = document.getElementById('view-split');
+        let isDragging = false;
+
+        splitWrapper.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          const rect = splitWrapper.getBoundingClientRect();
+          const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+          state.splitPos = (x / rect.width) * 100;
+          updateSplitSlider();
+        });
+
+        // FAQ Accordion Toggle
+        document.querySelectorAll('.faq-question').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded', 'false'));
+
+            if (!isOpen) {
+              item.classList.add('open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+      });
+    </script>
+    <!-- Direct / Popunder Network Script -->
+    <script type="text/javascript" src="https://pl30769714.effectivecpmnetwork.com/21/1f/bb/211fbba28b2a26b45b7aa698706a8ef2.js"></script>
+  </body>
+</html>
