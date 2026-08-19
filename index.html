@@ -6,46 +6,46 @@
     <title>USA Free Web Tools - All Tools Dashboard</title>
     <style>
         * { box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2); 
-            margin: 0; 
-            padding: 20px; 
-            text-align: center; 
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
             min-height: 100vh;
         }
         h1 { color: #2c3e50; margin-top: 20px; font-size: 2.5rem; }
         p { color: #555; font-size: 1.1rem; margin-bottom: 40px; }
-        
-        .container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-            gap: 20px; 
-            max-width: 1100px; 
-            margin: auto; 
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
         }
-        
-        .tool-card { 
-            background: white; 
-            padding: 25px 20px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            transition: all 0.3s ease; 
+
+        .tool-card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-        
-        .tool-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        
-        .tool-card a { 
-            text-decoration: none; 
-            color: #2c3e50; 
+
+        .tool-card a {
+            text-decoration: none;
+            color: #2c3e50;
             font-size: 1.1rem;
-            font-weight: bold; 
-            display: block; 
+            font-weight: bold;
+            display: block;
         }
-        
+
         .tool-card a:hover {
             color: #007bff;
         }
@@ -61,20 +61,43 @@
     </div>
 
     <script>
-        // AAPKE SARE TOOLS KI LIST - Naya tool dalne ke liye bas niche ek line add karni hai
-        const tools = [
-            { name: "Image Quality Reducer & DPI Changer", link: "image-reducer-dpi.html" },
-            { name: "Background Remover Tool", link: "background-remover.html" }
-        ];
+        const username = "chauhanaaja0-byte"; // GitHub Username
+        const repo = "my-web-tools";          // Repository Name
 
-        const container = document.getElementById('tool-list');
-        tools.forEach(tool => {
-            container.innerHTML += `
-                <div class="tool-card">
-                    <a href="${tool.link}">${tool.name}</a>
-                </div>
-            `;
-        });
+        async function loadToolsAutomatically() {
+            const container = document.getElementById('tool-list');
+            
+            try {
+                const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/`);
+                const files = await response.json();
+
+                // .html फ़ाइलों को ढूँढें (index.html को छोड़कर)
+                const toolFiles = files.filter(file => file.name.endsWith('.html') && file.name !== 'index.html');
+
+                container.innerHTML = ""; // पुरानी लिस्ट क्लियर करें
+
+                toolFiles.forEach(file => {
+                    // नाम से .html, हाइफ़न (-) और अंडरस्कोर (_) हटाकर साफ़ नाम बनाएँ
+                    let cleanName = file.name
+                        .replace('.html', '')
+                        .replace(/-/g, ' ')
+                        .replace(/_/g, ' ');
+
+                    // नाम का पहला अक्षर Capital करें
+                    cleanName = cleanName.replace(/\b\w/g, l => l.toUpperCase());
+
+                    container.innerHTML += `
+                        <div class="tool-card">
+                            <a href="${file.name}">${cleanName}</a>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Tools load karne me dikkat aayi:", error);
+            }
+        }
+
+        loadToolsAutomatically();
     </script>
 </body>
 </html>
