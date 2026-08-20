@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to Logo Maker – Create a Free Logo Online</title>
+  <meta name="description" content="Create a professional logo from text with our free online logo maker. Customize fonts, colors, icons, layouts and sizes, then download your logo as PNG, SVG, WEBP or JPG.">
+  <meta name="keywords" content="text to logo, text to logo maker, logo maker, logo generator, free logo maker, create logo online, make a logo online, logo design tool, professional logo maker, business logo maker, brand logo maker, logo creator, logo generator from text, free logo generator, SVG logo maker, PNG logo maker, transparent logo maker, favicon maker, social media logo maker, YouTube logo maker, Instagram logo maker, TikTok logo maker, LinkedIn logo maker, website logo maker, app logo maker">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Text to Logo Maker – Create a Free Logo Online">
+  <meta property="og:description" content="Design a professional logo from text online for free. Download vector SVG, PNG, WEBP, and JPG logos directly in your browser.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- JSON-LD Structured Data: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Text to Logo Maker",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas and SVG support.",
+        "description": "Create a professional logo from text with our free online logo maker. Customize fonts, colors, icons, layouts and sizes, then download your logo as PNG, SVG, WEBP or JPG.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a text to logo maker?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A text to logo maker is a specialized design tool that transforms typed brand names and optional taglines into polished, professional logos with custom typography, balanced layouts, color palettes, vector symbols, and downloadable export formats."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this logo maker free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, this tool is 100% free to use. There are no subscriptions, no hidden watermark fees, and no paywalls. You can design, customize, and download unlimited logos in multiple formats."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I create a logo without an API?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! This entire logo generator executes locally inside your browser using standard HTML5, CSS3, Vector SVG, and Canvas APIs. No external server, cloud rendering pipeline, or AI API is called."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I download my logo as SVG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can export a clean, scalable, standalone SVG file. The SVG is composed of native vector paths and scalable typography that you can edit in Figma, Adobe Illustrator, Inkscape, or embed directly into modern websites."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I make a transparent logo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Simply toggle the Transparent Background option. Both PNG and SVG exports will preserve full alpha channel transparency, allowing your logo to blend seamlessly over any background."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Monetization Scripts -->
+  <script type="text/javascript" src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+  <!-- Tailwind CSS Engine via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ================= CSS ================= -->
+  <style>
+    :root {
+      --font-brand: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    
+    body {
+      background-color: #030712;
+      color: #f1f5f9;
+      font-family: var(--font-brand);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .checkerboard {
+      background-color: #ffffff;
+      background-image: 
+        linear-gradient(45deg, #cbd5e1 25%, transparent 25%), 
+        linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #cbd5e1 75%), 
+        linear-gradient(-45deg, transparent 75%, #cbd5e1 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(168, 85, 247, 0.4);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(168, 85, 247, 0.7);
+    }
+
+    /* Tab transitions */
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.35));
+      border-color: rgba(192, 132, 252, 0.6);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+    }
+
+    /* Toast Notification */
+    #toastMessage {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 text-slate-100 relative overflow-x-hidden">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-40 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-indigo-700/15 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Toast Message Overlay -->
+  <div id="toastMessage" class="fixed top-5 right-5 z-50 transform -translate-y-5 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="px-4 py-2.5 rounded-xl bg-purple-900/90 backdrop-blur-md border border-purple-400/50 text-white font-medium text-xs shadow-2xl flex items-center gap-2">
+      <span id="toastIcon">✨</span>
+      <span id="toastText">Action completed!</span>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="border-b border-indigo-900/60 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-40 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg ring-2 ring-purple-400/40">
+          TL
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-white tracking-tight">Text to Logo Maker</span>
+            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-md bg-purple-900/70 text-purple-200 border border-purple-500/30">
+              🇺🇸 US Edition
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">Design a Professional Logo Online for Free • 100% Local in Browser</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap items-center gap-2">
+        <button type="button" onclick="resetDefaults()" class="px-3 py-1.5 text-xs font-medium text-slate-300 bg-slate-900/80 hover:bg-slate-800 hover:text-white border border-slate-800 rounded-xl transition-all">
+          Start Over
+        </button>
+        <button type="button" onclick="copySvgCodeDirect()" class="px-3 py-1.5 text-xs font-medium text-purple-200 bg-purple-950/70 hover:bg-purple-900 hover:text-white border border-purple-500/30 rounded-xl transition-all">
+          Copy SVG Code
+        </button>
+        <button type="button" onclick="exportSvg()" class="px-3.5 py-1.5 text-xs font-bold text-purple-200 bg-purple-950/80 hover:bg-purple-900 border border-purple-500/30 rounded-xl shadow-md transition-all">
+          Download SVG
+        </button>
+        <button type="button" onclick="exportRaster('png')" class="px-3.5 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-xl shadow-lg transition-all">
+          Download PNG
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN WORKSPACE ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10 space-y-6">
+    
+    <!-- Hero Title -->
+    <div class="text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-purple-400/30 text-xs font-semibold text-purple-200 mb-2">
+        <span>✨ Professional Vector Logo Generator</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-blue-200 via-indigo-100 to-purple-200 bg-clip-text text-transparent">
+        Create a Logo From Text
+      </h1>
+      <p class="text-sm text-slate-300 mt-1">
+        Design a Professional Logo Online for Free • Customize Typography, Icons, Colors, Sizes & Download Vector Deliverables
+      </p>
+    </div>
+
+    <!-- Ad Unit: 468x60 Banner -->
+    <div class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-purple-500/20 shadow-md">
+      <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-1 opacity-80">Advertisement</span>
+      <div class="flex justify-center items-center overflow-hidden min-h-[60px]">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '294198e908506e5d909d0b383f167eaa',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+      </div>
+    </div>
+
+    <!-- 2-Column Responsive Workspace -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Live Canvas Preview & Quick Export (5 Columns) -->
+      <div class="lg:col-span-5 space-y-4 lg:sticky lg:top-24">
+        
+        <div class="bg-slate-950/80 backdrop-blur-xl rounded-3xl border border-purple-500/30 p-5 shadow-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-200">Live Canvas Preview</span>
+            </div>
+            <div id="dimBadge" class="text-xs font-mono bg-purple-950/90 text-purple-300 border border-purple-500/30 px-2.5 py-0.5 rounded-md font-semibold">
+              1024 × 1024 px
+            </div>
+          </div>
+
+          <!-- Preview Stage with checkerboard background -->
+          <div class="w-full aspect-square rounded-2xl overflow-hidden border border-slate-800 shadow-inner checkerboard flex items-center justify-center relative p-4 group">
+            <div id="svgContainer" class="w-full h-full flex items-center justify-center select-none"></div>
+            
+            <!-- Safe Area Overlay (Toggleable) -->
+            <div id="safeAreaBox" class="absolute inset-8 border-2 border-dashed border-purple-500/40 rounded-xl pointer-events-none hidden"></div>
+          </div>
+
+          <!-- Quick Canvas Download Formats -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button type="button" onclick="exportSvg()" class="py-2.5 px-3 text-xs font-bold text-purple-200 bg-purple-950/80 hover:bg-purple-900 border border-purple-500/30 rounded-xl transition-all shadow-xs flex flex-col items-center justify-center">
+              <span>Vector SVG</span>
+              <span class="text-[10px] text-purple-400 font-normal">Infinite Scalable</span>
+            </button>
+            <button type="button" onclick="exportRaster('png')" class="py-2.5 px-3 text-xs font-bold text-blue-200 bg-blue-950/80 hover:bg-blue-900 border border-blue-500/30 rounded-xl transition-all shadow-xs flex flex-col items-center justify-center">
+              <span>Raster PNG</span>
+              <span class="text-[10px] text-blue-400 font-normal">Transparent</span>
+            </button>
+            <button type="button" onclick="exportRaster('webp')" class="py-2.5 px-3 text-xs font-bold text-emerald-200 bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/30 rounded-xl transition-all shadow-xs flex flex-col items-center justify-center">
+              <span>Web WEBP</span>
+              <span class="text-[10px] text-emerald-400 font-normal">Lightweight</span>
+            </button>
+            <button type="button" onclick="exportRaster('jpg')" class="py-2.5 px-3 text-xs font-bold text-amber-200 bg-amber-950/80 hover:bg-amber-900 border border-amber-500/30 rounded-xl transition-all shadow-xs flex flex-col items-center justify-center">
+              <span>Solid JPG</span>
+              <span class="text-[10px] text-amber-400 font-normal">Standard</span>
+            </button>
+          </div>
+
+          <!-- Direct SVG Code Copy Block -->
+          <div class="p-3 bg-slate-900/90 rounded-2xl border border-purple-500/20 flex items-center justify-between gap-3 text-xs">
+            <div>
+              <div class="font-bold text-white">Embed Direct SVG</div>
+              <div class="text-[11px] text-slate-400">Copy raw code for HTML &amp; Figma</div>
+            </div>
+            <button type="button" onclick="copySvgCodeDirect()" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all shadow-md">
+              Copy SVG
+            </button>
+          </div>
+        </div>
+
+        <!-- Ad Unit: 300x250 Sponsored Box -->
+        <div class="flex flex-col items-center justify-center p-3 rounded-3xl bg-slate-950/70 backdrop-blur-xl border border-purple-500/20 shadow-xl">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-1 opacity-80">Sponsored</span>
+          <div class="flex justify-center items-center overflow-hidden min-h-[250px] w-[300px]">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '224e7394c28834c8ac1ce24682c420e3',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Studio Control Tabs (7 Columns) -->
+      <div class="lg:col-span-7 bg-slate-950/80 backdrop-blur-xl rounded-3xl border border-purple-500/30 p-6 shadow-2xl space-y-6">
+        
+        <!-- Tab Navigation Bar -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-purple-900/40 text-xs font-semibold">
+          <button type="button" onclick="switchTab('text')" id="tabBtn-text" class="tab-btn active px-3.5 py-2 rounded-xl border border-transparent transition-all whitespace-nowrap">
+            Text &amp; Font
+          </button>
+          <button type="button" onclick="switchTab('icons')" id="tabBtn-icons" class="tab-btn px-3.5 py-2 rounded-xl border border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+            Icons &amp; Marks
+          </button>
+          <button type="button" onclick="switchTab('layout')" id="tabBtn-layout" class="tab-btn px-3.5 py-2 rounded-xl border border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+            Layout &amp; Frame
+          </button>
+          <button type="button" onclick="switchTab('colors')" id="tabBtn-colors" class="tab-btn px-3.5 py-2 rounded-xl border border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+            Colors &amp; BG
+          </button>
+          <button type="button" onclick="switchTab('sizes')" id="tabBtn-sizes" class="tab-btn px-3.5 py-2 rounded-xl border border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+            Sizes &amp; Presets
+          </button>
+          <button type="button" onclick="switchTab('archetypes')" id="tabBtn-archetypes" class="tab-btn px-3.5 py-2 rounded-xl border border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+            Style Archetypes
+          </button>
+          <button type="button" onclick="switchTab('brandkit')" id="tabBtn-brandkit" class="tab-btn px-3.5 py-2 rounded-xl border border-transparent text-slate-400 hover:text-white transition-all whitespace-nowrap">
+            Brand Kit
+          </button>
+        </div>
+
+        <!-- ================= TAB 1: TEXT & TYPOGRAPHY ================= -->
+        <div id="tabContent-text" class="space-y-5">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Brand Information</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Brand / Company Name</label>
+                <input id="inpBrandName" type="text" value="NovaTech" oninput="updateRender()" class="w-full px-3.5 py-2.5 bg-slate-900 border border-purple-500/30 rounded-xl text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Tagline / Slogan</label>
+                <input id="inpTagline" type="text" value="Technology Made Simple" oninput="updateRender()" class="w-full px-3.5 py-2.5 bg-slate-900 border border-purple-500/30 rounded-xl text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Typography &amp; Lettering</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Font Archetype</label>
+                <select id="selFont" onchange="updateRender()" class="w-full px-3.5 py-2.5 bg-slate-900 border border-purple-500/30 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                  <option value="modern-sans">Modern Sans (Inter / System / Clean)</option>
+                  <option value="bold-sans">Bold Sans (Impact / Arial Black)</option>
+                  <option value="minimal">Minimal Clean (Century Gothic / Avenir)</option>
+                  <option value="elegant-serif">Elegant Serif (Playfair / Didot)</option>
+                  <option value="classic-serif">Classic Serif (Times / Garamond)</option>
+                  <option value="geometric">Geometric (Futura / Trebuchet)</option>
+                  <option value="tech">Tech / Modern (Consolas / Roboto Mono)</option>
+                  <option value="rounded">Rounded Friendly (Nunito / Quicksand)</option>
+                  <option value="luxury">Luxury Fashion (Bodoni / Cinzel)</option>
+                  <option value="handwritten">Handwritten / Script (Caveat / Brush)</option>
+                  <option value="display">Display Poster (Copperplate / Oswald)</option>
+                  <option value="monospace">Monospace Code (Courier / Liberation)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Text Transform</label>
+                <select id="selBrandTransform" onchange="updateRender()" class="w-full px-3.5 py-2.5 bg-slate-900 border border-purple-500/30 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                  <option value="none">As Typed (Original)</option>
+                  <option value="uppercase">UPPERCASE (All Caps)</option>
+                  <option value="lowercase">lowercase (Small)</option>
+                  <option value="capitalize">Capitalize (Title Case)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Fine sliders -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+              <div>
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                  <span>Font Size</span>
+                  <span id="valBrandSize">72px</span>
+                </div>
+                <input id="sliderBrandSize" type="range" min="30" max="140" value="72" oninput="document.getElementById('valBrandSize').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                  <span>Letter Spacing</span>
+                  <span id="valBrandSpacing">1px</span>
+                </div>
+                <input id="sliderBrandSpacing" type="range" min="-2" max="20" value="1" oninput="document.getElementById('valBrandSpacing').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                  <span>Font Weight</span>
+                  <span id="valBrandWeight">700</span>
+                </div>
+                <select id="selBrandWeight" onchange="updateRender()" class="w-full px-2 py-1 bg-slate-900 border border-purple-500/30 rounded-lg text-xs text-white">
+                  <option value="300">300 (Light)</option>
+                  <option value="400">400 (Regular)</option>
+                  <option value="600">600 (Semi-Bold)</option>
+                  <option value="700" selected>700 (Bold)</option>
+                  <option value="900">900 (Black / Heavy)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tagline controls -->
+          <div class="pt-3 border-t border-purple-900/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-200">Tagline Adjustments</span>
+              <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+                <input id="chkShowTagline" type="checkbox" checked onchange="updateRender()" class="accent-purple-500 rounded">
+                <span>Display Tagline</span>
+              </label>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                  <span>Tagline Size</span>
+                  <span id="valTaglineSize">24px</span>
+                </div>
+                <input id="sliderTaglineSize" type="range" min="12" max="48" value="24" oninput="document.getElementById('valTaglineSize').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                  <span>Tagline Spacing</span>
+                  <span id="valTaglineSpacing">2px</span>
+                </div>
+                <input id="sliderTaglineSpacing" type="range" min="0" max="15" value="2" oninput="document.getElementById('valTaglineSpacing').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs text-slate-400 mb-1">
+                  <span>Tagline Gap</span>
+                  <span id="valTaglineGap">16px</span>
+                </div>
+                <input id="sliderTaglineGap" type="range" min="4" max="60" value="16" oninput="document.getElementById('valTaglineGap').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 2: ICONS & MARKS ================= -->
+        <div id="tabContent-icons" class="space-y-5 hidden">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Select Vector Symbol</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button type="button" onclick="selectIcon('geometric-cube')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Geometric Cube</span>
+                <span class="text-[10px] text-slate-400">Tech &amp; 3D</span>
+              </button>
+              <button type="button" onclick="selectIcon('shield')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Security Shield</span>
+                <span class="text-[10px] text-slate-400">Trust &amp; Cyber</span>
+              </button>
+              <button type="button" onclick="selectIcon('crown-luxury')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Royal Crown</span>
+                <span class="text-[10px] text-slate-400">Luxury &amp; VIP</span>
+              </button>
+              <button type="button" onclick="selectIcon('diamond')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Diamond Crest</span>
+                <span class="text-[10px] text-slate-400">Jewelry &amp; Elite</span>
+              </button>
+              <button type="button" onclick="selectIcon('hexagon')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Tech Hexagon</span>
+                <span class="text-[10px] text-slate-400">Data &amp; Science</span>
+              </button>
+              <button type="button" onclick="selectIcon('leaf-eco')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Eco Leaf</span>
+                <span class="text-[10px] text-slate-400">Organic &amp; Nature</span>
+              </button>
+              <button type="button" onclick="selectIcon('lightning-bolt')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Lightning Bolt</span>
+                <span class="text-[10px] text-slate-400">Energy &amp; Gaming</span>
+              </button>
+              <button type="button" onclick="selectIcon('globe-orbit')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Global Orbit</span>
+                <span class="text-[10px] text-slate-400">Travel &amp; Cloud</span>
+              </button>
+              <button type="button" onclick="selectIcon('infinity-loop')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Infinity Loop</span>
+                <span class="text-[10px] text-slate-400">Endless &amp; Modern</span>
+              </button>
+              <button type="button" onclick="selectIcon('flame-fire')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Ignite Flame</span>
+                <span class="text-[10px] text-slate-400">Hot &amp; Passion</span>
+              </button>
+              <button type="button" onclick="selectIcon('mountain-peak')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Summit Mountain</span>
+                <span class="text-[10px] text-slate-400">Outdoors &amp; Peak</span>
+              </button>
+              <button type="button" onclick="selectIcon('initials')" class="icon-choice-btn p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold flex flex-col justify-between">
+                <span>Monogram Mark</span>
+                <span class="text-[10px] text-slate-400">Initial Letters</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Icon Fine Tuning -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-purple-900/30">
+            <div>
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Icon Size</span>
+                <span id="valIconSize">80px</span>
+              </div>
+              <input id="sliderIconSize" type="range" min="30" max="160" value="80" oninput="document.getElementById('valIconSize').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Icon Rotation</span>
+                <span id="valIconRotation">0°</span>
+              </div>
+              <input id="sliderIconRotation" type="range" min="0" max="360" value="0" oninput="document.getElementById('valIconRotation').innerText = this.value + '°'; updateRender();" class="w-full accent-purple-500">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Stroke Width</span>
+                <span id="valIconStroke">2px</span>
+              </div>
+              <input id="sliderIconStroke" type="range" min="1" max="8" value="2" oninput="document.getElementById('valIconStroke').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 3: LAYOUT & FRAME ================= -->
+        <div id="tabContent-layout" class="space-y-5 hidden">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Layout Composition</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <button type="button" onclick="setLayout('icon-left')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Icon Left</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Horizontal Standard</span>
+              </button>
+              <button type="button" onclick="setLayout('icon-top')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Icon Top</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Vertical Stack</span>
+              </button>
+              <button type="button" onclick="setLayout('icon-right')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Icon Right</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Reversed Flow</span>
+              </button>
+              <button type="button" onclick="setLayout('badge')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Emblem Badge</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Framed Shield</span>
+              </button>
+              <button type="button" onclick="setLayout('circular')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Circular Crest</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Round Seal</span>
+              </button>
+              <button type="button" onclick="setLayout('text-only')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Text Only</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Pure Wordmark</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Spacing and Alignment -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-purple-900/30">
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Text Alignment</label>
+              <select id="selTextAlign" onchange="updateRender()" class="w-full px-3 py-2 bg-slate-900 border border-purple-500/30 rounded-xl text-xs text-white">
+                <option value="center">Center</option>
+                <option value="left">Left Aligned</option>
+                <option value="right">Right Aligned</option>
+              </select>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Item Gap</span>
+                <span id="valItemGap">24px</span>
+              </div>
+              <input id="sliderItemGap" type="range" min="4" max="80" value="24" oninput="document.getElementById('valItemGap').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-slate-400 mb-1">
+                <span>Vertical Offset</span>
+                <span id="valYOffset">0px</span>
+              </div>
+              <input id="sliderYOffset" type="range" min="-60" max="60" value="0" oninput="document.getElementById('valYOffset').innerText = this.value + 'px'; updateRender();" class="w-full accent-purple-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 4: COLORS & BACKGROUND ================= -->
+        <div id="tabContent-colors" class="space-y-5 hidden">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Custom Color Controls</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="p-3 bg-slate-900/90 rounded-2xl border border-purple-500/20">
+                <span class="block text-xs font-medium text-slate-300 mb-1">Primary Color</span>
+                <input id="colPrimary" type="color" value="#2563eb" oninput="updateRender()" class="w-full h-9 rounded-xl cursor-pointer bg-transparent border-0">
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-2xl border border-purple-500/20">
+                <span class="block text-xs font-medium text-slate-300 mb-1">Secondary / Icon</span>
+                <input id="colSecondary" type="color" value="#7c3aed" oninput="updateRender()" class="w-full h-9 rounded-xl cursor-pointer bg-transparent border-0">
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-2xl border border-purple-500/20">
+                <span class="block text-xs font-medium text-slate-300 mb-1">Brand Text Color</span>
+                <input id="colText" type="color" value="#0f172a" oninput="updateRender()" class="w-full h-9 rounded-xl cursor-pointer bg-transparent border-0">
+              </div>
+              <div class="p-3 bg-slate-900/90 rounded-2xl border border-purple-500/20">
+                <span class="block text-xs font-medium text-slate-300 mb-1">Tagline Color</span>
+                <input id="colTagline" type="color" value="#475569" oninput="updateRender()" class="w-full h-9 rounded-xl cursor-pointer bg-transparent border-0">
+              </div>
+            </div>
+          </div>
+
+          <!-- Background Selection -->
+          <div class="pt-3 border-t border-purple-900/30">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Canvas Background Type</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button type="button" onclick="setBgMode('transparent')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Transparent</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Alpha Channel (PNG/SVG)</span>
+              </button>
+              <button type="button" onclick="setBgMode('solid')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Solid Background</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Custom Solid Color</span>
+              </button>
+              <button type="button" onclick="setBgMode('gradient')" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs font-semibold">
+                <span>Linear Gradient</span>
+                <span class="block text-[10px] text-slate-400 mt-1">Multi-color Blends</span>
+              </button>
+            </div>
+
+            <!-- Gradient controls (visible when gradient selected) -->
+            <div id="gradientBox" class="mt-3 p-3 bg-slate-900/90 rounded-2xl border border-purple-500/20 grid grid-cols-1 sm:grid-cols-3 gap-3 hidden">
+              <div>
+                <span class="block text-xs font-medium text-slate-300 mb-1">Gradient Start</span>
+                <input id="colGradStart" type="color" value="#0f172a" oninput="updateRender()" class="w-full h-8 rounded-lg cursor-pointer bg-transparent">
+              </div>
+              <div>
+                <span class="block text-xs font-medium text-slate-300 mb-1">Gradient End</span>
+                <input id="colGradEnd" type="color" value="#1e1b4b" oninput="updateRender()" class="w-full h-8 rounded-lg cursor-pointer bg-transparent">
+              </div>
+              <div>
+                <span class="block text-xs font-medium text-slate-300 mb-1">Angle</span>
+                <select id="selGradAngle" onchange="updateRender()" class="w-full px-2 py-1 bg-slate-950 border border-purple-500/30 rounded-lg text-xs text-white">
+                  <option value="90">90° Vertical</option>
+                  <option value="45">45° Diagonal</option>
+                  <option value="0">0° Horizontal</option>
+                  <option value="135">135° Cross</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 5: SIZES & PRESETS ================= -->
+        <div id="tabContent-sizes" class="space-y-5 hidden">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Popular Output Dimensions</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <button type="button" onclick="setCanvasDimensions(1024, 1024)" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs">
+                <div class="font-bold text-white">Universal Master</div>
+                <div class="text-[10px] text-purple-300">1024 × 1024 px</div>
+              </button>
+              <button type="button" onclick="setCanvasDimensions(2000, 800)" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs">
+                <div class="font-bold text-white">Web Header</div>
+                <div class="text-[10px] text-purple-300">2000 × 800 px</div>
+              </button>
+              <button type="button" onclick="setCanvasDimensions(512, 512)" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs">
+                <div class="font-bold text-white">App / Favicon</div>
+                <div class="text-[10px] text-purple-300">512 × 512 px</div>
+              </button>
+              <button type="button" onclick="setCanvasDimensions(800, 800)" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs">
+                <div class="font-bold text-white">YouTube Profile</div>
+                <div class="text-[10px] text-purple-300">800 × 800 px</div>
+              </button>
+              <button type="button" onclick="setCanvasDimensions(1200, 630)" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs">
+                <div class="font-bold text-white">Open Graph / Social</div>
+                <div class="text-[10px] text-purple-300">1200 × 630 px</div>
+              </button>
+              <button type="button" onclick="setCanvasDimensions(4096, 4096)" class="p-3 bg-slate-900 border border-purple-500/30 rounded-2xl hover:border-purple-400 text-left text-xs">
+                <div class="font-bold text-white">4K Print Master</div>
+                <div class="text-[10px] text-purple-300">4096 × 4096 px</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom Dimensions -->
+          <div class="pt-3 border-t border-purple-900/30">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200 mb-3">Custom Dimensions</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Width (px)</label>
+                <input id="inpCustomWidth" type="number" value="1024" min="16" max="6000" onchange="setCanvasDimensions(parseInt(this.value), currentCanvasH)" class="w-full px-3 py-2 bg-slate-900 border border-purple-500/30 rounded-xl text-xs text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-300 mb-1">Height (px)</label>
+                <input id="inpCustomHeight" type="number" value="1024" min="16" max="6000" onchange="setCanvasDimensions(currentCanvasW, parseInt(this.value))" class="w-full px-3 py-2 bg-slate-900 border border-purple-500/30 rounded-xl text-xs text-white">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TAB 6: STYLE ARCHETYPES ================= -->
+        <div id="tabContent-archetypes" class="space-y-4 hidden">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200">1-Click Style Archetypes</h3>
+            <p class="text-xs text-slate-400 mb-3">Transform font, icon, color harmony, and composition instantly.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button type="button" onclick="applyPresetStyle('modern')" class="p-3.5 bg-slate-900/80 border border-purple-500/30 hover:border-purple-400 rounded-2xl text-left transition-all">
+              <div class="font-bold text-xs text-white">Modern Tech</div>
+              <div class="text-[11px] text-slate-400">Geometric cube mark with modern sans typography.</div>
+            </button>
+            <button type="button" onclick="applyPresetStyle('luxury')" class="p-3.5 bg-slate-900/80 border border-purple-500/30 hover:border-purple-400 rounded-2xl text-left transition-all">
+              <div class="font-bold text-xs text-white">Luxury Gold</div>
+              <div class="text-[11px] text-slate-400">Royal crown emblem with high-fashion serif font.</div>
+            </button>
+            <button type="button" onclick="applyPresetStyle('minimal')" class="p-3.5 bg-slate-900/80 border border-purple-500/30 hover:border-purple-400 rounded-2xl text-left transition-all">
+              <div class="font-bold text-xs text-white">Minimalist Clean</div>
+              <div class="text-[11px] text-slate-400">Generous letter tracking with understated black-and-white.</div>
+            </button>
+            <button type="button" onclick="applyPresetStyle('corporate')" class="p-3.5 bg-slate-900/80 border border-purple-500/30 hover:border-purple-400 rounded-2xl text-left transition-all">
+              <div class="font-bold text-xs text-white">Corporate Navy</div>
+              <div class="text-[11px] text-slate-400">Trustworthy shield crest with structured presence.</div>
+            </button>
+            <button type="button" onclick="applyPresetStyle('gaming')" class="p-3.5 bg-slate-900/80 border border-purple-500/30 hover:border-purple-400 rounded-2xl text-left transition-all">
+              <div class="font-bold text-xs text-white">Electric Gaming</div>
+              <div class="text-[11px] text-slate-400">High-energy lightning mark with neon violet contrast.</div>
+            </button>
+            <button type="button" onclick="applyPresetStyle('eco')" class="p-3.5 bg-slate-900/80 border border-purple-500/30 hover:border-purple-400 rounded-2xl text-left transition-all">
+              <div class="font-bold text-xs text-white">Eco Nature</div>
+              <div class="text-[11px] text-slate-400">Organic green leaf with clean botanical curves.</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= TAB 7: BRAND KIT ================= -->
+        <div id="tabContent-brandkit" class="space-y-4 hidden">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200">Complete Brand Kit Deliverables</h3>
+            <p class="text-xs text-slate-400 mb-3">Download production-ready assets for social, web, app, and print.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-3.5 bg-slate-900/90 rounded-2xl border border-purple-500/20 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-xs text-white">Square Master SVG</div>
+                <div class="text-[11px] text-purple-300">1024 × 1024 • Vector</div>
+              </div>
+              <button type="button" onclick="exportSvg(1024, 1024)" class="px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl text-xs">
+                Download
+              </button>
+            </div>
+
+            <div class="p-3.5 bg-slate-900/90 rounded-2xl border border-purple-500/20 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-xs text-white">High-Res PNG</div>
+                <div class="text-[11px] text-blue-300">2048 × 2048 • PNG</div>
+              </div>
+              <button type="button" onclick="exportRaster('png', 2048, 2048)" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-xs">
+                Download
+              </button>
+            </div>
+
+            <div class="p-3.5 bg-slate-900/90 rounded-2xl border border-purple-500/20 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-xs text-white">Web Header Logo</div>
+                <div class="text-[11px] text-emerald-300">2000 × 800 • PNG</div>
+              </div>
+              <button type="button" onclick="exportRaster('png', 2000, 800)" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl text-xs">
+                Download
+              </button>
+            </div>
+
+            <div class="p-3.5 bg-slate-900/90 rounded-2xl border border-purple-500/20 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-xs text-white">Print Master 4K</div>
+                <div class="text-[11px] text-amber-300">4096 × 4096 • PNG</div>
+              </div>
+              <button type="button" onclick="exportRaster('png', 4096, 4096)" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-semibold rounded-xl text-xs">
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Middle Recommended Ad Banner Container -->
+    <div class="flex flex-col items-center justify-center p-3 rounded-3xl bg-slate-950/70 backdrop-blur-xl border border-purple-500/20 shadow-xl w-full">
+      <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-1 opacity-80">Recommended</span>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    </div>
+
+    <!-- ================= SEO, GUIDE & FAQ SECTION ================= -->
+    <section class="p-6 bg-slate-950/80 backdrop-blur-xl rounded-3xl border border-purple-500/30 shadow-2xl space-y-6">
+      <div>
+        <h2 class="text-xl font-bold text-white">Professional Logo Design Guide &amp; Knowledge Base</h2>
+        <p class="text-xs text-slate-400 mt-1">Everything you need to know about vector typography, color balance, aspect ratios, and digital deliverables.</p>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="space-y-3">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-purple-200">Frequently Asked Questions</h3>
+
+        <div class="space-y-2">
+          <details class="group p-3.5 bg-slate-900/70 rounded-2xl border border-purple-500/20 text-xs cursor-pointer">
+            <summary class="font-bold text-white flex items-center justify-between list-none">
+              <span>What is a text to logo maker?</span>
+              <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-300 leading-relaxed">
+              A text to logo maker is a specialized design tool that transforms typed brand names and optional taglines into polished, professional logos with custom typography, balanced layouts, color palettes, vector symbols, and downloadable export formats.
+            </p>
+          </details>
+
+          <details class="group p-3.5 bg-slate-900/70 rounded-2xl border border-purple-500/20 text-xs cursor-pointer">
+            <summary class="font-bold text-white flex items-center justify-between list-none">
+              <span>Is this logo maker completely free?</span>
+              <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-300 leading-relaxed">
+              Yes, this tool is 100% free to use. There are no subscriptions, no hidden watermark fees, and no paywalls. You can design, customize, and download unlimited logos in multiple formats.
+            </p>
+          </details>
+
+          <details class="group p-3.5 bg-slate-900/70 rounded-2xl border border-purple-500/20 text-xs cursor-pointer">
+            <summary class="font-bold text-white flex items-center justify-between list-none">
+              <span>Can I create a logo without an API?</span>
+              <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-300 leading-relaxed">
+              Yes! This entire logo generator executes locally inside your browser using standard HTML5, CSS3, Vector SVG, and Canvas APIs. No external server, cloud rendering pipeline, or AI API is called.
+            </p>
+          </details>
+
+          <details class="group p-3.5 bg-slate-900/70 rounded-2xl border border-purple-500/20 text-xs cursor-pointer">
+            <summary class="font-bold text-white flex items-center justify-between list-none">
+              <span>Can I download my logo as SVG?</span>
+              <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-300 leading-relaxed">
+              Yes. You can export a clean, scalable, standalone SVG file. The SVG is composed of native vector paths and scalable typography that you can edit in Figma, Adobe Illustrator, Inkscape, or embed directly into modern websites.
+            </p>
+          </details>
+
+          <details class="group p-3.5 bg-slate-900/70 rounded-2xl border border-purple-500/20 text-xs cursor-pointer">
+            <summary class="font-bold text-white flex items-center justify-between list-none">
+              <span>Can I make a transparent background logo?</span>
+              <span class="text-purple-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-300 leading-relaxed">
+              Yes. Simply toggle the Transparent Background option under Colors &amp; BG. Both PNG and SVG exports will preserve full alpha channel transparency, allowing your logo to blend seamlessly over any background.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Disclaimer & Privacy Policy -->
+      <div class="pt-4 border-t border-purple-900/30 text-slate-400 text-xs space-y-2">
+        <p><strong class="text-slate-300">Privacy Policy:</strong> All logo generation and image processing take place entirely client-side in your browser. No brand names, taglines, or generated images are transmitted to or stored on any external server.</p>
+        <p><strong class="text-slate-300">Disclaimer:</strong> The logos created with this tool are for your personal and commercial use. Please ensure your chosen company name does not infringe upon existing trademarks in your jurisdiction.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-indigo-900/60 bg-slate-950/90 backdrop-blur-xl py-8 text-center text-xs text-slate-400 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="font-bold text-white">Text to Logo Maker • 100% Free Client-Side Logo Studio</p>
+      <p class="text-slate-500">Self-contained Single File Edition • SVG, PNG, WEBP, and JPG High-Density Vector Generator</p>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Global State
+    let currentCanvasW = 1024;
+    let currentCanvasH = 1024;
+    let currentBgMode = 'solid'; // 'solid' | 'transparent' | 'gradient'
+    let currentLayout = 'icon-left';
+    let currentIcon = 'geometric-cube';
+
+    const fontMap = {
+      'modern-sans': 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      'bold-sans': 'Impact, "Arial Black", "Trebuchet MS", sans-serif',
+      'minimal': '"Century Gothic", "Avenir Next", Avenir, "Segoe UI", sans-serif',
+      'elegant-serif': '"Playfair Display", Didot, "Bodoni MT", Georgia, serif',
+      'classic-serif': '"Times New Roman", Times, "Garamond", serif',
+      'geometric': 'Futura, "Century Gothic", "Trebuchet MS", sans-serif',
+      'tech': '"Lucida Console", "Consolas", "Roboto Mono", monospace',
+      'rounded': '"Arial Rounded MT Bold", "Quicksand", "Nunito", sans-serif',
+      'luxury': '"Bodoni MT", "Didot", "Cinzel", serif',
+      'handwritten': '"Brush Script MT", "Caveat", "Segoe Script", cursive',
+      'display': '"Copperplate", "Impact", "Oswald", sans-serif',
+      'monospace': '"Courier New", Courier, monospace'
+    };
+
+    const iconMap = {
+      'geometric-cube': '<polygon points="50,15 85,35 50,55 15,35" fill="currentColor" opacity="0.9" /><polygon points="15,35 50,55 50,88 15,68" fill="var(--sec-col)" opacity="0.7" /><polygon points="85,35 50,55 50,88 85,68" fill="currentColor" opacity="0.4" />',
+      'shield': '<path d="M50 10 L85 24 C85 60 50 88 50 88 C50 88 15 60 15 24 Z" fill="currentColor" /><path d="M50 22 L73 32 C73 57 50 76 50 76 C50 76 27 57 27 32 Z" fill="var(--sec-col)" opacity="0.5" />',
+      'crown-luxury': '<path d="M15 70 L20 32 L38 52 L50 20 L62 52 L80 32 L85 70 Z" fill="currentColor" /><circle cx="50" cy="18" r="4" fill="var(--sec-col)" /><circle cx="20" cy="30" r="3.5" fill="var(--sec-col)" /><circle cx="80" cy="30" r="3.5" fill="var(--sec-col)" /><rect x="15" y="74" width="70" height="6" rx="2" fill="var(--sec-col)" />',
+      'diamond': '<polygon points="50,10 90,50 50,90 10,50" fill="currentColor" /><polygon points="50,28 72,50 50,72 28,50" fill="var(--sec-col)" opacity="0.7" />',
+      'hexagon': '<polygon points="50,10 85,30 85,70 50,90 15,70 15,30" fill="currentColor" /><polygon points="50,26 71,38 71,62 50,74 29,62 29,38" fill="var(--sec-col)" opacity="0.6" />',
+      'leaf-eco': '<path d="M20 80 C20 30 50 15 85 15 C85 65 55 80 20 80 Z" fill="currentColor" /><path d="M20 80 Q55 55 85 15" stroke="var(--sec-col)" stroke-width="4" fill="none" stroke-linecap="round" />',
+      'lightning-bolt': '<polygon points="56,10 24,52 48,52 38,90 76,42 52,42" fill="currentColor" stroke="var(--sec-col)" stroke-width="3" />',
+      'globe-orbit': '<circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="5" fill="none" /><ellipse cx="50" cy="50" rx="36" ry="14" stroke="var(--sec-col)" stroke-width="4" fill="none" transform="rotate(-30 50 50)" />',
+      'infinity-loop': '<path d="M32 50 C18 35 12 65 32 50 C52 35 68 65 82 50 C96 35 90 65 70 50 C50 35 34 65 18 50" stroke="currentColor" stroke-width="8" fill="none" stroke-linecap="round" /><circle cx="50" cy="50" r="5" fill="var(--sec-col)" />',
+      'flame-fire': '<path d="M50 15 C55 35 75 45 75 65 C75 80 64 90 50 90 C36 90 25 80 25 65 C25 45 42 35 50 15 Z" fill="currentColor" /><path d="M50 45 C54 55 64 62 64 72 C64 80 58 84 50 84 C42 84 36 80 36 72 C36 62 44 55 50 45 Z" fill="var(--sec-col)" />',
+      'mountain-peak': '<polygon points="50,15 85,80 15,80" fill="currentColor" /><polygon points="50,15 62,38 50,44 38,38" fill="var(--sec-col)" opacity="0.8" /><polygon points="25,48 45,80 5,80" fill="var(--sec-col)" opacity="0.5" />'
+    };
+
+    function escapeXml(unsafe) {
+      return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+    }
+
+    function switchTab(tabId) {
+      const tabs = ['text', 'icons', 'layout', 'colors', 'sizes', 'archetypes', 'brandkit'];
+      tabs.forEach(t => {
+        const content = document.getElementById('tabContent-' + t);
+        const btn = document.getElementById('tabBtn-' + t);
+        if (content) content.classList.add('hidden');
+        if (btn) {
+          btn.classList.remove('active');
+          btn.classList.add('text-slate-400');
+        }
+      });
+      const activeContent = document.getElementById('tabContent-' + tabId);
+      const activeBtn = document.getElementById('tabBtn-' + tabId);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.classList.remove('text-slate-400');
+      }
+    }
+
+    function selectIcon(iconKey) {
+      currentIcon = iconKey;
+      updateRender();
+    }
+
+    function setLayout(layoutKey) {
+      currentLayout = layoutKey;
+      updateRender();
+    }
+
+    function setBgMode(mode) {
+      currentBgMode = mode;
+      const gradBox = document.getElementById('gradientBox');
+      if (gradBox) {
+        if (mode === 'gradient') gradBox.classList.remove('hidden');
+        else gradBox.classList.add('hidden');
+      }
+      updateRender();
+    }
+
+    function setCanvasDimensions(w, h) {
+      currentCanvasW = w;
+      currentCanvasH = h;
+      document.getElementById('dimBadge').innerText = w + ' × ' + h + ' px';
+      const inpW = document.getElementById('inpCustomWidth');
+      const inpH = document.getElementById('inpCustomHeight');
+      if (inpW) inpW.value = w;
+      if (inpH) inpH.value = h;
+      updateRender();
+    }
+
+    function showToast(text, icon = '✨') {
+      const toast = document.getElementById('toastMessage');
+      const toastText = document.getElementById('toastText');
+      const toastIcon = document.getElementById('toastIcon');
+      if (toast && toastText) {
+        toastText.innerText = text;
+        if (toastIcon) toastIcon.innerText = icon;
+        toast.classList.remove('opacity-0', '-translate-y-5', 'pointer-events-none');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+          toast.classList.add('opacity-0', '-translate-y-5', 'pointer-events-none');
+          toast.classList.remove('opacity-100', 'translate-y-0');
+        }, 2500);
+      }
+    }
+
+    // SVG Rendering Engine
+    function generateSvgString(targetW, targetH) {
+      const w = targetW || currentCanvasW || 1024;
+      const h = targetH || currentCanvasH || 1024;
+
+      let brand = document.getElementById('inpBrandName').value || 'Brand';
+      const transform = document.getElementById('selBrandTransform').value;
+      if (transform === 'uppercase') brand = brand.toUpperCase();
+      else if (transform === 'lowercase') brand = brand.toLowerCase();
+      else if (transform === 'capitalize') brand = brand.replace(/\b\w/g, c => c.toUpperCase());
+
+      let tagline = document.getElementById('inpTagline').value || '';
+      const showTagline = document.getElementById('chkShowTagline').checked && Boolean(tagline);
+
+      const font = fontMap[document.getElementById('selFont').value] || fontMap['modern-sans'];
+      const brandWeight = document.getElementById('selBrandWeight').value || '700';
+      const brandSpacing = document.getElementById('sliderBrandSpacing').value || '1';
+      const brandFontSize = parseInt(document.getElementById('sliderBrandSize').value || '72');
+      const taglineFontSize = parseInt(document.getElementById('sliderTaglineSize').value || '24');
+      const taglineSpacing = document.getElementById('sliderTaglineSpacing').value || '2';
+      const taglineGap = parseInt(document.getElementById('sliderTaglineGap').value || '16');
+
+      const colPrimary = document.getElementById('colPrimary').value || '#2563eb';
+      const colSecondary = document.getElementById('colSecondary').value || '#7c3aed';
+      const colText = document.getElementById('colText').value || '#0f172a';
+      const colTagline = document.getElementById('colTagline').value || '#475569';
+
+      const iconSize = parseInt(document.getElementById('sliderIconSize').value || '80');
+      const iconRotation = parseInt(document.getElementById('sliderIconRotation').value || '0');
+      const itemGap = parseInt(document.getElementById('sliderItemGap').value || '24');
+      const yOffset = parseInt(document.getElementById('sliderYOffset').value || '0');
+
+      // Scale factor relative to 1024 base
+      const scale = Math.min(w, h) / 1024;
+      const sBrandSize = brandFontSize * scale;
+      const sTaglineSize = taglineFontSize * scale;
+      const sIconSize = iconSize * 1.5 * scale;
+      const sItemGap = itemGap * scale;
+      const sTaglineGap = taglineGap * scale;
+      const sYOffset = yOffset * scale;
+
+      const midX = w / 2;
+      const midY = h / 2;
+
+      // Background definition
+      let bgElement = '';
+      let defs = '';
+
+      if (currentBgMode === 'solid') {
+        bgElement = `<rect width="${w}" height="${h}" fill="#ffffff"/>`;
+      } else if (currentBgMode === 'gradient') {
+        const gStart = document.getElementById('colGradStart').value;
+        const gEnd = document.getElementById('colGradEnd').value;
+        defs = `
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${gStart}"/>
+              <stop offset="100%" stop-color="${gEnd}"/>
+            </linearGradient>
+          </defs>
+        `;
+        bgElement = `<rect width="${w}" height="${h}" fill="url(#logoGrad)"/>`;
+      }
+
+      // Icon element
+      let iconInner = '';
+      if (currentIcon === 'initials') {
+        const initials = escapeXml((brand || 'B').slice(0, 2).toUpperCase());
+        iconInner = `
+          <rect x="10" y="10" width="80" height="80" rx="16" fill="${colPrimary}"/>
+          <text x="50" y="58" font-family="${font}" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">${initials}</text>
+        `;
+      } else {
+        const template = iconMap[currentIcon] || iconMap['geometric-cube'];
+        iconInner = template.replace(/var\(--sec-col\)/g, colSecondary);
+      }
+
+      let content = '';
+
+      if (currentLayout === 'text-only') {
+        const totalH = sBrandSize + (showTagline ? sTaglineGap + sTaglineSize : 0);
+        const startY = midY - totalH / 2 + sBrandSize * 0.75 + sYOffset;
+        content = `
+          <text x="${midX}" y="${startY}" font-family='${font}' font-size="${sBrandSize}px" font-weight="${brandWeight}" letter-spacing="${brandSpacing * scale}px" fill="${colText}" text-anchor="middle">${escapeXml(brand)}</text>
+          ${showTagline ? `<text x="${midX}" y="${startY + sTaglineGap + sTaglineSize}" font-family='${font}' font-size="${sTaglineSize}px" font-weight="500" letter-spacing="${taglineSpacing * scale}px" fill="${colTagline}" text-anchor="middle">${escapeXml(tagline)}</text>` : ''}
+        `;
+      } else if (currentLayout === 'icon-top' || currentLayout === 'badge' || currentLayout === 'circular') {
+        const totalH = sIconSize + sItemGap + sBrandSize + (showTagline ? sTaglineGap + sTaglineSize : 0);
+        const startY = midY - totalH / 2 + sYOffset;
+        const iconX = midX - sIconSize / 2;
+        const iconY = startY;
+        const textY = iconY + sIconSize + sItemGap + sBrandSize * 0.75;
+
+        let frame = '';
+        if (currentLayout === 'badge') {
+          frame = `<rect x="${midX - (w * 0.42)}" y="${midY - (h * 0.38)}" width="${w * 0.84}" height="${h * 0.76}" rx="${24 * scale}" stroke="${colPrimary}" stroke-width="${4 * scale}" fill="none" opacity="0.8"/>`;
+        } else if (currentLayout === 'circular') {
+          frame = `<circle cx="${midX}" cy="${midY}" r="${Math.min(w, h) * 0.42}" stroke="${colPrimary}" stroke-width="${4 * scale}" fill="none"/><circle cx="${midX}" cy="${midY}" r="${Math.min(w, h) * 0.39}" stroke="${colSecondary}" stroke-width="${2 * scale}" stroke-dasharray="6,6" fill="none" opacity="0.6"/>`;
+        }
+
+        content = `
+          ${frame}
+          <g transform="translate(${iconX}, ${iconY}) rotate(${iconRotation} ${sIconSize/2} ${sIconSize/2})" color="${colPrimary}">
+            <svg width="${sIconSize}" height="${sIconSize}" viewBox="0 0 100 100">${iconInner}</svg>
+          </g>
+          <text x="${midX}" y="${textY}" font-family='${font}' font-size="${sBrandSize}px" font-weight="${brandWeight}" letter-spacing="${brandSpacing * scale}px" fill="${colText}" text-anchor="middle">${escapeXml(brand)}</text>
+          ${showTagline ? `<text x="${midX}" y="${textY + sTaglineGap + sTaglineSize}" font-family='${font}' font-size="${sTaglineSize}px" font-weight="500" letter-spacing="${taglineSpacing * scale}px" fill="${colTagline}" text-anchor="middle">${escapeXml(tagline)}</text>` : ''}
+        `;
+      } else {
+        // Icon Left (Standard Horizontal)
+        const iconX = midX - (w * 0.32);
+        const iconY = midY - sIconSize / 2 + sYOffset;
+        const textX = iconX + sIconSize + sItemGap;
+        const textY = midY + (showTagline ? -sTaglineGap * 0.3 : sBrandSize * 0.3) + sYOffset;
+
+        content = `
+          <g transform="translate(${iconX}, ${iconY}) rotate(${iconRotation} ${sIconSize/2} ${sIconSize/2})" color="${colPrimary}">
+            <svg width="${sIconSize}" height="${sIconSize}" viewBox="0 0 100 100">${iconInner}</svg>
+          </g>
+          <text x="${textX}" y="${textY}" font-family='${font}' font-size="${sBrandSize}px" font-weight="${brandWeight}" letter-spacing="${brandSpacing * scale}px" fill="${colText}" text-anchor="start">${escapeXml(brand)}</text>
+          ${showTagline ? `<text x="${textX}" y="${textY + sTaglineGap + sTaglineSize}" font-family='${font}' font-size="${sTaglineSize}px" font-weight="500" letter-spacing="${taglineSpacing * scale}px" fill="${colTagline}" text-anchor="start">${escapeXml(tagline)}</text>` : ''}
+        `;
+      }
+
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" height="100%">
+        ${defs}
+        ${bgElement}
+        ${content}
+      </svg>`;
+    }
+
+    function updateRender() {
+      const svg = generateSvgString();
+      const container = document.getElementById('svgContainer');
+      if (container) container.innerHTML = svg;
+    }
+
+    // ================= EXPORT FUNCTIONS =================
+    function exportSvg(targetW, targetH) {
+      const w = targetW || currentCanvasW;
+      const h = targetH || currentCanvasH;
+      const svg = generateSvgString(w, h);
+      const name = (document.getElementById('inpBrandName').value || 'logo').toLowerCase().replace(/[^a-z0-9]/g, '-');
+      const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = name + '-logo-' + w + 'x' + h + '.svg';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('SVG vector exported successfully!', '🚀');
+    }
+
+    function exportRaster(format, targetW, targetH) {
+      const w = targetW || currentCanvasW;
+      const h = targetH || currentCanvasH;
+      const svg = generateSvgString(w, h);
+      const name = (document.getElementById('inpBrandName').value || 'logo').toLowerCase().replace(/[^a-z0-9]/g, '-');
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+
+      img.onload = function() {
+        if (currentBgMode !== 'transparent' || format === 'jpg') {
+          ctx.fillStyle = currentBgMode === 'solid' ? '#ffffff' : '#0f172a';
+          ctx.fillRect(0, 0, w, h);
+        }
+        ctx.drawImage(img, 0, 0);
+
+        const mime = format === 'jpg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png';
+        canvas.toBlob(function(blob) {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = name + '-logo-' + w + 'x' + h + '.' + format;
+          a.click();
+          URL.revokeObjectURL(url);
+          showToast(format.toUpperCase() + ' exported successfully!', '🎉');
+        }, mime, 0.95);
+      };
+
+      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+    }
+
+    function copySvgCodeDirect() {
+      const svg = generateSvgString();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(svg).then(() => {
+          showToast('Direct SVG Code copied to clipboard!', '📋');
+        }).catch(() => fallbackCopy(svg));
+      } else {
+        fallbackCopy(svg);
+      }
+    }
+
+    function fallbackCopy(text, successMsg = 'Copied!') {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast(successMsg, '📋');
+        } else {
+          showToast('Unable to copy automatically.', '⚠️');
+        }
+      } catch (err) {
+        showToast('Unable to copy automatically.', '⚠️');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function applyPresetStyle(preset) {
+      if (preset === 'modern') {
+        document.getElementById('selFont').value = 'modern-sans';
+        document.getElementById('colPrimary').value = '#2563eb';
+        document.getElementById('colSecondary').value = '#38bdf8';
+        document.getElementById('colText').value = '#0f172a';
+        currentIcon = 'geometric-cube';
+        currentLayout = 'icon-left';
+      } else if (preset === 'luxury') {
+        document.getElementById('selFont').value = 'luxury';
+        document.getElementById('colPrimary').value = '#b45309';
+        document.getElementById('colSecondary').value = '#f59e0b';
+        document.getElementById('colText').value = '#1c1917';
+        currentIcon = 'crown-luxury';
+        currentLayout = 'icon-top';
+      } else if (preset === 'minimal') {
+        document.getElementById('selFont').value = 'minimal';
+        document.getElementById('colPrimary').value = '#18181b';
+        document.getElementById('colSecondary').value = '#71717a';
+        document.getElementById('colText').value = '#18181b';
+        currentIcon = 'diamond';
+        currentLayout = 'icon-top';
+      } else if (preset === 'corporate') {
+        document.getElementById('selFont').value = 'modern-sans';
+        document.getElementById('colPrimary').value = '#1e3a8a';
+        document.getElementById('colSecondary').value = '#2563eb';
+        document.getElementById('colText').value = '#0f172a';
+        currentIcon = 'shield';
+        currentLayout = 'icon-left';
+      } else if (preset === 'gaming') {
+        document.getElementById('selFont').value = 'display';
+        document.getElementById('colPrimary').value = '#8b5cf6';
+        document.getElementById('colSecondary').value = '#06b6d4';
+        document.getElementById('colText').value = '#0f172a';
+        currentIcon = 'lightning-bolt';
+        currentLayout = 'badge';
+      } else if (preset === 'eco') {
+        document.getElementById('selFont').value = 'rounded';
+        document.getElementById('colPrimary').value = '#15803d';
+        document.getElementById('colSecondary').value = '#22c55e';
+        document.getElementById('colText').value = '#14532d';
+        currentIcon = 'leaf-eco';
+        currentLayout = 'icon-top';
+      }
+      updateRender();
+      showToast('Style applied!', '🎨');
+    }
+
+    function resetDefaults() {
+      document.getElementById('inpBrandName').value = 'NovaTech';
+      document.getElementById('inpTagline').value = 'Technology Made Simple';
+      document.getElementById('selFont').value = 'modern-sans';
+      document.getElementById('selBrandTransform').value = 'none';
+      document.getElementById('sliderBrandSize').value = 72;
+      document.getElementById('sliderBrandSpacing').value = 1;
+      document.getElementById('selBrandWeight').value = '700';
+      document.getElementById('chkShowTagline').checked = true;
+      document.getElementById('sliderTaglineSize').value = 24;
+      document.getElementById('sliderTaglineSpacing').value = 2;
+      document.getElementById('sliderTaglineGap').value = 16;
+      document.getElementById('colPrimary').value = '#2563eb';
+      document.getElementById('colSecondary').value = '#7c3aed';
+      document.getElementById('colText').value = '#0f172a';
+      document.getElementById('colTagline').value = '#475569';
+      currentIcon = 'geometric-cube';
+      currentLayout = 'icon-left';
+      currentBgMode = 'solid';
+      setCanvasDimensions(1024, 1024);
+      showToast('Reset to defaults!', '🔄');
+    }
+
+    // Initialize application on load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateRender();
+    });
+  </script>
+</body>
+  </html>
