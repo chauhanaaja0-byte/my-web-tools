@@ -28,41 +28,14 @@
   }
   </script>
 
-  <!-- React 18 Production CDN -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
-  <!-- Babel Standalone for In-Browser JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <!-- Tailwind CSS 3.x CDN -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- 1. Network Popunder / CPM Script -->
   <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
 
   <style>
-    /* Global Styles */
+    /* Global Resets & Typography */
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -92,17 +65,6 @@
     input[type=range]::-webkit-slider-thumb:hover {
       transform: scale(1.15);
     }
-    /* Draggable Split Handle */
-    .slider-handle {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: white;
-      cursor: ew-resize;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #f8fafc; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -111,1576 +73,1245 @@
 </head>
 <body class="bg-white text-slate-900 min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- Root Mount for Application -->
-  <div id="root"></div>
+  <!-- Hidden File Input -->
+  <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/bmp" class="hidden" />
 
-  <!-- React Application Source Code -->
-  <script type="text/babel">
-    const { useState, useEffect, useRef, useCallback } = React;
+  <!-- Global Drag and Drop Overlay -->
+  <div id="dragDropOverlay" class="fixed inset-0 z-50 bg-blue-600/90 backdrop-blur-xs hidden flex-col items-center justify-center text-white border-4 border-dashed border-white p-8">
+    <svg class="w-16 h-16 animate-bounce mb-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+    </svg>
+    <h2 class="text-2xl font-black">Drop Image File Anywhere</h2>
+    <p class="text-sm opacity-90 mt-1">PNG, JPG, WebP supported for instant local processing</p>
+  </div>
 
-    // Default Adjustments Parameters
-    const DEFAULT_ADJUSTMENTS = {
-      blurRadius: 0,
-      motionDistance: 0,
-      motionAngle: 0,
-      radialIntensity: 0,
-      tiltShiftBlurMax: 0,
-      bokehBoost: 0,
-      sharpnessAmount: 0,
-      usmRadius: 1.5,
-      usmThreshold: 2,
-      highPassBlend: 0,
-      clarityAmount: 0,
-      edgeBoost: 0,
-      brightness: 0,
-      contrast: 0,
-      saturation: 0,
-      exposure: 0,
-    };
+  <!-- Header Bar -->
+  <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+          <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6"/></svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base font-extrabold text-slate-900 tracking-tight">PixelCraft Studio</h1>
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+              Client-Side
+            </span>
+          </div>
+          <p class="text-[11px] font-medium text-slate-500">Image Blur, Sharpness &amp; Unsharp Masking</p>
+        </div>
+      </div>
 
-    // Preset Catalog
-    const PRESETS = [
-      {
-        id: 'portrait-bokeh',
-        name: 'Portrait Bokeh',
-        icon: 'camera',
-        category: 'blur',
-        description: 'Dreamy background blur with luminous highlights',
-        settings: { blurRadius: 12, bokehBoost: 45, brightness: 4, contrast: 6 },
-      },
-      {
-        id: 'macro-texture',
-        name: 'Macro Texture',
-        icon: 'zap',
-        category: 'sharpness',
-        description: 'Micro-contrast boost for fabrics, nature & textures',
-        settings: { sharpnessAmount: 65, highPassBlend: 50, edgeBoost: 20 },
-      },
-      {
-        id: 'deblur-doc',
-        name: 'De-Blur Text',
-        icon: 'file-text',
-        category: 'sharpness',
-        description: 'High-contrast edge restoration for text & receipts',
-        settings: { sharpnessAmount: 85, usmRadius: 2.2, usmThreshold: 0, contrast: 25 },
-      },
-      {
-        id: 'hdr-clarity',
-        name: 'HDR Clarity',
-        icon: 'sparkles',
-        category: 'sharpness',
-        description: 'Local midtone tone-mapping for dramatic landscapes',
-        settings: { clarityAmount: 70, highPassBlend: 40, saturation: 15, contrast: 10 },
-      },
-      {
-        id: 'tilt-shift',
-        name: 'Tilt-Shift Miniature',
-        icon: 'layers',
-        category: 'blur',
-        description: 'Miniature city effect with horizontal focus plane',
-        settings: { tiltShiftBlurMax: 18, saturation: 35, contrast: 20 },
-      },
-      {
-        id: 'motion-streak',
-        name: 'Speed Motion',
-        icon: 'wind',
-        category: 'blur',
-        description: 'High-velocity directional streak effect',
-        settings: { motionDistance: 25, motionAngle: 15, clarityAmount: 20 },
-      },
-      {
-        id: 'print-prep',
-        name: 'Print Master 300DPI',
-        icon: 'printer',
-        category: 'sharpness',
-        description: 'Dot-gain compensation filter for physical printing',
-        settings: { sharpnessAmount: 45, highPassBlend: 30, edgeBoost: 12 },
-      },
-      {
-        id: 'privacy-redact',
-        name: 'Privacy Blur',
-        icon: 'shield',
-        category: 'blur',
-        description: 'Heavy diffusion to redact sensitive data & faces',
-        settings: { blurRadius: 28 },
-      },
-    ];
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Undo / Redo -->
+        <div class="hidden sm:flex items-center border border-slate-200 rounded-xl p-0.5 bg-slate-50">
+          <button id="btnUndo" disabled title="Undo" class="p-2 rounded-lg text-slate-400 disabled:opacity-30 hover:text-slate-900 hover:bg-white transition-all cursor-pointer">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M3 7v6h6M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"/></svg>
+          </button>
+          <button id="btnRedo" disabled title="Redo" class="p-2 rounded-lg text-slate-400 disabled:opacity-30 hover:text-slate-900 hover:bg-white transition-all cursor-pointer">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M21 7v6h-6M3 17a9 9 0 019-9 9 9 0 016 2.3L21 13"/></svg>
+          </button>
+        </div>
 
-    // Sample Images
-    const SAMPLE_IMAGES = [
-      {
-        id: 'sample-portrait',
-        title: 'Studio Portrait',
-        tag: 'Bokeh & Skin',
-        gradient: ['#1e1b4b', '#4338ca', '#ec4899'],
-        text: 'Portrait Bokeh Test',
-      },
-      {
-        id: 'sample-landscape',
-        title: 'Mountain Vista',
-        tag: 'Tilt-Shift & Clarity',
-        gradient: ['#0f172a', '#0284c7', '#38bdf8'],
-        text: 'Landscape Test',
-      },
-      {
-        id: 'sample-macro',
-        title: 'Leaf Macro',
-        tag: 'Texture High-Pass',
-        gradient: ['#064e3b', '#059669', '#34d399'],
-        text: 'Macro Texture Test',
-      },
-      {
-        id: 'sample-text',
-        title: 'Document OCR',
-        tag: 'De-Blur Text',
-        gradient: ['#ffffff', '#f1f5f9', '#cbd5e1'],
-        isDoc: true,
-        text: 'Document Text OCR',
-      },
-    ];
+        <button id="btnResetAll" class="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-all cursor-pointer">
+          <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <span>Reset</span>
+        </button>
 
-    // Helper: Generate procedural canvas image for samples
-    function createProceduralSampleUrl(sample) {
-      const c = document.createElement('canvas');
-      c.width = 1000;
-      c.height = 750;
-      const ctx = c.getContext('2d');
+        <button id="btnShareModal" class="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-cyan-600 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          <span>Share</span>
+        </button>
 
-      const g = ctx.createLinearGradient(0, 0, 1000, 750);
-      g.addColorStop(0, sample.gradient[0]);
-      g.addColorStop(0.5, sample.gradient[1]);
-      g.addColorStop(1, sample.gradient[2]);
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, 1000, 750);
+        <button id="btnUpload" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all cursor-pointer">
+          <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+          <span class="hidden sm:inline">Upload Image</span>
+        </button>
 
-      // Specular bokeh circles
-      for (let i = 0; i < 20; i++) {
-        ctx.beginPath();
-        const bx = Math.random() * 1000;
-        const by = Math.random() * 750;
-        const br = 15 + Math.random() * 35;
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.1 + Math.random() * 0.25})`;
-        ctx.arc(bx, by, br, 0, Math.PI * 2);
-        ctx.fill();
-      }
+        <button id="btnOpenExport" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm shadow-emerald-600/20 transition-all cursor-pointer">
+          <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Export</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-      ctx.fillStyle = sample.isDoc ? '#1e293b' : '#ffffff';
-      ctx.textAlign = 'center';
-      ctx.font = 'bold 44px sans-serif';
-      ctx.fillText(sample.text, 500, 360);
-      ctx.font = '22px sans-serif';
-      ctx.fillStyle = sample.isDoc ? '#475569' : '#93c5fd';
-      ctx.fillText('PixelCraft 1000 x 750 px Studio Canvas', 500, 410);
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1 flex flex-col gap-6">
 
-      return c.toDataURL();
-    }
+    <!-- Presets Strip -->
+    <div class="w-full bg-white rounded-2xl border border-slate-200 p-3 shadow-xs">
+      <div class="flex items-center justify-between mb-2 px-1">
+        <div class="flex items-center gap-2">
+          <span class="p-1 rounded-lg bg-purple-100 text-purple-700">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </span>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-700">Studio One-Click Presets</span>
+        </div>
+        <span class="text-[11px] text-slate-400">Click to instantly apply professional recipes</span>
+      </div>
+      <div id="presetsContainer" class="flex items-center gap-2 overflow-x-auto pb-1"></div>
+    </div>
 
-    // ==================== IMAGE PROCESSING ENGINE ====================
+    <!-- 2. Ad Banner (468x60 Top Header) -->
+    <div class="w-full flex flex-col items-center justify-center my-1">
+      <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1">Advertisement</span>
+      <div class="bg-white p-1 rounded-xl border border-slate-200 shadow-xs max-w-full overflow-x-auto flex justify-center">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '294198e908506e5d909d0b383f167eaa',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+      </div>
+    </div>
 
-    function applySeparableGaussian(data, width, height, radius) {
-      if (radius < 0.5) return data;
-      const sigma = radius / 2.5;
-      const kSize = Math.min(25, Math.ceil(radius * 2.5));
-      const kernel = new Float32Array(kSize * 2 + 1);
-      let sum = 0;
-      for (let i = -kSize; i <= kSize; i++) {
-        const val = Math.exp(-(i * i) / (2 * sigma * sigma));
-        kernel[i + kSize] = val;
-        sum += val;
-      }
-      for (let i = 0; i < kernel.length; i++) kernel[i] /= sum;
+    <!-- Studio Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- Canvas Area (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col gap-4">
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs flex flex-col gap-3">
+          
+          <!-- Toolbar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+              <button id="btnViewSplit" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-blue-600 shadow-xs cursor-pointer">
+                Split Slider
+              </button>
+              <button id="btnViewSide" class="px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer">
+                Side-by-Side
+              </button>
+              <button id="btnViewSingle" class="px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer">
+                Processed
+              </button>
+            </div>
 
-      const src = data.data;
-      const tmp = new Uint8ClampedArray(src.length);
-      const out = new Uint8ClampedArray(src.length);
+            <div class="flex items-center gap-2">
+              <button id="btnHoldOriginal" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 select-none cursor-pointer">
+                Hold Original
+              </button>
 
-      // Horizontal 1D Pass
-      for (let y = 0; y < height; y++) {
-        const rowOffset = y * width * 4;
-        for (let x = 0; x < width; x++) {
-          let r = 0, g = 0, b = 0;
-          for (let k = -kSize; k <= kSize; k++) {
-            const px = Math.min(width - 1, Math.max(0, x + k));
-            const idx = rowOffset + px * 4;
-            const w = kernel[k + kSize];
-            r += src[idx] * w;
-            g += src[idx + 1] * w;
-            b += src[idx + 2] * w;
-          }
-          const outIdx = rowOffset + x * 4;
-          tmp[outIdx] = r;
-          tmp[outIdx + 1] = g;
-          tmp[outIdx + 2] = b;
-          tmp[outIdx + 3] = src[outIdx + 3];
+              <div class="flex items-center border border-slate-200 rounded-lg bg-slate-50 p-0.5">
+                <button id="btnZoomOut" class="p-1 text-slate-500 hover:text-slate-900 cursor-pointer">
+                  <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M8 11h6"/></svg>
+                </button>
+                <span id="zoomLevelLabel" class="text-[11px] font-mono font-bold px-1.5 text-slate-700">100%</span>
+                <button id="btnZoomIn" class="p-1 text-slate-500 hover:text-slate-900 cursor-pointer">
+                  <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+                </button>
+                <button id="btnZoomFit" class="p-1 text-slate-500 hover:text-slate-900 cursor-pointer" title="Reset Zoom">
+                  <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Viewport Box -->
+          <div id="viewportContainer" class="bg-slate-950 rounded-xl relative overflow-hidden flex items-center justify-center min-h-[440px] max-h-[540px] select-none">
+            
+            <!-- Split Mode -->
+            <div id="splitWrapper" class="relative w-full h-full flex items-center justify-center overflow-hidden">
+              <img id="splitOriginalImg" alt="Original" class="max-h-[500px] max-w-full object-contain pointer-events-none transition-transform duration-75" />
+              <div id="splitProcessedClip" class="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none transition-opacity duration-75" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+                <canvas id="splitProcessedCanvas" class="max-h-[500px] max-w-full object-contain transition-transform duration-75"></canvas>
+              </div>
+              <div id="sliderHandle" class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 flex items-center justify-center shadow-2xl" style="left: 50%;">
+                <div class="w-7 h-7 rounded-full bg-white border-2 border-blue-600 shadow-lg flex items-center justify-center text-blue-600">
+                  <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18-6-6 6-6M15 6l6 6-6 6"/></svg>
+                </div>
+              </div>
+              <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none z-10">BEFORE</span>
+              <span class="absolute top-3 right-3 bg-blue-600/80 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none z-10">AFTER</span>
+            </div>
+
+            <!-- Side by Side Mode -->
+            <div id="sideBySideWrapper" class="hidden w-full h-full grid-cols-2 gap-2 p-2">
+              <div class="relative bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center">
+                <img id="sideOriginalImg" alt="Original" class="max-h-[460px] max-w-full object-contain" />
+                <span class="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ORIGINAL</span>
+              </div>
+              <div class="relative bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center">
+                <canvas id="sideProcessedCanvas" class="max-h-[460px] max-w-full object-contain"></canvas>
+                <span class="absolute top-2 right-2 bg-blue-600/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">PROCESSED</span>
+              </div>
+            </div>
+
+            <!-- Single Mode -->
+            <div id="singleWrapper" class="hidden w-full h-full flex items-center justify-center p-2">
+              <canvas id="singleProcessedCanvas" class="max-h-[500px] max-w-full object-contain"></canvas>
+            </div>
+
+            <!-- Processing Toast -->
+            <div id="processingIndicator" class="hidden absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-xs text-cyan-400 text-xs font-mono px-3 py-1.5 rounded-lg border border-cyan-500/30 flex items-center gap-2 z-20">
+              <div class="w-3.5 h-3.5 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+              <span>Processing convolution...</span>
+            </div>
+          </div>
+
+          <!-- Bottom Info Bar -->
+          <div class="flex items-center justify-between text-xs text-slate-500 px-1 pt-1">
+            <span id="dimensionLabel" class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 font-bold">1000 × 750 px</span>
+            <span class="flex items-center gap-1 text-emerald-600 font-semibold">
+              <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              100% Client-Side Sandbox
+            </span>
+          </div>
+        </div>
+
+        <!-- Samples Bar -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              Sample Images
+            </span>
+            <span class="text-[11px] text-slate-400">Select to test sharpening &amp; blur filters</span>
+          </div>
+          <div id="samplesList" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+        </div>
+      </div>
+
+      <!-- Controls Column (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col gap-5 sticky top-20">
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col gap-4">
+          
+          <!-- Category Tabs -->
+          <div class="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl">
+            <button id="tabSharpness" class="py-2 rounded-lg text-xs font-bold transition-all bg-cyan-600 text-white shadow-xs flex items-center justify-center gap-1.5 cursor-pointer">
+              Sharpness
+            </button>
+            <button id="tabBlur" class="py-2 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer">
+              Blur
+            </button>
+            <button id="tabTone" class="py-2 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer">
+              Tone
+            </button>
+          </div>
+
+          <!-- SHARPNESS PANEL -->
+          <div id="panelSharpness" class="flex flex-col gap-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <h3 class="text-xs font-bold text-cyan-900 uppercase tracking-wider">Unsharp Mask &amp; High-Pass</h3>
+              <button id="btnResetSharpness" class="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer">Reset</button>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-cyan-800 font-bold">Unsharp Mask Gain</span>
+                <span id="valSharpnessAmount" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="sharpnessAmount" min="0" max="100" value="0" class="w-full text-cyan-600 accent-cyan-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-cyan-800 font-bold">Mask Blur Radius (σ)</span>
+                <span id="valUsmRadius" class="font-mono text-slate-600">1.5 px</span>
+              </div>
+              <input type="range" id="usmRadius" min="0.5" max="8" step="0.1" value="1.5" class="w-full text-cyan-600 accent-cyan-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-cyan-800 font-bold">Noise Threshold</span>
+                <span id="valUsmThreshold" class="font-mono text-slate-600">2 lv</span>
+              </div>
+              <input type="range" id="usmThreshold" min="0" max="25" value="2" class="w-full text-cyan-600 accent-cyan-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-blue-800 font-bold">High-Pass Filter Strength</span>
+                <span id="valHighPassBlend" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="highPassBlend" min="0" max="100" value="0" class="w-full text-blue-600 accent-blue-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-indigo-800 font-bold">Midtone Clarity Boost</span>
+                <span id="valClarityAmount" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="clarityAmount" min="0" max="100" value="0" class="w-full text-indigo-600 accent-indigo-600" />
+            </div>
+          </div>
+
+          <!-- BLUR PANEL -->
+          <div id="panelBlur" class="hidden flex-col gap-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <h3 class="text-xs font-bold text-purple-900 uppercase tracking-wider">Spatial Convolution &amp; Bokeh</h3>
+              <button id="btnResetBlur" class="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer">Reset</button>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-purple-800 font-bold">Gaussian Blur Radius</span>
+                <span id="valBlurRadius" class="font-mono text-slate-600">0 px</span>
+              </div>
+              <input type="range" id="blurRadius" min="0" max="30" value="0" class="w-full text-purple-600 accent-purple-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-purple-800 font-bold">Motion Streak Distance</span>
+                <span id="valMotionDistance" class="font-mono text-slate-600">0 px</span>
+              </div>
+              <input type="range" id="motionDistance" min="0" max="40" value="0" class="w-full text-purple-600 accent-purple-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-slate-700 font-bold">Motion Direction Angle</span>
+                <span id="valMotionAngle" class="font-mono text-slate-600">0°</span>
+              </div>
+              <input type="range" id="motionAngle" min="0" max="360" value="0" class="w-full text-slate-700 accent-slate-700" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-pink-800 font-bold">Bokeh Highlight Boost</span>
+                <span id="valBokehBoost" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="bokehBoost" min="0" max="100" value="0" class="w-full text-pink-600 accent-pink-600" />
+            </div>
+          </div>
+
+          <!-- TONE PANEL -->
+          <div id="panelTone" class="hidden flex-col gap-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <h3 class="text-xs font-bold text-amber-900 uppercase tracking-wider">Color &amp; Exposure</h3>
+              <button id="btnResetTone" class="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer">Reset</button>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-amber-800 font-bold">Exposure</span>
+                <span id="valExposure" class="font-mono text-slate-600">0.0 EV</span>
+              </div>
+              <input type="range" id="exposure" min="-1" max="1" step="0.05" value="0" class="w-full text-amber-600 accent-amber-600" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-slate-800 font-bold">Brightness</span>
+                <span id="valBrightness" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="brightness" min="-50" max="50" value="0" class="w-full text-slate-700 accent-slate-700" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-slate-800 font-bold">Contrast</span>
+                <span id="valContrast" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="contrast" min="-50" max="50" value="0" class="w-full text-slate-700 accent-slate-700" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-orange-800 font-bold">Saturation</span>
+                <span id="valSaturation" class="font-mono text-slate-600">0%</span>
+              </div>
+              <input type="range" id="saturation" min="-100" max="100" value="0" class="w-full text-orange-600 accent-orange-600" />
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Export Action Box -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex items-center justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold text-slate-900">Ready to save your image?</p>
+            <p class="text-[11px] text-slate-500">Supports 300 DPI, lossless PNG &amp; scaling</p>
+          </div>
+          <button id="btnQuickExport" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-all shadow-md shadow-emerald-600/25 cursor-pointer shrink-0">
+            <span>Export Image</span>
+          </button>
+        </div>
+
+        <!-- 3. Sidebar Medium Rectangle Ad (300x250) -->
+        <div class="w-full bg-white rounded-2xl border border-slate-200 p-4 shadow-xs flex flex-col items-center justify-center">
+          <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-2">Advertisement</span>
+          <div class="flex justify-center items-center overflow-hidden rounded-lg bg-slate-50 border border-slate-100 p-1">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '224e7394c28834c8ac1ce24682c420e3',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4. Native Sponsored Ad Container -->
+    <div class="w-full bg-white rounded-2xl border border-slate-200 p-4 shadow-xs my-4 flex flex-col items-center justify-center">
+      <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-2">Sponsored Content</span>
+      <div class="w-full min-h-[90px] flex justify-center items-center">
+        <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+        <div id="container-269e962c1215493328aeb78f4303284c"></div>
+      </div>
+    </div>
+
+    <!-- Deep Dive Science Section & FAQ -->
+    <div class="w-full flex flex-col gap-8 mt-6">
+      <div class="w-full bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2.5 rounded-xl bg-blue-100 text-blue-700">
+            <svg class="w-6 h-6 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          </div>
+          <div>
+            <h2 class="text-xl font-extrabold text-slate-900">Spatial Filtering &amp; Convolution Mathematics</h2>
+            <p class="text-sm text-slate-500">How browser-native mathematical kernels transform image frequencies in real-time</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-2.5 py-1 rounded-full">Separable Gaussian</span>
+              <h3 class="font-bold text-slate-900 text-base mt-3 mb-2">2D Isotropic Gaussian</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Rather than performing costly 2D matrix convolutions, our engine splits the Gaussian function into an initial horizontal 1D pass followed by a vertical 1D pass.
+              </p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-purple-900">
+              G(x) = (1 / √(2πσ²)) · e^[ -x² / (2σ²) ]
+            </div>
+          </div>
+
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-100 px-2.5 py-1 rounded-full">Unsharp Masking</span>
+              <h3 class="font-bold text-slate-900 text-base mt-3 mb-2">Edge Difference Amplification</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Originated in traditional darkrooms. We create an unsharp low-frequency copy of the image, subtract it from the original to extract pure spatial edge gradients, and add it back scaled.
+              </p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-cyan-900">
+              I_sharp = I_orig + α · (I_orig - I_blur)
+            </div>
+          </div>
+
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-full">High-Pass Filter</span>
+              <h3 class="font-bold text-slate-900 text-base mt-3 mb-2">Micro-Contrast Boost</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Extracts the highest frequency fine details while centering midtones at 50% neutral gray. Overlay blend boosts tactile texture without washing out luminance.
+              </p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-indigo-900">
+              HP(x, y) = clamp(I_orig - I_blur + 128)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Export Modal -->
+  <div id="exportModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full overflow-hidden flex flex-col">
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-slate-900 text-base">Export Rendered Image</h3>
+        <button id="btnCloseExport" class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 cursor-pointer">
+          <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="p-6 flex flex-col gap-4">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">File Name</label>
+          <input type="text" id="exportFileName" value="pixelcraft_edited" class="border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-blue-600" />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Image Format</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="export-fmt-btn py-2 rounded-xl text-xs font-bold border border-blue-600 bg-blue-50 text-blue-700 cursor-pointer" data-fmt="image/png">PNG (Lossless)</button>
+            <button class="export-fmt-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-fmt="image/jpeg">JPEG</button>
+            <button class="export-fmt-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-fmt="image/webp">WebP</button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Output Resolution Multiplier</label>
+          <div class="grid grid-cols-4 gap-2">
+            <button class="export-scale-btn py-2 rounded-xl text-xs font-bold border border-blue-600 bg-blue-50 text-blue-700 cursor-pointer" data-scale="1">1x</button>
+            <button class="export-scale-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-scale="1.5">1.5x</button>
+            <button class="export-scale-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-scale="2">2x</button>
+            <button class="export-scale-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-scale="4">4x</button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Print DPI</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="export-dpi-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-dpi="72">72 DPI</button>
+            <button class="export-dpi-btn py-2 rounded-xl text-xs font-bold border border-blue-600 bg-blue-50 text-blue-700 cursor-pointer" data-dpi="300">300 DPI</button>
+            <button class="export-dpi-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer" data-dpi="600">600 DPI</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+        <span id="exportDimensionSummary" class="text-xs font-mono text-slate-500">1000 × 750 px</span>
+        <button id="btnPerformExport" class="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/25 transition-all cursor-pointer">
+          Download Image
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Modal -->
+  <div id="shareModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-md w-full overflow-hidden flex flex-col">
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-slate-900 text-base">Share Studio Tool</h3>
+        <button id="btnCloseShare" class="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 cursor-pointer">
+          <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-6 flex flex-col gap-4">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Studio URL</label>
+          <div class="flex items-center gap-2">
+            <input type="text" readonly id="shareUrlInput" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-mono text-slate-700 select-all focus:outline-none" />
+            <button id="btnCopyShareUrl" class="px-3 py-2 rounded-lg text-xs font-bold bg-cyan-600 text-white hover:bg-cyan-700 cursor-pointer">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w-full bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-900">PixelCraft Studio</span>
+        <span class="text-slate-300">•</span>
+        <span>Zero-Data-Retention Client Sandbox</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-600">
+        <span>Fast Separable Convolution</span>
+        <span>•</span>
+        <span>Unsharp Masking (USM)</span>
+        <span>•</span>
+        <span>Tilt-Shift Scheimpflug</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== ROBUST STANDALONE ENGINE ==================== -->
+  <script type="text/javascript">
+    (function () {
+      // Default Adjustments Parameters
+      var DEFAULT_ADJUSTMENTS = {
+        blurRadius: 0,
+        motionDistance: 0,
+        motionAngle: 0,
+        radialIntensity: 0,
+        tiltShiftBlurMax: 0,
+        bokehBoost: 0,
+        sharpnessAmount: 0,
+        usmRadius: 1.5,
+        usmThreshold: 2,
+        highPassBlend: 0,
+        clarityAmount: 0,
+        edgeBoost: 0,
+        brightness: 0,
+        contrast: 0,
+        saturation: 0,
+        exposure: 0
+      };
+
+      var adjustments = Object.assign({}, DEFAULT_ADJUSTMENTS);
+      var originalImg = new Image();
+      var rawOriginalData = null;
+      var processedCanvasGlobal = document.createElement('canvas');
+
+      var viewMode = 'split';
+      var zoomLevel = 1.0;
+      var splitPercent = 50;
+      var isDraggingSplit = false;
+      var isHoldingOriginal = false;
+      var activePresetId = null;
+
+      var exportFormat = 'image/png';
+      var exportScale = 1;
+      var exportDpi = 300;
+
+      // History Stack
+      var historyStack = [{ adjustments: Object.assign({}, DEFAULT_ADJUSTMENTS) }];
+      var historyIdx = 0;
+
+      // Presets Catalog
+      var PRESETS = [
+        { id: 'portrait-bokeh', name: 'Portrait Bokeh', category: 'blur', settings: { blurRadius: 12, bokehBoost: 45, brightness: 4, contrast: 6 } },
+        { id: 'macro-texture', name: 'Macro Texture', category: 'sharpness', settings: { sharpnessAmount: 65, highPassBlend: 50, edgeBoost: 20 } },
+        { id: 'deblur-doc', name: 'De-Blur Text', category: 'sharpness', settings: { sharpnessAmount: 85, usmRadius: 2.2, usmThreshold: 0, contrast: 25 } },
+        { id: 'hdr-clarity', name: 'HDR Clarity', category: 'sharpness', settings: { clarityAmount: 70, highPassBlend: 40, saturation: 15, contrast: 10 } },
+        { id: 'tilt-shift', name: 'Tilt-Shift Miniature', category: 'blur', settings: { tiltShiftBlurMax: 18, saturation: 35, contrast: 20 } },
+        { id: 'motion-streak', name: 'Speed Motion', category: 'blur', settings: { motionDistance: 25, motionAngle: 15, clarityAmount: 20 } },
+        { id: 'print-prep', name: 'Print Master 300DPI', category: 'sharpness', settings: { sharpnessAmount: 45, highPassBlend: 30, edgeBoost: 12 } },
+        { id: 'privacy-redact', name: 'Privacy Blur', category: 'blur', settings: { blurRadius: 28 } }
+      ];
+
+      // Samples
+      var SAMPLES = [
+        { id: 'sample-portrait', name: 'Studio Portrait', gradient: ['#1e1b4b', '#4338ca', '#ec4899'], desc: 'Test face softening & eye clarity' },
+        { id: 'sample-landscape', name: 'Mountain Vista', gradient: ['#0f172a', '#0284c7', '#38bdf8'], desc: 'Test tilt-shift & high-pass clarity' },
+        { id: 'sample-macro', name: 'Leaf Macro', gradient: ['#064e3b', '#059669', '#34d399'], desc: 'Test tactile texture sharpening' },
+        { id: 'sample-text', name: 'Document OCR', gradient: ['#ffffff', '#f1f5f9', '#cbd5e1'], isDoc: true, desc: 'Test de-blur OCR recovery' }
+      ];
+
+      // ==================== IMAGE PROCESSING MATHEMATICAL ALGORITHMS ====================
+
+      function applySeparableGaussian(data, width, height, radius) {
+        if (radius < 0.5) return data;
+        var sigma = radius / 2.5;
+        var kSize = Math.min(25, Math.ceil(radius * 2.5));
+        var kernel = new Float32Array(kSize * 2 + 1);
+        var sum = 0;
+        for (var i = -kSize; i <= kSize; i++) {
+          var val = Math.exp(-(i * i) / (2 * sigma * sigma));
+          kernel[i + kSize] = val;
+          sum += val;
         }
-      }
+        for (var k = 0; k < kernel.length; k++) kernel[k] /= sum;
 
-      // Vertical 1D Pass
-      for (let x = 0; x < width; x++) {
-        for (let y = 0; y < height; y++) {
-          let r = 0, g = 0, b = 0;
-          for (let k = -kSize; k <= kSize; k++) {
-            const py = Math.min(height - 1, Math.max(0, y + k));
-            const idx = (py * width + x) * 4;
-            const w = kernel[k + kSize];
-            r += tmp[idx] * w;
-            g += tmp[idx + 1] * w;
-            b += tmp[idx + 2] * w;
+        var src = data.data;
+        var tmp = new Uint8ClampedArray(src.length);
+        var out = new Uint8ClampedArray(src.length);
+
+        for (var y = 0; y < height; y++) {
+          var rowOffset = y * width * 4;
+          for (var x = 0; x < width; x++) {
+            var r = 0, g = 0, b = 0;
+            for (var ki = -kSize; ki <= kSize; ki++) {
+              var px = Math.min(width - 1, Math.max(0, x + ki));
+              var idx = rowOffset + px * 4;
+              var w = kernel[ki + kSize];
+              r += src[idx] * w;
+              g += src[idx + 1] * w;
+              b += src[idx + 2] * w;
+            }
+            var outIdx = rowOffset + x * 4;
+            tmp[outIdx] = r;
+            tmp[outIdx + 1] = g;
+            tmp[outIdx + 2] = b;
+            tmp[outIdx + 3] = src[outIdx + 3];
           }
-          const outIdx = (y * width + x) * 4;
-          out[outIdx] = r;
-          out[outIdx + 1] = g;
-          out[outIdx + 2] = b;
-          out[outIdx + 3] = tmp[outIdx + 3];
         }
+
+        for (var xi = 0; xi < width; xi++) {
+          for (var yi = 0; yi < height; yi++) {
+            var r2 = 0, g2 = 0, b2 = 0;
+            for (var kj = -kSize; kj <= kSize; kj++) {
+              var py = Math.min(height - 1, Math.max(0, yi + kj));
+              var idx2 = (py * width + xi) * 4;
+              var w2 = kernel[kj + kSize];
+              r2 += tmp[idx2] * w2;
+              g2 += tmp[idx2 + 1] * w2;
+              b2 += tmp[idx2 + 2] * w2;
+            }
+            var outIdx2 = (yi * width + xi) * 4;
+            out[outIdx2] = r2;
+            out[outIdx2 + 1] = g2;
+            out[outIdx2 + 2] = b2;
+            out[outIdx2 + 3] = tmp[outIdx2 + 3];
+          }
+        }
+
+        return new ImageData(out, width, height);
       }
 
-      return new ImageData(out, width, height);
-    }
+      function applyMotionBlur(data, width, height, distance, angleDeg) {
+        if (distance <= 0) return data;
+        var src = data.data;
+        var out = new Uint8ClampedArray(src.length);
+        var rad = (angleDeg * Math.PI) / 180;
+        var dx = Math.cos(rad);
+        var dy = Math.sin(rad);
+        var steps = Math.min(30, Math.floor(distance));
 
-    function applyMotionBlur(data, width, height, distance, angleDeg) {
-      if (distance <= 0) return data;
-      const src = data.data;
-      const out = new Uint8ClampedArray(src.length);
-      const rad = (angleDeg * Math.PI) / 180;
-      const dx = Math.cos(rad);
-      const dy = Math.sin(rad);
-      const steps = Math.min(30, Math.floor(distance));
+        for (var y = 0; y < height; y++) {
+          for (var x = 0; x < width; x++) {
+            var r = 0, g = 0, b = 0, count = 0;
+            for (var s = -steps; s <= steps; s++) {
+              var px = Math.round(x + s * dx);
+              var py = Math.round(y + s * dy);
+              if (px >= 0 && px < width && py >= 0 && py < height) {
+                var idx = (py * width + px) * 4;
+                r += src[idx];
+                g += src[idx + 1];
+                b += src[idx + 2];
+                count++;
+              }
+            }
+            var outIdx = (y * width + x) * 4;
+            out[outIdx] = r / count;
+            out[outIdx + 1] = g / count;
+            out[outIdx + 2] = b / count;
+            out[outIdx + 3] = src[outIdx + 3];
+          }
+        }
+        return new ImageData(out, width, height);
+      }
 
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          let r = 0, g = 0, b = 0, count = 0;
-          for (let s = -steps; s <= steps; s++) {
-            const px = Math.round(x + s * dx);
-            const py = Math.round(y + s * dy);
-            if (px >= 0 && px < width && py >= 0 && py < height) {
-              const idx = (py * width + px) * 4;
-              r += src[idx];
-              g += src[idx + 1];
-              b += src[idx + 2];
-              count++;
+      function applyUnsharpMask(orig, blurred, amount, threshold) {
+        if (amount <= 0) return orig;
+        var src = orig.data;
+        var blur = blurred.data;
+        var out = new Uint8ClampedArray(src.length);
+        var gain = amount / 30;
+
+        for (var i = 0; i < src.length; i += 4) {
+          for (var c = 0; c < 3; c++) {
+            var diff = src[i + c] - blur[i + c];
+            if (Math.abs(diff) >= threshold) {
+              var val = src[i + c] + diff * gain;
+              out[i + c] = Math.min(255, Math.max(0, val));
+            } else {
+              out[i + c] = src[i + c];
             }
           }
-          const outIdx = (y * width + x) * 4;
-          out[outIdx] = r / count;
-          out[outIdx + 1] = g / count;
-          out[outIdx + 2] = b / count;
-          out[outIdx + 3] = src[outIdx + 3];
+          out[i + 3] = src[i + 3];
         }
+        return new ImageData(out, orig.width, orig.height);
       }
-      return new ImageData(out, width, height);
-    }
 
-    function applyUnsharpMask(orig, blurred, amount, threshold) {
-      if (amount <= 0) return orig;
-      const src = orig.data;
-      const blur = blurred.data;
-      const out = new Uint8ClampedArray(src.length);
-      const gain = amount / 30;
+      function applyHighPass(orig, blurred, blendAmount) {
+        if (blendAmount <= 0) return orig;
+        var src = orig.data;
+        var blur = blurred.data;
+        var out = new Uint8ClampedArray(src.length);
+        var factor = blendAmount / 100;
 
-      for (let i = 0; i < src.length; i += 4) {
-        for (let c = 0; c < 3; c++) {
-          const diff = src[i + c] - blur[i + c];
-          if (Math.abs(diff) >= threshold) {
-            const val = src[i + c] + diff * gain;
-            out[i + c] = Math.min(255, Math.max(0, val));
-          } else {
-            out[i + c] = src[i + c];
+        for (var i = 0; i < src.length; i += 4) {
+          for (var c = 0; c < 3; c++) {
+            var base = src[i + c];
+            var hp = Math.min(255, Math.max(0, base - blur[i + c] + 128));
+            var blended = base < 128
+              ? (2 * base * hp) / 255
+              : 255 - (2 * (255 - base) * (255 - hp)) / 255;
+            out[i + c] = Math.min(255, Math.max(0, base * (1 - factor) + blended * factor));
           }
+          out[i + 3] = src[i + 3];
         }
-        out[i + 3] = src[i + 3];
+        return new ImageData(out, orig.width, orig.height);
       }
-      return new ImageData(out, orig.width, orig.height);
-    }
 
-    function applyHighPass(orig, blurred, blendAmount) {
-      if (blendAmount <= 0) return orig;
-      const src = orig.data;
-      const blur = blurred.data;
-      const out = new Uint8ClampedArray(src.length);
-      const factor = blendAmount / 100;
+      function processImagePipeline(rawImageData, adj) {
+        var width = rawImageData.width;
+        var height = rawImageData.height;
+        var current = new ImageData(new Uint8ClampedArray(rawImageData.data), width, height);
 
-      for (let i = 0; i < src.length; i += 4) {
-        for (let c = 0; c < 3; c++) {
-          const base = src[i + c];
-          const hp = Math.min(255, Math.max(0, base - blur[i + c] + 128));
-          let blended = base < 128
-            ? (2 * base * hp) / 255
-            : 255 - (2 * (255 - base) * (255 - hp)) / 255;
-          out[i + c] = Math.min(255, Math.max(0, base * (1 - factor) + blended * factor));
-        }
-        out[i + 3] = src[i + 3];
-      }
-      return new ImageData(out, orig.width, orig.height);
-    }
+        var src = current.data;
+        var evFactor = Math.pow(2, adj.exposure);
+        var bright = adj.brightness * 1.2;
+        var contrastFactor = (259 * (adj.contrast + 255)) / (255 * (259 - adj.contrast));
+        var satFactor = 1 + adj.saturation / 100;
 
-    function processImagePipeline(rawImageData, adj) {
-      const { width, height } = rawImageData;
-      let current = new ImageData(new Uint8ClampedArray(rawImageData.data), width, height);
+        for (var i = 0; i < src.length; i += 4) {
+          var r = src[i] * evFactor + bright;
+          var g = src[i + 1] * evFactor + bright;
+          var b = src[i + 2] * evFactor + bright;
 
-      // 1. Tone adjustments
-      const src = current.data;
-      const evFactor = Math.pow(2, adj.exposure);
-      const bright = adj.brightness * 1.2;
-      const contrastFactor = (259 * (adj.contrast + 255)) / (255 * (259 - adj.contrast));
-      const satFactor = 1 + adj.saturation / 100;
+          r = contrastFactor * (r - 128) + 128;
+          g = contrastFactor * (g - 128) + 128;
+          b = contrastFactor * (b - 128) + 128;
 
-      for (let i = 0; i < src.length; i += 4) {
-        let r = src[i] * evFactor + bright;
-        let g = src[i + 1] * evFactor + bright;
-        let b = src[i + 2] * evFactor + bright;
-
-        r = contrastFactor * (r - 128) + 128;
-        g = contrastFactor * (g - 128) + 128;
-        b = contrastFactor * (b - 128) + 128;
-
-        if (satFactor !== 1) {
-          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-          r = lum + (r - lum) * satFactor;
-          g = lum + (g - lum) * satFactor;
-          b = lum + (b - lum) * satFactor;
-        }
-
-        if (adj.bokehBoost > 0) {
-          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-          if (lum > 180) {
-            const boost = (adj.bokehBoost / 100) * (lum - 180);
-            r += boost; g += boost; b += boost;
+          if (satFactor !== 1) {
+            var lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            r = lum + (r - lum) * satFactor;
+            g = lum + (g - lum) * satFactor;
+            b = lum + (b - lum) * satFactor;
           }
-        }
 
-        src[i] = Math.min(255, Math.max(0, r));
-        src[i + 1] = Math.min(255, Math.max(0, g));
-        src[i + 2] = Math.min(255, Math.max(0, b));
-      }
-
-      // 2. Spatial Blur
-      if (adj.blurRadius > 0) {
-        current = applySeparableGaussian(current, width, height, adj.blurRadius);
-      }
-      if (adj.motionDistance > 0) {
-        current = applyMotionBlur(current, width, height, adj.motionDistance, adj.motionAngle);
-      }
-
-      // 3. Unsharp Mask Sharpening
-      if (adj.sharpnessAmount > 0) {
-        const blurCopy = applySeparableGaussian(current, width, height, adj.usmRadius);
-        current = applyUnsharpMask(current, blurCopy, adj.sharpnessAmount, adj.usmThreshold);
-      }
-
-      // 4. High Pass Filter & Clarity
-      if (adj.highPassBlend > 0 || adj.clarityAmount > 0) {
-        const hpBlur = applySeparableGaussian(current, width, height, 4.0);
-        const totalBlend = Math.min(100, adj.highPassBlend + adj.clarityAmount * 0.7);
-        current = applyHighPass(current, hpBlur, totalBlend);
-      }
-
-      return current;
-    }
-
-    // ==================== ADVERTISING COMPONENTS ====================
-
-    // 468x60 Top Banner Ad
-    const AdBanner468 = () => {
-      const iframeRef = useRef(null);
-
-      useEffect(() => {
-        if (!iframeRef.current) return;
-        const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
-        if (!doc) return;
-        doc.open();
-        doc.write(`
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <style>
-                body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
-              </style>
-            </head>
-            <body>
-              <script type="text/javascript">
-                atOptions = {
-                  'key' : '294198e908506e5d909d0b383f167eaa',
-                  'format' : 'iframe',
-                  'height' : 60,
-                  'width' : 468,
-                  'params' : {}
-                };
-              <\/script>
-              <script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"><\/script>
-            </body>
-          </html>
-        `);
-        doc.close();
-      }, []);
-
-      return (
-        <div className="w-full flex flex-col items-center justify-center my-2">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1">
-            Advertisement
-          </span>
-          <div className="bg-white p-1 rounded-xl border border-slate-200 shadow-xs max-w-full overflow-x-auto flex justify-center">
-            <iframe
-              ref={iframeRef}
-              title="Ad 468x60"
-              width="468"
-              height="60"
-              className="border-0 overflow-hidden"
-              scrolling="no"
-            />
-          </div>
-        </div>
-      );
-    };
-
-    // 300x250 Medium Rectangle Sidebar Banner Ad
-    const AdBanner300 = () => {
-      const iframeRef = useRef(null);
-
-      useEffect(() => {
-        if (!iframeRef.current) return;
-        const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
-        if (!doc) return;
-        doc.open();
-        doc.write(`
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <style>
-                body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
-              </style>
-            </head>
-            <body>
-              <script type="text/javascript">
-                atOptions = {
-                  'key' : '224e7394c28834c8ac1ce24682c420e3',
-                  'format' : 'iframe',
-                  'height' : 250,
-                  'width' : 300,
-                  'params' : {}
-                };
-              <\/script>
-              <script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"><\/script>
-            </body>
-          </html>
-        `);
-        doc.close();
-      }, []);
-
-      return (
-        <div className="w-full bg-white rounded-2xl border border-slate-200 p-4 shadow-xs flex flex-col items-center justify-center">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-2">
-            Advertisement
-          </span>
-          <div className="flex justify-center items-center overflow-hidden rounded-lg bg-slate-50 border border-slate-100 p-1">
-            <iframe
-              ref={iframeRef}
-              title="Ad 300x250"
-              width="300"
-              height="250"
-              className="border-0 overflow-hidden"
-              scrolling="no"
-            />
-          </div>
-        </div>
-      );
-    };
-
-    // Native / Container Ad
-    const AdNativeContainer = () => {
-      const containerRef = useRef(null);
-
-      useEffect(() => {
-        if (!containerRef.current) return;
-        const existingScript = document.getElementById('native-ad-script-269e');
-        if (!existingScript) {
-          const script = document.createElement('script');
-          script.id = 'native-ad-script-269e';
-          script.async = true;
-          script.setAttribute('data-cfasync', 'false');
-          script.src = 'https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js';
-          document.body.appendChild(script);
-        }
-      }, []);
-
-      return (
-        <div className="w-full bg-white rounded-2xl border border-slate-200 p-4 shadow-xs my-4 flex flex-col items-center justify-center">
-          <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-2">
-            Sponsored Content
-          </span>
-          <div className="w-full min-h-[90px] flex justify-center items-center">
-            <div id="container-269e962c1215493328aeb78f4303284c" ref={containerRef}></div>
-          </div>
-        </div>
-      );
-    };
-
-    // ==================== MAIN REACT APPLICATION ====================
-
-    function App() {
-      const [imageLoaded, setImageLoaded] = useState(false);
-      const [originalImage, setOriginalImage] = useState(null);
-      const [rawOriginalData, setRawOriginalData] = useState(null);
-      const [processedCanvas, setProcessedCanvas] = useState(null);
-      const [fileName, setFileName] = useState('sample_portrait.png');
-      const [imageDimensions, setImageDimensions] = useState({ width: 1000, height: 750 });
-      const [selectedSampleId, setSelectedSampleId] = useState('sample-portrait');
-
-      const [toolMode, setToolMode] = useState('sharpness'); // 'sharpness' | 'blur' | 'tone'
-      const [viewMode, setViewMode] = useState('split'); // 'split' | 'side' | 'single'
-      const [adjustments, setAdjustments] = useState(DEFAULT_ADJUSTMENTS);
-      const [activePresetId, setActivePresetId] = useState(undefined);
-      const [isProcessing, setIsProcessing] = useState(false);
-
-      // Undo / Redo History
-      const [history, setHistory] = useState([{ adjustments: DEFAULT_ADJUSTMENTS, label: 'Initial' }]);
-      const [historyIndex, setHistoryIndex] = useState(0);
-
-      // Zoom & Split position
-      const [zoomLevel, setZoomLevel] = useState(1.0);
-      const [splitPosition, setSplitPosition] = useState(50);
-      const [isDraggingSplit, setIsDraggingSplit] = useState(false);
-      const [isHoldingOriginal, setIsHoldingOriginal] = useState(false);
-
-      // Modals
-      const [isExportOpen, setIsExportOpen] = useState(false);
-      const [isShareOpen, setIsShareOpen] = useState(false);
-      const [isDraggingFile, setIsDraggingFile] = useState(false);
-
-      // Export Modal specific state
-      const [exportFmt, setExportFmt] = useState('image/png');
-      const [exportScale, setExportScale] = useState(1);
-      const [exportDpi, setExportDpi] = useState(300);
-      const [exportName, setExportName] = useState('pixelcraft_edited');
-
-      // Share Modal specific state
-      const [shareCopied, setShareCopied] = useState(false);
-
-      const fileInputRef = useRef(null);
-      const processingTimeoutRef = useRef(null);
-      const splitContainerRef = useRef(null);
-
-      // Load Image Function
-      const loadImageFromUrl = useCallback((url, name) => {
-        setIsProcessing(true);
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => {
-          const off = document.createElement('canvas');
-          off.width = img.naturalWidth || 1000;
-          off.height = img.naturalHeight || 750;
-          const ctx = off.getContext('2d');
-          if (ctx) {
-            ctx.drawImage(img, 0, 0);
-            const imgData = ctx.getImageData(0, 0, off.width, off.height);
-            setRawOriginalData(imgData);
-            setImageDimensions({ width: off.width, height: off.height });
+          if (adj.bokehBoost > 0) {
+            var lum2 = 0.299 * r + 0.587 * g + 0.114 * b;
+            if (lum2 > 180) {
+              var boost = (adj.bokehBoost / 100) * (lum2 - 180);
+              r += boost; g += boost; b += boost;
+            }
           }
-          setOriginalImage(img);
-          setFileName(name);
-          setImageLoaded(true);
-          setAdjustments(DEFAULT_ADJUSTMENTS);
-          setActivePresetId(undefined);
-          setHistory([{ adjustments: DEFAULT_ADJUSTMENTS, label: 'Image Loaded' }]);
-          setHistoryIndex(0);
-          setIsProcessing(false);
-        };
-        img.src = url;
-      }, []);
 
-      // Initial Mount
-      useEffect(() => {
-        const defaultSample = SAMPLE_IMAGES[0];
-        const defaultUrl = createProceduralSampleUrl(defaultSample);
-        loadImageFromUrl(defaultUrl, 'sample_portrait.png');
-      }, [loadImageFromUrl]);
+          src[i] = Math.min(255, Math.max(0, r));
+          src[i + 1] = Math.min(255, Math.max(0, g));
+          src[i + 2] = Math.min(255, Math.max(0, b));
+        }
 
-      // Re-run processing pipeline when adjustments change
-      useEffect(() => {
+        if (adj.blurRadius > 0) {
+          current = applySeparableGaussian(current, width, height, adj.blurRadius);
+        }
+        if (adj.motionDistance > 0) {
+          current = applyMotionBlur(current, width, height, adj.motionDistance, adj.motionAngle);
+        }
+        if (adj.sharpnessAmount > 0) {
+          var blurCopy = applySeparableGaussian(current, width, height, adj.usmRadius);
+          current = applyUnsharpMask(current, blurCopy, adj.sharpnessAmount, adj.usmThreshold);
+        }
+        if (adj.highPassBlend > 0 || adj.clarityAmount > 0) {
+          var hpBlur = applySeparableGaussian(current, width, height, 4.0);
+          var totalBlend = Math.min(100, adj.highPassBlend + adj.clarityAmount * 0.7);
+          current = applyHighPass(current, hpBlur, totalBlend);
+        }
+
+        return current;
+      }
+
+      // ==================== RENDERING & VIEWPORT ====================
+      var renderTimeout = null;
+
+      function renderPipeline() {
         if (!rawOriginalData) return;
-        if (processingTimeoutRef.current) clearTimeout(processingTimeoutRef.current);
+        document.getElementById('processingIndicator').classList.remove('hidden');
 
-        setIsProcessing(true);
-        processingTimeoutRef.current = setTimeout(() => {
-          try {
-            const processedData = processImagePipeline(rawOriginalData, adjustments);
-            const outCanvas = document.createElement('canvas');
-            outCanvas.width = processedData.width;
-            outCanvas.height = processedData.height;
-            const outCtx = outCanvas.getContext('2d');
-            if (outCtx) {
-              outCtx.putImageData(processedData, 0, 0);
-              setProcessedCanvas(outCanvas);
-            }
-          } catch (err) {
-            console.error('Processing error:', err);
-          } finally {
-            setIsProcessing(false);
-          }
-        }, 35);
+        if (renderTimeout) clearTimeout(renderTimeout);
+        renderTimeout = setTimeout(function () {
+          var processed = processImagePipeline(rawOriginalData, adjustments);
 
-        return () => {
-          if (processingTimeoutRef.current) clearTimeout(processingTimeoutRef.current);
+          processedCanvasGlobal.width = processed.width;
+          processedCanvasGlobal.height = processed.height;
+          processedCanvasGlobal.getContext('2d').putImageData(processed, 0, 0);
+
+          // Update Split Canvas
+          var splitCanvas = document.getElementById('splitProcessedCanvas');
+          splitCanvas.width = processed.width;
+          splitCanvas.height = processed.height;
+          splitCanvas.getContext('2d').putImageData(processed, 0, 0);
+
+          // Update Side Canvas
+          var sideCanvas = document.getElementById('sideProcessedCanvas');
+          sideCanvas.width = processed.width;
+          sideCanvas.height = processed.height;
+          sideCanvas.getContext('2d').putImageData(processed, 0, 0);
+
+          // Update Single Canvas
+          var singleCanvas = document.getElementById('singleProcessedCanvas');
+          singleCanvas.width = processed.width;
+          singleCanvas.height = processed.height;
+          singleCanvas.getContext('2d').putImageData(processed, 0, 0);
+
+          document.getElementById('processingIndicator').classList.add('hidden');
+        }, 30);
+      }
+
+      function updateSplitHandle(pct) {
+        splitPercent = Math.min(100, Math.max(0, pct));
+        document.getElementById('sliderHandle').style.left = splitPercent + '%';
+        document.getElementById('splitProcessedClip').style.clipPath = 'polygon(0 0, ' + splitPercent + '% 0, ' + splitPercent + '% 100%, 0 100%)';
+      }
+
+      function setView(mode) {
+        viewMode = mode;
+        document.getElementById('btnViewSplit').className = mode === 'split'
+          ? 'px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-blue-600 shadow-xs cursor-pointer'
+          : 'px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer';
+        document.getElementById('btnViewSide').className = mode === 'side'
+          ? 'px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-blue-600 shadow-xs cursor-pointer'
+          : 'px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer';
+        document.getElementById('btnViewSingle').className = mode === 'single'
+          ? 'px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-blue-600 shadow-xs cursor-pointer'
+          : 'px-2.5 py-1 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer';
+
+        document.getElementById('splitWrapper').classList.toggle('hidden', mode !== 'split');
+        document.getElementById('sideBySideWrapper').classList.toggle('hidden', mode !== 'side');
+        document.getElementById('sideBySideWrapper').classList.toggle('grid', mode === 'side');
+        document.getElementById('singleWrapper').classList.toggle('hidden', mode !== 'single');
+        document.getElementById('singleWrapper').classList.toggle('flex', mode === 'single');
+      }
+
+      function applyZoom() {
+        document.getElementById('zoomLevelLabel').textContent = Math.round(zoomLevel * 100) + '%';
+        document.getElementById('splitProcessedCanvas').style.transform = 'scale(' + zoomLevel + ')';
+        document.getElementById('splitOriginalImg').style.transform = 'scale(' + zoomLevel + ')';
+      }
+
+      // ==================== IMAGE LOADING ====================
+      function loadNewImageSrc(src) {
+        document.getElementById('processingIndicator').classList.remove('hidden');
+        originalImg = new Image();
+        originalImg.crossOrigin = 'anonymous';
+        originalImg.onload = function () {
+          var off = document.createElement('canvas');
+          off.width = originalImg.naturalWidth || 1000;
+          off.height = originalImg.naturalHeight || 750;
+          var offCtx = off.getContext('2d');
+          offCtx.drawImage(originalImg, 0, 0);
+
+          rawOriginalData = offCtx.getImageData(0, 0, off.width, off.height);
+          document.getElementById('splitOriginalImg').src = src;
+          document.getElementById('sideOriginalImg').src = src;
+          document.getElementById('dimensionLabel').textContent = off.width + ' × ' + off.height + ' px';
+          document.getElementById('exportDimensionSummary').textContent = off.width + ' × ' + off.height + ' px';
+
+          renderPipeline();
         };
-      }, [rawOriginalData, adjustments]);
+        originalImg.src = src;
+      }
 
-      // History Helpers
-      const pushHistory = (newAdj, label = 'Adjustment') => {
-        const next = history.slice(0, historyIndex + 1);
-        next.push({ adjustments: newAdj, label });
-        if (next.length > 25) next.shift();
-        setHistory(next);
-        setHistoryIndex(next.length - 1);
-      };
+      function generateDefaultSample() {
+        var c = document.createElement('canvas');
+        c.width = 1000; c.height = 750;
+        var ctx = c.getContext('2d');
+        var g = ctx.createLinearGradient(0, 0, 1000, 750);
+        g.addColorStop(0, '#1e1b4b');
+        g.addColorStop(0.5, '#4338ca');
+        g.addColorStop(1, '#ec4899');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 1000, 750);
 
-      const handleUpdateAdjustments = (partial) => {
-        const updated = { ...adjustments, ...partial };
-        setAdjustments(updated);
-        setActivePresetId(undefined);
-        pushHistory(updated, 'Adjustment');
-      };
-
-      const handleSelectPreset = (preset) => {
-        setActivePresetId(preset.id);
-        const updated = { ...DEFAULT_ADJUSTMENTS, ...preset.settings };
-        setAdjustments(updated);
-        if (preset.category === 'blur') setToolMode('blur');
-        if (preset.category === 'sharpness') setToolMode('sharpness');
-        pushHistory(updated, `Preset: ${preset.name}`);
-      };
-
-      const handleSelectSample = (sample) => {
-        setSelectedSampleId(sample.id);
-        const url = createProceduralSampleUrl(sample);
-        loadImageFromUrl(url, `${sample.id}.png`);
-      };
-
-      const handleResetAll = () => {
-        setAdjustments(DEFAULT_ADJUSTMENTS);
-        setActivePresetId(undefined);
-        pushHistory(DEFAULT_ADJUSTMENTS, 'Reset All');
-      };
-
-      const handleUndo = () => {
-        if (historyIndex > 0) {
-          const target = historyIndex - 1;
-          setHistoryIndex(target);
-          setAdjustments(history[target].adjustments);
+        for (var i = 0; i < 20; i++) {
+          ctx.beginPath();
+          var bx = Math.random() * 1000;
+          var by = Math.random() * 750;
+          var br = 15 + Math.random() * 35;
+          ctx.fillStyle = 'rgba(255, 255, 255, ' + (0.1 + Math.random() * 0.25) + ')';
+          ctx.arc(bx, by, br, 0, Math.PI * 2);
+          ctx.fill();
         }
+
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 44px sans-serif';
+        ctx.fillText('Studio Portrait Bokeh Test', 500, 360);
+        ctx.font = '22px sans-serif';
+        ctx.fillStyle = '#93c5fd';
+        ctx.fillText('PixelCraft 1000 x 750 px Studio Canvas', 500, 410);
+
+        loadNewImageSrc(c.toDataURL());
+      }
+
+      // ==================== SLIDERS & CONTROLS ====================
+      var sliderKeys = [
+        'blurRadius', 'motionDistance', 'motionAngle', 'bokehBoost',
+        'sharpnessAmount', 'usmRadius', 'usmThreshold', 'highPassBlend', 'clarityAmount',
+        'exposure', 'brightness', 'contrast', 'saturation'
+      ];
+
+      function updateSliderLabels() {
+        document.getElementById('valBlurRadius').textContent = adjustments.blurRadius + ' px';
+        document.getElementById('valMotionDistance').textContent = adjustments.motionDistance + ' px';
+        document.getElementById('valMotionAngle').textContent = adjustments.motionAngle + '°';
+        document.getElementById('valBokehBoost').textContent = adjustments.bokehBoost + '%';
+
+        document.getElementById('valSharpnessAmount').textContent = adjustments.sharpnessAmount + '%';
+        document.getElementById('valUsmRadius').textContent = adjustments.usmRadius + ' px';
+        document.getElementById('valUsmThreshold').textContent = adjustments.usmThreshold + ' lv';
+        document.getElementById('valHighPassBlend').textContent = adjustments.highPassBlend + '%';
+        document.getElementById('valClarityAmount').textContent = adjustments.clarityAmount + '%';
+
+        document.getElementById('valExposure').textContent = (adjustments.exposure > 0 ? '+' : '') + adjustments.exposure + ' EV';
+        document.getElementById('valBrightness').textContent = adjustments.brightness + '%';
+        document.getElementById('valContrast').textContent = adjustments.contrast + '%';
+        document.getElementById('valSaturation').textContent = adjustments.saturation + '%';
+      }
+
+      function syncSlidersFromState() {
+        sliderKeys.forEach(function (key) {
+          var el = document.getElementById(key);
+          if (el) el.value = adjustments[key];
+        });
+        updateSliderLabels();
+      }
+
+      sliderKeys.forEach(function (key) {
+        var el = document.getElementById(key);
+        if (!el) return;
+        el.addEventListener('input', function (e) {
+          adjustments[key] = parseFloat(e.target.value);
+          updateSliderLabels();
+          renderPipeline();
+        });
+      });
+
+      // Tabs
+      var tabSharpness = document.getElementById('tabSharpness');
+      var tabBlur = document.getElementById('tabBlur');
+      var tabTone = document.getElementById('tabTone');
+      var panelSharpness = document.getElementById('panelSharpness');
+      var panelBlur = document.getElementById('panelBlur');
+      var panelTone = document.getElementById('panelTone');
+
+      function setTab(active) {
+        tabSharpness.className = active === 'sharpness'
+          ? 'py-2 rounded-lg text-xs font-bold transition-all bg-cyan-600 text-white shadow-xs flex items-center justify-center gap-1.5 cursor-pointer'
+          : 'py-2 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer';
+        tabBlur.className = active === 'blur'
+          ? 'py-2 rounded-lg text-xs font-bold transition-all bg-purple-600 text-white shadow-xs flex items-center justify-center gap-1.5 cursor-pointer'
+          : 'py-2 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer';
+        tabTone.className = active === 'tone'
+          ? 'py-2 rounded-lg text-xs font-bold transition-all bg-amber-600 text-white shadow-xs flex items-center justify-center gap-1.5 cursor-pointer'
+          : 'py-2 rounded-lg text-xs font-bold transition-all text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer';
+
+        panelSharpness.classList.toggle('hidden', active !== 'sharpness');
+        panelBlur.classList.toggle('hidden', active !== 'blur');
+        panelTone.classList.toggle('hidden', active !== 'tone');
+      }
+
+      tabSharpness.onclick = function () { setTab('sharpness'); };
+      tabBlur.onclick = function () { setTab('blur'); };
+      tabTone.onclick = function () { setTab('tone'); };
+
+      // Split View Dragging
+      var splitWrapper = document.getElementById('splitWrapper');
+      splitWrapper.addEventListener('mousedown', function () { isDraggingSplit = true; });
+      window.addEventListener('mouseup', function () { isDraggingSplit = false; });
+      window.addEventListener('mousemove', function (e) {
+        if (!isDraggingSplit) return;
+        var rect = splitWrapper.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var pct = (x / rect.width) * 100;
+        updateSplitHandle(pct);
+      });
+
+      splitWrapper.addEventListener('touchstart', function () { isDraggingSplit = true; }, { passive: true });
+      window.addEventListener('touchend', function () { isDraggingSplit = false; });
+      window.addEventListener('touchmove', function (e) {
+        if (!isDraggingSplit || !e.touches[0]) return;
+        var rect = splitWrapper.getBoundingClientRect();
+        var x = e.touches[0].clientX - rect.left;
+        var pct = (x / rect.width) * 100;
+        updateSplitHandle(pct);
+      }, { passive: true });
+
+      // View buttons
+      document.getElementById('btnViewSplit').onclick = function () { setView('split'); };
+      document.getElementById('btnViewSide').onclick = function () { setView('side'); };
+      document.getElementById('btnViewSingle').onclick = function () { setView('single'); };
+
+      // Hold Original
+      var btnHold = document.getElementById('btnHoldOriginal');
+      btnHold.onmousedown = function () { document.getElementById('splitProcessedClip').classList.add('opacity-0'); };
+      btnHold.onmouseup = function () { document.getElementById('splitProcessedClip').classList.remove('opacity-0'); };
+      btnHold.ontouchstart = function () { document.getElementById('splitProcessedClip').classList.add('opacity-0'); };
+      btnHold.ontouchend = function () { document.getElementById('splitProcessedClip').classList.remove('opacity-0'); };
+
+      // Zoom
+      document.getElementById('btnZoomIn').onclick = function () {
+        zoomLevel = Math.min(3, zoomLevel + 0.25);
+        applyZoom();
+      };
+      document.getElementById('btnZoomOut').onclick = function () {
+        zoomLevel = Math.max(0.5, zoomLevel - 0.25);
+        applyZoom();
+      };
+      document.getElementById('btnZoomFit').onclick = function () {
+        zoomLevel = 1.0;
+        applyZoom();
       };
 
-      const handleRedo = () => {
-        if (historyIndex < history.length - 1) {
-          const target = historyIndex + 1;
-          setHistoryIndex(target);
-          setAdjustments(history[target].adjustments);
-        }
+      // Resets
+      document.getElementById('btnResetAll').onclick = function () {
+        adjustments = Object.assign({}, DEFAULT_ADJUSTMENTS);
+        syncSlidersFromState();
+        renderPipeline();
+      };
+      document.getElementById('btnResetSharpness').onclick = function () {
+        adjustments.sharpnessAmount = 0;
+        adjustments.highPassBlend = 0;
+        adjustments.clarityAmount = 0;
+        adjustments.edgeBoost = 0;
+        syncSlidersFromState();
+        renderPipeline();
+      };
+      document.getElementById('btnResetBlur').onclick = function () {
+        adjustments.blurRadius = 0;
+        adjustments.motionDistance = 0;
+        adjustments.radialIntensity = 0;
+        adjustments.tiltShiftBlurMax = 0;
+        adjustments.bokehBoost = 0;
+        syncSlidersFromState();
+        renderPipeline();
+      };
+      document.getElementById('btnResetTone').onclick = function () {
+        adjustments.exposure = 0;
+        adjustments.brightness = 0;
+        adjustments.contrast = 0;
+        adjustments.saturation = 0;
+        syncSlidersFromState();
+        renderPipeline();
       };
 
-      // File upload handler
-      const handleFileUpload = (file) => {
-        if (!file || !file.type.startsWith('image/')) return;
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const url = e.target?.result;
-          if (url) {
-            setSelectedSampleId(undefined);
-            loadImageFromUrl(url, file.name);
-          }
+      // Build Presets
+      var presetsContainer = document.getElementById('presetsContainer');
+      PRESETS.forEach(function (p) {
+        var btn = document.createElement('button');
+        btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 hover:bg-white text-slate-700 whitespace-nowrap flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer';
+        btn.innerHTML = '<span>' + p.name + '</span>';
+        btn.onclick = function () {
+          adjustments = Object.assign({}, DEFAULT_ADJUSTMENTS, p.settings);
+          if (p.category === 'blur') setTab('blur');
+          if (p.category === 'sharpness') setTab('sharpness');
+          syncSlidersFromState();
+          renderPipeline();
         };
-        reader.readAsDataURL(file);
+        presetsContainer.appendChild(btn);
+      });
+
+      // Build Samples
+      var samplesList = document.getElementById('samplesList');
+      SAMPLES.forEach(function (s) {
+        var card = document.createElement('div');
+        card.className = 'border border-slate-200 rounded-xl p-2 bg-slate-50 hover:bg-white hover:border-blue-300 cursor-pointer transition-all flex flex-col gap-1.5 shadow-2xs';
+        card.innerHTML =
+          '<div class="h-16 rounded-lg overflow-hidden flex items-center justify-center font-black text-white text-xs shadow-inner" style="background: linear-gradient(135deg, ' + s.gradient[0] + ', ' + s.gradient[1] + ', ' + s.gradient[2] + ');">' +
+          s.name +
+          '</div>' +
+          '<span class="text-xs font-bold text-slate-800">' + s.name + '</span>' +
+          '<span class="text-[10px] text-slate-400 leading-tight">' + s.desc + '</span>';
+        card.onclick = function () {
+          var c = document.createElement('canvas');
+          c.width = 1000; c.height = 750;
+          var ctx = c.getContext('2d');
+          var g = ctx.createLinearGradient(0, 0, 1000, 750);
+          g.addColorStop(0, s.gradient[0]);
+          g.addColorStop(0.5, s.gradient[1]);
+          g.addColorStop(1, s.gradient[2]);
+          ctx.fillStyle = g;
+          ctx.fillRect(0, 0, 1000, 750);
+
+          ctx.fillStyle = s.isDoc ? '#1e293b' : '#ffffff';
+          ctx.textAlign = 'center';
+          ctx.font = 'bold 42px sans-serif';
+          ctx.fillText(s.name, 500, 360);
+          ctx.font = '20px sans-serif';
+          ctx.fillText('PixelCraft High-Resolution Sample', 500, 410);
+
+          loadNewImageSrc(c.toDataURL());
+        };
+        samplesList.appendChild(card);
+      });
+
+      // Upload Handlers
+      var fileInput = document.getElementById('fileInput');
+      document.getElementById('btnUpload').onclick = function () { fileInput.click(); };
+      fileInput.onchange = function (e) {
+        if (e.target.files && e.target.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (ev) { loadNewImageSrc(ev.target.result); };
+          reader.readAsDataURL(e.target.files[0]);
+        }
       };
 
       // Drag & Drop
-      const handleDragOver = (e) => { e.preventDefault(); setIsDraggingFile(true); };
-      const handleDragLeave = (e) => { e.preventDefault(); setIsDraggingFile(false); };
-      const handleDrop = (e) => {
+      var overlay = document.getElementById('dragDropOverlay');
+      window.addEventListener('dragover', function (e) { e.preventDefault(); overlay.classList.remove('hidden'); overlay.classList.add('flex'); });
+      overlay.addEventListener('dragleave', function (e) { e.preventDefault(); overlay.classList.add('hidden'); overlay.classList.remove('flex'); });
+      overlay.addEventListener('drop', function (e) {
         e.preventDefault();
-        setIsDraggingFile(false);
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-          handleFileUpload(e.dataTransfer.files[0]);
+          var reader = new FileReader();
+          reader.onload = function (ev) { loadNewImageSrc(ev.target.result); };
+          reader.readAsDataURL(e.dataTransfer.files[0]);
         }
+      });
+
+      // Export Modal
+      var exportModal = document.getElementById('exportModal');
+      function openExport() {
+        exportModal.classList.remove('hidden');
+        exportModal.classList.add('flex');
+      }
+      document.getElementById('btnOpenExport').onclick = openExport;
+      document.getElementById('btnQuickExport').onclick = openExport;
+      document.getElementById('btnCloseExport').onclick = function () {
+        exportModal.classList.add('hidden');
+        exportModal.classList.remove('flex');
       };
 
-      // Split View Dragging
-      const handleSplitMove = (e) => {
-        if (!isDraggingSplit || !splitContainerRef.current) return;
-        const rect = splitContainerRef.current.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const x = clientX - rect.left;
-        const pct = Math.min(100, Math.max(0, (x / rect.width) * 100));
-        setSplitPosition(pct);
-      };
+      document.querySelectorAll('.export-fmt-btn').forEach(function (btn) {
+        btn.onclick = function () {
+          document.querySelectorAll('.export-fmt-btn').forEach(function (b) {
+            b.className = 'export-fmt-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer';
+          });
+          btn.className = 'export-fmt-btn py-2 rounded-xl text-xs font-bold border border-blue-600 bg-blue-50 text-blue-700 cursor-pointer';
+          exportFormat = btn.dataset.fmt;
+        };
+      });
 
-      // Render Output Export
-      const handleDownloadExport = () => {
-        if (!processedCanvas) return;
-        const exp = document.createElement('canvas');
-        const tw = Math.round(processedCanvas.width * exportScale);
-        const th = Math.round(processedCanvas.height * exportScale);
-        exp.width = tw;
-        exp.height = th;
-        const ectx = exp.getContext('2d');
+      document.querySelectorAll('.export-scale-btn').forEach(function (btn) {
+        btn.onclick = function () {
+          document.querySelectorAll('.export-scale-btn').forEach(function (b) {
+            b.className = 'export-scale-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer';
+          });
+          btn.className = 'export-scale-btn py-2 rounded-xl text-xs font-bold border border-blue-600 bg-blue-50 text-blue-700 cursor-pointer';
+          exportScale = parseFloat(btn.dataset.scale);
+          if (rawOriginalData) {
+            var w = Math.round(rawOriginalData.width * exportScale);
+            var h = Math.round(rawOriginalData.height * exportScale);
+            document.getElementById('exportDimensionSummary').textContent = w + ' × ' + h + ' px';
+          }
+        };
+      });
+
+      document.querySelectorAll('.export-dpi-btn').forEach(function (btn) {
+        btn.onclick = function () {
+          document.querySelectorAll('.export-dpi-btn').forEach(function (b) {
+            b.className = 'export-dpi-btn py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700 cursor-pointer';
+          });
+          btn.className = 'export-dpi-btn py-2 rounded-xl text-xs font-bold border border-blue-600 bg-blue-50 text-blue-700 cursor-pointer';
+          exportDpi = parseInt(btn.dataset.dpi, 10);
+        };
+      });
+
+      document.getElementById('btnPerformExport').onclick = function () {
+        var expCanvas = document.createElement('canvas');
+        var targetW = Math.round(processedCanvasGlobal.width * exportScale);
+        var targetH = Math.round(processedCanvasGlobal.height * exportScale);
+        expCanvas.width = targetW;
+        expCanvas.height = targetH;
+        var ectx = expCanvas.getContext('2d');
         ectx.imageSmoothingQuality = 'high';
-        ectx.drawImage(processedCanvas, 0, 0, tw, th);
+        ectx.drawImage(processedCanvasGlobal, 0, 0, targetW, targetH);
 
-        const ext = exportFmt === 'image/jpeg' ? 'jpg' : exportFmt === 'image/webp' ? 'webp' : 'png';
-        const a = document.createElement('a');
-        a.download = `${exportName || 'pixelcraft_edited'}.${ext}`;
-        a.href = exp.toDataURL(exportFmt, 0.95);
-        a.click();
-        setIsExportOpen(false);
+        var ext = exportFormat === 'image/jpeg' ? 'jpg' : exportFormat === 'image/webp' ? 'webp' : 'png';
+        var fName = document.getElementById('exportFileName').value || 'pixelcraft_edited';
+        var link = document.createElement('a');
+        link.download = fName + '.' + ext;
+        link.href = expCanvas.toDataURL(exportFormat, 0.95);
+        link.click();
+        exportModal.classList.add('hidden');
       };
 
-      return (
-        <div
-          className="min-h-screen bg-white text-slate-900 flex flex-col antialiased"
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-        >
-          {/* File Input */}
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/png,image/jpeg,image/webp,image/bmp"
-            className="hidden"
-            onChange={(e) => {
-              if (e.target.files && e.target.files[0]) {
-                handleFileUpload(e.target.files[0]);
-              }
-            }}
-          />
+      // Share Modal
+      var shareModal = document.getElementById('shareModal');
+      document.getElementById('btnShareModal').onclick = function () {
+        document.getElementById('shareUrlInput').value = window.location.href;
+        shareModal.classList.remove('hidden');
+        shareModal.classList.add('flex');
+      };
+      document.getElementById('btnCloseShare').onclick = function () {
+        shareModal.classList.add('hidden');
+        shareModal.classList.remove('flex');
+      };
+      document.getElementById('btnCopyShareUrl').onclick = function () {
+        navigator.clipboard.writeText(window.location.href);
+        document.getElementById('btnCopyShareUrl').textContent = 'Copied!';
+        setTimeout(function () { document.getElementById('btnCopyShareUrl').textContent = 'Copy'; }, 2000);
+      };
 
-          {/* Drag Overlay */}
-          {isDraggingFile && (
-            <div className="fixed inset-0 z-50 bg-blue-600/90 backdrop-blur-xs flex flex-col items-center justify-center text-white border-4 border-dashed border-white p-8">
-              <svg className="w-16 h-16 animate-bounce mb-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-              </svg>
-              <h2 className="text-2xl font-black">Drop Image File Anywhere</h2>
-              <p className="text-sm opacity-90 mt-1">PNG, JPG, WebP supported for instant local processing</p>
-            </div>
-          )}
-
-          {/* Header */}
-          <header className="w-full bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
-                  <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6"/></svg>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h1 className="text-base font-extrabold text-slate-900 tracking-tight">PixelCraft Studio</h1>
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                      Client-Side
-                    </span>
-                  </div>
-                  <p className="text-[11px] font-medium text-slate-500">Image Blur, Sharpness &amp; Unsharp Masking</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="hidden sm:flex items-center border border-slate-200 rounded-xl p-0.5 bg-slate-50">
-                  <button
-                    onClick={handleUndo}
-                    disabled={historyIndex <= 0}
-                    className="p-2 rounded-lg text-slate-400 disabled:opacity-30 hover:text-slate-900 hover:bg-white transition-all"
-                  >
-                    <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M3 7v6h6M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"/></svg>
-                  </button>
-                  <button
-                    onClick={handleRedo}
-                    disabled={historyIndex >= history.length - 1}
-                    className="p-2 rounded-lg text-slate-400 disabled:opacity-30 hover:text-slate-900 hover:bg-white transition-all"
-                  >
-                    <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M21 7v6h-6M3 17a9 9 0 019-9 9 9 0 016 2.3L21 13"/></svg>
-                  </button>
-                </div>
-
-                <button
-                  onClick={handleResetAll}
-                  className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-all cursor-pointer"
-                >
-                  <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                  <span>Reset</span>
-                </button>
-
-                <button
-                  onClick={() => setIsShareOpen(true)}
-                  className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all cursor-pointer"
-                >
-                  <svg className="w-3.5 h-3.5 text-cyan-600 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
-                  <span>Share</span>
-                </button>
-
-                <button
-                  onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all cursor-pointer"
-                >
-                  <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                  <span className="hidden sm:inline">Upload Image</span>
-                </button>
-
-                <button
-                  onClick={() => setIsExportOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm shadow-emerald-600/20 transition-all cursor-pointer"
-                >
-                  <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                  <span>Export</span>
-                </button>
-              </div>
-            </div>
-          </header>
-
-          <!-- Main Layout -->
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1 flex flex-col gap-6">
-
-            {/* Presets Strip */}
-            <div className="w-full bg-white rounded-2xl border border-slate-200 p-3 shadow-xs">
-              <div className="flex items-center justify-between mb-2 px-1">
-                <div className="flex items-center gap-2">
-                  <span className="p-1 rounded-lg bg-purple-100 text-purple-700">
-                    <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                  </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-700">Studio One-Click Presets</span>
-                </div>
-                <span className="text-[11px] text-slate-400">Click to instantly apply professional recipes</span>
-              </div>
-              <div className="flex items-center gap-2 overflow-x-auto pb-1">
-                {PRESETS.map((p) => {
-                  const isActive = activePresetId === p.id;
-                  return (
-                    <button
-                      key={p.id}
-                      onClick={() => handleSelectPreset(p)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer ${
-                        isActive
-                          ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                          : 'border border-slate-200 bg-slate-50 hover:bg-white text-slate-700'
-                      }`}
-                    >
-                      <span>{p.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* 2. Top Header Banner Ad (468x60) */}
-            <AdBanner468 />
-
-            {/* Studio Workspace */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              
-              {/* Canvas Column (7 Cols) */}
-              <div className="lg:col-span-7 flex flex-col gap-4">
-                <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs flex flex-col gap-3">
-                  
-                  {/* Toolbar */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
-                      <button
-                        onClick={() => setViewMode('split')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                          viewMode === 'split' ? 'bg-white text-blue-600 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        Split Slider
-                      </button>
-                      <button
-                        onClick={() => setViewMode('side')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                          viewMode === 'side' ? 'bg-white text-blue-600 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        Side-by-Side
-                      </button>
-                      <button
-                        onClick={() => setViewMode('single')}
-                        className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                          viewMode === 'single' ? 'bg-white text-blue-600 shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        Processed
-                      </button>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <button
-                        onMouseDown={() => setIsHoldingOriginal(true)}
-                        onMouseUp={() => setIsHoldingOriginal(false)}
-                        onTouchStart={() => setIsHoldingOriginal(true)}
-                        onTouchEnd={() => setIsHoldingOriginal(false)}
-                        className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 select-none cursor-pointer"
-                      >
-                        Hold Original
-                      </button>
-
-                      <div className="flex items-center border border-slate-200 rounded-lg bg-slate-50 p-0.5">
-                        <button
-                          onClick={() => setZoomLevel((z) => Math.max(0.5, z - 0.25))}
-                          className="p-1 text-slate-500 hover:text-slate-900"
-                        >
-                          <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M8 11h6"/></svg>
-                        </button>
-                        <span className="text-[11px] font-mono font-bold px-1.5 text-slate-700">
-                          {Math.round(zoomLevel * 100)}%
-                        </span>
-                        <button
-                          onClick={() => setZoomLevel((z) => Math.min(3, z + 0.25))}
-                          className="p-1 text-slate-500 hover:text-slate-900"
-                        >
-                          <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-                        </button>
-                        <button
-                          onClick={() => setZoomLevel(1.0)}
-                          className="p-1 text-slate-500 hover:text-slate-900"
-                          title="Reset Zoom"
-                        >
-                          <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Viewport Box */}
-                  <div
-                    ref={splitContainerRef}
-                    onMouseMove={handleSplitMove}
-                    onTouchMove={handleSplitMove}
-                    onMouseUp={() => setIsDraggingSplit(false)}
-                    onTouchEnd={() => setIsDraggingSplit(false)}
-                    className="bg-slate-950 rounded-xl relative overflow-hidden flex items-center justify-center min-h-[440px] max-h-[540px] select-none"
-                  >
-                    {/* Split Mode */}
-                    {viewMode === 'split' && (
-                      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-                        {originalImage && (
-                          <img
-                            src={originalImage.src}
-                            alt="Original Preview"
-                            style={{ transform: `scale(${zoomLevel})` }}
-                            className="max-h-[500px] max-w-full object-contain pointer-events-none transition-transform duration-75"
-                          />
-                        )}
-
-                        {/* Processed Overlay with Clip Path */}
-                        <div
-                          className={`absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none transition-opacity duration-75 ${
-                            isHoldingOriginal ? 'opacity-0' : 'opacity-100'
-                          }`}
-                          style={{ clipPath: `polygon(0 0, ${splitPosition}% 0, ${splitPosition}% 100%, 0 100%)` }}
-                        >
-                          {processedCanvas && (
-                            <img
-                              src={processedCanvas.toDataURL()}
-                              alt="Processed Preview"
-                              style={{ transform: `scale(${zoomLevel})` }}
-                              className="max-h-[500px] max-w-full object-contain transition-transform duration-75"
-                            />
-                          )}
-                        </div>
-
-                        {/* Slider Handle */}
-                        <div
-                          onMouseDown={() => setIsDraggingSplit(true)}
-                          onTouchStart={() => setIsDraggingSplit(true)}
-                          className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 flex items-center justify-center shadow-2xl"
-                          style={{ left: `${splitPosition}%` }}
-                        >
-                          <div className="w-7 h-7 rounded-full bg-white border-2 border-blue-600 shadow-lg flex items-center justify-center text-blue-600">
-                            <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="m9 18-6-6 6-6M15 6l6 6-6 6"/></svg>
-                          </div>
-                        </div>
-
-                        <span className="absolute top-3 left-3 bg-black/60 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none z-10">BEFORE</span>
-                        <span className="absolute top-3 right-3 bg-blue-600/80 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none z-10">AFTER</span>
-                      </div>
-                    )}
-
-                    {/* Side by Side Mode */}
-                    {viewMode === 'side' && (
-                      <div className="w-full h-full grid grid-cols-2 gap-2 p-2">
-                        <div className="relative bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center">
-                          {originalImage && <img src={originalImage.src} alt="Original" className="max-h-[460px] max-w-full object-contain" />}
-                          <span className="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded">ORIGINAL</span>
-                        </div>
-                        <div className="relative bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center">
-                          {processedCanvas && <img src={processedCanvas.toDataURL()} alt="Processed" className="max-h-[460px] max-w-full object-contain" />}
-                          <span className="absolute top-2 right-2 bg-blue-600/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">PROCESSED</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Single Mode */}
-                    {viewMode === 'single' && (
-                      <div className="w-full h-full flex items-center justify-center p-2">
-                        {processedCanvas && <img src={processedCanvas.toDataURL()} alt="Single" className="max-h-[500px] max-w-full object-contain" />}
-                      </div>
-                    )}
-
-                    {/* Processing Toast */}
-                    {isProcessing && (
-                      <div className="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-xs text-cyan-400 text-xs font-mono px-3 py-1.5 rounded-lg border border-cyan-500/30 flex items-center gap-2 z-20">
-                        <div className="w-3.5 h-3.5 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
-                        <span>Processing convolution...</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Canvas Stats Bar */}
-                  <div className="flex items-center justify-between text-xs text-slate-500 px-1 pt-1">
-                    <span className="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700 font-bold">
-                      {imageDimensions.width} × {imageDimensions.height} px
-                    </span>
-                    <span className="flex items-center gap-1 text-emerald-600 font-semibold">
-                      <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                      100% Client-Side Sandbox
-                    </span>
-                  </div>
-                </div>
-
-                {/* Samples Bar */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                      Sample Images
-                    </span>
-                    <span className="text-[11px] text-slate-400">Select to test sharpening &amp; blur filters</span>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {SAMPLE_IMAGES.map((s) => {
-                      const isSelected = selectedSampleId === s.id;
-                      return (
-                        <div
-                          key={s.id}
-                          onClick={() => handleSelectSample(s)}
-                          className={`border rounded-xl p-2 cursor-pointer transition-all flex flex-col gap-1.5 shadow-2xs ${
-                            isSelected ? 'border-blue-600 bg-blue-50/50' : 'border-slate-200 bg-slate-50 hover:bg-white'
-                          }`}
-                        >
-                          <div
-                            className="h-16 rounded-lg overflow-hidden flex items-center justify-center font-black text-white text-xs shadow-inner"
-                            style={{ background: `linear-gradient(135deg, ${s.gradient[0]}, ${s.gradient[1]}, ${s.gradient[2]})` }}
-                          >
-                            {s.title}
-                          </div>
-                          <span className="text-xs font-bold text-slate-800">{s.title}</span>
-                          <span className="text-[10px] text-slate-400 leading-tight">{s.tag}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              {/* Controls Column (5 Cols) */}
-              <div className="lg:col-span-5 flex flex-col gap-5 sticky top-20">
-                <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col gap-4">
-                  
-                  {/* Category Tabs */}
-                  <div className="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl">
-                    <button
-                      onClick={() => setToolMode('sharpness')}
-                      className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                        toolMode === 'sharpness' ? 'bg-cyan-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      Sharpness
-                    </button>
-                    <button
-                      onClick={() => setToolMode('blur')}
-                      className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                        toolMode === 'blur' ? 'bg-purple-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      Blur
-                    </button>
-                    <button
-                      onClick={() => setToolMode('tone')}
-                      className={`py-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
-                        toolMode === 'tone' ? 'bg-amber-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      Tone
-                    </button>
-                  </div>
-
-                  {/* SHARPNESS PANEL */}
-                  {toolMode === 'sharpness' && (
-                    <div className="flex flex-col gap-4 animate-in fade-in">
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <h3 className="text-xs font-bold text-cyan-900 uppercase tracking-wider">Unsharp Mask &amp; High-Pass</h3>
-                        <button
-                          onClick={() => handleUpdateAdjustments({ sharpnessAmount: 0, highPassBlend: 0, clarityAmount: 0, edgeBoost: 0 })}
-                          className="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer"
-                        >
-                          Reset
-                        </button>
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-cyan-800 font-bold">Unsharp Mask Gain</span>
-                          <span className="font-mono text-slate-600">{adjustments.sharpnessAmount}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={adjustments.sharpnessAmount}
-                          onChange={(e) => handleUpdateAdjustments({ sharpnessAmount: parseFloat(e.target.value) })}
-                          className="w-full text-cyan-600 accent-cyan-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-cyan-800 font-bold">Mask Blur Radius (σ)</span>
-                          <span className="font-mono text-slate-600">{adjustments.usmRadius} px</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0.5"
-                          max="8"
-                          step="0.1"
-                          value={adjustments.usmRadius}
-                          onChange={(e) => handleUpdateAdjustments({ usmRadius: parseFloat(e.target.value) })}
-                          className="w-full text-cyan-600 accent-cyan-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-cyan-800 font-bold">Noise Threshold</span>
-                          <span className="font-mono text-slate-600">{adjustments.usmThreshold} lv</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="25"
-                          value={adjustments.usmThreshold}
-                          onChange={(e) => handleUpdateAdjustments({ usmThreshold: parseFloat(e.target.value) })}
-                          className="w-full text-cyan-600 accent-cyan-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-blue-800 font-bold">High-Pass Filter Strength</span>
-                          <span className="font-mono text-slate-600">{adjustments.highPassBlend}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={adjustments.highPassBlend}
-                          onChange={(e) => handleUpdateAdjustments({ highPassBlend: parseFloat(e.target.value) })}
-                          className="w-full text-blue-600 accent-blue-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-indigo-800 font-bold">Midtone Clarity Boost</span>
-                          <span className="font-mono text-slate-600">{adjustments.clarityAmount}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={adjustments.clarityAmount}
-                          onChange={(e) => handleUpdateAdjustments({ clarityAmount: parseFloat(e.target.value) })}
-                          className="w-full text-indigo-600 accent-indigo-600"
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* BLUR PANEL */}
-                  {toolMode === 'blur' && (
-                    <div className="flex flex-col gap-4 animate-in fade-in">
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <h3 className="text-xs font-bold text-purple-900 uppercase tracking-wider">Spatial Convolution &amp; Bokeh</h3>
-                        <button
-                          onClick={() => handleUpdateAdjustments({ blurRadius: 0, motionDistance: 0, radialIntensity: 0, tiltShiftBlurMax: 0, bokehBoost: 0 })}
-                          className="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer"
-                        >
-                          Reset
-                        </button>
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-purple-800 font-bold">Gaussian Blur Radius</span>
-                          <span className="font-mono text-slate-600">{adjustments.blurRadius} px</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="30"
-                          value={adjustments.blurRadius}
-                          onChange={(e) => handleUpdateAdjustments({ blurRadius: parseFloat(e.target.value) })}
-                          className="w-full text-purple-600 accent-purple-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-purple-800 font-bold">Motion Streak Distance</span>
-                          <span className="font-mono text-slate-600">{adjustments.motionDistance} px</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="40"
-                          value={adjustments.motionDistance}
-                          onChange={(e) => handleUpdateAdjustments({ motionDistance: parseFloat(e.target.value) })}
-                          className="w-full text-purple-600 accent-purple-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-slate-700 font-bold">Motion Direction Angle</span>
-                          <span className="font-mono text-slate-600">{adjustments.motionAngle}°</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="360"
-                          value={adjustments.motionAngle}
-                          onChange={(e) => handleUpdateAdjustments({ motionAngle: parseFloat(e.target.value) })}
-                          className="w-full text-slate-700 accent-slate-700"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-pink-800 font-bold">Bokeh Highlight Boost</span>
-                          <span className="font-mono text-slate-600">{adjustments.bokehBoost}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={adjustments.bokehBoost}
-                          onChange={(e) => handleUpdateAdjustments({ bokehBoost: parseFloat(e.target.value) })}
-                          className="w-full text-pink-600 accent-pink-600"
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TONE PANEL */}
-                  {toolMode === 'tone' && (
-                    <div className="flex flex-col gap-4 animate-in fade-in">
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <h3 className="text-xs font-bold text-amber-900 uppercase tracking-wider">Color &amp; Exposure</h3>
-                        <button
-                          onClick={() => handleUpdateAdjustments({ exposure: 0, brightness: 0, contrast: 0, saturation: 0 })}
-                          className="text-[11px] font-semibold text-rose-600 hover:underline cursor-pointer"
-                        >
-                          Reset
-                        </button>
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-amber-800 font-bold">Exposure</span>
-                          <span className="font-mono text-slate-600">{adjustments.exposure > 0 ? '+' : ''}{adjustments.exposure} EV</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="-1"
-                          max="1"
-                          step="0.05"
-                          value={adjustments.exposure}
-                          onChange={(e) => handleUpdateAdjustments({ exposure: parseFloat(e.target.value) })}
-                          className="w-full text-amber-600 accent-amber-600"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-slate-800 font-bold">Brightness</span>
-                          <span className="font-mono text-slate-600">{adjustments.brightness}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="-50"
-                          max="50"
-                          value={adjustments.brightness}
-                          onChange={(e) => handleUpdateAdjustments({ brightness: parseFloat(e.target.value) })}
-                          className="w-full text-slate-700 accent-slate-700"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-slate-800 font-bold">Contrast</span>
-                          <span className="font-mono text-slate-600">{adjustments.contrast}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="-50"
-                          max="50"
-                          value={adjustments.contrast}
-                          onChange={(e) => handleUpdateAdjustments({ contrast: parseFloat(e.target.value) })}
-                          className="w-full text-slate-700 accent-slate-700"
-                        />
-                      </div>
-
-                      <div className="flex flex-col gap-1.5">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-orange-800 font-bold">Saturation</span>
-                          <span className="font-mono text-slate-600">{adjustments.saturation}%</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="-100"
-                          max="100"
-                          value={adjustments.saturation}
-                          onChange={(e) => handleUpdateAdjustments({ saturation: parseFloat(e.target.value) })}
-                          className="w-full text-orange-600 accent-orange-600"
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Quick Export CTA */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-bold text-slate-900">Ready to save your image?</p>
-                    <p className="text-[11px] text-slate-500">Supports 300 DPI, lossless PNG &amp; scaling</p>
-                  </div>
-                  <button
-                    onClick={() => setIsExportOpen(true)}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-all shadow-md shadow-emerald-600/25 cursor-pointer shrink-0"
-                  >
-                    <span>Export Image</span>
-                  </button>
-                </div>
-
-                {/* 3. Sidebar Medium Rectangle Ad (300x250) */}
-                <AdBanner300 />
-              </div>
-            </div>
-
-            {/* 4. Native Sponsored Ad Container */}
-            <AdNativeContainer />
-
-            {/* Deep Dive & FAQ Section */}
-            <div className="w-full flex flex-col gap-8 mt-6">
-              <div className="w-full bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 rounded-xl bg-blue-100 text-blue-700">
-                    <svg className="w-6 h-6 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-extrabold text-slate-900">Spatial Filtering &amp; Convolution Mathematics</h2>
-                    <p className="text-sm text-slate-500">How browser-native mathematical kernels transform image frequencies in real-time</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-                    <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 px-2.5 py-1 rounded-full">Separable Gaussian</span>
-                      <h3 className="font-bold text-slate-900 text-base mt-3 mb-2">2D Isotropic Gaussian</h3>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Rather than performing costly 2D matrix convolutions, our engine splits the Gaussian function into an initial horizontal 1D pass followed by a vertical 1D pass.
-                      </p>
-                    </div>
-                    <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-purple-900">
-                      G(x) = (1 / √(2πσ²)) · e^[ -x² / (2σ²) ]
-                    </div>
-                  </div>
-
-                  <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-                    <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-100 px-2.5 py-1 rounded-full">Unsharp Masking</span>
-                      <h3 className="font-bold text-slate-900 text-base mt-3 mb-2">Edge Difference Amplification</h3>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Originated in traditional darkrooms. We create an unsharp low-frequency copy of the image, subtract it from the original to extract pure spatial edge gradients, and add it back scaled.
-                      </p>
-                    </div>
-                    <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-cyan-900">
-                      I_sharp = I_orig + α · (I_orig - I_blur)
-                    </div>
-                  </div>
-
-                  <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-                    <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-2.5 py-1 rounded-full">High-Pass Filter</span>
-                      <h3 className="font-bold text-slate-900 text-base mt-3 mb-2">Micro-Contrast Boost</h3>
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        Extracts the highest frequency fine details while centering midtones at 50% neutral gray. Overlay blend boosts tactile texture without washing out luminance.
-                      </p>
-                    </div>
-                    <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-[11px] text-indigo-900">
-                      HP(x, y) = clamp(I_orig - I_blur + 128)
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </main>
-
-          {/* Export Modal */}
-          {isExportOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full overflow-hidden flex flex-col">
-                <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-                  <h3 className="font-bold text-slate-900 text-base">Export Rendered Image</h3>
-                  <button onClick={() => setIsExportOpen(false)} className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200">
-                    <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-                  </button>
-                </div>
-
-                <div className="p-6 flex flex-col gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">File Name</label>
-                    <input
-                      type="text"
-                      value={exportName}
-                      onChange={(e) => setExportName(e.target.value)}
-                      className="border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-blue-600"
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Image Format</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {['image/png', 'image/jpeg', 'image/webp'].map((fmt) => (
-                        <button
-                          key={fmt}
-                          onClick={() => setExportFmt(fmt)}
-                          className={`py-2 rounded-xl text-xs font-bold border transition-all ${
-                            exportFmt === fmt ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-slate-200 bg-slate-50 text-slate-700'
-                          }`}
-                        >
-                          {fmt === 'image/png' ? 'PNG (Lossless)' : fmt === 'image/jpeg' ? 'JPEG' : 'WebP'}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Output Resolution Multiplier</label>
-                    <div className="grid grid-cols-4 gap-2">
-                      {[1, 1.5, 2, 4].map((scale) => (
-                        <button
-                          key={scale}
-                          onClick={() => setExportScale(scale)}
-                          className={`py-2 rounded-xl text-xs font-bold border transition-all ${
-                            exportScale === scale ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-slate-200 bg-slate-50 text-slate-700'
-                          }`}
-                        >
-                          {scale}x
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Print DPI</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {[72, 300, 600].map((dpi) => (
-                        <button
-                          key={dpi}
-                          onClick={() => setExportDpi(dpi)}
-                          className={`py-2 rounded-xl text-xs font-bold border transition-all ${
-                            exportDpi === dpi ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-slate-200 bg-slate-50 text-slate-700'
-                          }`}
-                        >
-                          {dpi} DPI
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
-                  <span className="text-xs font-mono text-slate-500">
-                    {Math.round(imageDimensions.width * exportScale)} × {Math.round(imageDimensions.height * exportScale)} px
-                  </span>
-                  <button
-                    onClick={handleDownloadExport}
-                    className="px-6 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/25 transition-all cursor-pointer"
-                  >
-                    Download Image
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Share Modal */}
-          {isShareOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-md w-full overflow-hidden flex flex-col">
-                <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-                  <h3 className="font-bold text-slate-900 text-base">Share Studio Tool</h3>
-                  <button onClick={() => setIsShareOpen(false)} className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200">
-                    <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-                  </button>
-                </div>
-                <div className="p-6 flex flex-col gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Studio URL</label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        readOnly
-                        value={window.location.href}
-                        className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-mono text-slate-700 select-all focus:outline-none"
-                      />
-                      <button
-                        onClick={() => {
-                          navigator.clipboard.writeText(window.location.href);
-                          setShareCopied(true);
-                          setTimeout(() => setShareCopied(false), 2000);
-                        }}
-                        className="px-3 py-2 rounded-lg text-xs font-bold bg-cyan-600 text-white hover:bg-cyan-700 cursor-pointer"
-                      >
-                        {shareCopied ? 'Copied' : 'Copy'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Footer */}
-          <footer className="w-full bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
-            <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-slate-900">PixelCraft Studio</span>
-                <span className="text-slate-300">•</span>
-                <span>Zero-Data-Retention Client Sandbox</span>
-              </div>
-              <div className="flex items-center gap-4 text-slate-600">
-                <span>Fast Separable Convolution</span>
-                <span>•</span>
-                <span>Unsharp Masking (USM)</span>
-                <span>•</span>
-                <span>Tilt-Shift Scheimpflug</span>
-              </div>
-            </div>
-          </footer>
-        </div>
-      );
-    }
-
-    const rootElement = document.getElementById('root');
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(<App />);
+      // Initial Mount
+      generateDefaultSample();
+    })();
   </script>
 </body>
-</html>
+  </html>
