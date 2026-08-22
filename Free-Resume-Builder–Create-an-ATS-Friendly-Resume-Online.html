@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Free Resume Builder – Create an ATS-Friendly Resume Online</title>
+  <meta name="description" content="Create a professional ATS-friendly resume online for free. Build, customize, preview and print your resume with professional templates for US jobs.">
+  <meta name="keywords" content="resume builder, free resume builder, resume maker, free resume maker, online resume builder, professional resume builder, ATS resume builder, ATS-friendly resume, resume creator, CV maker, online CV maker, professional CV maker, resume template, professional resume template, US resume builder, job resume builder, resume builder online free">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://resume-cv-maker.web.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Resume & CV Maker">
+  <meta property="og:title" content="Free Resume Builder – Create an ATS-Friendly Resume Online">
+  <meta property="og:description" content="Create a professional ATS-friendly resume online for free. Build, customize, preview and print your resume with professional templates for US jobs.">
+  <meta property="og:url" content="https://resume-cv-maker.web.app/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Resume Builder – Create an ATS-Friendly Resume Online">
+  <meta name="twitter:description" content="Create a professional ATS-friendly resume online for free. Build, customize, preview and print your resume with professional templates for US jobs.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Source+Sans+3:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Ad Network Scripts -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+  <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+            serif: ['Merriweather', 'Georgia', 'serif'],
+            playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+            roboto: ['Roboto', 'sans-serif'],
+            cinzel: ['Cinzel', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React 18, ReactDOM, and Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Resume & CV Maker",
+        "url": "https://resume-cv-maker.web.app/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Create a professional ATS-friendly resume online for free. Build, customize, preview and print your resume with professional templates for US jobs.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I create an ATS-friendly resume?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fill in your personal details, work history, education, and skills. Choose standard templates like ATS Classic or Modern Professional, and download your clean PDF."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this resume builder free on mobile and desktop?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% free with no sign-ups or subscription required."
+            }
+          }
+        ]
+      }
+    ]
+  </script>
+
+  <style>
+    /* Print & PDF Export Rules */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print, .no-print * {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .resume-preview-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        overflow: visible !important;
+      }
+      .resume-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        padding: 0.35in 0.45in !important;
+        transform: none !important;
+      }
+      @page {
+        margin: 0.4in;
+        size: auto;
+      }
+    }
+
+    /* Interactive Resume Canvas */
+    .resume-sheet {
+      width: 8.5in;
+      min-height: 11in;
+      background-color: #ffffff;
+      box-sizing: border-box;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      transition: transform 0.15s ease-in-out;
+    }
+
+    .resume-sheet.format-a4 {
+      width: 210mm;
+      min-height: 297mm;
+    }
+
+    /* Mobile Responsive Preview Container */
+    @media (max-width: 768px) {
+      .mobile-sheet-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-gray-900 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+
+  <!-- Root React App Container -->
+  <div id="root"></div>
+
+  <!-- React & App Logic Script -->
+  <script type="text/babel">
+    const { useState, useEffect, useRef, useMemo } = React;
+
+    // --- ACTION VERBS BANK ---
+    const US_ACTION_VERBS = [
+      'accelerated', 'achieved', 'administered', 'advised', 'analyzed', 'architected', 'spearheaded',
+      'budgeted', 'built', 'championed', 'coached', 'collaborated', 'consolidated', 'constructed',
+      'coordinated', 'created', 'decreased', 'delivered', 'designed', 'developed', 'directed',
+      'doubled', 'drove', 'engineered', 'enhanced', 'established', 'evaluated', 'exceeded',
+      'executed', 'expanded', 'expedited', 'facilitated', 'formulated', 'fostered', 'generated',
+      'guided', 'implemented', 'improved', 'increased', 'initiated', 'innovated', 'instituted',
+      'integrated', 'introduced', 'invented', 'launched', 'led', 'managed', 'maximized',
+      'mentored', 'minimized', 'modernized', 'monitored', 'negotiated', 'optimized', 'orchestrated',
+      'organized', 'overhauled', 'oversaw', 'pioneered', 'planned', 'produced', 'programmed',
+      'reduced', 'reengineered', 'reorganized', 'resolved', 'restructured', 'revamped', 'saved',
+      'scaled', 'secured', 'simplified', 'streamlined', 'strengthened', 'supervised', 'surpassed',
+      'trained', 'transformed', 'upgraded', 'yielded'
+    ];
+
+    // --- DEFAULT SAMPLE DATA ---
+    const defaultResumeData = {
+      personalInfo: {
+        fullName: 'John Carter',
+        professionalTitle: 'Senior Marketing Manager & Growth Strategist',
+        email: 'john.carter.sample@email.com',
+        phone: '(512) 555-0198',
+        city: 'Austin',
+        state: 'TX',
+        zipCode: '78701',
+        linkedIn: 'linkedin.com/in/johncarter-sample',
+        portfolio: 'johncartergrowth.sample.com',
+        website: 'carterstrategy.sample.com',
+        photoUrl: '',
+        showPhoto: false
+      },
+      professionalSummary: 'Results-driven Senior Marketing Manager with over 7 years of experience scaling customer acquisition and revenue growth for B2B tech companies. Proven track record of managing $1.2M+ annual paid media budgets, executing omnichannel campaigns with a 38% increase in qualified pipeline, and leading cross-functional teams of 8 marketers and creatives.',
+      workExperience: [
+        {
+          id: 'exp-1',
+          jobTitle: 'Senior Marketing Manager',
+          company: 'Apex Cloud Solutions',
+          city: 'Austin',
+          state: 'TX',
+          startDate: 'Mar 2022',
+          endDate: 'Present',
+          isCurrent: true,
+          bullets: [
+            'Spearheaded demand generation strategy across paid search, social, and email, generating 4,200+ qualified enterprise leads and $4.8M in pipeline revenue annually.',
+            'Managed a cross-functional squad of 6 marketers, content strategists, and external agency partners while optimizing a $1.4M marketing budget.',
+            'Executed conversion rate optimization (CRO) testing across 25+ landing pages, improving demo request conversion rates from 2.8% to 5.4%.',
+            'Implemented HubSpot and Salesforce attribution modeling to track multi-touch customer journeys and reduce Customer Acquisition Cost (CAC) by 22%.'
+          ]
+        },
+        {
+          id: 'exp-2',
+          jobTitle: 'Growth Marketing Specialist',
+          company: 'Vanguard Digital Tech',
+          city: 'Dallas',
+          state: 'TX',
+          startDate: 'Jun 2019',
+          endDate: 'Feb 2022',
+          isCurrent: false,
+          bullets: [
+            'Built and scaled paid acquisition funnels across Google Ads, LinkedIn Ads, and Meta, increasing monthly recurring revenue (MRR) by 45% over 18 months.',
+            'Collaborated with product teams to design in-app onboarding email cadences, boosting 30-day user retention by 18%.',
+            'Authored high-performing lead generation whitepapers and case studies downloaded over 15,000 times by VP and Director-level buyers.'
+          ]
+        }
+      ],
+      education: [
+        {
+          id: 'edu-1',
+          degree: 'Bachelor of Business Administration (BBA) in Marketing',
+          school: 'University of Texas at Austin',
+          city: 'Austin',
+          state: 'TX',
+          startYear: '2013',
+          graduationYear: '2017',
+          description: "Dean's Honor List (4 semesters), President of the American Marketing Association (AMA) Student Chapter.",
+          gpa: '3.82'
+        }
+      ],
+      skills: [
+        'Demand Generation', 'Paid Search (Google Ads)', 'Paid Social (LinkedIn, Meta)',
+        'SEO & Content Strategy', 'HubSpot & Salesforce CRM', 'Google Analytics 4 (GA4)',
+        'Conversion Rate Optimization (CRO)', 'A/B Testing & Attribution Modeling',
+        'Budget & P&L Management', 'Cross-Functional Team Leadership'
+      ],
+      projects: [
+        {
+          id: 'proj-1',
+          name: 'Omnichannel B2B Rebrand Campaign',
+          role: 'Lead Project Manager',
+          technologies: 'HubSpot, Google Ads, LinkedIn Campaign Manager, Figma',
+          url: 'https://example.com/project/rebrand-case-study',
+          description: 'Directed the 6-month digital rollout of corporate rebrand including redesigning 40+ web assets, launching teaser video ad campaigns, and achieving a 52% surge in organic brand search volume.'
+        }
+      ],
+      certifications: [
+        {
+          id: 'cert-1',
+          name: 'Google Ads Search & Measurement Certified',
+          issuer: 'Google',
+          date: '2024',
+          credentialId: 'GA-9982341'
+        },
+        {
+          id: 'cert-2',
+          name: 'HubSpot Inbound Marketing & Revenue Operations',
+          issuer: 'HubSpot Academy',
+          date: '2023',
+          credentialId: 'HS-8472910'
+        }
+      ],
+      achievements: [
+        {
+          id: 'ach-1',
+          title: 'Marketer of the Year Award',
+          date: '2023',
+          description: 'Awarded by Apex Cloud Solutions executive leadership for delivering highest pipeline contribution in company history.'
+        }
+      ],
+      languages: [
+        { id: 'lang-1', language: 'English', proficiency: 'Native' },
+        { id: 'lang-2', language: 'Spanish', proficiency: 'Conversational' }
+      ],
+      volunteer: [
+        {
+          id: 'vol-1',
+          organization: 'Austin Young Professionals Mentorship Program',
+          role: 'Marketing Mentor',
+          startDate: 'Jan 2021',
+          endDate: 'Present',
+          isCurrent: true,
+          description: 'Volunteer mentor for college graduates entering digital marketing and tech careers.'
+        }
+      ],
+      customSections: [],
+      sectionOrder: [
+        { id: 'summary', title: 'Professional Summary', enabled: true },
+        { id: 'experience', title: 'Work Experience', enabled: true },
+        { id: 'education', title: 'Education', enabled: true },
+        { id: 'skills', title: 'Skills & Competencies', enabled: true },
+        { id: 'projects', title: 'Projects', enabled: true },
+        { id: 'certifications', title: 'Certifications', enabled: true },
+        { id: 'achievements', title: 'Achievements & Honors', enabled: true },
+        { id: 'languages', title: 'Languages', enabled: true },
+        { id: 'volunteer', title: 'Volunteer Experience', enabled: false },
+        { id: 'custom', title: 'Custom Sections', enabled: false }
+      ],
+      settings: {
+        template: 'modern',
+        fontFamily: 'Inter',
+        fontSize: 'medium',
+        spacing: 'standard',
+        margins: 'standard',
+        accentColor: '#1E3A8A',
+        paperSize: 'letter'
+      }
+    };
+
+    // --- HELPER UTILITIES ---
+    const formatUrl = (url) => {
+      if (!url) return '';
+      return url.startsWith('http://') || url.startsWith('https://') ? url : `https://${url}`;
+    };
+
+    const evaluateAtsScore = (data) => {
+      let score = 30;
+      const passed = [];
+      const suggestions = [];
+
+      if (data.personalInfo.fullName && data.personalInfo.email && data.personalInfo.phone) {
+        score += 20;
+        passed.push('Complete Contact Information Provided');
+      } else {
+        suggestions.push('Add Full Name, Email, and Phone Number.');
+      }
+
+      if (data.professionalSummary && data.professionalSummary.length > 60) {
+        score += 15;
+        passed.push('Professional Summary Included');
+      } else {
+        suggestions.push('Add a 3-4 sentence professional summary.');
+      }
+
+      if (data.workExperience.length >= 1) {
+        score += 15;
+        passed.push(`${data.workExperience.length} Experience roles added`);
+      } else {
+        suggestions.push('Add at least 1 work experience role.');
+      }
+
+      if (data.skills.length >= 5) {
+        score += 10;
+        passed.push(`${data.skills.length} Skills & competencies documented`);
+      } else {
+        suggestions.push('Include at least 5-8 relevant skills.');
+      }
+
+      if (data.education.length >= 1) {
+        score += 10;
+        passed.push('Education background listed');
+      }
+
+      return {
+        score: Math.min(100, score),
+        passed,
+        suggestions
+      };
+    };
+
+    // --- AD EMBEDS ---
+    const TopBannerAd = () => {
+      const iframeRef = useRef(null);
+      useEffect(() => {
+        const iframe = iframeRef.current;
+        if (!iframe) return;
+        const html = `<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style></head><body><script type="text/javascript">atOptions={'key':'294198e908506e5d909d0b383f167eaa','format':'iframe','height':60,'width':468,'params':{}};<\\/script><script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"><\\/script></body></html>`;
+        try {
+          const doc = iframe.contentWindow?.document || iframe.contentDocument;
+          if (doc) { doc.open(); doc.write(html); doc.close(); }
+        } catch(e){}
+      }, []);
+
+      return (
+        <div className="no-print w-full bg-slate-100 py-1.5 border-b border-gray-200 flex flex-col items-center justify-center">
+          <span className="text-[9px] uppercase font-bold text-gray-400 tracking-wider mb-0.5">Advertisement</span>
+          <iframe
+            ref={iframeRef}
+            title="Ad-468x60"
+            width="468"
+            height="60"
+            frameBorder="0"
+            scrolling="no"
+            className="rounded bg-white max-w-full"
+            style={{ border: 'none' }}
+          />
+        </div>
+      );
+    };
+
+    const SidebarSquareAd = () => {
+      const iframeRef = useRef(null);
+      useEffect(() => {
+        const iframe = iframeRef.current;
+        if (!iframe) return;
+        const html = `<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style></head><body><script type="text/javascript">atOptions={'key':'224e7394c28834c8ac1ce24682c420e3','format':'iframe','height':250,'width':300,'params':{}};<\\/script><script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"><\\/script></body></html>`;
+        try {
+          const doc = iframe.contentWindow?.document || iframe.contentDocument;
+          if (doc) { doc.open(); doc.write(html); doc.close(); }
+        } catch(e){}
+      }, []);
+
+      return (
+        <div className="no-print bg-slate-50 p-3 rounded-2xl border border-gray-200 flex flex-col items-center justify-center my-3">
+          <span className="text-[10px] uppercase font-bold text-gray-400 mb-1.5 tracking-wider">Sponsored Advertisement</span>
+          <iframe
+            ref={iframeRef}
+            title="Ad-300x250"
+            width="300"
+            height="250"
+            frameBorder="0"
+            scrolling="no"
+            className="rounded bg-white max-w-full"
+            style={{ border: 'none' }}
+          />
+        </div>
+      );
+    };
+
+    const NativeContainerAd = () => {
+      return (
+        <div className="no-print my-3 p-3 bg-white rounded-2xl border border-gray-200 text-center">
+          <span className="text-[10px] uppercase font-bold text-gray-400 block mb-1 tracking-wider">Sponsored Content</span>
+          <div id="container-269e962c1215493328aeb78f4303284c" className="w-full flex justify-center min-h-[50px]"></div>
+        </div>
+      );
+    };
+
+    // --- TEMPLATE RENDERER (ALL 6 STYLES) ---
+    const TemplateRenderer = ({ data, settings }) => {
+      const { personalInfo, professionalSummary, workExperience, education, skills, projects, certifications, achievements, languages, volunteer, sectionOrder } = data;
+      const accent = settings.accentColor || '#1E3A8A';
+
+      const fontFamilies = {
+        'Inter': 'font-sans',
+        'Roboto': 'font-roboto',
+        'Merriweather': 'font-serif',
+        'Playfair Display': 'font-playfair',
+      };
+      const fontClass = fontFamilies[settings.fontFamily] || 'font-sans';
+
+      const fontSizes = {
+        compact: { name: 'text-2xl', title: 'text-xs font-semibold', h2: 'text-xs font-bold', h3: 'text-xs font-bold', body: 'text-[11px]', meta: 'text-[10px]' },
+        medium: { name: 'text-3xl', title: 'text-sm font-semibold', h2: 'text-sm font-bold', h3: 'text-xs font-bold', body: 'text-xs', meta: 'text-[11px]' },
+        large: { name: 'text-4xl', title: 'text-base font-semibold', h2: 'text-base font-bold', h3: 'text-sm font-bold', body: 'text-sm', meta: 'text-xs' }
+      };
+      const fs = fontSizes[settings.fontSize] || fontSizes.medium;
+
+      // 1. ATS Classic
+      if (settings.template === 'ats-classic' || settings.template === 'ats') {
+        return (
+          <div className={`p-8 md:p-12 ${fontClass} text-gray-900 leading-normal`}>
+            <header className="border-b-2 border-gray-900 pb-3 mb-4 text-center">
+              <h1 className={`${fs.name} font-bold tracking-tight uppercase`}>{personalInfo.fullName || 'YOUR NAME'}</h1>
+              {personalInfo.professionalTitle && <p className={`${fs.title} text-gray-700 mt-0.5`}>{personalInfo.professionalTitle}</p>}
+              <div className={`flex flex-wrap justify-center gap-x-2.5 gap-y-1 ${fs.meta} text-gray-700 mt-2`}>
+                {personalInfo.city && personalInfo.state && <span>{personalInfo.city}, {personalInfo.state}</span>}
+                {personalInfo.email && <><span>•</span><a href={`mailto:${personalInfo.email}`} className="hover:underline">{personalInfo.email}</a></>}
+                {personalInfo.phone && <><span>•</span><span>{personalInfo.phone}</span></>}
+                {personalInfo.linkedIn && <><span>•</span><a href={formatUrl(personalInfo.linkedIn)} target="_blank" rel="noreferrer" className="hover:underline">{personalInfo.linkedIn.replace(/^https?:\/\//, '')}</a></>}
+              </div>
+            </header>
+
+            <div className="space-y-4">
+              {professionalSummary && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase border-b border-gray-400 pb-0.5 mb-1.5`}>Professional Summary</h2>
+                  <p className={`${fs.body} text-gray-800 leading-relaxed text-justify`}>{professionalSummary}</p>
+                </section>
+              )}
+              {workExperience.length > 0 && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase border-b border-gray-400 pb-0.5 mb-2`}>Work Experience</h2>
+                  <div className="space-y-3">
+                    {workExperience.map(job => (
+                      <div key={job.id}>
+                        <div className="flex justify-between items-baseline">
+                          <span className={`${fs.h3} text-gray-900 font-bold`}>{job.jobTitle}</span>
+                          <span className={`${fs.meta} text-gray-700`}>{job.startDate} – {job.isCurrent ? 'Present' : job.endDate}</span>
+                        </div>
+                        <div className="flex justify-between items-baseline mb-1">
+                          <span className={`${fs.body} font-semibold text-gray-800`}>{job.company}</span>
+                          {job.city && job.state && <span className={`${fs.meta} text-gray-600`}>{job.city}, {job.state}</span>}
+                        </div>
+                        {job.bullets && job.bullets.filter(b => b.trim()).length > 0 && (
+                          <ul className={`list-disc list-outside ml-4 space-y-1 ${fs.body} text-gray-800`}>
+                            {job.bullets.filter(b => b.trim()).map((b, i) => <li key={i}>{b}</li>)}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {education.length > 0 && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase border-b border-gray-400 pb-0.5 mb-2`}>Education</h2>
+                  <div className="space-y-2">
+                    {education.map(edu => (
+                      <div key={edu.id}>
+                        <div className="flex justify-between items-baseline">
+                          <span className={`${fs.h3} text-gray-900 font-bold`}>{edu.degree}</span>
+                          <span className={`${fs.meta} text-gray-700`}>{edu.graduationYear}</span>
+                        </div>
+                        <span className={`${fs.body} text-gray-800`}>{edu.school}</span>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {skills.length > 0 && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase border-b border-gray-400 pb-0.5 mb-1.5`}>Skills & Core Competencies</h2>
+                  <p className={`${fs.body} text-gray-800 leading-relaxed`}>{skills.join(' • ')}</p>
+                </section>
+              )}
+            </div>
+          </div>
+        );
+      }
+
+      // 2. Modern Professional
+      if (settings.template === 'modern') {
+        return (
+          <div className={`p-8 md:p-12 ${fontClass} text-gray-900 leading-normal`}>
+            <header className="border-b-2 pb-4 mb-4" style={{ borderColor: accent }}>
+              <h1 className={`${fs.name} font-extrabold tracking-tight`} style={{ color: accent }}>{personalInfo.fullName || 'YOUR NAME'}</h1>
+              {personalInfo.professionalTitle && <p className={`${fs.title} text-gray-700 mt-0.5`}>{personalInfo.professionalTitle}</p>}
+              <div className={`flex flex-wrap gap-x-3 gap-y-1 ${fs.meta} text-gray-600 mt-2`}>
+                {personalInfo.city && personalInfo.state && <span>📍 {personalInfo.city}, {personalInfo.state}</span>}
+                {personalInfo.email && <span>✉️ <a href={`mailto:${personalInfo.email}`} className="hover:underline">{personalInfo.email}</a></span>}
+                {personalInfo.phone && <span>📞 {personalInfo.phone}</span>}
+              </div>
+            </header>
+
+            <div className="space-y-4">
+              {professionalSummary && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase tracking-wider mb-1.5 pb-0.5 border-b`} style={{ color: accent, borderColor: '#E5E7EB' }}>Professional Summary</h2>
+                  <p className={`${fs.body} text-gray-800 leading-relaxed`}>{professionalSummary}</p>
+                </section>
+              )}
+              {workExperience.length > 0 && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase tracking-wider mb-2 pb-0.5 border-b`} style={{ color: accent, borderColor: '#E5E7EB' }}>Work Experience</h2>
+                  <div className="space-y-3.5">
+                    {workExperience.map(job => (
+                      <div key={job.id}>
+                        <div className="flex justify-between items-baseline">
+                          <span className={`${fs.h3} text-gray-900 font-bold`}>{job.jobTitle}</span>
+                          <span className={`${fs.meta} font-medium text-gray-600 bg-gray-50 px-1.5 py-0.5 rounded`}>{job.startDate} – {job.isCurrent ? 'Present' : job.endDate}</span>
+                        </div>
+                        <p className={`${fs.body} font-semibold mb-1`} style={{ color: accent }}>{job.company}</p>
+                        {job.bullets && job.bullets.filter(b => b.trim()).length > 0 && (
+                          <ul className={`list-disc list-outside ml-4 space-y-1 ${fs.body} text-gray-800`}>
+                            {job.bullets.filter(b => b.trim()).map((b, i) => <li key={i}>{b}</li>)}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {education.length > 0 && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase tracking-wider mb-2 pb-0.5 border-b`} style={{ color: accent, borderColor: '#E5E7EB' }}>Education</h2>
+                  <div className="space-y-2.5">
+                    {education.map(edu => (
+                      <div key={edu.id}>
+                        <div className="flex justify-between items-baseline">
+                          <span className={`${fs.h3} text-gray-900 font-bold`}>{edu.degree}</span>
+                          <span className={`${fs.meta} text-gray-600`}>{edu.graduationYear}</span>
+                        </div>
+                        <p className={`${fs.body} font-semibold`} style={{ color: accent }}>{edu.school}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+              {skills.length > 0 && (
+                <section>
+                  <h2 className={`${fs.h2} uppercase tracking-wider mb-2 pb-0.5 border-b`} style={{ color: accent, borderColor: '#E5E7EB' }}>Skills & Competencies</h2>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skills.map((skill, i) => (
+                      <span key={i} className={`${fs.meta} px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200 text-gray-800 font-medium`}>{skill}</span>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+          </div>
+        );
+      }
+
+      // 3. Executive / Minimal / Corporate
+      return (
+        <div className={`p-8 md:p-12 ${fontClass} text-gray-900 leading-normal`}>
+          <header className="p-4 rounded-xl mb-4 text-white" style={{ backgroundColor: accent }}>
+            <h1 className={`${fs.name} font-extrabold tracking-tight`}>{personalInfo.fullName || 'YOUR NAME'}</h1>
+            {personalInfo.professionalTitle && <p className={`${fs.title} opacity-90 mt-0.5`}>{personalInfo.professionalTitle}</p>}
+            <div className={`flex flex-wrap gap-x-3 gap-y-1 ${fs.meta} opacity-85 mt-2`}>
+              {personalInfo.city && personalInfo.state && <span>{personalInfo.city}, {personalInfo.state}</span>}
+              {personalInfo.email && <span>• {personalInfo.email}</span>}
+              {personalInfo.phone && <span>• {personalInfo.phone}</span>}
+            </div>
+          </header>
+
+          <div className="space-y-4">
+            {professionalSummary && (
+              <section>
+                <h2 className={`${fs.h2} uppercase border-b-2 pb-1 mb-1.5`} style={{ borderColor: accent }}>Executive Summary</h2>
+                <p className={`${fs.body} text-gray-800 leading-relaxed`}>{professionalSummary}</p>
+              </section>
+            )}
+            {workExperience.length > 0 && (
+              <section>
+                <h2 className={`${fs.h2} uppercase border-b-2 pb-1 mb-2`} style={{ borderColor: accent }}>Experience</h2>
+                <div className="space-y-3">
+                  {workExperience.map(job => (
+                    <div key={job.id}>
+                      <div className="flex justify-between items-baseline">
+                        <span className={`${fs.h3} text-gray-900 font-bold`}>{job.jobTitle}</span>
+                        <span className={`${fs.meta} text-gray-600`}>{job.startDate} – {job.isCurrent ? 'Present' : job.endDate}</span>
+                      </div>
+                      <p className={`${fs.body} font-bold mb-1`} style={{ color: accent }}>{job.company}</p>
+                      {job.bullets && (
+                        <ul className={`list-disc list-outside ml-4 space-y-1 ${fs.body} text-gray-800`}>
+                          {job.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    // --- MAIN APP COMPONENT ---
+    function App() {
+      const [resumeData, setResumeData] = useState(() => {
+        try {
+          const saved = localStorage.getItem('resume_cv_maker_data_v1');
+          if (saved) return JSON.parse(saved);
+        } catch(e){}
+        return defaultResumeData;
+      });
+
+      const [activeTab, setActiveTab] = useState('personal');
+      const [mobileView, setMobileView] = useState('editor'); // 'editor' or 'preview'
+      const [zoom, setZoom] = useState(100);
+      const [showAtsModal, setShowAtsModal] = useState(false);
+
+      // Auto-save to LocalStorage
+      useEffect(() => {
+        try {
+          localStorage.setItem('resume_cv_maker_data_v1', JSON.stringify(resumeData));
+        } catch(e){}
+      }, [resumeData]);
+
+      // Responsive Mobile Auto-Scale Preview Zoom
+      useEffect(() => {
+        const handleResize = () => {
+          if (window.innerWidth < 768) {
+            // Scale appropriately so full resume fits mobile width
+            const calculatedScale = Math.min(100, Math.floor((window.innerWidth - 32) / 8.16));
+            setZoom(calculatedScale);
+          } else {
+            setZoom(100);
+          }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+
+      const atsAudit = useMemo(() => evaluateAtsScore(resumeData), [resumeData]);
+
+      const handlePrint = () => {
+        window.print();
+      };
+
+      const handleExportJson = () => {
+        const str = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(resumeData, null, 2));
+        const a = document.createElement('a');
+        a.setAttribute('href', str);
+        a.setAttribute('download', `${(resumeData.personalInfo.fullName || 'Resume').replace(/\s+/g, '_')}.json`);
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col bg-slate-100 text-gray-900">
+          
+          {/* TOP NAVBAR (Mobile & Desktop Responsive) */}
+          <header className="no-print bg-white border-b border-gray-200 sticky top-0 z-30 shadow-2xs">
+            <div className="max-w-[1700px] mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-base sm:text-lg shadow-sm">
+                  CV
+                </div>
+                <div>
+                  <h1 className="font-bold text-gray-900 text-sm sm:text-base leading-tight">Resume & CV Maker</h1>
+                  <p className="text-[10px] sm:text-[11px] text-gray-500 font-medium">Free ATS Resume Builder</p>
+                </div>
+              </div>
+
+              {/* ACTION BUTTONS */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <button
+                  onClick={() => setShowAtsModal(true)}
+                  className="px-2.5 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-300 rounded-lg text-xs font-bold flex items-center gap-1.5 transition"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="hidden sm:inline">ATS Score:</span> {atsAudit.score}%
+                </button>
+
+                <button
+                  onClick={handleExportJson}
+                  className="hidden md:inline-flex px-3 py-1.5 bg-white text-gray-700 hover:bg-gray-50 border border-gray-300 rounded-lg text-xs font-semibold transition"
+                >
+                  Save JSON
+                </button>
+
+                <button
+                  onClick={handlePrint}
+                  className="px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow-sm flex items-center gap-1.5 transition"
+                >
+                  🖨️ <span className="hidden xs:inline">Download</span> PDF
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* TOP 468x60 BANNER AD */}
+          <TopBannerAd />
+
+          {/* MOBILE TAB BAR (Only visible on Mobile & Tablet < lg) */}
+          <div className="lg:hidden no-print bg-white border-b border-gray-200 p-2 flex justify-center sticky top-16 z-20 shadow-xs">
+            <div className="flex bg-gray-100 p-1 rounded-xl w-full max-w-sm">
+              <button
+                onClick={() => setMobileView('editor')}
+                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition ${mobileView === 'editor' ? 'bg-white text-blue-600 shadow-2xs' : 'text-gray-600'}`}
+              >
+                ✏️ Edit Resume
+              </button>
+              <button
+                onClick={() => setMobileView('preview')}
+                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition ${mobileView === 'preview' ? 'bg-white text-blue-600 shadow-2xs' : 'text-gray-600'}`}
+              >
+                👁️ Live Preview
+              </button>
+            </div>
+          </div>
+
+          {/* MAIN WORKSPACE: SIDE-BY-SIDE ON DESKTOP, SWITCHABLE ON MOBILE */}
+          <main className="flex-1 max-w-[1700px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-0 lg:divide-x lg:divide-gray-200 overflow-hidden">
+            
+            {/* LEFT COLUMN: FORM CONTROLS */}
+            <section className={`no-print lg:col-span-5 bg-white overflow-y-auto max-h-[calc(100vh-140px)] p-4 sm:p-6 space-y-6 ${mobileView === 'editor' ? 'block' : 'hidden lg:block'}`}>
+              
+              {/* Category Pills */}
+              <div className="flex flex-wrap gap-1.5 p-1 bg-slate-100 rounded-xl">
+                {[
+                  { id: 'personal', label: 'Contact' },
+                  { id: 'summary', label: 'Summary' },
+                  { id: 'experience', label: 'Experience' },
+                  { id: 'education', label: 'Education' },
+                  { id: 'skills', label: 'Skills' },
+                  { id: 'design', label: '🎨 Design' }
+                ].map(p => (
+                  <button
+                    key={p.id}
+                    onClick={() => setActiveTab(p.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${activeTab === p.id ? 'bg-white text-blue-600 shadow-xs' : 'text-gray-600 hover:text-gray-900'}`}
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* 1. Contact Form */}
+              {activeTab === 'personal' && (
+                <div className="space-y-4">
+                  <h3 className="text-sm font-bold text-gray-900 border-b pb-2">Personal & Contact Info</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Full Name</label>
+                      <input
+                        type="text"
+                        value={resumeData.personalInfo.fullName}
+                        onChange={(e) => setResumeData({...resumeData, personalInfo: {...resumeData.personalInfo, fullName: e.target.value}})}
+                        className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Target Professional Title</label>
+                      <input
+                        type="text"
+                        value={resumeData.personalInfo.professionalTitle}
+                        onChange={(e) => setResumeData({...resumeData, personalInfo: {...resumeData.personalInfo, professionalTitle: e.target.value}})}
+                        className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Email</label>
+                      <input
+                        type="email"
+                        value={resumeData.personalInfo.email}
+                        onChange={(e) => setResumeData({...resumeData, personalInfo: {...resumeData.personalInfo, email: e.target.value}})}
+                        className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">Phone</label>
+                      <input
+                        type="text"
+                        value={resumeData.personalInfo.phone}
+                        onChange={(e) => setResumeData({...resumeData, personalInfo: {...resumeData.personalInfo, phone: e.target.value}})}
+                        className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">City, State</label>
+                      <input
+                        type="text"
+                        value={`${resumeData.personalInfo.city}, ${resumeData.personalInfo.state}`}
+                        onChange={(e) => {
+                          const pts = e.target.value.split(',');
+                          setResumeData({
+                            ...resumeData,
+                            personalInfo: {
+                              ...resumeData.personalInfo,
+                              city: pts[0]?.trim() || '',
+                              state: pts[1]?.trim() || ''
+                            }
+                          });
+                        }}
+                        className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-600 mb-1">LinkedIn URL</label>
+                      <input
+                        type="text"
+                        value={resumeData.personalInfo.linkedIn}
+                        onChange={(e) => setResumeData({...resumeData, personalInfo: {...resumeData.personalInfo, linkedIn: e.target.value}})}
+                        className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* 2. Summary Form */}
+              {activeTab === 'summary' && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-bold text-gray-900 border-b pb-2">Professional Summary</h3>
+                  <textarea
+                    rows="6"
+                    value={resumeData.professionalSummary}
+                    onChange={(e) => setResumeData({...resumeData, professionalSummary: e.target.value})}
+                    className="w-full p-3 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none leading-relaxed"
+                  />
+                </div>
+              )}
+
+              {/* 3. Experience Form */}
+              {activeTab === 'experience' && (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b pb-2">
+                    <h3 className="text-sm font-bold text-gray-900">Work Experience</h3>
+                    <button
+                      onClick={() => {
+                        const newExp = {
+                          id: 'exp-' + Date.now(),
+                          jobTitle: 'Job Title',
+                          company: 'Company',
+                          startDate: '2022',
+                          endDate: 'Present',
+                          isCurrent: true,
+                          bullets: ['Delivered quantifiable business impact.']
+                        };
+                        setResumeData({...resumeData, workExperience: [newExp, ...resumeData.workExperience]});
+                      }}
+                      className="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-xs font-bold"
+                    >
+                      + Add Role
+                    </button>
+                  </div>
+
+                  {resumeData.workExperience.map((job, idx) => (
+                    <div key={job.id} className="p-3 bg-slate-50 border rounded-xl space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-xs font-bold text-gray-700">Role #{idx + 1}</span>
+                        <button
+                          onClick={() => setResumeData({...resumeData, workExperience: resumeData.workExperience.filter(j => j.id !== job.id)})}
+                          className="text-xs text-red-500 hover:text-red-700 font-semibold"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          type="text"
+                          value={job.jobTitle}
+                          onChange={(e) => {
+                            const updated = [...resumeData.workExperience];
+                            updated[idx].jobTitle = e.target.value;
+                            setResumeData({...resumeData, workExperience: updated});
+                          }}
+                          placeholder="Job Title"
+                          className="p-2 border rounded text-xs bg-white"
+                        />
+                        <input
+                          type="text"
+                          value={job.company}
+                          onChange={(e) => {
+                            const updated = [...resumeData.workExperience];
+                            updated[idx].company = e.target.value;
+                            setResumeData({...resumeData, workExperience: updated});
+                          }}
+                          placeholder="Company"
+                          className="p-2 border rounded text-xs bg-white"
+                        />
+                      </div>
+                      <div className="space-y-1 pt-1">
+                        <label className="text-[10px] font-bold text-gray-500 uppercase">Bullets</label>
+                        {job.bullets.map((b, bIdx) => (
+                          <div key={bIdx} className="flex gap-1.5">
+                            <input
+                              type="text"
+                              value={b}
+                              onChange={(e) => {
+                                const updated = [...resumeData.workExperience];
+                                updated[idx].bullets[bIdx] = e.target.value;
+                                setResumeData({...resumeData, workExperience: updated});
+                              }}
+                              className="flex-1 p-1.5 text-xs border rounded bg-white"
+                            />
+                            <button
+                              onClick={() => {
+                                const updated = [...resumeData.workExperience];
+                                updated[idx].bullets = updated[idx].bullets.filter((_, i) => i !== bIdx);
+                                setResumeData({...resumeData, workExperience: updated});
+                              }}
+                              className="text-gray-400 hover:text-red-500 px-1 text-xs"
+                            >
+                              ✕
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* 4. Skills Form */}
+              {activeTab === 'skills' && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-bold text-gray-900 border-b pb-2">Skills & Competencies</h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {resumeData.skills.map((skill, idx) => (
+                      <span key={idx} className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-100 border rounded-lg text-xs font-semibold text-gray-800">
+                        {skill}
+                        <button
+                          onClick={() => setResumeData({...resumeData, skills: resumeData.skills.filter((_, i) => i !== idx)})}
+                          className="text-gray-400 hover:text-red-500 font-bold ml-1"
+                        >
+                          ✕
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Type skill & press Enter..."
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && e.target.value.trim()) {
+                        e.preventDefault();
+                        setResumeData({...resumeData, skills: [...resumeData.skills, e.target.value.trim()]});
+                        e.target.value = '';
+                      }
+                    }}
+                    className="w-full p-2.5 text-xs border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
+                </div>
+              )}
+
+              {/* 5. Design & Customization */}
+              {activeTab === 'design' && (
+                <div className="space-y-4">
+                  <h3 className="text-sm font-bold text-gray-900 border-b pb-2">Templates & Formatting</h3>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-700 uppercase">Template</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        { id: 'ats-classic', name: 'ATS Classic' },
+                        { id: 'modern', name: 'Modern Pro' },
+                        { id: 'executive', name: 'Executive' }
+                      ].map(t => (
+                        <button
+                          key={t.id}
+                          onClick={() => setResumeData({...resumeData, settings: {...resumeData.settings, template: t.id}})}
+                          className={`p-2.5 rounded-xl border text-left text-xs font-bold transition ${resumeData.settings.template === t.id ? 'border-blue-600 bg-blue-50 text-blue-900' : 'border-gray-200'}`}
+                        >
+                          {t.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-700 uppercase">Accent Color</label>
+                    <div className="flex items-center gap-2">
+                      {['#1E3A8A', '#0F766E', '#4338CA', '#B45309', '#BE123C', '#111827'].map(c => (
+                        <button
+                          key={c}
+                          onClick={() => setResumeData({...resumeData, settings: {...resumeData.settings, accentColor: c}})}
+                          className={`w-7 h-7 rounded-full border transition ${resumeData.settings.accentColor === c ? 'ring-2 ring-blue-600 ring-offset-2' : ''}`}
+                          style={{ backgroundColor: c }}
+                        />
+                      ))}
+                      <input
+                        type="color"
+                        value={resumeData.settings.accentColor}
+                        onChange={(e) => setResumeData({...resumeData, settings: {...resumeData.settings, accentColor: e.target.value}})}
+                        className="w-7 h-7 rounded-full cursor-pointer p-0 border-0"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* SIDEBAR ADS */}
+              <SidebarSquareAd />
+              <NativeContainerAd />
+
+            </section>
+
+            {/* RIGHT COLUMN: LIVE RESUME CANVAS */}
+            <section className={`lg:col-span-7 flex flex-col items-center bg-slate-200/70 overflow-y-auto max-h-[calc(100vh-140px)] p-2 sm:p-6 ${mobileView === 'preview' ? 'block' : 'hidden lg:block'}`}>
+              
+              {/* Zoom Controls */}
+              <div className="w-full max-w-[8.5in] flex justify-between items-center mb-3 no-print">
+                <span className="text-xs font-bold text-gray-600 uppercase">Live Canvas</span>
+                <div className="flex items-center gap-1.5 bg-white px-2 py-1 rounded-lg border border-gray-300 shadow-2xs">
+                  <button onClick={() => setZoom(Math.max(40, zoom - 10))} className="text-gray-600 font-bold px-1.5 text-xs">-</button>
+                  <span className="text-xs font-semibold text-gray-700 w-10 text-center">{zoom}%</span>
+                  <button onClick={() => setZoom(Math.min(140, zoom + 10))} className="text-gray-600 font-bold px-1.5 text-xs">+</button>
+                </div>
+              </div>
+
+              {/* Canvas Area */}
+              <div className="mobile-sheet-wrapper w-full flex justify-center">
+                <div
+                  className={`resume-sheet ${resumeData.settings.paperSize === 'a4' ? 'format-a4' : ''}`}
+                  style={{
+                    transform: `scale(${zoom / 100})`,
+                    transformOrigin: 'top center'
+                  }}
+                >
+                  <TemplateRenderer data={resumeData} settings={resumeData.settings} />
+                </div>
+              </div>
+            </section>
+
+          </main>
+
+          {/* ATS MODAL */}
+          {showAtsModal && (
+            <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 no-print">
+              <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+                <div className="flex justify-between items-center border-b pb-2">
+                  <h3 className="font-bold text-gray-900">ATS Readiness Report</h3>
+                  <button onClick={() => setShowAtsModal(false)} className="text-gray-400 hover:text-gray-700 font-bold">✕</button>
+                </div>
+                <div className="text-center py-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                  <div className="text-4xl font-black text-emerald-600">{atsAudit.score}%</div>
+                  <p className="text-xs font-semibold text-emerald-800 mt-1">High Machine Parseability</p>
+                </div>
+                <div className="space-y-1.5 text-xs text-gray-700 max-h-48 overflow-y-auto">
+                  {atsAudit.passed.map((p, i) => (
+                    <div key={i} className="text-emerald-700 flex items-center gap-1.5">✓ {p}</div>
+                  ))}
+                  {atsAudit.suggestions.map((s, i) => (
+                    <div key={i} className="text-amber-700 flex items-center gap-1.5">• {s}</div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => setShowAtsModal(false)}
+                  className="w-full py-2 bg-slate-900 text-white rounded-xl font-bold text-xs"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
+
+        </div>
+      );
+    }
+
+    // Mount Standalone Application
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
