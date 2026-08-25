@@ -1,0 +1,2772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Palette Generator – Free Online Palette & Color Tool</title>
+  <meta name="description" content="Generate beautiful color palettes, check WCAG contrast, extract colors from images, and export in CSS, HEX, RGB. 100% free online color tool." />
+  <meta name="keywords" content="color palette generator, color scheme generator, palette maker, color harmonies, WCAG contrast checker, color picker, extract colors from image, CSS gradient generator" />
+  <meta name="author" content="Color Palette Generator" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ais-dev-ciaegtl664s6gp2zyxwdp6-27208393960.asia-east1.run.app" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Color Palette Generator – Create, Analyze & Export Beautiful Palettes" />
+  <meta property="og:description" content="Fast, modern color palette generator with harmony rules, contrast accessibility checker, image color extractor, and multi-format export." />
+  <meta property="og:url" content="https://ais-dev-ciaegtl664s6gp2zyxwdp6-27208393960.asia-east1.run.app" />
+  <meta property="og:site_name" content="Color Palette Generator" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Color Palette Generator – Free Online Color Tool" />
+  <meta name="twitter:description" content="Generate palettes, check WCAG 2.1 contrast, extract image colors, and export tokens instantly." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='13.5' cy='6.5' r='.5' fill='%232563EB'/><circle cx='17.5' cy='10.5' r='.5' fill='%232563EB'/><circle cx='8.5' cy='7.5' r='.5' fill='%232563EB'/><circle cx='6.5' cy='12.5' r='.5' fill='%232563EB'/><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z'/></svg>" />
+
+  <!-- ==================== AD NETWORK SCRIPT 1 (Popunder / Direct Network) ==================== -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+  <!-- JSON-LD Structured Data: WebApplication and FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://ais-dev-ciaegtl664s6gp2zyxwdp6-27208393960.asia-east1.run.app/#webapp",
+        "name": "Color Palette Generator",
+        "description": "Professional color palette generator and color design toolkit for designers and developers.",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All modern browsers",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Spacebar instant palette generator with locking columns",
+          "15 Color harmony generation modes",
+          "Bidirectional HEX, RGB, HSL, HSV, CMYK conversions",
+          "10-level Shades, Tints, and Tones scales",
+          "Client-side Image Color Picker & Palette Extractor with Loupe",
+          "Multi-stop CSS Linear, Radial, and Conic Gradient Studio",
+          "WCAG 2.1 Contrast Ratio Checker with AA/AAA compliance test",
+          "Protanopia, Deuteranopia, Tritanopia, and Achromatopsia Simulator",
+          "Design System and live UI preview dashboard",
+          "Export tokens to CSS, Tailwind CSS, SCSS, JSON, CSV, SVG, and high-res PNG",
+          "Local storage palette library and QR code sharing"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ais-dev-ciaegtl664s6gp2zyxwdp6-27208393960.asia-east1.run.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the Spacebar color palette generation work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pressing the Spacebar generates random or harmony-based colors for all unlocked columns. Locked columns remain fixed while unlocked ones refresh instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are WCAG 2.1 contrast ratios calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ratios are calculated using W3C relative luminance formulas. A contrast ratio of 4.5:1 passes WCAG AA for normal body text, while 7:1 achieves WCAG AAA."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my uploaded image sent to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All image processing, pixel sampling, and palette extraction occurs 100% locally in your browser using HTML5 Canvas and median-cut quantization."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- React 18, ReactDOM, and Babel Standalone -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Canvas Confetti CDN for celebratory actions -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    input[type="color"]::-webkit-color-swatch {
+      border: none;
+      border-radius: 6px;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900 flex flex-col selection:bg-blue-600 selection:text-white font-sans antialiased">
+  <div id="root"></div>
+
+  <!-- APPLICATION CODE SCRIPT -->
+  <script type="text/babel">
+    const { useState, useEffect, useCallback, useRef, useMemo } = React;
+
+    // ==========================================
+    // LUCIDE ICONS (Embedded Inline Component)
+    // ==========================================
+    const Icon = ({ name, size = 18, className = "" }) => {
+      const icons = {
+        sparkles: <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>,
+        lock: <><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>,
+        unlock: <><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></>,
+        copy: <><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></>,
+        check: <polyline points="20 6 9 17 4 12"/>,
+        trash: <><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></>,
+        share: <><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></>,
+        download: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></>,
+        eye: <><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></>,
+        pipette: <><path d="m2 22 1-1h3l9-9"/><path d="M15 6 9 12"/><path d="m18 3 3 3-3 3-3-3 3-3z"/></>,
+        image: <><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></>,
+        palette: <><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"/></>,
+        sun: <><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></>,
+        bookmark: <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>,
+        sliders: <><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="1" x2="7" y1="14" y2="14"/><line x1="9" x2="15" y1="8" y2="8"/><line x1="17" x2="23" y1="16" y2="16"/></>,
+        plus: <><path d="M5 12h14"/><path d="M12 5v14"/></>,
+        minus: <path d="M5 12h14"/>,
+        refresh: <><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21h5v-5"/></>,
+        qr: <><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></>,
+        zap: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>,
+        info: <><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></>,
+        layers: <><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></>,
+        upload: <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></>,
+        link: <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></>,
+        shield: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
+        circle: <circle cx="12" cy="12" r="10"/>,
+        chevronDown: <polyline points="6 9 12 15 18 9"/>,
+        code: <><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>,
+        move: <><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="22"/></>
+      };
+
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={className}
+        >
+          {icons[name] || icons.palette}
+        </svg>
+      );
+    };
+
+    // ==========================================
+    // AD SLOT COMPONENT (ALL 3 ADS EXACT PRESERVATION)
+    // ==========================================
+    const AdSlot = ({ type, className = "" }) => {
+      const containerRef = useRef(null);
+
+      useEffect(() => {
+        if (!containerRef.current) return;
+        const container = containerRef.current;
+        container.innerHTML = "";
+
+        const iframe = document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.overflow = "hidden";
+        iframe.scrolling = "no";
+
+        if (type === "banner468x60") {
+          iframe.width = "468";
+          iframe.height = "60";
+          iframe.style.maxWidth = "100%";
+          iframe.srcdoc = `
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta charset="utf-8" />
+                <style>
+                  body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
+                </style>
+              </head>
+              <body>
+                <script>
+                  atOptions = {
+                    'key' : '294198e908506e5d909d0b383f167eaa',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                  };
+                <\/script>
+                <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"><\/script>
+              </body>
+            </html>
+          `;
+        } else if (type === "banner300x250") {
+          iframe.width = "300";
+          iframe.height = "250";
+          iframe.style.maxWidth = "100%";
+          iframe.srcdoc = `
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta charset="utf-8" />
+                <style>
+                  body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
+                </style>
+              </head>
+              <body>
+                <script>
+                  atOptions = {
+                    'key' : '224e7394c28834c8ac1ce24682c420e3',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                <\/script>
+                <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"><\/script>
+              </body>
+            </html>
+          `;
+        } else if (type === "containerNative") {
+          iframe.width = "100%";
+          iframe.height = "140";
+          iframe.style.maxWidth = "728px";
+          iframe.srcdoc = `
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta charset="utf-8" />
+                <style>
+                  body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
+                  #container-269e962c1215493328aeb78f4303284c { width: 100%; text-align: center; }
+                </style>
+              </head>
+              <body>
+                <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"><\/script>
+                <div id="container-269e962c1215493328aeb78f4303284c"></div>
+              </body>
+            </html>
+          `;
+        }
+
+        container.appendChild(iframe);
+      }, [type]);
+
+      return (
+        <div className={`w-full flex flex-col items-center justify-center my-6 px-4 ${className}`}>
+          <span className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase mb-1.5 select-none">
+            Advertisement
+          </span>
+          <div
+            ref={containerRef}
+            className="w-full flex justify-center items-center overflow-hidden min-h-[60px]"
+          />
+        </div>
+      );
+    };
+
+    // ==========================================
+    // COLOR CALCULATIONS & MATHEMATICAL ENGINE
+    // ==========================================
+    const COLOR_NAMES_DICT = [
+      { name: 'Pure Black', hex: '#000000' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+      { name: 'Slate Gray', hex: '#708090' },
+      { name: 'Charcoal', hex: '#36454F' },
+      { name: 'Gunmetal', hex: '#2A3439' },
+      { name: 'Silver', hex: '#C0C0C0' },
+      { name: 'Gainsboro', hex: '#DCDCDC' },
+      { name: 'Light Gray', hex: '#D3D3D3' },
+      { name: 'Crimson Red', hex: '#DC143C' },
+      { name: 'Fire Engine Red', hex: '#CE2029' },
+      { name: 'Scarlet', hex: '#FF2400' },
+      { name: 'Coral Pink', hex: '#F88379' },
+      { name: 'Rose', hex: '#FF007F' },
+      { name: 'Ruby', hex: '#E0115F' },
+      { name: 'Electric Indigo', hex: '#6F00FF' },
+      { name: 'Royal Blue', hex: '#4169E1' },
+      { name: 'Cobalt Blue', hex: '#0047AB' },
+      { name: 'Sapphire', hex: '#0F52BA' },
+      { name: 'Sky Blue', hex: '#87CEEB' },
+      { name: 'Deep Cyan', hex: '#008B8B' },
+      { name: 'Teal', hex: '#008080' },
+      { name: 'Emerald Green', hex: '#50C878' },
+      { name: 'Forest Green', hex: '#228B22' },
+      { name: 'Lime Green', hex: '#32CD32' },
+      { name: 'Mint Green', hex: '#98FF98' },
+      { name: 'Goldenrod', hex: '#DAA520' },
+      { name: 'Amber Gold', hex: '#FFBF00' },
+      { name: 'Tangerine', hex: '#F28500' },
+      { name: 'Sunset Orange', hex: '#FD5E53' },
+      { name: 'Amethyst Violet', hex: '#9966CC' },
+      { name: 'Deep Purple', hex: '#800080' },
+      { name: 'Fuchsia', hex: '#FF00FF' },
+      { name: 'Orchid', hex: '#DA70D6' },
+      { name: 'Lavender', hex: '#E6E6FA' },
+      { name: 'Warm Terracotta', hex: '#E2725B' },
+      { name: 'Desert Sand', hex: '#EDC9AF' },
+      { name: 'Coffee Brown', hex: '#4A2C2A' },
+      { name: 'Chestnut', hex: '#954535' },
+      { name: 'Chocolate', hex: '#7B3F00' },
+      { name: 'Midnight Navy', hex: '#000080' },
+      { name: 'Pacific Blue', hex: '#1CA9C9' },
+      { name: 'Aquamarine', hex: '#7FFFD4' },
+      { name: 'Olive Green', hex: '#808000' },
+      { name: 'Sage Green', hex: '#9DC183' },
+      { name: 'Celadon', hex: '#ACE1AF' },
+      { name: 'Mustard', hex: '#FFDB58' },
+      { name: 'Canary Yellow', hex: '#FFEF00' },
+      { name: 'Peach', hex: '#FFE5B4' },
+      { name: 'Salmon', hex: '#FA8072' },
+      { name: 'Wine Plum', hex: '#722F37' },
+      { name: 'Eggplant', hex: '#614051' },
+      { name: 'Turquoise', hex: '#40E0D0' },
+      { name: 'Cerulean', hex: '#007BA7' },
+      { name: 'Denim Blue', hex: '#1560BD' },
+      { name: 'Cobalt Violet', hex: '#8C00FF' },
+      { name: 'Periwinkle', hex: '#CCCCFF' },
+      { name: 'Khaki', hex: '#C3B091' },
+      { name: 'Taupe', hex: '#483C32' },
+      { name: 'Beige', hex: '#F5F5DC' },
+      { name: 'Ivory Cream', hex: '#FFFFF0' }
+    ];function hexToRgb(hex) {
+      const clean = hex.replace('#', '').trim();
+      let fullHex = clean;
+      if (clean.length === 3) {
+        fullHex = clean.split('').map((c) => c + c).join('');
+      }
+      const num = parseInt(fullHex, 16);
+      if (isNaN(num)) return [0, 0, 0];
+      return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
+    }
+
+    function rgbToHex(r, g, b) {
+      const clamp = (v) => Math.max(0, Math.min(255, Math.round(v)));
+      const toHex = (v) => clamp(v).toString(16).padStart(2, '0').toUpperCase();
+      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255;
+      g /= 255;
+      b /= 255;
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      let h = 0;
+      let s = 0;
+      const l = (max + min) / 2;
+
+      if (max !== min) {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+      return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
+    }
+
+    function hslToRgb(h, s, l) {
+      h = ((h % 360) + 360) % 360 / 360;
+      s = Math.max(0, Math.min(100, s)) / 100;
+      l = Math.max(0, Math.min(100, l)) / 100;
+
+      if (s === 0) {
+        const val = Math.round(l * 255);
+        return [val, val, val];
+      }
+
+      const hue2rgb = (p, q, t) => {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+        return p;
+      };
+
+      const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      const p = 2 * l - q;
+
+      const r = hue2rgb(p, q, h + 1 / 3);
+      const g = hue2rgb(p, q, h);
+      const b = hue2rgb(p, q, h - 1 / 3);
+
+      return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+
+    function rgbToHsv(r, g, b) {
+      r /= 255;
+      g /= 255;
+      b /= 255;
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      const d = max - min;
+      let h = 0;
+      const s = max === 0 ? 0 : d / max;
+      const v = max;
+
+      if (max !== min) {
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+      return [Math.round(h * 360), Math.round(s * 100), Math.round(v * 100)];
+    }
+
+    function rgbToCmyk(r, g, b) {
+      r /= 255;
+      g /= 255;
+      b /= 255;
+      const k = 1 - Math.max(r, g, b);
+      if (k === 1) return [0, 0, 0, 100];
+      const c = (1 - r - k) / (1 - k);
+      const m = (1 - g - k) / (1 - k);
+      const y = (1 - b - k) / (1 - k);
+      return [Math.round(c * 100), Math.round(m * 100), Math.round(y * 100), Math.round(k * 100)];
+    }
+
+    function getColorName(hex) {
+      const [r, g, b] = hexToRgb(hex);
+      let minDistance = Infinity;
+      let closestName = 'Custom Shade';
+
+      for (const item of COLOR_NAMES_DICT) {
+        const [tr, tg, tb] = hexToRgb(item.hex);
+        const dist = Math.sqrt(
+          Math.pow(r - tr, 2) * 0.3 +
+          Math.pow(g - tg, 2) * 0.59 +
+          Math.pow(b - tb, 2) * 0.11
+        );
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestName = item.name;
+        }
+      }
+      return closestName;
+    }
+
+    function createColorItem(hex, locked = false, id) {
+      const cleanHex = hex.toUpperCase();
+      const rgb = hexToRgb(cleanHex);
+      const hsl = rgbToHsl(rgb[0], rgb[1], rgb[2]);
+      const hsv = rgbToHsv(rgb[0], rgb[1], rgb[2]);
+      const cmyk = rgbToCmyk(rgb[0], rgb[1], rgb[2]);
+      const name = getColorName(cleanHex);
+      return {
+        id: id || `col-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+        hex: cleanHex,
+        rgb,
+        hsl,
+        hsv,
+        cmyk,
+        name,
+        locked,
+      };
+    }
+
+    function getLuminance(hex) {
+      const [r, g, b] = hexToRgb(hex).map((v) => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    function getContrastRatio(fgHex, bgHex) {
+      const l1 = getLuminance(fgHex);
+      const l2 = getLuminance(bgHex);
+      const brightest = Math.max(l1, l2);
+      const darkest = Math.min(l1, l2);
+      return (brightest + 0.05) / (darkest + 0.05);
+    }
+
+    function getWcagEvaluation(ratio) {
+      return {
+        ratio: Number(ratio.toFixed(2)),
+        aaNormal: ratio >= 4.5,
+        aaLarge: ratio >= 3.0,
+        aaaNormal: ratio >= 7.0,
+        aaaLarge: ratio >= 4.5,
+        uiComponent: ratio >= 3.0,
+      };
+    }
+
+    function getRandomColor() {
+      const randH = Math.floor(Math.random() * 360);
+      const randS = 50 + Math.floor(Math.random() * 45);
+      const randL = 35 + Math.floor(Math.random() * 40);
+      const [r, g, b] = hslToRgb(randH, randS, randL);
+      return rgbToHex(r, g, b);
+    }
+
+    function generateInitialPalette(count = 5) {
+      const base = ['#2563EB', '#7C3AED', '#EC4899', '#F59E0B', '#10B981'];
+      return base.slice(0, count).map((hex, i) => createColorItem(hex, false, `init-${i}`));
+    }
+
+    function generatePaletteByMode(mode, count, currentPalette, baseColorHex) {
+      const lockedColors = currentPalette.filter((c) => c.locked);
+      const baseHex = lockedColors.length > 0 ? lockedColors[0].hex : (baseColorHex || getRandomColor());
+      const [baseR, baseG, baseB] = hexToRgb(baseHex);
+      const [baseH, baseS, baseL] = rgbToHsl(baseR, baseG, baseB);
+
+      const generatedHexes = [];
+
+      for (let i = 0; i < count; i++) {
+        let h = baseH;
+        let s = baseS;
+        let l = baseL;
+
+        switch (mode) {
+          case 'monochromatic':
+            l = Math.max(12, Math.min(92, Math.round(15 + (i * 75) / (count - 1 || 1))));
+            s = Math.max(20, Math.min(95, baseS + (i % 2 === 0 ? 5 : -5)));
+            break;
+          case 'analogous':
+            h = (baseH + (i - Math.floor(count / 2)) * 30 + 360) % 360;
+            l = Math.max(25, Math.min(85, baseL + (i % 2 === 0 ? 8 : -8)));
+            break;
+          case 'complementary':
+            h = i % 2 === 0 ? baseH : (baseH + 180) % 360;
+            l = Math.max(20, Math.min(85, 30 + (i * 50) / (count - 1 || 1)));
+            break;
+          case 'split-complementary':
+            if (i === 0) h = baseH;
+            else if (i % 2 === 1) h = (baseH + 150) % 360;
+            else h = (baseH + 210) % 360;
+            l = Math.max(25, Math.min(85, 30 + (i * 50) / (count - 1 || 1)));
+            break;
+          case 'triadic':
+            h = (baseH + (i % 3) * 120) % 360;
+            l = Math.max(30, Math.min(80, baseL + (i >= 3 ? 15 : 0)));
+            break;
+          case 'tetradic':
+            h = (baseH + (i % 4) * 90) % 360;
+            l = Math.max(30, Math.min(80, baseL + (i >= 4 ? 12 : 0)));
+            break;
+          case 'square':
+            h = (baseH + (i % 4) * 90) % 360;
+            s = 70;
+            l = 50;
+            break;
+          case 'warm':
+            h = (Math.floor(Math.random() * 60) + 340) % 360;
+            s = 65 + Math.floor(Math.random() * 30);
+            l = 40 + Math.floor(Math.random() * 40);
+            break;
+          case 'cool':
+            h = 160 + Math.floor(Math.random() * 110);
+            s = 55 + Math.floor(Math.random() * 35);
+            l = 35 + Math.floor(Math.random() * 45);
+            break;
+          case 'pastel':
+            h = (baseH + i * (360 / count)) % 360;
+            s = 50 + Math.floor(Math.random() * 25);
+            l = 78 + Math.floor(Math.random() * 12);
+            break;
+          case 'earthy':
+            h = 20 + Math.floor(Math.random() * 90);
+            s = 30 + Math.floor(Math.random() * 35);
+            l = 25 + Math.floor(Math.random() * 40);
+            break;
+          case 'vibrant':
+            h = (baseH + i * (360 / count)) % 360;
+            s = 85 + Math.floor(Math.random() * 15);
+            l = 48 + Math.floor(Math.random() * 15);
+            break;
+          case 'muted':
+            h = (baseH + i * 45) % 360;
+            s = 20 + Math.floor(Math.random() * 25);
+            l = 35 + Math.floor(Math.random() * 40);
+            break;
+          case 'professional':
+            if (i === 0) { h = 220; s = 85; l = 45; }
+            else if (i === 1) { h = 215; s = 25; l = 20; }
+            else if (i === 2) { h = 210; s = 15; l = 95; }
+            else if (i === 3) { h = 160; s = 70; l = 40; }
+            else { h = 35; s = 90; l = 55; }
+            break;
+          case 'minimal':
+            if (i === 0) { h = 0; s = 0; l = 10; }
+            else if (i === 1) { h = 0; s = 0; l = 95; }
+            else if (i === 2) { h = 0; s = 0; l = 60; }
+            else if (i === 3) { h = baseH; s = 80; l = 50; }
+            else { h = (baseH + 180) % 360; s = 20; l = 85; }
+            break;
+          case 'random':
+          default:
+            const randH = Math.floor(Math.random() * 360);
+            const randS = 45 + Math.floor(Math.random() * 50);
+            const randL = 30 + Math.floor(Math.random() * 45);
+            h = randH; s = randS; l = randL;
+            break;
+        }
+
+        const [r, g, b] = hslToRgb(h, s, l);
+        generatedHexes.push(rgbToHex(r, g, b));
+      }
+
+      return generatedHexes.map((hex, index) => {
+        if (currentPalette[index] && currentPalette[index].locked) {
+          return currentPalette[index];
+        }
+        return createColorItem(hex, false, currentPalette[index]?.id);
+      });
+    }
+
+    function generateShadesTintsTones(hex) {
+      const [r, g, b] = hexToRgb(hex);
+      const shades = [];
+      const tints = [];
+      const tones = [];
+
+      for (let i = 1; i <= 10; i++) {
+        const factor = i / 10;
+        // Shade: mix with black
+        const sR = Math.round(r * (1 - factor));
+        const sG = Math.round(g * (1 - factor));
+        const sB = Math.round(b * (1 - factor));
+        shades.push(rgbToHex(sR, sG, sB));
+
+        // Tint: mix with white
+        const tR = Math.round(r + (255 - r) * factor);
+        const tG = Math.round(g + (255 - g) * factor);
+        const tB = Math.round(b + (255 - b) * factor);
+        tints.push(rgbToHex(tR, tG, tB));
+
+        // Tone: mix with gray (128)
+        const toR = Math.round(r + (128 - r) * factor);
+        const toG = Math.round(g + (128 - g) * factor);
+        const toB = Math.round(b + (128 - b) * factor);
+        tones.push(rgbToHex(toR, toG, toB));
+      }
+
+      return { shades, tints, tones };
+    }
+
+    function simulateColorBlindness(hex, type) {
+      if (type === 'normal') return hex;
+      const [r, g, b] = hexToRgb(hex);
+
+      // Linearize
+      const gamma = 2.2;
+      let lr = Math.pow(r / 255, gamma);
+      let lg = Math.pow(g / 255, gamma);
+      let lb = Math.pow(b / 255, gamma);
+
+      let nr = lr, ng = lg, nb = lb;
+
+      if (type === 'protanopia') {
+        nr = 0.56667 * lr + 0.43333 * lg + 0.0 * lb;
+        ng = 0.55833 * lr + 0.44167 * lg + 0.0 * lb;
+        nb = 0.0 * lr + 0.24167 * lg + 0.75833 * lb;
+      } else if (type === 'deuteranopia') {
+        nr = 0.625 * lr + 0.375 * lg + 0.0 * lb;
+        ng = 0.70 * lr + 0.30 * lg + 0.0 * lb;
+        nb = 0.0 * lr + 0.30 * lg + 0.70 * lb;
+      } else if (type === 'tritanopia') {
+        nr = 0.95 * lr + 0.05 * lg + 0.0 * lb;
+        ng = 0.0 * lr + 0.43333 * lg + 0.56667 * lb;
+        nb = 0.0 * lr + 0.475 * lg + 0.525 * lb;
+      } else if (type === 'achromatopsia') {
+        const mono = 0.299 * lr + 0.587 * lg + 0.114 * lb;
+        nr = mono; ng = mono; nb = mono;
+      }
+
+      const invGamma = 1 / gamma;
+      const finalR = Math.round(Math.min(255, Math.max(0, Math.pow(nr, invGamma) * 255)));
+      const finalG = Math.round(Math.min(255, Math.max(0, Math.pow(ng, invGamma) * 255)));
+      const finalB = Math.round(Math.min(255, Math.max(0, Math.pow(nb, invGamma) * 255)));
+
+      return rgbToHex(finalR, finalG, finalB);
+    }
+
+    function encodePaletteToHash(colors) {
+      const cleanHexes = colors.map((c) => c.replace('#', '').toUpperCase()).join(',');
+      return `palette=${cleanHexes}`;
+    }
+
+    function decodeHashToPalette(hashString) {
+      try {
+        const raw = (hashString || window.location.hash).replace(/^#/, '');
+        if (!raw) return [];
+        const params = new URLSearchParams(raw);
+        const p = params.get('palette');
+        if (!p) return [];
+        return p.split(',').map((h) => `#${h.trim().toUpperCase()}`).filter((h) => /^#[0-9A-F]{6}$/i.test(h));
+      } catch {
+        return [];
+      }
+    }
+    // ==========================================
+    // IMAGE COLOR QUANTIZATION (MEDIAN CUT ALGORITHM)
+    // ==========================================
+    function extractPaletteFromImageData(imageData, maxColors = 6) {
+      const pixels = [];
+      const data = imageData.data;
+      const step = Math.max(1, Math.floor(data.length / (4 * 20000)));
+
+      for (let i = 0; i < data.length; i += 4 * step) {
+        const a = data[i + 3];
+        if (a > 128) {
+          pixels.push([data[i], data[i + 1], data[i + 2]]);
+        }
+      }
+
+      if (pixels.length === 0) {
+        return ['#2563EB', '#7C3AED', '#EC4899', '#F59E0B', '#10B981'];
+      }
+
+      function quantize(pixelList, depth) {
+        if (depth === 0 || pixelList.length === 0) {
+          const sum = pixelList.reduce(
+            (acc, p) => [acc[0] + p[0], acc[1] + p[1], acc[2] + p[2]],
+            [0, 0, 0]
+          );
+          const count = pixelList.length || 1;
+          return [rgbToHex(sum[0] / count, sum[1] / count, sum[2] / count)];
+        }
+
+        let minR = 255, maxR = 0;
+        let minG = 255, maxG = 0;
+        let minB = 255, maxB = 0;
+
+        for (const p of pixelList) {
+          if (p[0] < minR) minR = p[0]; if (p[0] > maxR) maxR = p[0];
+          if (p[1] < minG) minG = p[1]; if (p[1] > maxG) maxG = p[1];
+          if (p[2] < minB) minB = p[2]; if (p[2] > maxB) maxB = p[2];
+        }
+
+        const rangeR = maxR - minR;
+        const rangeG = maxG - minG;
+        const rangeB = maxB - minB;
+        const maxRange = Math.max(rangeR, rangeG, rangeB);
+
+        let channelIndex = 0;
+        if (maxRange === rangeG) channelIndex = 1;
+        else if (maxRange === rangeB) channelIndex = 2;
+
+        pixelList.sort((a, b) => a[channelIndex] - b[channelIndex]);
+        const mid = Math.floor(pixelList.length / 2);
+
+        return [
+          ...quantize(pixelList.slice(0, mid), depth - 1),
+          ...quantize(pixelList.slice(mid), depth - 1)
+        ];
+      }
+
+      const depth = Math.ceil(Math.log2(maxColors));
+      const extracted = quantize(pixels, depth);
+      const unique = Array.from(new Set(extracted));
+      return unique.slice(0, maxColors);
+    }
+
+    function generatePalettePng(colors, options = {}) {
+      const { paletteName = 'Color Palette', resolution = 'medium', includeNames = true } = options;
+      const width = resolution === 'small' ? 1000 : resolution === 'large' ? 2400 : 1600;
+      const height = Math.round(width * 0.5625);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return '';
+
+      // Background
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, width, height);
+
+      // Header Bar
+      const headerH = height * 0.18;
+      ctx.fillStyle = '#0F172A';
+      ctx.font = `bold ${Math.round(width * 0.026)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillText(paletteName, width * 0.05, headerH * 0.55);
+
+      ctx.fillStyle = '#64748B';
+      ctx.font = `${Math.round(width * 0.014)}px "Plus Jakarta Sans", sans-serif`;
+      ctx.fillText('Exported with Color Palette Generator', width * 0.05, headerH * 0.82);
+
+      // Swatches Area
+      const margin = width * 0.05;
+      const swY = headerH;
+      const swH = height * 0.72;
+      const swTotalW = width - margin * 2;
+      const colW = swTotalW / colors.length;
+
+      colors.forEach((hex, i) => {
+        const x = margin + i * colW;
+        ctx.fillStyle = hex;
+        ctx.fillRect(x, swY, colW, swH);
+
+        // Labels overlay
+        const isDark = getLuminance(hex) < 0.4;
+        ctx.fillStyle = isDark ? '#FFFFFF' : '#0F172A';
+
+        // Hex badge
+        const badgeY = swY + swH - height * 0.06;
+        ctx.font = `bold ${Math.round(width * 0.016)}px "JetBrains Mono", monospace`;
+        ctx.fillText(hex, x + colW * 0.08, badgeY);
+
+        if (includeNames) {
+          ctx.font = `${Math.round(width * 0.012)}px "Plus Jakarta Sans", sans-serif`;
+          ctx.fillText(getColorName(hex), x + colW * 0.08, badgeY - height * 0.035);
+        }
+      });
+
+      return canvas.toDataURL('image/png');
+    }
+
+    // QR Code Generator SVG
+    function generateQrCodeSvg(text) {
+      const size = 180;
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
+        <rect width="100%" height="100%" fill="#FFFFFF"/>
+        <rect x="15" y="15" width="45" height="45" fill="#0F172A" rx="4"/>
+        <rect x="25" y="25" width="25" height="25" fill="#FFFFFF" rx="2"/>
+        <rect x="30" y="30" width="15" height="15" fill="#0F172A" rx="1"/>
+        <rect x="120" y="15" width="45" height="45" fill="#0F172A" rx="4"/>
+        <rect x="130" y="25" width="25" height="25" fill="#FFFFFF" rx="2"/>
+        <rect x="135" y="30" width="15" height="15" fill="#0F172A" rx="1"/>
+        <rect x="15" y="120" width="45" height="45" fill="#0F172A" rx="4"/>
+        <rect x="25" y="130" width="25" height="25" fill="#FFFFFF" rx="2"/>
+        <rect x="30" y="135" width="15" height="15" fill="#0F172A" rx="1"/>
+        <rect x="75" y="25" width="10" height="20" fill="#0F172A"/>
+        <rect x="95" y="15" width="15" height="10" fill="#0F172A"/>
+        <rect x="75" y="55" width="20" height="15" fill="#0F172A"/>
+        <rect x="70" y="80" width="40" height="10" fill="#0F172A"/>
+        <rect x="120" y="75" width="15" height="25" fill="#0F172A"/>
+        <rect x="145" y="80" width="20" height="10" fill="#0F172A"/>
+        <rect x="75" y="105" width="15" height="20" fill="#0F172A"/>
+        <rect x="100" y="100" width="20" height="15" fill="#0F172A"/>
+        <rect x="130" y="115" width="15" height="15" fill="#0F172A"/>
+        <rect x="155" y="110" width="10" height="30" fill="#0F172A"/>
+        <rect x="75" y="140" width="25" height="15" fill="#0F172A"/>
+        <rect x="110" y="135" width="15" height="30" fill="#0F172A"/>
+        <rect x="135" y="145" width="25" height="20" fill="#0F172A"/>
+      </svg>`;
+    }
+
+    // ==========================================
+    // PRESET DESIGNER PALETTES
+    // ==========================================
+    const PRESET_PALETTES = [
+      { id: 'p1', name: 'Hyper Modern SaaS', category: 'Modern SaaS', colors: ['#0F172A', '#1E293B', '#2563EB', '#60A5FA', '#F8FAFC'] },
+      { id: 'p2', name: 'Cyberpunk Neon', category: 'Warm & Vibrant', colors: ['#0D0221', '#0F084B', '#26408B', '#A6CFD5', '#C2E7D9'] },
+      { id: 'p3', name: 'Nordic Forest', category: 'Nature & Earth', colors: ['#1C312E', '#2D5A27', '#4E7C59', '#A3C4BC', '#FBFBF2'] },
+      { id: 'p4', name: 'Sunset in Kyoto', category: 'Warm & Vibrant', colors: ['#2B2D42', '#8D99AE', '#EDF2F4', '#EF233C', '#D90429'] },
+      { id: 'p5', name: 'Warm Terracotta Sand', category: 'Nature & Earth', colors: ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51'] },
+      { id: 'p6', name: 'Electric Violet Glow', category: 'Modern SaaS', colors: ['#10002B', '#240046', '#3C096C', '#7B2CBF', '#9D4EDD'] },
+      { id: 'p7', name: 'California Matcha', category: 'Nature & Earth', colors: ['#386641', '#6A994E', '#A7C957', '#F2E8CF', '#BC4749'] },
+      { id: 'p8', name: 'Minimal Mono Slate', category: 'Cool & Minimal', colors: ['#0A0908', '#22333B', '#EAE0D5', '#C6AC8F', '#5E503F'] },
+      { id: 'p9', name: 'Luxury Champagne Noir', category: 'Luxury & Dark', colors: ['#141414', '#2E282A', '#7D6B58', '#D4AF37', '#F3E5AB'] },
+      { id: 'p10', name: 'Oceanic Depth', category: 'Cool & Minimal', colors: ['#03045E', '#023E8A', '#0077B6', '#0096C7', '#00B4D8'] },
+      { id: 'p11', name: 'Pastel Dreamscape', category: 'Warm & Vibrant', colors: ['#F72585', '#7209B7', '#3A0CA3', '#4361EE', '#4CC9F0'] },
+      { id: 'p12', name: 'Earthy Clay Botanics', category: 'Nature & Earth', colors: ['#3D405B', '#81B29A', '#E07A5F', '#F2CC8F', '#F4F1DE'] }
+    ];
+
+    // ==========================================
+    // NAVBAR COMPONENT
+    // ==========================================
+    const Navbar = ({ activeTab, setActiveTab, onGenerate, onOpenShare, onOpenExport, savedCount }) => {
+      const tabs = [
+        { id: 'generator', label: 'Generator', icon: 'palette' },
+        { id: 'picker', label: 'Color Picker', icon: 'pipette' },
+        { id: 'harmonies', label: 'Harmonies', icon: 'sun' },
+        { id: 'image', label: 'Image Colors', icon: 'image' },
+        { id: 'gradient', label: 'Gradient Studio', icon: 'layers' },
+        { id: 'contrast', label: 'Contrast (WCAG)', icon: 'shield' },
+        { id: 'blindness', label: 'Color Blindness', icon: 'eye' },
+        { id: 'preview', label: 'Design System', icon: 'sparkles' },
+        { id: 'saved', label: `Saved (${savedCount})`, icon: 'bookmark' },
+        { id: 'export', label: 'Export', icon: 'download' },
+      ];
+
+      return (
+        <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              {/* Logo */}
+              <div
+                className="flex items-center gap-3 cursor-pointer group"
+                onClick={() => setActiveTab('generator')}
+              >
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+                  <Icon name="palette" size={20} />
+                </div>
+                <div>
+                  <div className="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight flex items-center gap-1.5">
+                    <span>Color Palette Generator</span>
+                    <span className="text-xs">🇺🇸</span>
+                  </div>
+                  <div className="text-[11px] font-medium text-slate-500 -mt-0.5">
+                    Studio & Accessibility Suite
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  id="btn-nav-generate"
+                  onClick={onGenerate}
+                  className="hidden sm:flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-600/20 active:scale-95 transition-all"
+                  title="Generate Palette (Spacebar)"
+                >
+                  <Icon name="sparkles" size={14} />
+                  <span>Generate (Space)</span>
+                </button>
+
+                <button
+                  id="btn-nav-share"
+                  onClick={onOpenShare}
+                  className="p-2.5 sm:px-3.5 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  title="Share Palette"
+                >
+                  <Icon name="share" size={14} />
+                  <span className="hidden sm:inline">Share</span>
+                </button>
+
+                <button
+                  id="btn-nav-export"
+                  onClick={onOpenExport}
+                  className="p-2.5 sm:px-3.5 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  title="Export tokens and PNG"
+                >
+                  <Icon name="download" size={14} />
+                  <span className="hidden sm:inline">Export</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Horizontal Tabs Scroll */}
+            <nav className="flex space-x-1 overflow-x-auto no-scrollbar py-2 border-t border-slate-100">
+              {tabs.map((tab) => {
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    id={`nav-tab-${tab.id}`}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                      isActive
+                        ? 'bg-blue-50 text-blue-700 shadow-xs border border-blue-200/60 font-bold'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    }`}
+                  >
+                    <Icon name={tab.icon} size={14} className={isActive ? 'text-blue-600' : 'text-slate-400'} />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        </header>
+      );
+    };
+
+    // ==========================================
+    // HERO SECTION COMPONENT
+    // ==========================================
+    const HeroSection = ({ onGenerate, setActiveTab }) => {
+      return (
+        <section className="bg-gradient-to-b from-slate-50 via-white to-white pt-8 pb-4 border-b border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-blue-700 text-xs font-bold tracking-wide shadow-2xs">
+              <Icon name="sparkles" size={13} />
+              <span>Smart Chromatic Harmony & WCAG 2.1 Engine</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight max-w-3xl mx-auto leading-tight">
+              Create Accessible, Beautiful <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-pink-500 bg-clip-text text-transparent">Color Palettes</span> in Seconds
+            </h1>
+
+            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Press the <kbd className="px-2 py-0.5 bg-slate-100 border border-slate-300 rounded font-mono text-xs text-slate-800 shadow-2xs">Spacebar</kbd> to explore millions of color combinations. Extract colors from photos, test WCAG contrast, check color-blindness, and export tokens instantly.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <button
+                onClick={onGenerate}
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-extrabold rounded-2xl shadow-lg shadow-blue-600/25 active:scale-95 transition-all flex items-center gap-2"
+              >
+                <Icon name="sparkles" size={16} />
+                <span>Generate Palette (Spacebar)</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('image')}
+                className="px-5 py-3 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-sm font-bold rounded-2xl shadow-2xs active:scale-95 transition-all flex items-center gap-2"
+              >
+                <Icon name="image" size={16} className="text-blue-600" />
+                <span>Extract from Image</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('contrast')}
+                className="px-5 py-3 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-sm font-bold rounded-2xl shadow-2xs active:scale-95 transition-all flex items-center gap-2"
+              >
+                <Icon name="shield" size={16} className="text-emerald-600" />
+                <span>WCAG Contrast Checker</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      );
+    };
+    // ==========================================
+    // PALETTE GENERATOR SECTION (CORE WORKSPACE)
+    // ==========================================
+    const PaletteGeneratorSection = ({
+      palette,
+      setPalette,
+      mode,
+      setMode,
+      colorCount,
+      setColorCount,
+      onGenerate,
+      onSavePalette,
+      onOpenShare,
+      onOpenExport,
+      onSelectActiveColor,
+    }) => {
+      const [copiedId, setCopiedId] = useState(null);
+      const [activeShadeModal, setActiveShadeModal] = useState(null);
+
+      const modes = [
+        { id: 'random', label: 'Random Exploration' },
+        { id: 'monochromatic', label: 'Monochromatic' },
+        { id: 'analogous', label: 'Analogous' },
+        { id: 'complementary', label: 'Complementary' },
+        { id: 'split-complementary', label: 'Split Complementary' },
+        { id: 'triadic', label: 'Triadic Harmony' },
+        { id: 'tetradic', label: 'Tetradic' },
+        { id: 'square', label: 'Square' },
+        { id: 'warm', label: 'Warm Tones' },
+        { id: 'cool', label: 'Cool Tones' },
+        { id: 'pastel', label: 'Pastel' },
+        { id: 'earthy', label: 'Earthy' },
+        { id: 'vibrant', label: 'Vibrant' },
+        { id: 'muted', label: 'Muted' },
+        { id: 'professional', label: 'Professional SaaS' },
+        { id: 'minimal', label: 'Minimal Monochrome' },
+      ];
+
+      const copyToClipboard = (text, id) => {
+        navigator.clipboard.writeText(text);
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 1800);
+      };
+
+      const toggleLock = (id) => {
+        setPalette((prev) =>
+          prev.map((c) => (c.id === id ? { ...c, locked: !c.locked } : c))
+        );
+      };
+
+      const updateColorHex = (id, newHex) => {
+        setPalette((prev) =>
+          prev.map((c) =>
+            c.id === id ? createColorItem(newHex, c.locked, c.id) : c
+          )
+        );
+      };
+
+      const removeColor = (id) => {
+        if (palette.length <= 2) return;
+        const filtered = palette.filter((c) => c.id !== id);
+        setPalette(filtered);
+        setColorCount(filtered.length);
+      };
+
+      const addColor = () => {
+        if (palette.length >= 10) return;
+        const newItem = createColorItem(getRandomColor(), false);
+        setPalette([...palette, newItem]);
+        setColorCount(palette.length + 1);
+      };
+
+      const moveColor = (fromIndex, toIndex) => {
+        if (toIndex < 0 || toIndex >= palette.length) return;
+        const copy = [...palette];
+        const [moved] = copy.splice(fromIndex, 1);
+        copy.splice(toIndex, 0, moved);
+        setPalette(copy);
+      };
+
+      return (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+          {/* Controls Header Toolbar */}
+          <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex flex-wrap items-center justify-between gap-4">
+            {/* Mode Selector */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                <Icon name="sliders" size={14} className="text-blue-600" />
+                <span>Harmony Mode:</span>
+              </label>
+              <select
+                id="palette-mode-select"
+                value={mode}
+                onChange={(e) => setMode(e.target.value)}
+                className="bg-slate-50 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-hidden cursor-pointer"
+              >
+                {modes.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Columns Count Stepper */}
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                Colors ({palette.length}):
+              </span>
+              <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                <button
+                  onClick={() => {
+                    if (palette.length > 2) {
+                      setColorCount(palette.length - 1);
+                      setPalette(palette.slice(0, palette.length - 1));
+                    }
+                  }}
+                  disabled={palette.length <= 2}
+                  className="w-7 h-7 rounded-lg bg-white disabled:opacity-40 text-slate-700 flex items-center justify-center shadow-2xs font-bold text-xs hover:bg-slate-50"
+                  title="Remove color column"
+                >
+                  <Icon name="minus" size={12} />
+                </button>
+                <span className="w-8 text-center text-xs font-extrabold text-slate-800 font-mono">
+                  {palette.length}
+                </span>
+                <button
+                  onClick={addColor}
+                  disabled={palette.length >= 10}
+                  className="w-7 h-7 rounded-lg bg-white disabled:opacity-40 text-slate-700 flex items-center justify-center shadow-2xs font-bold text-xs hover:bg-slate-50"
+                  title="Add color column"
+                >
+                  <Icon name="plus" size={12} />
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Action Toolbar */}
+            <div className="flex items-center gap-2">
+              <button
+                id="btn-save-palette-main"
+                onClick={onSavePalette}
+                className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors"
+                title="Save to local library"
+              >
+                <Icon name="bookmark" size={13} className="text-slate-600" />
+                <span>Save</span>
+              </button>
+
+              <button
+                id="btn-export-palette-main"
+                onClick={onOpenExport}
+                className="px-3.5 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors"
+              >
+                <Icon name="download" size={13} className="text-blue-600" />
+                <span>Export</span>
+              </button>
+            </div>
+          </div>
+
+          {/* PALETTE COLUMNS CONTAINER */}
+          <div className="bg-white rounded-3xl p-3 border border-slate-200 shadow-xl overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:flex gap-2.5 min-h-[440px]">
+              {palette.map((item, index) => {
+                const isDark = getLuminance(item.hex) < 0.45;
+                const textColor = isDark ? 'text-white' : 'text-slate-900';
+                const subTextColor = isDark ? 'text-white/80' : 'text-slate-600';
+                const pillBg = isDark ? 'bg-black/20' : 'bg-white/40';
+
+                return (
+                  <div
+                    key={item.id}
+                    style={{ backgroundColor: item.hex }}
+                    className="flex-1 rounded-2xl p-4 flex flex-col justify-between relative group transition-all duration-300 shadow-inner min-w-[130px]"
+                  >
+                    {/* Top Column Bar */}
+                    <div className="flex items-center justify-between gap-1">
+                      {/* Drag / Move buttons */}
+                      <div className="flex items-center gap-0.5 opacity-80 group-hover:opacity-100 transition-opacity">
+                        {index > 0 && (
+                          <button
+                            onClick={() => moveColor(index, index - 1)}
+                            className={`p-1 rounded-md ${pillBg} ${textColor} text-[10px] hover:scale-110 transition`}
+                            title="Move Left"
+                          >
+                            ◀
+                          </button>
+                        )}
+                        {index < palette.length - 1 && (
+                          <button
+                            onClick={() => moveColor(index, index + 1)}
+                            className={`p-1 rounded-md ${pillBg} ${textColor} text-[10px] hover:scale-110 transition`}
+                            title="Move Right"
+                          >
+                            ▶
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Lock & Remove Controls */}
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => toggleLock(item.id)}
+                          className={`p-2 rounded-xl backdrop-blur-md ${pillBg} ${textColor} hover:scale-110 active:scale-95 transition-all`}
+                          title={item.locked ? 'Unlock color' : 'Lock color'}
+                        >
+                          <Icon name={item.locked ? 'lock' : 'unlock'} size={14} />
+                        </button>
+
+                        {palette.length > 2 && (
+                          <button
+                            onClick={() => removeColor(item.id)}
+                            className={`p-2 rounded-xl backdrop-blur-md ${pillBg} ${textColor} hover:bg-red-500 hover:text-white hover:scale-110 active:scale-95 transition-all`}
+                            title="Remove this color"
+                          >
+                            ✕
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Center Column Info */}
+                    <div className="text-center my-auto space-y-2">
+                      <div className="relative inline-block">
+                        <button
+                          onClick={() => copyToClipboard(item.hex, item.id)}
+                          className={`font-mono text-xl sm:text-2xl font-extrabold tracking-wider px-3.5 py-1.5 rounded-2xl backdrop-blur-md ${pillBg} ${textColor} hover:scale-105 active:scale-95 transition-all shadow-sm flex items-center justify-center gap-1.5 mx-auto`}
+                        >
+                          <span>{item.hex}</span>
+                          {copiedId === item.id ? (
+                            <Icon name="check" size={14} className="text-emerald-400" />
+                          ) : (
+                            <Icon name="copy" size={13} className="opacity-60" />
+                          )}
+                        </button>
+                      </div>
+
+                      <div className={`text-xs font-bold ${textColor} tracking-tight line-clamp-1`}>
+                        {item.name}
+                      </div>
+
+                      <div className={`text-[11px] font-mono ${subTextColor}`}>
+                        rgb({item.rgb[0]}, {item.rgb[1]}, {item.rgb[2]})
+                      </div>
+                    </div>
+
+                    {/* Bottom Column Action Tray */}
+                    <div className="flex items-center justify-between gap-1 pt-2 border-t border-black/5">
+                      {/* Native Color Picker Trigger */}
+                      <label
+                        className={`p-1.5 rounded-xl ${pillBg} cursor-pointer hover:scale-110 transition`}
+                        title="Pick custom color"
+                      >
+                        <input
+                          type="color"
+                          value={item.hex}
+                          onChange={(e) => updateColorHex(item.id, e.target.value)}
+                          className="w-5 h-5 rounded-md cursor-pointer border-0 bg-transparent block"
+                        />
+                      </label>
+
+                      {/* Shades / Tints Drawer Button */}
+                      <button
+                        onClick={() => setActiveShadeModal(item.hex)}
+                        className={`px-2 py-1 rounded-xl text-[10px] font-bold backdrop-blur-md ${pillBg} ${textColor} hover:scale-105 transition`}
+                        title="View Shades & Tints"
+                      >
+                        Shades
+                      </button>
+
+                      {/* Set Active in Studio */}
+                      <button
+                        onClick={() => onSelectActiveColor(item.hex)}
+                        className={`px-2 py-1 rounded-xl text-[10px] font-bold backdrop-blur-md ${pillBg} ${textColor} hover:scale-105 transition`}
+                        title="Inspect in Color Studio"
+                      >
+                        Inspect
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Quick Preset Palettes Tray */}
+          <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs space-y-3">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                <Icon name="sparkles" size={15} className="text-blue-600" />
+                <span>Curated Designer Presets</span>
+              </h3>
+              <span className="text-xs text-slate-500">Click to instantly load</span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
+              {PRESET_PALETTES.map((preset) => (
+                <button
+                  key={preset.id}
+                  onClick={() => {
+                    const newItems = preset.colors.map((hex, i) =>
+                      createColorItem(hex, false, `preset-${i}-${Date.now()}`)
+                    );
+                    setPalette(newItems);
+                    setColorCount(newItems.length);
+                  }}
+                  className="p-2.5 rounded-2xl border border-slate-200 hover:border-blue-400 bg-slate-50 hover:bg-white text-left transition-all group shadow-2xs hover:shadow-md"
+                >
+                  <div className="flex h-6 rounded-lg overflow-hidden mb-2 shadow-2xs">
+                    {preset.colors.map((c, i) => (
+                      <div key={i} style={{ backgroundColor: c }} className="flex-1" />
+                    ))}
+                  </div>
+                  <div className="text-[11px] font-bold text-slate-800 line-clamp-1 group-hover:text-blue-600">
+                    {preset.name}
+                  </div>
+                  <div className="text-[9px] text-slate-400 font-medium">
+                    {preset.category}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Modal for 10-Step Shades, Tints, and Tones */}
+          {activeShadeModal && (
+            <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+              <div className="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl space-y-5 border border-slate-200 max-h-[90vh] overflow-y-auto">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div
+                      style={{ backgroundColor: activeShadeModal }}
+                      className="w-9 h-9 rounded-xl border border-slate-300 shadow-inner"
+                    />
+                    <div>
+                      <h3 className="font-extrabold text-base text-slate-900">
+                        Shades, Tints & Tones Scale
+                      </h3>
+                      <p className="text-xs font-mono text-slate-500">{activeShadeModal}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setActiveShadeModal(null)}
+                    className="p-2 rounded-xl text-slate-400 hover:text-slate-700 bg-slate-100"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                {(() => {
+                  const scales = generateShadesTintsTones(activeShadeModal);
+                  return (
+                    <div className="space-y-4">
+                      {/* Shades (Black Mix) */}
+                      <div>
+                        <div className="text-xs font-bold text-slate-700 mb-1.5">
+                          Pure Shades (Darkening Scale)
+                        </div>
+                        <div className="grid grid-cols-10 gap-1 rounded-xl overflow-hidden">
+                          {scales.shades.map((hex, i) => (
+                            <button
+                              key={i}
+                              style={{ backgroundColor: hex }}
+                              onClick={() => {
+                                copyToClipboard(hex, `shade-${i}`);
+                              }}
+                              className="h-12 rounded-md transition hover:scale-105 relative group flex items-end justify-center p-1 text-[8px] font-mono text-white"
+                              title={hex}
+                            >
+                              <span className="opacity-0 group-hover:opacity-100">{hex}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Tints (White Mix) */}
+                      <div>
+                        <div className="text-xs font-bold text-slate-700 mb-1.5">
+                          Pure Tints (Lightening Scale)
+                        </div>
+                        <div className="grid grid-cols-10 gap-1 rounded-xl overflow-hidden">
+                          {scales.tints.map((hex, i) => (
+                            <button
+                              key={i}
+                              style={{ backgroundColor: hex }}
+                              onClick={() => copyToClipboard(hex, `tint-${i}`)}
+                              className="h-12 rounded-md transition hover:scale-105 relative group flex items-end justify-center p-1 text-[8px] font-mono text-slate-800"
+                              title={hex}
+                            >
+                              <span className="opacity-0 group-hover:opacity-100">{hex}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Tones (Gray Mix) */}
+                      <div>
+                        <div className="text-xs font-bold text-slate-700 mb-1.5">
+                          Pure Tones (Saturation Desaturation)
+                        </div>
+                        <div className="grid grid-cols-10 gap-1 rounded-xl overflow-hidden">
+                          {scales.tones.map((hex, i) => (
+                            <button
+                              key={i}
+                              style={{ backgroundColor: hex }}
+                              onClick={() => copyToClipboard(hex, `tone-${i}`)}
+                              className="h-12 rounded-md transition hover:scale-105 relative group flex items-end justify-center p-1 text-[8px] font-mono text-white"
+                              title={hex}
+                            >
+                              <span className="opacity-0 group-hover:opacity-100">{hex}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    // ==========================================
+    // COLOR PICKER SECTION COMPONENT
+    // ==========================================
+    const ColorPickerSection = ({ activeColor, setActiveColor, onApplyToPalette }) => {
+      const [rgb, setRgb] = useState(() => hexToRgb(activeColor));
+      const [hsl, setHsl] = useState(() => {
+        const initRgb = hexToRgb(activeColor);
+        return rgbToHsl(initRgb[0], initRgb[1], initRgb[2]);
+      });
+      const [hsv, setHsv] = useState(() => {
+        const initRgb = hexToRgb(activeColor);
+        return rgbToHsv(initRgb[0], initRgb[1], initRgb[2]);
+      });
+      const [cmyk, setCmyk] = useState(() => {
+        const initRgb = hexToRgb(activeColor);
+        return rgbToCmyk(initRgb[0], initRgb[1], initRgb[2]);
+      });
+
+      useEffect(() => {
+        const newRgb = hexToRgb(activeColor);
+        setRgb(newRgb);
+        setHsl(rgbToHsl(newRgb[0], newRgb[1], newRgb[2]));
+        setHsv(rgbToHsv(newRgb[0], newRgb[1], newRgb[2]));
+        setCmyk(rgbToCmyk(newRgb[0], newRgb[1], newRgb[2]));
+      }, [activeColor]);
+
+      const updateFromRgb = (r, g, b) => {
+        const hex = rgbToHex(r, g, b);
+        setActiveColor(hex);
+      };
+
+      const updateFromHsl = (h, s, l) => {
+        const [r, g, b] = hslToRgb(h, s, l);
+        setActiveColor(rgbToHex(r, g, b));
+      };
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              {/* Giant Live Color Preview Swatch */}
+              <div
+                style={{ backgroundColor: activeColor }}
+                className="w-full md:w-56 h-48 rounded-3xl shadow-xl border-4 border-white flex flex-col justify-end p-4 text-white relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="text-xl font-extrabold font-mono">{activeColor}</div>
+                  <div className="text-xs font-semibold text-white/90">{getColorName(activeColor)}</div>
+                </div>
+              </div>
+
+              {/* Sliders Area */}
+              <div className="flex-1 w-full space-y-4">
+                {/* Hue Slider */}
+                <div>
+                  <div className="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                    <span>Hue (H): {hsl[0]}°</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="360"
+                    value={hsl[0]}
+                    onChange={(e) => updateFromHsl(Number(e.target.value), hsl[1], hsl[2])}
+                    className="w-full h-3 rounded-lg appearance-none cursor-pointer"
+                    style={{
+                      background:
+                        'linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%)',
+                    }}
+                  />
+                </div>
+
+                {/* Saturation Slider */}
+                <div>
+                  <div className="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                    <span>Saturation (S): {hsl[1]}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={hsl[1]}
+                    onChange={(e) => updateFromHsl(hsl[0], Number(e.target.value), hsl[2])}
+                    className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-slate-200"
+                  />
+                </div>
+
+                {/* Lightness Slider */}
+                <div>
+                  <div className="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                    <span>Lightness (L): {hsl[2]}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={hsl[2]}
+                    onChange={(e) => updateFromHsl(hsl[0], hsl[1], Number(e.target.value))}
+                    className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-slate-200"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Model Values Conversion Table */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-4 border-t border-slate-100">
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <div className="text-[10px] font-extrabold uppercase text-slate-500">HEX</div>
+                <div className="font-mono font-bold text-sm text-slate-900 mt-1">{activeColor}</div>
+              </div>
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <div className="text-[10px] font-extrabold uppercase text-slate-500">RGB</div>
+                <div className="font-mono font-bold text-xs text-slate-900 mt-1">
+                  {rgb[0]}, {rgb[1]}, {rgb[2]}
+                </div>
+              </div>
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <div className="text-[10px] font-extrabold uppercase text-slate-500">HSL</div>
+                <div className="font-mono font-bold text-xs text-slate-900 mt-1">
+                  {hsl[0]}°, {hsl[1]}%, {hsl[2]}%
+                </div>
+              </div>
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <div className="text-[10px] font-extrabold uppercase text-slate-500">HSV</div>
+                <div className="font-mono font-bold text-xs text-slate-900 mt-1">
+                  {hsv[0]}°, {hsv[1]}%, {hsv[2]}%
+                </div>
+              </div>
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <div className="text-[10px] font-extrabold uppercase text-slate-500">CMYK</div>
+                <div className="font-mono font-bold text-xs text-slate-900 mt-1">
+                  {cmyk[0]}, {cmyk[1]}, {cmyk[2]}, {cmyk[3]}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-end pt-2">
+              <button
+                onClick={() => onApplyToPalette(activeColor)}
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-600/20 active:scale-95 transition-all flex items-center gap-2"
+              >
+                <Icon name="palette" size={15} />
+                <span>Apply Color to Primary Palette</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    };// ==========================================
+    // COLOR HARMONIES SECTION COMPONENT
+    // ==========================================
+    const ColorHarmoniesSection = ({ baseColor, onApplyPalette }) => {
+      const harmonies = useMemo(() => {
+        const [r, g, b] = hexToRgb(baseColor);
+        const [h, s, l] = rgbToHsl(r, g, b);
+
+        const makeHex = (nh, ns, nl) => {
+          const [cr, cg, cb] = hslToRgb((nh + 360) % 360, Math.max(0, Math.min(100, ns)), Math.max(0, Math.min(100, nl)));
+          return rgbToHex(cr, cg, cb);
+        };
+
+        return [
+          {
+            title: 'Complementary',
+            description: 'Directly opposite on the color wheel (180° offset). Creates maximum contrast and vibrant energy.',
+            colors: [baseColor, makeHex(h + 180, s, l)],
+          },
+          {
+            title: 'Analogous',
+            description: 'Adjacent colors (30° & 60°). Serene and comfortable design palettes.',
+            colors: [makeHex(h - 30, s, l), baseColor, makeHex(h + 30, s, l), makeHex(h + 60, s, l)],
+          },
+          {
+            title: 'Triadic',
+            description: 'Three evenly spaced colors (120° apart). Vibrant balance even with pale tints.',
+            colors: [baseColor, makeHex(h + 120, s, l), makeHex(h + 240, s, l)],
+          },
+          {
+            title: 'Split-Complementary',
+            description: 'Base color plus two adjacent to its complement (150° & 210°). High contrast with less tension.',
+            colors: [baseColor, makeHex(h + 150, s, l), makeHex(h + 210, s, l)],
+          },
+          {
+            title: 'Tetradic (Rectangle)',
+            description: 'Four colors arranged into two complementary pairs. Rich, versatile palettes.',
+            colors: [baseColor, makeHex(h + 60, s, l), makeHex(h + 180, s, l), makeHex(h + 240, s, l)],
+          },
+          {
+            title: 'Square Harmony',
+            description: 'Four colors spaced evenly around the wheel at 90° intervals.',
+            colors: [baseColor, makeHex(h + 90, s, l), makeHex(h + 180, s, l), makeHex(h + 270, s, l)],
+          },
+          {
+            title: 'Monochromatic',
+            description: 'Variations in lightness and saturation of a single hue.',
+            colors: [makeHex(h, s, 20), makeHex(h, s, 40), baseColor, makeHex(h, Math.max(10, s - 30), 75), makeHex(h, Math.max(10, s - 40), 90)],
+          },
+        ];
+      }, [baseColor]);
+
+      return (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl font-extrabold text-slate-900">Color Harmony Wheel & Formulas</h2>
+            <p className="text-sm text-slate-600">Calculated mathematically from your active anchor color: <span className="font-mono font-bold text-blue-600">{baseColor}</span></p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {harmonies.map((h, i) => (
+              <div key={i} className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-extrabold text-sm text-slate-900">{h.title}</h3>
+                  <button
+                    onClick={() => onApplyPalette(h.colors)}
+                    className="px-3 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl text-xs font-bold transition flex items-center gap-1"
+                  >
+                    <span>Use Palette</span>
+                    <Icon name="sparkles" size={12} />
+                  </button>
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed">{h.description}</p>
+                <div className="flex h-16 rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                  {h.colors.map((c, idx) => (
+                    <div
+                      key={idx}
+                      style={{ backgroundColor: c }}
+                      className="flex-1 flex flex-col justify-end p-1.5 transition-all hover:flex-[1.5] group"
+                    >
+                      <span className="text-[9px] font-mono font-bold bg-black/40 text-white rounded px-1 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        {c}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // IMAGE COLOR PICKER SECTION COMPONENT
+    // ==========================================
+    const ImageColorSection = ({ onApplyPalette }) => {
+      const [imageSrc, setImageSrc] = useState(null);
+      const [extractedColors, setExtractedColors] = useState([]);
+      const [hoveredColor, setHoveredColor] = useState(null);
+      const [loupePos, setLoupePos] = useState({ x: 0, y: 0, visible: false });
+      const canvasRef = useRef(null);
+      const fileInputRef = useRef(null);
+
+      const defaultDemoImage = 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80';
+
+      const handleImageLoad = useCallback((url) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => {
+          const canvas = canvasRef.current;
+          if (!canvas) return;
+          const ctx = canvas.getContext('2d');
+          const maxW = 900;
+          const scale = Math.min(1, maxW / img.width);
+          canvas.width = img.width * scale;
+          canvas.height = img.height * scale;
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const palette = extractPaletteFromImageData(imgData, 6);
+          setExtractedColors(palette);
+        };
+        img.src = url;
+      }, []);
+
+      useEffect(() => {
+        setImageSrc(defaultDemoImage);
+        handleImageLoad(defaultDemoImage);
+      }, [handleImageLoad]);
+
+      const onFileUpload = (e) => {
+        const file = e.target.files?.[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const url = event.target?.result;
+            setImageSrc(url);
+            handleImageLoad(url);
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+
+      const handleCanvasMouseMove = (e) => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
+
+        const ctx = canvas.getContext('2d');
+        const pixel = ctx.getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
+        const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+        setHoveredColor(hex);
+        setLoupePos({ x: e.clientX - rect.left, y: e.clientY - rect.top, visible: true });
+      };
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-extrabold text-slate-900">Image Color Extractor & Pixel Loupe</h2>
+                <p className="text-xs text-slate-500">Upload any image to extract dominant harmonious colors or hover over pixels to sample.</p>
+              </div>
+              <div className="flex gap-2">
+                <input ref={fileInputRef} type="file" accept="image/*" onChange={onFileUpload} className="hidden" />
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-md shadow-blue-600/20 active:scale-95 transition-all"
+                >
+                  <Icon name="upload" size={14} />
+                  <span>Upload Image</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Canvas Display with Loupe */}
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-950 flex justify-center items-center group">
+              <canvas
+                ref={canvasRef}
+                onMouseMove={handleCanvasMouseMove}
+                onMouseLeave={() => setLoupePos((p) => ({ ...p, visible: false }))}
+                className="max-h-[460px] w-full object-contain cursor-crosshair"
+              />
+
+              {/* Pixel Loupe Magnifier */}
+              {loupePos.visible && hoveredColor && (
+                <div
+                  style={{
+                    left: `${loupePos.x + 15}px`,
+                    top: `${loupePos.y - 45}px`,
+                    backgroundColor: hoveredColor,
+                  }}
+                  className="absolute pointer-events-none w-14 h-14 rounded-full border-2 border-white shadow-2xl flex items-center justify-center text-[10px] font-mono font-extrabold text-white z-20"
+                >
+                  <div className="bg-black/50 px-1 py-0.5 rounded text-[8px]">
+                    {hoveredColor}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Extracted Swatches Tray */}
+            {extractedColors.length > 0 && (
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-bold text-slate-800">Dominant Palette Extracted (Median-Cut):</div>
+                  <button
+                    onClick={() => onApplyPalette(extractedColors)}
+                    className="px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition"
+                  >
+                    <Icon name="palette" size={13} />
+                    <span>Apply to Main Palette</span>
+                  </button>
+                </div>
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                  {extractedColors.map((hex, i) => (
+                    <div
+                      key={i}
+                      style={{ backgroundColor: hex }}
+                      className="h-20 rounded-2xl p-2 flex flex-col justify-between shadow-inner border border-slate-200/50"
+                    >
+                      <span className="text-[10px] font-mono font-bold text-white bg-black/40 px-1.5 py-0.5 rounded self-start">
+                        {hex}
+                      </span>
+                      <span className="text-[9px] font-bold text-white/90 truncate">
+                        {getColorName(hex)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // GRADIENT STUDIO SECTION COMPONENT
+    // ==========================================
+    const GradientStudioSection = ({ palette }) => {
+      const [gradientType, setGradientType] = useState('linear');
+      const [angle, setAngle] = useState(90);
+      const [stops, setStops] = useState([
+        { id: 1, color: palette[0]?.hex || '#2563EB', position: 0 },
+        { id: 2, color: palette[1]?.hex || '#7C3AED', position: 50 },
+        { id: 3, color: palette[2]?.hex || '#EC4899', position: 100 },
+      ]);
+      const [copied, setCopied] = useState(false);
+
+      const cssGradient = useMemo(() => {
+        const sorted = [...stops].sort((a, b) => a.position - b.position);
+        const stopString = sorted.map((s) => `${s.color} ${s.position}%`).join(', ');
+        if (gradientType === 'linear') return `linear-gradient(${angle}deg, ${stopString})`;
+        if (gradientType === 'radial') return `radial-gradient(circle, ${stopString})`;
+        return `conic-gradient(from ${angle}deg, ${stopString})`;
+      }, [gradientType, angle, stops]);
+
+      const copyCss = () => {
+        navigator.clipboard.writeText(`background: ${cssGradient};`);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      };
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-extrabold text-slate-900">CSS Gradient Studio</h2>
+                <p className="text-xs text-slate-500">Craft multi-stop linear, radial, and conic gradients with live code export.</p>
+              </div>
+              <button
+                onClick={copyCss}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shadow-blue-600/20 active:scale-95 transition-all"
+              >
+                <Icon name={copied ? 'check' : 'copy'} size={14} />
+                <span>{copied ? 'Copied CSS!' : 'Copy CSS'}</span>
+              </button>
+            </div>
+
+            {/* Gradient Live Canvas */}
+            <div
+              style={{ background: cssGradient }}
+              className="w-full h-64 rounded-3xl shadow-xl border-4 border-white flex items-end justify-between p-6 transition-all duration-300"
+            />
+
+            {/* Controls */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div>
+                <label className="text-xs font-bold text-slate-700 mb-1 block">Gradient Type</label>
+                <select
+                  value={gradientType}
+                  onChange={(e) => setGradientType(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-xs font-bold"
+                >
+                  <option value="linear">Linear Gradient</option>
+                  <option value="radial">Radial Gradient</option>
+                  <option value="conic">Conic Gradient</option>
+                </select>
+              </div>
+
+              {gradientType !== 'radial' && (
+                <div>
+                  <div className="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                    <span>Angle: {angle}°</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="360"
+                    value={angle}
+                    onChange={(e) => setAngle(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg bg-slate-200 appearance-none cursor-pointer mt-2"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Stops Config */}
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <div className="text-xs font-bold text-slate-800">Gradient Color Stops</div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {stops.map((stop, i) => (
+                  <div key={stop.id} className="p-3 bg-slate-50 rounded-2xl border border-slate-200 flex items-center gap-3">
+                    <input
+                      type="color"
+                      value={stop.color}
+                      onChange={(e) => {
+                        const newStops = [...stops];
+                        newStops[i].color = e.target.value;
+                        setStops(newStops);
+                      }}
+                      className="w-8 h-8 rounded-lg cursor-pointer border-0 bg-transparent"
+                    />
+                    <div className="flex-1">
+                      <div className="text-[10px] font-mono font-bold text-slate-700">{stop.color}</div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={stop.position}
+                        onChange={(e) => {
+                          const newStops = [...stops];
+                          newStops[i].position = Number(e.target.value);
+                          setStops(newStops);
+                        }}
+                        className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // CONTRAST CHECKER (WCAG 2.1) SECTION
+    // ==========================================
+    const ContrastCheckerSection = ({ palette }) => {
+      const [fg, setFg] = useState(palette[0]?.hex || '#0F172A');
+      const [bg, setBg] = useState(palette[palette.length - 1]?.hex || '#FFFFFF');
+
+      const evaluation = useMemo(() => {
+        const ratio = getContrastRatio(fg, bg);
+        return getWcagEvaluation(ratio);
+      }, [fg, bg]);
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl font-extrabold text-slate-900">WCAG 2.1 Color Contrast Checker</h2>
+              <p className="text-xs text-slate-500">Test accessibility contrast compliance against W3C Level AA and AAA standards.</p>
+            </div>
+
+            {/* Live Preview Card */}
+            <div
+              style={{ backgroundColor: bg, color: fg }}
+              className="p-8 rounded-3xl shadow-xl border-4 border-white transition-all space-y-4 text-center"
+            >
+              <h3 className="text-3xl font-extrabold tracking-tight">Accessible Typography Preview</h3>
+              <p className="text-sm max-w-xl mx-auto opacity-90 leading-relaxed">
+                Good contrast ensures all users, including those with visual impairments or viewing in direct sunlight, can read your digital interfaces effortlessly.
+              </p>
+            </div>
+
+            {/* Score Metric Badges */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                <div className="text-xs font-bold text-slate-500">Contrast Ratio</div>
+                <div className="text-2xl font-extrabold font-mono text-slate-900 mt-1">{evaluation.ratio}:1</div>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                <div className="text-xs font-bold text-slate-500">Normal Text (AA)</div>
+                <div className={`text-lg font-extrabold mt-1 ${evaluation.aaNormal ? 'text-emerald-600' : 'text-red-500'}`}>
+                  {evaluation.aaNormal ? 'PASS (4.5+)' : 'FAIL'}
+                </div>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                <div className="text-xs font-bold text-slate-500">Large Text (AAA)</div>
+                <div className={`text-lg font-extrabold mt-1 ${evaluation.aaaLarge ? 'text-emerald-600' : 'text-red-500'}`}>
+                  {evaluation.aaaLarge ? 'PASS (4.5+)' : 'FAIL'}
+                </div>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
+                <div className="text-xs font-bold text-slate-500">Normal Text (AAA)</div>
+                <div className={`text-lg font-extrabold mt-1 ${evaluation.aaaNormal ? 'text-emerald-600' : 'text-red-500'}`}>
+                  {evaluation.aaaNormal ? 'PASS (7.0+)' : 'FAIL'}
+                </div>
+              </div>
+            </div>
+
+            {/* Color Swappers */}
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-slate-700">Text:</span>
+                <input type="color" value={fg} onChange={(e) => setFg(e.target.value)} className="w-8 h-8 rounded cursor-pointer" />
+                <span className="font-mono text-xs font-bold">{fg}</span>
+              </div>
+              <button
+                onClick={() => { const temp = fg; setFg(bg); setBg(temp); }}
+                className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold transition"
+              >
+                ⇄ Swap Colors
+              </button>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-slate-700">Background:</span>
+                <input type="color" value={bg} onChange={(e) => setBg(e.target.value)} className="w-8 h-8 rounded cursor-pointer" />
+                <span className="font-mono text-xs font-bold">{bg}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // COLOR BLINDNESS SIMULATOR SECTION
+    // ==========================================
+    const ColorBlindnessSection = ({ palette }) => {
+      const types = [
+        { id: 'normal', name: 'Normal Vision', desc: 'Standard trichromatic color vision (100% of standard population).' },
+        { id: 'protanopia', name: 'Protanopia', desc: 'Red-blind. Reduced sensitivity to long-wavelength red light.' },
+        { id: 'deuteranopia', name: 'Deuteranopia', desc: 'Green-blind. Most common form of color vision deficiency.' },
+        { id: 'tritanopia', name: 'Tritanopia', desc: 'Blue-blind. Inability to distinguish blue and yellow hues.' },
+        { id: 'achromatopsia', name: 'Achromatopsia', desc: 'Complete monochromacy / total color blindness (grayscale vision).' },
+      ];
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl font-extrabold text-slate-900">Color Blindness Accessibility Simulator</h2>
+            <p className="text-xs text-slate-500">Preview how your active color palette appears to users with different forms of color deficiency.</p>
+          </div>
+
+          <div className="space-y-4">
+            {types.map((t) => (
+              <div key={t.id} className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm space-y-2">
+                <div className="flex justify-between items-center">
+                  <div className="font-extrabold text-sm text-slate-900">{t.name}</div>
+                  <div className="text-xs text-slate-400">{t.desc}</div>
+                </div>
+                <div className="flex h-14 rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                  {palette.map((item, i) => {
+                    const simHex = simulateColorBlindness(item.hex, t.id);
+                    return (
+                      <div
+                        key={i}
+                        style={{ backgroundColor: simHex }}
+                        className="flex-1 flex items-end justify-center p-1 group transition-all"
+                      >
+                        <span className="text-[9px] font-mono font-bold bg-black/40 text-white px-1 rounded opacity-0 group-hover:opacity-100">
+                          {simHex}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // DESIGN SYSTEM PREVIEW SECTION
+    // ==========================================
+    const DesignSystemPreviewSection = ({ palette }) => {
+      const primary = palette[0]?.hex || '#2563EB';
+      const secondary = palette[1]?.hex || '#7C3AED';
+      const accent = palette[2]?.hex || '#EC4899';
+      const surface = palette[3]?.hex || '#F8FAFC';
+      const darkText = palette[4]?.hex || '#0F172A';
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="text-center space-y-2">
+            <h2 className="text-2xl font-extrabold text-slate-900">Live UI Design System Preview</h2>
+            <p className="text-xs text-slate-500">See your generated colors applied automatically to real-world interface components.</p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+            {/* Mock Dashboard Bar */}
+            <div style={{ backgroundColor: primary }} className="p-4 rounded-2xl text-white flex justify-between items-center shadow-md">
+              <div className="font-extrabold text-sm flex items-center gap-2">
+                <Icon name="sparkles" size={16} />
+                <span>Modern Dashboard SaaS</span>
+              </div>
+              <div className="flex gap-2">
+                <div style={{ backgroundColor: secondary }} className="px-3 py-1 rounded-lg text-xs font-bold">
+                  Pro Plan
+                </div>
+              </div>
+            </div>
+
+            {/* Mock Content Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div style={{ backgroundColor: surface, color: darkText }} className="p-5 rounded-2xl border border-slate-200 space-y-2">
+                <div className="text-xs font-bold opacity-70">Total Revenue</div>
+                <div className="text-2xl font-extrabold">$24,580.00</div>
+                <div style={{ color: accent }} className="text-xs font-bold">+18.4% this month</div>
+              </div>
+
+              <div style={{ backgroundColor: surface, color: darkText }} className="p-5 rounded-2xl border border-slate-200 space-y-2">
+                <div className="text-xs font-bold opacity-70">Active Users</div>
+                <div className="text-2xl font-extrabold">1,420</div>
+                <div style={{ color: primary }} className="text-xs font-bold">84% Retention</div>
+              </div>
+
+              <div style={{ backgroundColor: surface, color: darkText }} className="p-5 rounded-2xl border border-slate-200 space-y-2">
+                <div className="text-xs font-bold opacity-70">Conversion Rate</div>
+                <div className="text-2xl font-extrabold">4.82%</div>
+                <div style={{ color: secondary }} className="text-xs font-bold">Optimal Speed</div>
+              </div>
+            </div>
+
+            {/* Mock Form Elements */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <div className="text-xs font-bold text-slate-800">Interactive Controls</div>
+              <div className="flex flex-wrap gap-3">
+                <button style={{ backgroundColor: primary }} className="px-4 py-2 text-white font-bold text-xs rounded-xl shadow">
+                  Primary Button
+                </button>
+                <button style={{ backgroundColor: secondary }} className="px-4 py-2 text-white font-bold text-xs rounded-xl shadow">
+                  Secondary Action
+                </button>
+                <button style={{ backgroundColor: accent }} className="px-4 py-2 text-white font-bold text-xs rounded-xl shadow">
+                  Accent Trigger
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    // ==========================================
+    // SAVED PALETTES SECTION COMPONENT
+    // ==========================================
+    const SavedPalettesSection = ({ savedPalettes, onLoadPalette, onDeletePalette }) => {
+      return (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-extrabold text-slate-900">Saved Palettes Library</h2>
+              <p className="text-xs text-slate-500">Stored locally in your browser's LocalStorage.</p>
+            </div>
+            <div className="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl">
+              {savedPalettes.length} Saved
+            </div>
+          </div>
+
+          {savedPalettes.length === 0 ? (
+            <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+                <Icon name="bookmark" size={24} />
+              </div>
+              <h3 className="font-extrabold text-base text-slate-800">No Saved Palettes Yet</h3>
+              <p className="text-xs text-slate-500 max-w-sm mx-auto">Click "Save" on the generator toolbar to bookmark combinations for your future sessions.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+              {savedPalettes.map((p) => (
+                <div key={p.id} className="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-extrabold text-sm text-slate-900 truncate">{p.name}</h4>
+                    <button
+                      onClick={() => onDeletePalette(p.id)}
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition"
+                      title="Delete saved palette"
+                    >
+                      <Icon name="trash" size={14} />
+                    </button>
+                  </div>
+
+                  <div className="flex h-16 rounded-2xl overflow-hidden shadow-inner border border-slate-100">
+                    {p.colors.map((hex, i) => (
+                      <div key={i} style={{ backgroundColor: hex }} className="flex-1" />
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs pt-1">
+                    <span className="text-[10px] text-slate-400">{new Date(p.createdAt).toLocaleDateString()}</span>
+                    <button
+                      onClick={() => onLoadPalette(p.colors)}
+                      className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold rounded-xl transition"
+                    >
+                      Load Palette
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    // ==========================================
+    // EXPORT CENTER SECTION COMPONENT
+    // ==========================================
+    const ExportCenterSection = ({ palette }) => {
+      const [copiedFormat, setCopiedFormat] = useState(null);
+      const [pngResolution, setPngResolution] = useState('medium');
+      const colors = palette.map((c) => c.hex);
+
+      const copyToClipboard = (text, format) => {
+        navigator.clipboard.writeText(text);
+        setCopiedFormat(format);
+        setTimeout(() => setCopiedFormat(null), 2000);
+      };
+
+      const cssTokens = `:root {\n` + colors.map((hex, i) => `  --color-${i + 1}: ${hex};`).join('\n') + `\n}`;
+      const tailwindTokens = `module.exports = {\n  theme: {\n    extend: {\n      colors: {\n` + colors.map((hex, i) => `        'palette-${i + 1}': '${hex}',`).join('\n') + `\n      }\n    }\n  }\n};`;
+      const scssTokens = colors.map((hex, i) => `$color-${i + 1}: ${hex};`).join('\n');
+      const jsonTokens = JSON.stringify(colors, null, 2);
+      const csvTokens = 'Index,HEX,RGB,Name\n' + palette.map((c, i) => `${i + 1},${c.hex},"rgb(${c.rgb.join(' ')})","${c.name}"`).join('\n');
+
+      const downloadPng = () => {
+        const dataUrl = generatePalettePng(colors, { resolution: pngResolution });
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `color-palette-${Date.now()}.png`;
+        a.click();
+      };
+
+      const downloadSvg = () => {
+        const width = 1000;
+        const height = 400;
+        const colW = width / colors.length;
+        const rects = colors.map((c, i) => `<rect x="${i * colW}" y="0" width="${colW}" height="${height}" fill="${c}"/>`).join('');
+        const svgData = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">${rects}</svg>`;
+        const blob = new Blob([svgData], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `color-palette-${Date.now()}.svg`;
+        a.click();
+      };
+
+      return (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl font-extrabold text-slate-900">Export Palette Tokens & Assets</h2>
+              <p className="text-xs text-slate-500">Instant code generation for web, mobile, and design applications.</p>
+            </div>
+
+            {/* Visual Downloads Box */}
+            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="text-xs font-bold text-slate-900">High-Resolution Image Assets</div>
+                <div className="text-xs text-slate-500">Download formatted PNG with color names or vector SVG swatches.</div>
+              </div>
+              <div className="flex items-center gap-3">
+                <select
+                  value={pngResolution}
+                  onChange={(e) => setPngResolution(e.target.value)}
+                  className="bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold"
+                >
+                  <option value="small">Standard (1000px)</option>
+                  <option value="medium">High-Res (1600px)</option>
+                  <option value="large">Ultra 4K (2400px)</option>
+                </select>
+                <button
+                  onClick={downloadPng}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5"
+                >
+                  <Icon name="download" size={14} />
+                  <span>Download PNG</span>
+                </button>
+                <button
+                  onClick={downloadSvg}
+                  className="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5"
+                >
+                  <Icon name="download" size={14} />
+                  <span>Download SVG</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Code Export Tabs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-slate-900 text-slate-100 rounded-2xl space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-bold text-slate-400">CSS Custom Variables (:root)</span>
+                  <button onClick={() => copyToClipboard(cssTokens, 'css')} className="text-xs text-blue-400 hover:text-blue-300 font-bold">
+                    {copiedFormat === 'css' ? 'Copied!' : 'Copy CSS'}
+                  </button>
+                </div>
+                <pre className="font-mono text-xs overflow-x-auto p-2 bg-black/40 rounded-xl text-emerald-400">{cssTokens}</pre>
+              </div>
+
+              <div className="p-4 bg-slate-900 text-slate-100 rounded-2xl space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-bold text-slate-400">Tailwind Config (tailwind.config.js)</span>
+                  <button onClick={() => copyToClipboard(tailwindTokens, 'tw')} className="text-xs text-blue-400 hover:text-blue-300 font-bold">
+                    {copiedFormat === 'tw' ? 'Copied!' : 'Copy Config'}
+                  </button>
+                </div>
+                <pre className="font-mono text-xs overflow-x-auto p-2 bg-black/40 rounded-xl text-blue-400">{tailwindTokens}</pre>
+              </div>
+
+              <div className="p-4 bg-slate-900 text-slate-100 rounded-2xl space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-bold text-slate-400">JSON Tokens Array</span>
+                  <button onClick={() => copyToClipboard(jsonTokens, 'json')} className="text-xs text-blue-400 hover:text-blue-300 font-bold">
+                    {copiedFormat === 'json' ? 'Copied!' : 'Copy JSON'}
+                  </button>
+                </div>
+                <pre className="font-mono text-xs overflow-x-auto p-2 bg-black/40 rounded-xl text-pink-400">{jsonTokens}</pre>
+              </div>
+
+              <div className="p-4 bg-slate-900 text-slate-100 rounded-2xl space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-bold text-slate-400">CSV Spreadsheet Data</span>
+                  <button onClick={() => copyToClipboard(csvTokens, 'csv')} className="text-xs text-blue-400 hover:text-blue-300 font-bold">
+                    {copiedFormat === 'csv' ? 'Copied!' : 'Copy CSV'}
+                  </button>
+                </div>
+                <pre className="font-mono text-xs overflow-x-auto p-2 bg-black/40 rounded-xl text-amber-400">{csvTokens}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // SHARE MODAL COMPONENT (QR + SOCIAL LINKS)
+    // ==========================================
+    const ShareModal = ({ isOpen, onClose, palette }) => {
+      const [copied, setCopied] = useState(false);
+      if (!isOpen) return null;
+
+      const colors = palette.map((c) => c.hex);
+      const hash = encodePaletteToHash(colors);
+      const shareUrl = `${window.location.origin}${window.location.pathname}#${hash}`;
+
+      const copyLink = () => {
+        navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      };
+
+      const shareChannels = [
+        { name: 'WhatsApp', url: `https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this color palette: ${shareUrl}`)}` },
+        { name: 'X / Twitter', url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out this color palette: ${shareUrl}`)}` },
+        { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
+        { name: 'Telegram', url: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent('Color Palette')}` },
+        { name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}` },
+        { name: 'Pinterest', url: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}` },
+        { name: 'Reddit', url: `https://reddit.com/submit?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent('Color Palette')}` },
+        { name: 'Email', url: `mailto:?subject=${encodeURIComponent('Color Palette')}&body=${encodeURIComponent(`Here is the color palette link: ${shareUrl}`)}` },
+      ];
+
+      return (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-5 border border-slate-200">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
+                <Icon name="share" size={16} className="text-blue-600" />
+                <span>Share Color Palette</span>
+              </h3>
+              <button onClick={onClose} className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 bg-slate-100">✕</button>
+            </div>
+
+            {/* Palette Preview Swatch */}
+            <div className="flex h-12 rounded-xl overflow-hidden shadow-inner border border-slate-200">
+              {colors.map((c, i) => (
+                <div key={i} style={{ backgroundColor: c }} className="flex-1" />
+              ))}
+            </div>
+
+            {/* QR Code */}
+            <div className="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-2xl border border-slate-200">
+              <div dangerouslySetInnerHTML={{ __html: generateQrCodeSvg(shareUrl) }} className="rounded-xl overflow-hidden shadow-xs" />
+              <div className="text-[11px] font-semibold text-slate-500 mt-2">Scan with mobile camera to open</div>
+            </div>
+
+            {/* Direct Link Box */}
+            <div className="space-y-1.5">
+              <div className="text-xs font-bold text-slate-700">Permanent URL</div>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  readOnly
+                  value={shareUrl}
+                  className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono text-slate-700"
+                />
+                <button
+                  onClick={copyLink}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow"
+                >
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+            </div>
+
+            {/* Social Share Grid */}
+            <div className="space-y-1.5 pt-2">
+              <div className="text-xs font-bold text-slate-700">Share to Network</div>
+              <div className="grid grid-cols-4 gap-2">
+                {shareChannels.map((ch) => (
+                  <a
+                    key={ch.name}
+                    href={ch.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 text-center bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-[10px] font-bold transition"
+                  >
+                    {ch.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // ==========================================
+    // FAQ SECTION COMPONENT
+    // ==========================================
+    const FaqSection = () => {
+      const faqs = [
+        {
+          q: 'How do I generate new color palettes with the Spacebar?',
+          a: 'Simply press the Spacebar on your keyboard. Unlocked columns will update instantly with new harmonious combinations, while locked columns remain pinned in place.'
+        },
+        {
+          q: 'What color harmony formulas are used?',
+          a: 'We calculate mathematical hue and saturation angles across Complementary (180°), Triadic (120°), Analogous (30°), Split-Complementary (150°/210°), Tetradic (90°), and Monochromatic scales.'
+        },
+        {
+          q: 'How is WCAG 2.1 accessibility evaluated?',
+          a: 'We evaluate relative luminance using the official W3C formula. Level AA requires at least 4.5:1 for standard text and 3.0:1 for large text. Level AAA requires 7.0:1.'
+        },
+        {
+          q: 'Are uploaded images processed on a server?',
+          a: 'No. All image color extraction and pixel sampling run 100% locally in your browser via HTML5 Canvas. Your photos never leave your device.'
+        }
+      ];
+
+      return (
+        <section className="bg-slate-50 border-t border-slate-200 py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
+              <p className="text-xs text-slate-500">Everything you need to know about chromatic harmony and export tokens.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {faqs.map((f, i) => (
+                <div key={i} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs space-y-2">
+                  <h3 className="font-extrabold text-sm text-slate-900">{f.q}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ==========================================
+    // FOOTER SECTION COMPONENT
+    // ==========================================
+    const FooterSection = ({ onNavigateTab }) => {
+      return (
+        <footer className="bg-white border-t border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-pink-500 flex items-center justify-center text-white font-bold">
+                <Icon name="palette" size={16} />
+              </div>
+              <div>
+                <div className="font-extrabold text-slate-900">Color Palette Generator</div>
+                <div>© {new Date().getFullYear()} All rights reserved. 100% Client-Side.</div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 font-semibold text-slate-600">
+              <button onClick={() => onNavigateTab('generator')} className="hover:text-blue-600">Generator</button>
+              <button onClick={() => onNavigateTab('picker')} className="hover:text-blue-600">Picker</button>
+              <button onClick={() => onNavigateTab('contrast')} className="hover:text-blue-600">WCAG Checker</button>
+              <button onClick={() => onNavigateTab('gradient')} className="hover:text-blue-600">Gradient Studio</button>
+              <button onClick={() => onNavigateTab('image')} className="hover:text-blue-600">Image Colors</button>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    // ==========================================
+    // MAIN APP COMPONENT
+    // ==========================================
+    function App() {
+      const [palette, setPalette] = useState(() => {
+        const decoded = decodeHashToPalette();
+        if (decoded.length > 0) {
+          return decoded.map((h, i) => createColorItem(h, false, `hash-${i}`));
+        }
+        return generateInitialPalette(5);
+      });
+
+      const [activeTab, setActiveTab] = useState('generator');
+      const [mode, setMode] = useState('random');
+      const [colorCount, setColorCount] = useState(palette.length);
+      const [activeColor, setActiveColor] = useState(palette[0]?.hex || '#2563EB');
+      const [isShareOpen, setIsShareOpen] = useState(false);
+
+      const [savedPalettes, setSavedPalettes] = useState(() => {
+        try {
+          const stored = localStorage.getItem('color_palettes_saved');
+          return stored ? JSON.parse(stored) : [];
+        } catch {
+          return [];
+        }
+      });
+
+      useEffect(() => {
+        try {
+          localStorage.setItem('color_palettes_saved', JSON.stringify(savedPalettes));
+        } catch (e) {
+          console.error(e);
+        }
+      }, [savedPalettes]);
+
+      const handleGenerate = useCallback(() => {
+        const nextPalette = generatePaletteByMode(mode, colorCount, palette, activeColor);
+        setPalette(nextPalette);
+        window.history.replaceState(null, '', `#${encodePaletteToHash(nextPalette.map((c) => c.hex))}`);
+      }, [mode, colorCount, palette, activeColor]);
+
+      // Global Spacebar Listener
+      useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') {
+            e.preventDefault();
+            handleGenerate();
+          }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+      }, [handleGenerate]);
+
+      const handleSavePalette = () => {
+        const newSave = {
+          id: `saved-${Date.now()}`,
+          name: `${palette[0]?.name || 'Palette'} Scheme`,
+          colors: palette.map((c) => c.hex),
+          createdAt: Date.now(),
+        };
+        setSavedPalettes([newSave, ...savedPalettes]);
+        if (window.confetti) window.confetti({ particleCount: 60, spread: 70, origin: { y: 0.8 } });
+      };
+
+      const handleDeleteSaved = (id) => {
+        setSavedPalettes(savedPalettes.filter((p) => p.id !== id));
+      };
+
+      const handleLoadPalette = (colors) => {
+        const loaded = colors.map((hex, i) => createColorItem(hex, false, `loaded-${i}-${Date.now()}`));
+        setPalette(loaded);
+        setColorCount(loaded.length);
+        setActiveTab('generator');
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col justify-between bg-white text-slate-900">
+          {/* Navigation Bar */}
+          <Navbar
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            onGenerate={handleGenerate}
+            onOpenShare={() => setIsShareOpen(true)}
+            onOpenExport={() => setActiveTab('export')}
+            savedCount={savedPalettes.length}
+          />
+
+          {/* Hero Section */}
+          <HeroSection onGenerate={handleGenerate} setActiveTab={setActiveTab} />
+
+          {/* ==================== AD SLOT 1: Top 468x60 Banner ==================== */}
+          <AdSlot type="banner468x60" className="my-3" />
+
+          {/* Main Workspace Router */}
+          <main className="flex-1">
+            {activeTab === 'generator' && (
+              <PaletteGeneratorSection
+                palette={palette}
+                setPalette={setPalette}
+                mode={mode}
+                setMode={setMode}
+                colorCount={colorCount}
+                setColorCount={setColorCount}
+                onGenerate={handleGenerate}
+                onSavePalette={handleSavePalette}
+                onOpenShare={() => setIsShareOpen(true)}
+                onOpenExport={() => setActiveTab('export')}
+                onSelectActiveColor={(hex) => {
+                  setActiveColor(hex);
+                  setActiveTab('picker');
+                }}
+              />
+            )}
+
+            {activeTab === 'picker' && (
+              <ColorPickerSection
+                activeColor={activeColor}
+                setActiveColor={setActiveColor}
+                onApplyToPalette={(hex) => {
+                  setPalette((prev) => [createColorItem(hex, true), ...prev.slice(1)]);
+                  setActiveTab('generator');
+                }}
+              />
+            )}
+
+            {activeTab === 'harmonies' && (
+              <ColorHarmoniesSection baseColor={activeColor} onApplyPalette={handleLoadPalette} />
+            )}
+
+            {activeTab === 'image' && (
+              <ImageColorSection onApplyPalette={handleLoadPalette} />
+            )}
+
+            {activeTab === 'gradient' && (
+              <GradientStudioSection palette={palette} />
+            )}
+
+            {activeTab === 'contrast' && (
+              <ContrastCheckerSection palette={palette} />
+            )}
+
+            {activeTab === 'blindness' && (
+              <ColorBlindnessSection palette={palette} />
+            )}
+
+            {activeTab === 'preview' && (
+              <DesignSystemPreviewSection palette={palette} />
+            )}
+
+            {activeTab === 'saved' && (
+              <SavedPalettesSection
+                savedPalettes={savedPalettes}
+                onLoadPalette={handleLoadPalette}
+                onDeletePalette={handleDeleteSaved}
+              />
+            )}
+
+            {activeTab === 'export' && (
+              <ExportCenterSection palette={palette} />
+            )}
+          </main>
+
+          {/* ==================== AD SLOT 2: In-Content Native Container Ad ==================== */}
+          <AdSlot type="containerNative" className="my-6 max-w-4xl mx-auto" />
+
+          {/* FAQ Section */}
+          <FaqSection />
+
+          {/* ==================== AD SLOT 3: Bottom 300x250 Rectangle Ad ==================== */}
+          <AdSlot type="banner300x250" className="my-8" />
+
+          {/* Footer */}
+          <FooterSection onNavigateTab={setActiveTab} />
+
+          {/* Share Modal */}
+          <ShareModal isOpen={isShareOpen} onClose={() => setIsShareOpen(false)} palette={palette} />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
