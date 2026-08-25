@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCA Calculator - Dollar-Cost Averaging Calculator | Free Online Tool</title>
+  <meta name="description" content="Calculate your hypothetical investment growth with our free Dollar-Cost Averaging (DCA) Calculator. Includes annual contribution increases, inflation adjustments, fee impact, and scenario comparisons for U.S. investors.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Dollar-Cost Averaging Calculator">
+  <meta property="og:title" content="DCA Calculator - Dollar-Cost Averaging Calculator">
+  <meta property="og:description" content="Estimate your investment growth with regular recurring contributions. Free, fast, private, and built for U.S. investors.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dollar-Cost Averaging (DCA) Calculator">
+  <meta name="twitter:description" content="Calculate how regular investments could grow over time using a dollar-cost averaging strategy.">
+  
+  <!-- Ad Network Script -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+  
+  <!-- Schema.org Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dollar-Cost Averaging (DCA) Calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A standalone financial web tool to estimate investment growth using a Dollar-Cost Averaging (DCA) recurring contribution strategy."
+  }
+  </script>
+
+  <style>
+    /* Base & Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    /* Container */
+    .dca-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 64px 16px;
+    }
+
+    /* Header */
+    .dca-header {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      text-align: center;
+    }
+    .badge-usa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #dbeafe;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+    .dca-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .dca-subtitle {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+    .dca-desc {
+      font-size: 0.95rem;
+      color: #64748b;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Ad Container Placeholder */
+    .ad-slot-container {
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Grid Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (min-width: 992px) {
+      .dashboard-grid {
+        grid-template-columns: 440px 1fr;
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .form-group .hint {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    .input-prefix-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-prefix {
+      position: absolute;
+      left: 12px;
+      color: #64748b;
+      font-weight: 600;
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+    .input-suffix {
+      position: absolute;
+      right: 12px;
+      color: #64748b;
+      font-weight: 500;
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+    input[type="number"], select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #0f172a;
+      background: #ffffff;
+      transition: all 0.2s;
+      outline: none;
+    }
+    .has-prefix { padding-left: 30px !important; }
+    .has-suffix { padding-right: 36px !important; }
+    input[type="number"]:focus, select:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    }
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .btn-actions-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .btn-sm {
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      border-radius: 6px;
+    }
+
+    /* Result Summary Cards */
+    .results-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(30, 58, 138, 0.2);
+    }
+    .results-hero-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      margin-bottom: 4px;
+    }
+    .results-hero-val {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .results-hero-sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.875rem;
+    }
+    .results-hero-sub-item span {
+      opacity: 0.75;
+      margin-right: 4px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .metric-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .metric-box.growth-box { background: #f0fdf4; border-color: #bbf7d0; }
+    .metric-box.fee-box { background: #fff7ed; border-color: #fed7aa; }
+    .metric-box.inf-box { background: #faf5ff; border-color: #e9d5ff; }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .metric-box.growth-box .metric-label { color: #166534; }
+    .metric-box.fee-box .metric-label { color: #9a3412; }
+    .metric-box.inf-box .metric-label { color: #6b21a8; }
+
+    .metric-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .metric-box.growth-box .metric-value { color: #15803d; }
+    .metric-box.fee-box .metric-value { color: #c2410c; }
+    .metric-box.inf-box .metric-value { color: #7e22ce; }
+
+    .metric-note {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Charts Container */
+    .chart-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chart-legend {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+    .bg-blue { background: #2563eb; }
+    .bg-green { background: #10b981; }
+    .bg-purple { background: #8b5cf6; }
+    .bg-orange { background: #f97316; }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 320px;
+      display: block;
+    }
+
+    /* Visual Ratio Bar */
+    .ratio-bar-wrap {
+      margin: 16px 0;
+    }
+    .ratio-bar {
+      display: flex;
+      height: 24px;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+    .ratio-part {
+      height: 100%;
+      transition: width 0.3s;
+    }
+    .ratio-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .table-responsive {
+      overflow-x: auto;
+      margin-top: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th {
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 600;
+      padding: 12px 14px;
+      border-bottom: 1px solid #cbd5e1;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1e293b;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f8fafc; }
+
+    /* Comparison Grids */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .scenario-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .scenario-card.active-base {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+    .scenario-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+    .scenario-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    .scenario-stat:last-child { border-bottom: none; }
+    .scenario-stat span:first-child { color: #64748b; }
+    .scenario-stat span:last-child { font-weight: 600; color: #0f172a; }
+
+    /* Educational Section */
+    .edu-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-bottom: 24px;
+    }
+    .edu-section h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 24px 0 12px 0;
+    }
+    .edu-section h2:first-child { margin-top: 0; }
+    .edu-section h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 18px 0 8px 0;
+    }
+    .edu-section p {
+      margin-bottom: 14px;
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .edu-section ol, .edu-section ul {
+      margin: 0 0 16px 24px;
+      color: #475569;
+    }
+    .edu-section li { margin-bottom: 6px; }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 16px;
+      background: #f8fafc;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question:hover { background: #f1f5f9; }
+    .faq-answer {
+      padding: 16px;
+      background: #ffffff;
+      font-size: 0.9rem;
+      color: #475569;
+      display: none;
+      line-height: 1.6;
+      border-top: 1px solid #e2e8f0;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-icon { transition: transform 0.2s; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+
+    /* Social Share Section */
+    .share-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .share-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .btn-share {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-share:hover { opacity: 0.9; text-decoration: none; }
+    .share-fb { background: #1877f2; }
+    .share-x { background: #000000; }
+    .share-li { background: #0a66c2; }
+    .share-rd { background: #ff4500; }
+    .share-wa { background: #25d366; }
+    .share-tg { background: #229ed9; }
+    .share-pin { background: #bd081c; }
+    .share-mail { background: #475569; }
+    .share-copy { background: #2563eb; }
+
+    /* Disclaimer */
+    .disclaimer-box {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.85rem;
+      color: #92400e;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Footer */
+    .dca-footer {
+      text-align: center;
+      padding: 32px 16px 12px 16px;
+      color: #64748b;
+      font-size: 0.85rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Print Styles for US Letter */
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; }
+      .dca-wrap { max-width: 100% !important; padding: 0 !important; }
+      .dca-header, .card, .chart-container, .table-container, .edu-section {
+        border: 1px solid #cccccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      .btn-group, .btn-actions-row, .share-section, .ad-slot-container, #toast, .footer-links {
+        display: none !important;
+      }
+      .results-hero {
+        background: #f1f5f9 !important;
+        color: #000000 !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+      .results-hero-val { color: #000000 !important; }
+      th { background: #f1f5f9 !important; color: #000000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="dca-wrap">
+  <!-- Top Banner Advertisement (468x60) -->
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin:16px 0; overflow:hidden;">
+    <span style="font-size:10px; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; font-weight:600;">Advertisement</span>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- Header -->
+  <header class="dca-header">
+    <div class="badge-usa">
+      <span>🇺🇸</span> Built for U.S. Investors
+    </div>
+    <h1 class="dca-title">Dollar-Cost Averaging (DCA) Calculator</h1>
+    <div class="dca-subtitle">Estimate Your Investment Growth With Regular Contributions</div>
+    <p class="dca-desc">
+      Calculate how regular investments could grow over time using a dollar-cost averaging strategy. Model annual contribution increases, inflation adjustments, and fee impacts.
+    </p>
+  </header>
+
+  <!-- Main Dashboard -->
+  <div class="dashboard-grid">
+    <!-- LEFT: Inputs Card -->
+    <div class="card">
+      <div class="card-title">
+        <span>Investment Parameters</span>
+        <span style="font-size: 0.8rem; font-weight: normal; color: #64748b;">Instant Calculation</span>
+      </div>
+
+      <form id="dca-form" onsubmit="event.preventDefault(); runCalculation();">
+        <div class="form-group">
+          <label for="initial-investment">Initial Investment ($)</label>
+          <div class="input-prefix-wrap">
+            <span class="input-prefix">$</span>
+            <input type="number" id="initial-investment" class="has-prefix" value="1000" min="0" step="100" required>
+          </div>
+          <div class="hint">Starting amount in your portfolio.</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="contribution-amount">Regular Contribution</label>
+            <div class="input-prefix-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="contribution-amount" class="has-prefix" value="500" min="1" step="25" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contribution-frequency">Frequency</label>
+            <select id="contribution-frequency">
+              <option value="weekly">Weekly (52x/yr)</option>
+              <option value="biweekly">Biweekly (26x/yr)</option>
+              <option value="monthly" selected>Monthly (12x/yr)</option>
+              <option value="quarterly">Quarterly (4x/yr)</option>
+              <option value="annually">Annually (1x/yr)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="period-years">Investment Period</label>
+            <div class="input-prefix-wrap">
+              <input type="number" id="period-years" class="has-suffix" value="10" min="1" max="50" step="1" required>
+              <span class="input-suffix">Years</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="period-months">Additional</label>
+            <div class="input-prefix-wrap">
+              <input type="number" id="period-months" class="has-suffix" value="0" min="0" max="11" step="1">
+              <span class="input-suffix">Months</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="annual-return">Hypothetical Annual Return (%)</label>
+          <div class="input-prefix-wrap">
+            <input type="number" id="annual-return" class="has-suffix" value="8.0" min="0" max="30" step="0.1" required>
+            <span class="input-suffix">%</span>
+          </div>
+          <div class="hint">This is an assumption for calculation purposes and is not a guaranteed investment return.</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="annual-increase">Annual Step Increase</label>
+            <div class="input-prefix-wrap">
+              <input type="number" id="annual-increase" class="has-suffix" value="0.0" min="0" max="25" step="0.5">
+              <span class="input-suffix">%</span>
+            </div>
+            <div class="hint">Increase your contribution each year.</div>
+          </div>
+          <div class="form-group">
+            <label for="inflation-rate">Estimated Inflation</label>
+            <div class="input-prefix-wrap">
+              <input type="number" id="inflation-rate" class="has-suffix" value="2.5" min="0" max="15" step="0.1">
+              <span class="input-suffix">%</span>
+            </div>
+            <div class="hint">For inflation-adjusted value.</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="management-fee">Annual Mgmt Fee</label>
+            <div class="input-prefix-wrap">
+              <input type="number" id="management-fee" class="has-suffix" value="0.0" min="0" max="5" step="0.05">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contribution-fee">Contribution Fee</label>
+            <div class="input-prefix-wrap">
+              <input type="number" id="contribution-fee" class="has-suffix" value="0.0" min="0" max="5" step="0.05">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" onclick="runCalculation()">
+            ⚡ Calculate My DCA
+          </button>
+          
+          <div class="btn-actions-row">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="loadSampleData()">
+              📋 Load Sample
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="resetCalculator()">
+              🔄 Reset
+            </button>
+          </div>
+
+          <div class="btn-actions-row">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="saveSettings()">
+              💾 Save Settings
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="clearSavedSettings()">
+              🗑️ Clear Saved
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT: Results Overview -->
+    <div>
+      <div class="results-hero">
+        <div class="results-hero-label">Estimated Future Portfolio Value</div>
+        <div class="results-hero-val" id="res-future-val">$0</div>
+        <div class="results-hero-sub">
+          <div class="results-hero-sub-item">
+            <span>Contributions:</span> <strong id="res-hero-contrib">$0</strong>
+          </div>
+          <div class="results-hero-sub-item">
+            <span>Estimated Growth:</span> <strong id="res-hero-growth">$0</strong>
+          </div>
+          <div class="results-hero-sub-item">
+            <span>Estimated ROI:</span> <strong id="res-hero-roi">0%</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Cards Grid -->
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <div class="metric-label">Total Contributions</div>
+          <div class="metric-value" id="res-total-contrib">$0</div>
+          <div class="metric-note">Your principal deposits</div>
+        </div>
+
+        <div class="metric-box growth-box">
+          <div class="metric-label">Investment Growth</div>
+          <div class="metric-value" id="res-total-growth">$0</div>
+          <div class="metric-note">Estimated compound earnings</div>
+        </div>
+
+        <div class="metric-box inf-box">
+          <div class="metric-label">Inflation-Adjusted Value</div>
+          <div class="metric-value" id="res-inf-val">$0</div>
+          <div class="metric-note">Estimated purchasing power</div>
+        </div>
+
+        <div class="metric-box fee-box">
+          <div class="metric-label">Estimated Total Fees</div>
+          <div class="metric-value" id="res-total-fees">$0</div>
+          <div class="metric-note">Direct & compounding fee drag</div>
+        </div>
+      </div>
+
+      <!-- Quick Ratio Bar -->
+      <div class="card" style="padding: 16px 20px;">
+        <div style="font-size: 0.85rem; font-weight: 700; color: #334155;">Portfolio Composition</div>
+        <div class="ratio-bar-wrap">
+          <div class="ratio-bar">
+            <div id="ratio-contrib" class="ratio-part bg-blue" style="width: 50%;"></div>
+            <div id="ratio-growth" class="ratio-part bg-green" style="width: 50%;"></div>
+          </div>
+          <div class="ratio-labels">
+            <span style="color: #2563eb;">■ Principal: <strong id="ratio-contrib-label">50%</strong></span>
+            <span style="color: #10b981;">■ Growth: <strong id="ratio-growth-label">50%</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Tools -->
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="window.print()">
+          🖨️ Print Report
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="exportCsv()">
+          📥 Export CSV Table
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="copyResultsSummary()">
+          📋 Copy Summary
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Growth Charts -->
+  <div class="chart-container">
+    <div class="chart-header">
+      <div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a;">Investment Growth Timeline</h3>
+        <p style="font-size: 0.8rem; color: #64748b;">Annual growth of contributions vs total balance over time</p>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-color bg-blue"></div> Contributions</div>
+        <div class="legend-item"><div class="legend-color bg-green"></div> Total Value</div>
+        <div class="legend-item"><div class="legend-color bg-purple"></div> Inflation-Adjusted</div>
+      </div>
+    </div>
+    <canvas id="growthChart" height="280"></canvas>
+  </div>
+
+  <!-- Scenario Analysis -->
+  <div class="card" style="margin-bottom: 24px;">
+    <div class="card-title">
+      <span>Hypothetical Investment Scenarios</span>
+      <span style="font-size: 0.8rem; color: #64748b;">Sensitivity to market conditions</span>
+    </div>
+    <div class="comparison-grid" id="scenarios-grid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+
+  <!-- What-If Analysis -->
+  <div class="card" style="margin-bottom: 24px;">
+    <div class="card-title">
+      <span>What If? — Contribution Comparison</span>
+      <span style="font-size: 0.8rem; color: #64748b;">Impact of investing a bit more or less</span>
+    </div>
+    <div class="table-responsive">
+      <table id="whatif-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Contribution</th>
+            <th>Total Invested</th>
+            <th>Est. Growth</th>
+            <th>Est. Future Value</th>
+            <th>Diff vs. Current</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Injected via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Frequency Comparison & Fee Impact -->
+  <div class="dashboard-grid">
+    <!-- Frequency -->
+    <div class="card">
+      <div class="card-title" style="font-size: 1.05rem;">
+        <span>Contribution Frequency Comparison</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 12px;">
+        Same annual contribution split across different deposit frequencies.
+      </p>
+      <div class="table-responsive">
+        <table id="freq-table">
+          <thead>
+            <tr>
+              <th>Frequency</th>
+              <th>Per Deposit</th>
+              <th>Est. Future Value</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Return Sensitivity -->
+    <div class="card">
+      <div class="card-title" style="font-size: 1.05rem;">
+        <span>Return Sensitivity Matrix</span>
+      </div>
+      <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 12px;">
+        Hypothetical results at various annual return benchmarks.
+      </p>
+      <div class="table-responsive">
+        <table id="sens-table">
+          <thead>
+            <tr>
+              <th>Annual Return</th>
+              <th>Est. Future Value</th>
+              <th>Purchasing Power</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Year-by-Year Table -->
+  <div class="table-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a;">Year-by-Year DCA Schedule</h3>
+        <p style="font-size: 0.8rem; color: #64748b;">Detailed annual breakdown of contributions, earnings, and balances</p>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="exportCsv()">
+        📥 Download CSV
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table id="schedule-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Annual Deposit</th>
+            <th>Total Deposited</th>
+            <th>Annual Growth</th>
+            <th>Total Growth</th>
+            <th>Fees</th>
+            <th>Ending Balance</th>
+            <th>Real Value (Inflation)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Injected via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Financial Disclaimer -->
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> This calculator is for educational and informational purposes only. It does not provide investment, financial, tax, or legal advice. The results are hypothetical estimates based on the assumptions entered and are not guarantees of future performance. Actual investment results can vary significantly due to market fluctuations, timing, fees, and economic conditions.
+  </div>
+
+  <!-- Native Container Advertisement -->
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin:24px 0;">
+    <span style="font-size:10px; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; font-weight:600;">Recommended</span>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- Social Sharing -->
+  <div class="share-section">
+    <h3 style="font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;">Share This DCA Calculator</h3>
+    <p style="font-size: 0.85rem; color: #64748b;">Help friends, family, and clients plan their long-term investment strategies.</p>
+    <div class="share-grid">
+      <button type="button" class="btn-share share-fb" onclick="shareSocial('fb')">Facebook</button>
+      <button type="button" class="btn-share share-x" onclick="shareSocial('x')">X (Twitter)</button>
+      <button type="button" class="btn-share share-li" onclick="shareSocial('li')">LinkedIn</button>
+      <button type="button" class="btn-share share-rd" onclick="shareSocial('rd')">Reddit</button>
+      <button type="button" class="btn-share share-wa" onclick="shareSocial('wa')">WhatsApp</button>
+      <button type="button" class="btn-share share-tg" onclick="shareSocial('tg')">Telegram</button>
+      <button type="button" class="btn-share share-mail" onclick="shareSocial('mail')">Email</button>
+      <button type="button" class="btn-share share-copy" onclick="copyShareLink()">📋 Copy Link</button>
+    </div>
+  </div>
+
+  <!-- Medium Rectangle Advertisement (300x250) -->
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin:24px 0; overflow:hidden;">
+    <span style="font-size:10px; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; font-weight:600;">Sponsored</span>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- Educational Content Section -->
+  <article class="edu-section">
+    <h2>Dollar-Cost Averaging (DCA) Guide</h2>
+    
+    <h3>What Is Dollar-Cost Averaging?</h3>
+    <p>
+      Dollar-cost averaging (DCA) is an investment strategy in which an investor divides the total amount to be invested into periodic purchases of a target asset in an effort to reduce the impact of volatility. Purchases occur at regular intervals (such as weekly, biweekly, or monthly), regardless of the asset's price.
+    </p>
+
+    <h3>How Does Dollar-Cost Averaging Work?</h3>
+    <p>
+      By investing a fixed dollar amount on a regular schedule, you automatically buy more shares when prices are low and fewer shares when prices are high. Over time, this can lead to a lower average purchase cost per share compared to attempting to time short-term market fluctuations.
+    </p>
+
+    <h3>How to Use This DCA Calculator</h3>
+    <ol>
+      <li><strong>Enter your initial investment:</strong> The lump sum you are starting with today.</li>
+      <li><strong>Enter your regular contribution:</strong> The amount you plan to deposit periodically.</li>
+      <li><strong>Choose your contribution frequency:</strong> Weekly, biweekly, monthly, quarterly, or annually.</li>
+      <li><strong>Enter the investment horizon:</strong> The number of years and months you plan to stay invested.</li>
+      <li><strong>Set a hypothetical annual return:</strong> For example, 7% to 10% based on historical market benchmarks.</li>
+      <li><strong>Adjust inflation & fees:</strong> Optionally model ongoing purchasing power and expense ratios.</li>
+      <li><strong>Click Calculate My DCA:</strong> Review your visual charts, scenario analyses, and year-by-year tables.</li>
+    </ol>
+
+    <h3>DCA vs. Lump-Sum Investing</h3>
+    <p>
+      Historically, lump-sum investing (deploying all capital immediately) has mathematically outperformed DCA roughly two-thirds of the time in continuously rising markets because capital spends more time compounding. However, dollar-cost averaging offers substantial psychological advantages by mitigating the regret of investing right before a market dip and building disciplined, automated saving habits.
+    </p>
+
+    <h3>How Inflation Affects Long-Term Purchasing Power</h3>
+    <p>
+      Over 10, 20, or 30 years, inflation steadily reduces what a dollar can buy. A portfolio reaching $500,000 in 25 years at 2.5% inflation will have purchasing power equivalent to roughly $270,000 in today's dollars. Our calculator provides an <em>Estimated Inflation-Adjusted Value</em> so you can plan realistically for future expenses.
+    </p>
+
+    <h3>How Fees Compound Over Time</h3>
+    <p>
+      Even a seemingly minor 0.50% or 1.00% annual management fee or fund expense ratio can compound into tens of thousands of dollars in lost gains over a multi-decade investing horizon. Minimizing fees through low-cost index funds is one of the most reliable ways to maximize your net return.
+    </p>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is a DCA calculator?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          A Dollar-Cost Averaging (DCA) calculator is a financial tool that models how regular, recurring investments grow over time under assumed compound rates of return, taking into account initial deposits, frequency, fee structures, and inflation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is this DCA calculator free to use?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Yes! This tool is 100% free, runs entirely inside your browser, and requires no account registration, API keys, or financial data uploads.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I include an annual contribution step-up?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Yes. You can specify an annual contribution increase (such as 2% or 3%) to reflect annual salary raises or lifestyle inflation, which significantly boosts your long-term compounding trajectory.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Are the calculated results guaranteed?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          No. All financial markets fluctuate. The calculator provides hypothetical mathematical estimates based on constant rates of return. Actual investment returns vary year to year.
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="dca-footer">
+    <div class="footer-links">
+      <a href="#dca-form">Calculator</a>
+      <a href="#schedule-table">Schedule</a>
+      <a href="#whatif-table">What-If Analysis</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>&copy; <span id="cur-year">2026</span> Dollar-Cost Averaging (DCA) Calculator. Built for U.S. Investors.</div>
+  </footer>
+</div>
+
+<!-- Toast notification element -->
+<div id="toast">Settings Saved</div>
+
+<script>
+  // State
+  var lastResult = null;
+
+  var FREQ_MAP = {
+    weekly: { label: 'Weekly', ppy: 52 },
+    biweekly: { label: 'Biweekly', ppy: 26 },
+    monthly: { label: 'Monthly', ppy: 12 },
+    quarterly: { label: 'Quarterly', ppy: 4 },
+    annually: { label: 'Annually', ppy: 1 }
+  };
+
+  function formatUsd(val, cents) {
+    if (isNaN(val) || !isFinite(val)) return '$0';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: cents ? 2 : 0,
+      maximumFractionDigits: cents ? 2 : 0
+    }).format(val);
+  }
+
+  function formatPct(val) {
+    if (isNaN(val) || !isFinite(val)) return '0.0%';
+    return val.toFixed(1) + '%';
+  }
+
+  function getInputs() {
+    return {
+      initialInvestment: Math.max(0, parseFloat(document.getElementById('initial-investment').value) || 0),
+      contributionAmount: Math.max(0, parseFloat(document.getElementById('contribution-amount').value) || 0),
+      frequency: document.getElementById('contribution-frequency').value || 'monthly',
+      years: Math.max(1, parseInt(document.getElementById('period-years').value, 10) || 1),
+      months: Math.max(0, parseInt(document.getElementById('period-months').value, 10) || 0),
+      annualReturn: parseFloat(document.getElementById('annual-return').value) || 0,
+      annualIncrease: Math.max(0, parseFloat(document.getElementById('annual-increase').value) || 0),
+      inflationRate: Math.max(0, parseFloat(document.getElementById('inflation-rate').value) || 0),
+      managementFee: Math.max(0, parseFloat(document.getElementById('management-fee').value) || 0),
+      contributionFee: Math.max(0, parseFloat(document.getElementById('contribution-fee').value) || 0)
+    };
+  }
+
+  function calculateDcaEngine(inp) {
+    var totalYearsFloat = inp.years + (inp.months / 12);
+    var ppy = FREQ_MAP[inp.frequency] ? FREQ_MAP[inp.frequency].ppy : 12;
+    var totalPeriods = Math.round(totalYearsFloat * ppy);
+
+    var rAnnual = inp.annualReturn / 100;
+    var gAnnual = inp.annualIncrease / 100;
+    var iAnnual = inp.inflationRate / 100;
+    var mAnnual = inp.managementFee / 100;
+    var cFeeRate = inp.contributionFee / 100;
+
+    var periodicReturnRate = rAnnual / ppy;
+    var periodicFeeRate = mAnnual / ppy;
+
+    var balance = inp.initialInvestment;
+    var cumContrib = inp.initialInvestment;
+    var cumFees = 0;
+    var cumGrowth = 0;
+
+    var totalFullYears = Math.ceil(totalYearsFloat);
+    var schedule = [];
+    var chartPoints = [{ year: 0, contrib: inp.initialInvestment, balance: inp.initialInvestment, infBal: inp.initialInvestment }];
+
+    for (var y = 1; y <= totalFullYears; y++) {
+      var startBal = balance;
+      var yContrib = 0;
+      var yFees = 0;
+      var yGrowth = 0;
+
+      var stepMultiplier = Math.pow(1 + gAnnual, y - 1);
+      var periodicContribThisYear = inp.contributionAmount * stepMultiplier;
+
+      var maxPeriodForYear = Math.min(y * ppy, totalPeriods);
+      var startPeriodForYear = (y - 1) * ppy;
+      var periodsInThisYear = Math.max(0, maxPeriodForYear - startPeriodForYear);
+
+      for (var p = 0; p < periodsInThisYear; p++) {
+        var grossContrib = periodicContribThisYear;
+        var cFee = grossContrib * cFeeRate;
+        var netContrib = grossContrib - cFee;
+
+        yContrib += grossContrib;
+        yFees += cFee;
+        cumContrib += grossContrib;
+
+        balance += netContrib;
+
+        var gPeriod = balance * periodicReturnRate;
+        var mFeePeriod = balance * periodicFeeRate;
+
+        yGrowth += gPeriod;
+        yFees += mFeePeriod;
+        balance += (gPeriod - mFeePeriod);
+      }
+
+      cumFees += yFees;
+      cumGrowth += yGrowth;
+
+      var yFraction = Math.min(y, totalYearsFloat);
+      var infDiscount = Math.pow(1 + iAnnual, yFraction);
+      var infBal = balance / infDiscount;
+
+      schedule.push({
+        year: y,
+        annualContribution: yContrib,
+        totalContributions: cumContrib,
+        annualGrowth: yGrowth,
+        totalGrowth: cumGrowth,
+        annualFees: yFees,
+        endingBalance: Math.max(0, balance),
+        inflationAdjustedBalance: Math.max(0, infBal)
+      });
+
+      chartPoints.push({
+        year: y,
+        contrib: cumContrib,
+        balance: Math.max(0, balance),
+        infBal: Math.max(0, infBal)
+      });
+    }
+
+    var futureValue = Math.max(0, balance);
+    var totalGrowthVal = Math.max(0, futureValue - cumContrib);
+    var infVal = Math.max(0, futureValue / Math.pow(1 + iAnnual, totalYearsFloat));
+    var roi = cumContrib > 0 ? ((futureValue - cumContrib) / cumContrib) * 100 : 0;
+
+    return {
+      inputs: inp,
+      totalYearsFloat: totalYearsFloat,
+      totalContributions: cumContrib,
+      futureValue: futureValue,
+      totalGrowth: totalGrowthVal,
+      totalFees: cumFees,
+      inflationAdjustedValue: infVal,
+      roi: roi,
+      schedule: schedule,
+      chartPoints: chartPoints
+    };
+  }
+
+  function runCalculation() {
+    var inp = getInputs();
+    var res = calculateDcaEngine(inp);
+    lastResult = res;
+
+    // Update Hero & Cards
+    document.getElementById('res-future-val').textContent = formatUsd(res.futureValue, false);
+    document.getElementById('res-hero-contrib').textContent = formatUsd(res.totalContributions, false);
+    document.getElementById('res-hero-growth').textContent = formatUsd(res.totalGrowth, false);
+    document.getElementById('res-hero-roi').textContent = formatPct(res.roi);
+
+    document.getElementById('res-total-contrib').textContent = formatUsd(res.totalContributions, false);
+    document.getElementById('res-total-growth').textContent = formatUsd(res.totalGrowth, false);
+    document.getElementById('res-inf-val').textContent = formatUsd(res.inflationAdjustedValue, false);
+    document.getElementById('res-total-fees').textContent = formatUsd(res.totalFees, false);
+
+    // Ratio Bar
+    var totalSum = res.totalContributions + res.totalGrowth;
+    var cPct = totalSum > 0 ? (res.totalContributions / totalSum) * 100 : 50;
+    var gPct = totalSum > 0 ? (res.totalGrowth / totalSum) * 100 : 50;
+    document.getElementById('ratio-contrib').style.width = cPct + '%';
+    document.getElementById('ratio-growth').style.width = gPct + '%';
+    document.getElementById('ratio-contrib-label').textContent = cPct.toFixed(0) + '%';
+    document.getElementById('ratio-growth-label').textContent = gPct.toFixed(0) + '%';
+
+    // Render Canvas Chart
+    drawGrowthChart(res.chartPoints);
+
+    // Render Scenarios
+    renderScenarios(inp, res);
+
+    // Render What-If
+    renderWhatIf(inp, res);
+
+    // Render Frequency & Sensitivity
+    renderFrequencyTable(inp, res);
+    renderSensitivityTable(inp);
+
+    // Render Schedule Table
+    renderScheduleTable(res.schedule);
+  }
+
+  function drawGrowthChart(points) {
+    var canvas = document.getElementById('growthChart');
+    if (!canvas || !points || points.length === 0) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    
+    var rect = canvas.getBoundingClientRect();
+    var width = rect.width || 600;
+    var height = 260;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
+
+    ctx.clearRect(0, 0, width, height);
+
+    var padding = { top: 20, right: 20, bottom: 35, left: 65 };
+    var chartW = width - padding.left - padding.right;
+    var chartH = height - padding.top - padding.bottom;
+
+    var maxVal = 0;
+    for (var i = 0; i < points.length; i++) {
+      if (points[i].balance > maxVal) maxVal = points[i].balance;
+    }
+    maxVal = maxVal * 1.1 || 1000;
+
+    // Draw Grid & Y-Labels
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px sans-serif';
+    ctx.lineWidth = 1;
+
+    var ySteps = 4;
+    for (var s = 0; s <= ySteps; s++) {
+      var yVal = (maxVal / ySteps) * s;
+      var yPos = padding.top + chartH - (s / ySteps) * chartH;
+      ctx.beginPath();
+      ctx.moveTo(padding.left, yPos);
+      ctx.lineTo(width - padding.right, yPos);
+      ctx.stroke();
+
+      var label = yVal >= 1000000 ? '$' + (yVal / 1000000).toFixed(1) + 'M' :
+                  yVal >= 1000 ? '$' + (yVal / 1000).toFixed(0) + 'k' : '$' + Math.round(yVal);
+      ctx.textAlign = 'right';
+      ctx.fillText(label, padding.left - 8, yPos + 4);
+    }
+
+    var numPts = points.length;
+    function getX(idx) {
+      return padding.left + (idx / (numPts - 1)) * chartW;
+    }
+    function getY(val) {
+      return padding.top + chartH - (val / maxVal) * chartH;
+    }
+
+    // Draw X-Labels
+    ctx.textAlign = 'center';
+    var xStep = Math.max(1, Math.floor(numPts / 6));
+    for (var p = 0; p < numPts; p += xStep) {
+      var xPos = getX(p);
+      ctx.fillText('Yr ' + points[p].year, xPos, height - 12);
+    }
+
+    // Series: Inflation Adjusted
+    ctx.beginPath();
+    ctx.strokeStyle = '#8b5cf6';
+    ctx.lineWidth = 2;
+    for (var j = 0; j < numPts; j++) {
+      var x = getX(j);
+      var y = getY(points[j].infBal);
+      if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Series: Contributions (Area fill + line)
+    ctx.beginPath();
+    for (var k = 0; k < numPts; k++) {
+      var xK = getX(k);
+      var yK = getY(points[k].contrib);
+      if (k === 0) ctx.moveTo(xK, yK); else ctx.lineTo(xK, yK);
+    }
+    ctx.strokeStyle = '#2563eb';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Series: Total Balance
+    ctx.beginPath();
+    for (var m = 0; m < numPts; m++) {
+      var xM = getX(m);
+      var yM = getY(points[m].balance);
+      if (m === 0) ctx.moveTo(xM, yM); else ctx.lineTo(xM, yM);
+    }
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  function renderScenarios(inp, baseRes) {
+    var container = document.getElementById('scenarios-grid');
+    var scs = [
+      { name: 'Conservative Case', rate: Math.max(1, inp.annualReturn - 3) },
+      { name: 'Base Plan (Current)', rate: inp.annualReturn, isBase: true },
+      { name: 'Optimistic Case', rate: inp.annualReturn + 3 }
+    ];
+
+    var html = '';
+    scs.forEach(function(sc) {
+      var copyInp = Object.assign({}, inp, { annualReturn: sc.rate });
+      var scRes = calculateDcaEngine(copyInp);
+      html += '<div class="scenario-card ' + (sc.isBase ? 'active-base' : '') + '">' +
+        '<div class="scenario-title">' + sc.name + ' (' + sc.rate + '%)</div>' +
+        '<div class="scenario-stat"><span>Future Value:</span> <strong>' + formatUsd(scRes.futureValue, false) + '</strong></div>' +
+        '<div class="scenario-stat"><span>Est. Growth:</span> <strong>' + formatUsd(scRes.totalGrowth, false) + '</strong></div>' +
+        '<div class="scenario-stat"><span>Inflation Adjusted:</span> <strong>' + formatUsd(scRes.inflationAdjustedValue, false) + '</strong></div>' +
+      '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  function renderWhatIf(inp, baseRes) {
+    var tbody = document.querySelector('#whatif-table tbody');
+    var amounts = [
+      { label: 'Lower (-40%)', amt: Math.round(inp.contributionAmount * 0.6) },
+      { label: 'Current Plan', amt: inp.contributionAmount },
+      { label: 'Boost (+25%)', amt: Math.round(inp.contributionAmount * 1.25) },
+      { label: 'Power (+50%)', amt: Math.round(inp.contributionAmount * 1.5) },
+      { label: 'Double (+100%)', amt: Math.round(inp.contributionAmount * 2.0) }
+    ];
+
+    var html = '';
+    amounts.forEach(function(item) {
+      var copyInp = Object.assign({}, inp, { contributionAmount: item.amt });
+      var wRes = calculateDcaEngine(copyInp);
+      var diff = wRes.futureValue - baseRes.futureValue;
+      var diffStr = (diff >= 0 ? '+' : '') + formatUsd(diff, false);
+      var diffColor = diff > 0 ? '#15803d' : (diff < 0 ? '#b91c1c' : '#334155');
+
+      html += '<tr>' +
+        '<td><strong>' + item.label + '</strong></td>' +
+        '<td>' + formatUsd(item.amt, false) + '</td>' +
+        '<td>' + formatUsd(wRes.totalContributions, false) + '</td>' +
+        '<td>' + formatUsd(wRes.totalGrowth, false) + '</td>' +
+        '<td><strong>' + formatUsd(wRes.futureValue, false) + '</strong></td>' +
+        '<td style="color:' + diffColor + '; font-weight:700;">' + diffStr + '</td>' +
+      '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function renderFrequencyTable(inp, baseRes) {
+    var tbody = document.querySelector('#freq-table tbody');
+    var basePpy = FREQ_MAP[inp.frequency] ? FREQ_MAP[inp.frequency].ppy : 12;
+    var targetAnnual = inp.contributionAmount * basePpy;
+
+    var freqs = ['weekly', 'biweekly', 'monthly', 'quarterly', 'annually'];
+    var html = '';
+    freqs.forEach(function(f) {
+      var ppy = FREQ_MAP[f].ppy;
+      var equiv = targetAnnual / ppy;
+      var cInp = Object.assign({}, inp, { frequency: f, contributionAmount: equiv });
+      var fRes = calculateDcaEngine(cInp);
+
+      html += '<tr>' +
+        '<td>' + FREQ_MAP[f].label + '</td>' +
+        '<td>' + formatUsd(equiv, true) + '</td>' +
+        '<td><strong>' + formatUsd(fRes.futureValue, false) + '</strong></td>' +
+      '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function renderSensitivityTable(inp) {
+    var tbody = document.querySelector('#sens-table tbody');
+    var rates = [4, 6, 8, 10, 12];
+    var html = '';
+    rates.forEach(function(r) {
+      var cInp = Object.assign({}, inp, { annualReturn: r });
+      var sRes = calculateDcaEngine(cInp);
+      html += '<tr>' +
+        '<td>' + r + '% / year</td>' +
+        '<td><strong>' + formatUsd(sRes.futureValue, false) + '</strong></td>' +
+        '<td>' + formatUsd(sRes.inflationAdjustedValue, false) + '</td>' +
+      '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function renderScheduleTable(schedule) {
+    var tbody = document.querySelector('#schedule-table tbody');
+    var html = '';
+    schedule.forEach(function(row) {
+      html += '<tr>' +
+        '<td>Year ' + row.year + '</td>' +
+        '<td>' + formatUsd(row.annualContribution, false) + '</td>' +
+        '<td>' + formatUsd(row.totalContributions, false) + '</td>' +
+        '<td>' + formatUsd(row.annualGrowth, false) + '</td>' +
+        '<td>' + formatUsd(row.totalGrowth, false) + '</td>' +
+        '<td>' + formatUsd(row.annualFees, false) + '</td>' +
+        '<td><strong>' + formatUsd(row.endingBalance, false) + '</strong></td>' +
+        '<td>' + formatUsd(row.inflationAdjustedBalance, false) + '</td>' +
+      '</tr>';
+    });
+    tbody.innerHTML = html;
+  }
+
+  function toggleFaq(el) {
+    var item = el.parentElement;
+    item.classList.toggle('open');
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 2500);
+  }
+
+  function saveSettings() {
+    var inp = getInputs();
+    localStorage.setItem('dca_saved_settings', JSON.stringify(inp));
+    showToast('✓ Settings Saved Locally');
+  }
+
+  function clearSavedSettings() {
+    localStorage.removeItem('dca_saved_settings');
+    showToast('✓ Saved Settings Cleared');
+  }
+
+  function loadSavedSettings() {
+    try {
+      var saved = localStorage.getItem('dca_saved_settings');
+      if (saved) {
+        var inp = JSON.parse(saved);
+        document.getElementById('initial-investment').value = inp.initialInvestment;
+        document.getElementById('contribution-amount').value = inp.contributionAmount;
+        document.getElementById('contribution-frequency').value = inp.frequency;
+        document.getElementById('period-years').value = inp.years;
+        document.getElementById('period-months').value = inp.months || 0;
+        document.getElementById('annual-return').value = inp.annualReturn;
+        document.getElementById('annual-increase').value = inp.annualIncrease || 0;
+        document.getElementById('inflation-rate').value = inp.inflationRate || 2.5;
+        document.getElementById('management-fee').value = inp.managementFee || 0;
+        document.getElementById('contribution-fee').value = inp.contributionFee || 0;
+      }
+    } catch(e) {}
+  }
+
+  function loadSampleData() {
+    document.getElementById('initial-investment').value = 5000;
+    document.getElementById('contribution-amount').value = 750;
+    document.getElementById('contribution-frequency').value = 'monthly';
+    document.getElementById('period-years').value = 15;
+    document.getElementById('period-months').value = 0;
+    document.getElementById('annual-return').value = 8.5;
+    document.getElementById('annual-increase').value = 3.0;
+    document.getElementById('inflation-rate').value = 2.5;
+    document.getElementById('management-fee').value = 0.25;
+    document.getElementById('contribution-fee').value = 0.0;
+    runCalculation();
+    showToast('✓ Sample Calculation Loaded');
+  }
+
+  function resetCalculator() {
+    document.getElementById('initial-investment').value = 1000;
+    document.getElementById('contribution-amount').value = 500;
+    document.getElementById('contribution-frequency').value = 'monthly';
+    document.getElementById('period-years').value = 10;
+    document.getElementById('period-months').value = 0;
+    document.getElementById('annual-return').value = 8.0;
+    document.getElementById('annual-increase').value = 0.0;
+    document.getElementById('inflation-rate').value = 2.5;
+    document.getElementById('management-fee').value = 0.0;
+    document.getElementById('contribution-fee').value = 0.0;
+    runCalculation();
+    showToast('✓ Reset to Default');
+  }
+
+  function exportCsv() {
+    if (!lastResult || !lastResult.schedule) return;
+    var rows = [
+      ['Year', 'Annual Contribution ($)', 'Total Contributions ($)', 'Annual Growth ($)', 'Total Growth ($)', 'Annual Fees ($)', 'Ending Balance ($)', 'Inflation Adjusted ($)']
+    ];
+    lastResult.schedule.forEach(function(r) {
+      rows.push([
+        r.year,
+        r.annualContribution.toFixed(2),
+        r.totalContributions.toFixed(2),
+        r.annualGrowth.toFixed(2),
+        r.totalGrowth.toFixed(2),
+        r.annualFees.toFixed(2),
+        r.endingBalance.toFixed(2),
+        r.inflationAdjustedBalance.toFixed(2)
+      ]);
+    });
+    var csvContent = 'data:text/csv;charset=utf-8,' + rows.map(function(e) { return e.join(','); }).join('\n');
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'DCA_Calculator_Schedule.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('✓ CSV Downloaded');
+  }
+
+  function copyResultsSummary() {
+    if (!lastResult) return;
+    var inp = lastResult.inputs;
+    var text = 'Dollar-Cost Averaging (DCA) Calculator Results\n' +
+      '----------------------------------------\n' +
+      'Initial Investment: ' + formatUsd(inp.initialInvestment, true) + '\n' +
+      'Regular Contribution: ' + formatUsd(inp.contributionAmount, true) + ' (' + inp.frequency + ')\n' +
+      'Investment Horizon: ' + inp.years + ' Years ' + (inp.months ? inp.months + ' Months' : '') + '\n' +
+      'Hypothetical Return: ' + inp.annualReturn + '% / year\n' +
+      'Annual Increase: ' + inp.annualIncrease + '%\n' +
+      '----------------------------------------\n' +
+      'Total Contributions: ' + formatUsd(lastResult.totalContributions, true) + '\n' +
+      'Estimated Growth: ' + formatUsd(lastResult.totalGrowth, true) + '\n' +
+      'Estimated Future Value: ' + formatUsd(lastResult.futureValue, true) + '\n' +
+      'Inflation-Adjusted Value: ' + formatUsd(lastResult.inflationAdjustedValue, true) + '\n' +
+      'Estimated ROI: ' + formatPct(lastResult.roi) + '\n' +
+      '----------------------------------------\n' +
+      'Disclaimer: Hypothetical calculation for educational purposes only. Not investment advice.';
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('✓ Summary Copied to Clipboard');
+      });
+    } else {
+      showToast('Clipboard access unavailable');
+    }
+  }
+
+  function shareSocial(network) {
+    var url = encodeURIComponent(window.location.href);
+    var title = encodeURIComponent('Dollar-Cost Averaging (DCA) Calculator — Estimate Your Investment Growth');
+    var shareUrl = '';
+
+    if (network === 'fb') shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    else if (network === 'x') shareUrl = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + title;
+    else if (network === 'li') shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+    else if (network === 'rd') shareUrl = 'https://reddit.com/submit?url=' + url + '&title=' + title;
+    else if (network === 'wa') shareUrl = 'https://api.whatsapp.com/send?text=' + title + '%20' + url;
+    else if (network === 'tg') shareUrl = 'https://t.me/share/url?url=' + url + '&text=' + title;
+    else if (network === 'mail') shareUrl = 'mailto:?subject=' + title + '&body=' + title + '%0A%0A' + url;
+
+    if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=450');
+  }
+
+  function copyShareLink() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        showToast('✓ Link Copied to Clipboard');
+      });
+    } else if (navigator.share) {
+      navigator.share({
+        title: 'Dollar-Cost Averaging (DCA) Calculator',
+        text: 'Calculate your investment growth with recurring deposits.',
+        url: window.location.href
+      });
+    }
+  }
+
+  // Initialize on Load
+  window.addEventListener('DOMContentLoaded', function() {
+    loadSavedSettings();
+    runCalculation();
+    document.getElementById('cur-year').textContent = new Date().getFullYear();
+  });
+
+  window.addEventListener('resize', function() {
+    if (lastResult) drawGrowthChart(lastResult.chartPoints);
+  });
+</script>
+</body>
+</html>
