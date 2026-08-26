@@ -1,0 +1,2820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator with Monthly Contributions | Free Investment Growth Tool</title>
+  <meta name="description" content="Calculate compound interest, monthly investment growth, retirement timelines, and what-if scenarios with this free, professional U.S. financial calculator.">
+  <meta name="keywords" content="compound interest calculator, compound interest calculator with monthly contributions, investment growth calculator, investment calculator, monthly investment calculator, compound growth calculator, future value calculator, savings calculator, investment goal calculator, retirement calculator, DCA calculator">
+  <meta name="author" content="Ultimate Financial Tools">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ultimate Compound Interest & Investment Growth Calculator">
+  <meta property="og:description" content="Calculate potential investment growth, monthly contributions, goal timelines, fees, inflation, and retirement scenarios.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ultimate Compound Interest & Investment Growth Calculator">
+  <meta name="twitter:description" content="Free browser-based investment growth and compound interest calculator built for U.S. investors.">
+
+  <!-- Structured Data / Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Ultimate Compound Interest & Investment Growth Calculator",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "description": "Professional compound interest and investment growth calculator with monthly contributions, inflation adjustment, fee impact, goal calculations, and retirement milestones.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Network Ad Script Tag 1 -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+  <style>
+    /* ==========================================================================
+       CSS STYLES - ULTIMATE COMPOUND INTEREST & INVESTMENT GROWTH CALCULATOR
+       ========================================================================== */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #94a3b8;
+      --border-color: #e2e8f0;
+      --border-focus: #2563eb;
+      
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --purple: #7c3aed;
+      --purple-light: #faf5ff;
+      --orange: #ea580c;
+      --orange-light: #fff7ed;
+      --amber: #d97706;
+      --danger: #dc2626;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --transition: all 0.2s ease-in-out;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 64px 16px;
+    }
+
+    /* Top Badges & Header */
+    .header-area {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .usa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .privacy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    h1.app-title {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    p.app-subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    p.app-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Ad Containers */
+    .ad-placeholder {
+      padding: 12px;
+      margin: 20px 0;
+      text-align: center;
+      min-height: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs-wrapper {
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-tabs {
+      display: flex;
+      background-color: var(--bg-secondary);
+      padding: 6px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      gap: 4px;
+      min-width: max-content;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .nav-tab-btn.active {
+      background-color: #ffffff;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Tab Panes */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Layout Grid */
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 960px) {
+      .calculator-grid {
+        grid-template-columns: 420px 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Form & Input Elements */
+    .calc-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .label-hint {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-subtle);
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix, .input-suffix {
+      position: absolute;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .input-prefix { left: 12px; }
+    .input-suffix { right: 12px; }
+
+    input[type="number"],
+    input[type="text"],
+    select {
+      width: 100%;
+      height: 42px;
+      padding: 8px 12px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text-main);
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    input[type="number"].has-prefix { padding-left: 28px; }
+    input[type="number"].has-suffix { padding-right: 32px; }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .range-slider-wrap {
+      margin-top: 6px;
+    }
+
+    .range-slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--bg-tertiary);
+      outline: none;
+      accent-color: var(--primary);
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      font-size: 16px;
+      padding: 14px 20px;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-secondary);
+      border-color: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--border-color);
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    /* Result Dashboard Cards */
+    .results-banner {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .results-banner-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .main-metric-value {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 600px) {
+      .metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .metric-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .metric-card-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .metric-card-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .metric-card-value.blue { color: var(--primary); }
+    .metric-card-value.green { color: var(--success); }
+    .metric-card-value.purple { color: var(--purple); }
+    .metric-card-value.orange { color: var(--orange); }
+
+    .metric-card-sub {
+      font-size: 11px;
+      color: var(--text-subtle);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* Charts Container */
+    .charts-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .charts-container.two-col {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .chart-box {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .chart-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .chart-canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 280px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Table Styles */
+    .table-container {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .table-toolbar {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      max-height: 480px;
+    }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 13px;
+    }
+
+    table.data-table th {
+      background-color: var(--bg-secondary);
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      white-space: nowrap;
+    }
+
+    table.data-table th:first-child,
+    table.data-table td:first-child {
+      text-align: center;
+    }
+
+    table.data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    table.data-table tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    .highlight-cell {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Collapsible Breakdown Box */
+    .collapsible-box {
+      margin-top: 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .collapsible-trigger {
+      width: 100%;
+      padding: 12px 16px;
+      background-color: var(--bg-secondary);
+      border: none;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .collapsible-content {
+      padding: 16px;
+      display: none;
+      background-color: #ffffff;
+    }
+
+    .collapsible-content.open {
+      display: block;
+    }
+
+    /* Goal Progress Bar */
+    .goal-progress-wrap {
+      background-color: var(--bg-tertiary);
+      border-radius: 9999px;
+      height: 12px;
+      overflow: hidden;
+      margin: 8px 0 16px 0;
+    }
+
+    .goal-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #059669);
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      display: none;
+      z-index: 9999;
+    }
+
+    /* Educational Section Grid */
+    .edu-section {
+      margin-top: 48px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 36px;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .edu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .edu-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .edu-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .edu-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: 40px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding-top: 10px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-icon {
+      transition: transform 0.2s;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Share Section */
+    .share-section {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+
+    .share-btn:hover { opacity: 0.9; }
+    .share-fb { background-color: #1877f2; }
+    .share-wa { background-color: #25d366; }
+    .share-x { background-color: #000000; }
+    .share-in { background-color: #0a66c2; }
+    .share-rd { background-color: #ff4500; }
+    .share-tg { background-color: #229ed9; }
+    .share-pin { background-color: #bd081c; }
+    .share-email { background-color: #64748b; }
+    .share-native { background-color: var(--primary); }
+    .share-copy { background-color: #334155; }
+
+    /* Disclaimers & Footer */
+    .disclaimer-box {
+      background-color: #fef2f2;
+      border: 1px solid #fee2e2;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 36px;
+      font-size: 13px;
+      color: #991b1b;
+      line-height: 1.5;
+    }
+
+    footer.app-footer {
+      margin-top: 48px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .nav-tabs-wrapper,
+      .button-group,
+      .share-section,
+      .ad-placeholder,
+      .faq-section,
+      .footer-links,
+      .toast-msg {
+        display: none !important;
+      }
+      .app-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      .calc-card, .table-container, .chart-box {
+        box-shadow: none !important;
+        border: 1px solid #cccccc !important;
+        page-break-inside: avoid;
+      }
+      .table-scroll {
+        max-height: none !important;
+        overflow: visible !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container" id="calculator-app">
+
+  <!-- Ad Container Top (Responsive 468x60 Banner) -->
+  <div class="ad-placeholder" id="blogger-ad-top">
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- Header -->
+  <header class="header-area">
+    <div class="badge-row">
+      <span class="usa-badge">🇺🇸 Free U.S. Investment Calculator</span>
+      <span class="privacy-badge">🔒 100% Client-Side Privacy</span>
+    </div>
+    <h1 class="app-title">Ultimate Compound Interest &amp; Investment Growth Calculator</h1>
+    <p class="app-subtitle">Calculate Potential Growth, Monthly Contributions, Investment Goals &amp; Long-Term Scenarios</p>
+    <p class="app-desc">Explore how an initial investment and regular contributions could grow over time using hypothetical return assumptions. Built specifically for U.S. investors.</p>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs-wrapper">
+    <nav class="nav-tabs" role="tablist">
+      <button class="nav-tab-btn active" onclick="switchTab('tab-compound')" id="btn-tab-compound" role="tab" aria-selected="true">
+        📈 Compound Interest
+      </button>
+      <button class="nav-tab-btn" onclick="switchTab('tab-growth')" id="btn-tab-growth" role="tab" aria-selected="false">
+        📊 Investment Growth
+      </button>
+      <button class="nav-tab-btn" onclick="switchTab('tab-goal')" id="btn-tab-goal" role="tab" aria-selected="false">
+        🎯 Investment Goal
+      </button>
+      <button class="nav-tab-btn" onclick="switchTab('tab-whatif')" id="btn-tab-whatif" role="tab" aria-selected="false">
+        🔥 What If?
+      </button>
+      <button class="nav-tab-btn" onclick="switchTab('tab-retirement')" id="btn-tab-retirement" role="tab" aria-selected="false">
+        👴 Retirement Projection
+      </button>
+      <button class="nav-tab-btn" onclick="switchTab('tab-scenarios')" id="btn-tab-scenarios" role="tab" aria-selected="false">
+        ⚖️ Scenario Comparison
+      </button>
+    </nav>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB 1: COMPOUND INTEREST (MAIN CALCULATOR) -->
+  <!-- ========================================== -->
+  <div id="tab-compound" class="tab-pane active">
+    <div class="calculator-grid">
+      
+      <!-- Input Sidebar -->
+      <aside class="calculator-sidebar">
+        <div class="calc-card">
+          <div class="card-header">
+            <h2 class="card-title">⚙️ Investment Parameters</h2>
+            <button class="btn btn-sm btn-secondary" onclick="loadExampleData()" title="Populate realistic example numbers">Load Example</button>
+          </div>
+
+          <form id="main-calc-form" onsubmit="event.preventDefault(); calculateAll();">
+            
+            <div class="form-group">
+              <label for="inp-initial">Initial Investment (Principal)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="inp-initial" class="has-prefix" value="10000" min="0" step="100" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inp-monthly">Monthly Contribution</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="inp-monthly" class="has-prefix" value="500" min="0" step="25" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inp-return">Hypothetical Annual Return (%)</label>
+              <div class="input-wrapper">
+                <input type="number" id="inp-return" class="has-suffix" value="8.0" min="0" max="100" step="0.1" required>
+                <span class="input-suffix">%</span>
+              </div>
+              <div class="range-slider-wrap">
+                <input type="range" class="range-slider" id="slider-return" min="1" max="20" step="0.5" value="8" oninput="syncSlider('slider-return', 'inp-return')">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="inp-years">Investment Period</label>
+                <div class="input-wrapper">
+                  <input type="number" id="inp-years" class="has-suffix" value="20" min="1" max="60" step="1" required>
+                  <span class="input-suffix">Yrs</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inp-frequency">Compounding</label>
+                <select id="inp-frequency">
+                  <option value="365">Daily</option>
+                  <option value="52">Weekly</option>
+                  <option value="12" selected>Monthly</option>
+                  <option value="4">Quarterly</option>
+                  <option value="2">Semi-Annually</option>
+                  <option value="1">Annually</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inp-timing">Contribution Timing</label>
+              <select id="inp-timing">
+                <option value="end" selected>End of Period (Standard)</option>
+                <option value="begin">Beginning of Period</option>
+              </select>
+            </div>
+
+            <!-- Advanced Parameters Accordion -->
+            <div class="collapsible-box">
+              <button type="button" class="collapsible-trigger" onclick="toggleCollapsible('adv-params-content')">
+                <span>⚡ Advanced (Step-Up, Inflation, Fees)</span>
+                <span id="adv-chevron">▼</span>
+              </button>
+              <div id="adv-params-content" class="collapsible-content">
+                
+                <div class="form-group">
+                  <label for="inp-stepup">Annual Contribution Increase (%) <span class="label-hint">(e.g. salary raises)</span></label>
+                  <div class="input-wrapper">
+                    <input type="number" id="inp-stepup" class="has-suffix" value="3.0" min="0" max="50" step="0.5">
+                    <span class="input-suffix">%</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inp-inflation">Estimated Annual Inflation (%)</label>
+                  <div class="input-wrapper">
+                    <input type="number" id="inp-inflation" class="has-suffix" value="2.5" min="0" max="25" step="0.1">
+                    <span class="input-suffix">%</span>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="inp-fee-annual">Annual Fee (AUM)</label>
+                    <div class="input-wrapper">
+                      <input type="number" id="inp-fee-annual" class="has-suffix" value="0.50" min="0" max="10" step="0.05">
+                      <span class="input-suffix">%</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inp-fee-contrib">Deposit Fee</label>
+                    <div class="input-wrapper">
+                      <input type="number" id="inp-fee-contrib" class="has-suffix" value="0.0" min="0" max="10" step="0.1">
+                      <span class="input-suffix">%</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button type="submit" class="btn btn-primary" id="btn-calculate">🚀 Calculate Growth</button>
+              <div class="btn-row">
+                <button type="button" class="btn btn-secondary" onclick="resetCalculator()">↺ Reset</button>
+                <button type="button" class="btn btn-secondary" onclick="saveSettingsToLocal()">💾 Save</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Sidebar Ad Placement (300x250 Rectangle) -->
+        <div class="ad-placeholder" id="blogger-ad-sidebar">
+          <script>
+            atOptions = {
+              'key' : '224e7394c28834c8ac1ce24682c420e3',
+              'format' : 'iframe',
+              'height' : 250,
+              'width' : 300,
+              'params' : {}
+            };
+          </script>
+          <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+        </div>
+      </aside>
+
+      <!-- Main Results Display -->
+      <main class="calculator-results">
+        
+        <!-- Primary Highlight Banner -->
+        <div class="results-banner">
+          <div class="results-banner-title">Estimated Future Value (Hypothetical)</div>
+          <div class="main-metric-value" id="res-future-val">$0</div>
+          <p style="font-size: 13px; opacity: 0.9;">
+            After <strong id="res-period-text">20 years</strong> at a <strong id="res-return-text">8.0%</strong> hypothetical annual return.
+          </p>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-card-label">💵 Total Contributions</span>
+            <span class="metric-card-value blue" id="res-total-contrib">$0</span>
+            <span class="metric-card-sub">Principal + Deposits</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card-label">📈 Investment Growth</span>
+            <span class="metric-card-value green" id="res-total-interest">$0</span>
+            <span class="metric-card-sub">Estimated Interest</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card-label">🛒 Inflation-Adjusted</span>
+            <span class="metric-card-value purple" id="res-inflation-val">$0</span>
+            <span class="metric-card-sub">Estimated Real Buying Power</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card-label">💸 Total Fees Paid</span>
+            <span class="metric-card-value orange" id="res-total-fees">$0</span>
+            <span class="metric-card-sub">Fee Drag on Returns</span>
+          </div>
+        </div>
+
+        <!-- Growth Visualizations -->
+        <div class="charts-container two-col">
+          <div class="chart-box">
+            <div class="chart-header">
+              <span class="chart-title">Estimated Account Growth Over Time</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="growthChart"></canvas>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-dot" style="background:#2563eb;"></span> Total Balance</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#16a34a;"></span> Total Contributions</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#9333ea;"></span> Inflation Adjusted</span>
+            </div>
+          </div>
+
+          <div class="chart-box">
+            <div class="chart-header">
+              <span class="chart-title">Principal vs. Growth Breakdown</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="donutChart"></canvas>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-dot" style="background:#2563eb;"></span> Contributions (<span id="pct-contrib">0%</span>)</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#16a34a;"></span> Growth (<span id="pct-growth">0%</span>)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Year by Year Table -->
+        <div class="table-container">
+          <div class="table-toolbar">
+            <strong style="font-size: 15px;">📅 Year-by-Year Growth Schedule</strong>
+            <div style="display:flex; gap:8px;">
+              <button class="btn btn-sm btn-secondary" onclick="exportToCSV()">📥 Download CSV</button>
+              <button class="btn btn-sm btn-secondary" onclick="copyResultsText()">📋 Copy Summary</button>
+              <button class="btn btn-sm btn-secondary" onclick="window.print()">🖨️ Print</button>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table" id="yearly-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Monthly Deposit</th>
+                  <th>Annual Deposits</th>
+                  <th>Total Deposits</th>
+                  <th>Interest Earned</th>
+                  <th>Fees</th>
+                  <th>End Balance</th>
+                  <th>Inflation Adj.</th>
+                </tr>
+              </thead>
+              <tbody id="yearly-tbody">
+                <!-- Dynamically generated rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Optional Collapsible Monthly Breakdown -->
+        <div class="collapsible-box" style="margin-bottom: 24px;">
+          <button type="button" class="collapsible-trigger" onclick="toggleCollapsible('monthly-breakdown-content')">
+            <span>🗓️ Show Full Monthly Schedule Breakdown (Expand/Collapse)</span>
+            <span id="monthly-chevron">▼</span>
+          </button>
+          <div id="monthly-breakdown-content" class="collapsible-content">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Detailed month-by-month compound interest accumulation schedule:</p>
+            <div class="table-scroll" style="max-height: 360px;">
+              <table class="data-table" id="monthly-table">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Deposit</th>
+                    <th>Interest</th>
+                    <th>Fees</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="monthly-tbody">
+                  <!-- Dynamically generated rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Explanation Note -->
+        <div style="background-color: var(--bg-secondary); border-radius: var(--radius-md); padding: 14px; font-size: 13px; color: var(--text-muted); border: 1px solid var(--border-color);">
+          ℹ️ <strong>How This Works:</strong> Your estimated future value combines your starting investment, recurring contributions, and hypothetical compounding over time. Investment returns are never guaranteed and actual market results can vary significantly.
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB 2: INVESTMENT GROWTH DEEP DIVE         -->
+  <!-- ========================================== -->
+  <div id="tab-growth" class="tab-pane">
+    <div class="calc-card">
+      <div class="card-header">
+        <h2 class="card-title">📊 Investment Growth &amp; Compounding Velocity</h2>
+      </div>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
+        See how the velocity of compounding accelerates over longer time horizons. In early years, your monthly deposits drive account balance; in later years, compound interest generates the majority of your total growth.
+      </p>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-card-label">Year 5 Balance</span>
+          <span class="metric-card-value" id="growth-yr5">$0</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-label">Year 10 Balance</span>
+          <span class="metric-card-value" id="growth-yr10">$0</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-label">Year 20 Balance</span>
+          <span class="metric-card-value" id="growth-yr20">$0</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-label">Year 30 Balance</span>
+          <span class="metric-card-value" id="growth-yr30">$0</span>
+        </div>
+      </div>
+
+      <div class="chart-box" style="margin-top: 20px;">
+        <div class="chart-header">
+          <span class="chart-title">Cumulative Contributions vs. Cumulative Growth</span>
+        </div>
+        <div class="chart-canvas-wrapper" style="height: 320px;">
+          <canvas id="compoundingVelocityChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB 3: INVESTMENT GOAL CALCULATOR          -->
+  <!-- ========================================== -->
+  <div id="tab-goal" class="tab-pane">
+    <div class="calculator-grid">
+      <aside class="calculator-sidebar">
+        <div class="calc-card">
+          <div class="card-header">
+            <h2 class="card-title">🎯 Goal Calculator</h2>
+          </div>
+          <form id="goal-calc-form" onsubmit="event.preventDefault(); calculateGoal();">
+            
+            <div class="form-group">
+              <label for="goal-target">Target Savings Goal ($)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="goal-target" class="has-prefix" value="250000" min="1000" step="5000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="goal-current">Current Investment ($)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="goal-current" class="has-prefix" value="15000" min="0" step="1000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="goal-years">Years to Reach Goal</label>
+              <div class="input-wrapper">
+                <input type="number" id="goal-years" class="has-suffix" value="15" min="1" max="50" step="1" required>
+                <span class="input-suffix">Yrs</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="goal-return">Expected Annual Return (%)</label>
+              <div class="input-wrapper">
+                <input type="number" id="goal-return" class="has-suffix" value="8.0" min="0.1" max="30" step="0.1" required>
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">🎯 Calculate Needed Contribution</button>
+          </form>
+        </div>
+      </aside>
+
+      <main class="calculator-results">
+        <div class="calc-card">
+          <h2 class="card-title" style="margin-bottom:16px;">Goal Roadmap &amp; Progress</h2>
+          
+          <div class="results-banner" style="background: linear-gradient(135deg, #065f46, #10b981);">
+            <div class="results-banner-title">Estimated Monthly Contribution Needed</div>
+            <div class="main-metric-value" id="goal-res-monthly">$0</div>
+            <p style="font-size: 13px; opacity: 0.9;">
+              To reach your target of <strong id="goal-res-target-text">$250,000</strong> in <strong id="goal-res-yrs-text">15 years</strong>.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:4px;">
+              <span>Current Progress</span>
+              <span id="goal-pct-text">0% Reached</span>
+            </div>
+            <div class="goal-progress-wrap">
+              <div class="goal-progress-bar" id="goal-progress-bar" style="width: 0%;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted);">
+              <span>Initial: <span id="goal-res-init">$0</span></span>
+              <span>Remaining: <span id="goal-res-remaining">$0</span></span>
+              <span>Target: <span id="goal-res-target">$0</span></span>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-card-label">Total Out-of-Pocket Deposits</span>
+              <span class="metric-card-value blue" id="goal-res-deposits">$0</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card-label">Estimated Growth Contribution</span>
+              <span class="metric-card-value green" id="goal-res-growth">$0</span>
+            </div>
+          </div>
+
+          <!-- Time to Goal Section -->
+          <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border-color);">
+            <h3 style="font-size:16px; font-weight:700; margin-bottom:12px;">⏱️ Reverse Check: Time-to-Goal Calculator</h3>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">
+              If you instead invest a fixed amount of <strong>$500/month</strong> with your current $15,000 savings:
+            </p>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label>Fixed Monthly Investment</label>
+                <div class="input-wrapper">
+                  <span class="input-prefix">$</span>
+                  <input type="number" id="reverse-monthly" class="has-prefix" value="500" min="10" step="50" oninput="calculateTimeToGoal()">
+                </div>
+              </div>
+              <div class="metric-card" style="justify-content:center;">
+                <span class="metric-card-label">Estimated Time to Reach Target</span>
+                <span class="metric-card-value purple" id="reverse-res-time">--</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB 4: WHAT IF? SENSITIVITY & HORIZON      -->
+  <!-- ========================================== -->
+  <div id="tab-whatif" class="tab-pane">
+    <div class="calc-card">
+      <div class="card-header">
+        <h2 class="card-title">🔥 What If I Invest More Each Month?</h2>
+      </div>
+      <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px;">
+        Comparing the impact of different monthly contribution tiers based on your current initial investment (<span id="whatif-init-disp">$10,000</span>) and return assumption (<span id="whatif-rate-disp">8%</span>) over <span id="whatif-yrs-disp">20 years</span>.
+      </p>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Monthly Contribution</th>
+              <th>Total Deposits</th>
+              <th>Estimated Interest</th>
+              <th>Future Value</th>
+              <th>Difference vs $500/mo</th>
+            </tr>
+          </thead>
+          <tbody id="whatif-tbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Return Sensitivity Section -->
+      <div style="margin-top: 36px;">
+        <h3 style="font-size:17px; font-weight:700; margin-bottom:8px;">📈 Hypothetical Return Sensitivity Analysis</h3>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+          How varying annual market returns dramatically shift total portfolio outcomes:
+        </p>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hypothetical Return</th>
+                <th>Total Contributions</th>
+                <th>Estimated Growth</th>
+                <th>Estimated Future Value</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="sensitivity-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Time Horizon Analysis -->
+      <div style="margin-top: 36px;">
+        <h3 style="font-size:17px; font-weight:700; margin-bottom:8px;">⏳ Time Horizon Milestone Analysis</h3>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+          The exponential power of staying invested across different decades:
+        </p>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Time Horizon</th>
+                <th>Total Contributions</th>
+                <th>Estimated Interest</th>
+                <th>Future Value</th>
+              </tr>
+            </thead>
+            <tbody id="horizon-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Fee Impact Analysis -->
+      <div style="margin-top: 36px;">
+        <h3 style="font-size:17px; font-weight:700; margin-bottom:8px;">💸 How Investment Fees &amp; Expense Ratios Impact Wealth</h3>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+          Comparing a low-cost 0.05% index fund vs. a 0.50% advisory fee vs. a 1.50% high-fee fund:
+        </p>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-card-label">Low Fee (0.05%)</span>
+            <span class="metric-card-value green" id="fee-opt-low">$0</span>
+            <span class="metric-card-sub">Lost to fees: <span id="fee-loss-low">$0</span></span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card-label">Moderate Fee (0.50%)</span>
+            <span class="metric-card-value blue" id="fee-opt-med">$0</span>
+            <span class="metric-card-sub">Lost to fees: <span id="fee-loss-med">$0</span></span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card-label">High Fee (1.50%)</span>
+            <span class="metric-card-value orange" id="fee-opt-high">$0</span>
+            <span class="metric-card-sub">Lost to fees: <span id="fee-loss-high">$0</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB 5: RETIREMENT PROJECTION               -->
+  <!-- ========================================== -->
+  <div id="tab-retirement" class="tab-pane">
+    <div class="calculator-grid">
+      <aside class="calculator-sidebar">
+        <div class="calc-card">
+          <div class="card-header">
+            <h2 class="card-title">👴 Retirement Profile</h2>
+          </div>
+          <form id="retire-form" onsubmit="event.preventDefault(); calculateRetirement();">
+            
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="retire-age-cur">Current Age</label>
+                <input type="number" id="retire-age-cur" value="30" min="18" max="90" required>
+              </div>
+              <div class="form-group">
+                <label for="retire-age-target">Retirement Age</label>
+                <input type="number" id="retire-age-target" value="65" min="20" max="100" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="retire-savings">Current Retirement Savings</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="retire-savings" class="has-prefix" value="25000" min="0" step="1000">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="retire-monthly">Monthly Retirement Contribution</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">$</span>
+                <input type="number" id="retire-monthly" class="has-prefix" value="600" min="0" step="50">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="retire-return">Expected Annual Return (%)</label>
+              <div class="input-wrapper">
+                <input type="number" id="retire-return" class="has-suffix" value="7.5" min="1" max="20" step="0.1">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="retire-stepup">Annual Contribution Step-Up (%)</label>
+              <div class="input-wrapper">
+                <input type="number" id="retire-stepup" class="has-suffix" value="3.0" min="0" max="20" step="0.5">
+                <span class="input-suffix">%</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">📊 Project Retirement Nest Egg</button>
+          </form>
+        </div>
+      </aside>
+
+      <main class="calculator-results">
+        <div class="calc-card">
+          <h2 class="card-title" style="margin-bottom:16px;">Retirement Nest Egg Forecast</h2>
+          
+          <div class="results-banner" style="background: linear-gradient(135deg, #4c1d95, #7c3aed);">
+            <div class="results-banner-title">Estimated Nest Egg at Age <span id="retire-banner-age">65</span></div>
+            <div class="main-metric-value" id="retire-res-total">$0</div>
+            <p style="font-size: 13px; opacity: 0.9;">
+              In <strong id="retire-banner-yrs">35 years</strong> | Estimated inflation-adjusted purchasing power: <strong id="retire-res-infl">$0</strong>
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-card-label">Your Total Lifetime Contributions</span>
+              <span class="metric-card-value blue" id="retire-res-contrib">$0</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card-label">Estimated Compound Growth</span>
+              <span class="metric-card-value green" id="retire-res-growth">$0</span>
+            </div>
+          </div>
+
+          <h3 style="font-size: 16px; font-weight:700; margin: 24px 0 12px 0;">🎯 Age Milestones Roadmap</h3>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Age</th>
+                  <th>Years Invested</th>
+                  <th>Total Contributed</th>
+                  <th>Projected Balance</th>
+                  <th>Real Purchasing Power (2.5% Infl)</th>
+                </tr>
+              </thead>
+              <tbody id="retire-milestones-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB 6: SCENARIO COMPARISON                 -->
+  <!-- ========================================== -->
+  <div id="tab-scenarios" class="tab-pane">
+    <div class="calc-card">
+      <div class="card-header">
+        <h2 class="card-title">⚖️ 3-Tier Scenario Comparison (Conservative, Base, Aggressive)</h2>
+      </div>
+      <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">
+        Compare 3 realistic financial trajectories based on conservative (5%), standard base case, and aggressive growth (10%) market assumptions over your selected timeframe.
+      </p>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Hypothetical Return</th>
+              <th>Total Deposits</th>
+              <th>Estimated Interest</th>
+              <th>Estimated Future Value</th>
+            </tr>
+          </thead>
+          <tbody id="scenarios-tbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart-box" style="margin-top:24px;">
+        <div class="chart-header">
+          <span class="chart-title">Scenario Trajectory Comparison</span>
+        </div>
+        <div class="chart-canvas-wrapper" style="height: 300px;">
+          <canvas id="scenarioChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- In-Content Ad Placement (Native CPM Network Container) -->
+  <div class="ad-placeholder" id="blogger-ad-middle">
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- EDUCATIONAL & STRATEGY SECTION             -->
+  <!-- ========================================== -->
+  <section class="edu-section">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h2 style="font-size: 24px; font-weight: 800; color: var(--text-main);">📚 Comprehensive Investment &amp; Compounding Guide</h2>
+      <p style="font-size: 14px; color: var(--text-muted);">Master the fundamentals of long-term wealth creation, compounding math, and portfolio efficiency.</p>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>🌱 What Is Compound Interest?</h3>
+        <p>
+          Compound interest is interest earned on both your initial principal investment AND the accumulated interest from prior periods. Unlike simple interest—which only pays interest on the original starting deposit—compound interest creates an exponential mathematical snowball effect over time.
+        </p>
+      </div>
+
+      <div class="edu-card">
+        <h3>⏳ Why Time in the Market Matters Most</h3>
+        <p>
+          In compound interest mathematics, the exponent is time ($t$). Starting just 5 or 10 years earlier can double or triple your final portfolio balance even if you contribute less total money out of pocket.
+        </p>
+      </div>
+
+      <div class="edu-card">
+        <h3>🔄 Dollar-Cost Averaging (DCA) vs. Lump-Sum</h3>
+        <p>
+          <strong>Dollar-Cost Averaging (DCA)</strong> involves investing fixed dollar amounts at steady intervals (e.g., $500 every month), automatically purchasing more shares when prices are low and fewer when prices are high. <strong>Lump-Sum Investing</strong> deploys all available capital immediately. Both are proven strategies; DCA reduces psychological volatility risk.
+        </p>
+      </div>
+
+      <div class="edu-card">
+        <h3>🛒 How Inflation Affects Real Purchasing Power</h3>
+        <p>
+          Inflation steadily erodes purchasing power over time. A nominal $1,000,000 balance in 30 years at a 2.5% inflation rate will have the equivalent purchasing power of roughly $476,743 today. Always review both nominal and inflation-adjusted figures.
+        </p>
+      </div>
+
+      <div class="edu-card">
+        <h3>📉 The Hidden Drag of Investment Fees (AUM &amp; Expense Ratios)</h3>
+        <p>
+          An ongoing 1.0% annual management fee may seem minor, but over a 30-year horizon, it can consume more than 20% to 30% of your total potential terminal portfolio value due to lost compounding opportunities.
+        </p>
+      </div>
+
+      <div class="edu-card">
+        <h3>🧮 How This Calculator Works</h3>
+        <p>
+          Our calculation engine applies standard discrete periodic compounding formulas:
+          $$FV = P(1 + r/n)^{nt} + PMT \times \frac{(1 + r/n)^{nt} - 1}{r/n}$$
+          accounting for annual contribution increases, discrete monthly step-ups, fee drags, and compounding frequency.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FREQUENTLY ASKED QUESTIONS (FAQ)           -->
+  <!-- ========================================== -->
+  <section class="faq-section">
+    <h2 style="font-size: 22px; font-weight: 800; margin-bottom: 16px;">❓ Frequently Asked Questions (FAQ)</h2>
+    
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>What is the difference between simple interest and compound interest?</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        Simple interest is calculated exclusively on your initial principal amount. Compound interest is calculated on the principal plus all interest that has already been credited. Over decades, compound interest drastically outperforms simple interest.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>How does monthly contribution timing (beginning vs. end) affect results?</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        Investing at the beginning of each period (annuity due) gives your monthly cash an extra compounding period of growth compared to investing at the end of the period (ordinary annuity), yielding slightly higher overall returns over time.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>What is a realistic hypothetical return to use for U.S. index funds?</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        Historically, the U.S. S&amp;P 500 has averaged approximately 9% to 10% nominal annual returns before inflation over long multi-decade periods (or 6.5% to 7% after inflation). However, past performance never guarantees future returns, and market volatility can cause significant fluctuations.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>Can I include annual salary raises in my monthly contributions?</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        Yes! In the Advanced settings section, enter an "Annual Contribution Increase (%)" (such as 3%). The calculator will automatically step up your monthly deposits each year to simulate lifestyle raises.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>Does this calculator store or transmit my financial data?</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        No. All calculations run 100% locally inside your web browser. If you choose to save your settings, they are stored strictly in your browser's private localStorage and are never sent to any server.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span>Is this calculator free to use and publish?</span>
+        <span class="faq-icon">▼</span>
+      </button>
+      <div class="faq-answer">
+        Yes, this tool is 100% free for personal and educational use and is designed to embed seamlessly into websites, blogs, and Blogger.com pages.
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SOCIAL SHARING SECTION                     -->
+  <!-- ========================================== -->
+  <section class="share-section">
+    <h3 style="font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">📢 Share This Free Investment Calculator</h3>
+    <p style="font-size: 13px; color: var(--text-muted);">Help friends and family calculate their path to financial independence and compound growth.</p>
+    
+    <div class="share-buttons">
+      <button class="share-btn share-native" onclick="handleNativeShare()">📲 Share</button>
+      <a class="share-btn share-fb" id="share-fb-link" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a class="share-btn share-x" id="share-x-link" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <a class="share-btn share-wa" id="share-wa-link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="share-btn share-in" id="share-in-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="share-btn share-rd" id="share-rd-link" target="_blank" rel="noopener noreferrer">Reddit</a>
+      <a class="share-btn share-tg" id="share-tg-link" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="share-btn share-pin" id="share-pin-link" target="_blank" rel="noopener noreferrer">Pinterest</a>
+      <a class="share-btn share-email" id="share-email-link">Email</a>
+      <button class="share-btn share-copy" onclick="copyPageLink()">🔗 Copy Link</button>
+    </div>
+  </section>
+
+  <!-- Financial Disclaimer -->
+  <div class="disclaimer-box">
+    <strong>⚠️ Important Financial Disclaimer:</strong> This calculator is designed strictly for educational and informational purposes. It does not provide personalized investment, financial, tax, or legal advice. All calculations are hypothetical mathematical estimates based on user-supplied assumptions and do not guarantee future investment returns or account balances. Actual investment performance, market fluctuations, taxes, and fees will vary.
+  </div>
+
+  <!-- Bottom Ad Placement (Responsive 468x60 Banner) -->
+  <div class="ad-placeholder" id="blogger-ad-bottom">
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-links">
+      <a href="#calculator-app">Calculator Top</a>
+      <a href="#tab-goal" onclick="switchTab('tab-goal')">Goal Planner</a>
+      <a href="#tab-retirement" onclick="switchTab('tab-retirement')">Retirement Planner</a>
+      <a href="#tab-whatif" onclick="switchTab('tab-whatif')">What-If Scenarios</a>
+      <a href="javascript:void(0)" onclick="alert('Privacy Notice: All financial calculations occur locally in your client browser.');">Privacy Notice</a>
+      <a href="javascript:void(0)" onclick="alert('Terms: Free educational tool for general reference.');">Terms of Use</a>
+    </div>
+    <p>© <span id="cur-year">2026</span> Ultimate Compound Interest &amp; Investment Growth Calculator • Built for U.S. Investors 🇺🇸</p>
+  </footer>
+
+</div>
+
+<!-- Toast Message Element -->
+<div id="toast-msg" class="toast-msg">Notification</div>
+
+<!-- ==========================================================================
+     VANILLA JAVASCRIPT ENGINE - 100% CLIENT SIDE (NO BACKEND / NO LIBS)
+     ========================================================================== -->
+<script>
+  // Global calculation state cache
+  let currentSchedule = [];
+  let currentSummary = {};
+
+  // Initialize on DOM Ready
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('cur-year').textContent = new Date().getFullYear();
+    setupSocialLinks();
+    loadSavedSettings();
+    calculateAll();
+    calculateGoal();
+    calculateRetirement();
+  });
+
+  // Tab Switching
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('active'));
+    
+    const target = document.getElementById(tabId);
+    if (target) target.classList.add('active');
+    
+    const btn = document.getElementById('btn-' + tabId);
+    if (btn) btn.classList.add('active');
+
+    // Trigger chart redraw when switching tabs
+    setTimeout(() => {
+      drawGrowthChart();
+      drawDonutChart();
+      if (tabId === 'tab-growth') drawCompoundingVelocityChart();
+      if (tabId === 'tab-scenarios') drawScenarioChart();
+    }, 50);
+  }
+
+  // Collapsible toggle
+  function toggleCollapsible(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('open');
+  }
+
+  // FAQ Accordion
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    item.classList.toggle('active');
+  }
+
+  // Sync Slider to Input
+  function syncSlider(sliderId, inputId) {
+    const slider = document.getElementById(sliderId);
+    const input = document.getElementById(inputId);
+    if (slider && input) {
+      input.value = slider.value;
+      calculateAll();
+    }
+  }
+
+  // Number Formatters
+  function formatUSD(num) {
+    if (isNaN(num) || !isFinite(num)) return '$0';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(num);
+  }
+
+  function formatUSDDecimals(num) {
+    if (isNaN(num) || !isFinite(num)) return '$0.00';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 2
+    }).format(num);
+  }
+
+  // ==========================================
+  // CORE COMPOUND INTEREST CALCULATION ENGINE
+  // ==========================================
+  function calculateAll() {
+    const initial = Math.max(0, parseFloat(document.getElementById('inp-initial').value) || 0);
+    const baseMonthly = Math.max(0, parseFloat(document.getElementById('inp-monthly').value) || 0);
+    const annualReturnPct = (parseFloat(document.getElementById('inp-return').value) || 0) / 100;
+    const years = Math.max(1, parseInt(document.getElementById('inp-years').value) || 20);
+    const compFreq = parseInt(document.getElementById('inp-frequency').value) || 12;
+    const timing = document.getElementById('inp-timing').value;
+    const stepUpPct = (parseFloat(document.getElementById('inp-stepup').value) || 0) / 100;
+    const inflationPct = (parseFloat(document.getElementById('inp-inflation').value) || 0) / 100;
+    const feeAnnualPct = (parseFloat(document.getElementById('inp-fee-annual').value) || 0) / 100;
+    const feeContribPct = (parseFloat(document.getElementById('inp-fee-contrib').value) || 0) / 100;
+
+    // Monthly effective interest calculation
+    // Effective net annual rate after asset-based fee
+    const netAnnualRate = Math.max(-0.99, annualReturnPct - feeAnnualPct);
+    // Effective monthly rate based on compounding frequency
+    const monthlyRate = Math.pow(1 + netAnnualRate / compFreq, compFreq / 12) - 1;
+    // Gross monthly rate without fee for fee impact comparison
+    const grossMonthlyRate = Math.pow(1 + annualReturnPct / compFreq, compFreq / 12) - 1;
+
+    let balance = initial;
+    let grossBalance = initial;
+    let totalDeposits = initial;
+    let totalGrossDeposits = initial;
+    let totalInterest = 0;
+    let totalFees = 0;
+
+    const totalMonths = years * 12;
+    const monthlyData = [];
+    const yearlyData = [];
+
+    let currentMonthlyDeposit = baseMonthly;
+    let yearDepositSum = 0;
+    let yearInterestSum = 0;
+    let yearFeeSum = 0;
+
+    for (let m = 1; m <= totalMonths; m++) {
+      // Annual step-up adjustment at the start of each year
+      if (m > 1 && (m - 1) % 12 === 0) {
+        currentMonthlyDeposit *= (1 + stepUpPct);
+      }
+
+      const depositFee = currentMonthlyDeposit * feeContribPct;
+      const netDeposit = currentMonthlyDeposit - depositFee;
+      totalDeposits += currentMonthlyDeposit;
+      totalGrossDeposits += currentMonthlyDeposit;
+
+      let monthInterest = 0;
+      let grossMonthInterest = 0;
+
+      if (timing === 'begin') {
+        balance += netDeposit;
+        grossBalance += currentMonthlyDeposit;
+        monthInterest = balance * monthlyRate;
+        grossMonthInterest = grossBalance * grossMonthlyRate;
+        balance += monthInterest;
+        grossBalance += grossMonthInterest;
+      } else {
+        monthInterest = balance * monthlyRate;
+        grossMonthInterest = grossBalance * grossMonthlyRate;
+        balance += monthInterest;
+        grossBalance += grossMonthInterest;
+        balance += netDeposit;
+        grossBalance += currentMonthlyDeposit;
+      }
+
+      // Annual fee deducted monthly
+      const monthlyAUMFee = balance * (feeAnnualPct / 12);
+      const totalMonthFee = depositFee + monthlyAUMFee;
+      totalFees += totalMonthFee;
+      totalInterest += monthInterest;
+
+      yearDepositSum += currentMonthlyDeposit;
+      yearInterestSum += monthInterest;
+      yearFeeSum += totalMonthFee;
+
+      monthlyData.push({
+        month: m,
+        deposit: currentMonthlyDeposit,
+        interest: monthInterest,
+        fees: totalMonthFee,
+        balance: balance
+      });
+
+      // Year-end snapshot
+      if (m % 12 === 0 || m === totalMonths) {
+        const yr = Math.ceil(m / 12);
+        const inflationFactor = Math.pow(1 + inflationPct, yr);
+        const inflationAdjBalance = balance / inflationFactor;
+
+        yearlyData.push({
+          year: yr,
+          monthlyDeposit: currentMonthlyDeposit,
+          annualDeposits: yearDepositSum,
+          totalDeposits: totalDeposits,
+          interestEarned: yearInterestSum,
+          cumulativeInterest: totalInterest,
+          fees: yearFeeSum,
+          balance: balance,
+          grossBalance: grossBalance,
+          inflationAdjBalance: inflationAdjBalance
+        });
+
+        yearDepositSum = 0;
+        yearInterestSum = 0;
+        yearFeeSum = 0;
+      }
+    }
+
+    const finalInflationAdj = balance / Math.pow(1 + inflationPct, years);
+
+    // Save summary state
+    currentSummary = {
+      initial,
+      baseMonthly,
+      annualReturnPct,
+      years,
+      futureValue: balance,
+      grossFutureValue: grossBalance,
+      totalDeposits,
+      totalInterest: Math.max(0, balance - totalDeposits),
+      totalFees,
+      inflationAdjusted: finalInflationAdj
+    };
+
+    currentSchedule = yearlyData;
+
+    // Update UI Elements
+    document.getElementById('res-future-val').textContent = formatUSD(balance);
+    document.getElementById('res-period-text').textContent = years + ' years';
+    document.getElementById('res-return-text').textContent = (annualReturnPct * 100).toFixed(1) + '%';
+    document.getElementById('res-total-contrib').textContent = formatUSD(totalDeposits);
+    document.getElementById('res-total-interest').textContent = formatUSD(Math.max(0, balance - totalDeposits));
+    document.getElementById('res-inflation-val').textContent = formatUSD(finalInflationAdj);
+    document.getElementById('res-total-fees').textContent = formatUSD(totalFees);
+
+    const contribPct = Math.round((totalDeposits / Math.max(1, balance)) * 100);
+    const growthPct = Math.max(0, 100 - contribPct);
+    document.getElementById('pct-contrib').textContent = contribPct + '%';
+    document.getElementById('pct-growth').textContent = growthPct + '%';
+
+    // Render Tables & Charts
+    renderYearlyTable(yearlyData);
+    renderMonthlyTable(monthlyData);
+    drawGrowthChart();
+    drawDonutChart();
+    updateWhatIfTables(initial, baseMonthly, annualReturnPct, years);
+    updateGrowthMilestones(yearlyData);
+    updateScenarioComparison(initial, baseMonthly, years, annualReturnPct);
+  }
+
+  // Render Yearly Schedule Table
+  function renderYearlyTable(yearlyData) {
+    const tbody = document.getElementById('yearly-tbody');
+    tbody.innerHTML = '';
+    yearlyData.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${row.year}</strong></td>
+        <td>${formatUSD(row.monthlyDeposit)}</td>
+        <td>${formatUSD(row.annualDeposits)}</td>
+        <td>${formatUSD(row.totalDeposits)}</td>
+        <td class="highlight-cell" style="color:#16a34a;">+${formatUSD(row.interestEarned)}</td>
+        <td style="color:#ea580c;">${formatUSD(row.fees)}</td>
+        <td class="highlight-cell">${formatUSD(row.balance)}</td>
+        <td style="color:#7c3aed;">${formatUSD(row.inflationAdjBalance)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Render Monthly Schedule Table
+  function renderMonthlyTable(monthlyData) {
+    const tbody = document.getElementById('monthly-tbody');
+    tbody.innerHTML = '';
+    // Show first 120 months max for fast UI rendering
+    const limit = Math.min(monthlyData.length, 120);
+    for (let i = 0; i < limit; i++) {
+      const row = monthlyData[i];
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>M${row.month}</td>
+        <td>${formatUSD(row.deposit)}</td>
+        <td style="color:#16a34a;">+${formatUSDDecimals(row.interest)}</td>
+        <td style="color:#ea580c;">${formatUSDDecimals(row.fees)}</td>
+        <td><strong>${formatUSD(row.balance)}</strong></td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  // ==========================================
+  // PURE HTML5 CANVAS CHARTS (NO EXTERNAL LIBS)
+  // ==========================================
+  function drawGrowthChart() {
+    const canvas = document.getElementById('growthChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = rect.width;
+    const height = rect.height;
+    const padding = { top: 20, right: 20, bottom: 30, left: 65 };
+
+    ctx.clearRect(0, 0, width, height);
+
+    if (!currentSchedule.length) return;
+
+    const maxVal = Math.max(...currentSchedule.map(d => d.balance)) * 1.1 || 1;
+    const years = currentSchedule.length;
+
+    // Grid lines
+    ctx.strokeStyle = '#f1f5f9';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const y = padding.top + (height - padding.top - padding.bottom) * (i / 4);
+      ctx.beginPath();
+      ctx.moveTo(padding.left, y);
+      ctx.lineTo(width - padding.right, y);
+      ctx.stroke();
+
+      const val = maxVal * (1 - i / 4);
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '10px -apple-system, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText('$' + (val >= 1000000 ? (val/1000000).toFixed(1) + 'M' : val >= 1000 ? (val/1000).toFixed(0) + 'k' : val.toFixed(0)), padding.left - 8, y + 3);
+    }
+
+    const plotW = width - padding.left - padding.right;
+    const plotH = height - padding.top - padding.bottom;
+
+    const getX = (index) => padding.left + (index / (years - 1)) * plotW;
+    const getY = (val) => padding.top + plotH - (val / maxVal) * plotH;
+
+    // Area Fill for Total Balance
+    ctx.beginPath();
+    ctx.moveTo(getX(0), getY(0));
+    currentSchedule.forEach((d, i) => {
+      ctx.lineTo(getX(i), getY(d.balance));
+    });
+    ctx.lineTo(getX(years - 1), getY(0));
+    ctx.closePath();
+    const grad = ctx.createLinearGradient(0, padding.top, 0, height);
+    grad.addColorStop(0, 'rgba(37, 99, 235, 0.25)');
+    grad.addColorStop(1, 'rgba(37, 99, 235, 0.01)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Line 1: Total Balance
+    ctx.beginPath();
+    currentSchedule.forEach((d, i) => {
+      if (i === 0) ctx.moveTo(getX(i), getY(d.balance));
+      else ctx.lineTo(getX(i), getY(d.balance));
+    });
+    ctx.strokeStyle = '#2563eb';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    // Line 2: Total Contributions
+    ctx.beginPath();
+    currentSchedule.forEach((d, i) => {
+      if (i === 0) ctx.moveTo(getX(i), getY(d.totalDeposits));
+      else ctx.lineTo(getX(i), getY(d.totalDeposits));
+    });
+    ctx.strokeStyle = '#16a34a';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Line 3: Inflation Adjusted
+    ctx.beginPath();
+    currentSchedule.forEach((d, i) => {
+      if (i === 0) ctx.moveTo(getX(i), getY(d.inflationAdjBalance));
+      else ctx.lineTo(getX(i), getY(d.inflationAdjBalance));
+    });
+    ctx.strokeStyle = '#9333ea';
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // X Axis Labels
+    ctx.fillStyle = '#64748b';
+    ctx.textAlign = 'center';
+    const step = Math.max(1, Math.floor(years / 5));
+    for (let i = 0; i < years; i += step) {
+      ctx.fillText('Yr ' + currentSchedule[i].year, getX(i), height - 10);
+    }
+  }
+
+  function drawDonutChart() {
+    const canvas = document.getElementById('donutChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = rect.width;
+    const height = rect.height;
+    const cx = width / 2;
+    const cy = height / 2;
+    const outerR = Math.min(cx, cy) - 20;
+    const innerR = outerR * 0.65;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const total = currentSummary.futureValue || 1;
+    const contrib = currentSummary.totalDeposits || 0;
+    const growth = Math.max(0, total - contrib);
+
+    const contribAngle = (contrib / total) * 2 * Math.PI;
+
+    // Contributions slice
+    ctx.beginPath();
+    ctx.arc(cx, cy, outerR, 0, contribAngle);
+    ctx.arc(cx, cy, innerR, contribAngle, 0, true);
+    ctx.closePath();
+    ctx.fillStyle = '#2563eb';
+    ctx.fill();
+
+    // Growth slice
+    ctx.beginPath();
+    ctx.arc(cx, cy, outerR, contribAngle, 2 * Math.PI);
+    ctx.arc(cx, cy, innerR, 2 * Math.PI, contribAngle, true);
+    ctx.closePath();
+    ctx.fillStyle = '#16a34a';
+    ctx.fill();
+
+    // Center text
+    ctx.fillStyle = '#0f172a';
+    ctx.font = 'bold 16px -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(formatUSD(total), cx, cy - 8);
+    ctx.font = '11px -apple-system, sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('Total Value', cx, cy + 12);
+  }
+
+  function drawCompoundingVelocityChart() {
+    const canvas = document.getElementById('compoundingVelocityChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = rect.width;
+    const height = rect.height;
+    const padding = { top: 20, right: 20, bottom: 30, left: 65 };
+
+    ctx.clearRect(0, 0, width, height);
+    if (!currentSchedule.length) return;
+
+    const maxVal = Math.max(...currentSchedule.map(d => d.balance)) * 1.1 || 1;
+    const years = currentSchedule.length;
+    const plotW = width - padding.left - padding.right;
+    const plotH = height - padding.top - padding.bottom;
+
+    const getX = (i) => padding.left + (i / (years - 1)) * plotW;
+    const getY = (val) => padding.top + plotH - (val / maxVal) * plotH;
+
+    // Stacked Area: Total Contributions (Bottom)
+    ctx.beginPath();
+    ctx.moveTo(getX(0), getY(0));
+    currentSchedule.forEach((d, i) => ctx.lineTo(getX(i), getY(d.totalDeposits)));
+    ctx.lineTo(getX(years - 1), getY(0));
+    ctx.closePath();
+    ctx.fillStyle = '#3b82f6';
+    ctx.fill();
+
+    // Stacked Area: Growth on top
+    ctx.beginPath();
+    ctx.moveTo(getX(0), getY(currentSchedule[0].totalDeposits));
+    currentSchedule.forEach((d, i) => ctx.lineTo(getX(i), getY(d.balance)));
+    for (let i = years - 1; i >= 0; i--) {
+      ctx.lineTo(getX(i), getY(currentSchedule[i].totalDeposits));
+    }
+    ctx.closePath();
+    ctx.fillStyle = '#10b981';
+    ctx.fill();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '12px -apple-system, sans-serif';
+    ctx.fillText('Growth', width - padding.right - 60, padding.top + 40);
+    ctx.fillText('Deposits', width - padding.right - 60, height - padding.bottom - 40);
+  }
+
+  function drawScenarioChart() {
+    const canvas = document.getElementById('scenarioChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = rect.width;
+    const height = rect.height;
+    ctx.clearRect(0, 0, width, height);
+
+    const initial = currentSummary.initial || 10000;
+    const monthly = currentSummary.baseMonthly || 500;
+    const years = currentSummary.years || 20;
+
+    const calcFuture = (r) => {
+      let b = initial;
+      const mr = Math.pow(1 + r/12, 1) - 1;
+      for (let m = 0; m < years * 12; m++) {
+        b = (b + monthly) * (1 + mr);
+      }
+      return b;
+    };
+
+    const cVal = calcFuture(0.05);
+    const bVal = currentSummary.futureValue;
+    const aVal = calcFuture(0.10);
+    const maxVal = aVal * 1.15;
+
+    const bars = [
+      { name: 'Conservative (5%)', val: cVal, color: '#64748b' },
+      { name: 'Base Case (' + (currentSummary.annualReturnPct * 100).toFixed(1) + '%)', val: bVal, color: '#2563eb' },
+      { name: 'Aggressive (10%)', val: aVal, color: '#16a34a' }
+    ];
+
+    const barW = (width - 120) / 3;
+    bars.forEach((b, i) => {
+      const x = 50 + i * (barW + 20);
+      const barH = (b.val / maxVal) * (height - 80);
+      const y = height - 50 - barH;
+
+      ctx.fillStyle = b.color;
+      ctx.beginPath();
+      ctx.roundRect(x, y, barW, barH, [6, 6, 0, 0]);
+      ctx.fill();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 12px -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(formatUSD(b.val), x + barW / 2, y - 8);
+
+      ctx.font = '11px -apple-system, sans-serif';
+      ctx.fillStyle = '#475569';
+      ctx.fillText(b.name, x + barW / 2, height - 25);
+    });
+  }
+
+  // ==========================================
+  // GOAL CALCULATOR LOGIC
+  // ==========================================
+  function calculateGoal() {
+    const target = parseFloat(document.getElementById('goal-target').value) || 250000;
+    const current = parseFloat(document.getElementById('goal-current').value) || 0;
+    const years = parseFloat(document.getElementById('goal-years').value) || 15;
+    const returnPct = (parseFloat(document.getElementById('goal-return').value) || 8) / 100;
+
+    const months = years * 12;
+    const monthlyRate = Math.pow(1 + returnPct / 12, 1) - 1;
+
+    // FV = PV*(1+r)^n + PMT * [((1+r)^n - 1) / r]
+    const futureCurrent = current * Math.pow(1 + monthlyRate, months);
+    const amountNeededFromPMT = Math.max(0, target - futureCurrent);
+    
+    let neededMonthly = 0;
+    if (monthlyRate > 0) {
+      neededMonthly = amountNeededFromPMT / (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate));
+    } else {
+      neededMonthly = amountNeededFromPMT / months;
+    }
+
+    const totalDeposits = current + (neededMonthly * months);
+    const totalGrowth = Math.max(0, target - totalDeposits);
+    const progressPct = Math.min(100, Math.round((current / target) * 100));
+
+    document.getElementById('goal-res-monthly').textContent = formatUSD(neededMonthly) + '/mo';
+    document.getElementById('goal-res-target-text').textContent = formatUSD(target);
+    document.getElementById('goal-res-yrs-text').textContent = years + ' years';
+    document.getElementById('goal-progress-bar').style.width = progressPct + '%';
+    document.getElementById('goal-pct-text').textContent = progressPct + '% Reached';
+    document.getElementById('goal-res-init').textContent = formatUSD(current);
+    document.getElementById('goal-res-remaining').textContent = formatUSD(Math.max(0, target - current));
+    document.getElementById('goal-res-target').textContent = formatUSD(target);
+    document.getElementById('goal-res-deposits').textContent = formatUSD(totalDeposits);
+    document.getElementById('goal-res-growth').textContent = formatUSD(totalGrowth);
+
+    calculateTimeToGoal();
+  }
+
+  function calculateTimeToGoal() {
+    const target = parseFloat(document.getElementById('goal-target').value) || 250000;
+    const current = parseFloat(document.getElementById('goal-current').value) || 0;
+    const fixedMonthly = parseFloat(document.getElementById('reverse-monthly').value) || 500;
+    const returnPct = (parseFloat(document.getElementById('goal-return').value) || 8) / 100;
+    const monthlyRate = Math.pow(1 + returnPct / 12, 1) - 1;
+
+    let balance = current;
+    let m = 0;
+    const maxMonths = 1200; // 100 years safety limit
+
+    while (balance < target && m < maxMonths) {
+      balance = (balance + fixedMonthly) * (1 + monthlyRate);
+      m++;
+    }
+
+    if (m >= maxMonths) {
+      document.getElementById('reverse-res-time').textContent = 'Over 100 Years';
+    } else {
+      const yrs = Math.floor(m / 12);
+      const mos = m % 12;
+      document.getElementById('reverse-res-time').textContent = `${yrs} Years, ${mos} Months`;
+    }
+  }
+
+  // ==========================================
+  // RETIREMENT PROJECTION LOGIC
+  // ==========================================
+  function calculateRetirement() {
+    const curAge = parseInt(document.getElementById('retire-age-cur').value) || 30;
+    const retAge = parseInt(document.getElementById('retire-age-target').value) || 65;
+    const savings = parseFloat(document.getElementById('retire-savings').value) || 0;
+    const baseMonthly = parseFloat(document.getElementById('retire-monthly').value) || 0;
+    const returnPct = (parseFloat(document.getElementById('retire-return').value) || 7.5) / 100;
+    const stepUpPct = (parseFloat(document.getElementById('retire-stepup').value) || 3) / 100;
+    const inflationPct = 0.025;
+
+    const years = Math.max(1, retAge - curAge);
+    const months = years * 12;
+    const monthlyRate = Math.pow(1 + returnPct / 12, 1) - 1;
+
+    let balance = savings;
+    let totalDeposits = savings;
+    let monthly = baseMonthly;
+
+    const milestones = [35, 40, 45, 50, 55, 60, 65, 70];
+    const milestoneRows = [];
+
+    for (let m = 1; m <= months; m++) {
+      if (m > 1 && (m - 1) % 12 === 0) {
+        monthly *= (1 + stepUpPct);
+      }
+      totalDeposits += monthly;
+      balance = (balance + monthly) * (1 + monthlyRate);
+
+      const currentAgeNow = curAge + Math.floor(m / 12);
+      if (m % 12 === 0 && (milestones.includes(currentAgeNow) || m === months)) {
+        const yrInvested = Math.floor(m / 12);
+        const inflFactor = Math.pow(1 + inflationPct, yrInvested);
+        milestoneRows.push({
+          age: currentAgeNow,
+          yrs: yrInvested,
+          deposits: totalDeposits,
+          balance: balance,
+          realBalance: balance / inflFactor
+        });
+      }
+    }
+
+    const finalInflationAdj = balance / Math.pow(1 + inflationPct, years);
+
+    document.getElementById('retire-banner-age').textContent = retAge;
+    document.getElementById('retire-banner-yrs').textContent = years + ' years';
+    document.getElementById('retire-res-total').textContent = formatUSD(balance);
+    document.getElementById('retire-res-infl').textContent = formatUSD(finalInflationAdj);
+    document.getElementById('retire-res-contrib').textContent = formatUSD(totalDeposits);
+    document.getElementById('retire-res-growth').textContent = formatUSD(Math.max(0, balance - totalDeposits));
+
+    const tbody = document.getElementById('retire-milestones-tbody');
+    tbody.innerHTML = '';
+    milestoneRows.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>Age ${r.age}</strong></td>
+        <td>${r.yrs} Yrs</td>
+        <td>${formatUSD(r.deposits)}</td>
+        <td class="highlight-cell">${formatUSD(r.balance)}</td>
+        <td style="color:#7c3aed;">${formatUSD(r.realBalance)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ==========================================
+  // WHAT-IF TABLES & SENSITIVITY
+  // ==========================================
+  function updateWhatIfTables(initial, curMonthly, annualReturnPct, years) {
+    document.getElementById('whatif-init-disp').textContent = formatUSD(initial);
+    document.getElementById('whatif-rate-disp').textContent = (annualReturnPct * 100).toFixed(1) + '%';
+    document.getElementById('whatif-yrs-disp').textContent = years + ' years';
+
+    const tiers = [100, 250, 500, 750, 1000, 1500];
+    const tbody = document.getElementById('whatif-tbody');
+    tbody.innerHTML = '';
+
+    const calcTier = (mVal) => {
+      let b = initial;
+      let dep = initial;
+      const mr = Math.pow(1 + annualReturnPct / 12, 1) - 1;
+      for (let m = 0; m < years * 12; m++) {
+        dep += mVal;
+        b = (b + mVal) * (1 + mr);
+      }
+      return { total: b, deposits: dep, interest: Math.max(0, b - dep) };
+    };
+
+    const baseVal = calcTier(curMonthly).total;
+
+    tiers.forEach(t => {
+      const res = calcTier(t);
+      const diff = res.total - baseVal;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${formatUSD(t)}/mo</strong></td>
+        <td>${formatUSD(res.deposits)}</td>
+        <td style="color:#16a34a;">${formatUSD(res.interest)}</td>
+        <td class="highlight-cell">${formatUSD(res.total)}</td>
+        <td style="color:${diff >= 0 ? '#16a34a' : '#dc2626'}; font-weight:600;">
+          ${diff >= 0 ? '+' : ''}${formatUSD(diff)}
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    // Sensitivity Table
+    const rates = [0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.12];
+    const sensTbody = document.getElementById('sensitivity-tbody');
+    sensTbody.innerHTML = '';
+    rates.forEach(r => {
+      let b = initial;
+      let dep = initial;
+      const mr = Math.pow(1 + r / 12, 1) - 1;
+      for (let m = 0; m < years * 12; m++) {
+        dep += curMonthly;
+        b = (b + curMonthly) * (1 + mr);
+      }
+      const isCurrent = Math.abs(r - annualReturnPct) < 0.001;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${(r * 100).toFixed(0)}% Return</strong></td>
+        <td>${formatUSD(dep)}</td>
+        <td style="color:#16a34a;">${formatUSD(b - dep)}</td>
+        <td class="highlight-cell">${formatUSD(b)}</td>
+        <td>${isCurrent ? '⭐ <span style="color:#2563eb; font-weight:700;">Selected Plan</span>' : 'Hypothetical'}</td>
+      `;
+      sensTbody.appendChild(tr);
+    });
+
+    // Time Horizon Table
+    const horizons = [5, 10, 15, 20, 25, 30, 40, 50];
+    const horTbody = document.getElementById('horizon-tbody');
+    horTbody.innerHTML = '';
+    horizons.forEach(h => {
+      let b = initial;
+      let dep = initial;
+      const mr = Math.pow(1 + annualReturnPct / 12, 1) - 1;
+      for (let m = 0; m < h * 12; m++) {
+        dep += curMonthly;
+        b = (b + curMonthly) * (1 + mr);
+      }
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong>${h} Years</strong></td>
+        <td>${formatUSD(dep)}</td>
+        <td style="color:#16a34a;">${formatUSD(b - dep)}</td>
+        <td class="highlight-cell">${formatUSD(b)}</td>
+      `;
+      horTbody.appendChild(tr);
+    });
+
+    // Fee impact options
+    const calcWithFee = (feePct) => {
+      let b = initial;
+      const netR = annualReturnPct - feePct;
+      const mr = Math.pow(1 + netR / 12, 1) - 1;
+      for (let m = 0; m < years * 12; m++) {
+        b = (b + curMonthly) * (1 + mr);
+      }
+      return b;
+    };
+
+    const grossVal = currentSummary.grossFutureValue || currentSummary.futureValue;
+    const vLow = calcWithFee(0.0005);
+    const vMed = calcWithFee(0.0050);
+    const vHigh = calcWithFee(0.0150);
+
+    document.getElementById('fee-opt-low').textContent = formatUSD(vLow);
+    document.getElementById('fee-loss-low').textContent = formatUSD(Math.max(0, grossVal - vLow));
+    document.getElementById('fee-opt-med').textContent = formatUSD(vMed);
+    document.getElementById('fee-loss-med').textContent = formatUSD(Math.max(0, grossVal - vMed));
+    document.getElementById('fee-opt-high').textContent = formatUSD(vHigh);
+    document.getElementById('fee-loss-high').textContent = formatUSD(Math.max(0, grossVal - vHigh));
+  }
+
+  function updateGrowthMilestones(yearlyData) {
+    const getVal = (yr) => {
+      const item = yearlyData.find(d => d.year === yr);
+      return item ? formatUSD(item.balance) : '--';
+    };
+    document.getElementById('growth-yr5').textContent = getVal(5);
+    document.getElementById('growth-yr10').textContent = getVal(10);
+    document.getElementById('growth-yr20').textContent = getVal(20);
+    document.getElementById('growth-yr30').textContent = getVal(30);
+  }
+
+  function updateScenarioComparison(initial, monthly, years, userRate) {
+    const calcFuture = (r) => {
+      let b = initial;
+      let dep = initial;
+      const mr = Math.pow(1 + r / 12, 1) - 1;
+      for (let m = 0; m < years * 12; m++) {
+        dep += monthly;
+        b = (b + monthly) * (1 + mr);
+      }
+      return { total: b, deposits: dep, interest: Math.max(0, b - dep) };
+    };
+
+    const c = calcFuture(0.05);
+    const b = calcFuture(userRate);
+    const a = calcFuture(0.10);
+
+    const tbody = document.getElementById('scenarios-tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td><strong>Conservative Case</strong></td>
+        <td>5.0%</td>
+        <td>${formatUSD(c.deposits)}</td>
+        <td style="color:#16a34a;">${formatUSD(c.interest)}</td>
+        <td class="highlight-cell">${formatUSD(c.total)}</td>
+      </tr>
+      <tr style="background:#eff6ff;">
+        <td><strong>Base Case (Selected)</strong></td>
+        <td>${(userRate * 100).toFixed(1)}%</td>
+        <td>${formatUSD(b.deposits)}</td>
+        <td style="color:#16a34a;">${formatUSD(b.interest)}</td>
+        <td class="highlight-cell">${formatUSD(b.total)}</td>
+      </tr>
+      <tr>
+        <td><strong>Aggressive Growth</strong></td>
+        <td>10.0%</td>
+        <td>${formatUSD(a.deposits)}</td>
+        <td style="color:#16a34a;">${formatUSD(a.interest)}</td>
+        <td class="highlight-cell">${formatUSD(a.total)}</td>
+      </tr>
+    `;
+  }
+
+  // ==========================================
+  // UTILITY & EXPORT ACTIONS
+  // ==========================================
+  function showToast(text) {
+    const el = document.getElementById('toast-msg');
+    el.textContent = text;
+    el.style.display = 'block';
+    setTimeout(() => { el.style.display = 'none'; }, 3000);
+  }
+
+  function loadExampleData() {
+    document.getElementById('inp-initial').value = '10000';
+    document.getElementById('inp-monthly').value = '500';
+    document.getElementById('inp-return').value = '8.0';
+    document.getElementById('slider-return').value = '8';
+    document.getElementById('inp-years').value = '20';
+    document.getElementById('inp-stepup').value = '3.0';
+    document.getElementById('inp-inflation').value = '2.5';
+    document.getElementById('inp-fee-annual').value = '0.50';
+    document.getElementById('inp-fee-contrib').value = '0.0';
+    calculateAll();
+    showToast('Example data loaded successfully');
+  }
+
+  function resetCalculator() {
+    document.getElementById('inp-initial').value = '1000';
+    document.getElementById('inp-monthly').value = '250';
+    document.getElementById('inp-return').value = '7.0';
+    document.getElementById('slider-return').value = '7';
+    document.getElementById('inp-years').value = '15';
+    document.getElementById('inp-stepup').value = '0.0';
+    document.getElementById('inp-inflation').value = '2.5';
+    document.getElementById('inp-fee-annual').value = '0.0';
+    document.getElementById('inp-fee-contrib').value = '0.0';
+    calculateAll();
+    showToast('Calculator reset to defaults');
+  }
+
+  function saveSettingsToLocal() {
+    const settings = {
+      initial: document.getElementById('inp-initial').value,
+      monthly: document.getElementById('inp-monthly').value,
+      returnVal: document.getElementById('inp-return').value,
+      years: document.getElementById('inp-years').value,
+      frequency: document.getElementById('inp-frequency').value,
+      timing: document.getElementById('inp-timing').value,
+      stepup: document.getElementById('inp-stepup').value,
+      inflation: document.getElementById('inp-inflation').value,
+      feeAnnual: document.getElementById('inp-fee-annual').value,
+      feeContrib: document.getElementById('inp-fee-contrib').value
+    };
+    localStorage.setItem('ultimate_calc_settings', JSON.stringify(settings));
+    showToast('Settings saved to local browser storage');
+  }
+
+  function loadSavedSettings() {
+    try {
+      const data = localStorage.getItem('ultimate_calc_settings');
+      if (data) {
+        const s = JSON.parse(data);
+        if (s.initial) document.getElementById('inp-initial').value = s.initial;
+        if (s.monthly) document.getElementById('inp-monthly').value = s.monthly;
+        if (s.returnVal) {
+          document.getElementById('inp-return').value = s.returnVal;
+          document.getElementById('slider-return').value = s.returnVal;
+        }
+        if (s.years) document.getElementById('inp-years').value = s.years;
+        if (s.frequency) document.getElementById('inp-frequency').value = s.frequency;
+        if (s.timing) document.getElementById('inp-timing').value = s.timing;
+        if (s.stepup) document.getElementById('inp-stepup').value = s.stepup;
+        if (s.inflation) document.getElementById('inp-inflation').value = s.inflation;
+        if (s.feeAnnual) document.getElementById('inp-fee-annual').value = s.feeAnnual;
+        if (s.feeContrib) document.getElementById('inp-fee-contrib').value = s.feeContrib;
+      }
+    } catch(e) {}
+  }
+
+  function exportToCSV() {
+    if (!currentSchedule.length) return;
+    let csv = 'Year,Monthly Deposit,Annual Deposits,Total Deposits,Interest Earned,Fees,End Balance,Inflation Adjusted Balance\n';
+    currentSchedule.forEach(r => {
+      csv += `${r.year},${r.monthlyDeposit.toFixed(2)},${r.annualDeposits.toFixed(2)},${r.totalDeposits.toFixed(2)},${r.interestEarned.toFixed(2)},${r.fees.toFixed(2)},${r.balance.toFixed(2)},${r.inflationAdjBalance.toFixed(2)}\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'investment_growth_schedule.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast('CSV downloaded');
+  }
+
+  function copyResultsText() {
+    const s = currentSummary;
+    const text = `Ultimate Compound Interest & Investment Growth Calculator Summary:
+Initial Investment: ${formatUSD(s.initial)}
+Monthly Contribution: ${formatUSD(s.baseMonthly)}
+Hypothetical Return: ${(s.annualReturnPct * 100).toFixed(1)}%
+Period: ${s.years} Years
+-----------------------------------
+Total Deposits: ${formatUSD(s.totalDeposits)}
+Estimated Interest: ${formatUSD(s.totalInterest)}
+Estimated Future Value: ${formatUSD(s.futureValue)}
+Inflation-Adjusted Purchasing Power: ${formatUSD(s.inflationAdjusted)}
+Total Estimated Fees: ${formatUSD(s.totalFees)}
+
+*Hypothetical educational estimate only. Not financial advice.*`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('Summary copied to clipboard!');
+    });
+  }
+
+  // ==========================================
+  // SOCIAL SHARING ENGINE
+  // ==========================================
+  function setupSocialLinks() {
+    const pageUrl = encodeURIComponent(window.location.href);
+    const shareTitle = encodeURIComponent('Ultimate Compound Interest & Investment Growth Calculator 🇺🇸');
+    const shareText = encodeURIComponent('Calculate compound growth, monthly contributions, goal timelines, fees, inflation, and retirement scenarios with this free calculator.');
+
+    document.getElementById('share-fb-link').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+    document.getElementById('share-x-link').href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${shareTitle}`;
+    document.getElementById('share-wa-link').href = `https://api.whatsapp.com/send?text=${shareTitle}%20${pageUrl}`;
+    document.getElementById('share-in-link').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+    document.getElementById('share-rd-link').href = `https://reddit.com/submit?url=${pageUrl}&title=${shareTitle}`;
+    document.getElementById('share-tg-link').href = `https://t.me/share/url?url=${pageUrl}&text=${shareTitle}`;
+    document.getElementById('share-pin-link').href = `https://pinterest.com/pin/create/button/?url=${pageUrl}&description=${shareTitle}`;
+    document.getElementById('share-email-link').href = `mailto:?subject=${shareTitle}&body=${shareText}%0A%0A${pageUrl}`;
+  }
+
+  function handleNativeShare() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Ultimate Compound Interest & Investment Growth Calculator',
+        text: 'Explore compound growth, monthly contributions, inflation, and retirement goals with this free tool.',
+        url: window.location.href
+      }).catch(() => {});
+    } else {
+      copyPageLink();
+    }
+  }
+
+  function copyPageLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      showToast('Page link copied to clipboard!');
+    });
+  }
+
+  // Resize Listener for dynamic canvas crispness
+  window.addEventListener('resize', () => {
+    drawGrowthChart();
+    drawDonutChart();
+  });
+</script>
+
+<!-- Safe & Clean USA SEO Keywords Section -->
+<section class="max-w-4xl mx-auto px-4 py-8 mt-8 border-t border-slate-200 text-xs text-slate-500">
+  <h4 class="font-bold text-slate-700 uppercase tracking-wider mb-3">Explore Investment & Compound Growth Topics</h4>
+  <p class="leading-relaxed">
+    This free <strong class="text-slate-700">compound interest calculator with monthly contributions</strong> is designed to help investors project long-term financial growth accurately. Whether you are planning your retirement using a <strong class="text-slate-700">monthly contribution compound interest calculator</strong>, estimating returns with a <strong class="text-slate-700">future value calculator</strong>, or analyzing asset accumulation through a <strong class="text-slate-700">wealth growth calculator</strong>, our tool provides detailed annual breakdowns, schedules, and charts. Ideal for US-based savers looking for a reliable <strong class="text-slate-700">investment return calculator with monthly deposits</strong>, <strong class="text-slate-700">retirement savings planner</strong>, and <strong class="text-slate-700">financial growth calculator</strong>.
+  </p>
+  <div class="flex flex-wrap gap-2 mt-4">
+    <span class="bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">Compound Interest Calculator</span>
+    <span class="bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">Monthly Contribution Calculator</span>
+    <span class="bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">Investment Growth Tool</span>
+    <span class="bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">Retirement Savings Planner</span>
+    <span class="bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">Wealth Accumulation Calculator</span>
+    <span class="bg-slate-100 px-2.5 py-1 rounded-md text-slate-600">Future Value Estimator</span>
+  </div>
+</section>
+  
+</body>
+</html>
