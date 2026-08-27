@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roth IRA Calculator | Free Retirement Growth & Contribution Tool</title>
+  <meta name="description" content="Estimate Roth IRA contributions, compound investment growth, fees, inflation, and tax-free retirement potential with our free 2025/2026 US Roth IRA calculator and retirement planner.">
+  <meta name="keywords" content="Roth IRA calculator, Roth IRA calculator with contributions, Roth IRA retirement calculator, Roth IRA contribution calculator, Roth IRA growth calculator, Roth IRA investment calculator, Roth IRA calculator online, free Roth IRA calculator, Roth IRA future value calculator, Roth IRA retirement growth calculator, Roth IRA contribution limit calculator, Roth IRA savings calculator, retirement contribution calculator, retirement growth calculator">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Ad Network Script -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --purple: #9333ea;
+      --purple-light: #faf5ff;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --radius: 12px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #ffffff;
+      color: var(--slate-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border: 1px solid #dbeafe;
+    }
+
+    .main-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--slate-600);
+      margin-bottom: 16px;
+    }
+
+    .description {
+      font-size: 14px;
+      color: var(--slate-500);
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--slate-200);
+      padding-bottom: 12px;
+    }
+
+    .nav-tab {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      color: var(--slate-700);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .nav-tab:hover {
+      background: var(--slate-200);
+      color: var(--slate-900);
+    }
+
+    .nav-tab.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: none;
+    }
+
+    .btn-primary { background: var(--primary); color: #ffffff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-outline { background: #ffffff; color: var(--slate-700); border: 1px solid var(--slate-300); }
+    .btn-outline:hover { background: var(--slate-100); border-color: var(--slate-400); }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-group { margin-bottom: 16px; }
+    .form-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .form-label { font-size: 13.5px; font-weight: 600; color: var(--slate-700); }
+    .form-hint { font-size: 12px; color: var(--slate-500); }
+
+    .input-wrapper { position: relative; display: flex; align-items: center; }
+    .input-prefix, .input-suffix { position: absolute; color: var(--slate-500); font-weight: 600; font-size: 14px; pointer-events: none; }
+    .input-prefix { left: 12px; }
+    .input-suffix { right: 12px; }
+
+    .form-input, .select-input {
+      width: 100%;
+      height: 42px;
+      padding: 8px 12px;
+      border: 1px solid var(--slate-300);
+      border-radius: 8px;
+      font-size: 15px;
+      color: var(--slate-900);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .form-input.has-prefix { padding-left: 28px; }
+    .form-input.has-suffix { padding-right: 28px; }
+    .form-input:focus, .select-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .range-slider {
+      width: 100%;
+      height: 6px;
+      background: var(--slate-200);
+      border-radius: 3px;
+      outline: none;
+      margin-top: 8px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btn-toggle {
+      padding: 8px 12px;
+      border: 1px solid var(--slate-300);
+      background: #ffffff;
+      color: var(--slate-700);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-toggle.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-stat {
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      color: #ffffff;
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-stat-label { font-size: 14px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero-stat-value { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 5vw, 44px); font-weight: 800; line-height: 1.1; margin: 8px 0; }
+    .hero-stat-sub { font-size: 13.5px; opacity: 0.85; }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .result-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .result-card-label { font-size: 12.5px; font-weight: 600; color: var(--slate-500); text-transform: uppercase; margin-bottom: 4px; }
+    .result-card-value { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700; color: var(--slate-900); }
+    .result-card-sub { font-size: 12px; color: var(--slate-500); margin-top: 4px; }
+
+    .chart-container {
+      width: 100%;
+      height: 320px;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .alert-banner {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .alert-green { background: var(--success-light); border: 1px solid #bbf7d0; color: #14532d; }
+    .alert-amber { background: var(--amber-light); border: 1px solid #fde68a; color: #78350f; }
+    .alert-blue { background: var(--primary-light); border: 1px solid #bfdbfe; color: #1e3a8a; }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: right;
+    }
+
+    th {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-weight: 700;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--slate-100);
+      color: var(--slate-800);
+    }
+
+    tr:hover { background: #f8fafc; }
+    td:first-child, th:first-child { text-align: left; }
+    td:nth-child(2), th:nth-child(2) { text-align: center; }
+
+    .milestone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .milestone-card {
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #ffffff;
+    }
+
+    .milestone-card.current {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--slate-200);
+      padding: 14px 0;
+    }
+
+    .faq-question {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--slate-900);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      color: var(--slate-600);
+      margin-top: 8px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    .social-share-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .share-btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .share-fb { background: #1877f2; }
+    .share-x { background: #000000; }
+    .share-wa { background: #25d366; }
+    .share-li { background: #0a66c2; }
+    .share-rd { background: #ff4500; }
+    .share-tg { background: #229ed9; }
+    .share-pin { background: #e60023; }
+    .share-mail { background: #475569; }
+    .share-copy { background: #0284c7; }
+
+    @media print {
+      body { background: #ffffff; color: #000000; }
+      .nav-tabs, .actions-bar, .social-share-grid, .btn, .range-slider, .btn-toggle, #tab-education, #tab-faq {
+        display: none !important;
+      }
+      .calc-grid { display: block; }
+      .card { border: none; box-shadow: none; padding: 0; margin-bottom: 24px; }
+      .hero-stat { background: #f1f5f9 !important; color: #000000 !important; border: 1px solid #cbd5e1; }
+      .hero-stat-value { color: #000000 !important; }
+      .table-container { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top 468x60 Banner Ad Slot -->
+    <div style="display: flex; justify-content: center; align-items: center; margin: 16px 0; overflow-x: auto; text-align: center;">
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+
+    <!-- Header Section -->
+    <header style="margin-bottom: 20px;">
+      <div class="header-badge">
+        <span>🇺🇸</span> Free Roth IRA Retirement Calculator
+      </div>
+      <h1 class="main-title">Roth IRA Calculator</h1>
+      <div class="subtitle">Estimate Roth IRA Contributions, Retirement Growth & Tax-Free Withdrawal Potential</div>
+      <p class="description">
+        Explore hypothetical Roth IRA growth, contribution strategies, retirement projections, and long-term savings scenarios.
+      </p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs" id="navTabs">
+      <button class="nav-tab active" onclick="switchTab('calculator')">1. Roth IRA Calculator</button>
+      <button class="nav-tab" onclick="switchTab('planner')">2. Contribution Planner</button>
+      <button class="nav-tab" onclick="switchTab('projection')">3. Retirement Projection</button>
+      <button class="nav-tab" onclick="switchTab('whatif')">4. What If?</button>
+      <button class="nav-tab" onclick="switchTab('scenarios')">5. Scenario Comparison</button>
+      <button class="nav-tab" onclick="switchTab('education')">6. Roth IRA Education</button>
+      <button class="nav-tab" onclick="switchTab('faq')">7. FAQs</button>
+    </div>
+
+    <!-- Quick Action Bar -->
+    <div class="actions-bar">
+      <button class="btn btn-outline" onclick="loadExamplePreset()">⚡ Load Example</button>
+      <button class="btn btn-outline" onclick="resetDefaults()">↺ Reset</button>
+      <button class="btn btn-outline" onclick="saveToLocalStorage()">💾 Save Settings</button>
+      <button class="btn btn-outline" onclick="clearLocalStorage()">🗑️ Clear Saved</button>
+      <button class="btn btn-outline" onclick="copyResultsText()">📋 Copy Results</button>
+      <button class="btn btn-outline" onclick="window.print()">🖨️ Print Report</button>
+      <button class="btn btn-outline" onclick="exportScheduleCSV()">📥 Download CSV</button>
+    </div>
+
+    <!-- TAB 1: CALCULATOR -->
+    <div id="tab-calculator" class="tab-content">
+      <div class="calc-grid">
+        <!-- Input Form Card -->
+        <div class="card">
+          <div class="card-title">
+            <span>Calculator Parameters</span>
+            <span style="font-size: 13px; font-weight: 500; color: var(--slate-500);">US Tax Year: <strong id="lbl-tax-year">2025</strong></span>
+          </div>
+
+          <!-- Alert for Catch-up -->
+          <div id="catchup-banner" class="alert-banner alert-green" style="display: none;">
+            <div>🎉 <strong>Catch-Up Contribution May Apply:</strong> At age 50 or older, you may contribute up to <strong id="lbl-catchup-total">$8,000</strong> annually ($7,000 base + $1,000 catch-up). Eligibility depends on IRS rules.</div>
+          </div>
+
+          <!-- Alert for Limit Warning -->
+          <div id="limit-warning-banner" class="alert-banner alert-amber" style="display: none;">
+            <div>⚠️ <strong>Contribution Limit Notice:</strong> Your planned contribution (<span id="lbl-over-amount">$0</span>) is above the configured annual Roth IRA limit (<span id="lbl-max-allowed">$7,000</span>). Projections continue for hypothetical analysis. Verify current IRS rules.</div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-current-age">Current Age</label>
+              <span class="form-hint" id="val-current-age">30 yrs</span>
+            </div>
+            <input type="number" id="inp-current-age" class="form-input" min="18" max="95" value="30" oninput="handleInputChange()">
+            <input type="range" id="rng-current-age" class="range-slider" min="18" max="80" value="30" oninput="syncInput('current-age')">
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-retire-age">Retirement Age</label>
+              <span class="form-hint" id="val-retire-age">65 yrs</span>
+            </div>
+            <input type="number" id="inp-retire-age" class="form-input" min="30" max="100" value="65" oninput="handleInputChange()">
+            <input type="range" id="rng-retire-age" class="range-slider" min="40" max="85" value="65" oninput="syncInput('retire-age')">
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-balance">Current Roth IRA Balance</label>
+            </div>
+            <div class="input-wrapper">
+              <span class="input-prefix">$</span>
+              <input type="number" id="inp-balance" class="form-input has-prefix" min="0" step="500" value="10000" oninput="handleInputChange()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-contribution">Annual Contribution</label>
+              <span class="form-hint" id="lbl-monthly-eq">$583 / mo</span>
+            </div>
+            <div class="input-wrapper">
+              <span class="input-prefix">$</span>
+              <input type="number" id="inp-contribution" class="form-input has-prefix" min="0" step="250" value="7000" oninput="handleInputChange()">
+            </div>
+            <input type="range" id="rng-contribution" class="range-slider" min="0" max="15000" step="250" value="7000" oninput="syncInput('contribution')">
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label">Contribution Frequency</label>
+            </div>
+            <select id="sel-frequency" class="select-input" onchange="handleInputChange()">
+              <option value="monthly" selected>Monthly (12 times / year)</option>
+              <option value="quarterly">Quarterly (4 times / year)</option>
+              <option value="semi-annually">Semi-Annually (2 times / year)</option>
+              <option value="annually">Annually (Once per year)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label">Contribution Timing</label>
+            </div>
+            <div class="button-group">
+              <button type="button" id="btn-timing-end" class="btn-toggle active" onclick="setTiming('end')">End of Period</button>
+              <button type="button" id="btn-timing-beg" class="btn-toggle" onclick="setTiming('beginning')">Beginning of Period</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-return">Hypothetical Annual Return</label>
+              <span class="form-hint" id="val-return">7.0%</span>
+            </div>
+            <div class="input-wrapper">
+              <input type="number" id="inp-return" class="form-input has-suffix" min="0" max="25" step="0.25" value="7" oninput="handleInputChange()">
+              <span class="input-suffix">%</span>
+            </div>
+            <input type="range" id="rng-return" class="range-slider" min="1" max="15" step="0.25" value="7" oninput="syncInput('return')">
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-increase">Annual Contribution Increase</label>
+              <span class="form-hint" id="val-increase">3.0%</span>
+            </div>
+            <div class="input-wrapper">
+              <input type="number" id="inp-increase" class="form-input has-suffix" min="0" max="15" step="0.5" value="3" oninput="handleInputChange()">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-inflation">Inflation Rate</label>
+              <span class="form-hint" id="val-inflation">2.5%</span>
+            </div>
+            <div class="input-wrapper">
+              <input type="number" id="inp-inflation" class="form-input has-suffix" min="0" max="10" step="0.25" value="2.5" oninput="handleInputChange()">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="inp-fee">Annual Investment Fee (Expense Ratio)</label>
+              <span class="form-hint" id="val-fee">0.25%</span>
+            </div>
+            <div class="input-wrapper">
+              <input type="number" id="inp-fee" class="form-input has-suffix" min="0" max="3" step="0.05" value="0.25" oninput="handleInputChange()">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Output Dashboard -->
+        <div>
+          <!-- Hero Card -->
+          <div class="hero-stat">
+            <div class="hero-stat-label">Estimated Roth IRA Retirement Balance</div>
+            <div class="hero-stat-value" id="res-balance">$0</div>
+            <div class="hero-stat-sub">
+              Tax-Free Potential at Age <span id="res-target-age">65</span> • <span id="res-years-left">35</span> Years of Compounding
+            </div>
+          </div>
+
+          <!-- Secondary Metric Grid -->
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="result-card-label">Total Contributions</div>
+              <div class="result-card-value" id="res-contributions">$0</div>
+              <div class="result-card-sub" id="res-contrib-pct">Principal capital</div>
+            </div>
+            <div class="result-card">
+              <div class="result-card-label">Estimated Investment Growth</div>
+              <div class="result-card-value" style="color: var(--success);" id="res-growth">$0</div>
+              <div class="result-card-sub" id="res-growth-pct">Compound returns</div>
+            </div>
+            <div class="result-card">
+              <div class="result-card-label">Inflation-Adjusted Balance</div>
+              <div class="result-card-value" style="color: var(--purple);" id="res-inflation-adj">$0</div>
+              <div class="result-card-sub">In today's purchasing power</div>
+            </div>
+            <div class="result-card">
+              <div class="result-card-label">Estimated Fees Paid</div>
+              <div class="result-card-value" style="color: var(--amber);" id="res-fees">$0</div>
+              <div class="result-card-sub" id="res-fee-drag">Drag on potential returns</div>
+            </div>
+          </div>
+
+          <!-- Growth Visualizer Chart -->
+          <div class="card" style="margin-bottom: 18px;">
+            <div class="card-title">
+              <span>Retirement Growth Projection</span>
+              <span style="font-size: 12px; color: var(--slate-500);">Interactive Chart</span>
+            </div>
+            <div class="chart-container" id="svg-chart-container">
+              <!-- Rendered via JS -->
+            </div>
+            <div style="display: flex; justify-content: center; gap: 16px; font-size: 12.5px; font-weight: 600;">
+              <span style="color: var(--primary);">● Total Balance</span>
+              <span style="color: var(--slate-500);">● Total Contributions</span>
+              <span style="color: var(--success);">● Investment Growth</span>
+            </div>
+          </div>
+
+          <!-- Contribution vs Growth Ratio Breakdown -->
+          <div class="card">
+            <div class="card-title">Contribution vs. Growth Ratio</div>
+            <div style="display: flex; height: 18px; border-radius: 9999px; overflow: hidden; margin-bottom: 10px;">
+              <div id="bar-principal" style="background: var(--primary); width: 30%;" title="Principal Contributions"></div>
+              <div id="bar-growth" style="background: var(--success); width: 70%;" title="Compound Growth"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600;">
+              <span style="color: var(--primary);" id="lbl-bar-contrib">Contributions: $0 (0%)</span>
+              <span style="color: var(--success);" id="lbl-bar-growth">Growth: $0 (0%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-Content Native Banner Ad Slot -->
+      <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; overflow-x: auto; text-align: center;">
+        <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+        <div id="container-269e962c1215493328aeb78f4303284c"></div>
+      </div>
+
+      <!-- Retirement Milestones Section -->
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-title">Retirement Milestones</div>
+        <p style="font-size: 14px; color: var(--slate-600); margin-bottom: 12px;">
+          Estimated Roth IRA balance at key life milestones based on your current inputs:
+        </p>
+        <div class="milestone-grid" id="milestones-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Year-By-Year Schedule Table -->
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-title">
+          <span>Year-by-Year Projection Schedule</span>
+          <button class="btn btn-outline" style="font-size: 12.5px; padding: 5px 10px;" onclick="toggleMonthlyTable()">
+            📅 <span id="btn-toggle-monthly-text">Show Monthly Breakdown</span>
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Age</th>
+                <th>Year</th>
+                <th>Starting Balance</th>
+                <th>Annual Contribution</th>
+                <th>Total Contributed</th>
+                <th>Investment Growth</th>
+                <th>Annual Fee</th>
+                <th>Ending Balance</th>
+                <th>Inflation Adjusted</th>
+              </tr>
+            </thead>
+            <tbody id="yearly-table-body">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Monthly Breakdown Container (Collapsible) -->
+        <div id="monthly-table-wrapper" style="display: none; margin-top: 20px; border-top: 1px dashed var(--slate-200); padding-top: 16px;">
+          <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Detailed Monthly Breakdown (First 10 Years)</h4>
+          <div class="table-container" style="max-height: 380px; overflow-y: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Age</th>
+                  <th>Contribution</th>
+                  <th>Growth</th>
+                  <th>Fee</th>
+                  <th>End Balance</th>
+                </tr>
+              </thead>
+              <tbody id="monthly-table-body">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CONTRIBUTION PLANNER -->
+    <div id="tab-planner" class="tab-content" style="display: none;">
+      <div class="card">
+        <div class="card-title">Roth IRA Contribution Planner</div>
+        <p style="font-size: 14.5px; color: var(--slate-600); margin-bottom: 20px;">
+          Tailor your contribution timeline, select customized start and end ages, and test various periodic savings targets.
+        </p>
+
+        <div class="results-grid" style="margin-bottom: 20px;">
+          <div class="result-card">
+            <div class="result-card-label">Monthly Equivalent</div>
+            <div class="result-card-value" style="color: var(--primary);" id="planner-monthly-eq">$583.33</div>
+            <div class="result-card-sub">Per calendar month</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Total Planned Contributions</div>
+            <div class="result-card-value" id="planner-total-contrib">$245,000</div>
+            <div class="result-card-sub">Over active contribution years</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Estimated Growth</div>
+            <div class="result-card-value" style="color: var(--success);" id="planner-total-growth">$1,024,000</div>
+            <div class="result-card-sub">Tax-free compounding</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Future Portfolio Value</div>
+            <div class="result-card-value" style="color: var(--purple);" id="planner-future-val">$1,269,000</div>
+            <div class="result-card-sub">Total at retirement age</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: RETIREMENT PROJECTION -->
+    <div id="tab-projection" class="tab-content" style="display: none;">
+      <div class="card">
+        <div class="card-title">Comprehensive Retirement Projection</div>
+        <p style="font-size: 14.5px; color: var(--slate-600); margin-bottom: 20px;">
+          Review the complete financial summary of your Roth IRA projection, comparing nominal vs. real purchasing power over time.
+        </p>
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-card-label">Nominal Balance</div>
+            <div class="result-card-value" id="proj-nom-bal">$0</div>
+            <div class="result-card-sub">Unadjusted future dollars</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Real Purchasing Power</div>
+            <div class="result-card-value" style="color: var(--purple);" id="proj-real-bal">$0</div>
+            <div class="result-card-sub">Discounted by inflation rate</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Total Out-of-Pocket</div>
+            <div class="result-card-value" id="proj-total-out">$0</div>
+            <div class="result-card-sub">Total money deposited</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Wealth Multiplier</div>
+            <div class="result-card-value" style="color: var(--success);" id="proj-multiplier">0.0x</div>
+            <div class="result-card-sub">Return on your invested capital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: WHAT IF? (SENSITIVITY) -->
+    <div id="tab-whatif" class="tab-content" style="display: none;">
+      <!-- What if I contribute more? -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">What If I Contribute More?</div>
+        <p style="font-size: 14px; color: var(--slate-600); margin-bottom: 14px;">
+          See how small increases in monthly savings compound over your retirement time horizon.
+        </p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Monthly Savings</th>
+                <th>Annual Equivalent</th>
+                <th>Total Contributed</th>
+                <th>Estimated Growth</th>
+                <th>Retirement Balance</th>
+                <th>Difference vs Plan</th>
+              </tr>
+            </thead>
+            <tbody id="whatif-contrib-table">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Return Sensitivity -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">
+          <span>Hypothetical Return Sensitivity</span>
+          <span style="font-size: 12px; color: var(--slate-500);">4% – 10% Annual Return</span>
+        </div>
+        <p style="font-size: 14px; color: var(--slate-600); margin-bottom: 14px;">
+          Compare portfolio outcomes across different market return assumptions. Highlighted row is your current selection.
+        </p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Annual Return</th>
+                <th>Estimated Retirement Balance</th>
+                <th>Estimated Growth</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="whatif-return-table">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Retirement Age Comparison -->
+      <div class="card">
+        <div class="card-title">Retirement Age Comparison</div>
+        <p style="font-size: 14px; color: var(--slate-600); margin-bottom: 14px;">
+          Explore how working fewer or additional years impacts your cumulative Roth IRA accumulation.
+        </p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Target Age</th>
+                <th>Years Invested</th>
+                <th>Total Contributions</th>
+                <th>Estimated Growth</th>
+                <th>Ending Balance</th>
+              </tr>
+            </thead>
+            <tbody id="whatif-age-table">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: SCENARIOS & GOAL CALCULATOR -->
+    <div id="tab-scenarios" class="tab-content" style="display: none;">
+      <!-- Strategy Comparison -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">Contribution Strategy Comparison (Side-by-Side)</div>
+        <div class="results-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="result-card" style="border-top: 4px solid var(--slate-400);">
+            <div class="result-card-label">Conservative Plan ($3,000/yr)</div>
+            <div class="result-card-value" id="strat-low-bal">$0</div>
+            <div class="result-card-sub" id="strat-low-sub">$250/month</div>
+          </div>
+          <div class="result-card" style="border-top: 4px solid var(--primary); background: var(--primary-light);">
+            <div class="result-card-label">Current Plan</div>
+            <div class="result-card-value" style="color: var(--primary);" id="strat-base-bal">$0</div>
+            <div class="result-card-sub" id="strat-base-sub">Based on inputs</div>
+          </div>
+          <div class="result-card" style="border-top: 4px solid var(--success);">
+            <div class="result-card-label">Max Out Plan ($7,000/yr)</div>
+            <div class="result-card-value" style="color: var(--success);" id="strat-high-bal">$0</div>
+            <div class="result-card-sub" id="strat-high-sub">$583.33/month</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goal Target Calculator -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">Roth IRA Retirement Goal Calculator</div>
+        <p style="font-size: 14px; color: var(--slate-600); margin-bottom: 16px;">
+          Calculate the exact monthly or annual contribution needed to reach your retirement nest-egg target.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="goal-target">Target Retirement Goal ($)</label>
+            <input type="number" id="goal-target" class="form-input" value="1000000" step="50000" oninput="calculateGoal()">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="goal-years">Years to Invest</label>
+            <input type="number" id="goal-years" class="form-input" value="30" min="1" max="60" oninput="calculateGoal()">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="goal-return">Expected Return (%)</label>
+            <input type="number" id="goal-return" class="form-input" value="7" step="0.25" oninput="calculateGoal()">
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-card-label">Required Monthly Contribution</div>
+            <div class="result-card-value" style="color: var(--primary);" id="goal-res-monthly">$0</div>
+            <div class="result-card-sub">To hit target sum</div>
+          </div>
+          <div class="result-card">
+            <div class="result-card-label">Required Annual Contribution</div>
+            <div class="result-card-value" id="goal-res-annual">$0</div>
+            <div class="result-card-sub">Annual deposit</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Time to Goal -->
+      <div class="card">
+        <div class="card-title">How Long Could It Take to Reach My Goal?</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="ttg-target">Target Amount ($)</label>
+            <input type="number" id="ttg-target" class="form-input" value="500000" oninput="calculateTTG()">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ttg-monthly">Monthly Contribution ($)</label>
+            <input type="number" id="ttg-monthly" class="form-input" value="500" oninput="calculateTTG()">
+          </div>
+        </div>
+        <div class="alert-banner alert-blue" id="ttg-result-box">
+          <strong id="ttg-result-text">Calculating...</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: ROTH IRA EDUCATION -->
+    <div id="tab-education" class="tab-content" style="display: none;">
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">Roth IRA vs. Traditional IRA: Quick Comparison</div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Roth IRA</th>
+                <th>Traditional IRA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Contribution Tax Treatment</strong></td>
+                <td>After-tax dollars (No upfront deduction)</td>
+                <td>Pre-tax dollars (Potentially tax-deductible)</td>
+              </tr>
+              <tr>
+                <td><strong>Qualified Withdrawals</strong></td>
+                <td>100% Tax-Free (Principal & Earnings)</td>
+                <td>Taxed as ordinary income</td>
+              </tr>
+              <tr>
+                <td><strong>Required Minimum Distributions (RMDs)</strong></td>
+                <td>None during account owner's lifetime</td>
+                <td>Required starting at age 73 (SECURE 2.0)</td>
+              </tr>
+              <tr>
+                <td><strong>Early Principal Withdrawals</strong></td>
+                <td>Contributions can be withdrawn penalty-free anytime</td>
+                <td>Subject to taxes + 10% penalty (with exceptions)</td>
+              </tr>
+              <tr>
+                <td><strong>Income Limits to Contribute</strong></td>
+                <td>Yes, phased out at higher income thresholds</td>
+                <td>No limit to contribute (deductibility phases out)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-title">Why Roth IRA Growth Can Be Valuable</div>
+        <p style="font-size: 14.5px; color: var(--slate-700); line-height: 1.7; margin-bottom: 12px;">
+          A Roth IRA is one of the most powerful wealth-building tools available to individual US investors. Because contributions are made with after-tax dollars, qualified distributions in retirement—including decades of compound investment growth—can be 100% tax-free under current IRS rules.
+        </p>
+        <p style="font-size: 14px; color: var(--slate-600); line-height: 1.6;">
+          <strong>The 5-Year Rule:</strong> To qualify for tax-free and penalty-free withdrawals of earnings, the account holder must generally be at least age 59½ and at least 5 tax years must have passed since the first contribution to any Roth IRA.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Roth IRA vs. 401(k)</div>
+        <p style="font-size: 14px; color: var(--slate-700); line-height: 1.6; margin-bottom: 10px;">
+          While a workplace 401(k) often features an employer matching contribution and higher annual contribution limits, a Roth IRA offers complete investment freedom across thousands of individual stocks, index funds, and ETFs without plan administration fees. Financial planners often recommend securing any full employer 401(k) match first, then maximizing an annual Roth IRA contribution.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAB 7: FAQS -->
+    <div id="tab-faq" class="tab-content" style="display: none;">
+      <div class="card">
+        <div class="card-title">Frequently Asked Questions (FAQ)</div>
+        <div id="faq-accordion-container">
+          <!-- FAQs rendered via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Sharing Section -->
+    <div class="card" style="margin-top: 20px;">
+      <div class="card-title">Share This Free Roth IRA Calculator</div>
+      <p style="font-size: 13.5px; color: var(--slate-600);">Help friends, family, and colleagues plan their tax-free retirement journey.</p>
+      <div class="social-share-grid">
+        <button class="share-btn share-fb" onclick="shareSocial('facebook')">Facebook</button>
+        <button class="share-btn share-x" onclick="shareSocial('x')">X (Twitter)</button>
+        <button class="share-btn share-wa" onclick="shareSocial('whatsapp')">WhatsApp</button>
+        <button class="share-btn share-li" onclick="shareSocial('linkedin')">LinkedIn</button>
+        <button class="share-btn share-rd" onclick="shareSocial('reddit')">Reddit</button>
+        <button class="share-btn share-tg" onclick="shareSocial('telegram')">Telegram</button>
+        <button class="share-btn share-pin" onclick="shareSocial('pinterest')">Pinterest</button>
+        <button class="share-btn share-mail" onclick="shareSocial('email')">Email</button>
+        <button class="share-btn share-copy" onclick="shareSocial('copy')">🔗 Copy Link</button>
+      </div>
+    </div>
+
+    <!-- Tax Disclaimer -->
+    <div class="card" style="margin-top: 20px; background: var(--slate-50); border-color: var(--slate-300);">
+      <p style="font-size: 12.5px; color: var(--slate-600); line-height: 1.6;">
+        <strong>Tax & Investment Disclaimer:</strong> This calculator is for educational and informational purposes only. It does not provide tax, legal, investment, or financial advice. Roth IRA rules, contribution limits, income eligibility, and withdrawal rules can change. Projections are hypothetical and do not guarantee future performance. Verify current IRS rules or consult a qualified certified financial planner (CFP) or CPA before making financial decisions.
+      </p>
+    </div>
+
+    <!-- Bottom 300x250 Medium Rectangle Ad Slot -->
+    <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0; overflow-x: auto; text-align: center;">
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--slate-200); font-size: 13px; color: var(--slate-500); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+      <div>© 2026 Roth IRA Calculator. All rights reserved.</div>
+      <div style="display: flex; gap: 16px;">
+        <a href="#about" style="color: var(--slate-600); text-decoration: none;" onclick="alert('About: Free interactive Roth IRA calculator tool built for US investors.')">About</a>
+        <a href="#privacy" style="color: var(--slate-600); text-decoration: none;" onclick="alert('Privacy Policy: All calculations run 100% locally in your browser. No personal financial data is stored or transmitted.')">Privacy Policy</a>
+        <a href="#terms" style="color: var(--slate-600); text-decoration: none;" onclick="alert('Terms of Use: This tool is provided free of charge for educational projection purposes.')">Terms of Use</a>
+        <a href="#contact" style="color: var(--slate-600); text-decoration: none;" onclick="alert('Contact: For suggestions or IRS limit updates, contact us online.')">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ==========================================
+    // 1. CONFIGURATION OBJECT (IRS RULES)
+    // ==========================================
+    const ROTH_IRA_RULES = {
+      taxYear: 2025,
+      standardLimit: 7000,
+      catchUpLimit: 1000,
+      catchUpAge: 50,
+      disclaimer: "Contribution limits can change. Verify current limits with official IRS guidance."
+    };
+
+    let currentInputs = {
+      currentAge: 30,
+      retirementAge: 65,
+      currentBalance: 10000,
+      annualContribution: 7000,
+      expectedReturn: 7.0,
+      annualContributionIncrease: 3.0,
+      inflationRate: 2.5,
+      investmentFee: 0.25,
+      frequency: 'monthly',
+      timing: 'end'
+    };
+
+    let cachedResults = null;
+    let monthlyTableVisible = false;
+
+    // FAQ Data
+    const FAQ_DATA = [
+      { q: "What is a Roth IRA?", a: "A Roth IRA is an individual retirement account in the United States that allows you to contribute after-tax money. Your investments grow tax-free, and qualified withdrawals in retirement are also 100% tax-free." },
+      { q: "How does this Roth IRA calculator work?", a: "The calculator models compound interest on your initial balance and recurring contributions across your selected timeframe, taking into account investment returns, annual contribution escalation, management fees, and inflation." },
+      { q: "How much can I contribute to a Roth IRA in 2025?", a: "For 2025, the standard annual contribution limit is $7,000. Individuals age 50 or older can contribute an additional $1,000 catch-up contribution for a total of $8,000." },
+      { q: "What is a Roth IRA catch-up contribution?", a: "The IRS permits investors age 50 and older to make an additional catch-up contribution ($1,000 in 2024/2025) to accelerate retirement savings as they approach retirement." },
+      { q: "Can I use this calculator for retirement planning?", a: "Yes. It helps model hypothetical accumulation curves, evaluate what-if scenarios, compare retirement ages, and determine required annual savings to reach target nest eggs." },
+      { q: "Can I include monthly contributions?", a: "Yes, select Monthly in the contribution frequency selector. You can also model quarterly, semi-annual, or annual contributions." },
+      { q: "Can I increase my contribution every year?", a: "Yes! Use the Annual Contribution Increase setting to model bumping your contributions each year as your career income rises." },
+      { q: "Can I include inflation?", a: "Yes, enter your expected annual inflation rate. The calculator displays an Inflation-Adjusted Balance reflecting future values in today's purchasing power." },
+      { q: "Can I include investment fees?", a: "Yes, entering an annual investment fee (expense ratio) accurately calculates the fee drag on your long-term compounding balance." },
+      { q: "Are Roth IRA withdrawals always tax-free?", a: "Withdrawals of original contributions are always tax- and penalty-free. Withdrawals of earnings are tax-free if you are at least age 59½ and the account has met the 5-year aging rule." },
+      { q: "What is the difference between a Roth IRA and Traditional IRA?", a: "Traditional IRAs provide tax deductions upfront and tax withdrawals in retirement. Roth IRAs use after-tax money upfront and provide 100% tax-free qualified withdrawals in retirement." },
+      { q: "What is the difference between a Roth IRA and a 401(k)?", a: "A 401(k) is an employer-sponsored plan with higher annual contribution limits ($23,500 in 2025) and potential matching funds. A Roth IRA is an individual account with complete investment choice." },
+      { q: "Does income affect Roth IRA eligibility?", a: "Yes, the IRS sets modified adjusted gross income (MAGI) phase-out ranges. Individuals above the upper limit cannot contribute directly, though backdoor Roth conversions may be available." },
+      { q: "Are the calculator results guaranteed?", a: "No. All calculation figures are hypothetical mathematical models for educational purposes and do not represent guaranteed investment returns." },
+      { q: "Is this calculator financial advice?", a: "No. This tool does not provide financial, tax, or investment advice. Consult a certified financial planner or CPA for personalized advice." },
+      { q: "Is this calculator free?", a: "Yes, this tool is 100% free with no registration, no login, and no fees." }
+    ];
+
+    // ==========================================
+    // 2. MATHEMATICAL CALCULATION ENGINE
+    // ==========================================
+    function calculate() {
+      const curAge = Math.max(1, Math.min(100, currentInputs.currentAge));
+      const retAge = Math.max(curAge + 1, Math.min(100, currentInputs.retirementAge));
+      const years = retAge - curAge;
+
+      const initBal = Math.max(0, currentInputs.currentBalance);
+      const baseContrib = Math.max(0, currentInputs.annualContribution);
+      const annualReturn = Math.max(0, currentInputs.expectedReturn / 100);
+      const annualIncrease = Math.max(0, currentInputs.annualContributionIncrease / 100);
+      const annualInflation = Math.max(0, currentInputs.inflationRate / 100);
+      const annualFee = Math.max(0, currentInputs.investmentFee / 100);
+
+      const freqMap = { monthly: 12, quarterly: 4, 'semi-annually': 2, annually: 1 };
+      const ppy = freqMap[currentInputs.frequency] || 12;
+      const timing = currentInputs.timing;
+
+      let bal = initBal;
+      let balNoFee = initBal;
+      let totalContrib = 0;
+      let cumFees = 0;
+      let curYearContrib = baseContrib;
+
+      const schedule = [];
+      const currentYear = new Date().getFullYear();
+
+      for (let y = 1; y <= years; y++) {
+        const age = curAge + y;
+        const calYear = currentYear + y;
+        const startBal = bal;
+        const contribPerPeriod = curYearContrib / ppy;
+
+        let yearGrowth = 0;
+        let yearFees = 0;
+        let yearContrib = 0;
+
+        const pReturn = annualReturn / ppy;
+        const pFee = annualFee / ppy;
+
+        for (let p = 1; p <= ppy; p++) {
+          if (timing === 'beginning') {
+            bal += contribPerPeriod;
+            balNoFee += contribPerPeriod;
+            totalContrib += contribPerPeriod;
+            yearContrib += contribPerPeriod;
+          }
+
+          const g = bal * pReturn;
+          const gNoFee = balNoFee * pReturn;
+          bal += g;
+          balNoFee += gNoFee;
+          yearGrowth += g;
+
+          const f = bal * pFee;
+          bal = Math.max(0, bal - f);
+          cumFees += f;
+          yearFees += f;
+
+          if (timing === 'end') {
+            bal += contribPerPeriod;
+            balNoFee += contribPerPeriod;
+            totalContrib += contribPerPeriod;
+            yearContrib += contribPerPeriod;
+          }
+        }
+
+        const infBal = annualInflation > 0 ? bal / Math.pow(1 + annualInflation, y) : bal;
+
+        schedule.push({
+          year: y,
+          age: age,
+          calYear: calYear,
+          startBal: startBal,
+          annualContrib: yearContrib,
+          totalContrib: totalContrib,
+          growth: yearGrowth,
+          cumGrowth: Math.max(0, bal - initBal - totalContrib),
+          fees: yearFees,
+          cumFees: cumFees,
+          endBal: bal,
+          infBal: Math.max(0, infBal)
+        });
+
+        curYearContrib *= (1 + annualIncrease);
+      }
+
+      const totalGrowth = Math.max(0, bal - initBal - totalContrib);
+      const inflationAdj = annualInflation > 0 ? bal / Math.pow(1 + annualInflation, years) : bal;
+
+      cachedResults = {
+        years: years,
+        balance: bal,
+        totalContributions: totalContrib,
+        totalGrowth: totalGrowth,
+        inflationAdjusted: inflationAdj,
+        totalFees: cumFees,
+        balanceNoFee: balNoFee,
+        feeDrag: Math.max(0, balNoFee - bal),
+        schedule: schedule
+      };
+
+      updateUI();
+    }
+
+    // ==========================================
+    // 3. UI RENDERING & INTERACTION
+    // ==========================================
+    function fmt(val) {
+      return '$' + Math.round(val || 0).toLocaleString('en-US');
+    }
+
+    function updateUI() {
+      if (!cachedResults) return;
+      const res = cachedResults;
+      const inputs = currentInputs;
+
+      // Labels & Alerts
+      document.getElementById('lbl-tax-year').innerText = ROTH_IRA_RULES.taxYear;
+      document.getElementById('val-current-age').innerText = inputs.currentAge + ' yrs';
+      document.getElementById('val-retire-age').innerText = inputs.retirementAge + ' yrs';
+      document.getElementById('val-return').innerText = inputs.expectedReturn.toFixed(2) + '%';
+      document.getElementById('val-increase').innerText = inputs.annualContributionIncrease.toFixed(1) + '%';
+      document.getElementById('val-inflation').innerText = inputs.inflationRate.toFixed(2) + '%';
+      document.getElementById('val-fee').innerText = inputs.investmentFee.toFixed(2) + '%';
+      document.getElementById('lbl-monthly-eq').innerText = '$' + Math.round(inputs.annualContribution / 12).toLocaleString() + ' / mo';
+
+      // Catch-up warning
+      const catchupBanner = document.getElementById('catchup-banner');
+      const limitWarningBanner = document.getElementById('limit-warning-banner');
+
+      if (inputs.currentAge >= ROTH_IRA_RULES.catchUpAge) {
+        catchupBanner.style.display = 'block';
+        document.getElementById('lbl-catchup-total').innerText = fmt(ROTH_IRA_RULES.standardLimit + ROTH_IRA_RULES.catchUpLimit);
+      } else {
+        catchupBanner.style.display = 'none';
+      }
+
+      const maxLimit = inputs.currentAge >= ROTH_IRA_RULES.catchUpAge ? (ROTH_IRA_RULES.standardLimit + ROTH_IRA_RULES.catchUpLimit) : ROTH_IRA_RULES.standardLimit;
+      if (inputs.annualContribution > maxLimit) {
+        limitWarningBanner.style.display = 'block';
+        document.getElementById('lbl-over-amount').innerText = fmt(inputs.annualContribution);
+        document.getElementById('lbl-max-allowed').innerText = fmt(maxLimit);
+      } else {
+        limitWarningBanner.style.display = 'none';
+      }
+
+      // Hero
+      document.getElementById('res-balance').innerText = fmt(res.balance);
+      document.getElementById('res-target-age').innerText = inputs.retirementAge;
+      document.getElementById('res-years-left').innerText = res.years;
+
+      // Metrics
+      document.getElementById('res-contributions').innerText = fmt(res.totalContributions);
+      document.getElementById('res-growth').innerText = fmt(res.totalGrowth);
+      document.getElementById('res-inflation-adj').innerText = fmt(res.inflationAdjusted);
+      document.getElementById('res-fees').innerText = fmt(res.totalFees);
+
+      const totalPool = (res.totalContributions + res.totalGrowth) || 1;
+      const cPct = Math.round((res.totalContributions / totalPool) * 100);
+      const gPct = Math.round((res.totalGrowth / totalPool) * 100);
+
+      document.getElementById('res-contrib-pct').innerText = cPct + '% of total value';
+      document.getElementById('res-growth-pct').innerText = gPct + '% of total value';
+      document.getElementById('res-fee-drag').innerText = '-' + fmt(res.feeDrag) + ' estimated fee drag';
+
+      // Bar
+      document.getElementById('bar-principal').style.width = cPct + '%';
+      document.getElementById('bar-growth').style.width = gPct + '%';
+      document.getElementById('lbl-bar-contrib').innerText = 'Contributions: ' + fmt(res.totalContributions) + ' (' + cPct + '%)';
+      document.getElementById('lbl-bar-growth').innerText = 'Growth: ' + fmt(res.totalGrowth) + ' (' + gPct + '%)';
+
+      // Render Visualizations & Tables
+      renderSvgChart(res.schedule);
+      renderMilestones(res.schedule);
+      renderYearlyTable(res.schedule);
+      renderMonthlyTable(inputs);
+
+      // Render Secondary Tabs
+      renderPlannerTab(res, inputs);
+      renderProjectionTab(res, inputs);
+      renderWhatIfTabs(inputs);
+      renderScenarioTabs(inputs);
+    }
+
+    function renderSvgChart(schedule) {
+      const container = document.getElementById('svg-chart-container');
+      if (!schedule || schedule.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const w = container.clientWidth || 600;
+      const h = 320;
+      const padL = 65;
+      const padR = 20;
+      const padT = 20;
+      const padB = 40;
+
+      const innerW = w - padL - padR;
+      const innerH = h - padT - padB;
+
+      const maxBal = Math.max(...schedule.map(s => s.endBal), 1000);
+      const n = schedule.length;
+
+      function getX(i) { return padL + (i / (n - 1 || 1)) * innerW; }
+      function getY(val) { return padT + innerH - (val / maxBal) * innerH; }
+
+      let pathBal = `M ${getX(0)} ${getY(schedule[0].endBal)}`;
+      let pathContrib = `M ${getX(0)} ${getY(schedule[0].totalContrib)}`;
+      let pathGrowth = `M ${getX(0)} ${getY(schedule[0].cumGrowth)}`;
+      let areaBal = `M ${getX(0)} ${getY(0)} L ${getX(0)} ${getY(schedule[0].endBal)}`;
+
+      for (let i = 1; i < n; i++) {
+        const x = getX(i);
+        pathBal += ` L ${x} ${getY(schedule[i].endBal)}`;
+        pathContrib += ` L ${x} ${getY(schedule[i].totalContrib)}`;
+        pathGrowth += ` L ${x} ${getY(schedule[i].cumGrowth)}`;
+        areaBal += ` L ${x} ${getY(schedule[i].endBal)}`;
+      }
+      areaBal += ` L ${getX(n - 1)} ${getY(0)} Z`;
+
+      // Y-axis grid lines
+      let gridLines = '';
+      for (let s = 0; s <= 4; s++) {
+        const val = (maxBal / 4) * s;
+        const y = getY(val);
+        gridLines += `
+          <line x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3" />
+          <text x="${padL - 8}" y="${y + 4}" font-size="11" fill="#64748b" text-anchor="end">${fmt(val)}</text>
+        `;
+      }
+
+      // X-axis labels
+      let xLabels = '';
+      const step = Math.max(1, Math.floor(n / 6));
+      for (let i = 0; i < n; i += step) {
+        const x = getX(i);
+        xLabels += `
+          <text x="${x}" y="${h - 12}" font-size="11" fill="#64748b" text-anchor="middle">Age ${schedule[i].age}</text>
+        `;
+      }
+
+      const svg = `
+        <svg width="100%" height="100%" viewBox="0 0 ${w} ${h}" style="overflow: visible;">
+          <defs>
+            <linearGradient id="gradBal" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#2563eb" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          ${gridLines}
+          <path d="${areaBal}" fill="url(#gradBal)" />
+          <path d="${pathContrib}" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+          <path d="${pathGrowth}" fill="none" stroke="#16a34a" stroke-width="2.5" />
+          <path d="${pathBal}" fill="none" stroke="#2563eb" stroke-width="3" />
+          ${xLabels}
+        </svg>
+      `;
+
+      container.innerHTML = svg;
+    }
+
+    function renderMilestones(schedule) {
+      const container = document.getElementById('milestones-container');
+      const targetAges = [35, 40, 45, 50, 55, 60, 65, 70, currentInputs.retirementAge];
+      const uniqueAges = [...new Set(targetAges)].filter(a => a >= currentInputs.currentAge).sort((a,b) => a-b);
+
+      let html = '';
+      uniqueAges.forEach(age => {
+        const item = schedule.find(s => s.age === age);
+        if (item) {
+          const isRetire = age === currentInputs.retirementAge;
+          html += `
+            <div class="milestone-card ${isRetire ? 'current' : ''}">
+              <div style="font-size: 12px; font-weight: 700; color: ${isRetire ? 'var(--primary)' : 'var(--slate-500)'};">
+                ${isRetire ? '🎯 RETIREMENT AGE ' + age : 'AGE ' + age + ' (' + item.calYear + ')'}
+              </div>
+              <div style="font-size: 18px; font-weight: 800; color: var(--slate-900); margin: 4px 0;">${fmt(item.endBal)}</div>
+              <div style="font-size: 11.5px; color: var(--slate-500);">Growth: <strong style="color: var(--success);">${fmt(item.cumGrowth)}</strong></div>
+            </div>
+          `;
+        }
+      });
+      container.innerHTML = html;
+    }
+
+    function renderYearlyTable(schedule) {
+      const tbody = document.getElementById('yearly-table-body');
+      let html = '';
+      schedule.forEach(s => {
+        html += `
+          <tr>
+            <td><strong>Age ${s.age}</strong></td>
+            <td>${s.calYear}</td>
+            <td>${fmt(s.startBal)}</td>
+            <td style="color: var(--primary);">${fmt(s.annualContrib)}</td>
+            <td>${fmt(s.totalContrib)}</td>
+            <td style="color: var(--success); font-weight: 600;">+${fmt(s.growth)}</td>
+            <td style="color: var(--amber); font-size: 12px;">-${fmt(s.fees)}</td>
+            <td style="font-weight: 700; color: var(--slate-900);">${fmt(s.endBal)}</td>
+            <td style="color: var(--purple);">${fmt(s.infBal)}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = html;
+    }
+
+    function renderMonthlyTable(inputs) {
+      const tbody = document.getElementById('monthly-table-body');
+      let html = '';
+      const monthlyRate = (inputs.expectedReturn / 100) / 12;
+      const monthlyFee = (inputs.investmentFee / 100) / 12;
+      let bal = inputs.currentBalance;
+      const mDeposit = inputs.annualContribution / 12;
+
+      for (let m = 1; m <= 120; m++) {
+        if (inputs.timing === 'beginning') bal += mDeposit;
+        const g = bal * monthlyRate;
+        bal += g;
+        const f = bal * monthlyFee;
+        bal -= f;
+        if (inputs.timing === 'end') bal += mDeposit;
+
+        const yearNum = Math.ceil(m / 12);
+        const age = inputs.currentAge + yearNum;
+
+        html += `
+          <tr>
+            <td>Month ${m} (Yr ${yearNum})</td>
+            <td>Age ${age}</td>
+            <td style="color: var(--primary);">${fmt(mDeposit)}</td>
+            <td style="color: var(--success);">+${fmt(g)}</td>
+            <td style="color: var(--amber); font-size: 12px;">-${fmt(f)}</td>
+            <td style="font-weight: 600;">${fmt(bal)}</td>
+          </tr>
+        `;
+      }
+      tbody.innerHTML = html;
+    }
+
+    function renderPlannerTab(res, inputs) {
+      document.getElementById('planner-monthly-eq').innerText = fmt(inputs.annualContribution / 12);
+      document.getElementById('planner-total-contrib').innerText = fmt(res.totalContributions);
+      document.getElementById('planner-total-growth').innerText = fmt(res.totalGrowth);
+      document.getElementById('planner-future-val').innerText = fmt(res.balance);
+    }
+
+    function renderProjectionTab(res, inputs) {
+      document.getElementById('proj-nom-bal').innerText = fmt(res.balance);
+      document.getElementById('proj-real-bal').innerText = fmt(res.inflationAdjusted);
+      document.getElementById('proj-total-out').innerText = fmt(res.totalContributions);
+      const mult = res.totalContributions > 0 ? (res.balance / res.totalContributions).toFixed(2) : '1.0';
+      document.getElementById('proj-multiplier').innerText = mult + 'x';
+    }
+
+    function renderWhatIfTabs(inputs) {
+      // 1. Contrib amounts
+      const amounts = [250, 400, 583.33, 750, 1000];
+      const years = inputs.retirementAge - inputs.currentAge;
+      const r = (inputs.expectedReturn / 100) / 12;
+
+      let cHtml = '';
+      amounts.forEach(amt => {
+        const annual = amt * 12;
+        let bal = inputs.currentBalance;
+        let totC = 0;
+        for (let m = 1; m <= years * 12; m++) {
+          bal = (bal + amt) * (1 + r);
+          totC += amt;
+        }
+        const diff = bal - cachedResults.balance;
+        cHtml += `
+          <tr>
+            <td><strong>$${Math.round(amt)}/mo</strong></td>
+            <td>${fmt(annual)}/yr</td>
+            <td>${fmt(totC)}</td>
+            <td style="color: var(--success);">${fmt(bal - totC - inputs.currentBalance)}</td>
+            <td style="font-weight: 700;">${fmt(bal)}</td>
+            <td style="color: ${diff >= 0 ? 'var(--success)' : 'var(--amber)'}; font-weight: 600;">
+              ${diff >= 0 ? '+' : ''}${fmt(diff)}
+            </td>
+          </tr>
+        `;
+      });
+      document.getElementById('whatif-contrib-table').innerHTML = cHtml;
+
+      // 2. Returns
+      const returns = [4.0, 5.5, 7.0, 8.5, 10.0];
+      let rHtml = '';
+      returns.forEach(ret => {
+        const isCurrent = Math.abs(ret - inputs.expectedReturn) < 0.1;
+        const rMo = (ret / 100) / 12;
+        const mDep = inputs.annualContribution / 12;
+        let bal = inputs.currentBalance;
+        let totC = 0;
+        for (let m = 1; m <= years * 12; m++) {
+          bal = (bal + mDep) * (1 + rMo);
+          totC += mDep;
+        }
+        rHtml += `
+          <tr style="${isCurrent ? 'background: var(--primary-light); font-weight: 700;' : ''}">
+            <td>${ret.toFixed(1)}% Annual</td>
+            <td>${fmt(bal)}</td>
+            <td style="color: var(--success);">${fmt(bal - totC - inputs.currentBalance)}</td>
+            <td>${isCurrent ? '⭐ Current Plan' : 'Hypothetical'}</td>
+          </tr>
+        `;
+      });
+      document.getElementById('whatif-return-table').innerHTML = rHtml;
+
+      // 3. Ages
+      const ages = [55, 60, 62, 65, 67, 70];
+      let aHtml = '';
+      ages.forEach(age => {
+        if (age > inputs.currentAge) {
+          const yrs = age - inputs.currentAge;
+          const rMo = (inputs.expectedReturn / 100) / 12;
+          const mDep = inputs.annualContribution / 12;
+          let bal = inputs.currentBalance;
+          let totC = 0;
+          for (let m = 1; m <= yrs * 12; m++) {
+            bal = (bal + mDep) * (1 + rMo);
+            totC += mDep;
+          }
+          aHtml += `
+            <tr style="${age === inputs.retirementAge ? 'background: var(--primary-light); font-weight: 700;' : ''}">
+              <td><strong>Age ${age}</strong></td>
+              <td>${yrs} years</td>
+              <td>${fmt(totC)}</td>
+              <td style="color: var(--success);">${fmt(bal - totC - inputs.currentBalance)}</td>
+              <td style="font-weight: 700;">${fmt(bal)}</td>
+            </tr>
+          `;
+        }
+      });
+      document.getElementById('whatif-age-table').innerHTML = aHtml;
+    }
+
+    function renderScenarioTabs(inputs) {
+      // Conservative $3k, Base, Max $7k
+      const years = inputs.retirementAge - inputs.currentAge;
+      const r = (inputs.expectedReturn / 100) / 12;
+
+      function calcFixed(annual) {
+        const mDep = annual / 12;
+        let bal = inputs.currentBalance;
+        for (let m = 1; m <= years * 12; m++) {
+          bal = (bal + mDep) * (1 + r);
+        }
+        return bal;
+      }
+
+      document.getElementById('strat-low-bal').innerText = fmt(calcFixed(3000));
+      document.getElementById('strat-base-bal').innerText = fmt(cachedResults.balance);
+      document.getElementById('strat-high-bal').innerText = fmt(calcFixed(7000));
+
+      calculateGoal();
+      calculateTTG();
+    }
+
+    function calculateGoal() {
+      const target = parseFloat(document.getElementById('goal-target').value) || 1000000;
+      const years = parseFloat(document.getElementById('goal-years').value) || 30;
+      const ret = (parseFloat(document.getElementById('goal-return').value) || 7) / 100;
+
+      const rMonthly = ret / 12;
+      const totalMonths = years * 12;
+      const fvFactor = (Math.pow(1 + rMonthly, totalMonths) - 1) / rMonthly;
+      const reqMonthly = target / fvFactor;
+
+      document.getElementById('goal-res-monthly').innerText = fmt(reqMonthly) + ' / mo';
+      document.getElementById('goal-res-annual').innerText = fmt(reqMonthly * 12) + ' / yr';
+    }
+
+    function calculateTTG() {
+      const target = parseFloat(document.getElementById('ttg-target').value) || 500000;
+      const mDeposit = parseFloat(document.getElementById('ttg-monthly').value) || 500;
+      const r = (currentInputs.expectedReturn / 100) / 12;
+
+      let bal = currentInputs.currentBalance;
+      let months = 0;
+      while (bal < target && months < 600) {
+        bal = (bal + mDeposit) * (1 + r);
+        months++;
+      }
+
+      const yrs = Math.floor(months / 12);
+      const rem = months % 12;
+      document.getElementById('ttg-result-text').innerText = `Estimated Time to Reach ${fmt(target)}: approx ${yrs} years, ${rem} months (${months} total contributions).`;
+    }
+
+    // ==========================================
+    // 4. USER CONTROLS & EVENT HANDLERS
+    // ==========================================
+    function handleInputChange() {
+      currentInputs.currentAge = parseInt(document.getElementById('inp-current-age').value) || 30;
+      currentInputs.retirementAge = parseInt(document.getElementById('inp-retire-age').value) || 65;
+      currentInputs.currentBalance = parseFloat(document.getElementById('inp-balance').value) || 0;
+      currentInputs.annualContribution = parseFloat(document.getElementById('inp-contribution').value) || 0;
+      currentInputs.expectedReturn = parseFloat(document.getElementById('inp-return').value) || 7;
+      currentInputs.annualContributionIncrease = parseFloat(document.getElementById('inp-increase').value) || 0;
+      currentInputs.inflationRate = parseFloat(document.getElementById('inp-inflation').value) || 0;
+      currentInputs.investmentFee = parseFloat(document.getElementById('inp-fee').value) || 0;
+      currentInputs.frequency = document.getElementById('sel-frequency').value;
+
+      // Sync sliders
+      document.getElementById('rng-current-age').value = currentInputs.currentAge;
+      document.getElementById('rng-retire-age').value = currentInputs.retirementAge;
+      document.getElementById('rng-contribution').value = currentInputs.annualContribution;
+      document.getElementById('rng-return').value = currentInputs.expectedReturn;
+
+      calculate();
+    }
+
+    function syncInput(field) {
+      if (field === 'current-age') {
+        document.getElementById('inp-current-age').value = document.getElementById('rng-current-age').value;
+      } else if (field === 'retire-age') {
+        document.getElementById('inp-retire-age').value = document.getElementById('rng-retire-age').value;
+      } else if (field === 'contribution') {
+        document.getElementById('inp-contribution').value = document.getElementById('rng-contribution').value;
+      } else if (field === 'return') {
+        document.getElementById('inp-return').value = document.getElementById('rng-return').value;
+      }
+      handleInputChange();
+    }
+
+    function setTiming(timing) {
+      currentInputs.timing = timing;
+      document.getElementById('btn-timing-end').classList.toggle('active', timing === 'end');
+      document.getElementById('btn-timing-beg').classList.toggle('active', timing === 'beginning');
+      calculate();
+    }
+
+    function switchTab(tabId) {
+      const tabs = ['calculator', 'planner', 'projection', 'whatif', 'scenarios', 'education', 'faq'];
+      tabs.forEach((t, i) => {
+        const el = document.getElementById('tab-' + t);
+        if (el) el.style.display = (t === tabId) ? 'block' : 'none';
+        const tabBtn = document.querySelectorAll('.nav-tab')[i];
+        if (tabBtn) tabBtn.classList.toggle('active', t === tabId);
+      });
+      if (tabId === 'calculator' && cachedResults) {
+        setTimeout(() => renderSvgChart(cachedResults.schedule), 50);
+      }
+    }
+
+    function toggleMonthlyTable() {
+      monthlyTableVisible = !monthlyTableVisible;
+      document.getElementById('monthly-table-wrapper').style.display = monthlyTableVisible ? 'block' : 'none';
+      document.getElementById('btn-toggle-monthly-text').innerText = monthlyTableVisible ? 'Hide Monthly Breakdown' : 'Show Monthly Breakdown';
+    }
+
+    function loadExamplePreset() {
+      currentInputs = {
+        currentAge: 28,
+        retirementAge: 65,
+        currentBalance: 15000,
+        annualContribution: 7000,
+        expectedReturn: 8.0,
+        annualContributionIncrease: 3.0,
+        inflationRate: 2.5,
+        investmentFee: 0.15,
+        frequency: 'monthly',
+        timing: 'end'
+      };
+      populateInputs();
+      calculate();
+    }
+
+    function resetDefaults() {
+      currentInputs = {
+        currentAge: 30,
+        retirementAge: 65,
+        currentBalance: 10000,
+        annualContribution: 7000,
+        expectedReturn: 7.0,
+        annualContributionIncrease: 3.0,
+        inflationRate: 2.5,
+        investmentFee: 0.25,
+        frequency: 'monthly',
+        timing: 'end'
+      };
+      populateInputs();
+      calculate();
+    }
+
+    function populateInputs() {
+      document.getElementById('inp-current-age').value = currentInputs.currentAge;
+      document.getElementById('rng-current-age').value = currentInputs.currentAge;
+      document.getElementById('inp-retire-age').value = currentInputs.retirementAge;
+      document.getElementById('rng-retire-age').value = currentInputs.retirementAge;
+      document.getElementById('inp-balance').value = currentInputs.currentBalance;
+      document.getElementById('inp-contribution').value = currentInputs.annualContribution;
+      document.getElementById('rng-contribution').value = currentInputs.annualContribution;
+      document.getElementById('inp-return').value = currentInputs.expectedReturn;
+      document.getElementById('rng-return').value = currentInputs.expectedReturn;
+      document.getElementById('inp-increase').value = currentInputs.annualContributionIncrease;
+      document.getElementById('inp-inflation').value = currentInputs.inflationRate;
+      document.getElementById('inp-fee').value = currentInputs.investmentFee;
+      document.getElementById('sel-frequency').value = currentInputs.frequency;
+      setTiming(currentInputs.timing);
+    }
+
+    function saveToLocalStorage() {
+      try {
+        localStorage.setItem('roth_ira_calc_user_prefs', JSON.stringify(currentInputs));
+        alert('Settings saved successfully to browser storage!');
+      } catch (e) {
+        alert('Failed to save settings.');
+      }
+    }
+
+    function clearLocalStorage() {
+      try {
+        localStorage.removeItem('roth_ira_calc_user_prefs');
+        alert('Saved settings cleared.');
+      } catch (e) {}
+    }
+
+    function copyResultsText() {
+      if (!cachedResults) return;
+      const text = `--- ROTH IRA RETIREMENT PROJECTION ---\n` +
+        `Current Age: ${currentInputs.currentAge} | Target Retirement Age: ${currentInputs.retirementAge}\n` +
+        `Initial Balance: ${fmt(currentInputs.currentBalance)}\n` +
+        `Annual Contribution: ${fmt(currentInputs.annualContribution)} (${currentInputs.frequency})\n` +
+        `Expected Return: ${currentInputs.expectedReturn}% | Annual Fee: ${currentInputs.investmentFee}%\n` +
+        `----------------------------------------\n` +
+        `Estimated Ending Balance: ${fmt(cachedResults.balance)}\n` +
+        `Total Contributed: ${fmt(cachedResults.totalContributions)}\n` +
+        `Total Investment Growth: ${fmt(cachedResults.totalGrowth)}\n` +
+        `Inflation-Adjusted Purchasing Power: ${fmt(cachedResults.inflationAdjusted)}\n` +
+        `Estimated Fee Drag: -${fmt(cachedResults.feeDrag)}\n` +
+        `Generated with Roth IRA Calculator`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Projection summary copied to clipboard!');
+      });
+    }
+
+    function exportScheduleCSV() {
+      if (!cachedResults || !cachedResults.schedule) return;
+      const headers = ['Age', 'Calendar Year', 'Starting Balance', 'Annual Contribution', 'Total Contributed', 'Investment Growth', 'Annual Fee', 'Ending Balance', 'Inflation Adjusted'];
+      const rows = cachedResults.schedule.map(s => [
+        s.age,
+        s.calYear,
+        Math.round(s.startBal),
+        Math.round(s.annualContrib),
+        Math.round(s.totalContrib),
+        Math.round(s.growth),
+        Math.round(s.fees),
+        Math.round(s.endBal),
+        Math.round(s.infBal)
+      ]);
+
+      const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `roth_ira_schedule_${currentInputs.currentAge}_to_${currentInputs.retirementAge}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function renderFaqs() {
+      const container = document.getElementById('faq-accordion-container');
+      let html = '';
+      FAQ_DATA.forEach((item, idx) => {
+        html += `
+          <div class="faq-item" id="faq-item-${idx}">
+            <div class="faq-question" onclick="toggleFaq(${idx})">
+              <span>${item.q}</span>
+              <span id="faq-icon-${idx}">+</span>
+            </div>
+            <div class="faq-answer">${item.a}</div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function toggleFaq(idx) {
+      const item = document.getElementById('faq-item-' + idx);
+      const icon = document.getElementById('faq-icon-' + idx);
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      icon.innerText = !isOpen ? '−' : '+';
+    }
+
+    function shareSocial(network) {
+      const url = window.location.href;
+      const title = 'Check out this free interactive Roth IRA Retirement Calculator & Growth Planner!';
+      let shareUrl = '';
+
+      switch (network) {
+        case 'facebook': shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`; break;
+        case 'x': shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`; break;
+        case 'whatsapp': shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`; break;
+        case 'linkedin': shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`; break;
+        case 'reddit': shareUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`; break;
+        case 'telegram': shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`; break;
+        case 'pinterest': shareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(title)}`; break;
+        case 'email': shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`; break;
+        case 'copy':
+          navigator.clipboard.writeText(url).then(() => alert('Link copied to clipboard!'));
+          return;
+      }
+      if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=500');
+    }
+
+    // ==========================================
+    // 5. INITIALIZATION
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const saved = localStorage.getItem('roth_ira_calc_user_prefs');
+        if (saved) {
+          currentInputs = { ...currentInputs, ...JSON.parse(saved) };
+          populateInputs();
+        }
+      } catch (e) {}
+
+      renderFaqs();
+      calculate();
+
+      window.addEventListener('resize', () => {
+        if (cachedResults) renderSvgChart(cachedResults.schedule);
+      });
+    });
+  </script>
+  <!-- SEO Keywords & Search Topics Block -->
+<div class="seo-keywords-container" style="max-width: 1200px; margin: 40px auto; padding: 20px; font-family: sans-serif; border-top: 1px solid #eaeeef;">
+  <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 12px; font-weight: 600;">Popular Roth IRA & Retirement Search Topics</h3>
+  <p style="font-size: 13px; color: #64748b; line-height: 1.8; margin: 0;">
+    <strong>Calculators & Tools:</strong> Roth IRA calculator, Roth IRA retirement calculator, Free Roth IRA calculator, Roth IRA growth calculator, Roth IRA earnings calculator, Roth IRA interest calculator, Roth IRA savings calculator, Roth IRA projection calculator, Best Roth IRA calculator, Roth IRA returns calculator, Roth IRA compound interest calculator, Tax free retirement calculator, Inflation adjusted Roth IRA calculator, Roth IRA balance at age 65, FIRE Roth IRA calculator.
+    <br><br>
+    <strong>Contribution & Tax Limits:</strong> Roth IRA contribution calculator, Roth IRA limit calculator, Max Roth IRA contribution 2026, Roth IRA annual contribution limit, How much can I contribute to a Roth IRA, Roth IRA income limits calculator, Roth IRA eligibility calculator, Maxing out Roth IRA calculator, Monthly Roth IRA contribution calculator, Roth IRA catch up contribution calculator.
+    <br><br>
+    <strong>Comparisons & Strategies:</strong> Roth IRA vs Traditional IRA calculator, Roth IRA vs 401k calculator, Backdoor Roth IRA calculator, Roth IRA vs brokerage account, 401k to Roth IRA calculator, Roth 401k vs Roth IRA calculator, Traditional IRA vs Roth calculator, Roth IRA conversion calculator, Tax free withdrawal Roth IRA, Roth IRA tax advantage calculator.
+    <br><br>
+    <strong>Growth Projections:</strong> Roth IRA compound growth, Roth IRA 30 year growth calculator, Roth IRA return on investment calculator, Average Roth IRA return calculator, Roth IRA growth rate calculator, Start Roth IRA at age 20 calculator, Start Roth IRA at age 30 calculator, Roth IRA millionaire calculator, S&P 500 Roth IRA calculator, Index fund Roth IRA growth calculator.
+  </p>
+</div>
+
+</body>
+</html>
