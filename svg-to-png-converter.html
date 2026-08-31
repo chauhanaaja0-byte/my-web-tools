@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free SVG to PNG Converter – Convert SVG Images Online</title>
+  <meta name="description" content="Convert SVG to PNG online for free. Resize SVG files, choose transparent or custom backgrounds, create high-resolution PNGs, and download your images directly in your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="YOUR_BLOGGER_POST_URL">
+  
+  <!-- Global Direct/Popunder Ad Script -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { width: 100%; max-width: 100%; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #ffffff; color: #0f172a; line-height: 1.5; }
+    body { overflow-x: hidden; }
+    .container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 16px; box-sizing: border-box; }
+    
+    /* Header */
+    .header { text-align: center; padding: 24px 0 16px 0; }
+    .badge { display: inline-block; padding: 4px 12px; background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 9999px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .title { font-size: 32px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; line-height: 1.2; }
+    .subtitle { font-size: 18px; font-weight: 700; color: #2563eb; margin: 0 0 12px 0; }
+    .description { font-size: 15px; color: #475569; max-width: 760px; margin: 0 auto 20px auto; line-height: 1.6; }
+    
+    /* Feature Pills */
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 650px; margin: 0 auto 24px auto; text-align: left; }
+    @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
+    .feat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; }
+    .feat-title { font-size: 12px; font-weight: 700; color: #1e293b; }
+    .feat-desc { font-size: 11px; color: #64748b; }
+
+    /* Advertisement Box */
+    .ad-box { width: 100%; margin: 20px 0; padding: 16px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; text-align: center; color: #94a3b8; }
+    .ad-label { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .ad-sub { font-size: 12px; margin-top: 4px; color: #64748b; }
+
+    /* Dropzone */
+    .dropzone { border: 2px dashed #93c5fd; background: #ffffff; border-radius: 16px; padding: 36px 20px; text-align: center; cursor: pointer; transition: all 0.2s ease; margin-bottom: 20px; }
+    .dropzone:hover, .dropzone.dragover { border-color: #2563eb; background: #eff6ff; }
+    .drop-icon { width: 56px; height: 56px; margin: 0 auto 12px auto; background: linear-gradient(135deg, #2563eb, #7c3aed); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 28px; }
+    .drop-title { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .drop-sub { font-size: 14px; font-weight: 600; color: #2563eb; margin-bottom: 8px; }
+    .drop-note { font-size: 12px; color: #64748b; margin-bottom: 12px; }
+    .safe-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 9999px; font-size: 12px; font-weight: 600; color: #065f46; }
+
+    /* Settings Card */
+    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .card-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
+    
+    .settings-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 768px) { .settings-grid { grid-template-columns: 1fr 1fr; } }
+    
+    .setting-group { margin-bottom: 14px; }
+    .setting-label { font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 8px; display: flex; justify-content: space-between; }
+    .preset-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    @media (min-width: 480px) { .preset-btns { grid-template-columns: repeat(4, 1fr); } }
+    .btn-opt { padding: 8px 6px; font-size: 12px; font-weight: 600; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; color: #334155; cursor: pointer; text-align: center; }
+    .btn-opt:hover { background: #f1f5f9; }
+    .btn-opt.active { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .custom-inputs { display: flex; gap: 8px; align-items: center; margin-top: 8px; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
+    .input-field { width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; font-weight: 600; }
+    .lock-btn { padding: 8px 12px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 14px; }
+
+    /* File List */
+    .file-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+    .file-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .file-name { font-size: 14px; font-weight: 700; color: #0f172a; word-break: break-all; }
+    .file-meta { font-size: 12px; color: #64748b; }
+    .preview-box { width: 100%; height: 180px; border: 1px solid #e2e8f0; border-radius: 10px; display: flex; align-items: center; justify-content: center; background-image: linear-gradient(45deg, #f1f5f9 25%, transparent 25%), linear-gradient(-45deg, #f1f5f9 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f1f5f9 75%), linear-gradient(-45deg, transparent 75%, #f1f5f9 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0px; background-color: #ffffff; overflow: hidden; margin-bottom: 12px; }
+    .preview-box img { max-width: 90%; max-height: 90%; object-contain: fit; }
+    
+    /* Action Buttons */
+    .btn-action { width: 100%; padding: 10px 16px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s; }
+    .btn-primary { background: #2563eb; color: #ffffff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-success { background: #059669; color: #ffffff; }
+    .btn-success:hover { background: #047857; }
+    .btn-danger { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+    .btn-copy { background: #f8fafc; color: #334155; border: 1px solid #cbd5e1; }
+    
+    .batch-bar { background: #0f172a; color: #ffffff; padding: 14px 18px; border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 20px; }
+
+    /* Educational Sections */
+    .edu-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; margin-bottom: 20px; }
+    .edu-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px; }
+    .edu-section p { font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 12px; }
+    .steps-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 14px; }
+    @media (min-width: 640px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
+    .step-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; }
+    .step-num { width: 24px; height: 24px; background: #2563eb; color: #fff; border-radius: 6px; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+
+    /* Comparison Table */
+    .table-wrap { width: 100%; overflow-x: auto; border: 1px solid #e2e8f0; border-radius: 10px; margin: 14px 0; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; min-width: 500px; }
+    th, td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+    th { background: #f1f5f9; font-weight: 700; color: #0f172a; }
+
+    /* FAQ Accordion */
+    .faq-item { border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+    .faq-q { width: 100%; padding: 12px 16px; background: #f8fafc; border: none; text-align: left; font-size: 14px; font-weight: 700; color: #0f172a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-a { padding: 12px 16px; font-size: 13px; color: #475569; line-height: 1.6; border-top: 1px solid #f1f5f9; display: none; background: #ffffff; }
+    .faq-item.active .faq-a { display: block; }
+    .faq-item.active .faq-q { background: #eff6ff; color: #1d4ed8; }
+
+    /* Social Share */
+    .share-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px; }
+    .share-btn { padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; color: #334155; background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer; }
+    .share-btn:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    /* Footer */
+    .footer { text-align: center; font-size: 12px; color: #64748b; padding: 24px 0 36px 0; border-top: 1px solid #e2e8f0; margin-top: 24px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top Advertisement (468x60 Banner) -->
+  <div class="ad-box" style="overflow-x:auto; padding:12px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px;">Advertisement</div>
+    <div style="min-width:468px; min-height:60px; display:flex; justify-content:center; align-items:center;">
+      <script>
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">100% Client-Side • Browser-Based Web Tool</div>
+    <h1 class="title">Free SVG to PNG Converter 🇺🇸</h1>
+    <div class="subtitle">Convert SVG &amp; Gallery Photos to PNG Online — Free, Fast &amp; Secure</div>
+    <p class="description">Convert SVG vector graphics and gallery photos (JPG, PNG, WEBP, BMP, GIF) to high-quality PNG files directly in your browser. Resize your images, choose a transparent or custom background, export at your preferred dimensions, and download without uploading to any server.</p>
+    
+    <div class="features-grid">
+      <div class="feat-card"><div class="feat-title">🔒 100% Private</div><div class="feat-desc">No server uploads</div></div>
+      <div class="feat-card"><div class="feat-title">⚡ Instant Speed</div><div class="feat-desc">Local Canvas API</div></div>
+      <div class="feat-card"><div class="feat-title">📐 Custom Canvas</div><div class="feat-desc">DPI &amp; Fit Modes</div></div>
+      <div class="feat-card"><div class="feat-title">🎁 100% Free</div><div class="feat-desc">No account required</div></div>
+    </div>
+  </div>
+
+  <!-- Upload Zone -->
+  <div id="dropzone" class="dropzone">
+    <input type="file" id="fileInput" accept=".svg,image/svg+xml,image/png,image/jpeg,image/jpg,image/webp,image/gif,image/bmp,image/avif,image/*" multiple style="display:none">
+    <input type="file" id="galleryInput" accept="image/*" multiple style="display:none">
+    <div class="drop-icon">📁</div>
+    <div class="drop-title">Drop SVG Files or Photos Here</div>
+    <div class="drop-sub">or click to browse from gallery &amp; files</div>
+    <div class="drop-note">Supports SVG, JPG, PNG, WEBP, BMP, GIF &amp; all gallery photos</div>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:16px 0 12px 0;">
+      <button type="button" id="browseFilesBtn" class="btn-opt active" style="padding:8px 16px; font-size:13px; font-weight:700; border-radius:8px;">📁 Browse SVG &amp; Files</button>
+      <button type="button" id="browseGalleryBtn" class="btn-opt" style="padding:8px 16px; font-size:13px; font-weight:700; background:#7c3aed; color:#ffffff; border-color:#7c3aed; border-radius:8px;">📷 Open Photos / Gallery</button>
+    </div>
+
+    <div class="safe-badge">✓ 100% Local Browser Processing — Files never leave your device.</div>
+  </div>
+
+  <!-- Advertisement Below Upload (Native Banner Container) -->
+  <div class="ad-box" style="padding:12px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px;">Advertisement</div>
+    <div style="width:100%; min-height:90px; display:flex; justify-content:center;">
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="card">
+    <div class="card-title">⚙️ Conversion Settings</div>
+    <div class="settings-grid">
+      <div>
+        <div class="setting-group">
+          <div class="setting-label"><span>Output Dimensions</span><span id="dimPreview">Original</span></div>
+          <div class="preset-btns" id="sizePresets">
+            <button type="button" class="btn-opt active" data-val="original">Original</button>
+            <button type="button" class="btn-opt" data-val="256">256×256</button>
+            <button type="button" class="btn-opt" data-val="512">512×512</button>
+            <button type="button" class="btn-opt" data-val="1024">1024×1024</button>
+            <button type="button" class="btn-opt" data-val="1920">1920×1080</button>
+            <button type="button" class="btn-opt" data-val="2048">2048×2048</button>
+            <button type="button" class="btn-opt" data-val="custom">Custom</button>
+          </div>
+          <div id="customDimBox" class="custom-inputs" style="display:none;">
+            <input type="number" id="customW" class="input-field" placeholder="Width" value="1024">
+            <button type="button" id="lockAspectBtn" class="lock-btn" title="Lock aspect ratio">🔒</button>
+            <input type="number" id="customH" class="input-field" placeholder="Height" value="1024">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="setting-group">
+          <div class="setting-label"><span>Resolution / DPI</span><span id="dpiLabel">96 DPI</span></div>
+          <div class="preset-btns" id="dpiPresets">
+            <button type="button" class="btn-opt" data-val="72">72 DPI</button>
+            <button type="button" class="btn-opt active" data-val="96">96 DPI</button>
+            <button type="button" class="btn-opt" data-val="150">150 DPI</button>
+            <button type="button" class="btn-opt" data-val="300">300 DPI</button>
+          </div>
+        </div>
+
+        <div class="setting-group" style="margin-top: 12px;">
+          <div class="setting-label"><span>Background Color</span></div>
+          <div class="preset-btns" id="bgPresets">
+            <button type="button" class="btn-opt active" data-val="transparent">🏁 Transp.</button>
+            <button type="button" class="btn-opt" data-val="white">⬜ White</button>
+            <button type="button" class="btn-opt" data-val="black">⬛ Black</button>
+            <button type="button" class="btn-opt" data-val="custom">🎨 Custom</button>
+          </div>
+          <input type="color" id="customColorInput" value="#3B82F6" style="display:none; width:100%; height:36px; margin-top:8px; border:none; border-radius:6px; cursor:pointer;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch Toolbar -->
+  <div id="batchBar" class="batch-bar" style="display:none;">
+    <div><strong id="fileCountTxt">0 SVG files loaded</strong></div>
+    <div style="display:flex; gap:8px;">
+      <button type="button" id="convertAllBtn" class="btn-action btn-primary" style="width:auto;">Convert All</button>
+      <button type="button" id="downloadAllBtn" class="btn-action btn-success" style="width:auto; display:none;">Download All</button>
+      <button type="button" id="resetBtn" class="btn-action btn-danger" style="width:auto;">Reset Tool</button>
+    </div>
+  </div>
+
+  <!-- File Cards Container -->
+  <div id="fileList"></div>
+
+  <!-- Advertisement Between Sections (300x250 Medium Rectangle) -->
+  <div class="ad-box" style="padding:12px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px;">Advertisement</div>
+    <div style="width:300px; min-height:250px; display:flex; justify-content:center; align-items:center;">
+      <script>
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- Educational Content -->
+  <div class="edu-section">
+    <h2>What Is an SVG to PNG Converter?</h2>
+    <p>An <strong>SVG to PNG converter</strong> is a browser utility that translates mathematical vector geometry into pixel-based raster bitmap images. This allows you to export scalable logos, icons, and illustrations into universally compatible PNG graphics without losing edge sharpness or transparency.</p>
+  </div>
+
+  <div class="edu-section">
+    <h2>How to Convert SVG to PNG</h2>
+    <div class="steps-grid">
+      <div class="step-item"><div class="step-num">1</div><strong>Upload SVG</strong><p>Drop your .svg file into the upload zone.</p></div>
+      <div class="step-item"><div class="step-num">2</div><strong>Choose Dimensions</strong><p>Pick a preset size or input custom pixels.</p></div>
+      <div class="step-item"><div class="step-num">3</div><strong>Pick Background</strong><p>Keep transparent or select solid color.</p></div>
+      <div class="step-item"><div class="step-num">4</div><strong>Adjust DPI</strong><p>Choose 96 DPI for web or 300 DPI for print.</p></div>
+      <div class="step-item"><div class="step-num">5</div><strong>Convert</strong><p>Click Convert to PNG to rasterize locally.</p></div>
+      <div class="step-item"><div class="step-num">6</div><strong>Download</strong><p>Save PNG or copy straight to clipboard.</p></div>
+    </div>
+  </div>
+
+  <div class="edu-section">
+    <h2>SVG vs PNG: What's the Difference?</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>SVG</th><th>PNG</th></tr></thead>
+        <tbody>
+          <tr><td>Type</td><td>XML Vector Geometry</td><td>Lossless Bitmap Pixels</td></tr>
+          <tr><td>Scalability</td><td>Infinite without quality loss</td><td>Fixed dimensions</td></tr>
+          <tr><td>Transparency</td><td>Full Vector support</td><td>8-bit Alpha Channel</td></tr>
+          <tr><td>Compatibility</td><td>Modern browsers &amp; design tools</td><td>Universal (Social Media, Email, Word)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="edu-section">
+    <h2>Why Convert SVG to PNG?</h2>
+    <p>Social media platforms like Instagram and Twitter do not accept raw SVG uploads. Microsoft PowerPoint, Outlook email clients, and print services require rasterized PNG images with guaranteed visual fidelity.</p>
+  </div>
+
+  <div class="edu-section">
+    <h2>How to Convert an SVG Logo to PNG</h2>
+    <p>Select <strong>Transparent Background</strong> and export at <strong>1024×1024</strong> or <strong>2048×2048 px</strong>. This ensures your brand logo looks sharp on high-resolution Retina displays and website navigation bars.</p>
+  </div>
+
+  <div class="edu-section">
+    <h2>How to Create a Transparent PNG From SVG</h2>
+    <p>Keep the default transparent background setting. Our HTML5 Canvas renderer clears all background pixels before drawing your vector paths, preserving all transparent cutouts and gradients.</p>
+  </div>
+
+  <div class="edu-section">
+    <h2>How to Convert SVG to High-Resolution PNG</h2>
+    <p>Select <strong>300 DPI</strong> in the resolution settings. This automatically multiplies standard 96 DPI pixel density by 3.125× for crisp physical prints, posters, and stickers.</p>
+  </div>
+
+  <!-- Advertisement Before FAQ (Native Banner Container) -->
+  <div class="ad-box" style="padding:12px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px;">Advertisement</div>
+    <div style="width:100%; min-height:90px; display:flex; justify-content:center;">
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="card">
+    <div class="card-title">❓ Frequently Asked Questions</div>
+    <div class="faq-item active">
+      <button type="button" class="faq-q">What is an SVG to PNG converter? <span>▼</span></button>
+      <div class="faq-a">An SVG to PNG converter is an image utility that rasterizes scalable vector graphics (SVG) into pixel-based portable network graphics (PNG).</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">How do I convert SVG to PNG? <span>▼</span></button>
+      <div class="faq-a">Upload your SVG file, configure your desired dimensions and background color, click Convert to PNG, and download your file.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Is this SVG to PNG converter free? <span>▼</span></button>
+      <div class="faq-a">Yes, 100% free with no registration, subscription, or paywall.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Can I convert SVG to PNG without uploading my file? <span>▼</span></button>
+      <div class="faq-a">Yes. All conversion happens locally inside your browser using HTML5 Canvas. Your files are never sent to any server.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Can I create a transparent PNG from SVG? <span>▼</span></button>
+      <div class="faq-a">Yes, transparent backgrounds are enabled by default, preserving all alpha transparency.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Can I choose custom PNG dimensions? <span>▼</span></button>
+      <div class="faq-a">Yes, select Custom in the dimension settings and enter your exact width and height.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Can I convert multiple SVG files? <span>▼</span></button>
+      <div class="faq-a">Yes, batch conversion is fully supported for multiple files simultaneously.</div>
+    </div>
+  </div>
+
+  <!-- Social Share -->
+  <div class="card" style="text-align:center;">
+    <div class="card-title" style="justify-content:center;">📢 Share This Free SVG to PNG Converter</div>
+    <p style="font-size:13px; color:#64748b;">Convert SVG to PNG online for free with this fast, browser-based SVG to PNG converter.</p>
+    <div class="share-grid">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_BLOGGER_POST_URL" target="_blank" class="share-btn">Facebook</a>
+      <a href="https://twitter.com/intent/tweet?text=Free%20SVG%20to%20PNG%20Converter&url=YOUR_BLOGGER_POST_URL" target="_blank" class="share-btn">X (Twitter)</a>
+      <a href="https://api.whatsapp.com/send?text=Free%20SVG%20to%20PNG%20Converter%20YOUR_BLOGGER_POST_URL" target="_blank" class="share-btn">WhatsApp</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=YOUR_BLOGGER_POST_URL" target="_blank" class="share-btn">LinkedIn</a>
+      <button type="button" id="copyShareBtn" class="share-btn">🔗 Copy Link</button>
+    </div>
+  </div>
+
+  <!-- Bottom Advertisement (300x250 Medium Rectangle) -->
+  <div class="ad-box" style="padding:12px 8px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px;">Advertisement</div>
+    <div style="width:300px; min-height:250px; display:flex; justify-content:center; align-items:center;">
+      <script>
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>Disclaimer:</strong> This free SVG to PNG converter is provided for general image-conversion purposes. Results may vary depending on the SVG structure, dimensions, fonts, filters, browser support, and embedded resources.</p>
+    <p>© Free SVG to PNG Converter • 100% Client-Side Privacy</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var files = [];
+  var currentSettings = {
+    sizePreset: 'original',
+    customW: 1024,
+    customH: 1024,
+    lockAspect: true,
+    dpi: 96,
+    bgType: 'transparent',
+    customColor: '#3B82F6'
+  };
+
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var galleryInput = document.getElementById('galleryInput');
+  var browseFilesBtn = document.getElementById('browseFilesBtn');
+  var browseGalleryBtn = document.getElementById('browseGalleryBtn');
+  var fileListEl = document.getElementById('fileList');
+  var batchBar = document.getElementById('batchBar');
+  var fileCountTxt = document.getElementById('fileCountTxt');
+  var convertAllBtn = document.getElementById('convertAllBtn');
+  var downloadAllBtn = document.getElementById('downloadAllBtn');
+  var resetBtn = document.getElementById('resetBtn');
+
+  dropzone.addEventListener('click', function(e) {
+    if (e.target.id === 'browseGalleryBtn') {
+      e.stopPropagation();
+      galleryInput.click();
+    } else if (e.target.id === 'browseFilesBtn') {
+      e.stopPropagation();
+      fileInput.click();
+    } else {
+      fileInput.click();
+    }
+  });
+
+  if (browseFilesBtn) {
+    browseFilesBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      fileInput.click();
+    });
+  }
+
+  if (browseGalleryBtn) {
+    browseGalleryBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      galleryInput.click();
+    });
+  }
+
+  dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('dragover'); });
+  dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('dragover'); });
+  dropzone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+    if (e.dataTransfer.files) handleFiles(e.dataTransfer.files);
+  });
+
+  fileInput.addEventListener('change', function() {
+    if (fileInput.files) handleFiles(fileInput.files);
+    fileInput.value = '';
+  });
+
+  if (galleryInput) {
+    galleryInput.addEventListener('change', function() {
+      if (galleryInput.files) handleFiles(galleryInput.files);
+      galleryInput.value = '';
+    });
+  }
+
+  function sanitizeSvg(raw) {
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(raw, 'image/svg+xml');
+    var dangerous = ['script','iframe','embed','object','foreignobject'];
+    dangerous.forEach(function(tag) {
+      var els = doc.querySelectorAll(tag);
+      for (var i = 0; i < els.length; i++) els[i].remove();
+    });
+    var all = doc.querySelectorAll('*');
+    for (var j = 0; j < all.length; j++) {
+      var el = all[j];
+      var attrs = Array.from(el.attributes);
+      attrs.forEach(function(a) {
+        if (a.name.toLowerCase().startsWith('on') || a.value.toLowerCase().startsWith('javascript:')) {
+          el.removeAttribute(a.name);
+        }
+      });
+    }
+    var svg = doc.querySelector('svg');
+    if (!svg) throw new Error('No SVG element found');
+    var w = parseFloat(svg.getAttribute('width')) || 512;
+    var h = parseFloat(svg.getAttribute('height')) || 512;
+    var vb = svg.getAttribute('viewBox');
+    if (vb) {
+      var parts = vb.split(/[\s,]+/).map(parseFloat);
+      if (parts.length === 4) { w = parts[2]; h = parts[3]; }
+    }
+    return {
+      cleanSvg: new XMLSerializer().serializeToString(svg),
+      width: Math.round(w),
+      height: Math.round(h)
+    };
+  }
+
+  function handleFiles(fileArr) {
+    Array.from(fileArr).forEach(function(file) {
+      var isSvg = file.name.toLowerCase().endsWith('.svg') || file.type === 'image/svg+xml' || file.type.indexOf('svg') !== -1;
+      var isRaster = file.type.indexOf('image/') === 0 || /.(jpe?g|png|webp|gif|bmp|avif|ico|tiff)$/i.test(file.name);
+
+      if (!isSvg && !isRaster) return;
+
+      if (isSvg) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            var sanitized = sanitizeSvg(e.target.result);
+            var blob = new Blob([sanitized.cleanSvg], { type: 'image/svg+xml;charset=utf-8' });
+            files.push({
+              id: 'f_' + Math.random().toString(36).substr(2, 9),
+              name: file.name,
+              size: file.size,
+              type: 'svg',
+              cleanSvg: sanitized.cleanSvg,
+              w: sanitized.width,
+              h: sanitized.height,
+              status: 'ready',
+              blobUrl: URL.createObjectURL(blob),
+              pngUrl: null,
+              pngBlob: null
+            });
+            renderFileList();
+          } catch(err) {
+            // Fallback to raster image load
+            var imgUrl = URL.createObjectURL(file);
+            var tempImg = new Image();
+            tempImg.onload = function() {
+              files.push({
+                id: 'f_' + Math.random().toString(36).substr(2, 9),
+                name: file.name,
+                size: file.size,
+                type: 'image',
+                w: tempImg.naturalWidth || 512,
+                h: tempImg.naturalHeight || 512,
+                status: 'ready',
+                blobUrl: imgUrl,
+                pngUrl: null,
+                pngBlob: null
+              });
+              renderFileList();
+            };
+            tempImg.src = imgUrl;
+          }
+        };
+        reader.readAsText(file);
+      } else {
+        // Gallery photo (JPG, PNG, WEBP, BMP, etc.)
+        var imgUrl = URL.createObjectURL(file);
+        var tempImg = new Image();
+        tempImg.onload = function() {
+          files.push({
+            id: 'f_' + Math.random().toString(36).substr(2, 9),
+            name: file.name,
+            size: file.size,
+            type: 'image',
+            w: tempImg.naturalWidth || 512,
+            h: tempImg.naturalHeight || 512,
+            status: 'ready',
+            blobUrl: imgUrl,
+            pngUrl: null,
+            pngBlob: null
+          });
+          renderFileList();
+        };
+        tempImg.onerror = function() {
+          alert('Could not decode photo: ' + file.name);
+        };
+        tempImg.src = imgUrl;
+      }
+    });
+  }
+
+  function renderFileList() {
+    fileListEl.innerHTML = '';
+    if (files.length === 0) {
+      batchBar.style.display = 'none';
+      return;
+    }
+    batchBar.style.display = 'flex';
+    fileCountTxt.textContent = files.length + ' file' + (files.length > 1 ? 's' : '') + ' loaded';
+    
+    var anyConverted = files.some(function(f) { return f.status === 'converted'; });
+    downloadAllBtn.style.display = anyConverted ? 'inline-flex' : 'none';
+
+    files.forEach(function(f, idx) {
+      var card = document.createElement('div');
+      card.className = 'file-card';
+      var typeLabel = f.type === 'svg' ? 'SVG' : 'PHOTO';
+      card.innerHTML = 
+        '<div class="file-header">' +
+          '<div>' +
+            '<div class="file-name">' + f.name + ' <span style="font-size:10px; background:#e2e8f0; color:#334155; padding:2px 6px; border-radius:4px; font-weight:700; margin-left:4px;">' + typeLabel + '</span></div>' +
+            '<div class="file-meta">' + Math.round(f.size/1024) + ' KB • Original: ' + f.w + '×' + f.h + ' px</div>' +
+          '</div>' +
+          '<button type="button" class="btn-action btn-danger" style="width:auto; padding:4px 8px;" data-remove="' + idx + '">✕</button>' +
+        '</div>' +
+        '<div class="preview-box">' +
+          '<img src="' + (f.pngUrl || f.blobUrl) + '" alt="preview">' +
+        '</div>' +
+        '<div style="display:flex; gap:8px;">' +
+          (f.status !== 'converted' ? 
+            '<button type="button" class="btn-action btn-primary" data-convert="' + idx + '">▶ Convert to PNG</button>' :
+            '<button type="button" class="btn-action btn-success" data-download="' + idx + '">⬇ Download PNG</button>' +
+            '<button type="button" class="btn-action btn-copy" data-copy="' + idx + '">📋 Copy PNG</button>'
+          ) +
+        '</div>';
+      fileListEl.appendChild(card);
+    });
+
+    bindCardButtons();
+  }
+
+  function bindCardButtons() {
+    document.querySelectorAll('[data-remove]').forEach(function(b) {
+      b.onclick = function() {
+        var i = parseInt(this.getAttribute('data-remove'), 10);
+        files.splice(i, 1);
+        renderFileList();
+      };
+    });
+
+    document.querySelectorAll('[data-convert]').forEach(function(b) {
+      b.onclick = function() {
+        var i = parseInt(this.getAttribute('data-convert'), 10);
+        convertSingle(files[i]);
+      };
+    });
+
+    document.querySelectorAll('[data-download]').forEach(function(b) {
+      b.onclick = function() {
+        var i = parseInt(this.getAttribute('data-download'), 10);
+        var f = files[i];
+        if (!f.pngUrl) return;
+        var a = document.createElement('a');
+        a.href = f.pngUrl;
+        a.download = f.name.replace(/\.[^/.]+$/, '') + '.png';
+        a.click();
+      };
+    });
+
+    document.querySelectorAll('[data-copy]').forEach(function(b) {
+      b.onclick = function() {
+        var i = parseInt(this.getAttribute('data-copy'), 10);
+        var f = files[i];
+        if (!f.pngBlob || !navigator.clipboard || !window.ClipboardItem) {
+          alert('Clipboard copy is not supported in this browser. Please use Download PNG.');
+          return;
+        }
+        navigator.clipboard.write([new ClipboardItem({'image/png': f.pngBlob})])
+          .then(function() { alert('PNG copied to clipboard!'); })
+          .catch(function() { alert('Failed to copy to clipboard.'); });
+      };
+    });
+  }
+
+  function convertSingle(fileObj) {
+    var scale = currentSettings.dpi / 96;
+    var tw = fileObj.w;
+    var th = fileObj.h;
+
+    if (currentSettings.sizePreset === '256') { tw = 256; th = 256; }
+    else if (currentSettings.sizePreset === '512') { tw = 512; th = 512; }
+    else if (currentSettings.sizePreset === '1024') { tw = 1024; th = 1024; }
+    else if (currentSettings.sizePreset === '1920') { tw = 1920; th = 1080; }
+    else if (currentSettings.sizePreset === '2048') { tw = 2048; th = 2048; }
+    else if (currentSettings.sizePreset === 'custom') {
+      tw = currentSettings.customW;
+      th = currentSettings.customH;
+    }
+
+    tw = Math.round(tw * scale);
+    th = Math.round(th * scale);
+
+    if (tw > 16384 || th > 16384 || tw * th > 100000000) {
+      alert('The selected dimensions are too large for this browser. Please choose a smaller size.');
+      return;
+    }
+
+    var canvas = document.createElement('canvas');
+    canvas.width = tw;
+    canvas.height = th;
+    var ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    if (currentSettings.bgType === 'white') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, tw, th);
+    } else if (currentSettings.bgType === 'black') {
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, tw, th);
+    } else if (currentSettings.bgType === 'custom') {
+      ctx.fillStyle = currentSettings.customColor;
+      ctx.fillRect(0, 0, tw, th);
+    } else {
+      ctx.clearRect(0, 0, tw, th);
+    }
+
+    var img = new Image();
+    img.onload = function() {
+      ctx.drawImage(img, 0, 0, tw, th);
+      canvas.toBlob(function(b) {
+        if (b) {
+          fileObj.pngBlob = b;
+          fileObj.pngUrl = URL.createObjectURL(b);
+          fileObj.status = 'converted';
+          renderFileList();
+        }
+      }, 'image/png');
+    };
+    img.src = fileObj.blobUrl;
+  }
+
+  // Settings Preset Handlers
+  document.querySelectorAll('#sizePresets .btn-opt').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('#sizePresets .btn-opt').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentSettings.sizePreset = this.getAttribute('data-val');
+      document.getElementById('customDimBox').style.display = currentSettings.sizePreset === 'custom' ? 'flex' : 'none';
+      document.getElementById('dimPreview').textContent = this.textContent;
+    };
+  });
+
+  document.querySelectorAll('#dpiPresets .btn-opt').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('#dpiPresets .btn-opt').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentSettings.dpi = parseInt(this.getAttribute('data-val'), 10);
+      document.getElementById('dpiLabel').textContent = this.textContent;
+    };
+  });
+
+  document.querySelectorAll('#bgPresets .btn-opt').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('#bgPresets .btn-opt').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentSettings.bgType = this.getAttribute('data-val');
+      document.getElementById('customColorInput').style.display = currentSettings.bgType === 'custom' ? 'block' : 'none';
+    };
+  });
+
+  document.getElementById('customColorInput').onchange = function() {
+    currentSettings.customColor = this.value;
+  };
+
+  convertAllBtn.onclick = function() {
+    files.forEach(function(f) { convertSingle(f); });
+  };
+
+  downloadAllBtn.onclick = function() {
+    files.forEach(function(f) {
+      if (f.pngUrl) {
+        var a = document.createElement('a');
+        a.href = f.pngUrl;
+        a.download = f.name.replace(/\.svg$/i, '') + '.png';
+        a.click();
+      }
+    });
+  };
+
+  resetBtn.onclick = function() {
+    files = [];
+    renderFileList();
+  };
+
+  // FAQ Toggle
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.onclick = function() {
+      var item = this.parentElement;
+      item.classList.toggle('active');
+    };
+  });
+
+  // Copy share
+  var copyShareBtn = document.getElementById('copyShareBtn');
+  if (copyShareBtn) {
+    copyShareBtn.onclick = function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        alert('Link copied to clipboard!');
+      });
+    };
+  }
+})();
+</script>
+
+</body>
+</html>
