@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Advanced Blood Pressure Tracker, BP Range Checker & Average Calculator</title>
+  <meta name="title" content="Advanced Blood Pressure Tracker, BP Range Checker & Average Calculator">
+  <meta name="description" content="Track BP readings, check USA and UK ranges, calculate averages, pulse pressure and MAP, and print a private blood pressure log—free, no sign-up.">
+  <meta name="keywords" content="blood pressure tracker, BP range checker, blood pressure average calculator, 7-day BP average calculator, blood pressure log, blood pressure diary, free blood pressure tracker, online BP tracker, USA blood pressure chart, UK blood pressure checker, AHA blood pressure categories, NHS blood pressure ranges, pulse pressure calculator, MAP calculator, morning and evening BP log, printable blood pressure log, home blood pressure log, normal blood pressure range, high blood pressure range, low blood pressure checker">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Advanced Blood Pressure Tracker, BP Range Checker & Average Calculator">
+  <meta property="og:description" content="Track BP readings, check USA and UK ranges, calculate averages, pulse pressure and MAP, and print a private blood pressure log.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      font-family: var(--font-sans);
+    }
+    
+    /* Dedicated Advertisement Slot Styling */
+    .abt-ad-slot {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .abt-ad-slot .abt-ad-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .abt-ad-slot-468 {
+      max-width: 100%;
+    }
+    .abt-ad-slot-468 .abt-ad-frame {
+      width: 100%;
+      max-width: 468px;
+      min-height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(248, 250, 252, 0.7);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .abt-ad-slot-300 {
+      max-width: 100%;
+    }
+    .abt-ad-slot-300 .abt-ad-frame {
+      width: 300px;
+      min-height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(248, 250, 252, 0.7);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .abt-native-ad-slot {
+      max-width: 100%;
+    }
+    .abt-native-ad-slot .abt-native-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    
+    /* Print Styles */
+    @media print {
+      .no-print,
+      .abt-ad-slot,
+      button:not(.print-include),
+      nav,
+      #abt-section-emergency {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      section {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        break-inside: avoid;
+      }
+    }
+  </style>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Advanced Blood Pressure Tracker, BP Range Checker & Average Calculator",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "All",
+        "description": "Educational blood pressure log, range classifier, 7-day average calculator, pulse pressure and MAP analysis for AHA and NHS guidelines."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is considered a normal blood pressure reading?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under AHA/ACC guidelines, normal adult blood pressure is Systolic < 120 mm Hg AND Diastolic < 80 mm Hg. In the UK, ideal home blood pressure is typically between 90/60 mm Hg and 120/80 mm Hg."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is a 7-day blood pressure average calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Record morning and evening readings across 7 days. Add all systolic measurements and divide by the count; do the same for diastolic measurements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my personal health data stored privately and securely?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your blood pressure readings are stored locally in your browser and are not intentionally transmitted by this tool. Third-party advertisements may process technical information under their own privacy policies."
+            }
+          }
+        ]
+      }
+    ]
+  </script>
+</head>
+<body class="bg-slate-100/80 text-slate-800 antialiased min-h-screen selection:bg-blue-600 selection:text-white">
+
+  <!-- Main Responsive Container -->
+  <div class="w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6">
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: Advanced Blood Pressure Tracker Hero                            -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-hero" class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-7 shadow-sm">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200/80 rounded-full text-xs font-bold text-blue-700 mb-3">
+            <svg class="w-3.5 h-3.5 text-blue-600 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>Clinical Hemodynamics & Range Checker</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Advanced Blood Pressure Tracker & Calculator
+          </h1>
+          <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed">
+            Record blood pressure readings, check instant categories under official USA (AHA/ACC) and UK (NHS/NICE) clinical standards, evaluate Pulse Pressure & Mean Arterial Pressure (MAP), and maintain a private health log.
+          </p>
+        </div>
+
+        <!-- Hero Quick Stats / Privacy Statement -->
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 lg:w-72">
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+            <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Total Stored Readings</div>
+            <div class="flex items-baseline gap-2 mt-0.5">
+              <span id="hero-stat-total" class="text-2xl font-black text-slate-900">0</span>
+              <span class="text-xs text-slate-500 font-medium">entries in browser</span>
+            </div>
+          </div>
+          <div class="p-3 bg-emerald-50/70 border border-emerald-200/80 rounded-xl flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span class="text-xs font-semibold text-emerald-800">Local Browser Storage Active</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: USA/UK Guideline Selector                                       -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-guidelines" class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            Select Clinical Classification Guideline
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Toggle between official American and British cardiovascular diagnostic frameworks.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- USA vs UK Selector Buttons -->
+          <div class="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200 text-xs font-bold">
+            <button type="button" id="btn-guideline-usa" onclick="setGuideline('US_AHA')" class="px-3.5 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition">
+              🇺🇸 USA (AHA / ACC 2017)
+            </button>
+            <button type="button" id="btn-guideline-uk" onclick="setGuideline('UK_NHS')" class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
+              🇬🇧 UK (NHS / NICE NG136)
+            </button>
+          </div>
+
+          <!-- Setting Toggle (Home vs Clinic) for UK NICE -->
+          <div id="uk-setting-toggle" class="hidden inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200 text-xs font-bold">
+            <button type="button" id="btn-setting-home" onclick="setUkSetting('home')" class="px-2.5 py-1.5 rounded-lg bg-white text-indigo-700 shadow-sm transition">
+              Home (HBPM)
+            </button>
+            <button type="button" id="btn-setting-clinic" onclick="setUkSetting('clinic')" class="px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
+              Clinic
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: Measurement-Device Notice                                       -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-device-notice" class="bg-blue-50/70 border border-blue-200/90 rounded-2xl p-4 text-xs text-blue-900 leading-relaxed flex items-start gap-3">
+      <div class="p-1.5 bg-blue-600 text-white rounded-lg shrink-0 mt-0.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div>
+        <strong class="font-bold text-blue-950">Measurement Accuracy Protocol:</strong> Use a clinically validated upper-arm automated blood pressure monitor. Rest quietly for 5 minutes prior to measuring with both feet flat on the floor, back supported, arm at heart level, and avoid talking, caffeine, or exercise for 30 minutes before recording.
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: Main Section-Navigation Buttons                                 -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-navigation" class="no-print bg-white rounded-2xl border border-slate-200 p-3.5 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider pl-1">Jump to Tool Section:</span>
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="#abt-section-form" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">Log BP</a>
+          <a href="#abt-section-dashboard" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">Dashboard</a>
+          <a href="#abt-section-charts" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">Charts</a>
+          <a href="#abt-section-history" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">History Log</a>
+          <a href="#abt-section-7day" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">7-Day Average</a>
+          <a href="#abt-section-reference" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">Reference Chart</a>
+          <button type="button" onclick="window.print()" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            <span>Print Clinical Log</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: Banner 468x60 Advertisement                                    -->
+    <!-- ========================================================================= -->
+    <div class="abt-ad-slot abt-ad-slot-468 no-print">
+      <span class="abt-ad-label">ADVERTISEMENT</span>
+      <div class="abt-ad-frame">
+        <script>
+          atOptions = {
+            'key' : '294198e908506e5d909d0b383f167eaa',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- GRID: Add Reading Form + Instant Blood Pressure Analysis                   -->
+    <!-- ========================================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- ======================================================================= -->
+      <!-- SECTION 6: Add New Blood Pressure Reading Form (lg:col-span-5)           -->
+      <!-- ======================================================================= -->
+      <section id="abt-section-form" class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+        <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+          <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+            <span id="form-heading-text">Log Blood Pressure Reading</span>
+          </h2>
+          <button type="button" id="btn-cancel-edit" onclick="cancelEditing()" class="hidden text-xs font-semibold text-rose-600 hover:underline">
+            Cancel Edit
+          </button>
+        </div>
+
+        <form id="bp-entry-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <input type="hidden" id="edit-reading-id" value="">
+
+          <!-- Systolic & Diastolic Inputs -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="input-systolic" class="block text-xs font-bold text-slate-700 mb-1">
+                Systolic (Top) <span class="text-rose-500">*</span>
+              </label>
+              <div class="relative">
+                <input type="number" id="input-systolic" min="50" max="300" required value="120" oninput="handleLiveInputChange()" class="w-full px-3 py-2.5 pr-12 border border-slate-300 rounded-xl text-base font-extrabold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                <span class="absolute right-3 top-2.5 text-xs font-medium text-slate-400">mmHg</span>
+              </div>
+              <span class="text-[10px] text-slate-500 font-medium">Valid: 50–300</span>
+            </div>
+
+            <div>
+              <label for="input-diastolic" class="block text-xs font-bold text-slate-700 mb-1">
+                Diastolic (Bottom) <span class="text-rose-500">*</span>
+              </label>
+              <div class="relative">
+                <input type="number" id="input-diastolic" min="30" max="200" required value="80" oninput="handleLiveInputChange()" class="w-full px-3 py-2.5 pr-12 border border-slate-300 rounded-xl text-base font-extrabold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                <span class="absolute right-3 top-2.5 text-xs font-medium text-slate-400">mmHg</span>
+              </div>
+              <span class="text-[10px] text-slate-500 font-medium">Valid: 30–200</span>
+            </div>
+          </div>
+
+          <!-- Pulse & Reading Period -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="input-pulse" class="block text-xs font-bold text-slate-700 mb-1">
+                Pulse / Heart Rate
+              </label>
+              <div class="relative">
+                <input type="number" id="input-pulse" min="30" max="220" value="72" oninput="handleLiveInputChange()" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 outline-none">
+                <span class="absolute right-3 top-2 text-xs font-medium text-slate-400">BPM</span>
+              </div>
+            </div>
+
+            <div>
+              <label for="input-period" class="block text-xs font-bold text-slate-700 mb-1">
+                Reading Period
+              </label>
+              <select id="input-period" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                <option value="morning">Morning (AM)</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening (PM)</option>
+                <option value="bedtime">Bedtime</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Date & Time -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="input-date" class="block text-xs font-bold text-slate-700 mb-1">Date</label>
+              <input type="date" id="input-date" required class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+            <div>
+              <label for="input-time" class="block text-xs font-bold text-slate-700 mb-1">Time</label>
+              <input type="time" id="input-time" required class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+          </div>
+
+          <!-- Arm & Posture / Location -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="input-arm-posture" class="block text-xs font-bold text-slate-700 mb-1">Arm & Posture</label>
+              <select id="input-arm-posture" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 bg-white outline-none">
+                <option value="left-seated">Left Arm (Seated)</option>
+                <option value="right-seated">Right Arm (Seated)</option>
+                <option value="left-lying">Left Arm (Supine / Lying)</option>
+                <option value="right-lying">Right Arm (Supine / Lying)</option>
+                <option value="standing">Standing Position</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="input-tag" class="block text-xs font-bold text-slate-700 mb-1">Circumstance Tag</label>
+              <select id="input-tag" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-medium text-slate-800 bg-white outline-none">
+                <option value="Resting Baseline">Resting Baseline</option>
+                <option value="Post-Medication">Post-Medication</option>
+                <option value="Pre-Medication">Pre-Medication</option>
+                <option value="Post-Exercise">Post-Exercise</option>
+                <option value="Work Stress">Work Stress</option>
+                <option value="Fasting">Fasting</option>
+                <option value="Post-Meal">Post-Meal</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Clinical Notes -->
+          <div>
+            <label for="input-notes" class="block text-xs font-bold text-slate-700 mb-1">Clinical Notes (Optional)</label>
+            <input type="text" id="input-notes" placeholder="e.g. 5 min rested, calm room, before coffee" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+
+          <button type="submit" id="btn-submit-form" class="w-full py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <span id="btn-submit-label">Save to Private Log</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- SECTION 7: Instant Blood Pressure Analysis (lg:col-span-7)               -->
+      <!-- ======================================================================= -->
+      <section id="abt-section-analysis" class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <h2 class="text-base font-bold text-slate-900">Instant Blood Pressure Analysis</h2>
+            </div>
+            <span id="analysis-guideline-badge" class="px-2.5 py-0.5 bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold rounded-full">
+              USA (AHA/ACC 2017)
+            </span>
+          </div>
+
+          <!-- Main Classification Result Card -->
+          <div id="analysis-card" class="p-4 sm:p-5 rounded-2xl border transition-all mb-4 bg-emerald-50 border-emerald-200 text-emerald-950">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <span id="analysis-category-title" class="text-lg sm:text-xl font-black tracking-tight">Normal Blood Pressure</span>
+              <span id="analysis-reading-badge" class="px-3 py-1 text-xs font-extrabold rounded-lg bg-emerald-200 text-emerald-900">120 / 80 mmHg</span>
+            </div>
+            <p id="analysis-category-desc" class="text-xs sm:text-sm font-medium leading-relaxed mt-1 text-emerald-800">
+              Your blood pressure is within the optimal healthy range. Continue balanced nutrition, hydration, and routine physical activity.
+            </p>
+            <div class="mt-3 pt-3 border-t border-emerald-200/70 text-[11px] font-semibold text-emerald-900 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+              <span id="analysis-rule-note">AHA Rule: Both Systolic &lt; 120 AND Diastolic &lt; 80 mmHg.</span>
+            </div>
+          </div>
+
+          <!-- Hemodynamic Calculations: Pulse Pressure & MAP -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <!-- Pulse Pressure -->
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Pulse Pressure</span>
+                <span class="text-[10px] font-semibold text-slate-400">Systolic − Diastolic</span>
+              </div>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span id="calc-pulse-pressure" class="text-2xl font-black text-slate-900">40</span>
+                <span class="text-xs text-slate-500 font-semibold">mmHg</span>
+              </div>
+              <div id="calc-pp-status" class="text-xs font-semibold text-emerald-600 mt-1">
+                Optimal Arterial Elasticity (40–60 mmHg)
+              </div>
+            </div>
+
+            <!-- Mean Arterial Pressure (MAP) -->
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Mean Arterial (MAP)</span>
+                <span class="text-[10px] font-semibold text-slate-400">Diastolic + ⅓(PP)</span>
+              </div>
+              <div class="flex items-baseline gap-1 mt-1">
+                <span id="calc-map-value" class="text-2xl font-black text-slate-900">93.3</span>
+                <span class="text-xs text-slate-500 font-semibold">mmHg</span>
+              </div>
+              <div id="calc-map-status" class="text-xs font-semibold text-emerald-600 mt-1">
+                Adequate Organ Perfusion (70–100 mmHg)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick 7-Day Snapshot Bar -->
+        <div class="p-3.5 bg-blue-50/70 border border-blue-200 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="text-xs font-bold text-blue-950">Active Dataset Status</div>
+            <div class="text-[11px] text-blue-800 mt-0.5">
+              <span id="snapshot-count" class="font-bold">0</span> readings logged • 7-Day Average: <span id="snapshot-7day-avg" class="font-extrabold text-blue-900">-- / -- mmHg</span>
+            </div>
+          </div>
+          <button type="button" onclick="exportDataCSV()" class="px-3.5 py-1.5 bg-white hover:bg-blue-50 text-blue-700 border border-blue-300 rounded-lg text-xs font-bold transition shadow-sm self-start sm:self-auto">
+            Export CSV Log
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 8: Emergency Safety Warning When Triggered                         -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-emergency" class="hidden bg-rose-50 border-2 border-rose-500 rounded-2xl p-5 shadow-md">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-start gap-3.5">
+          <div class="p-2.5 bg-rose-600 text-white rounded-xl shrink-0 mt-0.5">
+            <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-rose-950">
+              Severe Blood Pressure Alert (≥180 / ≥120 mmHg)
+            </h3>
+            <p class="text-xs sm:text-sm text-rose-900 font-medium mt-1 leading-relaxed">
+              This reading falls in the Hypertensive Emergency screening threshold. Rest quietly for 1–2 minutes and retest. If your reading remains at or above 180/120 mmHg and you experience chest pain, shortness of breath, back pain, numbness, vision changes, or difficulty speaking, seek emergency medical care immediately.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 shrink-0 self-end md:self-center">
+          <a href="tel:911" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-xs shadow transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            <span>Call 911 (USA)</span>
+          </a>
+          <a href="tel:999" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs shadow transition flex items-center gap-1.5">
+            <span>Call 999 / 112 (UK)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 9: Blood Pressure Dashboard and Averages                           -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-dashboard" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Blood Pressure Dashboard & Averages
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Aggregate cardiovascular metrics across your logged readings.</p>
+        </div>
+
+        <!-- Filter Period Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200 text-xs font-bold no-print">
+          <button type="button" id="filter-dash-all" onclick="setDashboardTimeFilter('all')" class="px-2.5 py-1 rounded-lg bg-white text-blue-700 shadow-sm transition">All Time</button>
+          <button type="button" id="filter-dash-7" onclick="setDashboardTimeFilter('7')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">7 Days</button>
+          <button type="button" id="filter-dash-30" onclick="setDashboardTimeFilter('30')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">30 Days</button>
+        </div>
+      </div>
+
+      <!-- Dashboard Cards Grid (6 Metric Cards) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <!-- 1. Total Readings -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Readings Count</span>
+          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1" id="dash-stat-count">0</div>
+          <span class="text-[10px] text-slate-500 font-medium">Logged records</span>
+        </div>
+
+        <!-- 2. Overall BP Average -->
+        <div class="p-3.5 bg-blue-50/70 border border-blue-200 rounded-xl">
+          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider block">Average BP</span>
+          <div class="text-xl sm:text-2xl font-black text-blue-950 mt-1" id="dash-stat-overall-avg">-- / --</div>
+          <span class="text-[10px] text-blue-700 font-semibold" id="dash-stat-overall-cat">No records</span>
+        </div>
+
+        <!-- 3. 7-Day Average -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">7-Day Average</span>
+          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1" id="dash-stat-7day-avg">-- / --</div>
+          <span class="text-[10px] text-slate-500 font-medium">Past 7 days</span>
+        </div>
+
+        <!-- 4. 30-Day Average -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">30-Day Average</span>
+          <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1" id="dash-stat-30day-avg">-- / --</div>
+          <span class="text-[10px] text-slate-500 font-medium">Monthly trend</span>
+        </div>
+
+        <!-- 5. Morning vs Evening -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">AM / PM Average</span>
+          <div class="text-xs font-bold text-slate-800 mt-1">
+            AM: <span id="dash-stat-am-avg" class="font-extrabold">--/--</span>
+          </div>
+          <div class="text-xs font-bold text-slate-800 mt-0.5">
+            PM: <span id="dash-stat-pm-avg" class="font-extrabold">--/--</span>
+          </div>
+        </div>
+
+        <!-- 6. Mean Arterial / Pulse Pressure -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Avg PP & MAP</span>
+          <div class="text-xs font-bold text-slate-800 mt-1">
+            PP: <span id="dash-stat-avg-pp" class="font-extrabold">--</span> mmHg
+          </div>
+          <div class="text-xs font-bold text-slate-800 mt-0.5">
+            MAP: <span id="dash-stat-avg-map" class="font-extrabold">--</span> mmHg
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 10: Banner 300x250 Advertisement                                  -->
+    <!-- ========================================================================= -->
+    <div class="abt-ad-slot abt-ad-slot-300 no-print">
+      <span class="abt-ad-label">ADVERTISEMENT</span>
+      <div class="abt-ad-frame">
+        <script>
+          atOptions = {
+            'key' : '224e7394c28834c8ac1ce24682c420e3',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 11: Cardiovascular Trend Charts                                    -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-charts" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-4">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+            Cardiovascular Trend Charts
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Interactive systolic, diastolic, and pulse trajectories over time.</p>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs font-bold">
+          <span class="flex items-center gap-1.5 text-blue-600"><span class="w-3 h-3 rounded-full bg-blue-600"></span> Systolic</span>
+          <span class="flex items-center gap-1.5 text-indigo-500"><span class="w-3 h-3 rounded-full bg-indigo-500"></span> Diastolic</span>
+          <span class="flex items-center gap-1.5 text-rose-500"><span class="w-3 h-3 rounded-full bg-rose-500"></span> Pulse</span>
+        </div>
+      </div>
+
+      <!-- SVG Chart Container -->
+      <div class="w-full overflow-x-auto">
+        <div id="trend-chart-container" class="min-w-[500px] h-64 relative flex items-center justify-center bg-slate-50/50 rounded-xl border border-slate-200">
+          <svg id="trend-svg" class="w-full h-full p-2"></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 12: Blood Pressure Category Distribution                           -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-distribution" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <h2 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+        Blood Pressure Category Distribution
+      </h2>
+
+      <div class="space-y-3" id="distribution-bars-container">
+        <!-- Normal -->
+        <div>
+          <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+            <span class="text-emerald-700">Normal (&lt;120/&lt;80)</span>
+            <span id="dist-count-normal">0 (0%)</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="dist-bar-normal" class="h-full bg-emerald-500 transition-all" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Elevated -->
+        <div>
+          <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+            <span class="text-amber-700">Elevated (120-129/&lt;80)</span>
+            <span id="dist-count-elevated">0 (0%)</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="dist-bar-elevated" class="h-full bg-amber-500 transition-all" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Stage 1 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+            <span class="text-orange-700">Stage 1 Hypertension (130-139 / 80-89)</span>
+            <span id="dist-count-stage1">0 (0%)</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="dist-bar-stage1" class="h-full bg-orange-500 transition-all" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+            <span class="text-rose-700">Stage 2 Hypertension (≥140 / ≥90)</span>
+            <span id="dist-count-stage2">0 (0%)</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="dist-bar-stage2" class="h-full bg-rose-500 transition-all" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 13: Blood Pressure Log History                                     -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-history" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-4">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Blood Pressure Log History
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Chronological record of all validated measurements.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <button type="button" onclick="exportDataCSV()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition">
+            Export CSV
+          </button>
+          <button type="button" onclick="exportDataJSON()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition">
+            JSON Backup
+          </button>
+          <label class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition cursor-pointer">
+            Import JSON
+            <input type="file" accept=".json" onchange="importDataJSON(event)" class="hidden">
+          </label>
+          <button type="button" onclick="clearAllData()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg text-xs font-bold transition">
+            Clear Log
+          </button>
+        </div>
+      </div>
+
+      <!-- History Table / Responsive View -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead>
+            <tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+              <th class="py-3 px-3">Date & Time</th>
+              <th class="py-3 px-3">BP (Sys / Dia)</th>
+              <th class="py-3 px-3">Pulse</th>
+              <th class="py-3 px-3">Classification</th>
+              <th class="py-3 px-3">Tag / Notes</th>
+              <th class="py-3 px-3 text-right no-print">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body" class="divide-y divide-slate-100">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 14: Native Banner Advertisement                                    -->
+    <!-- ========================================================================= -->
+    <div class="abt-ad-slot abt-native-ad-slot no-print">
+      <div class="abt-native-card">
+        <span class="abt-ad-label">SPONSORED CONTENT</span>
+        <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+        <div id="container-269e962c1215493328aeb78f4303284c" class="w-full flex justify-center min-h-[90px]"></div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 15: Official Blood Pressure Reference Ranges                       -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-reference" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <h2 class="text-lg font-extrabold text-slate-900 mb-3 flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+        Official Blood Pressure Reference Ranges
+      </h2>
+      <p class="text-xs text-slate-500 mb-4">Comparison matrix of USA (AHA/ACC 2017) and UK (NHS/NICE NG136) diagnostic categories.</p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border border-slate-200 rounded-xl overflow-hidden">
+          <thead class="bg-slate-100 text-slate-700 font-extrabold">
+            <tr>
+              <th class="p-3 border-b border-slate-200">Category</th>
+              <th class="p-3 border-b border-slate-200">USA (AHA 2017)</th>
+              <th class="p-3 border-b border-slate-200">UK (NICE Home)</th>
+              <th class="p-3 border-b border-slate-200">UK (NICE Clinic)</th>
+              <th class="p-3 border-b border-slate-200">Clinical Action Recommended</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="bg-emerald-50/40">
+              <td class="p-3 font-bold text-emerald-800">Normal</td>
+              <td class="p-3">&lt; 120 AND &lt; 80</td>
+              <td class="p-3">&lt; 135 AND &lt; 85</td>
+              <td class="p-3">&lt; 140 AND &lt; 90</td>
+              <td class="p-3 text-slate-600">Maintain heart-healthy lifestyle habits.</td>
+            </tr>
+            <tr class="bg-amber-50/40">
+              <td class="p-3 font-bold text-amber-800">Elevated</td>
+              <td class="p-3">120–129 AND &lt; 80</td>
+              <td class="p-3">N/A (UK starts Stage 1)</td>
+              <td class="p-3">N/A</td>
+              <td class="p-3 text-slate-600">Dietary sodium reduction, routine aerobic activity.</td>
+            </tr>
+            <tr class="bg-orange-50/40">
+              <td class="p-3 font-bold text-orange-800">Stage 1 Hypertension</td>
+              <td class="p-3">130–139 OR 80–89</td>
+              <td class="p-3">135–149 OR 85–94</td>
+              <td class="p-3">140–159 OR 90–99</td>
+              <td class="p-3 text-slate-600">Clinician evaluation, cardiovascular risk assessment.</td>
+            </tr>
+            <tr class="bg-rose-50/40">
+              <td class="p-3 font-bold text-rose-800">Stage 2 Hypertension</td>
+              <td class="p-3">≥ 140 OR ≥ 90</td>
+              <td class="p-3">≥ 150 OR ≥ 95</td>
+              <td class="p-3">≥ 160 OR ≥ 100</td>
+              <td class="p-3 text-slate-600">Medical evaluation and targeted therapeutic management.</td>
+            </tr>
+            <tr class="bg-rose-100/60 font-bold text-rose-950">
+              <td class="p-3">Severe Alert</td>
+              <td class="p-3">&gt; 180 AND/OR &gt; 120</td>
+              <td class="p-3">≥ 180 AND/OR ≥ 120</td>
+              <td class="p-3">≥ 180 AND/OR ≥ 120</td>
+              <td class="p-3 text-rose-900">Rest 1–2 min, recheck. Emergency care if symptomatic.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 16: Seven-Day BP Average Section                                   -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-7day" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-4">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            7-Day Clinical Average Protocol
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Clinical standard assessment using morning (AM) and evening (PM) readings.</p>
+        </div>
+
+        <button type="button" onclick="copyClinical7DayReport()" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm self-start sm:self-auto">
+          Copy Doctor Summary
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+          <span class="text-xs font-bold text-slate-500 block">7-Day Combined Average</span>
+          <div class="text-2xl font-black text-slate-900 mt-1" id="proto-7day-combined">-- / --</div>
+          <span class="text-[11px] text-slate-500" id="proto-7day-count">0 readings in last 7 days</span>
+        </div>
+
+        <div class="p-4 bg-amber-50/60 border border-amber-200 rounded-xl">
+          <span class="text-xs font-bold text-amber-800 block">Morning (AM) Average</span>
+          <div class="text-2xl font-black text-amber-950 mt-1" id="proto-7day-am">-- / --</div>
+          <span class="text-[11px] text-amber-700">Fasting / post-waking window</span>
+        </div>
+
+        <div class="p-4 bg-indigo-50/60 border border-indigo-200 rounded-xl">
+          <span class="text-xs font-bold text-indigo-800 block">Evening (PM) Average</span>
+          <div class="text-2xl font-black text-indigo-950 mt-1" id="proto-7day-pm">-- / --</div>
+          <span class="text-[11px] text-indigo-700">Pre-bedtime resting window</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 17: Educational SEO Guide                                          -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-educational" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 shadow-sm leading-relaxed space-y-4">
+      <h2 class="text-xl font-extrabold text-slate-900">
+        Clinical Guide: Home Blood Pressure Monitoring, Ranges & Hemodynamics
+      </h2>
+
+      <p class="text-sm text-slate-600">
+        Home blood pressure monitoring (HBPM) provides critical insight into your cardiovascular health, eliminating the "white coat effect" often observed in clinical offices. Blood pressure naturally oscillates throughout the day in response to physical activity, mental stress, circadian hormone surges, and metabolic demand.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 text-xs sm:text-sm text-slate-700">
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 mb-1">Understanding Systolic vs. Diastolic</h3>
+          <p>
+            <strong>Systolic pressure</strong> (top number) represents the peak pressure in arterial walls when the heart contracts. <strong>Diastolic pressure</strong> (bottom number) measures arterial resistance between beats when the ventricles refill with blood.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+          <h3 class="font-bold text-slate-900 mb-1">Pulse Pressure & Mean Arterial Pressure (MAP)</h3>
+          <p>
+            <strong>Pulse Pressure</strong> (Systolic − Diastolic) reflects arterial compliance; values &gt;60 mmHg can indicate arterial stiffness. <strong>MAP</strong> estimates the constant perfusion pressure reaching vital capillary beds (70–100 mmHg).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 18: Frequently Asked Questions                                     -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-faq" class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 shadow-sm">
+      <h2 class="text-xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Frequently Asked Questions (FAQ)
+      </h2>
+
+      <div class="space-y-3" id="faq-container">
+        <!-- FAQ 1 -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-xl p-3.5 [&_summary::-webkit-details-marker]:hidden cursor-pointer" open>
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>What is considered a normal blood pressure reading?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            According to the American Heart Association (AHA), a normal blood pressure reading for an adult is a systolic pressure under 120 mm Hg AND a diastolic pressure under 80 mm Hg (&lt;120/&lt;80 mmHg). In the UK (NHS/NICE), ideal blood pressure is generally considered between 90/60 mmHg and 120/80 mmHg.
+          </p>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-xl p-3.5 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>How do I calculate my 7-day blood pressure average?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            To calculate your 7-day blood pressure average, record your blood pressure twice daily (once in the morning and once in the evening) for 7 consecutive days. Sum all your systolic readings and divide by the total number of readings to get your average systolic; repeat the same process for your diastolic readings.
+          </p>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-xl p-3.5 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>What is the difference between USA (AHA) and UK (NHS/NICE) blood pressure guidelines?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            The 2017 AHA/ACC guidelines in the United States classify Stage 1 Hypertension starting at 130/80 mm Hg. In contrast, the UK NICE guidelines (NG136) use a home monitoring threshold of 135/85 mm Hg and a clinical/office threshold of 140/90 mm Hg before diagnosing hypertension.
+          </p>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-xl p-3.5 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-xs sm:text-sm text-slate-900">
+            <span>What is pulse pressure and why does it matter?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Pulse pressure is the numerical difference between your systolic and diastolic blood pressure readings (Systolic − Diastolic). A standard resting pulse pressure is between 40 and 60 mm Hg. Consistently high pulse pressure (&gt;60 mm Hg) can indicate arterial stiffness.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 19: Social-Sharing Section                                         -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-share" class="no-print bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h3 class="text-sm sm:text-base font-bold text-slate-900">Share This Health Tool</h3>
+          <p class="text-xs text-slate-500 mt-0.5">Share with family, friends, or patients monitoring cardiovascular health.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" onclick="shareOnWhatsApp()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1">
+            <span>WhatsApp</span>
+          </button>
+          <button type="button" onclick="shareOnTelegram()" class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-xs font-bold transition flex items-center gap-1">
+            <span>Telegram</span>
+          </button>
+          <button type="button" onclick="shareOnTwitter()" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition flex items-center gap-1">
+            <span>X / Twitter</span>
+          </button>
+          <button type="button" onclick="copyPageLink()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-lg text-xs font-bold transition flex items-center gap-1">
+            <span>Copy Link</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 20: Medical Information Safety Disclaimer                         -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-disclaimer" class="bg-slate-100 rounded-2xl border border-slate-200/90 p-5 text-xs text-slate-600 leading-relaxed">
+      <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        Medical Information Safety Disclaimer & Privacy Statement
+      </h3>
+      <p class="mb-2">
+        This web application is provided for informational, educational, and personal tracking purposes only. It is not intended as medical advice, clinical diagnosis, treatment, or a substitute for professional healthcare consultation. Never disregard professional medical advice or delay seeking care because of values calculated or logged in this tool. If you experience severe hypertension symptoms such as chest tightness, difficulty breathing, sudden neurological deficits, or vision disturbances, dial emergency services (911 in the USA, 999/112 in the UK) immediately.
+      </p>
+      <p class="font-medium text-slate-700">
+        Your blood pressure readings are stored locally in your browser and are not intentionally transmitted by this tool. Third-party advertisements may process technical information under their own privacy policies.
+      </p>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 21: Official Clinical References                                   -->
+    <!-- ========================================================================= -->
+    <section id="abt-section-references" class="text-[11px] text-slate-500 border-t border-slate-200 pt-5 pb-8 space-y-1.5">
+      <div class="font-bold text-slate-700 uppercase tracking-wider">Official Clinical References:</div>
+      <ul class="list-disc pl-4 space-y-1 text-slate-600">
+        <li>
+          <strong>American Heart Association / American College of Cardiology (AHA/ACC 2017):</strong> 
+          <a href="https://www.ahajournals.org/doi/10.1161/HYP.0000000000000065" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults</a>.
+        </li>
+        <li>
+          <strong>National Institute for Health and Care Excellence (NICE NG136):</strong> 
+          <a href="https://www.nice.org.uk/guidance/ng136" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Hypertension in adults: diagnosis and management (NICE Guideline NG136)</a>.
+        </li>
+        <li>
+          <strong>NHS UK:</strong> 
+          <a href="https://www.nhs.uk/conditions/blood-pressure-test/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Blood Pressure Testing and Target Thresholds</a>.
+        </li>
+        <li>
+          <strong>Centers for Disease Control and Prevention (CDC):</strong> 
+          <a href="https://www.cdc.gov/bloodpressure/measure.htm" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Measuring Blood Pressure at Home</a>.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT APPLICATION CORE (Full Functional Engine)                      -->
+  <!-- ========================================================================= -->
+  <script>
+    // App State
+    let activeGuideline = 'US_AHA';
+    let ukSetting = 'home';
+    let readings = [];
+    let dashboardTimeFilter = 'all';
+
+    const STORAGE_KEY = 'abt_blood_pressure_readings';
+
+    // Initialize application
+    window.addEventListener('DOMContentLoaded', () => {
+      // Set current date and time in form
+      const now = new Date();
+      document.getElementById('input-date').value = now.toISOString().split('T')[0];
+      document.getElementById('input-time').value = now.toTimeString().slice(0, 5);
+
+      loadReadings();
+      handleLiveInputChange();
+      renderAll();
+    });
+
+    function loadReadings() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          readings = JSON.parse(raw);
+        } else {
+          // Initialize with clinical baseline sample data
+          const today = new Date();
+          const dStr = (daysAgo) => {
+            const d = new Date(today);
+            d.setDate(today.getDate() - daysAgo);
+            return d.toISOString().split('T')[0];
+          };
+          readings = [
+            { id: 'sample_1', date: dStr(0), time: '08:15', sys: 118, dia: 78, pulse: 70, period: 'morning', arm: 'left-seated', tag: 'Resting Baseline', notes: 'Well rested' },
+            { id: 'sample_2', date: dStr(1), time: '20:30', sys: 124, dia: 82, pulse: 74, period: 'evening', arm: 'left-seated', tag: 'Post-Dinner', notes: 'Relaxed' },
+            { id: 'sample_3', date: dStr(2), time: '08:00', sys: 121, dia: 79, pulse: 68, period: 'morning', arm: 'left-seated', tag: 'Fasting', notes: 'Before breakfast' },
+            { id: 'sample_4', date: dStr(3), time: '21:00', sys: 126, dia: 84, pulse: 76, period: 'bedtime', arm: 'left-seated', tag: 'Work Stress', notes: 'Busy workday' },
+            { id: 'sample_5', date: dStr(4), time: '08:30', sys: 119, dia: 77, pulse: 71, period: 'morning', arm: 'left-seated', tag: 'Resting Baseline', notes: 'Weekend baseline' }
+          ];
+          saveReadings();
+        }
+      } catch (e) {
+        readings = [];
+      }
+    }
+
+    function saveReadings() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(readings));
+      } catch (e) {
+        console.error('Storage error', e);
+      }
+    }
+
+    // Guideline Switching
+    function setGuideline(guideline) {
+      activeGuideline = guideline;
+      const btnUsa = document.getElementById('btn-guideline-usa');
+      const btnUk = document.getElementById('btn-guideline-uk');
+      const ukToggle = document.getElementById('uk-setting-toggle');
+      const badge = document.getElementById('analysis-guideline-badge');
+
+      if (guideline === 'US_AHA') {
+        btnUsa.className = 'px-3.5 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition';
+        btnUk.className = 'px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        ukToggle.classList.add('hidden');
+        badge.innerText = 'USA (AHA/ACC 2017)';
+      } else {
+        btnUk.className = 'px-3.5 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition';
+        btnUsa.className = 'px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        ukToggle.classList.remove('hidden');
+        badge.innerText = ukSetting === 'home' ? 'UK (NHS/NICE Home)' : 'UK (NHS/NICE Clinic)';
+      }
+      handleLiveInputChange();
+      renderAll();
+    }
+
+    function setUkSetting(setting) {
+      ukSetting = setting;
+      const btnHome = document.getElementById('btn-setting-home');
+      const btnClinic = document.getElementById('btn-setting-clinic');
+      const badge = document.getElementById('analysis-guideline-badge');
+
+      if (setting === 'home') {
+        btnHome.className = 'px-2.5 py-1.5 rounded-lg bg-white text-indigo-700 shadow-sm transition';
+        btnClinic.className = 'px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        badge.innerText = 'UK (NHS/NICE Home)';
+      } else {
+        btnClinic.className = 'px-2.5 py-1.5 rounded-lg bg-white text-indigo-700 shadow-sm transition';
+        btnHome.className = 'px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        badge.innerText = 'UK (NHS/NICE Clinic)';
+      }
+      handleLiveInputChange();
+      renderAll();
+    }
+
+    // Classification Engine (Clinical "Higher Category Rule")
+    function classifyReading(sys, dia, guideline, ukMode) {
+      if (sys >= 180 || dia >= 120) {
+        return {
+          id: 'crisis',
+          label: 'Severe Alert (Crisis Threshold)',
+          cardBg: 'bg-rose-50 border-rose-300 text-rose-950',
+          badgeBg: 'bg-rose-600 text-white',
+          desc: 'Reading meets hypertensive emergency screening thresholds. Rest quietly for 1–2 minutes and retest. Seek immediate medical attention if symptomatic.',
+          note: 'Rule: Systolic ≥ 180 AND/OR Diastolic ≥ 120 mmHg.'
+        };
+      }
+      if (sys < 90 || dia < 60) {
+        return {
+          id: 'hypotension',
+          label: 'Low Blood Pressure (Hypotension)',
+          cardBg: 'bg-blue-50 border-blue-300 text-blue-950',
+          badgeBg: 'bg-blue-600 text-white',
+          desc: 'Blood pressure is lower than typical healthy baselines. Ensure adequate hydration. Consult a clinician if accompanied by dizziness or fainting.',
+          note: 'Rule: Systolic < 90 OR Diastolic < 60 mmHg.'
+        };
+      }
+
+      if (guideline === 'US_AHA') {
+        if (sys < 120 && dia < 80) {
+          return {
+            id: 'normal',
+            label: 'Normal Blood Pressure',
+            cardBg: 'bg-emerald-50 border-emerald-300 text-emerald-950',
+            badgeBg: 'bg-emerald-600 text-white',
+            desc: 'Your blood pressure is within optimal range. Maintain balanced nutrition, hydration, and regular aerobic activity.',
+            note: 'AHA Rule: Both Systolic < 120 AND Diastolic < 80 mmHg.'
+          };
+        }
+        if (sys >= 120 && sys <= 129 && dia < 80) {
+          return {
+            id: 'elevated',
+            label: 'Elevated Blood Pressure',
+            cardBg: 'bg-amber-50 border-amber-300 text-amber-950',
+            badgeBg: 'bg-amber-500 text-white',
+            desc: 'Systolic pressure is mildly raised above normal, while diastolic remains optimal. Lifestyle modifications are recommended.',
+            note: 'AHA Rule: Systolic 120–129 AND Diastolic < 80 mmHg.'
+          };
+        }
+        if ((sys >= 130 && sys <= 139) || (dia >= 80 && dia <= 89)) {
+          return {
+            id: 'stage1',
+            label: 'Stage 1 Hypertension',
+            cardBg: 'bg-orange-50 border-orange-300 text-orange-950',
+            badgeBg: 'bg-orange-600 text-white',
+            desc: 'Readings are consistently in the Stage 1 range. Clinical evaluation and lifestyle interventions are recommended.',
+            note: 'AHA Rule: Systolic 130–139 OR Diastolic 80–89 mmHg.'
+          };
+        }
+        if (sys >= 140 || dia >= 90) {
+          return {
+            id: 'stage2',
+            label: 'Stage 2 Hypertension',
+            cardBg: 'bg-rose-50 border-rose-300 text-rose-950',
+            badgeBg: 'bg-rose-600 text-white',
+            desc: 'Readings meet the Stage 2 hypertension classification. Consult your healthcare provider for evaluation and management.',
+            note: 'AHA Rule: Systolic ≥ 140 OR Diastolic ≥ 90 mmHg.'
+          };
+        }
+      } else {
+        // UK NICE NG136
+        if (ukMode === 'home') {
+          if (sys < 135 && dia < 85) {
+            return {
+              id: 'normal',
+              label: 'Normal (UK Home Target)',
+              cardBg: 'bg-emerald-50 border-emerald-300 text-emerald-950',
+              badgeBg: 'bg-emerald-600 text-white',
+              desc: 'Within the recommended home blood pressure target (<135/85 mmHg).',
+              note: 'NICE Home: Both Systolic < 135 AND Diastolic < 85 mmHg.'
+            };
+          }
+          if ((sys >= 135 && sys <= 149) || (dia >= 85 && dia <= 94)) {
+            return {
+              id: 'stage1',
+              label: 'Stage 1 Hypertension (UK Home)',
+              cardBg: 'bg-orange-50 border-orange-300 text-orange-950',
+              badgeBg: 'bg-orange-600 text-white',
+              desc: 'Home reading is at or above the 135/85 mmHg diagnostic threshold.',
+              note: 'NICE Home: Systolic 135–149 OR Diastolic 85–94 mmHg.'
+            };
+          }
+          if (sys >= 150 || dia >= 95) {
+            return {
+              id: 'stage2',
+              label: 'Stage 2 Hypertension (UK Home)',
+              cardBg: 'bg-rose-50 border-rose-300 text-rose-950',
+              badgeBg: 'bg-rose-600 text-white',
+              desc: 'Home reading is at or above the 150/95 mmHg threshold. Contact GP surgery.',
+              note: 'NICE Home: Systolic ≥ 150 OR Diastolic ≥ 95 mmHg.'
+            };
+          }
+        } else {
+          // UK Clinic
+          if (sys < 140 && dia < 90) {
+            return {
+              id: 'normal',
+              label: 'Normal (UK Clinic Target)',
+              cardBg: 'bg-emerald-50 border-emerald-300 text-emerald-950',
+              badgeBg: 'bg-emerald-600 text-white',
+              desc: 'Within the standard clinical consultation target (<140/90 mmHg).',
+              note: 'NICE Clinic: Both Systolic < 140 AND Diastolic < 90 mmHg.'
+            };
+          }
+          if ((sys >= 140 && sys <= 159) || (dia >= 90 && dia <= 99)) {
+            return {
+              id: 'stage1',
+              label: 'Stage 1 Hypertension (UK Clinic)',
+              cardBg: 'bg-orange-50 border-orange-300 text-orange-950',
+              badgeBg: 'bg-orange-600 text-white',
+              desc: 'Clinical reading is in the Stage 1 hypertension range (140/90 to 159/99).',
+              note: 'NICE Clinic: Systolic 140–159 OR Diastolic 90–99 mmHg.'
+            };
+          }
+          if (sys >= 160 || dia >= 100) {
+            return {
+              id: 'stage2',
+              label: 'Stage 2 Hypertension (UK Clinic)',
+              cardBg: 'bg-rose-50 border-rose-300 text-rose-950',
+              badgeBg: 'bg-rose-600 text-white',
+              desc: 'Clinical reading is in the Stage 2 hypertension range (≥160/100 mmHg).',
+              note: 'NICE Clinic: Systolic ≥ 160 OR Diastolic ≥ 100 mmHg.'
+            };
+          }
+        }
+      }
+
+      return {
+        id: 'unclassified',
+        label: 'Unclassified Reading',
+        cardBg: 'bg-slate-50 border-slate-300 text-slate-900',
+        badgeBg: 'bg-slate-600 text-white',
+        desc: 'Please verify the entered values.',
+        note: ''
+      };
+    }
+
+    // Live Input Change Handler
+    function handleLiveInputChange() {
+      const sysInput = document.getElementById('input-systolic');
+      const diaInput = document.getElementById('input-diastolic');
+      const sys = parseInt(sysInput.value) || 120;
+      const dia = parseInt(diaInput.value) || 80;
+
+      // Hemodynamics
+      const pp = sys - dia;
+      const map = (dia + pp / 3).toFixed(1);
+
+      document.getElementById('calc-pulse-pressure').innerText = pp;
+      document.getElementById('calc-map-value').innerText = map;
+
+      const ppStatus = document.getElementById('calc-pp-status');
+      if (pp >= 40 && pp <= 60) {
+        ppStatus.innerText = 'Optimal Arterial Elasticity (40–60 mmHg)';
+        ppStatus.className = 'text-xs font-semibold text-emerald-600 mt-1';
+      } else if (pp > 60) {
+        ppStatus.innerText = 'Widened Pulse Pressure (>60 mmHg - Arterial Stiffness)';
+        ppStatus.className = 'text-xs font-semibold text-amber-600 mt-1';
+      } else {
+        ppStatus.innerText = 'Narrow Pulse Pressure (<40 mmHg)';
+        ppStatus.className = 'text-xs font-semibold text-slate-500 mt-1';
+      }
+
+      const mapStatus = document.getElementById('calc-map-status');
+      if (map >= 70 && map <= 100) {
+        mapStatus.innerText = 'Adequate Organ Perfusion (70–100 mmHg)';
+        mapStatus.className = 'text-xs font-semibold text-emerald-600 mt-1';
+      } else {
+        mapStatus.innerText = 'Outside Target Range (70–100 mmHg)';
+        mapStatus.className = 'text-xs font-semibold text-amber-600 mt-1';
+      }
+
+      // Classification
+      const res = classifyReading(sys, dia, activeGuideline, ukSetting);
+      const card = document.getElementById('analysis-card');
+      card.className = `p-4 sm:p-5 rounded-2xl border transition-all mb-4 ${res.cardBg}`;
+      document.getElementById('analysis-category-title').innerText = res.label;
+      document.getElementById('analysis-reading-badge').innerText = `${sys} / ${dia} mmHg`;
+      document.getElementById('analysis-reading-badge').className = `px-3 py-1 text-xs font-extrabold rounded-lg ${res.badgeBg}`;
+      document.getElementById('analysis-category-desc').innerText = res.desc;
+      document.getElementById('analysis-rule-note').innerText = res.note;
+
+      // Emergency Trigger Section
+      const emergencySec = document.getElementById('abt-section-emergency');
+      if (sys >= 180 || dia >= 120) {
+        emergencySec.classList.remove('hidden');
+      } else {
+        emergencySec.classList.add('hidden');
+      }
+    }
+
+    // Form Submission (Add or Edit)
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const editId = document.getElementById('edit-reading-id').value;
+      const sys = parseInt(document.getElementById('input-systolic').value);
+      const dia = parseInt(document.getElementById('input-diastolic').value);
+      const pulseVal = document.getElementById('input-pulse').value;
+      const pulse = pulseVal ? parseInt(pulseVal) : null;
+      const period = document.getElementById('input-period').value;
+      const date = document.getElementById('input-date').value;
+      const time = document.getElementById('input-time').value;
+      const arm = document.getElementById('input-arm-posture').value;
+      const tag = document.getElementById('input-tag').value;
+      const notes = document.getElementById('input-notes').value.trim();
+
+      if (editId) {
+        // Edit existing
+        const index = readings.findIndex(r => r.id === editId);
+        if (index !== -1) {
+          readings[index] = { ...readings[index], sys, dia, pulse, period, date, time, arm, tag, notes };
+        }
+        cancelEditing();
+      } else {
+        // Add new
+        const newEntry = {
+          id: 'bp_' + Date.now(),
+          sys,
+          dia,
+          pulse,
+          period,
+          date,
+          time,
+          arm,
+          tag,
+          notes
+        };
+        readings.unshift(newEntry);
+      }
+
+      saveReadings();
+      renderAll();
+
+      // Reset notes field
+      document.getElementById('input-notes').value = '';
+    }
+
+    function editEntry(id) {
+      const entry = readings.find(r => r.id === id);
+      if (!entry) return;
+
+      document.getElementById('edit-reading-id').value = entry.id;
+      document.getElementById('input-systolic').value = entry.sys;
+      document.getElementById('input-diastolic').value = entry.dia;
+      document.getElementById('input-pulse').value = entry.pulse || '';
+      document.getElementById('input-period').value = entry.period;
+      document.getElementById('input-date').value = entry.date;
+      document.getElementById('input-time').value = entry.time;
+      document.getElementById('input-arm-posture').value = entry.arm || 'left-seated';
+      document.getElementById('input-tag').value = entry.tag || 'Resting Baseline';
+      document.getElementById('input-notes').value = entry.notes || '';
+
+      document.getElementById('form-heading-text').innerText = 'Edit Blood Pressure Reading';
+      document.getElementById('btn-submit-label').innerText = 'Update Reading';
+      document.getElementById('btn-cancel-edit').classList.remove('hidden');
+
+      handleLiveInputChange();
+      document.getElementById('abt-section-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function cancelEditing() {
+      document.getElementById('edit-reading-id').value = '';
+      document.getElementById('form-heading-text').innerText = 'Log Blood Pressure Reading';
+      document.getElementById('btn-submit-label').innerText = 'Save to Private Log';
+      document.getElementById('btn-cancel-edit').classList.add('hidden');
+      document.getElementById('input-notes').value = '';
+    }
+
+    function deleteEntry(id) {
+      if (confirm('Delete this blood pressure reading?')) {
+        readings = readings.filter(r => r.id !== id);
+        saveReadings();
+        renderAll();
+      }
+    }
+
+    function clearAllData() {
+      if (confirm('Are you sure you want to clear all blood pressure logs? This cannot be undone.')) {
+        readings = [];
+        saveReadings();
+        renderAll();
+      }
+    }
+
+    // Set Dashboard Filter
+    function setDashboardTimeFilter(filter) {
+      dashboardTimeFilter = filter;
+      document.getElementById('filter-dash-all').className = filter === 'all' ? 'px-2.5 py-1 rounded-lg bg-white text-blue-700 shadow-sm transition' : 'px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+      document.getElementById('filter-dash-7').className = filter === '7' ? 'px-2.5 py-1 rounded-lg bg-white text-blue-700 shadow-sm transition' : 'px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+      document.getElementById('filter-dash-30').className = filter === '30' ? 'px-2.5 py-1 rounded-lg bg-white text-blue-700 shadow-sm transition' : 'px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+      renderDashboard();
+    }
+
+    // Render All Views
+    function renderAll() {
+      renderHero();
+      renderDashboard();
+      renderCharts();
+      renderDistribution();
+      renderHistory();
+      render7DayProtocol();
+    }
+
+    function renderHero() {
+      document.getElementById('hero-stat-total').innerText = readings.length;
+      document.getElementById('snapshot-count').innerText = readings.length;
+    }
+
+    function renderDashboard() {
+      const count = readings.length;
+      document.getElementById('dash-stat-count').innerText = count;
+
+      if (count === 0) {
+        document.getElementById('dash-stat-overall-avg').innerText = '-- / --';
+        document.getElementById('dash-stat-overall-cat').innerText = 'No records';
+        document.getElementById('dash-stat-7day-avg').innerText = '-- / --';
+        document.getElementById('dash-stat-30day-avg').innerText = '-- / --';
+        document.getElementById('dash-stat-am-avg').innerText = '--/--';
+        document.getElementById('dash-stat-pm-avg').innerText = '--/--';
+        document.getElementById('dash-stat-avg-pp').innerText = '--';
+        document.getElementById('dash-stat-avg-map').innerText = '--';
+        document.getElementById('snapshot-7day-avg').innerText = '-- / -- mmHg';
+        return;
+      }
+
+      // Filtered records for overall dashboard view
+      let filtered = [...readings];
+      const now = new Date();
+      if (dashboardTimeFilter === '7') {
+        const d7 = new Date(now);
+        d7.setDate(now.getDate() - 7);
+        filtered = readings.filter(r => new Date(r.date) >= d7);
+      } else if (dashboardTimeFilter === '30') {
+        const d30 = new Date(now);
+        d30.setDate(now.getDate() - 30);
+        filtered = readings.filter(r => new Date(r.date) >= d30);
+      }
+
+      const activeSet = filtered.length > 0 ? filtered : readings;
+      const sumSys = activeSet.reduce((acc, r) => acc + r.sys, 0);
+      const sumDia = activeSet.reduce((acc, r) => acc + r.dia, 0);
+      const avgSys = Math.round(sumSys / activeSet.length);
+      const avgDia = Math.round(sumDia / activeSet.length);
+
+      document.getElementById('dash-stat-overall-avg').innerText = `${avgSys} / ${avgDia}`;
+      const cls = classifyReading(avgSys, avgDia, activeGuideline, ukSetting);
+      document.getElementById('dash-stat-overall-cat').innerText = cls.label;
+
+      // 7-day average
+      const d7 = new Date(now);
+      d7.setDate(now.getDate() - 7);
+      const r7 = readings.filter(r => new Date(r.date) >= d7);
+      if (r7.length > 0) {
+        const s7Sys = Math.round(r7.reduce((acc, r) => acc + r.sys, 0) / r7.length);
+        const s7Dia = Math.round(r7.reduce((acc, r) => acc + r.dia, 0) / r7.length);
+        document.getElementById('dash-stat-7day-avg').innerText = `${s7Sys} / ${s7Dia}`;
+        document.getElementById('snapshot-7day-avg').innerText = `${s7Sys} / ${s7Dia} mmHg`;
+      } else {
+        document.getElementById('dash-stat-7day-avg').innerText = '-- / --';
+        document.getElementById('snapshot-7day-avg').innerText = '-- / -- mmHg';
+      }
+
+      // 30-day average
+      const d30 = new Date(now);
+      d30.setDate(now.getDate() - 30);
+      const r30 = readings.filter(r => new Date(r.date) >= d30);
+      if (r30.length > 0) {
+        const s30Sys = Math.round(r30.reduce((acc, r) => acc + r.sys, 0) / r30.length);
+        const s30Dia = Math.round(r30.reduce((acc, r) => acc + r.dia, 0) / r30.length);
+        document.getElementById('dash-stat-30day-avg').innerText = `${s30Sys} / ${s30Dia}`;
+      } else {
+        document.getElementById('dash-stat-30day-avg').innerText = '-- / --';
+      }
+
+      // Morning vs Evening
+      const amReadings = activeSet.filter(r => r.period === 'morning');
+      const pmReadings = activeSet.filter(r => r.period === 'evening' || r.period === 'bedtime');
+      if (amReadings.length > 0) {
+        const amSys = Math.round(amReadings.reduce((acc, r) => acc + r.sys, 0) / amReadings.length);
+        const amDia = Math.round(amReadings.reduce((acc, r) => acc + r.dia, 0) / amReadings.length);
+        document.getElementById('dash-stat-am-avg').innerText = `${amSys}/${amDia}`;
+      } else {
+        document.getElementById('dash-stat-am-avg').innerText = '--/--';
+      }
+
+      if (pmReadings.length > 0) {
+        const pmSys = Math.round(pmReadings.reduce((acc, r) => acc + r.sys, 0) / pmReadings.length);
+        const pmDia = Math.round(pmReadings.reduce((acc, r) => acc + r.dia, 0) / pmReadings.length);
+        document.getElementById('dash-stat-pm-avg').innerText = `${pmSys}/${pmDia}`;
+      } else {
+        document.getElementById('dash-stat-pm-avg').innerText = '--/--';
+      }
+
+      // PP & MAP
+      const avgPP = avgSys - avgDia;
+      const avgMAP = (avgDia + avgPP / 3).toFixed(1);
+      document.getElementById('dash-stat-avg-pp').innerText = avgPP;
+      document.getElementById('dash-stat-avg-map').innerText = avgMAP;
+    }
+
+    function renderCharts() {
+      const svg = document.getElementById('trend-svg');
+      if (readings.length === 0) {
+        svg.innerHTML = `<text x="50%" y="50%" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">Log your first blood pressure readings to view trends</text>`;
+        return;
+      }
+
+      // Sort chronological
+      const sorted = [...readings].sort((a, b) => new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time));
+      const width = 500;
+      const height = 220;
+      const padding = 35;
+
+      const maxSys = Math.max(160, ...sorted.map(r => r.sys));
+      const minDia = Math.min(60, ...sorted.map(r => r.dia));
+
+      const getY = (val) => height - padding - ((val - minDia) / (maxSys - minDia)) * (height - 2 * padding);
+      const getX = (idx) => padding + (idx / Math.max(1, sorted.length - 1)) * (width - 2 * padding);
+
+      let sysPoints = '';
+      let diaPoints = '';
+      let pulsePoints = '';
+
+      sorted.forEach((r, idx) => {
+        const x = getX(idx);
+        const ySys = getY(r.sys);
+        const yDia = getY(r.dia);
+        sysPoints += `${x},${ySys} `;
+        diaPoints += `${x},${yDia} `;
+        if (r.pulse) {
+          const yPulse = getY(r.pulse);
+          pulsePoints += `${x},${yPulse} `;
+        }
+      });
+
+      // Target threshold guides
+      const y120 = getY(120);
+      const y80 = getY(80);
+
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.innerHTML = `
+        <!-- Reference Grid Lines -->
+        <line x1="${padding}" y1="${y120}" x2="${width - padding}" y2="${y120}" stroke="#93c5fd" stroke-width="1" stroke-dasharray="4" />
+        <text x="${padding + 5}" y="${y120 - 4}" fill="#3b82f6" font-size="9" font-weight="700">120 mmHg (Normal Sys)</text>
+
+        <line x1="${padding}" y1="${y80}" x2="${width - padding}" y2="${y80}" stroke="#c7d2fe" stroke-width="1" stroke-dasharray="4" />
+        <text x="${padding + 5}" y="${y80 - 4}" fill="#6366f1" font-size="9" font-weight="700">80 mmHg (Normal Dia)</text>
+
+        <!-- Trend PolyLines -->
+        <polyline fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${sysPoints}" />
+        <polyline fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${diaPoints}" />
+        ${pulsePoints ? `<polyline fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3" points="${pulsePoints}" />` : ''}
+
+        <!-- Data Point Circles -->
+        ${sorted.map((r, idx) => `
+          <circle cx="${getX(idx)}" cy="${getY(r.sys)}" r="4" fill="#2563eb" stroke="#ffffff" stroke-width="1.5" />
+          <circle cx="${getX(idx)}" cy="${getY(r.dia)}" r="4" fill="#6366f1" stroke="#ffffff" stroke-width="1.5" />
+        `).join('')}
+      `;
+    }
+
+    function renderDistribution() {
+      const total = readings.length;
+      if (total === 0) return;
+
+      let n = 0, el = 0, s1 = 0, s2 = 0;
+      readings.forEach(r => {
+        const cls = classifyReading(r.sys, r.dia, activeGuideline, ukSetting);
+        if (cls.id === 'normal') n++;
+        else if (cls.id === 'elevated') el++;
+        else if (cls.id === 'stage1') s1++;
+        else if (cls.id === 'stage2' || cls.id === 'crisis') s2++;
+      });
+
+      const pN = Math.round((n / total) * 100);
+      const pEl = Math.round((el / total) * 100);
+      const pS1 = Math.round((s1 / total) * 100);
+      const pS2 = Math.round((s2 / total) * 100);
+
+      document.getElementById('dist-count-normal').innerText = `${n} (${pN}%)`;
+      document.getElementById('dist-bar-normal').style.width = pN + '%';
+
+      document.getElementById('dist-count-elevated').innerText = `${el} (${pEl}%)`;
+      document.getElementById('dist-bar-elevated').style.width = pEl + '%';
+
+      document.getElementById('dist-count-stage1').innerText = `${s1} (${pS1}%)`;
+      document.getElementById('dist-bar-stage1').style.width = pS1 + '%';
+
+      document.getElementById('dist-count-stage2').innerText = `${s2} (${pS2}%)`;
+      document.getElementById('dist-bar-stage2').style.width = pS2 + '%';
+    }
+
+    function renderHistory() {
+      const tbody = document.getElementById('history-table-body');
+      if (readings.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">No blood pressure readings stored. Log your first measurement above!</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = readings.map(r => {
+        const cls = classifyReading(r.sys, r.dia, activeGuideline, ukSetting);
+        return `
+          <tr class="hover:bg-slate-50/80 transition">
+            <td class="py-3 px-3">
+              <div class="font-bold text-slate-900">${r.date}</div>
+              <div class="text-[11px] text-slate-500 font-medium">${r.time} • ${r.period.toUpperCase()}</div>
+            </td>
+            <td class="py-3 px-3">
+              <span class="font-black text-sm text-slate-900">${r.sys} / ${r.dia}</span>
+              <span class="text-[10px] text-slate-500 font-semibold">mmHg</span>
+            </td>
+            <td class="py-3 px-3 font-bold text-slate-700">${r.pulse ? r.pulse + ' bpm' : '--'}</td>
+            <td class="py-3 px-3">
+              <span class="px-2.5 py-1 rounded-md text-xs font-bold ${cls.badgeBg}">${cls.label}</span>
+            </td>
+            <td class="py-3 px-3">
+              <div class="font-semibold text-slate-800">${r.tag || 'Baseline'}</div>
+              <div class="text-[11px] text-slate-500 truncate max-w-[160px]">${r.notes || ''}</div>
+            </td>
+            <td class="py-3 px-3 text-right no-print">
+              <button type="button" onclick="editEntry('${r.id}')" class="text-blue-600 hover:text-blue-800 text-xs font-bold mr-2">Edit</button>
+              <button type="button" onclick="deleteEntry('${r.id}')" class="text-rose-600 hover:text-rose-800 text-xs font-bold">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function render7DayProtocol() {
+      const now = new Date();
+      const d7 = new Date(now);
+      d7.setDate(now.getDate() - 7);
+
+      const r7 = readings.filter(r => new Date(r.date) >= d7);
+      document.getElementById('proto-7day-count').innerText = `${r7.length} readings in last 7 days`;
+
+      if (r7.length === 0) {
+        document.getElementById('proto-7day-combined').innerText = '-- / --';
+        document.getElementById('proto-7day-am').innerText = '-- / --';
+        document.getElementById('proto-7day-pm').innerText = '-- / --';
+        return;
+      }
+
+      const sSys = Math.round(r7.reduce((acc, r) => acc + r.sys, 0) / r7.length);
+      const sDia = Math.round(r7.reduce((acc, r) => acc + r.dia, 0) / r7.length);
+      document.getElementById('proto-7day-combined').innerText = `${sSys} / ${sDia}`;
+
+      const amR = r7.filter(r => r.period === 'morning');
+      if (amR.length > 0) {
+        const amSys = Math.round(amR.reduce((acc, r) => acc + r.sys, 0) / amR.length);
+        const amDia = Math.round(amR.reduce((acc, r) => acc + r.dia, 0) / amR.length);
+        document.getElementById('proto-7day-am').innerText = `${amSys} / ${amDia}`;
+      } else {
+        document.getElementById('proto-7day-am').innerText = '-- / --';
+      }
+
+      const pmR = r7.filter(r => r.period === 'evening' || r.period === 'bedtime');
+      if (pmR.length > 0) {
+        const pmSys = Math.round(pmR.reduce((acc, r) => acc + r.sys, 0) / pmR.length);
+        const pmDia = Math.round(pmR.reduce((acc, r) => acc + r.dia, 0) / pmR.length);
+        document.getElementById('proto-7day-pm').innerText = `${pmSys} / ${pmDia}`;
+      } else {
+        document.getElementById('proto-7day-pm').innerText = '-- / --';
+      }
+    }
+
+    function copyClinical7DayReport() {
+      const combined = document.getElementById('proto-7day-combined').innerText;
+      const am = document.getElementById('proto-7day-am').innerText;
+      const pm = document.getElementById('proto-7day-pm').innerText;
+      const count = readings.length;
+
+      const text = `BLOOD PRESSURE CLINICAL SUMMARY\nDate Generated: ${new Date().toLocaleDateString()}\nTotal Logged Entries: ${count}\n7-Day Overall Average: ${combined} mmHg\nMorning (AM) Average: ${am} mmHg\nEvening (PM) Average: ${pm} mmHg\nGuideline Standard: ${activeGuideline === 'US_AHA' ? 'USA AHA/ACC' : 'UK NHS/NICE'}\nNote: Generated via Home Blood Pressure Tracker.`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('7-Day Clinical Summary copied to clipboard!');
+      });
+    }
+
+    // Export & Import
+    function exportDataCSV() {
+      if (readings.length === 0) {
+        alert('No readings to export.');
+        return;
+      }
+      let csv = 'Date,Time,Systolic_mmHg,Diastolic_mmHg,Pulse_BPM,Period,Arm_Posture,Tag,Notes\n';
+      readings.forEach(r => {
+        csv += `"${r.date}","${r.time}",${r.sys},${r.dia},"${r.pulse || ''}","${r.period}","${r.arm || ''}","${r.tag || ''}","${(r.notes || '').replace(/"/g, '""')}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `blood_pressure_log_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+    }
+
+    function exportDataJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(readings, null, 2));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `blood_pressure_backup_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+    }
+
+    function importDataJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported)) {
+            readings = imported;
+            saveReadings();
+            renderAll();
+            alert('Blood pressure history successfully restored from backup!');
+          }
+        } catch (err) {
+          alert('Invalid JSON file format.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Social Sharing
+    function shareOnWhatsApp() {
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('Check out this free Advanced Blood Pressure Tracker & 7-Day Average Calculator: ' + window.location.href)}`, '_blank');
+    }
+    function shareOnTelegram() {
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Advanced Blood Pressure Tracker & Range Checker')}`, '_blank');
+    }
+    function shareOnTwitter() {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent('Free Blood Pressure Tracker, Range Checker & 7-Day Average Calculator: ')}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+    }
+    function copyPageLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('Page link copied to clipboard!');
+      });
+    }
+  </script>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 22: Social Bar Loader Script (Immediately before closing body)     -->
+  <!-- ========================================================================= -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+</body>
+</html>
