@@ -1,0 +1,3675 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Thyroid Lab Tracker — TSH, T3, T4 & Antibody Results",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "All",
+      "description": "Track TSH, Free T4, Free T3, and thyroid antibody lab results, ranges, and trends privately in your browser.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What thyroid tests can I track with this tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can track all standard and specialized thyroid laboratory analytes, including TSH (Thyroid-Stimulating Hormone), Free T4 (FT4), Total T4 (TT4), Free T3 (FT3), Total T3 (TT3), TPO Antibodies (TPOAb), Thyroglobulin Antibodies (TgAb), TSH Receptor Antibodies (TRAb), Thyroid-Stimulating Immunoglobulin (TSI), Thyroglobulin (Tg), Reverse T3 (rT3), and custom user-defined laboratory tests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this tool a thyroid test or medical device?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This application is an organizational and educational log. It does not perform laboratory testing, draw blood, analyze physical specimens, diagnose medical conditions, or replace the professional judgment of a physician."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tracker diagnose hypothyroidism or hyperthyroidism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It strictly evaluates whether a numerical result falls within, above, or below the specific reference range that you manually entered from your laboratory report. It never assigns medical diagnoses such as hypothyroidism, Hashimoto's thyroiditis, or Graves' disease."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why should I enter my laboratory's reference range?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because diagnostic reference intervals differ across testing platforms, analyzers, and reagent kits. Entering the exact range printed on your report ensures your dashboard, graphs, and status indicators accurately reflect your laboratory's specific baseline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can different laboratories have different reference ranges?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Laboratories utilize different analytical immunoassay platforms (e.g., Roche, Abbott, Siemens, Beckman Coulter), each calibrated with distinct reference populations and standards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Free T4 and Total T4?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free T4 represents the unbound, active hormone circulating in blood that can enter cells. Total T4 measures both unbound hormone and the >99% bound to binding proteins. Free T4 is the preferred measure because it is not distorted by changes in protein levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Free T3 and Total T3?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free T3 measures the active, unbound triiodothyronine hormone available to tissues, while Total T3 includes hormone bound to serum carrier proteins. Free T3 is commonly evaluated when investigating hyperthyroidism."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are TPO antibodies and Tg antibodies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Thyroid peroxidase antibodies (TPOAb) and thyroglobulin antibodies (TgAb) are autoantibodies directed against thyroid proteins. Elevated levels indicate autoimmune thyroid activity, most frequently Hashimoto's thyroiditis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can biotin affect thyroid laboratory results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. High doses of biotin (vitamin B7) can interfere with laboratory immunoassay technology, causing falsely suppressed TSH values and falsely elevated Free T4/T3 values. Discuss all dietary supplements with your physician before lab testing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are thyroid ranges different during pregnancy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Maternal thyroid physiology undergoes significant adaptations during gestation. Standard non-pregnant adult reference ranges should not be used; instead, trimester-specific ranges provided by your medical care team must be referenced."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is my thyroid lab history stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All entries are stored 100% locally in your device's browser using HTML5 localStorage. No health data is transmitted to external servers. If you clear browser cache or use private/incognito mode, export a JSON backup to protect your history."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I export my thyroid results to a spreadsheet or backup file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can export your data at any time as a CSV spreadsheet (compatible with Microsoft Excel, Apple Numbers, Google Sheets) or download a complete JSON backup file that can be restored on any device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this tool on an Android phone or iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The application is built with a responsive, mobile-first design that adjusts seamlessly to 320px, 360px, 390px, tablet, and desktop screens with minimum 44px touch targets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if my laboratory results are unexpected?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contact your prescribing physician or endocrinologist. Do not adjust, start, or stop prescription medications based solely on a lab tracker. Bring your printed results to your medical appointment for clinical evaluation."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div id="thyroidLabTracker">
+
+  <style>
+
+/* ==========================================================================
+   Thyroid Lab Tracker — Scoped CSS for Blogger
+   All styles strictly scoped to #thyroidLabTracker
+   ========================================================================== */
+
+#thyroidLabTracker {
+  --tlt-bg: #f8fafc;
+  --tlt-card-bg: #ffffff;
+  --tlt-navy: #0f172a;
+  --tlt-navy-light: #1e293b;
+  --tlt-slate: #334155;
+  --tlt-muted: #64748b;
+  --tlt-border: #e2e8f0;
+  --tlt-border-focus: #3b82f6;
+  --tlt-primary: #0284c7;
+  --tlt-primary-hover: #0369a1;
+  --tlt-cyan: #0891b2;
+  --tlt-purple: #7c3aed;
+  --tlt-green: #16a34a;
+  --tlt-green-bg: #dcfce7;
+  --tlt-green-text: #15803d;
+  --tlt-amber: #d97706;
+  --tlt-amber-bg: #fef3c7;
+  --tlt-amber-text: #b45309;
+  --tlt-rose: #e11d48;
+  --tlt-rose-bg: #ffe4e6;
+  --tlt-rose-text: #be123c;
+  --tlt-blue-bg: #e0f2fe;
+  --tlt-blue-text: #0369a1;
+  --tlt-purple-bg: #f3e8ff;
+  --tlt-purple-text: #6b21a8;
+  --tlt-shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --tlt-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --tlt-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --tlt-radius: 12px;
+  --tlt-radius-sm: 8px;
+  --tlt-radius-pill: 9999px;
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--tlt-navy);
+  background-color: var(--tlt-bg);
+  line-height: 1.6;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 16px 12px 60px 12px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+#thyroidLabTracker *,
+#thyroidLabTracker *::before,
+#thyroidLabTracker *::after {
+  box-sizing: border-box;
+}
+
+/* Accessibility: Focus visible */
+#thyroidLabTracker *:focus-visible {
+  outline: 3px solid var(--tlt-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  #thyroidLabTracker * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Typography & Headings */
+#thyroidLabTracker h1,
+#thyroidLabTracker h2,
+#thyroidLabTracker h3,
+#thyroidLabTracker h4 {
+  color: var(--tlt-navy);
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.25;
+}
+
+#thyroidLabTracker h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  #thyroidLabTracker h1 {
+    font-size: 2.35rem;
+  }
+}
+
+#thyroidLabTracker h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#thyroidLabTracker h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+#thyroidLabTracker p {
+  margin: 0 0 12px 0;
+  color: var(--tlt-slate);
+}
+
+/* Badges */
+#thyroidLabTracker .tlt-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#thyroidLabTracker .tlt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--tlt-radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#thyroidLabTracker .tlt-badge-primary {
+  background-color: var(--tlt-blue-bg);
+  color: var(--tlt-blue-text);
+  border: 1px solid #bae6fd;
+}
+
+#thyroidLabTracker .tlt-badge-uk {
+  background-color: var(--tlt-purple-bg);
+  color: var(--tlt-purple-text);
+  border: 1px solid #e9d5ff;
+}
+
+#thyroidLabTracker .tlt-badge-success {
+  background-color: var(--tlt-green-bg);
+  color: var(--tlt-green-text);
+  border: 1px solid #bbf7d0;
+}
+
+#thyroidLabTracker .tlt-badge-warning {
+  background-color: var(--tlt-amber-bg);
+  color: var(--tlt-amber-text);
+  border: 1px solid #fde68a;
+}
+
+#thyroidLabTracker .tlt-badge-danger {
+  background-color: var(--tlt-rose-bg);
+  color: var(--tlt-rose-text);
+  border: 1px solid #fecdd3;
+}
+
+#thyroidLabTracker .tlt-badge-neutral {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+/* Cards */
+#thyroidLabTracker .tlt-card {
+  background-color: var(--tlt-card-bg);
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--tlt-shadow-sm);
+}
+
+@media (min-width: 768px) {
+  #thyroidLabTracker .tlt-card {
+    padding: 28px;
+  }
+}
+
+/* Header & Hero */
+#thyroidLabTracker .tlt-hero {
+  text-align: left;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  border: 1px solid #bae6fd;
+  position: relative;
+  overflow: hidden;
+}
+
+#thyroidLabTracker .tlt-hero-subtitle {
+  font-size: 1.1rem;
+  color: #334155;
+  margin-bottom: 16px;
+  max-width: 800px;
+}
+
+#thyroidLabTracker .tlt-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+#thyroidLabTracker .tlt-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px 12px;
+  border-radius: var(--tlt-radius-sm);
+  border: 1px solid #e2e8f0;
+}
+
+#thyroidLabTracker .tlt-notice-box {
+  background-color: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: #92400e;
+  margin-top: 16px;
+}
+
+#thyroidLabTracker .tlt-privacy-note {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+/* Navigation */
+#thyroidLabTracker .tlt-nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius);
+  box-shadow: var(--tlt-shadow-sm);
+}
+
+#thyroidLabTracker .tlt-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--tlt-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  min-height: 44px;
+  color: var(--tlt-navy-light);
+  background-color: #f1f5f9;
+}
+
+#thyroidLabTracker .tlt-nav-btn:hover {
+  background-color: #e2e8f0;
+  color: var(--tlt-navy);
+}
+
+#thyroidLabTracker .tlt-nav-btn.tlt-nav-primary {
+  background-color: var(--tlt-primary);
+  color: #ffffff;
+}
+
+#thyroidLabTracker .tlt-nav-btn.tlt-nav-primary:hover {
+  background-color: var(--tlt-primary-hover);
+}
+
+/* Advertisement Wrappers */
+#thyroidLabTracker .tlt-ad-wrapper {
+  margin: 24px auto;
+  text-align: center;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: var(--tlt-radius-sm);
+  padding: 10px 6px;
+  max-width: 100%;
+}
+
+#thyroidLabTracker .tlt-ad-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  display: block;
+}
+
+#thyroidLabTracker .tlt-ad-468 {
+  width: 100%;
+  max-width: 468px;
+  min-height: 60px;
+}
+
+#thyroidLabTracker .tlt-ad-300 {
+  width: 300px;
+  max-width: 100%;
+  min-height: 250px;
+}
+
+#thyroidLabTracker .tlt-ad-native {
+  width: 100%;
+  max-width: 800px;
+  min-height: 90px;
+}
+
+/* Form Styles */
+#thyroidLabTracker .tlt-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  #thyroidLabTracker .tlt-form-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  #thyroidLabTracker .tlt-form-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #thyroidLabTracker .tlt-form-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#thyroidLabTracker .tlt-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#thyroidLabTracker label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--tlt-navy-light);
+}
+
+#thyroidLabTracker .tlt-optional {
+  font-weight: 400;
+  color: var(--tlt-muted);
+  font-size: 0.8rem;
+}
+
+#thyroidLabTracker input,
+#thyroidLabTracker select,
+#thyroidLabTracker textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  color: var(--tlt-navy);
+  background-color: #ffffff;
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#thyroidLabTracker textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+#thyroidLabTracker input:focus,
+#thyroidLabTracker select:focus,
+#thyroidLabTracker textarea:focus {
+  border-color: var(--tlt-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+#thyroidLabTracker input.tlt-input-error,
+#thyroidLabTracker select.tlt-input-error {
+  border-color: var(--tlt-rose);
+  background-color: #fff1f2;
+}
+
+#thyroidLabTracker .tlt-error-msg {
+  font-size: 0.82rem;
+  color: var(--tlt-rose);
+  font-weight: 500;
+  display: none;
+}
+
+#thyroidLabTracker .tlt-field-hint {
+  font-size: 0.8rem;
+  color: var(--tlt-muted);
+}
+
+/* Form Action Buttons */
+#thyroidLabTracker .tlt-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#thyroidLabTracker .tlt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--tlt-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+#thyroidLabTracker .tlt-btn-primary {
+  background-color: var(--tlt-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
+}
+
+#thyroidLabTracker .tlt-btn-primary:hover {
+  background-color: var(--tlt-primary-hover);
+}
+
+#thyroidLabTracker .tlt-btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--tlt-navy-light);
+  border-color: #cbd5e1;
+}
+
+#thyroidLabTracker .tlt-btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: var(--tlt-navy);
+}
+
+#thyroidLabTracker .tlt-btn-cyan {
+  background-color: var(--tlt-cyan);
+  color: #ffffff;
+}
+
+#thyroidLabTracker .tlt-btn-cyan:hover {
+  background-color: #0e7490;
+}
+
+#thyroidLabTracker .tlt-btn-outline {
+  background-color: transparent;
+  color: var(--tlt-slate);
+  border-color: #cbd5e1;
+}
+
+#thyroidLabTracker .tlt-btn-outline:hover {
+  background-color: #f8fafc;
+  color: var(--tlt-navy);
+}
+
+#thyroidLabTracker .tlt-btn-danger {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+#thyroidLabTracker .tlt-btn-danger:hover {
+  background-color: #fecaca;
+}
+
+#thyroidLabTracker .tlt-btn-sm {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* Alert & Dynamic feedback boxes */
+#thyroidLabTracker .tlt-alert {
+  padding: 14px 18px;
+  border-radius: var(--tlt-radius-sm);
+  margin: 16px 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#thyroidLabTracker .tlt-alert-info {
+  background-color: #f0f9ff;
+  border-left: 4px solid var(--tlt-primary);
+  color: #0c4a6e;
+}
+
+#thyroidLabTracker .tlt-alert-warning {
+  background-color: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  color: #78350f;
+}
+
+#thyroidLabTracker .tlt-alert-success {
+  background-color: #f0fdf4;
+  border-left: 4px solid var(--tlt-green);
+  color: #14532d;
+}
+
+#thyroidLabTracker .tlt-alert-danger {
+  background-color: #fff1f2;
+  border-left: 4px solid var(--tlt-rose);
+  color: #881337;
+}
+
+/* Live Range Result Preview Card */
+#thyroidLabTracker .tlt-live-preview {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--tlt-radius-sm);
+  padding: 16px;
+  margin-top: 16px;
+  display: none;
+}
+
+/* Unit Converter */
+#thyroidLabTracker .tlt-converter-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+  border: 1px solid #ddd6fe;
+}
+
+#thyroidLabTracker .tlt-converter-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  #thyroidLabTracker .tlt-converter-grid {
+    grid-template-columns: 1fr auto 1fr;
+  }
+}
+
+/* Dashboard Summary Cards */
+#thyroidLabTracker .tlt-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  #thyroidLabTracker .tlt-dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #thyroidLabTracker .tlt-dashboard-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#thyroidLabTracker .tlt-metric-card {
+  background: #ffffff;
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius);
+  padding: 18px;
+  box-shadow: var(--tlt-shadow-sm);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#thyroidLabTracker .tlt-metric-card.tlt-card-tsh { border-top: 4px solid var(--tlt-primary); }
+#thyroidLabTracker .tlt-metric-card.tlt-card-ft4 { border-top: 4px solid var(--tlt-cyan); }
+#thyroidLabTracker .tlt-metric-card.tlt-card-ft3 { border-top: 4px solid var(--tlt-purple); }
+#thyroidLabTracker .tlt-metric-card.tlt-card-tpo { border-top: 4px solid var(--tlt-amber); }
+
+#thyroidLabTracker .tlt-metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+#thyroidLabTracker .tlt-metric-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tlt-navy);
+}
+
+#thyroidLabTracker .tlt-metric-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--tlt-navy);
+  margin: 4px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+#thyroidLabTracker .tlt-metric-unit {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--tlt-muted);
+}
+
+#thyroidLabTracker .tlt-metric-meta {
+  font-size: 0.8rem;
+  color: var(--tlt-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+#thyroidLabTracker .tlt-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  background: #f1f5f9;
+  padding: 16px;
+  border-radius: var(--tlt-radius-sm);
+  margin-bottom: 20px;
+}
+
+#thyroidLabTracker .tlt-stat-item {
+  text-align: center;
+}
+
+#thyroidLabTracker .tlt-stat-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--tlt-navy);
+}
+
+#thyroidLabTracker .tlt-stat-lbl {
+  font-size: 0.78rem;
+  color: var(--tlt-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Charts */
+#thyroidLabTracker .tlt-chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#thyroidLabTracker .tlt-chart-container {
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius-sm);
+  padding: 12px;
+  min-height: 280px;
+}
+
+#thyroidLabTracker canvas {
+  display: block;
+  width: 100%;
+  height: 280px;
+  max-width: 100%;
+}
+
+#thyroidLabTracker .tlt-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--tlt-slate);
+  margin-top: 12px;
+  justify-content: center;
+}
+
+#thyroidLabTracker .tlt-legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* Table and Lab History */
+#thyroidLabTracker .tlt-filter-bar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: var(--tlt-radius-sm);
+  border: 1px solid var(--tlt-border);
+}
+
+@media (min-width: 640px) {
+  #thyroidLabTracker .tlt-filter-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #thyroidLabTracker .tlt-filter-bar {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+#thyroidLabTracker .tlt-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius-sm);
+  margin-bottom: 16px;
+  background: #ffffff;
+}
+
+#thyroidLabTracker table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+  min-width: 680px;
+}
+
+#thyroidLabTracker th {
+  background-color: #f1f5f9;
+  color: var(--tlt-navy-light);
+  font-weight: 700;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--tlt-border);
+  white-space: nowrap;
+}
+
+#thyroidLabTracker td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--tlt-border);
+  color: var(--tlt-navy);
+  vertical-align: top;
+}
+
+#thyroidLabTracker tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+#thyroidLabTracker .tlt-empty-state {
+  text-align: center;
+  padding: 36px 16px;
+  color: var(--tlt-muted);
+}
+
+#thyroidLabTracker .tlt-empty-state svg {
+  margin: 0 auto 12px auto;
+  color: #94a3b8;
+}
+
+/* Accordion (FAQ & Guides) */
+#thyroidLabTracker .tlt-accordion-item {
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius-sm);
+  margin-bottom: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+#thyroidLabTracker .tlt-accordion-header {
+  width: 100%;
+  text-align: left;
+  background: #ffffff;
+  border: none;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--tlt-navy);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  min-height: 48px;
+  transition: background-color 0.15s ease;
+}
+
+#thyroidLabTracker .tlt-accordion-header:hover {
+  background-color: #f8fafc;
+}
+
+#thyroidLabTracker .tlt-accordion-icon {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+#thyroidLabTracker .tlt-accordion-header[aria-expanded="true"] .tlt-accordion-icon {
+  transform: rotate(180deg);
+}
+
+#thyroidLabTracker .tlt-accordion-header[aria-expanded="true"] {
+  border-bottom: 1px solid var(--tlt-border);
+  background-color: #f0f9ff;
+  color: var(--tlt-primary);
+}
+
+#thyroidLabTracker .tlt-accordion-content {
+  display: none;
+  padding: 18px 20px;
+  font-size: 0.92rem;
+  color: var(--tlt-slate);
+  line-height: 1.7;
+}
+
+#thyroidLabTracker .tlt-accordion-content.tlt-open {
+  display: block;
+}
+
+/* Social Sharing */
+#thyroidLabTracker .tlt-share-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+#thyroidLabTracker .tlt-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: var(--tlt-radius-sm);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+#thyroidLabTracker .tlt-share-fb { background-color: #1877f2; }
+#thyroidLabTracker .tlt-share-x { background-color: #000000; }
+#thyroidLabTracker .tlt-share-wa { background-color: #25d366; }
+#thyroidLabTracker .tlt-share-in { background-color: #0a66c2; }
+#thyroidLabTracker .tlt-share-rd { background-color: #ff4500; }
+#thyroidLabTracker .tlt-share-em { background-color: #475569; }
+#thyroidLabTracker .tlt-share-cp { background-color: var(--tlt-cyan); }
+#thyroidLabTracker .tlt-share-native { background-color: var(--tlt-purple); }
+
+/* Reference Links */
+#thyroidLabTracker .tlt-ref-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  #thyroidLabTracker .tlt-ref-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#thyroidLabTracker .tlt-ref-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid var(--tlt-border);
+  border-radius: var(--tlt-radius-sm);
+  color: var(--tlt-primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+#thyroidLabTracker .tlt-ref-link:hover {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+/* Modal for Edit */
+#thyroidLabTracker .tlt-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  padding: 16px;
+}
+
+#thyroidLabTracker .tlt-modal-backdrop.tlt-modal-active {
+  display: flex;
+}
+
+#thyroidLabTracker .tlt-modal-dialog {
+  background: #ffffff;
+  border-radius: var(--tlt-radius);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: var(--tlt-shadow-lg);
+}
+
+/* Toast notifications */
+#thyroidLabTracker .tlt-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--tlt-navy);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--tlt-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--tlt-shadow-lg);
+  z-index: 9999999;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+#thyroidLabTracker .tlt-toast.tlt-toast-show {
+  display: flex;
+  animation: tltFadeIn 0.2s ease-out;
+}
+
+@keyframes tltFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thyroidLabTracker,
+  #thyroidLabTracker #tltPrintReportSection,
+  #thyroidLabTracker #tltPrintReportSection * {
+    visibility: visible;
+  }
+  #thyroidLabTracker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+  #thyroidLabTracker .tlt-ad-wrapper,
+  #thyroidLabTracker .tlt-nav-container,
+  #thyroidLabTracker .tlt-btn-group,
+  #thyroidLabTracker #tltHero,
+  #thyroidLabTracker #tltFormCard,
+  #thyroidLabTracker #tltConverterCard,
+  #thyroidLabTracker #tltChartSection,
+  #thyroidLabTracker #tltGuideSection,
+  #thyroidLabTracker #tltFaqSection,
+  #thyroidLabTracker #tltShareSection,
+  #thyroidLabTracker #tltFooterSection,
+  #thyroidLabTracker .tlt-filter-bar {
+    display: none !important;
+  }
+  #thyroidLabTracker #tltPrintReportSection {
+    display: block !important;
+    padding: 20px !important;
+  }
+}
+
+  </style>
+
+<!-- ARIA Live Region for screen reader notifications -->
+  <div id="tltAriaLive" class="sr-only" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- HERO SECTION -->
+  <header id="tltHero" class="tlt-card tlt-hero">
+    <div class="tlt-badge-group">
+      <span class="tlt-badge tlt-badge-primary">🇺🇸 USA English</span>
+      <span class="tlt-badge tlt-badge-uk">🇬🇧 UK/SI Units Supported</span>
+      <span class="tlt-badge tlt-badge-success">🇺🇸 PRIVATE LAB-RESULT ORGANIZER</span>
+    </div>
+    
+    <h1>Advanced Thyroid Lab Tracker</h1>
+    
+    <p class="tlt-hero-subtitle">
+      Track TSH, Free T4, Free T3, thyroid antibodies and other laboratory results privately in your browser.
+    </p>
+
+    <div class="tlt-trust-grid">
+      <div class="tlt-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>No Sign-Up</span>
+      </div>
+      <div class="tlt-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>No API Required</span>
+      </div>
+      <div class="tlt-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>Local Browser Storage</span>
+      </div>
+      <div class="tlt-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        <span>USA & UK Units</span>
+      </div>
+      <div class="tlt-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Exportable Lab History</span>
+      </div>
+      <div class="tlt-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <span>Mobile Friendly</span>
+      </div>
+    </div>
+
+    <div class="tlt-notice-box">
+      <strong>Important Medical Notice:</strong> This tool organizes laboratory results that you enter manually. It does not perform a thyroid test, diagnose a condition, recommend medication changes or replace interpretation by a qualified healthcare professional.
+    </div>
+
+    <p class="tlt-privacy-note">
+      🔒 <strong>Privacy Assurance:</strong> Thyroid values entered into the tracker are processed locally by the application. Third-party advertisements may operate under their own privacy policies.
+    </p>
+  </header>
+
+  <!-- DASHBOARD NAVIGATION -->
+  <nav id="tltNav" class="tlt-nav-container" aria-label="Thyroid Lab Tracker Navigation">
+    <button type="button" class="tlt-nav-btn tlt-nav-primary" data-target="tltFormCard" id="tltNavBtnAdd">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add Lab Result
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltDashboardSection" id="tltNavBtnDash">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+      Dashboard
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltChartSection" id="tltNavBtnCharts">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Trend Charts
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltHistorySection" id="tltNavBtnHistory">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Lab History
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltConverterCard" id="tltNavBtnConverter">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+      Unit Converter
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltReferenceGuideSection" id="tltNavBtnRefGuide">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Reference Ranges
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltExportBackupSection" id="tltNavBtnExport">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export & Backup
+    </button>
+    <button type="button" class="tlt-nav-btn" data-target="tltFaqSection" id="tltNavBtnFaq">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      Help & FAQ
+    </button>
+  </nav>
+
+  <!-- ADVERTISEMENT 1: 468x60 BANNER -->
+  <div class="tlt-ad-wrapper tlt-ad-468" id="tltAd1Wrapper">
+    <span class="tlt-ad-label">ADVERTISEMENT</span>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- ADD THYROID LAB RESULT FORM -->
+  <section id="tltFormCard" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Add Thyroid Lab Result
+    </h2>
+    <p>
+      Enter your thyroid lab results below. Reference ranges and testing methods vary between laboratories. <strong>Always copy the exact unit and reference range printed on your original laboratory report.</strong>
+    </p>
+
+    <form id="tltEntryForm" novalidate>
+      <div class="tlt-form-grid tlt-form-grid-4" style="margin-bottom:16px;">
+        <div class="tlt-form-group">
+          <label for="tltInputDate">1. Test Date <span style="color:#e11d48">*</span></label>
+          <input type="date" id="tltInputDate" required />
+          <span class="tlt-error-msg" id="tltErrDate">Please select a valid date</span>
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltInputTime">2. Test Time <span class="tlt-optional">(Optional)</span></label>
+          <input type="time" id="tltInputTime" />
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltInputLab">3. Laboratory / Clinic Name <span class="tlt-optional">(Optional)</span></label>
+          <input type="text" id="tltInputLab" placeholder="e.g., Labcorp, Quest, Mayo Clinic" maxlength="80" />
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltInputProvider">4. Ordering Provider <span class="tlt-optional">(Optional)</span></label>
+          <input type="text" id="tltInputProvider" placeholder="e.g., Dr. Smith, Endocrinologist" maxlength="80" />
+        </div>
+      </div>
+
+      <div class="tlt-form-grid tlt-form-grid-3" style="margin-bottom:16px;">
+        <div class="tlt-form-group">
+          <label for="tltSelectTest">5. Thyroid Test <span style="color:#e11d48">*</span></label>
+          <select id="tltSelectTest" required>
+            <option value="TSH">TSH (Thyroid-Stimulating Hormone)</option>
+            <option value="Free T4">Free T4 (Free Thyroxine / FT4)</option>
+            <option value="Total T4">Total T4 (Total Thyroxine / TT4)</option>
+            <option value="Free T3">Free T3 (Free Triiodothyronine / FT3)</option>
+            <option value="Total T3">Total T3 (Total Triiodothyronine / TT3)</option>
+            <option value="TPO Antibodies">TPO Antibodies / TPOAb (Thyroid Peroxidase)</option>
+            <option value="Thyroglobulin Antibodies">Thyroglobulin Antibodies / TgAb</option>
+            <option value="TSH Receptor Antibodies">TSH Receptor Antibodies / TRAb</option>
+            <option value="Thyroid-Stimulating Immunoglobulin">Thyroid-Stimulating Immunoglobulin / TSI</option>
+            <option value="Thyroglobulin">Thyroglobulin (Tg)</option>
+            <option value="Reverse T3">Reverse T3 (rT3)</option>
+            <option value="Custom">Custom Thyroid Test</option>
+          </select>
+        </div>
+
+        <div class="tlt-form-group" id="tltCustomTestGroup" style="display:none;">
+          <label for="tltInputCustomTest">Custom Test Name <span style="color:#e11d48">*</span></label>
+          <input type="text" id="tltInputCustomTest" placeholder="Enter custom test name" maxlength="60" />
+          <span class="tlt-error-msg" id="tltErrCustomTest">Enter test name</span>
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltSelectQualifier">7. Result Qualifier</label>
+          <select id="tltSelectQualifier">
+            <option value="exact">Exact numeric value</option>
+            <option value="less_than">Less than (&lt;)</option>
+            <option value="less_than_equal">Less than or equal to (≤)</option>
+            <option value="greater_than">Greater than (&gt;)</option>
+            <option value="greater_than_equal">Greater than or equal to (≥)</option>
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+            <option value="detected">Detected</option>
+            <option value="not_detected">Not detected</option>
+            <option value="borderline">Borderline</option>
+            <option value="text">Laboratory text result</option>
+          </select>
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltInputResult">6. Result Value <span style="color:#e11d48">*</span></label>
+          <input type="text" id="tltInputResult" placeholder="e.g., 1.85 or Positive" required />
+          <span class="tlt-error-msg" id="tltErrResult">Please enter a valid numeric or text result</span>
+        </div>
+      </div>
+
+      <div class="tlt-form-grid tlt-form-grid-4" style="margin-bottom:16px;">
+        <div class="tlt-form-group">
+          <label for="tltSelectUnit">8. Unit <span style="color:#e11d48">*</span></label>
+          <select id="tltSelectUnit" required>
+            <!-- Dynamically populated based on test selection -->
+          </select>
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltSelectRangeType">11. Reference-Range Type</label>
+          <select id="tltSelectRangeType">
+            <option value="min_max">Minimum & Maximum range</option>
+            <option value="max_only">Maximum limit only (&lt; or ≤)</option>
+            <option value="min_only">Minimum limit only (&gt; or ≥)</option>
+            <option value="pos_neg">Positive / Negative reference</option>
+            <option value="none">No reference range provided</option>
+          </select>
+        </div>
+
+        <div class="tlt-form-group" id="tltRangeMinGroup">
+          <label for="tltInputRangeMin">9. Lab Reference Min</label>
+          <input type="text" id="tltInputRangeMin" placeholder="e.g., 0.45" />
+          <span class="tlt-error-msg" id="tltErrRangeMin">Invalid minimum</span>
+        </div>
+
+        <div class="tlt-form-group" id="tltRangeMaxGroup">
+          <label for="tltInputRangeMax">10. Lab Reference Max</label>
+          <input type="text" id="tltInputRangeMax" placeholder="e.g., 4.50" />
+          <span class="tlt-error-msg" id="tltErrRangeMax">Must be greater than minimum</span>
+        </div>
+      </div>
+
+      <div class="tlt-form-grid tlt-form-grid-3" style="margin-bottom:16px;">
+        <div class="tlt-form-group">
+          <label for="tltSelectMedTiming">12. Medication Timing <span class="tlt-optional">(Optional)</span></label>
+          <select id="tltSelectMedTiming">
+            <option value="">Not specified</option>
+            <option value="Fasting / Before thyroid meds">Fasting / Before morning thyroid meds</option>
+            <option value="Taken morning meds before test">Took morning thyroid meds before test</option>
+            <option value="Taken thyroid meds 4+ hours prior">Took thyroid meds 4+ hours prior</option>
+            <option value="Not currently taking thyroid medicine">Not currently taking thyroid medicine</option>
+            <option value="Other medication schedule">Other medication schedule</option>
+          </select>
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltSelectBiotin">13. Biotin / Supplement Note <span class="tlt-optional">(Optional)</span></label>
+          <select id="tltSelectBiotin">
+            <option value="">Not specified</option>
+            <option value="No biotin taken">No biotin or B-complex taken</option>
+            <option value="Biotin stopped 2+ days prior">Biotin stopped 2+ days before blood draw</option>
+            <option value="Biotin taken within 48 hours">Biotin taken within 48 hours of test</option>
+            <option value="Multivitamin / Hair-Skin-Nails supplement">Multivitamin or Hair/Skin/Nails supplement</option>
+            <option value="Unsure about biotin content">Unsure about supplement ingredients</option>
+          </select>
+        </div>
+
+        <div class="tlt-form-group">
+          <label for="tltSelectPregnancy">14. Pregnancy Status <span class="tlt-optional">(Optional & Private)</span></label>
+          <select id="tltSelectPregnancy">
+            <option value="Not pregnant">Not pregnant</option>
+            <option value="1st Trimester">1st Trimester (Weeks 1–12)</option>
+            <option value="2nd Trimester">2nd Trimester (Weeks 13–27)</option>
+            <option value="3rd Trimester">3rd Trimester (Weeks 28+)</option>
+            <option value="Postpartum">Postpartum (0–12 months)</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tlt-form-group" style="margin-bottom:16px;">
+        <label for="tltInputNotes">15. Symptoms, Medication Dose or Context Notes <span class="tlt-optional">(Optional)</span></label>
+        <textarea id="tltInputNotes" placeholder="e.g., Levothyroxine 75 mcg daily, feeling fatigued, blood draw at 8:30 AM before dose" maxlength="500"></textarea>
+      </div>
+
+      <!-- Context alerts -->
+      <div id="tltPregnancyAlert" class="tlt-alert tlt-alert-warning" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <strong>Pregnancy Reference-Range Notice:</strong> Thyroid hormone physiology changes significantly during pregnancy and postpartum. General adult laboratory reference ranges may not apply. Please use the trimester-specific or pregnancy-specific reference ranges supplied by your testing laboratory and consult your obstetrician or endocrinologist.
+        </div>
+      </div>
+
+      <div id="tltBiotinAlert" class="tlt-alert tlt-alert-info" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div>
+          <strong>Biotin Assay Advisory:</strong> High-dose biotin (vitamin B7) can interfere with immunoassay laboratory methods, potentially causing falsely low TSH or falsely elevated Free T4/T3 results. Always inform your doctor and lab about all supplements you take.
+        </div>
+      </div>
+
+      <!-- Live Check Evaluation Box -->
+      <div id="tltLiveCheckBanner" class="tlt-live-preview">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong id="tltLiveCheckTitle">Lab Range Assessment:</strong>
+          <span id="tltLiveCheckBadge" class="tlt-badge tlt-badge-neutral">Not Checked</span>
+        </div>
+        <p id="tltLiveCheckMsg" style="margin:6px 0 0 0; font-size:0.88rem;"></p>
+      </div>
+
+      <div class="tlt-btn-group">
+        <button type="submit" class="tlt-btn tlt-btn-primary" id="tltBtnSave">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Result to Private History
+        </button>
+        <button type="button" class="tlt-btn tlt-btn-cyan" id="tltBtnAddAnother">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Another Test
+        </button>
+        <button type="button" class="tlt-btn tlt-btn-secondary" id="tltBtnCheckRange">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Check Against My Lab Range
+        </button>
+        <button type="button" class="tlt-btn tlt-btn-outline" id="tltBtnExample">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          Use Example
+        </button>
+        <button type="button" class="tlt-btn tlt-btn-outline" id="tltBtnReset">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset Form
+        </button>
+        <button type="button" class="tlt-btn tlt-btn-outline" id="tltBtnPrintEntry">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print Entry
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- OPTIONAL UNIT CONVERTER PANEL -->
+  <section id="tltConverterCard" class="tlt-card tlt-converter-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+      Optional Thyroid Unit Converter
+    </h2>
+    <p>
+      Compare standard USA and International SI laboratory units. <em>Note: Saved laboratory entries remain stored in your original recorded unit and value. Antibody tests vary by assay and cannot be converted automatically.</em>
+    </p>
+
+    <div class="tlt-converter-grid">
+      <div>
+        <label for="tltConvSelectTest">Select Analyte</label>
+        <select id="tltConvSelectTest">
+          <option value="FT4">Free T4 (ng/dL ⇄ pmol/L)</option>
+          <option value="TT4">Total T4 (µg/dL ⇄ nmol/L)</option>
+          <option value="FT3">Free T3 (pg/mL ⇄ pmol/L)</option>
+          <option value="TT3">Total T3 (ng/dL ⇄ nmol/L)</option>
+          <option value="TSH">TSH (µIU/mL ⇄ mIU/L [1:1])</option>
+        </select>
+        
+        <div style="margin-top:12px;">
+          <label for="tltConvInputVal" id="tltConvInputLbl">Enter Value (USA Unit)</label>
+          <input type="text" id="tltConvInputVal" placeholder="e.g., 1.0" value="1.0" />
+        </div>
+      </div>
+
+      <div style="text-align:center; padding:10px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </div>
+
+      <div>
+        <label>Converted Equivalent (Approximate)</label>
+        <div id="tltConvResultBox" style="background:#ffffff; border:1px solid #ddd6fe; border-radius:8px; padding:16px; min-height:80px; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-size:1.4rem; font-weight:800; color:#6b21a8;" id="tltConvResultVal">12.87 pmol/L</div>
+          <div style="font-size:0.8rem; color:#64748b;" id="tltConvFormula">Formula: 1.0 ng/dL × 12.87 = 12.87 pmol/L</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; font-size:0.84rem; color:#475569; background:rgba(255,255,255,0.7); padding:10px 14px; border-radius:6px;">
+      <strong>Accuracy Verification Standards:</strong> Free T4 1.0 ng/dL = 12.87 pmol/L | Total T4 8.0 µg/dL = 102.96 nmol/L | Free T3 3.0 pg/mL = 4.61 pmol/L | Total T3 100 ng/dL = 1.536 nmol/L | TSH 2.0 µIU/mL = 2.0 mIU/L
+    </div>
+  </section>
+
+  <!-- THYROID DASHBOARD -->
+  <section id="tltDashboardSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+      Thyroid Summary Dashboard
+    </h2>
+
+    <div class="tlt-stats-bar">
+      <div class="tlt-stat-item">
+        <div class="tlt-stat-num" id="tltStatTotal">0</div>
+        <div class="tlt-stat-lbl">Total Results</div>
+      </div>
+      <div class="tlt-stat-item">
+        <div class="tlt-stat-num" id="tltStatLatestDate">—</div>
+        <div class="tlt-stat-lbl">Latest Lab Date</div>
+      </div>
+      <div class="tlt-stat-item">
+        <div class="tlt-stat-num" style="color:#16a34a;" id="tltStatWithin">0</div>
+        <div class="tlt-stat-lbl">Within Lab Range</div>
+      </div>
+      <div class="tlt-stat-item">
+        <div class="tlt-stat-num" style="color:#e11d48;" id="tltStatOutside">0</div>
+        <div class="tlt-stat-lbl">Outside Lab Range</div>
+      </div>
+      <div class="tlt-stat-item">
+        <div class="tlt-stat-num" style="color:#64748b;" id="tltStatNoRange">0</div>
+        <div class="tlt-stat-lbl">No Range Specified</div>
+      </div>
+      <div class="tlt-stat-item">
+        <div class="tlt-stat-num" id="tltStatDaysSince">—</div>
+        <div class="tlt-stat-lbl">Days Since Last Lab</div>
+      </div>
+    </div>
+
+    <div class="tlt-dashboard-grid">
+      <!-- TSH Card -->
+      <div class="tlt-metric-card tlt-card-tsh" id="tltCardTSH">
+        <div class="tlt-metric-header">
+          <span class="tlt-metric-title">Latest TSH</span>
+          <span class="tlt-badge tlt-badge-neutral" id="tltBadgeTSH">No Data</span>
+        </div>
+        <div class="tlt-metric-value">
+          <span id="tltValTSH">—</span>
+          <span class="tlt-metric-unit" id="tltUnitTSH">mIU/L</span>
+        </div>
+        <div class="tlt-metric-meta">
+          <span id="tltRangeTSH">Entered Range: —</span>
+          <span id="tltDateTSH">Date: —</span>
+          <span id="tltDeltaTSH" style="font-weight:600;"></span>
+        </div>
+      </div>
+
+      <!-- Free T4 Card -->
+      <div class="tlt-metric-card tlt-card-ft4" id="tltCardFT4">
+        <div class="tlt-metric-header">
+          <span class="tlt-metric-title">Latest Free T4</span>
+          <span class="tlt-badge tlt-badge-neutral" id="tltBadgeFT4">No Data</span>
+        </div>
+        <div class="tlt-metric-value">
+          <span id="tltValFT4">—</span>
+          <span class="tlt-metric-unit" id="tltUnitFT4">ng/dL</span>
+        </div>
+        <div class="tlt-metric-meta">
+          <span id="tltRangeFT4">Entered Range: —</span>
+          <span id="tltDateFT4">Date: —</span>
+          <span id="tltDeltaFT4" style="font-weight:600;"></span>
+        </div>
+      </div>
+
+      <!-- Free T3 Card -->
+      <div class="tlt-metric-card tlt-card-ft3" id="tltCardFT3">
+        <div class="tlt-metric-header">
+          <span class="tlt-metric-title">Latest Free T3</span>
+          <span class="tlt-badge tlt-badge-neutral" id="tltBadgeFT3">No Data</span>
+        </div>
+        <div class="tlt-metric-value">
+          <span id="tltValFT3">—</span>
+          <span class="tlt-metric-unit" id="tltUnitFT3">pg/mL</span>
+        </div>
+        <div class="tlt-metric-meta">
+          <span id="tltRangeFT3">Entered Range: —</span>
+          <span id="tltDateFT3">Date: —</span>
+          <span id="tltDeltaFT3" style="font-weight:600;"></span>
+        </div>
+      </div>
+
+      <!-- TPOAb Card -->
+      <div class="tlt-metric-card tlt-card-tpo" id="tltCardTPO">
+        <div class="tlt-metric-header">
+          <span class="tlt-metric-title">Latest TPO Antibodies</span>
+          <span class="tlt-badge tlt-badge-neutral" id="tltBadgeTPO">No Data</span>
+        </div>
+        <div class="tlt-metric-value">
+          <span id="tltValTPO">—</span>
+          <span class="tlt-metric-unit" id="tltUnitTPO">IU/mL</span>
+        </div>
+        <div class="tlt-metric-meta">
+          <span id="tltRangeTPO">Entered Range: —</span>
+          <span id="tltDateTPO">Date: —</span>
+          <span id="tltDeltaTPO" style="font-weight:600;"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVERTISEMENT 2: 300x250 BANNER -->
+  <div class="tlt-ad-wrapper tlt-ad-300" id="tltAd2Wrapper">
+    <span class="tlt-ad-label">ADVERTISEMENT</span>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- TREND CHARTS -->
+  <section id="tltChartSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Individual Thyroid Trend Charts
+    </h2>
+    <p>
+      View historical trends for each thyroid test separately. Shaded areas represent the laboratory reference range you entered. <em>Incompatible thyroid analytes (e.g. TSH and T4) are never plotted on a misleading combined axis.</em>
+    </p>
+
+    <div class="tlt-chart-controls">
+      <div class="tlt-form-group" style="min-width:200px;">
+        <label for="tltChartSelectTest">Select Test to Chart</label>
+        <select id="tltChartSelectTest">
+          <option value="TSH">TSH</option>
+          <option value="Free T4">Free T4</option>
+          <option value="Total T4">Total T4</option>
+          <option value="Free T3">Free T3</option>
+          <option value="Total T3">Total T3</option>
+          <option value="TPO Antibodies">TPO Antibodies (TPOAb)</option>
+          <option value="Thyroglobulin Antibodies">Thyroglobulin Antibodies (TgAb)</option>
+          <option value="TSH Receptor Antibodies">TSH Receptor Antibodies (TRAb)</option>
+          <option value="Thyroid-Stimulating Immunoglobulin">Thyroid-Stimulating Immunoglobulin (TSI)</option>
+          <option value="Thyroglobulin">Thyroglobulin (Tg)</option>
+          <option value="Reverse T3">Reverse T3</option>
+        </select>
+      </div>
+
+      <div class="tlt-form-group" style="min-width:160px;">
+        <label for="tltChartSelectTime">Time Range</label>
+        <select id="tltChartSelectTime">
+          <option value="all">All Time</option>
+          <option value="3m">Last 3 Months</option>
+          <option value="6m">Last 6 Months</option>
+          <option value="12m">Last 12 Months</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="tlt-chart-container" id="tltCanvasBox">
+      <canvas id="tltTrendCanvas" width="900" height="300" role="img" aria-label="Thyroid trend graph"></canvas>
+      <div id="tltChartEmpty" class="tlt-empty-state" style="display:none;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <p>No numeric data recorded yet for this test in the selected time period.</p>
+      </div>
+    </div>
+
+    <div class="tlt-chart-legend">
+      <span><span class="tlt-legend-dot" style="background:#0284c7;"></span> Lab Result Point</span>
+      <span><span class="tlt-legend-dot" style="background:rgba(186, 230, 253, 0.6); border:1px solid #38bdf8;"></span> Shaded Reference Range</span>
+      <span><span class="tlt-legend-dot" style="background:#e11d48;"></span> Range Limit Transition</span>
+    </div>
+
+    <div style="margin-top:20px;">
+      <h3 style="font-size:1rem; color:#334155;">Accessible Data Points for Selected Chart</h3>
+      <div class="tlt-table-responsive" style="max-height:220px; overflow-y:auto;">
+        <table id="tltChartDataTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Result Value & Unit</th>
+              <th>Entered Lab Range</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tltChartTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVATE LAB HISTORY -->
+  <section id="tltHistorySection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Private Lab History
+    </h2>
+
+    <p style="font-size:0.85rem; color:#64748b; margin-bottom:12px;">
+      🔒 <strong>Local Privacy Notice:</strong> Your thyroid records are stored directly in this browser's localStorage and are not encrypted. Anyone with access to this browser profile may be able to view them. Clearing browser storage or changing devices will remove your local data.
+    </p>
+
+    <!-- Filters & Search -->
+    <div class="tlt-filter-bar">
+      <div class="tlt-form-group">
+        <label for="tltFilterSearch">Search History</label>
+        <input type="text" id="tltFilterSearch" placeholder="Search by test, lab, note..." />
+      </div>
+
+      <div class="tlt-form-group">
+        <label for="tltFilterTest">Filter by Test</label>
+        <select id="tltFilterTest">
+          <option value="all">All Tests</option>
+          <option value="TSH">TSH</option>
+          <option value="Free T4">Free T4</option>
+          <option value="Total T4">Total T4</option>
+          <option value="Free T3">Free T3</option>
+          <option value="Total T3">Total T3</option>
+          <option value="TPO Antibodies">TPO Antibodies</option>
+          <option value="Thyroglobulin Antibodies">Tg Antibodies</option>
+          <option value="TSH Receptor Antibodies">TRAb</option>
+          <option value="Thyroid-Stimulating Immunoglobulin">TSI</option>
+          <option value="Thyroglobulin">Thyroglobulin</option>
+          <option value="Reverse T3">Reverse T3</option>
+        </select>
+      </div>
+
+      <div class="tlt-form-group">
+        <label for="tltFilterStatus">Filter by Range Status</label>
+        <select id="tltFilterStatus">
+          <option value="all">All Statuses</option>
+          <option value="within">Within Range</option>
+          <option value="outside">Outside Range (Above/Below)</option>
+          <option value="below">Below Range</option>
+          <option value="above">Above Range</option>
+          <option value="none">No Range Assessed</option>
+        </select>
+      </div>
+
+      <div class="tlt-form-group">
+        <label for="tltFilterDateRange">Date Filter</label>
+        <select id="tltFilterDateRange">
+          <option value="all">All Dates</option>
+          <option value="3m">Last 3 Months</option>
+          <option value="6m">Last 6 Months</option>
+          <option value="12m">Last 12 Months</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- History Table -->
+    <div class="tlt-table-responsive">
+      <table id="tltHistoryTable">
+        <thead>
+          <tr>
+            <th>Date & Time</th>
+            <th>Test</th>
+            <th>Result & Unit</th>
+            <th>Lab Reference Range</th>
+            <th>Range Status</th>
+            <th>Laboratory</th>
+            <th>Medication & Context</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tltHistoryTableBody">
+          <!-- Dynamic history rows -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="tltHistoryEmpty" class="tlt-empty-state" style="display:none;">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <p>No thyroid laboratory records found. Use the form above to add your first lab result.</p>
+    </div>
+
+    <!-- History Management Buttons -->
+    <div class="tlt-btn-group" style="justify-content:space-between; align-items:center;">
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <button type="button" class="tlt-btn tlt-btn-outline tlt-btn-sm" id="tltBtnPrintSelected">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print Lab Report
+        </button>
+        <button type="button" class="tlt-btn tlt-btn-outline tlt-btn-sm" id="tltBtnExportCSV">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export to CSV
+        </button>
+      </div>
+
+      <div>
+        <button type="button" class="tlt-btn tlt-btn-danger tlt-btn-sm" id="tltBtnClearAll">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Clear All History
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPORT & BACKUP SECTION -->
+  <section id="tltExportBackupSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export, Backup & Data Portability
+    </h2>
+    <p>
+      Create safe, private backups of your thyroid history to keep on your personal computer or transfer to another device.
+    </p>
+
+    <div class="tlt-form-grid tlt-form-grid-2">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:18px;">
+        <h3 style="font-size:1.05rem; margin-top:0;">Export Data</h3>
+        <p style="font-size:0.88rem;">Download your complete thyroid history in structured JSON or spreadsheet-ready CSV format.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+          <button type="button" class="tlt-btn tlt-btn-primary tlt-btn-sm" id="tltBtnExportJSON">
+            Download JSON Backup
+          </button>
+          <button type="button" class="tlt-btn tlt-btn-secondary tlt-btn-sm" id="tltBtnExportCSV2">
+            Download CSV Spreadsheet
+          </button>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:18px;">
+        <h3 style="font-size:1.05rem; margin-top:0;">Restore / Import Backup</h3>
+        <p style="font-size:0.88rem;">Select a valid JSON backup file previously downloaded from this tracker.</p>
+        <div style="margin-top:12px;">
+          <input type="file" id="tltInputImportFile" accept=".json" style="font-size:0.88rem; margin-bottom:10px;" />
+          <button type="button" class="tlt-btn tlt-btn-cyan tlt-btn-sm" id="tltBtnImportJSON">
+            Validate & Import Backup
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVERTISEMENT 3: NATIVE BANNER -->
+  <div class="tlt-ad-wrapper tlt-ad-native" id="tltAd3Wrapper">
+    <span class="tlt-ad-label">SPONSORED CONTENT</span>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- REFERENCE RANGE GUIDE -->
+  <section id="tltReferenceGuideSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Understanding Laboratory Reference Ranges
+    </h2>
+
+    <div class="tlt-notice-box" style="margin-bottom:16px;">
+      <strong>Why Reference Ranges Vary:</strong> There is no single universal normal range for thyroid hormones. Each diagnostic laboratory establishes its own reference intervals based on the specific testing platform, analyzer calibration, reagent lot, and healthy reference population.
+    </div>
+
+    <div class="tlt-form-grid tlt-form-grid-3">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px;">
+        <h3 style="font-size:1rem; color:#0284c7;">1. Laboratory Specificity</h3>
+        <p style="font-size:0.88rem;">Assays from major commercial labs (such as Labcorp, Quest Diagnostics, or hospital pathology departments) use proprietary immunoassay instruments. An FT4 range might be 0.8–1.8 ng/dL at one facility and 0.9–1.7 ng/dL at another.</p>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px;">
+        <h3 style="font-size:1rem; color:#0284c7;">2. Age & Life Stage</h3>
+        <p style="font-size:0.88rem;">TSH concentrations naturally drift upward with advancing age in healthy individuals. Pediatric, geriatric, and pregnancy-specific reference intervals differ substantially from standard non-pregnant adult intervals.</p>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px;">
+        <h3 style="font-size:1rem; color:#0284c7;">3. Clinical Context</h3>
+        <p style="font-size:0.88rem;">A single numerical result outside a reference range does not establish a medical diagnosis. Clinicians evaluate full thyroid panels (TSH, Free T4, Free T3) in combination with physical symptoms, ultrasound findings, and medication history.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATIONAL GUIDE -->
+  <section id="tltGuideSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Comprehensive Thyroid Laboratory Guide
+    </h2>
+
+    <article style="font-size:0.94rem; color:#334155; line-height:1.75;">
+      <h3>What Is a Thyroid Lab Tracker?</h3>
+      <p>
+        A thyroid lab tracker is a dedicated personal health management tool designed to help you organize, monitor, and visualize thyroid blood test results over time. Because thyroid conditions—such as hypothyroidism, hyperthyroidism, Hashimoto's thyroiditis, and Graves' disease—frequently require periodic blood testing and longitudinal monitoring, maintaining an accurate personal log ensures you and your physician have clear historical context during consultations.
+      </p>
+
+      <h3>What Does TSH Measure?</h3>
+      <p>
+        Thyroid-Stimulating Hormone (TSH), also known as thyrotropin, is produced by the anterior pituitary gland in the brain. TSH serves as the primary signaling hormone instructing the thyroid gland to produce and release thyroxine (T4) and triiodothyronine (T3). Because of a sensitive negative feedback loop, when circulating thyroid hormone levels decrease, the pituitary gland increases TSH secretion. Conversely, when thyroid hormone levels are elevated, pituitary TSH secretion drops. TSH is typically the first-line screening test used to evaluate thyroid function.
+      </p>
+
+      <h3>Free T4 vs. Total T4</h3>
+      <p>
+        Thyroxine (T4) is the principal hormone manufactured by the thyroid gland. In the bloodstream, more than 99% of T4 is bound to carrier proteins, primarily thyroid-binding globulin (TBG). 
+      </p>
+      <ul>
+        <li><strong>Free T4 (FT4):</strong> Measures the tiny unbound, biologically active fraction of T4 available to body tissues. Free T4 is less susceptible to fluctuations caused by pregnancy, estrogen therapy, or protein-binding variations, making it the preferred metric for assessing active thyroid status.</li>
+        <li><strong>Total T4 (TT4):</strong> Measures both bound and unbound hormone. Total T4 levels can appear elevated during pregnancy or with oral contraceptive use simply because estrogen increases carrier proteins, even when active Free T4 remains normal.</li>
+      </ul>
+
+      <h3>Free T3 vs. Total T3</h3>
+      <p>
+        Triiodothyronine (T3) is the most metabolically active thyroid hormone. While some T3 is secreted directly by the thyroid gland, the vast majority is created in peripheral tissues (such as the liver and kidneys) through the enzymatic conversion of T4 into T3.
+      </p>
+      <ul>
+        <li><strong>Free T3 (FT3):</strong> Measures the unbound, active hormone fraction. It is particularly useful when evaluating suspected thyrotoxicosis or T3-hyperthyroidism.</li>
+        <li><strong>Total T3 (TT3):</strong> Reflects total circulating T3 including protein-bound molecules.</li>
+      </ul>
+
+      <h3>Understanding Thyroid Antibody Tests</h3>
+      <p>
+        Autoimmune thyroid disorders occur when the immune system mistakenly produces antibodies targeting thyroid tissue components:
+      </p>
+      <ul>
+        <li><strong>Thyroid Peroxidase Antibodies (TPOAb):</strong> Target an essential enzyme involved in thyroid hormone synthesis. Elevated TPO antibodies are commonly present in autoimmune thyroiditis (Hashimoto's disease) and often in Graves' disease.</li>
+        <li><strong>Thyroglobulin Antibodies (TgAb):</strong> Target thyroglobulin, a precursor storage protein. Frequently tested alongside TPOAb or during thyroid cancer surveillance.</li>
+        <li><strong>TSH Receptor Antibodies (TRAb) & TSI:</strong> Target the TSH receptor on thyroid cells. Thyroid-Stimulating Immunoglobulin (TSI) directly stimulates the receptor, causing excess hormone production in Graves' disease.</li>
+      </ul>
+
+      <h3>Why Laboratory Reference Ranges Differ</h3>
+      <p>
+        Diagnostic laboratories utilize varying analytical instruments (e.g., chemiluminescence, electrochemiluminescence, radioimmunoassay). Because each instrument manufacturer establishes calibrations using specific reference cohorts, normal ranges differ between facilities. You should always compare your result against the exact reference interval printed on your specific test report rather than a generic textbook number.
+      </p>
+
+      <h3>How to Copy Results From a Lab Report</h3>
+      <p>
+        To ensure maximum tracking accuracy:
+      </p>
+      <ol>
+        <li>Locate the exact analyte name (e.g., "TSH", "Free T4 Direct", "T3 Free Dialysis").</li>
+        <li>Note the numerical value along with any qualifier (such as "&lt; 0.01" or "&gt; 100").</li>
+        <li>Check the printed unit of measurement (e.g., ng/dL vs. pmol/L).</li>
+        <li>Enter the reference interval minimum and maximum provided in the "Reference Interval" column.</li>
+      </ol>
+
+      <h3>Understanding USA and International Units</h3>
+      <p>
+        In the United States, conventional mass units are standard (such as Free T4 in ng/dL and Free T3 in pg/mL). In the United Kingdom, Canada, Europe, and Australasia, the International System of Units (SI) molar concentrations are standard (Free T4 and Free T3 in pmol/L). For TSH, 1 µIU/mL equals 1 mIU/L directly. Our optional unit converter allows convenient unit comparisons while preserving your original laboratory numbers.
+      </p>
+
+      <h3>Why Thyroid Tests Are Interpreted Together</h3>
+      <p>
+        Thyroid physiology operates as an integrated endocrine axis. An isolated lab value rarely tells the entire story. For example, a mildly elevated TSH with normal Free T4 represents a different physiological state (often termed subclinical hypothyroidism) than an elevated TSH accompanied by low Free T4 (overt hypothyroidism). Your healthcare provider reviews the entire hormone panel alongside your clinical history, physical exam, and symptoms.
+      </p>
+
+      <h3>Pregnancy and Thyroid Laboratory Results</h3>
+      <p>
+        Human chorionic gonadotropin (hCG) produced during pregnancy shares structural similarities with TSH and weakly stimulates the thyroid gland, naturally suppressing maternal TSH during the first trimester. Furthermore, increased estrogen levels elevate carrier proteins. As a result, pregnant individuals require trimester-specific laboratory reference ranges.
+      </p>
+
+      <h3>Medicines, Supplements and Test Timing</h3>
+      <p>
+        Timing of blood collection relative to thyroid hormone replacement medication (such as levothyroxine or liothyronine) can impact test numbers. Peak absorption of T4 medications occurs 2–4 hours after ingestion, which can cause a transient spike in measured Free T4. Many endocrinologists recommend drawing blood in the morning before taking the daily thyroid dose. Always follow your physician's specific instructions.
+      </p>
+
+      <h3>Biotin and Laboratory Interference</h3>
+      <p>
+        Biotin (vitamin B7), often found in high concentrations in over-the-counter hair, skin, and nail supplements or multivitamins, can biochemically interfere with streptavidin-biotin immunoassays used by many clinical laboratories. This interference can result in falsely low TSH measurements and falsely high Free T4 and Free T3 measurements, mimicking hyperthyroidism. The U.S. FDA recommends discussing supplement use with your doctor prior to blood draws.
+      </p>
+
+      <h3>How to Discuss Trends With a Healthcare Professional</h3>
+      <p>
+        When presenting your tracked lab history to your endocrinologist or primary care physician, emphasize long-term trajectories, medication adherence patterns, and correlated symptoms. Use the built-in printable report or CSV export to bring structured, readable records to your appointments.
+      </p>
+
+      <h3>Local Browser Storage and Privacy</h3>
+      <p>
+        This application is designed with a strict privacy-first architecture. All laboratory entries are saved entirely inside your web browser using HTML5 localStorage. No thyroid data is uploaded to remote servers or shared with third parties.
+      </p>
+    </article>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="tltFaqSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      Frequently Asked Questions (FAQ)
+    </h2>
+
+    <div class="tlt-accordion-list" id="tltAccordionFaq">
+      <!-- FAQ 1 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns1" id="tltFaqBtn1">
+          <span>What thyroid tests can I track with this tool?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns1" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn1">
+          You can track all standard and specialized thyroid laboratory analytes, including TSH (Thyroid-Stimulating Hormone), Free T4 (FT4), Total T4 (TT4), Free T3 (FT3), Total T3 (TT3), TPO Antibodies (TPOAb), Thyroglobulin Antibodies (TgAb), TSH Receptor Antibodies (TRAb), Thyroid-Stimulating Immunoglobulin (TSI), Thyroglobulin (Tg), Reverse T3 (rT3), and custom user-defined laboratory tests.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns2" id="tltFaqBtn2">
+          <span>Is this tool a thyroid test or medical device?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns2" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn2">
+          No. This application is an organizational and educational log. It does not perform laboratory testing, draw blood, analyze physical specimens, diagnose medical conditions, or replace the professional judgment of a physician.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns3" id="tltFaqBtn3">
+          <span>Does this tracker diagnose hypothyroidism or hyperthyroidism?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns3" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn3">
+          No. It strictly evaluates whether a numerical result falls within, above, or below the specific reference range that you manually entered from your laboratory report. It never assigns medical diagnoses such as hypothyroidism, Hashimoto's thyroiditis, or Graves' disease.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns4" id="tltFaqBtn4">
+          <span>Why should I enter my laboratory's reference range?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns4" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn4">
+          Because diagnostic reference intervals differ across testing platforms, analyzers, and reagent kits. Entering the exact range printed on your report ensures your dashboard, graphs, and status indicators accurately reflect your laboratory's specific baseline.
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns5" id="tltFaqBtn5">
+          <span>Can different laboratories have different reference ranges?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns5" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn5">
+          Yes. Laboratories utilize different analytical immunoassay platforms (e.g., Roche, Abbott, Siemens, Beckman Coulter), each calibrated with distinct reference populations and standards.
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns6" id="tltFaqBtn6">
+          <span>What is the difference between Free T4 and Total T4?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns6" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn6">
+          Free T4 represents the unbound, active hormone circulating in blood that can enter cells. Total T4 measures both unbound hormone and the &gt;99% bound to binding proteins. Free T4 is the preferred measure because it is not distorted by changes in protein levels.
+        </div>
+      </div>
+
+      <!-- FAQ 7 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns7" id="tltFaqBtn7">
+          <span>What is the difference between Free T3 and Total T3?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns7" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn7">
+          Free T3 measures the active, unbound triiodothyronine hormone available to tissues, while Total T3 includes hormone bound to serum carrier proteins. Free T3 is commonly evaluated when investigating hyperthyroidism.
+        </div>
+      </div>
+
+      <!-- FAQ 8 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns8" id="tltFaqBtn8">
+          <span>What are TPO antibodies and Tg antibodies?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns8" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn8">
+          Thyroid peroxidase antibodies (TPOAb) and thyroglobulin antibodies (TgAb) are autoantibodies directed against thyroid proteins. Elevated levels indicate autoimmune thyroid activity, most frequently Hashimoto's thyroiditis.
+        </div>
+      </div>
+
+      <!-- FAQ 9 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns9" id="tltFaqBtn9">
+          <span>Can biotin affect thyroid laboratory results?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns9" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn9">
+          Yes. High doses of biotin (vitamin B7) can interfere with laboratory immunoassay technology, causing falsely suppressed TSH values and falsely elevated Free T4/T3 values. Discuss all dietary supplements with your physician before lab testing.
+        </div>
+      </div>
+
+      <!-- FAQ 10 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns10" id="tltFaqBtn10">
+          <span>Are thyroid ranges different during pregnancy?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns10" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn10">
+          Yes. Maternal thyroid physiology undergoes significant adaptations during gestation. Standard non-pregnant adult reference ranges should not be used; instead, trimester-specific ranges provided by your medical care team must be referenced.
+        </div>
+      </div>
+
+      <!-- FAQ 11 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns11" id="tltFaqBtn11">
+          <span>Where is my thyroid lab history stored?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns11" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn11">
+          All entries are stored 100% locally in your device's browser using HTML5 localStorage. No health data is transmitted to external servers. If you clear browser cache or use private/incognito mode, export a JSON backup to protect your history.
+        </div>
+      </div>
+
+      <!-- FAQ 12 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns12" id="tltFaqBtn12">
+          <span>Can I export my thyroid results to a spreadsheet or backup file?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns12" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn12">
+          Yes. You can export your data at any time as a CSV spreadsheet (compatible with Microsoft Excel, Apple Numbers, Google Sheets) or download a complete JSON backup file that can be restored on any device.
+        </div>
+      </div>
+
+      <!-- FAQ 13 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns13" id="tltFaqBtn13">
+          <span>Can I use this tool on an Android phone or iPhone?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns13" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn13">
+          Yes. The application is built with a responsive, mobile-first design that adjusts seamlessly to 320px, 360px, 390px, tablet, and desktop screens with minimum 44px touch targets.
+        </div>
+      </div>
+
+      <!-- FAQ 14 -->
+      <div class="tlt-accordion-item">
+        <button type="button" class="tlt-accordion-header" aria-expanded="false" aria-controls="tltFaqAns14" id="tltFaqBtn14">
+          <span>What should I do if my laboratory results are unexpected?</span>
+          <svg class="tlt-accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="tltFaqAns14" class="tlt-accordion-content" role="region" aria-labelledby="tltFaqBtn14">
+          Contact your prescribing physician or endocrinologist. Do not adjust, start, or stop prescription medications based solely on a lab tracker. Bring your printed results to your medical appointment for clinical evaluation.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL SHARING SECTION -->
+  <section id="tltShareSection" class="tlt-card">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share This Free Thyroid Lab Tracker
+    </h2>
+    <p>
+      Help others track their thyroid levels, TSH, T3, T4, and antibody lab results privately in their browser.
+    </p>
+
+    <div class="tlt-share-grid">
+      <button type="button" class="tlt-share-btn tlt-share-fb" id="tltShareFb" aria-label="Share on Facebook">
+        Facebook
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-x" id="tltShareX" aria-label="Share on X">
+        X (Twitter)
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-wa" id="tltShareWa" aria-label="Share on WhatsApp">
+        WhatsApp
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-in" id="tltShareIn" aria-label="Share on LinkedIn">
+        LinkedIn
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-rd" id="tltShareRd" aria-label="Share on Reddit">
+        Reddit
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-em" id="tltShareEm" aria-label="Share via Email">
+        Email
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-cp" id="tltShareCopy" aria-label="Copy tool link">
+        Copy Link
+      </button>
+      <button type="button" class="tlt-share-btn tlt-share-native" id="tltShareNative" aria-label="Share via device apps">
+        Share via Apps
+      </button>
+    </div>
+  </section>
+
+  <!-- OFFICIAL REFERENCES & FOOTER -->
+  <footer id="tltFooterSection" class="tlt-card" style="background:#ffffff; border:1px solid #cbd5e1;">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Official Clinical References & Resources
+    </h2>
+
+    <ul class="tlt-ref-list">
+      <li>
+        <a href="https://www.niddk.nih.gov/health-information/diagnostic-tests/thyroid" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          NIDDK — Thyroid Tests Overview
+        </a>
+      </li>
+      <li>
+        <a href="https://www.thyroid.org/thyroid-function-tests/" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          American Thyroid Association — Thyroid Function Tests
+        </a>
+      </li>
+      <li>
+        <a href="https://medlineplus.gov/lab-tests/tsh-thyroid-stimulating-hormone-test/" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          MedlinePlus — TSH Test Guide
+        </a>
+      </li>
+      <li>
+        <a href="https://medlineplus.gov/lab-tests/thyroxine-t4-test/" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          MedlinePlus — Thyroxine (T4) Test
+        </a>
+      </li>
+      <li>
+        <a href="https://medlineplus.gov/lab-tests/triiodothyronine-t3-tests/" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          MedlinePlus — Triiodothyronine (T3) Tests
+        </a>
+      </li>
+      <li>
+        <a href="https://medlineplus.gov/lab-tests/thyroid-antibodies/" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          MedlinePlus — Thyroid Antibodies
+        </a>
+      </li>
+      <li>
+        <a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/biotin-interference-troponin-lab-tests-assays-subject-biotin-interference" target="_blank" rel="noopener noreferrer" class="tlt-ref-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          FDA Safety Communication — Biotin Laboratory Interference
+        </a>
+      </li>
+    </ul>
+
+    <div class="tlt-notice-box" style="margin-top:20px; background:#fff1f2; border-left-color:#e11d48; color:#881337;">
+      <strong>Medical Disclaimer:</strong> This thyroid lab tracker is an organizational and educational tool. It does not perform laboratory testing, diagnose thyroid disease, determine the cause of an abnormal result, recommend treatment or replace a qualified healthcare professional. Laboratory methods, units and reference ranges vary. Always use the reference range printed on your own laboratory report. Do not start, stop or change thyroid medication based on this tool.
+    </div>
+
+    <div class="tlt-notice-box" style="margin-top:10px; background:#fef2f2; border-left-color:#dc2626; color:#991b1b;">
+      🚨 <strong>Emergency Notice:</strong> This is not an emergency tool. If you have severe or rapidly worsening symptoms, seek immediate medical care or call 911 in the United States.
+    </div>
+
+    <div style="text-align:center; margin-top:24px; font-size:0.82rem; color:#94a3b8;">
+      © <span id="tltCurrentYear">2026</span> Thyroid Lab Tracker — Private Local Health Organizer
+    </div>
+  </footer>
+
+  <!-- EDIT RECORD MODAL -->
+  <div id="tltEditModal" class="tlt-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="tltEditModalTitle">
+    <div class="tlt-modal-dialog">
+      <h3 id="tltEditModalTitle" style="margin-top:0; font-size:1.25rem;">Edit Thyroid Lab Record</h3>
+      <form id="tltEditForm" novalidate>
+        <input type="hidden" id="tltEditId" />
+        
+        <div class="tlt-form-grid tlt-form-grid-2" style="margin-bottom:12px;">
+          <div class="tlt-form-group">
+            <label for="tltEditDate">Test Date <span style="color:#e11d48">*</span></label>
+            <input type="date" id="tltEditDate" required />
+          </div>
+          <div class="tlt-form-group">
+            <label for="tltEditTime">Test Time</label>
+            <input type="time" id="tltEditTime" />
+          </div>
+        </div>
+
+        <div class="tlt-form-grid tlt-form-grid-2" style="margin-bottom:12px;">
+          <div class="tlt-form-group">
+            <label for="tltEditLab">Laboratory / Clinic Name</label>
+            <input type="text" id="tltEditLab" maxlength="80" />
+          </div>
+          <div class="tlt-form-group">
+            <label for="tltEditProvider">Ordering Provider</label>
+            <input type="text" id="tltEditProvider" maxlength="80" />
+          </div>
+        </div>
+
+        <div class="tlt-form-grid tlt-form-grid-2" style="margin-bottom:12px;">
+          <div class="tlt-form-group">
+            <label for="tltEditTest">Thyroid Test</label>
+            <input type="text" id="tltEditTest" readonly style="background:#f1f5f9;" />
+          </div>
+          <div class="tlt-form-group">
+            <label for="tltEditQualifier">Result Qualifier</label>
+            <select id="tltEditQualifier">
+              <option value="exact">Exact numeric value</option>
+              <option value="less_than">Less than (&lt;)</option>
+              <option value="less_than_equal">Less than or equal to (≤)</option>
+              <option value="greater_than">Greater than (&gt;)</option>
+              <option value="greater_than_equal">Greater than or equal to (≥)</option>
+              <option value="positive">Positive</option>
+              <option value="negative">Negative</option>
+              <option value="detected">Detected</option>
+              <option value="not_detected">Not detected</option>
+              <option value="borderline">Borderline</option>
+              <option value="text">Laboratory text result</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tlt-form-grid tlt-form-grid-2" style="margin-bottom:12px;">
+          <div class="tlt-form-group">
+            <label for="tltEditResult">Result Value <span style="color:#e11d48">*</span></label>
+            <input type="text" id="tltEditResult" required />
+          </div>
+          <div class="tlt-form-group">
+            <label for="tltEditUnit">Unit</label>
+            <input type="text" id="tltEditUnit" required />
+          </div>
+        </div>
+
+        <div class="tlt-form-grid tlt-form-grid-3" style="margin-bottom:12px;">
+          <div class="tlt-form-group">
+            <label for="tltEditRangeType">Range Type</label>
+            <select id="tltEditRangeType">
+              <option value="min_max">Min & Max</option>
+              <option value="max_only">Max only</option>
+              <option value="min_only">Min only</option>
+              <option value="pos_neg">Positive/Negative</option>
+              <option value="none">None</option>
+            </select>
+          </div>
+          <div class="tlt-form-group">
+            <label for="tltEditRangeMin">Ref Min</label>
+            <input type="text" id="tltEditRangeMin" />
+          </div>
+          <div class="tlt-form-group">
+            <label for="tltEditRangeMax">Ref Max</label>
+            <input type="text" id="tltEditRangeMax" />
+          </div>
+        </div>
+
+        <div class="tlt-form-group" style="margin-bottom:12px;">
+          <label for="tltEditNotes">Context Notes</label>
+          <textarea id="tltEditNotes" maxlength="500"></textarea>
+        </div>
+
+        <div class="tlt-btn-group" style="justify-content:flex-end;">
+          <button type="button" class="tlt-btn tlt-btn-outline" id="tltBtnCancelEdit">Cancel</button>
+          <button type="submit" class="tlt-btn tlt-btn-primary" id="tltBtnSaveEdit">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PRINT REPORT HIDDEN SECTION (Visible only during window.print) -->
+  <section id="tltPrintReportSection" style="display:none;">
+    <div style="border-bottom:2px solid #0284c7; padding-bottom:12px; margin-bottom:16px;">
+      <h1 style="font-size:1.8rem; margin:0; color:#0f172a;">Thyroid Laboratory Report</h1>
+      <p style="margin:4px 0 0 0; color:#475569;">Generated via Thyroid Lab Tracker — Private Health History</p>
+      <div style="font-size:0.85rem; color:#64748b; margin-top:6px;" id="tltPrintReportDate"></div>
+    </div>
+
+    <div class="tlt-table-responsive">
+      <table id="tltPrintTable" style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr style="background:#f1f5f9;">
+            <th style="border:1px solid #cbd5e1; padding:8px;">Date</th>
+            <th style="border:1px solid #cbd5e1; padding:8px;">Test</th>
+            <th style="border:1px solid #cbd5e1; padding:8px;">Result & Unit</th>
+            <th style="border:1px solid #cbd5e1; padding:8px;">Reference Range</th>
+            <th style="border:1px solid #cbd5e1; padding:8px;">Status</th>
+            <th style="border:1px solid #cbd5e1; padding:8px;">Lab & Notes</th>
+          </tr>
+        </thead>
+        <tbody id="tltPrintTableBody">
+          <!-- Populated at print time -->
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:20px; font-size:0.8rem; color:#475569; border-top:1px solid #cbd5e1; padding-top:10px;">
+      <strong>Medical Disclaimer:</strong> This printout organizes laboratory data entered manually by the user. It is not an official laboratory release, does not provide medical diagnosis or treatment recommendations, and must be reviewed alongside original laboratory reports by a qualified healthcare professional.
+    </div>
+  </section>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="tltToast" class="tlt-toast" role="status" aria-live="polite">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="tltToastMsg">Success</span>
+  </div>
+
+  <script>
+
+(function() {
+  'use strict';
+
+  // LocalStorage Key
+  var STORAGE_KEY = 'tlt_thyroid_lab_history_v1';
+
+  // Unit Options by Test
+  var TEST_UNITS = {
+    'TSH': ['mIU/L', 'µIU/mL'],
+    'Free T4': ['ng/dL', 'pmol/L'],
+    'Total T4': ['µg/dL', 'nmol/L'],
+    'Free T3': ['pg/mL', 'pmol/L'],
+    'Total T3': ['ng/dL', 'nmol/L'],
+    'TPO Antibodies': ['IU/mL', 'U/mL', 'IU/L', 'ng/mL', 'µg/L', 'Percent', 'Index value', 'Custom unit'],
+    'Thyroglobulin Antibodies': ['IU/mL', 'U/mL', 'IU/L', 'ng/mL', 'µg/L', 'Percent', 'Index value', 'Custom unit'],
+    'TSH Receptor Antibodies': ['IU/L', 'IU/mL', 'U/L', 'U/mL', 'Percent', 'Index value', 'Custom unit'],
+    'Thyroid-Stimulating Immunoglobulin': ['Percent', 'Index value', 'IU/L', 'U/L', 'Custom unit'],
+    'Thyroglobulin': ['ng/mL', 'µg/L', 'pmol/L', 'Custom unit'],
+    'Reverse T3': ['ng/dL', 'pg/mL', 'pmol/L', 'nmol/L', 'Custom unit'],
+    'Custom': ['mIU/L', 'µIU/mL', 'ng/dL', 'pmol/L', 'µg/dL', 'nmol/L', 'pg/mL', 'IU/mL', 'U/mL', 'IU/L', 'Percent', 'Index value', 'Custom unit']
+  };
+
+  // State
+  var records = [];
+  var currentEditId = null;
+
+  // Initialize
+  function init() {
+    loadRecords();
+    setupYear();
+    setupDateDefaults();
+    setupEventListeners();
+    updateUnitDropdown();
+    renderDashboard();
+    renderChart();
+    renderHistoryTable();
+  }
+
+  // Load from localStorage
+  function loadRecords() {
+    try {
+      var data = localStorage.getItem(STORAGE_KEY);
+      if (data) {
+        records = JSON.parse(data);
+        if (!Array.isArray(records)) {
+          records = [];
+        }
+      } else {
+        records = [];
+      }
+    } catch (e) {
+      records = [];
+    }
+  }
+
+  // Save to localStorage
+  function saveRecords() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    } catch (e) {
+      showToast('Error saving data to browser storage', 'error');
+    }
+  }
+
+  // Set current year
+  function setupYear() {
+    var yearEl = document.getElementById('tltCurrentYear');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  }
+
+  // Default dates
+  function setupDateDefaults() {
+    var dateInput = document.getElementById('tltInputDate');
+    if (dateInput && !dateInput.value) {
+      var today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+    }
+  }
+
+  // Toast Notification
+  function showToast(msg, type) {
+    var toast = document.getElementById('tltToast');
+    var msgEl = document.getElementById('tltToastMsg');
+    var liveRegion = document.getElementById('tltAriaLive');
+    if (!toast || !msgEl) return;
+
+    msgEl.textContent = msg;
+    toast.className = 'tlt-toast tlt-toast-show';
+    if (liveRegion) liveRegion.textContent = msg;
+
+    setTimeout(function() {
+      toast.className = 'tlt-toast';
+    }, 3500);
+  }
+
+  // Parse Numbers Safely
+  function parseSafeNumber(val) {
+    if (val === null || val === undefined) return null;
+    var clean = String(val).trim().replace(',', '.');
+    if (clean === '' || isNaN(clean)) return null;
+    var num = parseFloat(clean);
+    return isFinite(num) ? num : null;
+  }
+
+  // Evaluate Range Status
+  function evaluateRangeStatus(valStr, qualifier, rangeType, minStr, maxStr) {
+    var valNum = parseSafeNumber(valStr);
+    var minNum = parseSafeNumber(minStr);
+    var maxNum = parseSafeNumber(maxStr);
+
+    if (qualifier === 'positive') return { status: 'Positive Result Entered', badgeClass: 'tlt-badge-warning' };
+    if (qualifier === 'negative') return { status: 'Negative Result Entered', badgeClass: 'tlt-badge-success' };
+
+    if (rangeType === 'none' || (!minNum && !maxNum && rangeType !== 'pos_neg')) {
+      return { status: 'Not Assessed — No Lab Range Entered', badgeClass: 'tlt-badge-neutral' };
+    }
+
+    if (rangeType === 'pos_neg') {
+      var lowerVal = String(valStr).toLowerCase();
+      if (lowerVal.indexOf('pos') !== -1 || qualifier === 'positive' || qualifier === 'detected') {
+        return { status: 'Positive Result Entered', badgeClass: 'tlt-badge-warning' };
+      }
+      if (lowerVal.indexOf('neg') !== -1 || qualifier === 'negative' || qualifier === 'not_detected') {
+        return { status: 'Negative Result Entered', badgeClass: 'tlt-badge-success' };
+      }
+      return { status: 'Within Your Lab Range', badgeClass: 'tlt-badge-success' };
+    }
+
+    if (valNum === null) {
+      return { status: 'Text Result Recorded', badgeClass: 'tlt-badge-neutral' };
+    }
+
+    if (rangeType === 'min_max') {
+      if (minNum !== null && maxNum !== null) {
+        if (valNum < minNum) return { status: 'Below Your Lab Range', badgeClass: 'tlt-badge-danger' };
+        if (valNum > maxNum) return { status: 'Above Your Lab Range', badgeClass: 'tlt-badge-danger' };
+        return { status: 'Within Your Lab Range', badgeClass: 'tlt-badge-success' };
+      }
+    } else if (rangeType === 'max_only') {
+      if (maxNum !== null) {
+        if (valNum > maxNum) return { status: 'Above Your Lab Range', badgeClass: 'tlt-badge-danger' };
+        return { status: 'Within Your Lab Range', badgeClass: 'tlt-badge-success' };
+      }
+    } else if (rangeType === 'min_only') {
+      if (minNum !== null) {
+        if (valNum < minNum) return { status: 'Below Your Lab Range', badgeClass: 'tlt-badge-danger' };
+        return { status: 'Within Your Lab Range', badgeClass: 'tlt-badge-success' };
+      }
+    }
+
+    return { status: 'Not Assessed — No Lab Range Entered', badgeClass: 'tlt-badge-neutral' };
+  }
+
+  // Update Units dropdown
+  function updateUnitDropdown() {
+    var testSelect = document.getElementById('tltSelectTest');
+    var unitSelect = document.getElementById('tltSelectUnit');
+    var customGroup = document.getElementById('tltCustomTestGroup');
+    if (!testSelect || !unitSelect) return;
+
+    var testVal = testSelect.value;
+    if (customGroup) {
+      customGroup.style.display = testVal === 'Custom' ? 'flex' : 'none';
+    }
+
+    var units = TEST_UNITS[testVal] || TEST_UNITS['Custom'];
+    unitSelect.innerHTML = '';
+    units.forEach(function(u) {
+      var opt = document.createElement('option');
+      opt.value = u;
+      opt.textContent = u;
+      unitSelect.appendChild(opt);
+    });
+
+    // Update range hints
+    updateRangeFieldVisibility();
+  }
+
+  // Update Range fields based on Range Type
+  function updateRangeFieldVisibility() {
+    var rangeType = document.getElementById('tltSelectRangeType').value;
+    var minGroup = document.getElementById('tltRangeMinGroup');
+    var maxGroup = document.getElementById('tltRangeMaxGroup');
+
+    if (minGroup && maxGroup) {
+      if (rangeType === 'min_max') {
+        minGroup.style.display = 'flex';
+        maxGroup.style.display = 'flex';
+      } else if (rangeType === 'max_only') {
+        minGroup.style.display = 'none';
+        maxGroup.style.display = 'flex';
+      } else if (rangeType === 'min_only') {
+        minGroup.style.display = 'flex';
+        maxGroup.style.display = 'none';
+      } else {
+        minGroup.style.display = 'none';
+        maxGroup.style.display = 'none';
+      }
+    }
+  }
+
+  // Check Range Live in Form
+  function checkRangeLive() {
+    var resultVal = document.getElementById('tltInputResult').value.trim();
+    var qualifier = document.getElementById('tltSelectQualifier').value;
+    var rangeType = document.getElementById('tltSelectRangeType').value;
+    var minVal = document.getElementById('tltInputRangeMin').value.trim();
+    var maxVal = document.getElementById('tltInputRangeMax').value.trim();
+
+    var banner = document.getElementById('tltLiveCheckBanner');
+    var badge = document.getElementById('tltLiveCheckBadge');
+    var msg = document.getElementById('tltLiveCheckMsg');
+
+    if (!resultVal) {
+      banner.style.display = 'none';
+      return;
+    }
+
+    var evalRes = evaluateRangeStatus(resultVal, qualifier, rangeType, minVal, maxVal);
+    badge.textContent = evalRes.status;
+    badge.className = 'tlt-badge ' + evalRes.badgeClass;
+
+    var num = parseSafeNumber(resultVal);
+    if (evalRes.status === 'Within Your Lab Range') {
+      msg.textContent = 'The entered result (' + resultVal + ') falls inside your laboratory reference range.';
+    } else if (evalRes.status === 'Below Your Lab Range') {
+      msg.textContent = 'The entered result (' + resultVal + ') is below your entered reference minimum (' + minVal + ').';
+    } else if (evalRes.status === 'Above Your Lab Range') {
+      msg.textContent = 'The entered result (' + resultVal + ') is above your entered reference maximum (' + maxVal + ').';
+    } else {
+      msg.textContent = 'Status noted: ' + evalRes.status + '. Remember that reference ranges and clinical interpretations vary by laboratory.';
+    }
+
+    banner.style.display = 'block';
+  }
+
+  // Unit Converter Handler
+  function updateConverter() {
+    var analyte = document.getElementById('tltConvSelectTest').value;
+    var inputVal = parseSafeNumber(document.getElementById('tltConvInputVal').value);
+    var resValEl = document.getElementById('tltConvResultVal');
+    var formulaEl = document.getElementById('tltConvFormula');
+    var inputLbl = document.getElementById('tltConvInputLbl');
+
+    if (inputVal === null || isNaN(inputVal) || inputVal < 0) {
+      resValEl.textContent = 'Please enter a positive number';
+      formulaEl.textContent = '';
+      return;
+    }
+
+    var converted = 0;
+    var formulaStr = '';
+    var unitStr = '';
+
+    if (analyte === 'FT4') {
+      inputLbl.textContent = 'Enter Free T4 in ng/dL (USA Unit)';
+      converted = (inputVal * 12.87).toFixed(2);
+      unitStr = 'pmol/L';
+      formulaStr = inputVal + ' ng/dL × 12.87 = ' + converted + ' pmol/L';
+    } else if (analyte === 'TT4') {
+      inputLbl.textContent = 'Enter Total T4 in µg/dL (USA Unit)';
+      converted = (inputVal * 12.87).toFixed(2);
+      unitStr = 'nmol/L';
+      formulaStr = inputVal + ' µg/dL × 12.87 = ' + converted + ' nmol/L';
+    } else if (analyte === 'FT3') {
+      inputLbl.textContent = 'Enter Free T3 in pg/mL (USA Unit)';
+      converted = (inputVal * 1.536).toFixed(2);
+      unitStr = 'pmol/L';
+      formulaStr = inputVal + ' pg/mL × 1.536 = ' + converted + ' pmol/L';
+    } else if (analyte === 'TT3') {
+      inputLbl.textContent = 'Enter Total T3 in ng/dL (USA Unit)';
+      converted = (inputVal * 0.01536).toFixed(3);
+      unitStr = 'nmol/L';
+      formulaStr = inputVal + ' ng/dL × 0.01536 = ' + converted + ' nmol/L';
+    } else if (analyte === 'TSH') {
+      inputLbl.textContent = 'Enter TSH in µIU/mL';
+      converted = inputVal.toFixed(2);
+      unitStr = 'mIU/L';
+      formulaStr = inputVal + ' µIU/mL = ' + converted + ' mIU/L (1:1 ratio)';
+    }
+
+    resValEl.textContent = converted + ' ' + unitStr;
+    formulaEl.textContent = 'Standard Formula: ' + formulaStr;
+  }
+
+  // Dashboard Stats & Cards Calculation
+  function renderDashboard() {
+    var statTotal = document.getElementById('tltStatTotal');
+    var statLatestDate = document.getElementById('tltStatLatestDate');
+    var statWithin = document.getElementById('tltStatWithin');
+    var statOutside = document.getElementById('tltStatOutside');
+    var statNoRange = document.getElementById('tltStatNoRange');
+    var statDaysSince = document.getElementById('tltStatDaysSince');
+
+    statTotal.textContent = records.length;
+
+    if (records.length === 0) {
+      statLatestDate.textContent = '—';
+      statWithin.textContent = '0';
+      statOutside.textContent = '0';
+      statNoRange.textContent = '0';
+      statDaysSince.textContent = '—';
+      resetMetricCards();
+      return;
+    }
+
+    // Sort by date descending
+    var sorted = records.slice().sort(function(a, b) {
+      return new Date(b.date + 'T' + (b.time || '00:00')) - new Date(a.date + 'T' + (a.time || '00:00'));
+    });
+
+    var latestDate = sorted[0].date;
+    statLatestDate.textContent = latestDate;
+
+    var diffDays = Math.floor((new Date() - new Date(latestDate)) / (1000 * 60 * 60 * 24));
+    statDaysSince.textContent = diffDays >= 0 ? diffDays + ' days ago' : 'Today';
+
+    var withinCount = 0;
+    var outsideCount = 0;
+    var noRangeCount = 0;
+
+    sorted.forEach(function(r) {
+      var st = r.status.status;
+      if (st === 'Within Your Lab Range') withinCount++;
+      else if (st === 'Below Your Lab Range' || st === 'Above Your Lab Range' || st === 'Outside Your Lab Range') outsideCount++;
+      else noRangeCount++;
+    });
+
+    statWithin.textContent = withinCount;
+    statOutside.textContent = outsideCount;
+    statNoRange.textContent = noRangeCount;
+
+    // Update specific cards: TSH, FT4, FT3, TPO
+    updateMetricCard('TSH', 'TSH', 'mIU/L', sorted);
+    updateMetricCard('Free T4', 'FT4', 'ng/dL', sorted);
+    updateMetricCard('Free T3', 'FT3', 'pg/mL', sorted);
+    updateMetricCard('TPO Antibodies', 'TPO', 'IU/mL', sorted);
+  }
+
+  function resetMetricCards() {
+    ['TSH', 'FT4', 'FT3', 'TPO'].forEach(function(code) {
+      document.getElementById('tltVal' + code).textContent = '—';
+      document.getElementById('tltBadge' + code).textContent = 'No Data';
+      document.getElementById('tltBadge' + code).className = 'tlt-badge tlt-badge-neutral';
+      document.getElementById('tltRange' + code).textContent = 'Entered Range: —';
+      document.getElementById('tltDate' + code).textContent = 'Date: —';
+      document.getElementById('tltDelta' + code).textContent = '';
+    });
+  }
+
+  function updateMetricCard(testName, code, defaultUnit, sortedList) {
+    var matchRecords = sortedList.filter(function(r) {
+      return r.testName === testName;
+    });
+
+    var valEl = document.getElementById('tltVal' + code);
+    var unitEl = document.getElementById('tltUnit' + code);
+    var badgeEl = document.getElementById('tltBadge' + code);
+    var rangeEl = document.getElementById('tltRange' + code);
+    var dateEl = document.getElementById('tltDate' + code);
+    var deltaEl = document.getElementById('tltDelta' + code);
+
+    if (matchRecords.length === 0) {
+      valEl.textContent = '—';
+      unitEl.textContent = defaultUnit;
+      badgeEl.textContent = 'No Data';
+      badgeEl.className = 'tlt-badge tlt-badge-neutral';
+      rangeEl.textContent = 'Entered Range: —';
+      dateEl.textContent = 'Date: —';
+      deltaEl.textContent = '';
+      return;
+    }
+
+    var latest = matchRecords[0];
+    valEl.textContent = latest.resultValue;
+    unitEl.textContent = latest.unit;
+    badgeEl.textContent = latest.status.status;
+    badgeEl.className = 'tlt-badge ' + latest.status.badgeClass;
+
+    var rangeStr = 'None';
+    if (latest.rangeType === 'min_max') rangeStr = latest.rangeMin + ' – ' + latest.rangeMax;
+    else if (latest.rangeType === 'max_only') rangeStr = '< ' + latest.rangeMax;
+    else if (latest.rangeType === 'min_only') rangeStr = '> ' + latest.rangeMin;
+    else if (latest.rangeType === 'pos_neg') rangeStr = 'Neg/Pos';
+
+    rangeEl.textContent = 'Lab Range: ' + rangeStr;
+    dateEl.textContent = 'Date: ' + latest.date + (latest.labName ? ' (' + latest.labName + ')' : '');
+
+    // Delta % change if previous comparable result exists
+    if (matchRecords.length > 1) {
+      var prev = matchRecords[1];
+      var latestNum = parseSafeNumber(latest.resultValue);
+      var prevNum = parseSafeNumber(prev.resultValue);
+
+      if (latestNum !== null && prevNum !== null && latest.unit === prev.unit && prevNum > 0) {
+        var pct = (((latestNum - prevNum) / prevNum) * 100).toFixed(1);
+        var sign = pct >= 0 ? '+' : '';
+        deltaEl.textContent = 'vs ' + prev.date + ': ' + sign + pct + '% (' + prev.resultValue + ' ' + prev.unit + ')';
+        deltaEl.style.color = pct > 0 ? '#0284c7' : '#64748b';
+      } else {
+        deltaEl.textContent = 'Previous: ' + prev.resultValue + ' ' + prev.unit + ' (' + prev.date + ')';
+        deltaEl.style.color = '#64748b';
+      }
+    } else {
+      deltaEl.textContent = 'First recorded test';
+      deltaEl.style.color = '#64748b';
+    }
+  }
+
+  // Trend Chart (Vanilla Canvas)
+  function renderChart() {
+    var canvas = document.getElementById('tltTrendCanvas');
+    var emptyBox = document.getElementById('tltChartEmpty');
+    var dataTableBody = document.getElementById('tltChartTableBody');
+    if (!canvas || !emptyBox || !dataTableBody) return;
+
+    var selectedTest = document.getElementById('tltChartSelectTest').value;
+    var timeFilter = document.getElementById('tltChartSelectTime').value;
+
+    // Filter matching test
+    var chartData = records.filter(function(r) {
+      if (r.testName !== selectedTest) return false;
+      var valNum = parseSafeNumber(r.resultValue);
+      if (valNum === null) return false;
+
+      if (timeFilter === 'all') return true;
+      var testDate = new Date(r.date);
+      var now = new Date();
+      var months = timeFilter === '3m' ? 3 : (timeFilter === '6m' ? 6 : 12);
+      var cutoff = new Date(now.setMonth(now.getMonth() - months));
+      return testDate >= cutoff;
+    });
+
+    // Sort chronologically (oldest to newest for graph)
+    chartData.sort(function(a, b) {
+      return new Date(a.date + 'T' + (a.time || '00:00')) - new Date(b.date + 'T' + (b.time || '00:00'));
+    });
+
+    // Populate data table below chart
+    dataTableBody.innerHTML = '';
+    if (chartData.length === 0) {
+      canvas.style.display = 'none';
+      emptyBox.style.display = 'block';
+      return;
+    }
+
+    canvas.style.display = 'block';
+    emptyBox.style.display = 'none';
+
+    chartData.forEach(function(d) {
+      var tr = document.createElement('tr');
+      var rangeStr = 'None';
+      if (d.rangeType === 'min_max') rangeStr = d.rangeMin + ' – ' + d.rangeMax;
+      else if (d.rangeType === 'max_only') rangeStr = '< ' + d.rangeMax;
+      else if (d.rangeType === 'min_only') rangeStr = '> ' + d.rangeMin;
+
+      tr.innerHTML = '<td>' + escapeHtml(d.date) + '</td>' +
+        '<td><strong>' + escapeHtml(d.resultValue) + '</strong> ' + escapeHtml(d.unit) + '</td>' +
+        '<td>' + escapeHtml(rangeStr) + '</td>' +
+        '<td><span class="tlt-badge ' + escapeHtml(d.status.badgeClass) + '">' + escapeHtml(d.status.status) + '</span></td>';
+      dataTableBody.appendChild(tr);
+    });
+
+    // Draw on Canvas
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.getBoundingClientRect();
+    var width = rect.width || 800;
+    var height = 280;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
+
+    ctx.clearRect(0, 0, width, height);
+
+    // Calculate Y min & max
+    var values = chartData.map(function(d) { return parseSafeNumber(d.resultValue); });
+    var minVals = chartData.map(function(d) { return parseSafeNumber(d.rangeMin); }).filter(function(v) { return v !== null; });
+    var maxVals = chartData.map(function(d) { return parseSafeNumber(d.rangeMax); }).filter(function(v) { return v !== null; });
+
+    var allNums = values.concat(minVals, maxVals);
+    var yMin = Math.min.apply(null, allNums);
+    var yMax = Math.max.apply(null, allNums);
+
+    // Add 15% padding
+    var yRange = yMax - yMin;
+    if (yRange === 0) yRange = yMax > 0 ? yMax * 0.4 : 1;
+    yMin = Math.max(0, yMin - yRange * 0.15);
+    yMax = yMax + yRange * 0.15;
+
+    var padding = { left: 60, right: 30, top: 25, bottom: 45 };
+    var plotWidth = width - padding.left - padding.right;
+    var plotHeight = height - padding.top - padding.bottom;
+
+    function getX(index) {
+      if (chartData.length === 1) return padding.left + plotWidth / 2;
+      return padding.left + (index / (chartData.length - 1)) * plotWidth;
+    }
+
+    function getY(val) {
+      return padding.top + plotHeight - ((val - yMin) / (yMax - yMin)) * plotHeight;
+    }
+
+    // Draw Grid & Y-Axis labels
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'right';
+
+    var ySteps = 4;
+    for (var i = 0; i <= ySteps; i++) {
+      var stepVal = yMin + (i / ySteps) * (yMax - yMin);
+      var yPos = getY(stepVal);
+      ctx.beginPath();
+      ctx.moveTo(padding.left, yPos);
+      ctx.lineTo(width - padding.right, yPos);
+      ctx.stroke();
+      ctx.fillText(stepVal.toFixed(2), padding.left - 8, yPos + 4);
+    }
+
+    // Draw Shaded Reference Range area if available
+    var hasRange = chartData.some(function(d) { return d.rangeMin !== '' || d.rangeMax !== ''; });
+    if (hasRange) {
+      ctx.fillStyle = 'rgba(186, 230, 253, 0.45)';
+      ctx.beginPath();
+      for (var j = 0; j < chartData.length; j++) {
+        var rMax = parseSafeNumber(chartData[j].rangeMax);
+        var rYMax = rMax !== null ? getY(rMax) : getY(yMax);
+        if (j === 0) ctx.moveTo(getX(j), rYMax);
+        else ctx.lineTo(getX(j), rYMax);
+      }
+      for (var k = chartData.length - 1; k >= 0; k--) {
+        var rMin = parseSafeNumber(chartData[k].rangeMin);
+        var rYMin = rMin !== null ? getY(rMin) : getY(yMin);
+        ctx.lineTo(getX(k), rYMin);
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Draw Result Line
+    ctx.strokeStyle = '#0284c7';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    chartData.forEach(function(d, idx) {
+      var x = getX(idx);
+      var y = getY(parseSafeNumber(d.resultValue));
+      if (idx === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Draw Result Points and X Labels
+    ctx.textAlign = 'center';
+    chartData.forEach(function(d, idx) {
+      var x = getX(idx);
+      var numVal = parseSafeNumber(d.resultValue);
+      var y = getY(numVal);
+
+      // Point circle
+      ctx.fillStyle = d.status.badgeClass === 'tlt-badge-success' ? '#16a34a' : '#0284c7';
+      ctx.beginPath();
+      ctx.arc(x, y, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Value label on top
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 11px sans-serif';
+      ctx.fillText(d.resultValue, x, y - 10);
+
+      // Date label bottom
+      ctx.fillStyle = '#64748b';
+      ctx.font = '10px sans-serif';
+      ctx.fillText(d.date.substring(5), x, height - padding.bottom + 18);
+    });
+  }
+
+  // History Table Rendering
+  function renderHistoryTable() {
+    var tbody = document.getElementById('tltHistoryTableBody');
+    var emptyBox = document.getElementById('tltHistoryEmpty');
+    var search = (document.getElementById('tltFilterSearch').value || '').toLowerCase();
+    var testFilter = document.getElementById('tltFilterTest').value;
+    var statusFilter = document.getElementById('tltFilterStatus').value;
+    var dateFilter = document.getElementById('tltFilterDateRange').value;
+
+    if (!tbody || !emptyBox) return;
+
+    var filtered = records.filter(function(r) {
+      // Test match
+      if (testFilter !== 'all' && r.testName !== testFilter) return false;
+
+      // Status match
+      if (statusFilter === 'within' && r.status.status !== 'Within Your Lab Range') return false;
+      if (statusFilter === 'outside' && (r.status.status === 'Within Your Lab Range' || r.status.status.indexOf('No Lab Range') !== -1)) return false;
+      if (statusFilter === 'below' && r.status.status !== 'Below Your Lab Range') return false;
+      if (statusFilter === 'above' && r.status.status !== 'Above Your Lab Range') return false;
+      if (statusFilter === 'none' && r.status.status.indexOf('No Lab Range') === -1) return false;
+
+      // Date filter
+      if (dateFilter !== 'all') {
+        var testDate = new Date(r.date);
+        var now = new Date();
+        var months = dateFilter === '3m' ? 3 : (dateFilter === '6m' ? 6 : 12);
+        var cutoff = new Date(now.setMonth(now.getMonth() - months));
+        if (testDate < cutoff) return false;
+      }
+
+      // Search text
+      if (search) {
+        var text = (r.testName + ' ' + (r.customTestName || '') + ' ' + r.resultValue + ' ' + r.unit + ' ' + (r.labName || '') + ' ' + (r.notes || '')).toLowerCase();
+        if (text.indexOf(search) === -1) return false;
+      }
+
+      return true;
+    });
+
+    // Sort descending by date
+    filtered.sort(function(a, b) {
+      return new Date(b.date + 'T' + (b.time || '00:00')) - new Date(a.date + 'T' + (a.time || '00:00'));
+    });
+
+    tbody.innerHTML = '';
+    if (filtered.length === 0) {
+      emptyBox.style.display = 'block';
+      return;
+    }
+    emptyBox.style.display = 'none';
+
+    filtered.forEach(function(r) {
+      var tr = document.createElement('tr');
+
+      var rangeStr = '—';
+      if (r.rangeType === 'min_max') rangeStr = r.rangeMin + ' – ' + r.rangeMax;
+      else if (r.rangeType === 'max_only') rangeStr = '< ' + r.rangeMax;
+      else if (r.rangeType === 'min_only') rangeStr = '> ' + r.rangeMin;
+      else if (r.rangeType === 'pos_neg') rangeStr = 'Negative';
+
+      var contextList = [];
+      if (r.medTiming) contextList.push('💊 ' + r.medTiming);
+      if (r.biotinNote) contextList.push('🌿 ' + r.biotinNote);
+      if (r.pregnancy && r.pregnancy !== 'Not pregnant') contextList.push('🤰 ' + r.pregnancy);
+      if (r.notes) contextList.push('📝 ' + r.notes);
+
+      var contextHtml = contextList.length > 0 ? contextList.map(escapeHtml).join('<br/>') : '—';
+
+      tr.innerHTML = '<td><strong>' + escapeHtml(r.date) + '</strong>' + (r.time ? '<br/><span style="font-size:0.75rem; color:#64748b;">' + escapeHtml(r.time) + '</span>' : '') + '</td>' +
+        '<td><strong>' + escapeHtml(r.testName === 'Custom' ? r.customTestName : r.testName) + '</strong>' + (r.provider ? '<br/><span style="font-size:0.75rem; color:#64748b;">' + escapeHtml(r.provider) + '</span>' : '') + '</td>' +
+        '<td><strong>' + escapeHtml(r.resultValue) + '</strong> ' + escapeHtml(r.unit) + '</td>' +
+        '<td>' + escapeHtml(rangeStr) + '</td>' +
+        '<td><span class="tlt-badge ' + escapeHtml(r.status.badgeClass) + '">' + escapeHtml(r.status.status) + '</span></td>' +
+        '<td>' + escapeHtml(r.labName || '—') + '</td>' +
+        '<td style="font-size:0.82rem;">' + contextHtml + '</td>' +
+        '<td>' +
+          '<div style="display:flex; gap:6px;">' +
+            '<button type="button" class="tlt-btn tlt-btn-secondary tlt-btn-sm tlt-edit-btn" data-id="' + escapeHtml(r.id) + '" aria-label="Edit result">Edit</button>' +
+            '<button type="button" class="tlt-btn tlt-btn-danger tlt-btn-sm tlt-del-btn" data-id="' + escapeHtml(r.id) + '" aria-label="Delete result">Del</button>' +
+          '</div>' +
+        '</td>';
+
+      tbody.appendChild(tr);
+    });
+
+    // Attach Edit / Delete handlers
+    var editBtns = tbody.querySelectorAll('.tlt-edit-btn');
+    editBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        openEditModal(btn.getAttribute('data-id'));
+      });
+    });
+
+    var delBtns = tbody.querySelectorAll('.tlt-del-btn');
+    delBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        deleteRecord(btn.getAttribute('data-id'));
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  // Save Form Handler
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    var dateVal = document.getElementById('tltInputDate').value;
+    var timeVal = document.getElementById('tltInputTime').value;
+    var labVal = document.getElementById('tltInputLab').value.trim();
+    var providerVal = document.getElementById('tltInputProvider').value.trim();
+    var testVal = document.getElementById('tltSelectTest').value;
+    var customVal = document.getElementById('tltInputCustomTest').value.trim();
+    var qualifierVal = document.getElementById('tltSelectQualifier').value;
+    var resultVal = document.getElementById('tltInputResult').value.trim();
+    var unitVal = document.getElementById('tltSelectUnit').value;
+    var rangeTypeVal = document.getElementById('tltSelectRangeType').value;
+    var rangeMinVal = document.getElementById('tltInputRangeMin').value.trim();
+    var rangeMaxVal = document.getElementById('tltInputRangeMax').value.trim();
+    var medVal = document.getElementById('tltSelectMedTiming').value;
+    var biotinVal = document.getElementById('tltSelectBiotin').value;
+    var pregVal = document.getElementById('tltSelectPregnancy').value;
+    var notesVal = document.getElementById('tltInputNotes').value.trim();
+
+    // Validation
+    var hasError = false;
+    var errDate = document.getElementById('tltErrDate');
+    var errResult = document.getElementById('tltErrResult');
+    var errCustom = document.getElementById('tltErrCustomTest');
+    var errRangeMax = document.getElementById('tltErrRangeMax');
+
+    errDate.style.display = 'none';
+    errResult.style.display = 'none';
+    errCustom.style.display = 'none';
+    errRangeMax.style.display = 'none';
+
+    if (!dateVal) {
+      errDate.style.display = 'block';
+      hasError = true;
+    }
+
+    if (!resultVal) {
+      errResult.style.display = 'block';
+      hasError = true;
+    }
+
+    if (testVal === 'Custom' && !customVal) {
+      errCustom.style.display = 'block';
+      hasError = true;
+    }
+
+    if (rangeTypeVal === 'min_max') {
+      var minNum = parseSafeNumber(rangeMinVal);
+      var maxNum = parseSafeNumber(rangeMaxVal);
+      if (minNum !== null && maxNum !== null && maxNum <= minNum) {
+        errRangeMax.style.display = 'block';
+        hasError = true;
+      }
+    }
+
+    if (hasError) return;
+
+    var statusObj = evaluateRangeStatus(resultVal, qualifierVal, rangeTypeVal, rangeMinVal, rangeMaxVal);
+
+    var newRecord = {
+      id: 'tlt_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+      date: dateVal,
+      time: timeVal,
+      labName: labVal,
+      provider: providerVal,
+      testName: testVal,
+      customTestName: customVal,
+      qualifier: qualifierVal,
+      resultValue: resultVal,
+      unit: unitVal,
+      rangeType: rangeTypeVal,
+      rangeMin: rangeMinVal,
+      rangeMax: rangeMaxVal,
+      medTiming: medVal,
+      biotinNote: biotinVal,
+      pregnancy: pregVal,
+      notes: notesVal,
+      status: statusObj,
+      createdAt: new Date().toISOString()
+    };
+
+    records.push(newRecord);
+    saveRecords();
+
+    showToast('Lab result successfully saved to private history!', 'success');
+    renderDashboard();
+    renderChart();
+    renderHistoryTable();
+
+    // Reset result fields while keeping date & lab
+    document.getElementById('tltInputResult').value = '';
+    document.getElementById('tltInputNotes').value = '';
+    document.getElementById('tltLiveCheckBanner').style.display = 'none';
+  }
+
+  // Use Example Data
+  function loadExampleData() {
+    document.getElementById('tltInputDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('tltInputTime').value = '08:30';
+    document.getElementById('tltInputLab').value = 'Quest Diagnostics';
+    document.getElementById('tltInputProvider').value = 'Dr. Sarah Jenkins';
+    document.getElementById('tltSelectTest').value = 'TSH';
+    updateUnitDropdown();
+    document.getElementById('tltSelectUnit').value = 'mIU/L';
+    document.getElementById('tltInputResult').value = '2.10';
+    document.getElementById('tltSelectRangeType').value = 'min_max';
+    updateRangeFieldVisibility();
+    document.getElementById('tltInputRangeMin').value = '0.45';
+    document.getElementById('tltInputRangeMax').value = '4.50';
+    document.getElementById('tltSelectMedTiming').value = 'Fasting / Before thyroid meds';
+    document.getElementById('tltSelectBiotin').value = 'Biotin stopped 2+ days prior';
+    document.getElementById('tltInputNotes').value = 'Routine 6-month checkup, feeling energetic';
+    checkRangeLive();
+    showToast('Sample lab entry loaded into form. Press Save to keep it.', 'info');
+  }
+
+  // Edit Modal
+  function openEditModal(id) {
+    var record = records.find(function(r) { return r.id === id; });
+    if (!record) return;
+
+    currentEditId = id;
+    document.getElementById('tltEditId').value = id;
+    document.getElementById('tltEditDate').value = record.date;
+    document.getElementById('tltEditTime').value = record.time || '';
+    document.getElementById('tltEditLab').value = record.labName || '';
+    document.getElementById('tltEditProvider').value = record.provider || '';
+    document.getElementById('tltEditTest').value = record.testName === 'Custom' ? record.customTestName : record.testName;
+    document.getElementById('tltEditQualifier').value = record.qualifier || 'exact';
+    document.getElementById('tltEditResult').value = record.resultValue;
+    document.getElementById('tltEditUnit').value = record.unit;
+    document.getElementById('tltEditRangeType').value = record.rangeType || 'min_max';
+    document.getElementById('tltEditRangeMin').value = record.rangeMin || '';
+    document.getElementById('tltEditRangeMax').value = record.rangeMax || '';
+    document.getElementById('tltEditNotes').value = record.notes || '';
+
+    document.getElementById('tltEditModal').classList.add('tlt-modal-active');
+  }
+
+  function closeEditModal() {
+    document.getElementById('tltEditModal').classList.remove('tlt-modal-active');
+    currentEditId = null;
+  }
+
+  function handleEditSubmit(e) {
+    e.preventDefault();
+    if (!currentEditId) return;
+
+    var recordIdx = records.findIndex(function(r) { return r.id === currentEditId; });
+    if (recordIdx === -1) return;
+
+    var r = records[recordIdx];
+    r.date = document.getElementById('tltEditDate').value;
+    r.time = document.getElementById('tltEditTime').value;
+    r.labName = document.getElementById('tltEditLab').value.trim();
+    r.provider = document.getElementById('tltEditProvider').value.trim();
+    r.qualifier = document.getElementById('tltEditQualifier').value;
+    r.resultValue = document.getElementById('tltEditResult').value.trim();
+    r.unit = document.getElementById('tltEditUnit').value.trim();
+    r.rangeType = document.getElementById('tltEditRangeType').value;
+    r.rangeMin = document.getElementById('tltEditRangeMin').value.trim();
+    r.rangeMax = document.getElementById('tltEditRangeMax').value.trim();
+    r.notes = document.getElementById('tltEditNotes').value.trim();
+    r.status = evaluateRangeStatus(r.resultValue, r.qualifier, r.rangeType, r.rangeMin, r.rangeMax);
+
+    saveRecords();
+    closeEditModal();
+    showToast('Record updated successfully', 'success');
+    renderDashboard();
+    renderChart();
+    renderHistoryTable();
+  }
+
+  // Delete Record
+  function deleteRecord(id) {
+    if (!confirm('Are you sure you want to delete this lab record?')) return;
+    records = records.filter(function(r) { return r.id !== id; });
+    saveRecords();
+    showToast('Record deleted', 'info');
+    renderDashboard();
+    renderChart();
+    renderHistoryTable();
+  }
+
+  // Clear All
+  function clearAllRecords() {
+    if (records.length === 0) return;
+    if (!confirm('WARNING: This will permanently delete all saved thyroid lab results from this browser. Do you wish to proceed?')) return;
+    records = [];
+    saveRecords();
+    showToast('All lab history cleared', 'info');
+    renderDashboard();
+    renderChart();
+    renderHistoryTable();
+  }
+
+  // Export CSV (Safe with formula injection protection & UTF-8 BOM)
+  function exportCSV() {
+    if (records.length === 0) {
+      showToast('No lab records to export', 'error');
+      return;
+    }
+
+    var headers = ['Date', 'Time', 'Test', 'Result', 'Qualifier', 'Unit', 'Range Type', 'Ref Min', 'Ref Max', 'Status', 'Laboratory', 'Provider', 'Medication Timing', 'Biotin Note', 'Pregnancy Status', 'Notes'];
+    
+    function sanitizeCsv(val) {
+      if (val === null || val === undefined) return '""';
+      var str = String(val).replace(/"/g, '""');
+      var code = str.charCodeAt(0);
+      // Neutralize formula injection (= is 61, + is 43, - is 45, @ is 64, tab is 9, CR is 13)
+      if (code === 61 || code === 43 || code === 45 || code === 64 || code === 9 || code === 13) {
+        str = "'" + str;
+      }
+      return '"' + str + '"';
+    }
+
+    var csvRows = [headers.join(',')];
+
+    records.forEach(function(r) {
+      var row = [
+        sanitizeCsv(r.date),
+        sanitizeCsv(r.time || ''),
+        sanitizeCsv(r.testName === 'Custom' ? r.customTestName : r.testName),
+        sanitizeCsv(r.resultValue),
+        sanitizeCsv(r.qualifier || 'exact'),
+        sanitizeCsv(r.unit),
+        sanitizeCsv(r.rangeType || ''),
+        sanitizeCsv(r.rangeMin || ''),
+        sanitizeCsv(r.rangeMax || ''),
+        sanitizeCsv(r.status ? r.status.status : ''),
+        sanitizeCsv(r.labName || ''),
+        sanitizeCsv(r.provider || ''),
+        sanitizeCsv(r.medTiming || ''),
+        sanitizeCsv(r.biotinNote || ''),
+        sanitizeCsv(r.pregnancy || ''),
+        sanitizeCsv(r.notes || '')
+      ];
+      csvRows.push(row.join(','));
+    });
+
+    var csvContent = '﻿' + csvRows.join('\r\n');
+    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'thyroid_lab_history_' + new Date().toISOString().split('T')[0] + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('CSV export downloaded', 'success');
+  }
+
+  // Export JSON Backup
+  function exportJSON() {
+    if (records.length === 0) {
+      showToast('No records to backup', 'error');
+      return;
+    }
+
+    var backupData = {
+      app: 'Thyroid Lab Tracker',
+      version: '1.0',
+      exportedAt: new Date().toISOString(),
+      recordCount: records.length,
+      records: records
+    };
+
+    var blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'thyroid_tracker_backup_' + new Date().toISOString().split('T')[0] + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('JSON backup downloaded', 'success');
+  }
+
+  // Import JSON Backup
+  function importJSON() {
+    var fileInput = document.getElementById('tltInputImportFile');
+    if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+      showToast('Please select a JSON backup file first', 'error');
+      return;
+    }
+
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        var parsed = JSON.parse(e.target.result);
+        var importedList = [];
+
+        if (Array.isArray(parsed)) {
+          importedList = parsed;
+        } else if (parsed && Array.isArray(parsed.records)) {
+          importedList = parsed.records;
+        } else {
+          showToast('Invalid backup file format', 'error');
+          return;
+        }
+
+        // Validate items
+        var validCount = 0;
+        var existingIds = {};
+        records.forEach(function(r) { existingIds[r.id] = true; });
+
+        importedList.forEach(function(item) {
+          if (item && item.date && item.testName && item.resultValue) {
+            if (!item.id || existingIds[item.id]) {
+              item.id = 'tlt_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+            }
+            if (!item.status) {
+              item.status = evaluateRangeStatus(item.resultValue, item.qualifier, item.rangeType, item.rangeMin, item.rangeMax);
+            }
+            records.push(item);
+            validCount++;
+          }
+        });
+
+        if (validCount > 0) {
+          saveRecords();
+          renderDashboard();
+          renderChart();
+          renderHistoryTable();
+          showToast('Successfully imported ' + validCount + ' lab records!', 'success');
+          fileInput.value = '';
+        } else {
+          showToast('No valid lab entries found in file', 'error');
+        }
+      } catch (err) {
+        showToast('Error reading JSON file', 'error');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  // Print Lab Report
+  function printLabReport() {
+    var printTableBody = document.getElementById('tltPrintTableBody');
+    var printDateEl = document.getElementById('tltPrintReportDate');
+    if (!printTableBody) return;
+
+    printDateEl.textContent = 'Report Printed: ' + new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+    printTableBody.innerHTML = '';
+
+    if (records.length === 0) {
+      printTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:16px;">No thyroid laboratory results on file.</td></tr>';
+    } else {
+      var sorted = records.slice().sort(function(a, b) {
+        return new Date(b.date + 'T' + (b.time || '00:00')) - new Date(a.date + 'T' + (a.time || '00:00'));
+      });
+
+      sorted.forEach(function(r) {
+        var tr = document.createElement('tr');
+        var rangeStr = 'None';
+        if (r.rangeType === 'min_max') rangeStr = r.rangeMin + ' – ' + r.rangeMax;
+        else if (r.rangeType === 'max_only') rangeStr = '< ' + r.rangeMax;
+        else if (r.rangeType === 'min_only') rangeStr = '> ' + r.rangeMin;
+
+        var noteList = [];
+        if (r.labName) noteList.push('Lab: ' + r.labName);
+        if (r.medTiming) noteList.push('Meds: ' + r.medTiming);
+        if (r.notes) noteList.push('Notes: ' + r.notes);
+
+        tr.innerHTML = '<td style="border:1px solid #cbd5e1; padding:6px 8px;">' + escapeHtml(r.date) + '</td>' +
+          '<td style="border:1px solid #cbd5e1; padding:6px 8px;"><strong>' + escapeHtml(r.testName === 'Custom' ? r.customTestName : r.testName) + '</strong></td>' +
+          '<td style="border:1px solid #cbd5e1; padding:6px 8px;">' + escapeHtml(r.resultValue) + ' ' + escapeHtml(r.unit) + '</td>' +
+          '<td style="border:1px solid #cbd5e1; padding:6px 8px;">' + escapeHtml(rangeStr) + '</td>' +
+          '<td style="border:1px solid #cbd5e1; padding:6px 8px;">' + escapeHtml(r.status ? r.status.status : '') + '</td>' +
+          '<td style="border:1px solid #cbd5e1; padding:6px 8px; font-size:0.8rem;">' + escapeHtml(noteList.join(' | ')) + '</td>';
+        printTableBody.appendChild(tr);
+      });
+    }
+
+    window.print();
+  }
+
+  // Social Sharing
+  function handleSocialShare(platform) {
+    var shareUrl = window.location.href;
+    var shareText = 'Track TSH, Free T4, Free T3, and thyroid antibody lab results privately in your browser with this free Thyroid Lab Tracker:';
+    var encodedUrl = encodeURIComponent(shareUrl);
+    var encodedText = encodeURIComponent(shareText);
+
+    if (platform === 'native') {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Thyroid Lab Tracker — TSH, T3, T4 & Antibody Results',
+          text: shareText,
+          url: shareUrl
+        }).catch(function() {});
+      } else {
+        handleSocialShare('copy');
+      }
+      return;
+    }
+
+    if (platform === 'copy') {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).then(function() {
+          showToast('Link copied to clipboard!', 'success');
+        });
+      } else {
+        showToast('Share link: ' + shareUrl, 'info');
+      }
+      return;
+    }
+
+    var targetUrl = '';
+    if (platform === 'fb') targetUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl;
+    else if (platform === 'x') targetUrl = 'https://twitter.com/intent/tweet?text=' + encodedText + '&url=' + encodedUrl;
+    else if (platform === 'wa') targetUrl = 'https://api.whatsapp.com/send?text=' + encodedText + '%20' + encodedUrl;
+    else if (platform === 'in') targetUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl;
+    else if (platform === 'rd') targetUrl = 'https://reddit.com/submit?url=' + encodedUrl + '&title=' + encodedText;
+    else if (platform === 'em') targetUrl = 'mailto:?subject=' + encodeURIComponent('Free Thyroid Lab Tracker') + '&body=' + encodedText + '%20' + encodedUrl;
+
+    if (targetUrl) {
+      window.open(targetUrl, '_blank', 'noopener,noreferrer,width=600,height=450');
+    }
+  }
+
+  // Setup All Event Listeners
+  function setupEventListeners() {
+    // Navigation smooth scrolling
+    var navBtns = document.querySelectorAll('#thyroidLabTracker .tlt-nav-btn');
+    navBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var targetId = btn.getAttribute('data-target');
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Form inputs & changes
+    var testSelect = document.getElementById('tltSelectTest');
+    if (testSelect) testSelect.addEventListener('change', updateUnitDropdown);
+
+    var rangeTypeSelect = document.getElementById('tltSelectRangeType');
+    if (rangeTypeSelect) rangeTypeSelect.addEventListener('change', updateRangeFieldVisibility);
+
+    var pregSelect = document.getElementById('tltSelectPregnancy');
+    if (pregSelect) {
+      pregSelect.addEventListener('change', function() {
+        var alertBox = document.getElementById('tltPregnancyAlert');
+        var val = pregSelect.value;
+        alertBox.style.display = (val && val !== 'Not pregnant' && val !== 'Prefer not to say') ? 'flex' : 'none';
+      });
+    }
+
+    var biotinSelect = document.getElementById('tltSelectBiotin');
+    if (biotinSelect) {
+      biotinSelect.addEventListener('change', function() {
+        var alertBox = document.getElementById('tltBiotinAlert');
+        var val = biotinSelect.value;
+        alertBox.style.display = (val && val.indexOf('Biotin') !== -1 || val.indexOf('Multivitamin') !== -1) ? 'flex' : 'none';
+      });
+    }
+
+    // Form Buttons
+    var entryForm = document.getElementById('tltEntryForm');
+    if (entryForm) entryForm.addEventListener('submit', handleFormSubmit);
+
+    var btnCheckRange = document.getElementById('tltBtnCheckRange');
+    if (btnCheckRange) btnCheckRange.addEventListener('click', checkRangeLive);
+
+    var btnExample = document.getElementById('tltBtnExample');
+    if (btnExample) btnExample.addEventListener('click', loadExampleData);
+
+    var btnReset = document.getElementById('tltBtnReset');
+    if (btnReset) {
+      btnReset.addEventListener('click', function() {
+        entryForm.reset();
+        setupDateDefaults();
+        updateUnitDropdown();
+        document.getElementById('tltLiveCheckBanner').style.display = 'none';
+        document.getElementById('tltPregnancyAlert').style.display = 'none';
+        document.getElementById('tltBiotinAlert').style.display = 'none';
+      });
+    }
+
+    var btnAddAnother = document.getElementById('tltBtnAddAnother');
+    if (btnAddAnother) {
+      btnAddAnother.addEventListener('click', function() {
+        document.getElementById('tltInputResult').value = '';
+        document.getElementById('tltInputNotes').value = '';
+        document.getElementById('tltLiveCheckBanner').style.display = 'none';
+        document.getElementById('tltInputResult').focus();
+        showToast('Ready for next thyroid test for the same date/lab', 'info');
+      });
+    }
+
+    var btnPrintEntry = document.getElementById('tltBtnPrintEntry');
+    if (btnPrintEntry) btnPrintEntry.addEventListener('click', printLabReport);
+
+    // Unit Converter
+    var convSelect = document.getElementById('tltConvSelectTest');
+    var convInput = document.getElementById('tltConvInputVal');
+    if (convSelect) convSelect.addEventListener('change', updateConverter);
+    if (convInput) convInput.addEventListener('input', updateConverter);
+
+    // Chart controls
+    var chartTestSelect = document.getElementById('tltChartSelectTest');
+    var chartTimeSelect = document.getElementById('tltChartSelectTime');
+    if (chartTestSelect) chartTestSelect.addEventListener('change', renderChart);
+    if (chartTimeSelect) chartTimeSelect.addEventListener('change', renderChart);
+
+    // Table Filters
+    var searchInput = document.getElementById('tltFilterSearch');
+    var filterTest = document.getElementById('tltFilterTest');
+    var filterStatus = document.getElementById('tltFilterStatus');
+    var filterDate = document.getElementById('tltFilterDateRange');
+
+    if (searchInput) searchInput.addEventListener('input', renderHistoryTable);
+    if (filterTest) filterTest.addEventListener('change', renderHistoryTable);
+    if (filterStatus) filterStatus.addEventListener('change', renderHistoryTable);
+    if (filterDate) filterDate.addEventListener('change', renderHistoryTable);
+
+    // Export & History actions
+    var btnPrintSelected = document.getElementById('tltBtnPrintSelected');
+    if (btnPrintSelected) btnPrintSelected.addEventListener('click', printLabReport);
+
+    var btnExportCSV = document.getElementById('tltBtnExportCSV');
+    if (btnExportCSV) btnExportCSV.addEventListener('click', exportCSV);
+
+    var btnExportCSV2 = document.getElementById('tltBtnExportCSV2');
+    if (btnExportCSV2) btnExportCSV2.addEventListener('click', exportCSV);
+
+    var btnExportJSON = document.getElementById('tltBtnExportJSON');
+    if (btnExportJSON) btnExportJSON.addEventListener('click', exportJSON);
+
+    var btnImportJSON = document.getElementById('tltBtnImportJSON');
+    if (btnImportJSON) btnImportJSON.addEventListener('click', importJSON);
+
+    var btnClearAll = document.getElementById('tltBtnClearAll');
+    if (btnClearAll) btnClearAll.addEventListener('click', clearAllRecords);
+
+    // Edit modal
+    var editForm = document.getElementById('tltEditForm');
+    if (editForm) editForm.addEventListener('submit', handleEditSubmit);
+
+    var btnCancelEdit = document.getElementById('tltBtnCancelEdit');
+    if (btnCancelEdit) btnCancelEdit.addEventListener('click', closeEditModal);
+
+    // FAQ Accordion
+    var faqHeaders = document.querySelectorAll('#thyroidLabTracker .tlt-accordion-header');
+    faqHeaders.forEach(function(header) {
+      header.addEventListener('click', function() {
+        var isExpanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', !isExpanded);
+        var content = document.getElementById(header.getAttribute('aria-controls'));
+        if (content) {
+          if (isExpanded) {
+            content.classList.remove('tlt-open');
+          } else {
+            content.classList.add('tlt-open');
+          }
+        }
+      });
+    });
+
+    // Social share buttons
+    var shareFb = document.getElementById('tltShareFb');
+    if (shareFb) shareFb.addEventListener('click', function() { handleSocialShare('fb'); });
+
+    var shareX = document.getElementById('tltShareX');
+    if (shareX) shareX.addEventListener('click', function() { handleSocialShare('x'); });
+
+    var shareWa = document.getElementById('tltShareWa');
+    if (shareWa) shareWa.addEventListener('click', function() { handleSocialShare('wa'); });
+
+    var shareIn = document.getElementById('tltShareIn');
+    if (shareIn) shareIn.addEventListener('click', function() { handleSocialShare('in'); });
+
+    var shareRd = document.getElementById('tltShareRd');
+    if (shareRd) shareRd.addEventListener('click', function() { handleSocialShare('rd'); });
+
+    var shareEm = document.getElementById('tltShareEm');
+    if (shareEm) shareEm.addEventListener('click', function() { handleSocialShare('em'); });
+
+    var shareCp = document.getElementById('tltShareCopy');
+    if (shareCp) shareCp.addEventListener('click', function() { handleSocialShare('copy'); });
+
+    var shareNative = document.getElementById('tltShareNative');
+    if (shareNative) shareNative.addEventListener('click', function() { handleSocialShare('native'); });
+
+    // Handle Window Resize for Canvas redraw
+    window.addEventListener('resize', function() {
+      renderChart();
+    });
+  }
+
+  // Boot on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+  </script>
+
+</div>
+
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
