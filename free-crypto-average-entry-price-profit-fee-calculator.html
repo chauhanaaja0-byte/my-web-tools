@@ -1,0 +1,2988 @@
+
+<style>
+/* Scoped CSS for Free Crypto Calculation Suite */
+#allInOneCryptoCalculator {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --border-focus: #3b82f6;
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+  --accent-cyan: #06b6d4;
+  --accent-purple: #8b5cf6;
+  --accent-green: #10b981;
+  --accent-green-bg: #ecfdf5;
+  --accent-red: #ef4444;
+  --accent-red-bg: #fef2f2;
+  --accent-orange: #f59e0b;
+  --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  line-height: 1.5;
+  padding: 16px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#allInOneCryptoCalculator *,
+#allInOneCryptoCalculator *::before,
+#allInOneCryptoCalculator *::after {
+  box-sizing: border-box;
+}
+
+/* Dark Mode Scoped */
+#allInOneCryptoCalculator.dark {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #111827;
+  --bg-card: #1e293b;
+  --bg-input: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --border-focus: #60a5fa;
+  --accent-green-bg: #064e3b;
+  --accent-red-bg: #450a0a;
+  --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.4);
+}
+
+/* Header & Badges */
+#allInOneCryptoCalculator .aiocc-header {
+  text-align: center;
+  padding: 24px 16px;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#allInOneCryptoCalculator .aiocc-theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--card-shadow);
+  min-height: 44px;
+}
+
+#allInOneCryptoCalculator .aiocc-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+#allInOneCryptoCalculator.dark .aiocc-top-badge {
+  background: #1e3a8a;
+  color: #bfdbfe;
+  border-color: #2563eb;
+}
+
+#allInOneCryptoCalculator h1 {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+#allInOneCryptoCalculator .aiocc-subtitle {
+  font-size: clamp(14px, 1.8vw, 16px);
+  color: var(--text-secondary);
+  max-width: 860px;
+  margin: 0 auto 16px auto;
+}
+
+#allInOneCryptoCalculator .aiocc-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+#allInOneCryptoCalculator .aiocc-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+#allInOneCryptoCalculator .aiocc-notice {
+  background: #fffbeb;
+  border-left: 4px solid var(--accent-orange);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #92400e;
+  text-align: left;
+  max-width: 900px;
+  margin: 12px auto 0 auto;
+}
+#allInOneCryptoCalculator.dark .aiocc-notice {
+  background: #2d1a04;
+  color: #fde68a;
+}
+
+/* Ad Wrappers */
+#allInOneCryptoCalculator .aiocc-ad-wrapper {
+  margin: 16px auto;
+  text-align: center;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 8px;
+}
+#allInOneCryptoCalculator .aiocc-ad-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+#allInOneCryptoCalculator .aiocc-ad-468 {
+  max-width: 468px;
+  min-height: 60px;
+}
+#allInOneCryptoCalculator .aiocc-ad-300 {
+  width: 300px;
+  max-width: 100%;
+  min-height: 250px;
+}
+#allInOneCryptoCalculator .aiocc-ad-native {
+  max-width: 800px;
+  min-height: 120px;
+}
+
+/* Global Settings Bar */
+#allInOneCryptoCalculator .aiocc-settings-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+
+#allInOneCryptoCalculator .aiocc-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#allInOneCryptoCalculator label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+#allInOneCryptoCalculator input,
+#allInOneCryptoCalculator select,
+#allInOneCryptoCalculator textarea {
+  width: 100%;
+  min-height: 44px;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+#allInOneCryptoCalculator input:focus,
+#allInOneCryptoCalculator select:focus,
+#allInOneCryptoCalculator textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Navigation Tabs */
+#allInOneCryptoCalculator .aiocc-tab-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+#allInOneCryptoCalculator .aiocc-tabs {
+  display: flex;
+  gap: 6px;
+  min-width: max-content;
+}
+
+#allInOneCryptoCalculator .aiocc-tab-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  color: var(--text-secondary);
+  padding: 10px 16px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+#allInOneCryptoCalculator .aiocc-tab-btn:hover {
+  color: var(--primary-blue);
+  background: var(--bg-card);
+}
+
+#allInOneCryptoCalculator .aiocc-tab-btn[aria-selected="true"] {
+  background: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+}
+
+/* Tab Panels */
+#allInOneCryptoCalculator .aiocc-tab-panel {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 24px;
+}
+#allInOneCryptoCalculator .aiocc-tab-panel.active {
+  display: block;
+}
+
+/* Action Buttons */
+#allInOneCryptoCalculator .aiocc-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+#allInOneCryptoCalculator .aiocc-btn {
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+#allInOneCryptoCalculator .aiocc-btn-primary {
+  background: var(--primary-blue);
+  color: #ffffff;
+}
+#allInOneCryptoCalculator .aiocc-btn-primary:hover {
+  background: var(--primary-blue-hover);
+}
+
+#allInOneCryptoCalculator .aiocc-btn-secondary {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+#allInOneCryptoCalculator .aiocc-btn-secondary:hover {
+  background: var(--border-color);
+}
+
+#allInOneCryptoCalculator .aiocc-btn-danger {
+  background: var(--accent-red);
+  color: #ffffff;
+}
+
+#allInOneCryptoCalculator .aiocc-btn-success {
+  background: var(--accent-green);
+  color: #ffffff;
+}
+
+/* Responsive Tables */
+#allInOneCryptoCalculator .aiocc-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 16px 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+#allInOneCryptoCalculator table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+#allInOneCryptoCalculator th,
+#allInOneCryptoCalculator td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#allInOneCryptoCalculator th {
+  background: var(--bg-secondary);
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* Dynamic Result Dashboard Cards */
+#allInOneCryptoCalculator .aiocc-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+#allInOneCryptoCalculator .aiocc-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#allInOneCryptoCalculator .aiocc-stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#allInOneCryptoCalculator .aiocc-stat-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+#allInOneCryptoCalculator .aiocc-stat-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+#allInOneCryptoCalculator .aiocc-profit-pos {
+  color: var(--accent-green) !important;
+}
+#allInOneCryptoCalculator .aiocc-profit-neg {
+  color: var(--accent-red) !important;
+}
+
+/* Charts Container */
+#allInOneCryptoCalculator .aiocc-charts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+
+#allInOneCryptoCalculator .aiocc-chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+#allInOneCryptoCalculator .aiocc-chart-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#allInOneCryptoCalculator canvas {
+  width: 100%;
+  height: 240px;
+  display: block;
+}
+
+/* Educational Guide & FAQs */
+#allInOneCryptoCalculator .aiocc-guide-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin: 24px 0;
+  line-height: 1.7;
+}
+
+#allInOneCryptoCalculator .aiocc-guide-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 24px 0 12px 0;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+#allInOneCryptoCalculator .aiocc-guide-section h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 18px 0 8px 0;
+  color: var(--primary-blue);
+}
+
+#allInOneCryptoCalculator .aiocc-accordion {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+#allInOneCryptoCalculator .aiocc-accordion-header {
+  padding: 14px 18px;
+  background: var(--bg-secondary);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+#allInOneCryptoCalculator .aiocc-accordion-content {
+  display: none;
+  padding: 16px 18px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+}
+
+#allInOneCryptoCalculator .aiocc-accordion.open .aiocc-accordion-content {
+  display: block;
+}
+
+/* Social Share Bar */
+#allInOneCryptoCalculator .aiocc-share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+#allInOneCryptoCalculator .aiocc-share-btn {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Print Styles */
+@media print {
+  #allInOneCryptoCalculator {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  #allInOneCryptoCalculator .aiocc-ad-wrapper,
+  #allInOneCryptoCalculator .aiocc-tab-scroll,
+  #allInOneCryptoCalculator .aiocc-share-bar,
+  #allInOneCryptoCalculator .aiocc-theme-toggle,
+  #allInOneCryptoCalculator .aiocc-btn-row {
+    display: none !important;
+  }
+  #allInOneCryptoCalculator .aiocc-tab-panel {
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}
+
+/* Mobile responsive constraints */
+@media (max-width: 640px) {
+  #allInOneCryptoCalculator {
+    padding: 10px 8px;
+  }
+  #allInOneCryptoCalculator .aiocc-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  #allInOneCryptoCalculator .aiocc-settings-bar {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+
+<!-- Main Application Wrapper -->
+<div id="allInOneCryptoCalculator" role="region" aria-label="Free Crypto Average Entry Price, Profit, Fee & Risk Calculator">
+  
+  <!-- Header / Hero Section -->
+  <header class="aiocc-header">
+    <button type="button" class="aiocc-theme-toggle" id="aioccThemeToggle" aria-label="Toggle Dark Mode">
+      <span id="aioccThemeIcon">🌙</span>
+      <span id="aioccThemeText">Dark Mode</span>
+    </button>
+    <div class="aiocc-top-badge">
+      <span>🇺🇸</span> FREE NO-API CRYPTO CALCULATION SUITE
+    </div>
+    <h1>All-in-One Crypto Average Price, Profit, Fee &amp; Risk Calculator</h1>
+    <p class="aiocc-subtitle">
+      Calculate crypto average entry price, profit, fees, break-even, DCA, position size and trading risk without connecting an exchange or wallet.
+    </p>
+    <div class="aiocc-trust-badges">
+      <span class="aiocc-badge-pill">✓ 100% Free</span>
+      <span class="aiocc-badge-pill">✓ No Sign-Up</span>
+      <span class="aiocc-badge-pill">✓ No API Required</span>
+      <span class="aiocc-badge-pill">✓ Manual Price Entry</span>
+      <span class="aiocc-badge-pill">✓ Browser-Based Calculations</span>
+      <span class="aiocc-badge-pill">✓ Mobile Friendly</span>
+    </div>
+    <div class="aiocc-notice">
+      <strong>Important Notice:</strong> This tool does not provide live prices, execute trades, connect to a wallet, predict returns or provide investment advice. Enter values from your own exchange records.
+    </div>
+  </header>
+
+  <!-- PRIVACY NOTICE -->
+  <div style="font-size:12px; color:var(--text-muted); text-align:center; margin-bottom:12px; padding:0 8px;">
+    Calculator values are processed locally by the application. Optional saved data remains in this browser. Third-party advertisements may operate under their own privacy policies.
+  </div>
+
+  <!-- ADVERTISEMENT 1: 468x60 BANNER -->
+  <div class="aiocc-ad-wrapper aiocc-ad-468">
+    <div class="aiocc-ad-label">ADVERTISEMENT</div>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- Global Asset Settings -->
+  <section class="aiocc-settings-bar" aria-label="Global Asset Settings">
+    <div class="aiocc-form-group">
+      <label for="aioccCryptoName">Coin Name</label>
+      <input type="text" id="aioccCryptoName" value="Bitcoin" placeholder="e.g. Bitcoin" />
+    </div>
+    <div class="aiocc-form-group">
+      <label for="aioccCryptoSymbol">Crypto Symbol</label>
+      <input type="text" id="aioccCryptoSymbol" value="BTC" placeholder="e.g. BTC" />
+    </div>
+    <div class="aiocc-form-group">
+      <label for="aioccFiatCurrency">Currency Symbol</label>
+      <select id="aioccFiatCurrency">
+        <option value="$" selected>USD ($)</option>
+        <option value="€">EUR (€)</option>
+        <option value="£">GBP (£)</option>
+        <option value="CA$">CAD (CA$)</option>
+        <option value="A$">AUD (A$)</option>
+        <option value="¥">JPY (¥)</option>
+        <option value="₹">INR (₹)</option>
+        <option value="custom">Custom Symbol</option>
+      </select>
+    </div>
+    <div class="aiocc-form-group" id="aioccCustomSymbolGroup" style="display:none;">
+      <label for="aioccCustomSymbol">Custom Symbol</label>
+      <input type="text" id="aioccCustomSymbol" value="$" maxlength="6" />
+    </div>
+    <div class="aiocc-form-group">
+      <label for="aioccCryptoDecimals">Crypto Precision</label>
+      <select id="aioccCryptoDecimals">
+        <option value="2">2 Decimals</option>
+        <option value="4">4 Decimals</option>
+        <option value="6">6 Decimals</option>
+        <option value="8" selected>8 Decimals (Standard)</option>
+      </select>
+    </div>
+    <div class="aiocc-form-group">
+      <label for="aioccFiatDecimals">Fiat Precision</label>
+      <select id="aioccFiatDecimals">
+        <option value="2" selected>2 Decimals ($0.00)</option>
+        <option value="4">4 Decimals ($0.0000)</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Main Tool Navigation Tabs -->
+  <nav class="aiocc-tab-scroll" aria-label="Calculator Modules">
+    <div class="aiocc-tabs" role="tablist">
+      <button class="aiocc-tab-btn" role="tab" aria-selected="true" aria-controls="aioccPanelAvgEntry" id="tabAvgEntry">Average Entry</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelPL" id="tabPL">Profit &amp; Loss</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelAvgDown" id="tabAvgDown">Average Down</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelPartialSell" id="tabPartialSell">Partial Sell</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelDCA" id="tabDCA">DCA Planner</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelPositionSize" id="tabPositionSize">Position Size</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelRiskReward" id="tabRiskReward">Risk &amp; Reward</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelStopLoss" id="tabStopLoss">Stop-Loss &amp; TP</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelLeverage" id="tabLeverage">Leverage</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelFees" id="tabFees">Fees</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelBreakEven" id="tabBreakEven">Break-Even &amp; ROI</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelQuantity" id="tabQuantity">Crypto Quantity</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelPortfolio" id="tabPortfolio">Portfolio</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelJournal" id="tabJournal">Trade Journal</button>
+      <button class="aiocc-tab-btn" role="tab" aria-selected="false" aria-controls="aioccPanelHistory" id="tabHistory">History &amp; Export</button>
+    </div>
+  </nav>
+
+  <!-- MODULE 1: AVERAGE ENTRY PRICE -->
+  <section class="aiocc-tab-panel active" id="aioccPanelAvgEntry" role="tabpanel" aria-labelledby="tabAvgEntry">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <h2 style="margin:0; font-size:18px;">1. Crypto Average Entry Price Calculator</h2>
+      <div class="aiocc-btn-row" style="margin:0;">
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnUseExample">Use Example (Test 1)</button>
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnResetAvg">Reset</button>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 16px 0;">
+      Add multiple purchase orders to calculate your exact weighted average price and fee-adjusted average cost.
+    </p>
+
+    <div class="aiocc-table-responsive">
+      <table id="aioccPurchasesTable" aria-label="Purchases Table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date (Optional)</th>
+            <th>Price per Coin</th>
+            <th>Quantity</th>
+            <th>Fee Type</th>
+            <th>Fee Value</th>
+            <th>Note</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="aioccPurchasesBody">
+          <!-- Dynamically populated rows -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnAddPurchase">+ Add Purchase</button>
+      <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnAddFivePurchases">+ Add 5 Purchases</button>
+      <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnDupLast">Duplicate Last</button>
+      <button type="button" class="aiocc-btn aiocc-btn-success" id="aioccBtnCalcAvg">Calculate Average</button>
+    </div>
+  </section>
+
+  <!-- MODULE 2: PROFIT AND LOSS -->
+  <section class="aiocc-tab-panel" id="aioccPanelPL" role="tabpanel" aria-labelledby="tabPL">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">2. Crypto Profit &amp; Loss Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccPLMode">Trading Mode</label>
+        <select id="aioccPLMode">
+          <option value="long" selected>Spot / Long</option>
+          <option value="short">Short</option>
+        </select>
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLEntryPrice">Entry Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLEntryPrice" step="any" placeholder="50000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLExitPrice">Exit / Target Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLExitPrice" step="any" placeholder="65000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLQty">Quantity</label>
+        <input type="number" id="aioccPLQty" step="any" placeholder="0.2" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLEntryFees">Entry Fees (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLEntryFees" step="any" value="110" placeholder="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLExitFeePercent">Exit Fee Rate (%)</label>
+        <input type="number" id="aioccPLExitFeePercent" step="any" value="1" placeholder="0.1" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLFixedExitFee">Fixed Exit Fee (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLFixedExitFee" step="any" value="0" placeholder="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLSpread">Spread (%)</label>
+        <input type="number" id="aioccPLSpread" step="any" value="0" placeholder="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLSlippage">Slippage (%)</label>
+        <input type="number" id="aioccPLSlippage" step="any" value="0" placeholder="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLFunding">Funding / Borrowing (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLFunding" step="any" value="0" placeholder="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLNetwork">Network / Gas Fee (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLNetwork" step="any" value="0" placeholder="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPLOther">Other Costs (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPLOther" step="any" value="0" placeholder="0" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcPL">Calculate Profit &amp; Loss</button>
+      <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnSyncFromEntry">Import from Average Entry</button>
+    </div>
+  </section>
+
+  <!-- MODULE 3: AVERAGE DOWN CALCULATOR -->
+  <section class="aiocc-tab-panel" id="aioccPanelAvgDown" role="tabpanel" aria-labelledby="tabAvgDown">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">3. Crypto Average Down Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccAvgDownCurQty">Current Quantity Held</label>
+        <input type="number" id="aioccAvgDownCurQty" step="any" value="1" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccAvgDownCurPrice">Current Average Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccAvgDownCurPrice" step="any" value="100" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccAvgDownNewPrice">New Purchase Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccAvgDownNewPrice" step="any" value="50" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccAvgDownNewQty">New Purchase Quantity</label>
+        <input type="number" id="aioccAvgDownNewQty" step="any" value="1" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccAvgDownNewFee">New Purchase Fee (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccAvgDownNewFee" step="any" value="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccAvgDownTargetAvg">Desired Target Average (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccAvgDownTargetAvg" step="any" placeholder="e.g. 70" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcAvgDown">Calculate Average Down</button>
+    </div>
+    <div id="aioccAvgDownResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Click Calculate to compute scenario...</em>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">* Mathematical Scenario Only. This calculation does not encourage buying more assets.</p>
+  </section>
+
+  <!-- MODULE 4: PARTIAL SELL & MULTIPLE SELLS -->
+  <section class="aiocc-tab-panel" id="aioccPanelPartialSell" role="tabpanel" aria-labelledby="tabPartialSell">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">4 &amp; 5. Partial Sell &amp; Multiple Exit Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:16px;">
+      <div class="aiocc-form-group">
+        <label for="aioccPartialHoldings">Total Initial Holdings</label>
+        <input type="number" id="aioccPartialHoldings" step="any" value="2" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPartialCostBasis">Fee-Adjusted Average Cost (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPartialCostBasis" step="any" value="100" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPartialCurPrice">Current Manual Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPartialCurPrice" step="any" value="150" />
+      </div>
+    </div>
+
+    <div class="aiocc-table-responsive">
+      <table id="aioccSalesTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Sell Price</th>
+            <th>Quantity Sold</th>
+            <th>Fee %</th>
+            <th>Fixed Fee</th>
+            <th>Note</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="aioccSalesBody">
+          <!-- Dynamic sales rows -->
+        </tbody>
+      </table>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnAddSaleRow">+ Add Sell Order</button>
+      <button type="button" class="aiocc-btn aiocc-btn-success" id="aioccBtnCalcPartial">Calculate Partial Sells</button>
+    </div>
+    <div id="aioccPartialResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Add sell orders and calculate...</em>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
+      * This average-cost view is an estimate and may not match FIFO, LIFO, HIFO, specific identification, exchange records or tax forms.
+    </p>
+  </section>
+
+  <!-- MODULE 5: DCA PLANNER -->
+  <section class="aiocc-tab-panel" id="aioccPanelDCA" role="tabpanel" aria-labelledby="tabDCA">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">6. Dollar-Cost Averaging (DCA) Planner</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccDCAAmount">Recurring Investment (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccDCAAmount" step="any" value="100" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccDCAInterval">Frequency</label>
+        <select id="aioccDCAInterval">
+          <option value="Daily">Daily</option>
+          <option value="Weekly" selected>Weekly</option>
+          <option value="Biweekly">Biweekly</option>
+          <option value="Monthly">Monthly</option>
+        </select>
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccDCAPeriods">Number of Periods</label>
+        <input type="number" id="aioccDCAPeriods" value="5" min="1" max="100" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccDCAFeeRate">Fee Rate (%)</label>
+        <input type="number" id="aioccDCAFeeRate" step="any" value="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccDCAFinalPrice">Final Comparison Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccDCAFinalPrice" step="any" placeholder="Optional" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnGenDCATable">Generate DCA Schedule</button>
+      <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnTest7DCA">Load Test 7 Example</button>
+    </div>
+    <div id="aioccDCAScheduleContainer" class="aiocc-table-responsive" style="margin-top:16px;"></div>
+    <div id="aioccDCAResultsSummary" style="margin-top:12px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);"></div>
+  </section>
+
+  <!-- MODULE 6: POSITION SIZE -->
+  <section class="aiocc-tab-panel" id="aioccPanelPositionSize" role="tabpanel" aria-labelledby="tabPositionSize">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">7. Crypto Position Size Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccPosAccountBalance">Account Balance (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPosAccountBalance" step="any" value="10000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPosRiskPercent">Risk Percentage (%)</label>
+        <input type="number" id="aioccPosRiskPercent" step="any" value="1" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPosEntryPrice">Entry Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPosEntryPrice" step="any" value="50" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPosStopPrice">Stop-Loss Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPosStopPrice" step="any" value="48" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPosEntryFee">Entry Fee Rate (%)</label>
+        <input type="number" id="aioccPosEntryFee" step="any" value="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPosExitFee">Exit Fee Rate (%)</label>
+        <input type="number" id="aioccPosExitFee" step="any" value="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccPosFixedFee">Fixed Fees (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccPosFixedFee" step="any" value="0" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcPosSize">Calculate Position Size</button>
+    </div>
+    <div id="aioccPosSizeResult" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Enter risk and price parameters to calculate...</em>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">* Mathematical Position Size Based on Entered Risk. Never considered investment advice.</p>
+  </section>
+
+  <!-- MODULE 7: RISK TO REWARD -->
+  <section class="aiocc-tab-panel" id="aioccPanelRiskReward" role="tabpanel" aria-labelledby="tabRiskReward">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">8. Risk-to-Reward Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccRRDirection">Direction</label>
+        <select id="aioccRRDirection">
+          <option value="long" selected>Long</option>
+          <option value="short">Short</option>
+        </select>
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccRREntry">Entry Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccRREntry" step="any" value="100" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccRRStop">Stop-Loss Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccRRStop" step="any" value="90" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccRRTarget">Take-Profit Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccRRTarget" step="any" value="130" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccRRQty">Trade Quantity</label>
+        <input type="number" id="aioccRRQty" step="any" value="1" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcRR">Calculate Risk-Reward</button>
+    </div>
+    <div id="aioccRRResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Calculate ratio...</em>
+    </div>
+  </section>
+
+  <!-- MODULE 8 & 9 & 10: STOP-LOSS & TAKE-PROFIT -->
+  <section class="aiocc-tab-panel" id="aioccPanelStopLoss" role="tabpanel" aria-labelledby="tabStopLoss">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">9 &amp; 10. Stop-Loss &amp; Take-Profit Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccSLDirection">Direction</label>
+        <select id="aioccSLDirection">
+          <option value="long" selected>Long</option>
+          <option value="short">Short</option>
+        </select>
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccSLEntry">Entry Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccSLEntry" step="any" value="100" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccSLQty">Quantity</label>
+        <input type="number" id="aioccSLQty" step="any" value="1" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccSLPercent">Stop-Loss (%)</label>
+        <input type="number" id="aioccSLPercent" step="any" value="5" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccTPPercent">Take-Profit (%)</label>
+        <input type="number" id="aioccTPPercent" step="any" value="15" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccSLFees">Estimated Fees (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccSLFees" step="any" value="0" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcSLTP">Calculate Levels</button>
+    </div>
+    <div id="aioccSLTPResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Calculate price levels and loss/profit amounts...</em>
+    </div>
+  </section>
+
+  <!-- MODULE 12: LEVERAGE PROFIT CALCULATOR -->
+  <section class="aiocc-tab-panel" id="aioccPanelLeverage" role="tabpanel" aria-labelledby="tabLeverage">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">11 &amp; 12. Leverage Profit &amp; Loss Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccLevMargin">Initial Margin (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccLevMargin" step="any" value="1000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccLevMultiplier">Leverage Multiplier</label>
+        <select id="aioccLevMultiplier">
+          <option value="2">2×</option>
+          <option value="3">3×</option>
+          <option value="5" selected>5×</option>
+          <option value="10">10×</option>
+          <option value="20">20×</option>
+          <option value="50">50×</option>
+          <option value="100">100×</option>
+        </select>
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccLevDirection">Direction</label>
+        <select id="aioccLevDirection">
+          <option value="long" selected>Long</option>
+          <option value="short">Short</option>
+        </select>
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccLevEntry">Entry Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccLevEntry" step="any" value="50000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccLevExit">Exit Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccLevExit" step="any" value="52000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccLevFees">Trading &amp; Funding Fees (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccLevFees" step="any" value="0" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcLev">Calculate Leverage Return</button>
+    </div>
+    <div id="aioccLevResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Calculate notional value and return on margin...</em>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
+      * Leverage is extremely high risk. This tool does not invent liquidation prices or exchange maintenance rules.
+    </p>
+  </section>
+
+  <!-- MODULE 13, 14, 15: FEES, MAKER/TAKER, SPREAD -->
+  <section class="aiocc-tab-panel" id="aioccPanelFees" role="tabpanel" aria-labelledby="tabFees">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">13, 14 &amp; 15. Trading Fee, Maker/Taker &amp; Slippage Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccFeeTradeAmount">Trade Amount / Volume (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccFeeTradeAmount" step="any" value="10000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccFeeMakerRate">Maker Fee Rate (%)</label>
+        <input type="number" id="aioccFeeMakerRate" step="any" value="0.10" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccFeeTakerRate">Taker Fee Rate (%)</label>
+        <input type="number" id="aioccFeeTakerRate" step="any" value="0.25" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccFeeSpread">Spread (%)</label>
+        <input type="number" id="aioccFeeSpread" step="any" value="0.05" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccFeeSlippage">Slippage (%)</label>
+        <input type="number" id="aioccFeeSlippage" step="any" value="0.05" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccFeeFixed">Network / Fixed Fee (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccFeeFixed" step="any" value="5" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcFees">Calculate Fee Breakdown</button>
+    </div>
+    <div id="aioccFeeResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Enter rates shown by your exchange...</em>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
+      * Enter the rate shown by your exchange. Fees vary by platform, order type, trading volume and account tier.
+    </p>
+  </section>
+
+  <!-- MODULE 16 & 17: BREAK-EVEN & TARGET ROI -->
+  <section class="aiocc-tab-panel" id="aioccPanelBreakEven" role="tabpanel" aria-labelledby="tabBreakEven">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">16 &amp; 17. Break-Even &amp; Target ROI Price Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccBETotalEntryCost">Total Entry Cost (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccBETotalEntryCost" step="any" value="11110" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccBETotalReceivedQty">Total Received Quantity</label>
+        <input type="number" id="aioccBETotalReceivedQty" step="any" value="0.2" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccBEExitFeeRate">Exit Fee Rate (%)</label>
+        <input type="number" id="aioccBEExitFeeRate" step="any" value="1" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccBEFixedExitFee">Fixed Exit Costs (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccBEFixedExitFee" step="any" value="0" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccBETargetROI">Target ROI (%)</label>
+        <input type="number" id="aioccBETargetROI" step="any" value="20" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcBE">Calculate Break-Even &amp; Target</button>
+    </div>
+    <div id="aioccBEResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Calculate price required to cover all costs...</em>
+    </div>
+  </section>
+
+  <!-- MODULE 18: CRYPTO QUANTITY CALCULATOR -->
+  <section class="aiocc-tab-panel" id="aioccPanelQuantity" role="tabpanel" aria-labelledby="tabQuantity">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">18. Crypto Quantity Calculator</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+      <div class="aiocc-form-group">
+        <label for="aioccQtyInvestment">Cash Investment Amount (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccQtyInvestment" step="any" value="1000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccQtyPrice">Cryptocurrency Price (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccQtyPrice" step="any" value="50000" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccQtyFeeRate">Fee Rate (%)</label>
+        <input type="number" id="aioccQtyFeeRate" step="any" value="0.5" />
+      </div>
+      <div class="aiocc-form-group">
+        <label for="aioccQtyFixedFee">Fixed Fee (<span class="aiocc-curr-sym">$</span>)</label>
+        <input type="number" id="aioccQtyFixedFee" step="any" value="0" />
+      </div>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnCalcQty">Calculate Crypto Quantity</button>
+    </div>
+    <div id="aioccQtyResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Compute units received...</em>
+    </div>
+  </section>
+
+  <!-- MODULE 19 & 20: PORTFOLIO ALLOCATION & REALIZED TRACKER -->
+  <section class="aiocc-tab-panel" id="aioccPanelPortfolio" role="tabpanel" aria-labelledby="tabPortfolio">
+    <h2 style="margin:0 0 12px 0; font-size:18px;">19 &amp; 20. Portfolio Allocation &amp; Balance Tracker</h2>
+    <div class="aiocc-table-responsive">
+      <table id="aioccPortfolioTable">
+        <thead>
+          <tr>
+            <th>Coin Name</th>
+            <th>Symbol</th>
+            <th>Quantity</th>
+            <th>Manual Price</th>
+            <th>Current Value</th>
+            <th>Target %</th>
+            <th>Current %</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="aioccPortfolioBody">
+          <!-- Dynamic portfolio rows -->
+        </tbody>
+      </table>
+    </div>
+    <div class="aiocc-btn-row">
+      <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnAddPortRow">+ Add Holding</button>
+      <button type="button" class="aiocc-btn aiocc-btn-success" id="aioccBtnCalcPort">Calculate Rebalance</button>
+    </div>
+    <div id="aioccPortResults" style="margin-top:16px; font-size:14px; background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+      <em>Enter portfolio assets...</em>
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">* Mathematical Allocation Difference. No coin recommendations provided.</p>
+  </section>
+
+  <!-- MODULE 21: TRADE JOURNAL -->
+  <section class="aiocc-tab-panel" id="aioccPanelJournal" role="tabpanel" aria-labelledby="tabJournal">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <h2 style="margin:0; font-size:18px;">21. Private Browser Trade Journal</h2>
+      <div class="aiocc-btn-row" style="margin:0;">
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnExportJournalCSV">Export CSV</button>
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnExportJournalJSON">Export JSON</button>
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnPrintJournal">Print</button>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 16px 0;">
+      Record trade setups, profit/loss, strategies and execution notes locally in your browser without any server connection.
+    </p>
+
+    <!-- New Journal Entry Form -->
+    <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:16px;">
+      <h3 style="margin:0 0 12px 0; font-size:15px;">Add Trade Entry</h3>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
+        <div class="aiocc-form-group">
+          <label for="aioccJDate">Date &amp; Time</label>
+          <input type="datetime-local" id="aioccJDate" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJCoin">Coin Symbol</label>
+          <input type="text" id="aioccJCoin" placeholder="BTC" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJType">Type</label>
+          <select id="aioccJType">
+            <option value="Long">Long</option>
+            <option value="Short">Short</option>
+            <option value="Spot">Spot</option>
+          </select>
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJEntry">Entry Price (<span class="aiocc-curr-sym">$</span>)</label>
+          <input type="number" id="aioccJEntry" step="any" placeholder="0" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJExit">Exit Price (<span class="aiocc-curr-sym">$</span>)</label>
+          <input type="number" id="aioccJExit" step="any" placeholder="0" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJQty">Quantity</label>
+          <input type="number" id="aioccJQty" step="any" placeholder="0" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJFees">Fees (<span class="aiocc-curr-sym">$</span>)</label>
+          <input type="number" id="aioccJFees" step="any" placeholder="0" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJStrategy">Strategy</label>
+          <input type="text" id="aioccJStrategy" placeholder="e.g. Breakout" />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJNotes">Setup / Notes</label>
+          <input type="text" id="aioccJNotes" placeholder="Reason for trade..." />
+        </div>
+        <div class="aiocc-form-group">
+          <label for="aioccJTags">Custom Tags</label>
+          <input type="text" id="aioccJTags" placeholder="e.g. #dca #swing" />
+        </div>
+      </div>
+      <div class="aiocc-btn-row" style="margin-top:12px;">
+        <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnSaveJournalEntry">+ Save Trade to Journal</button>
+      </div>
+    </div>
+
+    <!-- Journal Table Search & Filter -->
+    <div style="display:flex; gap:10px; margin-bottom:12px; flex-wrap:wrap;">
+      <input type="text" id="aioccJournalSearch" placeholder="Search by coin, strategy, notes..." style="max-width:300px;" />
+    </div>
+
+    <div class="aiocc-table-responsive">
+      <table id="aioccJournalTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Coin</th>
+            <th>Type</th>
+            <th>Entry</th>
+            <th>Exit</th>
+            <th>Qty</th>
+            <th>Fees</th>
+            <th>Net P/L</th>
+            <th>Strategy</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="aioccJournalBody">
+          <!-- Journal Rows -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- MODULE 22: CALCULATION HISTORY & BACKUP -->
+  <section class="aiocc-tab-panel" id="aioccPanelHistory" role="tabpanel" aria-labelledby="tabHistory">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <h2 style="margin:0; font-size:18px;">22. Saved Calculations &amp; Backups</h2>
+      <div class="aiocc-btn-row" style="margin:0;">
+        <button type="button" class="aiocc-btn aiocc-btn-primary" id="aioccBtnSaveCurrentDraft">Save Current Calculation</button>
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnExportCalcCSV">Export CSV</button>
+        <button type="button" class="aiocc-btn aiocc-btn-secondary" id="aioccBtnExportCalcJSON">Export JSON</button>
+        <label class="aiocc-btn aiocc-btn-secondary" style="cursor:pointer; margin:0;">
+          Import JSON
+          <input type="file" id="aioccImportJSONFile" accept=".json" style="display:none;" />
+        </label>
+        <button type="button" class="aiocc-btn aiocc-btn-danger" id="aioccBtnClearAllHistory">Clear All</button>
+      </div>
+    </div>
+    <div class="aiocc-notice" style="margin:16px 0;">
+      Saved records remain in this browser and are not encrypted. Anyone with access to this browser profile may be able to view them. Clearing browser storage or changing devices may remove them.
+    </div>
+
+    <div class="aiocc-table-responsive">
+      <table id="aioccHistoryTable">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Coin</th>
+            <th>Type</th>
+            <th>Summary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="aioccHistoryBody">
+          <!-- Populated from localStorage -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- RESULT DASHBOARD (Visual cards for key metrics) -->
+  <section aria-label="Result Dashboard" style="margin-top:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+      <h2 style="margin:0; font-size:20px; font-weight:800;">Real-Time Calculation Dashboard</h2>
+      <span style="font-size:12px; color:var(--text-muted); font-weight:600;">Estimate Only — Not a Trade Recommendation</span>
+    </div>
+    <div class="aiocc-dashboard-grid" id="aioccResultDashboard">
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Weighted Avg Entry</span> <span>📊</span></div>
+        <div class="aiocc-stat-value" id="aioccStatWeightedAvg">$0.00</div>
+        <div class="aiocc-stat-sub">Excluding cash fees</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Fee-Adjusted Cost</span> <span>⚖️</span></div>
+        <div class="aiocc-stat-value" id="aioccStatFeeAdjustedAvg">$0.00</div>
+        <div class="aiocc-stat-sub">True cost per unit</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Total Quantity</span> <span>🪙</span></div>
+        <div class="aiocc-stat-value" id="aioccStatTotalQty">0.00000000</div>
+        <div class="aiocc-stat-sub">Net received tokens</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Total Investment</span> <span>💵</span></div>
+        <div class="aiocc-stat-value" id="aioccStatTotalCost">$0.00</div>
+        <div class="aiocc-stat-sub">Gross purchase value</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Total Fees</span> <span>🏷️</span></div>
+        <div class="aiocc-stat-value" id="aioccStatTotalFees">$0.00</div>
+        <div class="aiocc-stat-sub">Exchange &amp; network fees</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Break-Even Price</span> <span>🎯</span></div>
+        <div class="aiocc-stat-value" id="aioccStatBreakEven">$0.00</div>
+        <div class="aiocc-stat-sub">Fee-covered exit price</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Target ROI (20%)</span> <span>🚀</span></div>
+        <div class="aiocc-stat-value" id="aioccStatTargetPrice">$0.00</div>
+        <div class="aiocc-stat-sub">Price for +20% Net Return</div>
+      </div>
+      <div class="aiocc-stat-card">
+        <div class="aiocc-stat-label"><span>Net Profit / Loss</span> <span>📈</span></div>
+        <div class="aiocc-stat-value" id="aioccStatNetPL">$0.00</div>
+        <div class="aiocc-stat-sub" id="aioccStatROI">ROI: 0.00%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVERTISEMENT 2: 300x250 BANNER -->
+  <div class="aiocc-ad-wrapper aiocc-ad-300">
+    <div class="aiocc-ad-label">ADVERTISEMENT</div>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- MODULE 23: CHARTS & VISUALIZERS -->
+  <section class="aiocc-charts-container" aria-label="Visual Charts">
+    <div class="aiocc-chart-card">
+      <div class="aiocc-chart-title"><span>📈</span> Purchase History &amp; Weighted Average</div>
+      <canvas id="aioccChartPurchases" width="500" height="240"></canvas>
+    </div>
+    <div class="aiocc-chart-card">
+      <div class="aiocc-chart-title"><span>🥧</span> Cost &amp; Fee Distribution</div>
+      <canvas id="aioccChartFees" width="500" height="240"></canvas>
+    </div>
+  </section>
+
+  <!-- ADVERTISEMENT 3: NATIVE BANNER -->
+  <div class="aiocc-ad-wrapper aiocc-ad-native">
+    <div class="aiocc-ad-label">SPONSORED CONTENT</div>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- EDUCATIONAL COMPREHENSIVE GUIDE (1,400+ Words) -->
+  <article class="aiocc-guide-section" aria-label="Educational Guide to Crypto Calculations">
+    <h2 style="margin-top:0;">Comprehensive Guide to Crypto Calculation &amp; Portfolio Mathematics</h2>
+    
+    <h3>What Is a Crypto Average Entry Price?</h3>
+    <p>
+      In cryptocurrency trading and investing, your average entry price represents the volume-weighted cost per unit across all purchases of a specific token. Because crypto markets operate 24 hours a day with notable volatility, investors frequently accumulate positions across several orders at varying price levels. Calculating your true average entry price prevents perceptual bias and allows you to measure profit or loss against your real capital outlay.
+    </p>
+
+    <h3>Weighted Average vs. Simple Average</h3>
+    <p>
+      A common mathematical error is taking a simple arithmetic mean of order prices. For instance, if you buy 1 BTC at $30,000 and 0.1 BTC at $60,000, a simple average would incorrectly suggest $(30,000 + 60,000) / 2 = $45,000. However, because you purchased ten times more Bitcoin at the lower price, your volume-weighted average is calculated by dividing total capital invested ($30,000 + $6,000 = $36,000) by total quantity (1.1 BTC), yielding an actual average cost of $32,727.27. Weighted calculations are essential for accurate tracking.
+    </p>
+
+    <h3>Average Entry Price vs. Tax Cost Basis</h3>
+    <p>
+      Average entry price is an aggregate mathematical snapshot. Under United States tax law and Internal Revenue Service (IRS) guidance regarding digital assets, taxpayers must generally track cost basis using specific accounting methods such as FIFO (First-In, First-Out), HIFO (Highest-In, First-Out), or Specific Identification per tax lot. An overall weighted average is not necessarily the same as taxable cost basis on IRS Form 8949 or Form 1099-DA.
+    </p>
+
+    <h3>How Trading Fees Change Average Cost</h3>
+    <p>
+      Every exchange transaction involves trading fees (maker, taker, fixed cash fees, or crypto-denominated deduction fees). When fees are added to your gross purchase amount, your effective entry price increases. For example, purchasing 0.1 BTC at $50,000 with a 1% fee costs $5,050. Purchasing another 0.1 BTC at $60,000 with a 1% fee costs $6,060. The gross weighted average is $55,000, but your <strong>fee-adjusted average cost</strong> is $55,550.
+    </p>
+
+    <h3>How Crypto Profit and Loss Is Calculated</h3>
+    <p>
+      Net profit or loss is the net cash proceeds received upon exiting a position minus the total capital invested (including all entry fees). Gross return ignores transaction friction, which frequently leads traders to overestimate net performance. Slippage, exchange withdrawal fees, blockchain gas costs, and bid-ask spreads must all be factored into complete profit equations.
+    </p>
+
+    <h3>Realized vs. Unrealized Profit</h3>
+    <p>
+      <strong>Unrealized profit</strong> (often called "paper profit") reflects the theoretical gain on unsold tokens based on current market valuations. <strong>Realized profit</strong> occurs when assets are sold, swapped, or converted to fiat or stablecoins. Unrealized gains can evaporate instantly during market drawdowns, whereas realized gains represent closed performance.
+    </p>
+
+    <h3>Average Down Calculations</h3>
+    <p>
+      Averaging down involves purchasing additional units of an asset as its price declines, thereby lowering the position's overall average cost. While mathematically lowering the break-even threshold, averaging down increases total capital exposure. This calculator provides mathematical scenarios only and does not suggest or endorse capital allocation strategies.
+    </p>
+
+    <h3>Dollar-Cost Averaging (DCA)</h3>
+    <p>
+      Dollar-Cost Averaging (DCA) is an investment practice where a fixed dollar amount is invested at regular intervals (daily, weekly, monthly) regardless of asset price. By purchasing more units when prices drop and fewer when prices rise, DCA aims to mitigate market timing risk without guaranteeing returns.
+    </p>
+
+    <h3>Position Size and Entered Risk</h3>
+    <p>
+      Professional risk management dictates sizing trades based on capital at risk rather than arbitrary wallet balances. By establishing an account risk percentage (such as 1% of total portfolio) and determining a predefined stop-loss distance, you calculate the maximum quantity of tokens you can hold before your loss limit is reached.
+    </p>
+
+    <h3>Stop Loss and Take Profit</h3>
+    <p>
+      A stop-loss order defines the price boundary where an unprofitable position is liquidated to curb further losses. A take-profit level defines where a winning position is closed to lock in gains. Establishing both boundaries before entering a trade removes emotional bias.
+    </p>
+
+    <h3>Risk-to-Reward Ratio</h3>
+    <p>
+      The Risk-to-Reward (R:R) ratio compares potential monetary loss against expected gain. An R:R of 1:3 implies risking $100 to potentially make $300. The break-even win rate is defined by <code>1 / (1 + Reward-to-Risk) × 100</code>. A 1:3 ratio requires only a 25% win rate to break even before trading costs.
+    </p>
+
+    <h3>Leverage, Margin and Funding Costs</h3>
+    <p>
+      Leverage multiplies both gains and losses by borrowing funds against collateral (margin). Perpetual contracts also incur ongoing periodic funding rates and borrowing costs. Leverage magnifies downside risk exponentially, and small adverse price movements can trigger full liquidation.
+    </p>
+
+    <h3>Maker vs. Taker Fees</h3>
+    <p>
+      Maker orders add liquidity to an exchange order book (such as limit orders away from current market prices) and typically enjoy lower fee tiers. Taker orders remove liquidity by executing immediately against existing order books (market orders), incurring higher commission rates.
+    </p>
+
+    <h3>Trading Fees, Spread and Slippage</h3>
+    <p>
+      <strong>Spread</strong> is the difference between the highest bid price and lowest ask price. <strong>Slippage</strong> occurs when a large market order executes across multiple order book tiers, causing the final realized average price to diverge from the expected price.
+    </p>
+
+    <h3>Break-Even Price</h3>
+    <p>
+      The break-even price is the exact exit price required to recover total initial capital plus all entry, exit, and transfer fees. Exiting below the break-even price results in a net loss even if the nominal market price appears higher than your original purchase price.
+    </p>
+
+    <h3>Partial Sales and Remaining Holdings</h3>
+    <p>
+      When taking partial profits, your remaining coins retain an allocated cost basis based on your weighted entry. Tracking realized profit on exited fractions separately from unrealized value on remaining holdings ensures accurate portfolio visibility.
+    </p>
+
+    <h3>Portfolio Allocation</h3>
+    <p>
+      Portfolio allocation represents the percentage distribution of your total wealth across various digital assets and stablecoins. Periodic portfolio rebalancing calculates the mathematical differences between current token values and predefined target percentage allocations.
+    </p>
+
+    <h3>Why Exchange Results May Differ</h3>
+    <p>
+      Exchange interfaces often display simplified average prices that omit maker/taker fee tiers, rebate credits, blockchain gas fees, or rounding variances. Always reconcile calculator projections with official account trade statements.
+    </p>
+
+    <h3>Why This Is Not a Tax Calculator</h3>
+    <p>
+      Tax authorities enforce specific lot-identification rules, wash sale guidelines, and ordinary income vs. capital gain classifications. This browser utility performs pure mathematical calculations for operational planning and record keeping.
+    </p>
+
+    <h3>Browser Storage and Privacy</h3>
+    <p>
+      All data entered into this calculator runs exclusively in your local browser runtime. No calculation data is transmitted to external servers. If you choose to save records, they reside in your browser's unencrypted <code>localStorage</code>.
+    </p>
+  </article>
+
+  <!-- ACCESSIBLE FAQS ACCORDION -->
+  <section class="aiocc-guide-section" aria-label="Frequently Asked Questions">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+
+    <div class="aiocc-accordion">
+      <div class="aiocc-accordion-header" role="button" tabindex="0">
+        <span>How is crypto average entry price calculated?</span>
+        <span>▼</span>
+      </div>
+      <div class="aiocc-accordion-content">
+        Crypto average entry price is calculated by multiplying each purchase price by its purchased quantity to determine gross cost, summing those costs across all orders, and dividing that total by the sum of all purchased quantities. Fee-adjusted average cost includes all cash fees in the numerator and deducts crypto-denominated fee deductions from the denominator.
+      </div>
+    </div>
+
+    <div class="aiocc-accordion">
+      <div class="aiocc-accordion-header" role="button" tabindex="0">
+        <span>Why is weighted average better than simple average?</span>
+        <span>▼</span>
+      </div>
+      <div class="aiocc-accordion-content">
+        A simple average assumes equal weight for every trade regardless of size. A weighted average accounts for the exact volume of coins purchased at each price level, providing the true mathematical cost per coin.
+      </div>
+    </div>
+
+    <div class="aiocc-accordion">
+      <div class="aiocc-accordion-header" role="button" tabindex="0">
+        <span>Are trading fees included in break-even price?</span>
+        <span>▼</span>
+      </div>
+      <div class="aiocc-accordion-content">
+        Yes. The break-even calculator factors in both entry commissions and anticipated exit fees (both percentage and fixed cash fees) to compute the exact price needed to exit without losing capital.
+      </div>
+    </div>
+
+    <div class="aiocc-accordion">
+      <div class="aiocc-accordion-header" role="button" tabindex="0">
+        <span>Does Dollar-Cost Averaging (DCA) guarantee a profit?</span>
+        <span>▼</span>
+      </div>
+      <div class="aiocc-accordion-content">
+        No. DCA smooths purchase volatility and prevents bad timing on single lump-sum entries, but if the underlying asset declines continuously over time, the position will still incur a net loss.
+      </div>
+    </div>
+
+    <div class="aiocc-accordion">
+      <div class="aiocc-accordion-header" role="button" tabindex="0">
+        <span>Does this tool connect to live exchange APIs or crypto wallets?</span>
+        <span>▼</span>
+      </div>
+      <div class="aiocc-accordion-content">
+        No. This tool operates 100% locally in your browser with manual data entry. It requires no API keys, exchange logins, or Web3 wallet connections.
+      </div>
+    </div>
+
+    <div class="aiocc-accordion">
+      <div class="aiocc-accordion-header" role="button" tabindex="0">
+        <span>Can I use this tool for filing my IRS crypto taxes?</span>
+        <span>▼</span>
+      </div>
+      <div class="aiocc-accordion-content">
+        No. This tool provides mathematical estimations only. Tax reporting requires specialized tax lot methods (FIFO, LIFO, SpecID) compliant with IRS Form 8949 and Form 1099-DA guidelines. Consult a certified tax professional.
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL SHARING BUTTONS -->
+  <section class="aiocc-share-bar" aria-label="Social Sharing">
+    <button type="button" class="aiocc-share-btn" style="background:#1877f2;" id="aioccShareFB">Facebook</button>
+    <button type="button" class="aiocc-share-btn" style="background:#000000;" id="aioccShareX">X / Twitter</button>
+    <button type="button" class="aiocc-share-btn" style="background:#25d366;" id="aioccShareWA">WhatsApp</button>
+    <button type="button" class="aiocc-share-btn" style="background:#0a66c2;" id="aioccShareLI">LinkedIn</button>
+    <button type="button" class="aiocc-share-btn" style="background:#ff4500;" id="aioccShareReddit">Reddit</button>
+    <button type="button" class="aiocc-share-btn" style="background:#64748b;" id="aioccShareEmail">Email</button>
+    <button type="button" class="aiocc-share-btn" style="background:#3b82f6;" id="aioccShareCopy">Copy Link</button>
+    <button type="button" class="aiocc-share-btn" style="background:#8b5cf6;" id="aioccShareNative">Share via Apps</button>
+  </section>
+
+  <!-- OFFICIAL REFERENCES -->
+  <section class="aiocc-guide-section" style="font-size:13px;" aria-label="Official References">
+    <h3 style="margin-top:0;">Official Educational &amp; Regulatory References</h3>
+    <ul style="padding-left:20px; margin:0; line-height:1.8;">
+      <li><a href="https://www.investor.gov/crypto-assets" target="_blank" rel="noopener noreferrer">Investor.gov — Crypto Assets (U.S. SEC)</a></li>
+      <li><a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/crypto-asset-securities" target="_blank" rel="noopener noreferrer">Investor.gov — Crypto Asset Risk Warnings</a></li>
+      <li><a href="https://www.irs.gov/filing/digital-assets" target="_blank" rel="noopener noreferrer">IRS — Digital Assets Tax Guidance</a></li>
+      <li><a href="https://help.coinbase.com/coinbase/trading-and-funding/buying-selling-or-converting-crypto/understanding-slippage-and-spread" target="_blank" rel="noopener noreferrer">Coinbase — Understanding Slippage and Spread</a></li>
+      <li><a href="https://robinhood.com/us/en/support/articles/crypto-average-cost/" target="_blank" rel="noopener noreferrer">Robinhood — Crypto Average Cost Methodologies</a></li>
+    </ul>
+  </section>
+
+  <!-- FINANCIAL AND TAX DISCLAIMER & RISK WARNING -->
+  <footer style="margin:24px 0 40px 0; font-size:12px; color:var(--text-muted); line-height:1.6; border-top:1px solid var(--border-color); padding-top:16px;">
+    <p>
+      <strong>Financial and Tax Disclaimer:</strong> This tool provides mathematical estimates for educational and record-organizing purposes only. It does not provide financial, investment, trading, legal or tax advice. It does not predict cryptocurrency prices or guarantee profits. Actual results may differ because of fees, spreads, slippage, funding costs, borrowing charges, network fees, tax-lot methods and execution prices. Verify all calculations against your exchange statements.
+    </p>
+    <p>
+      Average entry price is not necessarily the same as tax cost basis. Do not use this calculator as a replacement for official exchange records, Form 1099-DA, tax documents or professional tax advice.
+    </p>
+    <p>
+      <strong>Risk Warning:</strong> Cryptocurrency prices can be highly volatile. You may lose some or all of the money involved. A calculator result is not a recommendation to buy, sell, hold, use leverage or average down.
+    </p>
+    <p style="text-align:center; margin-top:16px;">
+      &copy; <span id="aioccCurYear"></span> Free Crypto Average Entry Price, Profit, Fee &amp; Risk Calculator. All calculations processed locally.
+    </p>
+  </footer>
+
+</div>
+
+<!-- ADVERTISEMENT 4: SOCIAL BAR (Exactly once at end) -->
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+
+<script>
+(function() {
+  // Free Crypto Average Entry Price, Profit, Fee & Risk Calculator Suite
+  // Pure vanilla JavaScript encapsulated in IIFE
+
+  // State Management
+  var state = {
+    symbol: 'BTC',
+    coinName: 'Bitcoin',
+    currencySymbol: '$',
+    cryptoDecimals: 8,
+    fiatDecimals: 2,
+    purchases: [
+      { id: '1', orderNumber: 1, date: '', price: 50000, quantity: 0.1, feeType: 'percentage', feeValue: 1, note: 'Order 1' },
+      { id: '2', orderNumber: 2, date: '', price: 60000, quantity: 0.1, feeType: 'percentage', feeValue: 1, note: 'Order 2' }
+    ],
+    sales: [
+      { id: 's1', date: '', price: 150, quantity: 0.5, feePercent: 1, fixedFee: 0, note: 'Partial 1' }
+    ],
+    portfolio: [
+      { id: 'p1', name: 'Bitcoin', symbol: 'BTC', quantity: 0.5, price: 60000, targetPercent: 60, note: 'Core' },
+      { id: 'p2', name: 'Ethereum', symbol: 'ETH', quantity: 4.0, price: 3000, targetPercent: 40, note: 'L1' }
+    ],
+    journal: [],
+    history: []
+  };
+
+  // Safe DOM Element Selector helper
+  function el(id) {
+    return document.getElementById(id);
+  }
+
+  function formatFiat(num) {
+    if (isNaN(num) || !isFinite(num)) return state.currencySymbol + '0.00';
+    return state.currencySymbol + Number(num).toLocaleString('en-US', {
+      minimumFractionDigits: state.fiatDecimals,
+      maximumFractionDigits: state.fiatDecimals
+    });
+  }
+
+  function formatCrypto(num) {
+    if (isNaN(num) || !isFinite(num)) return '0.' + '0'.repeat(state.cryptoDecimals);
+    return Number(num).toLocaleString('en-US', {
+      minimumFractionDigits: Math.min(2, state.cryptoDecimals),
+      maximumFractionDigits: state.cryptoDecimals
+    });
+  }
+
+  // Formatting helpers for safe text rendering
+  function updateCurrencySymbols() {
+    var cur = el('aioccFiatCurrency') ? el('aioccFiatCurrency').value : '$';
+    if (cur === 'custom') {
+      state.currencySymbol = (el('aioccCustomSymbol') && el('aioccCustomSymbol').value) || '$';
+    } else {
+      state.currencySymbol = cur;
+    }
+    var symSpans = document.querySelectorAll('#allInOneCryptoCalculator .aiocc-curr-sym');
+    symSpans.forEach(function(s) {
+      s.textContent = state.currencySymbol;
+    });
+  }
+
+  // --- MODULE 1: AVERAGE ENTRY CALCULATIONS ---
+  function renderPurchasesTable() {
+    var tbody = el('aioccPurchasesBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    state.purchases.forEach(function(row, idx) {
+      row.orderNumber = idx + 1;
+      var tr = document.createElement('tr');
+
+      tr.innerHTML = 
+        '<td>' + row.orderNumber + '</td>' +
+        '<td><input type="date" class="aiocc-row-date" value="' + (row.date || '') + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-row-price" step="any" value="' + (row.price || '') + '" placeholder="0" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-row-qty" step="any" value="' + (row.quantity || '') + '" placeholder="0" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td>' +
+          '<select class="aiocc-row-feetype" style="min-height:36px; padding:4px 8px;">' +
+            '<option value="percentage"' + (row.feeType === 'percentage' ? ' selected' : '') + '>% Fee</option>' +
+            '<option value="fixedCash"' + (row.feeType === 'fixedCash' ? ' selected' : '') + '>Fixed Cash</option>' +
+            '<option value="cryptoQty"' + (row.feeType === 'cryptoQty' ? ' selected' : '') + '>Crypto Fee</option>' +
+          '</select>' +
+        '</td>' +
+        '<td><input type="number" class="aiocc-row-feeval" step="any" value="' + (row.feeValue || 0) + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="text" class="aiocc-row-note" value="' + (row.note || '') + '" placeholder="Note" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td>' +
+          '<div style="display:flex; gap:4px;">' +
+            '<button type="button" class="aiocc-btn aiocc-btn-secondary aiocc-dup-row" style="min-height:32px; padding:2px 8px; font-size:12px;">Dup</button>' +
+            '<button type="button" class="aiocc-btn aiocc-btn-danger aiocc-del-row" style="min-height:32px; padding:2px 8px; font-size:12px;">Del</button>' +
+          '</div>' +
+        '</td>';
+
+      // Row event listeners
+      var dateInput = tr.querySelector('.aiocc-row-date');
+      var priceInput = tr.querySelector('.aiocc-row-price');
+      var qtyInput = tr.querySelector('.aiocc-row-qty');
+      var feeTypeSelect = tr.querySelector('.aiocc-row-feetype');
+      var feeValInput = tr.querySelector('.aiocc-row-feeval');
+      var noteInput = tr.querySelector('.aiocc-row-note');
+      var dupBtn = tr.querySelector('.aiocc-dup-row');
+      var delBtn = tr.querySelector('.aiocc-del-row');
+
+      dateInput.addEventListener('input', function() { row.date = dateInput.value; });
+      priceInput.addEventListener('input', function() { row.price = parseFloat(priceInput.value) || 0; calculateAll(); });
+      qtyInput.addEventListener('input', function() { row.quantity = parseFloat(qtyInput.value) || 0; calculateAll(); });
+      feeTypeSelect.addEventListener('change', function() { row.feeType = feeTypeSelect.value; calculateAll(); });
+      feeValInput.addEventListener('input', function() { row.feeValue = parseFloat(feeValInput.value) || 0; calculateAll(); });
+      noteInput.addEventListener('input', function() { row.note = noteInput.value; });
+
+      dupBtn.addEventListener('click', function() {
+        state.purchases.splice(idx + 1, 0, {
+          id: Date.now() + Math.random().toString(),
+          orderNumber: state.purchases.length + 1,
+          date: row.date,
+          price: row.price,
+          quantity: row.quantity,
+          feeType: row.feeType,
+          feeValue: row.feeValue,
+          note: row.note ? row.note + ' (Copy)' : ''
+        });
+        renderPurchasesTable();
+        calculateAll();
+      });
+
+      delBtn.addEventListener('click', function() {
+        if (state.purchases.length <= 1) {
+          state.purchases = [{ id: '1', orderNumber: 1, date: '', price: 0, quantity: 0, feeType: 'percentage', feeValue: 0, note: '' }];
+        } else {
+          state.purchases.splice(idx, 1);
+        }
+        renderPurchasesTable();
+        calculateAll();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function computeAverageEntry() {
+    var totalGross = 0;
+    var totalCashFees = 0;
+    var totalPurchasedQty = 0;
+    var totalCryptoFees = 0;
+
+    state.purchases.forEach(function(p) {
+      if (p.price > 0 && p.quantity > 0) {
+        var gross = p.price * p.quantity;
+        totalGross += gross;
+        totalPurchasedQty += p.quantity;
+
+        if (p.feeType === 'percentage') {
+          totalCashFees += gross * (Math.max(0, p.feeValue || 0) / 100);
+        } else if (p.feeType === 'fixedCash') {
+          totalCashFees += Math.max(0, p.feeValue || 0);
+        } else if (p.feeType === 'cryptoQty') {
+          totalCryptoFees += Math.min(p.quantity, Math.max(0, p.feeValue || 0));
+        }
+      }
+    });
+
+    var totalReceivedQty = Math.max(0, totalPurchasedQty - totalCryptoFees);
+    var weightedAvg = totalPurchasedQty > 0 ? totalGross / totalPurchasedQty : 0;
+    var feeAdjustedAvg = totalReceivedQty > 0 ? (totalGross + totalCashFees) / totalReceivedQty : 0;
+    var totalEntryCost = totalGross + totalCashFees;
+
+    return {
+      totalGross: totalGross,
+      totalCashFees: totalCashFees,
+      totalPurchasedQty: totalPurchasedQty,
+      totalReceivedQty: totalReceivedQty,
+      weightedAvg: weightedAvg,
+      feeAdjustedAvg: feeAdjustedAvg,
+      totalEntryCost: totalEntryCost
+    };
+  }
+
+  // --- MODULE 2: PROFIT & LOSS CALCULATIONS ---
+  function computeProfitLoss() {
+    var mode = el('aioccPLMode') ? el('aioccPLMode').value : 'long';
+    var entryPrice = parseFloat(el('aioccPLEntryPrice') ? el('aioccPLEntryPrice').value : 0) || 0;
+    var exitPrice = parseFloat(el('aioccPLExitPrice') ? el('aioccPLExitPrice').value : 0) || 0;
+    var qty = parseFloat(el('aioccPLQty') ? el('aioccPLQty').value : 0) || 0;
+    var entryFees = parseFloat(el('aioccPLEntryFees') ? el('aioccPLEntryFees').value : 0) || 0;
+    var exitFeeRate = (parseFloat(el('aioccPLExitFeePercent') ? el('aioccPLExitFeePercent').value : 0) || 0) / 100;
+    var fixedExitFee = parseFloat(el('aioccPLFixedExitFee') ? el('aioccPLFixedExitFee').value : 0) || 0;
+    var spread = (parseFloat(el('aioccPLSpread') ? el('aioccPLSpread').value : 0) || 0) / 100;
+    var slippage = (parseFloat(el('aioccPLSlippage') ? el('aioccPLSlippage').value : 0) || 0) / 100;
+    var funding = parseFloat(el('aioccPLFunding') ? el('aioccPLFunding').value : 0) || 0;
+    var network = parseFloat(el('aioccPLNetwork') ? el('aioccPLNetwork').value : 0) || 0;
+    var other = parseFloat(el('aioccPLOther') ? el('aioccPLOther').value : 0) || 0;
+
+    var grossExitValue = qty * exitPrice;
+    var grossEntryCost = qty * entryPrice;
+    var totalEntryCost = grossEntryCost + entryFees;
+
+    var exitFee = grossExitValue * exitFeeRate;
+    var spreadCost = grossExitValue * spread;
+    var slippageCost = grossExitValue * slippage;
+    var totalExitCosts = exitFee + fixedExitFee + spreadCost + slippageCost + funding + network + other;
+
+    var netExitProceeds = 0;
+    var netProfit = 0;
+
+    if (mode === 'long') {
+      netExitProceeds = grossExitValue - totalExitCosts;
+      netProfit = netExitProceeds - totalEntryCost;
+    } else {
+      // Short
+      var shortEntryProceeds = grossEntryCost - entryFees;
+      var shortCoverCost = grossExitValue + totalExitCosts;
+      netProfit = shortEntryProceeds - shortCoverCost;
+      netExitProceeds = shortEntryProceeds;
+    }
+
+    var roi = totalEntryCost > 0 ? (netProfit / totalEntryCost) * 100 : 0;
+
+    // Break-even and Target 20%
+    var denom = qty * (1 - exitFeeRate);
+    var breakEven = denom > 0 ? (totalEntryCost + fixedExitFee + network + other) / denom : 0;
+    var target20 = denom > 0 ? (totalEntryCost * 1.20 + fixedExitFee + network + other) / denom : 0;
+
+    return {
+      grossExitValue: grossExitValue,
+      totalExitCosts: totalExitCosts,
+      netExitProceeds: netExitProceeds,
+      totalEntryCost: totalEntryCost,
+      netProfit: netProfit,
+      roi: roi,
+      breakEven: breakEven,
+      target20: target20
+    };
+  }
+
+  // --- MODULE 3: AVERAGE DOWN ---
+  function computeAverageDown() {
+    var curQty = parseFloat(el('aioccAvgDownCurQty').value) || 0;
+    var curAvg = parseFloat(el('aioccAvgDownCurPrice').value) || 0;
+    var newPrice = parseFloat(el('aioccAvgDownNewPrice').value) || 0;
+    var newQty = parseFloat(el('aioccAvgDownNewQty').value) || 0;
+    var newFee = parseFloat(el('aioccAvgDownNewFee').value) || 0;
+    var targetAvg = parseFloat(el('aioccAvgDownTargetAvg').value) || 0;
+
+    var curCost = curQty * curAvg;
+    var newCost = newPrice * newQty;
+    var totalCost = curCost + newCost + newFee;
+    var totalQty = curQty + newQty;
+
+    var newAvg = totalQty > 0 ? totalCost / totalQty : 0;
+    var reduction = curAvg > 0 ? ((curAvg - newAvg) / curAvg) * 100 : 0;
+
+    var targetMsg = '';
+    if (targetAvg > 0) {
+      if (newPrice < targetAvg && targetAvg < curAvg) {
+        var reqQty = (curCost - targetAvg * curQty) / (targetAvg - newPrice);
+        if (reqQty > 0) {
+          targetMsg = '<div style="margin-top:8px; color:var(--accent-green); font-weight:700;">' +
+            'Quantity needed to reach ' + formatFiat(targetAvg) + ' average: ' + formatCrypto(reqQty) + ' coins (' + formatFiat(reqQty * newPrice) + ' investment)' +
+            '</div>';
+        } else {
+          targetMsg = '<div style="margin-top:8px; color:var(--accent-red);">Target average cannot be reached mathematically at this price.</div>';
+        }
+      } else {
+        targetMsg = '<div style="margin-top:8px; color:var(--accent-red);">Target average must be between new purchase price and current average.</div>';
+      }
+    }
+
+    var html = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>New Total Quantity:</strong> ' + formatCrypto(totalQty) + '</div>' +
+        '<div><strong>New Total Outlay:</strong> ' + formatFiat(totalCost) + '</div>' +
+        '<div><strong>New Average Cost:</strong> ' + formatFiat(newAvg) + '</div>' +
+        '<div><strong>Average Reduction:</strong> ' + reduction.toFixed(2) + '%</div>' +
+      '</div>' + targetMsg;
+
+    el('aioccAvgDownResults').innerHTML = html;
+  }
+
+  // --- MODULE 4 & 5: PARTIAL SELL ---
+  function renderSalesTable() {
+    var tbody = el('aioccSalesBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    state.sales.forEach(function(row, idx) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = 
+        '<td>' + (idx + 1) + '</td>' +
+        '<td><input type="date" class="aiocc-sale-date" value="' + (row.date || '') + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-sale-price" step="any" value="' + (row.price || '') + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-sale-qty" step="any" value="' + (row.quantity || '') + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-sale-fee" step="any" value="' + (row.feePercent || 0) + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-sale-fixed" step="any" value="' + (row.fixedFee || 0) + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="text" class="aiocc-sale-note" value="' + (row.note || '') + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><button type="button" class="aiocc-btn aiocc-btn-danger aiocc-del-sale" style="min-height:32px; padding:2px 8px; font-size:12px;">Del</button></td>';
+
+      var priceInput = tr.querySelector('.aiocc-sale-price');
+      var qtyInput = tr.querySelector('.aiocc-sale-qty');
+      var feeInput = tr.querySelector('.aiocc-sale-fee');
+      var fixedInput = tr.querySelector('.aiocc-sale-fixed');
+      var noteInput = tr.querySelector('.aiocc-sale-note');
+      var delBtn = tr.querySelector('.aiocc-del-sale');
+
+      priceInput.addEventListener('input', function() { row.price = parseFloat(priceInput.value) || 0; });
+      qtyInput.addEventListener('input', function() { row.quantity = parseFloat(qtyInput.value) || 0; });
+      feeInput.addEventListener('input', function() { row.feePercent = parseFloat(feeInput.value) || 0; });
+      fixedInput.addEventListener('input', function() { row.fixedFee = parseFloat(fixedInput.value) || 0; });
+      noteInput.addEventListener('input', function() { row.note = noteInput.value; });
+
+      delBtn.addEventListener('click', function() {
+        state.sales.splice(idx, 1);
+        renderSalesTable();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function computePartialSells() {
+    var initialHoldings = parseFloat(el('aioccPartialHoldings').value) || 0;
+    var avgCost = parseFloat(el('aioccPartialCostBasis').value) || 0;
+    var curPrice = parseFloat(el('aioccPartialCurPrice').value) || 0;
+
+    var totalSoldQty = 0;
+    var totalNetProceeds = 0;
+    var totalRealizedProfit = 0;
+
+    state.sales.forEach(function(s) {
+      if (s.price > 0 && s.quantity > 0) {
+        var gross = s.price * s.quantity;
+        var fee = gross * ((s.feePercent || 0) / 100) + (s.fixedFee || 0);
+        var net = gross - fee;
+        var allocatedCost = avgCost * s.quantity;
+        var profit = net - allocatedCost;
+
+        totalSoldQty += s.quantity;
+        totalNetProceeds += net;
+        totalRealizedProfit += profit;
+      }
+    });
+
+    if (totalSoldQty > initialHoldings) {
+      el('aioccPartialResults').innerHTML = '<div style="color:var(--accent-red); font-weight:700;">Error: Total sold quantity (' + formatCrypto(totalSoldQty) + ') exceeds initial holdings (' + formatCrypto(initialHoldings) + ').</div>';
+      return;
+    }
+
+    var remainingQty = Math.max(0, initialHoldings - totalSoldQty);
+    var remainingCost = remainingQty * avgCost;
+    var unrealizedValue = remainingQty * curPrice;
+    var unrealizedProfit = unrealizedValue - remainingCost;
+    var combinedResult = totalRealizedProfit + unrealizedProfit;
+
+    var html = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Total Net Proceeds:</strong> ' + formatFiat(totalNetProceeds) + '</div>' +
+        '<div><strong>Realized Profit:</strong> <span class="' + (totalRealizedProfit >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg') + '">' + formatFiat(totalRealizedProfit) + '</span></div>' +
+        '<div><strong>Remaining Quantity:</strong> ' + formatCrypto(remainingQty) + '</div>' +
+        '<div><strong>Remaining Cost Basis:</strong> ' + formatFiat(remainingCost) + '</div>' +
+        '<div><strong>Unrealized Value:</strong> ' + formatFiat(unrealizedValue) + '</div>' +
+        '<div><strong>Unrealized P/L:</strong> <span class="' + (unrealizedProfit >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg') + '">' + formatFiat(unrealizedProfit) + '</span></div>' +
+        '<div><strong>Combined P/L:</strong> <span class="' + (combinedResult >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg') + '">' + formatFiat(combinedResult) + '</span></div>' +
+      '</div>';
+
+    el('aioccPartialResults').innerHTML = html;
+  }
+
+  // --- MODULE 6: DCA PLANNER ---
+  function generateDCASchedule(customPrices) {
+    var amount = parseFloat(el('aioccDCAAmount').value) || 0;
+    var periods = parseInt(el('aioccDCAPeriods').value, 10) || 5;
+    var feeRate = (parseFloat(el('aioccDCAFeeRate').value) || 0) / 100;
+    var finalPrice = parseFloat(el('aioccDCAFinalPrice').value) || 0;
+
+    var totalInvested = 0;
+    var totalFees = 0;
+    var totalQty = 0;
+
+    var tableHtml = '<table><thead><tr><th>Period</th><th>Investment</th><th>Fee</th><th>Net Invested</th><th>Price</th><th>Units Received</th><th>Cumulative Qty</th></tr></thead><tbody>';
+
+    for (var i = 1; i <= periods; i++) {
+      var fee = amount * feeRate;
+      var net = amount - fee;
+      var price = customPrices && customPrices[i-1] ? customPrices[i-1] : (finalPrice > 0 ? finalPrice : 0);
+      var qty = price > 0 ? net / price : 0;
+
+      totalInvested += amount;
+      totalFees += fee;
+      totalQty += qty;
+
+      tableHtml += '<tr>' +
+        '<td>#' + i + '</td>' +
+        '<td>' + formatFiat(amount) + '</td>' +
+        '<td>' + formatFiat(fee) + '</td>' +
+        '<td>' + formatFiat(net) + '</td>' +
+        '<td>' + (price > 0 ? formatFiat(price) : '<em>Manual</em>') + '</td>' +
+        '<td>' + (price > 0 ? formatCrypto(qty) : '-') + '</td>' +
+        '<td>' + (price > 0 ? formatCrypto(totalQty) : '-') + '</td>' +
+      '</tr>';
+    }
+    tableHtml += '</tbody></table>';
+    el('aioccDCAScheduleContainer').innerHTML = tableHtml;
+
+    var dcaAvg = totalQty > 0 ? totalInvested / totalQty : 0;
+    var finalVal = finalPrice > 0 ? totalQty * finalPrice : 0;
+    var profit = finalVal > 0 ? finalVal - totalInvested : 0;
+    var roi = totalInvested > 0 && finalVal > 0 ? (profit / totalInvested) * 100 : 0;
+
+    var summary = '<strong>Total Planned Capital:</strong> ' + formatFiat(totalInvested) + ' | <strong>Total Fees:</strong> ' + formatFiat(totalFees);
+    if (totalQty > 0) {
+      summary += ' | <strong>Total Units:</strong> ' + formatCrypto(totalQty) + ' | <strong>DCA Average:</strong> ' + formatFiat(dcaAvg);
+    }
+    if (finalVal > 0) {
+      summary += ' | <strong>Final Value:</strong> ' + formatFiat(finalVal) + ' | <strong>Net P/L:</strong> <span class="' + (profit >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg') + '">' + formatFiat(profit) + ' (' + roi.toFixed(2) + '%)</span>';
+    }
+    el('aioccDCAResultsSummary').innerHTML = summary;
+  }
+
+  // --- MODULE 7: POSITION SIZE ---
+  function computePositionSize() {
+    var balance = parseFloat(el('aioccPosAccountBalance').value) || 0;
+    var riskPct = (parseFloat(el('aioccPosRiskPercent').value) || 0) / 100;
+    var entry = parseFloat(el('aioccPosEntryPrice').value) || 0;
+    var stop = parseFloat(el('aioccPosStopPrice').value) || 0;
+    var entryFee = (parseFloat(el('aioccPosEntryFee').value) || 0) / 100;
+    var exitFee = (parseFloat(el('aioccPosExitFee').value) || 0) / 100;
+    var fixed = parseFloat(el('aioccPosFixedFee').value) || 0;
+
+    var riskAmount = balance * riskPct;
+    var priceRisk = Math.abs(entry - stop);
+    var feeRiskPerCoin = (entry * entryFee) + (stop * exitFee);
+    var availableRisk = Math.max(0, riskAmount - fixed);
+    var totalRiskPerCoin = priceRisk + feeRiskPerCoin;
+
+    var posQty = totalRiskPerCoin > 0 ? availableRisk / totalRiskPerCoin : 0;
+    var posVal = posQty * entry;
+    var totalStopLoss = (posQty * priceRisk) + (posQty * feeRiskPerCoin + fixed);
+
+    el('aioccPosSizeResult').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Risk Amount:</strong> ' + formatFiat(riskAmount) + '</div>' +
+        '<div><strong>Price Risk per Coin:</strong> ' + formatFiat(priceRisk) + '</div>' +
+        '<div><strong>Suggested Position Qty:</strong> ' + formatCrypto(posQty) + '</div>' +
+        '<div><strong>Total Position Value:</strong> ' + formatFiat(posVal) + '</div>' +
+        '<div><strong>Total Loss at Stop:</strong> ' + formatFiat(totalStopLoss) + '</div>' +
+      '</div>';
+  }
+
+  // --- MODULE 8: RISK TO REWARD ---
+  function computeRiskReward() {
+    var dir = el('aioccRRDirection').value;
+    var entry = parseFloat(el('aioccRREntry').value) || 0;
+    var stop = parseFloat(el('aioccRRStop').value) || 0;
+    var target = parseFloat(el('aioccRRTarget').value) || 0;
+    var qty = parseFloat(el('aioccRRQty').value) || 1;
+
+    var risk = dir === 'long' ? Math.max(0, entry - stop) : Math.max(0, stop - entry);
+    var reward = dir === 'long' ? Math.max(0, target - entry) : Math.max(0, entry - target);
+    var ratio = risk > 0 ? reward / risk : 0;
+    var breakEvenRate = ratio > 0 ? (1 / (1 + ratio)) * 100 : 0;
+
+    el('aioccRRResults').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Monetary Risk:</strong> ' + formatFiat(risk * qty) + '</div>' +
+        '<div><strong>Potential Reward:</strong> ' + formatFiat(reward * qty) + '</div>' +
+        '<div><strong>Reward-to-Risk Ratio:</strong> ' + ratio.toFixed(2) + ' : 1</div>' +
+        '<div><strong>Break-Even Win Rate:</strong> ' + breakEvenRate.toFixed(2) + '%</div>' +
+      '</div>';
+  }
+
+  // --- MODULE 9 & 10: STOP-LOSS & TAKE-PROFIT ---
+  function computeSLTP() {
+    var dir = el('aioccSLDirection').value;
+    var entry = parseFloat(el('aioccSLEntry').value) || 0;
+    var qty = parseFloat(el('aioccSLQty').value) || 1;
+    var slPct = (parseFloat(el('aioccSLPercent').value) || 0) / 100;
+    var tpPct = (parseFloat(el('aioccTPPercent').value) || 0) / 100;
+    var fees = parseFloat(el('aioccSLFees').value) || 0;
+
+    var slPrice = dir === 'long' ? entry * (1 - slPct) : entry * (1 + slPct);
+    var tpPrice = dir === 'long' ? entry * (1 + tpPct) : entry * (1 - tpPct);
+
+    var maxLoss = Math.abs(entry - slPrice) * qty + fees;
+    var maxProfit = Math.abs(tpPrice - entry) * qty - fees;
+
+    el('aioccSLTPResults').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Stop-Loss Price:</strong> ' + formatFiat(slPrice) + '</div>' +
+        '<div><strong>Take-Profit Price:</strong> ' + formatFiat(tpPrice) + '</div>' +
+        '<div><strong>Potential Loss:</strong> <span class="aiocc-profit-neg">-' + formatFiat(maxLoss) + '</span></div>' +
+        '<div><strong>Potential Profit:</strong> <span class="aiocc-profit-pos">+' + formatFiat(maxProfit) + '</span></div>' +
+      '</div>';
+  }
+
+  // --- MODULE 11 & 12: LEVERAGE ---
+  function computeLeverage() {
+    var margin = parseFloat(el('aioccLevMargin').value) || 0;
+    var lev = parseFloat(el('aioccLevMultiplier').value) || 1;
+    var dir = el('aioccLevDirection').value;
+    var entry = parseFloat(el('aioccLevEntry').value) || 0;
+    var exit = parseFloat(el('aioccLevExit').value) || 0;
+    var fees = parseFloat(el('aioccLevFees').value) || 0;
+
+    var notional = margin * lev;
+    var qty = entry > 0 ? notional / entry : 0;
+    var gross = dir === 'long' ? (exit - entry) * qty : (entry - exit) * qty;
+    var net = gross - fees;
+    var rom = margin > 0 ? (net / margin) * 100 : 0;
+
+    el('aioccLevResults').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Notional Position Value:</strong> ' + formatFiat(notional) + '</div>' +
+        '<div><strong>Position Quantity:</strong> ' + formatCrypto(qty) + '</div>' +
+        '<div><strong>Gross Profit:</strong> ' + formatFiat(gross) + '</div>' +
+        '<div><strong>Net Profit / Loss:</strong> <span class="' + (net >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg') + '">' + formatFiat(net) + '</span></div>' +
+        '<div><strong>Return on Margin (ROM):</strong> ' + rom.toFixed(2) + '%</div>' +
+      '</div>';
+  }
+
+  // --- MODULE 13, 14, 15: FEES & SLIPPAGE ---
+  function computeFees() {
+    var amt = parseFloat(el('aioccFeeTradeAmount').value) || 0;
+    var maker = (parseFloat(el('aioccFeeMakerRate').value) || 0) / 100;
+    var taker = (parseFloat(el('aioccFeeTakerRate').value) || 0) / 100;
+    var spread = (parseFloat(el('aioccFeeSpread').value) || 0) / 100;
+    var slippage = (parseFloat(el('aioccFeeSlippage').value) || 0) / 100;
+    var fixed = parseFloat(el('aioccFeeFixed').value) || 0;
+
+    var makerFee = amt * maker + fixed;
+    var takerFee = amt * taker + fixed;
+    var spreadCost = amt * spread;
+    var slipCost = amt * slippage;
+    var totalTakerAll = takerFee + spreadCost + slipCost;
+    var savings = takerFee - makerFee;
+
+    el('aioccFeeResults').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Maker Fee:</strong> ' + formatFiat(makerFee) + '</div>' +
+        '<div><strong>Taker Fee:</strong> ' + formatFiat(takerFee) + '</div>' +
+        '<div><strong>Spread Cost:</strong> ' + formatFiat(spreadCost) + '</div>' +
+        '<div><strong>Slippage Cost:</strong> ' + formatFiat(slipCost) + '</div>' +
+        '<div><strong>Total Taker Friction:</strong> ' + formatFiat(totalTakerAll) + '</div>' +
+        '<div><strong>Maker Savings:</strong> <span class="aiocc-profit-pos">' + formatFiat(savings) + '</span></div>' +
+      '</div>';
+  }
+
+  // --- MODULE 16 & 17: BREAK-EVEN & TARGET ROI ---
+  function computeBreakEvenTarget() {
+    var entryCost = parseFloat(el('aioccBETotalEntryCost').value) || 0;
+    var qty = parseFloat(el('aioccBETotalReceivedQty').value) || 0;
+    var exitFeeRate = (parseFloat(el('aioccBEExitFeeRate').value) || 0) / 100;
+    var fixedExit = parseFloat(el('aioccBEFixedExitFee').value) || 0;
+    var targetROI = (parseFloat(el('aioccBETargetROI').value) || 0) / 100;
+
+    if (exitFeeRate >= 1) {
+      el('aioccBEResults').innerHTML = '<div style="color:var(--accent-red);">Exit fee rate cannot be 100% or greater.</div>';
+      return;
+    }
+
+    var denom = qty * (1 - exitFeeRate);
+    var breakEven = denom > 0 ? (entryCost + fixedExit) / denom : 0;
+    var targetPrice = denom > 0 ? (entryCost * (1 + targetROI) + fixedExit) / denom : 0;
+
+    var targetProceeds = targetPrice * qty;
+    var targetFees = targetProceeds * exitFeeRate + fixedExit;
+    var netTarget = targetProceeds - targetFees;
+    var netProfit = netTarget - entryCost;
+
+    el('aioccBEResults').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Break-Even Exit Price:</strong> ' + formatFiat(breakEven) + '</div>' +
+        '<div><strong>Target ROI Selling Price:</strong> ' + formatFiat(targetPrice) + '</div>' +
+        '<div><strong>Gross Proceeds at Target:</strong> ' + formatFiat(targetProceeds) + '</div>' +
+        '<div><strong>Exit Friction at Target:</strong> ' + formatFiat(targetFees) + '</div>' +
+        '<div><strong>Net Target Profit:</strong> <span class="aiocc-profit-pos">+' + formatFiat(netProfit) + '</span></div>' +
+      '</div>';
+  }
+
+  // --- MODULE 18: CRYPTO QUANTITY ---
+  function computeCryptoQuantity() {
+    var invest = parseFloat(el('aioccQtyInvestment').value) || 0;
+    var price = parseFloat(el('aioccQtyPrice').value) || 0;
+    var feeRate = (parseFloat(el('aioccQtyFeeRate').value) || 0) / 100;
+    var fixed = parseFloat(el('aioccQtyFixedFee').value) || 0;
+
+    var grossQty = price > 0 ? invest / price : 0;
+    var fee = invest * feeRate + fixed;
+    var netInvest = Math.max(0, invest - fee);
+    var netQty = price > 0 ? netInvest / price : 0;
+    var effPrice = netQty > 0 ? invest / netQty : 0;
+
+    el('aioccQtyResults').innerHTML = 
+      '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:10px;">' +
+        '<div><strong>Gross Crypto Quantity:</strong> ' + formatCrypto(grossQty) + '</div>' +
+        '<div><strong>Total Deducted Fees:</strong> ' + formatFiat(fee) + '</div>' +
+        '<div><strong>Net Invested Capital:</strong> ' + formatFiat(netInvest) + '</div>' +
+        '<div><strong>Net Received Quantity:</strong> ' + formatCrypto(netQty) + '</div>' +
+        '<div><strong>Effective Price per Coin:</strong> ' + formatFiat(effPrice) + '</div>' +
+      '</div>';
+  }
+
+  // --- MODULE 19: PORTFOLIO ALLOCATION ---
+  function renderPortfolioTable() {
+    var tbody = el('aioccPortfolioBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    var totalVal = 0;
+    state.portfolio.forEach(function(item) {
+      totalVal += (item.quantity || 0) * (item.price || 0);
+    });
+
+    state.portfolio.forEach(function(item, idx) {
+      var val = (item.quantity || 0) * (item.price || 0);
+      var curPct = totalVal > 0 ? (val / totalVal) * 100 : 0;
+      var tr = document.createElement('tr');
+
+      tr.innerHTML = 
+        '<td><input type="text" class="aiocc-p-name" value="' + item.name + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="text" class="aiocc-p-sym" value="' + item.symbol + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-p-qty" step="any" value="' + item.quantity + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td><input type="number" class="aiocc-p-price" step="any" value="' + item.price + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td>' + formatFiat(val) + '</td>' +
+        '<td><input type="number" class="aiocc-p-target" step="any" value="' + item.targetPercent + '" style="min-height:36px; padding:4px 8px;" /></td>' +
+        '<td>' + curPct.toFixed(1) + '%</td>' +
+        '<td><button type="button" class="aiocc-btn aiocc-btn-danger aiocc-del-p" style="min-height:32px; padding:2px 8px; font-size:12px;">Del</button></td>';
+
+      var nameInput = tr.querySelector('.aiocc-p-name');
+      var symInput = tr.querySelector('.aiocc-p-sym');
+      var qtyInput = tr.querySelector('.aiocc-p-qty');
+      var priceInput = tr.querySelector('.aiocc-p-price');
+      var targetInput = tr.querySelector('.aiocc-p-target');
+      var delBtn = tr.querySelector('.aiocc-del-p');
+
+      nameInput.addEventListener('input', function() { item.name = nameInput.value; });
+      symInput.addEventListener('input', function() { item.symbol = symInput.value; });
+      qtyInput.addEventListener('input', function() { item.quantity = parseFloat(qtyInput.value) || 0; renderPortfolioTable(); });
+      priceInput.addEventListener('input', function() { item.price = parseFloat(priceInput.value) || 0; renderPortfolioTable(); });
+      targetInput.addEventListener('input', function() { item.targetPercent = parseFloat(targetInput.value) || 0; });
+      delBtn.addEventListener('click', function() {
+        state.portfolio.splice(idx, 1);
+        renderPortfolioTable();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function computePortfolioRebalance() {
+    var totalVal = 0;
+    state.portfolio.forEach(function(i) {
+      totalVal += (i.quantity || 0) * (i.price || 0);
+    });
+
+    var rowsHtml = '';
+    state.portfolio.forEach(function(i) {
+      var val = (i.quantity || 0) * (i.price || 0);
+      var curPct = totalVal > 0 ? (val / totalVal) * 100 : 0;
+      var targetVal = totalVal * ((i.targetPercent || 0) / 100);
+      var diffVal = targetVal - val;
+      var diffQty = i.price > 0 ? diffVal / i.price : 0;
+
+      rowsHtml += '<div><strong>' + i.symbol + ':</strong> Current: ' + curPct.toFixed(1) + '% | Target: ' + (i.targetPercent || 0) + '% | Difference: ' + (diffVal >= 0 ? '+' : '') + formatFiat(diffVal) + ' (' + (diffQty >= 0 ? '+' : '') + formatCrypto(diffQty) + ')</div>';
+    });
+
+    el('aioccPortResults').innerHTML = 
+      '<div style="margin-bottom:8px;"><strong>Total Portfolio Value:</strong> ' + formatFiat(totalVal) + '</div>' +
+      '<div style="display:flex; flex-direction:column; gap:6px;">' + rowsHtml + '</div>';
+  }
+
+  // --- MODULE 21: TRADE JOURNAL ---
+  function renderJournal() {
+    var tbody = el('aioccJournalBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    var query = el('aioccJournalSearch') ? el('aioccJournalSearch').value.toLowerCase() : '';
+
+    state.journal.forEach(function(entry, idx) {
+      var match = !query || 
+        entry.coin.toLowerCase().indexOf(query) !== -1 || 
+        (entry.strategy && entry.strategy.toLowerCase().indexOf(query) !== -1) ||
+        (entry.notes && entry.notes.toLowerCase().indexOf(query) !== -1);
+
+      if (!match) return;
+
+      var tr = document.createElement('tr');
+      tr.innerHTML = 
+        '<td>' + (entry.date || '') + '</td>' +
+        '<td><strong>' + entry.coin + '</strong></td>' +
+        '<td>' + entry.type + '</td>' +
+        '<td>' + formatFiat(entry.entryPrice) + '</td>' +
+        '<td>' + formatFiat(entry.exitPrice) + '</td>' +
+        '<td>' + formatCrypto(entry.quantity) + '</td>' +
+        '<td>' + formatFiat(entry.fees) + '</td>' +
+        '<td class="' + (entry.netProfit >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg') + '">' + formatFiat(entry.netProfit) + '</td>' +
+        '<td>' + (entry.strategy || '') + '</td>' +
+        '<td>' + (entry.notes || '') + '</td>' +
+        '<td><button type="button" class="aiocc-btn aiocc-btn-danger aiocc-del-j" style="min-height:30px; padding:2px 6px; font-size:11px;">Del</button></td>';
+
+      tr.querySelector('.aiocc-del-j').addEventListener('click', function() {
+        state.journal.splice(idx, 1);
+        saveToLocalStorage();
+        renderJournal();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  // --- MODULE 22: HISTORY & STORAGE ---
+  function saveToLocalStorage() {
+    try {
+      localStorage.setItem('aiocc_calc_state', JSON.stringify({
+        purchases: state.purchases,
+        journal: state.journal,
+        portfolio: state.portfolio,
+        theme: document.getElementById('allInOneCryptoCalculator').classList.contains('dark') ? 'dark' : 'light'
+      }));
+    } catch(e) {}
+  }
+
+  function loadFromLocalStorage() {
+    try {
+      var saved = localStorage.getItem('aiocc_calc_state');
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (parsed.purchases && parsed.purchases.length) state.purchases = parsed.purchases;
+        if (parsed.journal && parsed.journal.length) state.journal = parsed.journal;
+        if (parsed.portfolio && parsed.portfolio.length) state.portfolio = parsed.portfolio;
+        if (parsed.theme === 'dark') {
+          document.getElementById('allInOneCryptoCalculator').classList.add('dark');
+        }
+      }
+    } catch(e) {}
+  }
+
+  function renderHistory() {
+    var tbody = el('aioccHistoryBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    state.history.forEach(function(item, idx) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = 
+        '<td>' + item.timestamp + '</td>' +
+        '<td>' + item.coin + '</td>' +
+        '<td>' + item.type + '</td>' +
+        '<td>' + item.summary + '</td>' +
+        '<td><button type="button" class="aiocc-btn aiocc-btn-danger aiocc-del-h" style="min-height:30px; padding:2px 6px; font-size:11px;">Del</button></td>';
+
+      tr.querySelector('.aiocc-del-h').addEventListener('click', function() {
+        state.history.splice(idx, 1);
+        renderHistory();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  // --- CSV & JSON EXPORT ---
+  function downloadFile(content, filename, type) {
+    var blob = new Blob([content], { type: type });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function exportCSV(rows, headers, filename) {
+    // UTF-8 BOM to ensure proper character rendering
+    var csv = '\uFEFF' + headers.join(',') + '\n';
+    rows.forEach(function(row) {
+      var line = row.map(function(cell) {
+        var str = String(cell || '');
+        // Neutralize formulas for security
+        if (/^[=\+\-@\t\r]/.test(str)) {
+          str = "'" + str;
+        }
+        if (str.indexOf(',') !== -1 || str.indexOf('"') !== -1 || str.indexOf('\n') !== -1) {
+          str = '"' + str.replace(/"/g, '""') + '"';
+        }
+        return str;
+      }).join(',');
+      csv += line + '\n';
+    });
+    downloadFile(csv, filename, 'text/csv;charset=utf-8;');
+  }
+
+  // --- CANVAS CHARTS ---
+  function drawPurchasesChart() {
+    var canvas = el('aioccChartPurchases');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width;
+    var h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    var valid = state.purchases.filter(function(p) { return p.price > 0 && p.quantity > 0; });
+    if (valid.length === 0) {
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('No purchase data to visualize', w / 2, h / 2);
+      return;
+    }
+
+    var avgRes = computeAverageEntry();
+    var maxPrice = Math.max.apply(null, valid.map(function(p) { return p.price; }).concat([avgRes.weightedAvg, avgRes.feeAdjustedAvg])) * 1.15;
+    var minPrice = Math.min.apply(null, valid.map(function(p) { return p.price; })) * 0.85;
+
+    // Draw grid lines
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    for (var i = 1; i <= 4; i++) {
+      var y = h - 30 - (i / 4) * (h - 60);
+      ctx.beginPath();
+      ctx.moveTo(40, y);
+      ctx.lineTo(w - 20, y);
+      ctx.stroke();
+    }
+
+    // Draw order bars
+    var barW = (w - 80) / valid.length;
+    valid.forEach(function(p, i) {
+      var x = 50 + i * barW;
+      var barH = ((p.price - minPrice) / (maxPrice - minPrice)) * (h - 60);
+      var barY = h - 30 - barH;
+
+      ctx.fillStyle = '#3b82f6';
+      ctx.fillRect(x + 4, barY, Math.max(8, barW - 8), barH);
+
+      ctx.fillStyle = '#64748b';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('#' + (i + 1), x + barW / 2, h - 14);
+    });
+
+    // Draw Weighted Average Line
+    if (avgRes.weightedAvg > 0) {
+      var avgY = h - 30 - ((avgRes.weightedAvg - minPrice) / (maxPrice - minPrice)) * (h - 60);
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(40, avgY);
+      ctx.lineTo(w - 20, avgY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#10b981';
+      ctx.font = 'bold 11px sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText('Avg: ' + formatFiat(avgRes.weightedAvg), w - 24, avgY - 6);
+    }
+  }
+
+  function drawFeesChart() {
+    var canvas = el('aioccChartFees');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width;
+    var h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    var avg = computeAverageEntry();
+    var gross = avg.totalGross;
+    var fees = avg.totalCashFees;
+    var total = gross + fees;
+
+    if (total <= 0) {
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('No cost data to visualize', w / 2, h / 2);
+      return;
+    }
+
+    var cx = w / 2 - 40;
+    var cy = h / 2;
+    var r = Math.min(w, h) / 2 - 30;
+
+    var grossAngle = (gross / total) * Math.PI * 2;
+
+    // Gross Cost Slice
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, 0, grossAngle);
+    ctx.fillStyle = '#2563eb';
+    ctx.fill();
+
+    // Fees Slice
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, grossAngle, Math.PI * 2);
+    ctx.fillStyle = '#ef4444';
+    ctx.fill();
+
+    // Center donut hole
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * 0.55, 0, Math.PI * 2);
+    ctx.fillStyle = document.getElementById('allInOneCryptoCalculator').classList.contains('dark') ? '#1e293b' : '#ffffff';
+    ctx.fill();
+
+    // Legend
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'left';
+
+    ctx.fillStyle = '#2563eb';
+    ctx.fillRect(w - 110, cy - 20, 12, 12);
+    ctx.fillStyle = document.getElementById('allInOneCryptoCalculator').classList.contains('dark') ? '#f8fafc' : '#0f172a';
+    ctx.fillText('Net Cost', w - 90, cy - 10);
+
+    ctx.fillStyle = '#ef4444';
+    ctx.fillRect(w - 110, cy + 10, 12, 12);
+    ctx.fillStyle = document.getElementById('allInOneCryptoCalculator').classList.contains('dark') ? '#f8fafc' : '#0f172a';
+    ctx.fillText('Cash Fees', w - 90, cy + 20);
+  }
+
+  // Master update that triggers calculations and updates the dashboard
+  function calculateAll() {
+    var avg = computeAverageEntry();
+    var pl = computeProfitLoss();
+
+    if (el('aioccStatWeightedAvg')) el('aioccStatWeightedAvg').textContent = formatFiat(avg.weightedAvg);
+    if (el('aioccStatFeeAdjustedAvg')) el('aioccStatFeeAdjustedAvg').textContent = formatFiat(avg.feeAdjustedAvg);
+    if (el('aioccStatTotalQty')) el('aioccStatTotalQty').textContent = formatCrypto(avg.totalReceivedQty);
+    if (el('aioccStatTotalCost')) el('aioccStatTotalCost').textContent = formatFiat(avg.totalGross);
+    if (el('aioccStatTotalFees')) el('aioccStatTotalFees').textContent = formatFiat(avg.totalCashFees);
+    if (el('aioccStatBreakEven')) el('aioccStatBreakEven').textContent = formatFiat(pl.breakEven);
+    if (el('aioccStatTargetPrice')) el('aioccStatTargetPrice').textContent = formatFiat(pl.target20);
+
+    if (el('aioccStatNetPL')) {
+      el('aioccStatNetPL').textContent = formatFiat(pl.netProfit);
+      el('aioccStatNetPL').className = 'aiocc-stat-value ' + (pl.netProfit >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg');
+    }
+    if (el('aioccStatROI')) {
+      el('aioccStatROI').textContent = 'ROI: ' + pl.roi.toFixed(2) + '%';
+      el('aioccStatROI').className = 'aiocc-stat-sub ' + (pl.roi >= 0 ? 'aiocc-profit-pos' : 'aiocc-profit-neg');
+    }
+
+    drawPurchasesChart();
+    drawFeesChart();
+    saveToLocalStorage();
+  }
+
+  // --- INITIALIZATION & EVENT BINDINGS ---
+  function init() {
+    loadFromLocalStorage();
+
+    if (el('aioccCurYear')) {
+      el('aioccCurYear').textContent = new Date().getFullYear();
+    }
+
+    // Theme Toggle
+    if (el('aioccThemeToggle')) {
+      el('aioccThemeToggle').addEventListener('click', function() {
+        var wrapper = document.getElementById('allInOneCryptoCalculator');
+        wrapper.classList.toggle('dark');
+        var isDark = wrapper.classList.contains('dark');
+        el('aioccThemeIcon').textContent = isDark ? '☀️' : '🌙';
+        el('aioccThemeText').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        saveToLocalStorage();
+        calculateAll();
+      });
+    }
+
+    // Tabs switching
+    var tabBtns = document.querySelectorAll('#allInOneCryptoCalculator .aiocc-tab-btn');
+    tabBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        tabBtns.forEach(function(b) {
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.setAttribute('aria-selected', 'true');
+
+        var targetId = btn.getAttribute('aria-controls');
+        var panels = document.querySelectorAll('#allInOneCryptoCalculator .aiocc-tab-panel');
+        panels.forEach(function(p) {
+          p.classList.remove('active');
+        });
+        var activePanel = el(targetId);
+        if (activePanel) activePanel.classList.add('active');
+      });
+    });
+
+    // Accordion toggle
+    var accordions = document.querySelectorAll('#allInOneCryptoCalculator .aiocc-accordion-header');
+    accordions.forEach(function(header) {
+      header.addEventListener('click', function() {
+        var parent = header.parentElement;
+        parent.classList.toggle('open');
+      });
+    });
+
+    // Global settings events
+    if (el('aioccFiatCurrency')) {
+      el('aioccFiatCurrency').addEventListener('change', function() {
+        if (el('aioccFiatCurrency').value === 'custom') {
+          el('aioccCustomSymbolGroup').style.display = 'flex';
+        } else {
+          el('aioccCustomSymbolGroup').style.display = 'none';
+        }
+        updateCurrencySymbols();
+        calculateAll();
+      });
+    }
+    if (el('aioccCustomSymbol')) {
+      el('aioccCustomSymbol').addEventListener('input', function() {
+        updateCurrencySymbols();
+        calculateAll();
+      });
+    }
+    if (el('aioccCryptoDecimals')) {
+      el('aioccCryptoDecimals').addEventListener('change', function() {
+        state.cryptoDecimals = parseInt(el('aioccCryptoDecimals').value, 10);
+        calculateAll();
+      });
+    }
+    if (el('aioccFiatDecimals')) {
+      el('aioccFiatDecimals').addEventListener('change', function() {
+        state.fiatDecimals = parseInt(el('aioccFiatDecimals').value, 10);
+        calculateAll();
+      });
+    }
+
+    // Module 1 buttons
+    if (el('aioccBtnAddPurchase')) {
+      el('aioccBtnAddPurchase').addEventListener('click', function() {
+        state.purchases.push({
+          id: Date.now().toString(),
+          orderNumber: state.purchases.length + 1,
+          date: '',
+          price: 0,
+          quantity: 0,
+          feeType: 'percentage',
+          feeValue: 0,
+          note: ''
+        });
+        renderPurchasesTable();
+        calculateAll();
+      });
+    }
+    if (el('aioccBtnAddFivePurchases')) {
+      el('aioccBtnAddFivePurchases').addEventListener('click', function() {
+        for (var i = 0; i < 5; i++) {
+          state.purchases.push({
+            id: (Date.now() + i).toString(),
+            orderNumber: state.purchases.length + 1,
+            date: '',
+            price: 0,
+            quantity: 0,
+            feeType: 'percentage',
+            feeValue: 0,
+            note: ''
+          });
+        }
+        renderPurchasesTable();
+        calculateAll();
+      });
+    }
+    if (el('aioccBtnDupLast')) {
+      el('aioccBtnDupLast').addEventListener('click', function() {
+        if (state.purchases.length > 0) {
+          var last = state.purchases[state.purchases.length - 1];
+          state.purchases.push({
+            id: Date.now().toString(),
+            orderNumber: state.purchases.length + 1,
+            date: last.date,
+            price: last.price,
+            quantity: last.quantity,
+            feeType: last.feeType,
+            feeValue: last.feeValue,
+            note: last.note ? last.note + ' (Copy)' : ''
+          });
+          renderPurchasesTable();
+          calculateAll();
+        }
+      });
+    }
+    if (el('aioccBtnUseExample')) {
+      el('aioccBtnUseExample').addEventListener('click', function() {
+        state.purchases = [
+          { id: '1', orderNumber: 1, date: '', price: 50000, quantity: 0.1, feeType: 'percentage', feeValue: 1, note: 'Test 1 Purchase A' },
+          { id: '2', orderNumber: 2, date: '', price: 60000, quantity: 0.1, feeType: 'percentage', feeValue: 1, note: 'Test 1 Purchase B' }
+        ];
+        renderPurchasesTable();
+        calculateAll();
+      });
+    }
+    if (el('aioccBtnResetAvg')) {
+      el('aioccBtnResetAvg').addEventListener('click', function() {
+        state.purchases = [
+          { id: '1', orderNumber: 1, date: '', price: 0, quantity: 0, feeType: 'percentage', feeValue: 0, note: '' }
+        ];
+        renderPurchasesTable();
+        calculateAll();
+      });
+    }
+    if (el('aioccBtnCalcAvg')) {
+      el('aioccBtnCalcAvg').addEventListener('click', calculateAll);
+    }
+
+    // Module 2 events
+    if (el('aioccBtnCalcPL')) el('aioccBtnCalcPL').addEventListener('click', calculateAll);
+    if (el('aioccBtnSyncFromEntry')) {
+      el('aioccBtnSyncFromEntry').addEventListener('click', function() {
+        var avg = computeAverageEntry();
+        el('aioccPLEntryPrice').value = avg.weightedAvg;
+        el('aioccPLQty').value = avg.totalReceivedQty;
+        el('aioccPLEntryFees').value = avg.totalCashFees;
+        calculateAll();
+      });
+    }
+
+    // Module 3
+    if (el('aioccBtnCalcAvgDown')) el('aioccBtnCalcAvgDown').addEventListener('click', computeAverageDown);
+
+    // Module 4 & 5
+    if (el('aioccBtnAddSaleRow')) {
+      el('aioccBtnAddSaleRow').addEventListener('click', function() {
+        state.sales.push({ id: Date.now().toString(), date: '', price: 0, quantity: 0, feePercent: 0, fixedFee: 0, note: '' });
+        renderSalesTable();
+      });
+    }
+    if (el('aioccBtnCalcPartial')) el('aioccBtnCalcPartial').addEventListener('click', computePartialSells);
+
+    // Module 6
+    if (el('aioccBtnGenDCATable')) el('aioccBtnGenDCATable').addEventListener('click', function() { generateDCASchedule(); });
+    if (el('aioccBtnTest7DCA')) {
+      el('aioccBtnTest7DCA').addEventListener('click', function() {
+        el('aioccDCAAmount').value = 100;
+        el('aioccDCAPeriods').value = 2;
+        el('aioccDCAFeeRate').value = 0;
+        generateDCASchedule([50, 100]);
+      });
+    }
+
+    // Module 7
+    if (el('aioccBtnCalcPosSize')) el('aioccBtnCalcPosSize').addEventListener('click', computePositionSize);
+
+    // Module 8
+    if (el('aioccBtnCalcRR')) el('aioccBtnCalcRR').addEventListener('click', computeRiskReward);
+
+    // Module 9 & 10
+    if (el('aioccBtnCalcSLTP')) el('aioccBtnCalcSLTP').addEventListener('click', computeSLTP);
+
+    // Module 11 & 12
+    if (el('aioccBtnCalcLev')) el('aioccBtnCalcLev').addEventListener('click', computeLeverage);
+
+    // Module 13, 14, 15
+    if (el('aioccBtnCalcFees')) el('aioccBtnCalcFees').addEventListener('click', computeFees);
+
+    // Module 16 & 17
+    if (el('aioccBtnCalcBE')) el('aioccBtnCalcBE').addEventListener('click', computeBreakEvenTarget);
+
+    // Module 18
+    if (el('aioccBtnCalcQty')) el('aioccBtnCalcQty').addEventListener('click', computeCryptoQuantity);
+
+    // Module 19 & 20
+    if (el('aioccBtnAddPortRow')) {
+      el('aioccBtnAddPortRow').addEventListener('click', function() {
+        state.portfolio.push({ id: Date.now().toString(), name: 'Coin', symbol: 'ALT', quantity: 1, price: 100, targetPercent: 10, note: '' });
+        renderPortfolioTable();
+      });
+    }
+    if (el('aioccBtnCalcPort')) el('aioccBtnCalcPort').addEventListener('click', computePortfolioRebalance);
+
+    // Module 21 Journal
+    if (el('aioccBtnSaveJournalEntry')) {
+      el('aioccBtnSaveJournalEntry').addEventListener('click', function() {
+        var coin = (el('aioccJCoin').value || state.symbol).toUpperCase();
+        var type = el('aioccJType').value;
+        var entry = parseFloat(el('aioccJEntry').value) || 0;
+        var exit = parseFloat(el('aioccJExit').value) || 0;
+        var qty = parseFloat(el('aioccJQty').value) || 0;
+        var fees = parseFloat(el('aioccJFees').value) || 0;
+        var strategy = el('aioccJStrategy').value;
+        var notes = el('aioccJNotes').value;
+        var date = el('aioccJDate').value || new Date().toISOString().slice(0, 16).replace('T', ' ');
+
+        var gross = (exit - entry) * qty;
+        var net = type === 'Short' ? (entry - exit) * qty - fees : gross - fees;
+
+        state.journal.unshift({
+          id: Date.now().toString(),
+          date: date,
+          coin: coin,
+          type: type,
+          entryPrice: entry,
+          exitPrice: exit,
+          quantity: qty,
+          fees: fees,
+          netProfit: net,
+          strategy: strategy,
+          notes: notes
+        });
+
+        saveToLocalStorage();
+        renderJournal();
+      });
+    }
+
+    if (el('aioccJournalSearch')) {
+      el('aioccJournalSearch').addEventListener('input', renderJournal);
+    }
+    if (el('aioccBtnExportJournalCSV')) {
+      el('aioccBtnExportJournalCSV').addEventListener('click', function() {
+        var headers = ['Date', 'Coin', 'Type', 'Entry Price', 'Exit Price', 'Quantity', 'Fees', 'Net Profit', 'Strategy', 'Notes'];
+        var rows = state.journal.map(function(j) {
+          return [j.date, j.coin, j.type, j.entryPrice, j.exitPrice, j.quantity, j.fees, j.netProfit, j.strategy, j.notes];
+        });
+        exportCSV(rows, headers, 'crypto_trade_journal.csv');
+      });
+    }
+    if (el('aioccBtnExportJournalJSON')) {
+      el('aioccBtnExportJournalJSON').addEventListener('click', function() {
+        downloadFile(JSON.stringify(state.journal, null, 2), 'crypto_trade_journal.json', 'application/json');
+      });
+    }
+    if (el('aioccBtnPrintJournal')) {
+      el('aioccBtnPrintJournal').addEventListener('click', function() {
+        window.print();
+      });
+    }
+
+    // Module 22 History
+    if (el('aioccBtnSaveCurrentDraft')) {
+      el('aioccBtnSaveCurrentDraft').addEventListener('click', function() {
+        var avg = computeAverageEntry();
+        state.history.unshift({
+          timestamp: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+          coin: state.symbol,
+          type: 'Average Entry',
+          summary: 'Avg: ' + formatFiat(avg.feeAdjustedAvg) + ' (' + formatCrypto(avg.totalReceivedQty) + ' ' + state.symbol + ')'
+        });
+        renderHistory();
+      });
+    }
+    if (el('aioccBtnExportCalcCSV')) {
+      el('aioccBtnExportCalcCSV').addEventListener('click', function() {
+        var headers = ['Order #', 'Date', 'Price', 'Quantity', 'Fee Type', 'Fee Value', 'Note'];
+        var rows = state.purchases.map(function(p) {
+          return [p.orderNumber, p.date, p.price, p.quantity, p.feeType, p.feeValue, p.note];
+        });
+        exportCSV(rows, headers, 'crypto_purchases_calculation.csv');
+      });
+    }
+    if (el('aioccBtnExportCalcJSON')) {
+      el('aioccBtnExportCalcJSON').addEventListener('click', function() {
+        downloadFile(JSON.stringify(state, null, 2), 'crypto_calculator_full_backup.json', 'application/json');
+      });
+    }
+    if (el('aioccImportJSONFile')) {
+      el('aioccImportJSONFile').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(evt) {
+            try {
+              var parsed = JSON.parse(evt.target.result);
+              if (parsed.purchases) state.purchases = parsed.purchases;
+              if (parsed.journal) state.journal = parsed.journal;
+              if (parsed.portfolio) state.portfolio = parsed.portfolio;
+              renderPurchasesTable();
+              renderPortfolioTable();
+              renderJournal();
+              calculateAll();
+            } catch(err) {
+              alert('Invalid JSON file format.');
+            }
+          };
+          reader.readAsText(file);
+        }
+      });
+    }
+    if (el('aioccBtnClearAllHistory')) {
+      el('aioccBtnClearAllHistory').addEventListener('click', function() {
+        if (confirm('Clear all saved calculations and drafts from browser storage?')) {
+          state.history = [];
+          localStorage.removeItem('aiocc_calc_state');
+          renderHistory();
+        }
+      });
+    }
+
+    // Social Sharing
+    var pageUrl = encodeURIComponent(window.location.href);
+    var pageTitle = encodeURIComponent('Free Crypto Average Entry Price, Profit, Fee & Risk Calculator');
+    if (el('aioccShareFB')) el('aioccShareFB').addEventListener('click', function() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + pageUrl, '_blank'); });
+    if (el('aioccShareX')) el('aioccShareX').addEventListener('click', function() { window.open('https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle, '_blank'); });
+    if (el('aioccShareWA')) el('aioccShareWA').addEventListener('click', function() { window.open('https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl, '_blank'); });
+    if (el('aioccShareLI')) el('aioccShareLI').addEventListener('click', function() { window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl, '_blank'); });
+    if (el('aioccShareReddit')) el('aioccShareReddit').addEventListener('click', function() { window.open('https://reddit.com/submit?url=' + pageUrl + '&title=' + pageTitle, '_blank'); });
+    if (el('aioccShareEmail')) el('aioccShareEmail').addEventListener('click', function() { window.location.href = 'mailto:?subject=' + pageTitle + '&body=' + pageUrl; });
+    if (el('aioccShareCopy')) {
+      el('aioccShareCopy').addEventListener('click', function() {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+          alert('Link copied to clipboard!');
+        });
+      });
+    }
+    if (el('aioccShareNative')) {
+      el('aioccShareNative').addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({ title: 'Free Crypto Calculator', text: 'Calculate crypto average price, profit, and risk.', url: window.location.href });
+        } else {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Link copied to clipboard!');
+        }
+      });
+    }
+
+    // Initial render
+    renderPurchasesTable();
+    renderSalesTable();
+    renderPortfolioTable();
+    renderJournal();
+    renderHistory();
+    calculateAll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
