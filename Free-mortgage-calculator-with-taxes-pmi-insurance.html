@@ -1,0 +1,863 @@
+<!-- BLOGGER POST TITLE: Mortgage Calculator with Taxes, PMI & Insurance – Estimate Monthly Payment -->
+<!-- SEARCH DESCRIPTION: Estimate your monthly mortgage payment with property taxes, homeowners insurance, PMI, HOA fees and extra payments using this free U.S. mortgage calculator. -->
+<!-- BLOGGER LABELS: Mortgage Calculator, Mortgage Payment Calculator, Home Loan Calculator, PMI Calculator, PITI Calculator, Finance Tools, Real Estate Tools, Home Buying Tools, Free Online Tools, Web Tools -->
+
+<!-- AD 1: SOCIAL BAR SCRIPT -->
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+<div id="usaMortgageCalculatorV2">
+  <style>
+    #usaMortgageCalculatorV2 {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.5;
+      box-sizing: border-box;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+    #usaMortgageCalculatorV2 * {
+      box-sizing: border-box;
+    }
+    #usaMortgageCalculatorV2 .umc-badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    #usaMortgageCalculatorV2 .umc-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    #usaMortgageCalculatorV2 .umc-pill {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+    }
+    #usaMortgageCalculatorV2 .umc-pill-green {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      color: #047857;
+    }
+    #usaMortgageCalculatorV2 .umc-hero-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.2;
+      margin: 0 0 6px 0;
+    }
+    #usaMortgageCalculatorV2 .umc-hero-sub {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1d4ed8;
+      margin: 0 0 10px 0;
+    }
+    #usaMortgageCalculatorV2 .umc-hero-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0 0 14px 0;
+    }
+    #usaMortgageCalculatorV2 .umc-trust-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    #usaMortgageCalculatorV2 .umc-trust-tag {
+      font-size: 11px;
+      font-weight: 600;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    #usaMortgageCalculatorV2 .umc-ad-wrapper {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      text-align: center;
+      margin: 20px auto;
+    }
+    #usaMortgageCalculatorV2 .umc-ad-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    #usaMortgageCalculatorV2 .umc-grid-main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 860px) {
+      #usaMortgageCalculatorV2 .umc-grid-main {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+    #usaMortgageCalculatorV2 .umc-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    #usaMortgageCalculatorV2 .umc-form-group {
+      margin-bottom: 16px;
+    }
+    #usaMortgageCalculatorV2 .umc-form-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+    #usaMortgageCalculatorV2 .umc-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    #usaMortgageCalculatorV2 .umc-input-prefix {
+      position: absolute;
+      left: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    #usaMortgageCalculatorV2 .umc-input-suffix {
+      position: absolute;
+      right: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+    #usaMortgageCalculatorV2 input[type="number"],
+    #usaMortgageCalculatorV2 input[type="month"],
+    #usaMortgageCalculatorV2 select {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+    }
+    #usaMortgageCalculatorV2 input.has-prefix {
+      padding-left: 26px;
+    }
+    #usaMortgageCalculatorV2 input.has-suffix {
+      padding-right: 32px;
+    }
+    #usaMortgageCalculatorV2 input[type="range"] {
+      width: 100%;
+      accent-color: #2563eb;
+      margin-top: 6px;
+    }
+    #usaMortgageCalculatorV2 .umc-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    #usaMortgageCalculatorV2 .umc-btn-preset {
+      font-size: 11px;
+      font-weight: 600;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #usaMortgageCalculatorV2 .umc-btn-preset.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #1d4ed8;
+    }
+    #usaMortgageCalculatorV2 .umc-btn-calc {
+      width: 100%;
+      background: linear-gradient(135deg, #1d4ed8, #4338ca);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(37,99,235,0.25);
+    }
+    #usaMortgageCalculatorV2 .umc-btn-calc:hover {
+      background: linear-gradient(135deg, #1e40af, #3730a3);
+    }
+    #usaMortgageCalculatorV2 .umc-summary-box {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    #usaMortgageCalculatorV2 .umc-summary-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #93c5fd;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    #usaMortgageCalculatorV2 .umc-summary-payment {
+      font-size: 34px;
+      font-weight: 900;
+      font-family: monospace, sans-serif;
+    }
+    #usaMortgageCalculatorV2 .umc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    #usaMortgageCalculatorV2 .umc-row:last-child {
+      border-bottom: none;
+    }
+    #usaMortgageCalculatorV2 .umc-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    #usaMortgageCalculatorV2 .umc-table-wrap {
+      overflow-x: auto;
+      max-height: 400px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    #usaMortgageCalculatorV2 table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      text-align: left;
+    }
+    #usaMortgageCalculatorV2 th {
+      background: #f8fafc;
+      padding: 8px 10px;
+      font-weight: 700;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    #usaMortgageCalculatorV2 td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      font-family: monospace, sans-serif;
+    }
+    #usaMortgageCalculatorV2 .umc-faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 0;
+    }
+    #usaMortgageCalculatorV2 .umc-faq-q {
+      font-weight: 700;
+      font-size: 14px;
+      color: #0f172a;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+    }
+    #usaMortgageCalculatorV2 .umc-faq-a {
+      font-size: 13px;
+      color: #475569;
+      margin-top: 8px;
+      line-height: 1.6;
+      display: none;
+    }
+    #usaMortgageCalculatorV2 .umc-faq-item.open .umc-faq-a {
+      display: block;
+    }
+    @media print {
+      #usaMortgageCalculatorV2 .umc-ad-wrapper,
+      #usaMortgageCalculatorV2 .umc-btn-calc,
+      #usaMortgageCalculatorV2 .umc-share-wrap {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <!-- Top Badge Bar -->
+  <div class="umc-badge-bar">
+    <div class="umc-badge-group">
+      <span style="font-size:18px;">🇺🇸</span>
+      <span class="umc-pill">Free U.S. Mortgage Planning Tool</span>
+      <span class="umc-pill umc-pill-green">100% Free • Unlimited Use • No Signup</span>
+    </div>
+    <div>
+      <button type="button" onclick="umcLoadExample()" style="font-size:11px;padding:4px 8px;border:1px solid #cbd5e1;background:#fff;border-radius:6px;cursor:pointer;margin-right:4px;">Load Example</button>
+      <button type="button" onclick="umcReset()" style="font-size:11px;padding:4px 8px;border:1px solid #cbd5e1;background:#fff;border-radius:6px;cursor:pointer;">Reset</button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <h1 class="umc-hero-title">Mortgage Calculator with Taxes, PMI &amp; Insurance</h1>
+  <div class="umc-hero-sub">Estimate Your Complete Monthly Home Payment</div>
+  <p class="umc-hero-desc">
+    Estimate your monthly mortgage payment using your home price, down payment, interest rate and loan term. Include property taxes, homeowners insurance, PMI, HOA fees and optional extra principal payments for a more complete housing-cost estimate.
+  </p>
+
+  <div class="umc-trust-tags">
+    <span class="umc-trust-tag">✓ 100% Free</span>
+    <span class="umc-trust-tag">✓ No Signup</span>
+    <span class="umc-trust-tag">✓ Taxes Included</span>
+    <span class="umc-trust-tag">✓ Insurance Included</span>
+    <span class="umc-trust-tag">✓ PMI Support</span>
+    <span class="umc-trust-tag">✓ Extra Payment Analysis</span>
+    <span class="umc-trust-tag">✓ Instant Results</span>
+  </div>
+
+  <!-- AD 3: 468x60 BANNER -->
+  <div class="umc-ad-wrapper">
+    <div class="umc-ad-label">Advertisement</div>
+    <div style="width:100%;max-width:468px;margin:0 auto;overflow:hidden;min-height:60px;background:#f8fafc;border:1px dashed #cbd5e1;">
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- MAIN CALCULATOR GRID -->
+  <div class="umc-grid-main">
+    <!-- LEFT COLUMN: INPUTS -->
+    <div class="umc-card">
+      <h2 style="font-size:16px;font-weight:800;margin:0 0 14px 0;color:#0f172a;">Loan &amp; Property Details</h2>
+
+      <!-- Home Price -->
+      <div class="umc-form-group">
+        <div class="umc-form-label">
+          <span>Home Price</span>
+          <span id="umcValHomePrice" style="font-family:monospace;color:#1d4ed8;">$400,000</span>
+        </div>
+        <div class="umc-input-wrap">
+          <span class="umc-input-prefix">$</span>
+          <input type="number" id="umcInpHomePrice" class="has-prefix" value="400000" min="10000" max="20000000" step="5000" oninput="umcSyncHomePrice(this.value)">
+        </div>
+        <input type="range" id="umcRangeHomePrice" min="50000" max="1500000" step="5000" value="400000" oninput="umcSyncHomePrice(this.value)">
+      </div>
+
+      <!-- Down Payment -->
+      <div class="umc-form-group">
+        <div class="umc-form-label">
+          <span>Down Payment</span>
+          <span id="umcLtvBadge" style="font-size:11px;background:#f1f5f9;padding:2px 6px;border-radius:4px;border:1px solid #e2e8f0;">LTV: 80.0%</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="umc-input-wrap">
+            <span class="umc-input-prefix">$</span>
+            <input type="number" id="umcInpDownDollar" class="has-prefix" value="80000" min="0" step="1000" oninput="umcSyncDownDollar(this.value)">
+          </div>
+          <div class="umc-input-wrap">
+            <input type="number" id="umcInpDownPct" class="has-suffix" value="20" min="0" max="100" step="0.5" oninput="umcSyncDownPct(this.value)">
+            <span class="umc-input-suffix">%</span>
+          </div>
+        </div>
+        <div class="umc-btn-group">
+          <button type="button" class="umc-btn-preset" onclick="umcSetDownPct(3)">3%</button>
+          <button type="button" class="umc-btn-preset" onclick="umcSetDownPct(3.5)">3.5%</button>
+          <button type="button" class="umc-btn-preset" onclick="umcSetDownPct(5)">5%</button>
+          <button type="button" class="umc-btn-preset" onclick="umcSetDownPct(10)">10%</button>
+          <button type="button" class="umc-btn-preset" onclick="umcSetDownPct(15)">15%</button>
+          <button type="button" class="umc-btn-preset active" onclick="umcSetDownPct(20)">20%</button>
+          <button type="button" class="umc-btn-preset" onclick="umcSetDownPct(25)">25%</button>
+        </div>
+      </div>
+
+      <!-- Interest Rate & Term -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="umc-form-group">
+        <div>
+          <div class="umc-form-label"><span>Interest Rate</span></div>
+          <div class="umc-input-wrap">
+            <input type="number" id="umcInpRate" class="has-suffix" value="6.50" min="0" max="20" step="0.05" oninput="umcCalculate()">
+            <span class="umc-input-suffix">%</span>
+          </div>
+        </div>
+        <div>
+          <div class="umc-form-label"><span>Loan Term</span></div>
+          <select id="umcInpTerm" onchange="umcCalculate()">
+            <option value="10">10 Years</option>
+            <option value="15">15 Years</option>
+            <option value="20">20 Years</option>
+            <option value="25">25 Years</option>
+            <option value="30" selected>30 Years</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Start Date -->
+      <div class="umc-form-group">
+        <div class="umc-form-label"><span>Loan Start Date</span></div>
+        <input type="month" id="umcInpDate" onchange="umcCalculate()">
+      </div>
+
+      <!-- Taxes & Insurance -->
+      <div style="border-top:1px solid #e2e8f0;padding-top:12px;margin-top:12px;">
+        <div class="umc-form-group">
+          <div class="umc-form-label"><span>Property Taxes (Annual %)</span></div>
+          <div class="umc-input-wrap">
+            <input type="number" id="umcInpTaxRate" class="has-suffix" value="1.20" min="0" max="10" step="0.05" oninput="umcCalculate()">
+            <span class="umc-input-suffix">%</span>
+          </div>
+        </div>
+
+        <div class="umc-form-group">
+          <div class="umc-form-label"><span>Homeowners Insurance ($/yr)</span></div>
+          <div class="umc-input-wrap">
+            <span class="umc-input-prefix">$</span>
+            <input type="number" id="umcInpInsurance" class="has-prefix" value="1800" min="0" step="50" oninput="umcCalculate()">
+          </div>
+        </div>
+
+        <!-- PMI & HOA -->
+        <div class="umc-form-group">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:12px;font-weight:700;">Include PMI</span>
+            <input type="checkbox" id="umcInpPMI" onchange="umcTogglePMI(this.checked)">
+          </div>
+          <div id="umcPMIBox" style="display:none;background:#faf5ff;border:1px solid #e9d5ff;padding:8px;border-radius:6px;">
+            <div style="font-size:11px;color:#6b21a8;margin-bottom:4px;">PMI Annual Rate (%)</div>
+            <input type="number" id="umcInpPMIRate" value="0.50" step="0.05" oninput="umcCalculate()">
+          </div>
+        </div>
+
+        <div class="umc-form-group">
+          <div class="umc-form-label"><span>Monthly HOA Fees ($/mo)</span></div>
+          <div class="umc-input-wrap">
+            <span class="umc-input-prefix">$</span>
+            <input type="number" id="umcInpHOA" class="has-prefix" value="0" min="0" step="25" oninput="umcCalculate()">
+          </div>
+        </div>
+
+        <!-- Extra Monthly Payment -->
+        <div class="umc-form-group">
+          <div class="umc-form-label"><span>Extra Monthly Principal ($)</span></div>
+          <div class="umc-input-wrap">
+            <span class="umc-input-prefix">$</span>
+            <input type="number" id="umcInpExtra" class="has-prefix" value="0" min="0" step="25" oninput="umcCalculate()">
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="umc-btn-calc" onclick="umcCalculate()">CALCULATE MORTGAGE PAYMENT</button>
+    </div>
+
+    <!-- RIGHT COLUMN: RESULTS SUMMARY -->
+    <div>
+      <div class="umc-card" style="position:sticky;top:20px;">
+        <div class="umc-summary-box">
+          <div class="umc-summary-title">Estimated Monthly Payment</div>
+          <div class="umc-summary-payment" id="umcDispTotal">$2,846</div>
+          <div style="font-size:11px;color:#bfdbfe;margin-top:4px;">Includes Principal, Taxes, Insurance &amp; HOA</div>
+        </div>
+
+        <!-- Itemized List -->
+        <div style="margin-bottom:16px;">
+          <div class="umc-row">
+            <span><span class="umc-dot" style="background:#2563eb;"></span>Principal &amp; Interest:</span>
+            <strong id="umcDispPI" style="font-family:monospace;">$2,023</strong>
+          </div>
+          <div class="umc-row">
+            <span><span class="umc-dot" style="background:#10b981;"></span>Property Taxes:</span>
+            <strong id="umcDispTax" style="font-family:monospace;">$400</strong>
+          </div>
+          <div class="umc-row">
+            <span><span class="umc-dot" style="background:#f59e0b;"></span>Homeowners Insurance:</span>
+            <strong id="umcDispIns" style="font-family:monospace;">$150</strong>
+          </div>
+          <div class="umc-row" id="umcRowPMI" style="display:none;">
+            <span><span class="umc-dot" style="background:#8b5cf6;"></span>PMI:</span>
+            <strong id="umcDispPMI" style="font-family:monospace;">$0</strong>
+          </div>
+          <div class="umc-row" id="umcRowHOA" style="display:none;">
+            <span><span class="umc-dot" style="background:#ec4899;"></span>HOA Fees:</span>
+            <strong id="umcDispHOA" style="font-family:monospace;">$0</strong>
+          </div>
+          <div class="umc-row" style="background:#f8fafc;padding:8px 6px;border-radius:6px;margin-top:6px;">
+            <span><strong>Estimated Monthly Escrow:</strong></span>
+            <strong id="umcDispEscrow" style="color:#1e40af;font-family:monospace;">$550</strong>
+          </div>
+        </div>
+
+        <!-- Quick Metrics -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px;margin-bottom:14px;">
+          <div style="background:#f8fafc;padding:8px;border-radius:6px;border:1px solid #e2e8f0;">
+            <div style="color:#64748b;">Loan Amount</div>
+            <div id="umcDispLoanAmt" style="font-weight:800;font-family:monospace;font-size:13px;">$320,000</div>
+          </div>
+          <div style="background:#f8fafc;padding:8px;border-radius:6px;border:1px solid #e2e8f0;">
+            <div style="color:#64748b;">Total Interest Paid</div>
+            <div id="umcDispTotInt" style="font-weight:800;font-family:monospace;font-size:13px;">$408,160</div>
+          </div>
+          <div style="background:#f8fafc;padding:8px;border-radius:6px;border:1px solid #e2e8f0;">
+            <div style="color:#64748b;">Estimated Payoff</div>
+            <div id="umcDispPayoff" style="font-weight:800;font-size:12px;">Oct 2056</div>
+          </div>
+          <div style="background:#f8fafc;padding:8px;border-radius:6px;border:1px solid #e2e8f0;">
+            <div style="color:#64748b;">Extra Savings</div>
+            <div id="umcDispExtraSav" style="font-weight:800;color:#047857;font-size:12px;">$0</div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div style="display:flex;gap:6px;">
+          <button type="button" onclick="umcCopySummary()" style="flex:1;padding:8px;font-size:11px;font-weight:700;border:1px solid #cbd5e1;background:#f8fafc;border-radius:6px;cursor:pointer;">Copy Summary</button>
+          <button type="button" onclick="window.print()" style="padding:8px 12px;font-size:11px;font-weight:700;border:1px solid #cbd5e1;background:#f8fafc;border-radius:6px;cursor:pointer;">Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMORTIZATION SCHEDULE SECTION -->
+  <div class="umc-card" style="margin-top:24px;">
+    <h3 style="font-size:16px;font-weight:800;margin:0 0 6px 0;">Mortgage Amortization Schedule (First 12 Payments)</h3>
+    <p style="font-size:12px;color:#64748b;margin:0 0 10px 0;">Track your month-by-month principal reduction and interest balances.</p>
+    
+    <div class="umc-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Beginning Balance</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Extra</th>
+            <th>Ending Balance</th>
+          </tr>
+        </thead>
+        <tbody id="umcAmortBody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- AD 2: NATIVE BANNER -->
+  <div class="umc-ad-wrapper">
+    <div class="umc-ad-label">Advertisement</div>
+    <div style="width:100%;max-width:100%;overflow:hidden;min-height:90px;background:#f8fafc;border:1px dashed #cbd5e1;padding:4px;">
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+  </div>
+
+  <!-- EDUCATIONAL SEO ARTICLES & FAQS -->
+  <div style="margin-top:30px;line-height:1.6;font-size:13px;color:#334155;">
+    <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:8px;">What Does PITI Mean in Mortgage Calculations?</h2>
+    <p>
+      In American mortgage lending, PITI stands for Principal, Interest, Taxes, and Insurance. These four elements form the baseline of your monthly housing expense:
+    </p>
+    <ul style="padding-left:20px;margin-bottom:16px;">
+      <li><strong>Principal:</strong> The portion of each monthly payment that pays down your original loan balance and builds your home equity.</li>
+      <li><strong>Interest:</strong> The cost charged by the mortgage lender for borrowing the principal funds.</li>
+      <li><strong>Taxes:</strong> Annual municipal and county property taxes, divided into 12 monthly installments deposited into your escrow reserve.</li>
+      <li><strong>Insurance:</strong> Annual homeowners hazard insurance, plus Private Mortgage Insurance (PMI) if your down payment is below 20%.</li>
+    </ul>
+
+    <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-top:20px;margin-bottom:8px;">How Does Private Mortgage Insurance (PMI) Work?</h2>
+    <p>
+      When purchasing a residential home with a conventional loan and a down payment of less than 20% (an LTV above 80%), mortgage lenders require Private Mortgage Insurance to protect against default. Under federal law (the Homeowners Protection Act of 1998), homeowners can request PMI cancellation when their principal balance reaches 80% of original value, and lenders must cancel it at 78% scheduled amortization.
+    </p>
+
+    <!-- AD 4: 300x250 BANNER -->
+    <div class="umc-ad-wrapper">
+      <div class="umc-ad-label">Advertisement</div>
+      <div style="width:300px;height:250px;margin:0 auto;overflow:hidden;background:#f8fafc;border:1px dashed #cbd5e1;">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '224e7394c28834c8ac1ce24682c420e3',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+      </div>
+    </div>
+
+    <!-- 18+ FAQS -->
+    <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin-top:24px;margin-bottom:12px;">Frequently Asked Questions (FAQ)</h2>
+    <div id="umcFaqContainer">
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">Is this mortgage calculator 100% free? <span>+</span></div>
+        <div class="umc-faq-a">Yes. This calculator is completely free to use with unlimited calculations and no signup, subscription, or registration required.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">Does this calculator include property taxes? <span>+</span></div>
+        <div class="umc-faq-a">Yes. You can enter property taxes as an annual percentage of home value or an exact annual dollar figure.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">Does it include homeowners insurance? <span>+</span></div>
+        <div class="umc-faq-a">Yes. You can input your annual homeowners hazard insurance premium, which is calculated as a monthly escrow amount.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">Can it calculate PMI? <span>+</span></div>
+        <div class="umc-faq-a">Yes. Toggle Include PMI to simulate monthly PMI costs and estimate when your loan reaches the 80% LTV threshold.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">What does PITI mean? <span>+</span></div>
+        <div class="umc-faq-a">PITI stands for Principal, Interest, Taxes, and Insurance—the four core parts of a standard mortgage payment.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">What is Loan-to-Value (LTV)? <span>+</span></div>
+        <div class="umc-faq-a">LTV is the ratio of your mortgage balance compared to the property purchase price. An LTV over 80% typically triggers PMI.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">How is the monthly mortgage payment calculated? <span>+</span></div>
+        <div class="umc-faq-a">Using the standard formula: M = P * [r(1+r)^n] / [(1+r)^n - 1], where P is principal, r is monthly rate, and n is total payments.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">Can I calculate extra mortgage payments? <span>+</span></div>
+        <div class="umc-faq-a">Yes. Enter any extra monthly principal payment to see how thousands in interest and years of repayment are eliminated.</div>
+      </div>
+      <div class="umc-faq-item" onclick="umcToggleFaq(this)">
+        <div class="umc-faq-q">Does this calculator store my financial inputs? <span>+</span></div>
+        <div class="umc-faq-a">No. All calculations run strictly in your web browser. No personal or financial details are stored on any server or in cookies.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;padding:14px;border-radius:10px;font-size:11px;color:#64748b;margin-top:24px;line-height:1.5;">
+    <strong>Financial Disclaimer:</strong> This mortgage calculator is provided for general educational and planning purposes only. Results are estimates based on the information entered and may not reflect your actual mortgage payment, interest rate, property taxes, homeowners insurance, PMI, HOA fees, escrow requirements, closing costs or other expenses. This tool does not provide financial, legal, tax, lending or investment advice and does not determine mortgage eligibility or approval. Actual mortgage terms and costs vary by lender, loan program, property and borrower. Verify actual terms and costs with qualified professionals and your mortgage provider before making financial decisions. This tool is not affiliated with or endorsed by the U.S. government.
+  </div>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    function umcFormatCurrency(val) {
+      return '$' + Math.round(val).toLocaleString('en-US');
+    }
+
+    function umcToggleFaq(elem) {
+      elem.classList.toggle('open');
+      const span = elem.querySelector('.umc-faq-q span');
+      if (span) span.textContent = elem.classList.contains('open') ? '−' : '+';
+    }
+
+    function umcTogglePMI(checked) {
+      const box = document.getElementById('umcPMIBox');
+      if (box) box.style.display = checked ? 'block' : 'none';
+      umcCalculate();
+    }
+
+    function umcSetDownPct(pct) {
+      const hp = parseFloat(document.getElementById('umcInpHomePrice').value) || 0;
+      const down = Math.round((hp * pct) / 100);
+      document.getElementById('umcInpDownPct').value = pct;
+      document.getElementById('umcInpDownDollar').value = down;
+      
+      const buttons = document.querySelectorAll('.umc-btn-preset');
+      buttons.forEach(b => {
+        b.classList.toggle('active', b.textContent === pct + '%');
+      });
+      umcCalculate();
+    }
+
+    function umcSyncHomePrice(val) {
+      const hp = parseFloat(val) || 0;
+      document.getElementById('umcInpHomePrice').value = hp;
+      document.getElementById('umcRangeHomePrice').value = hp;
+      document.getElementById('umcValHomePrice').textContent = umcFormatCurrency(hp);
+      
+      const pct = parseFloat(document.getElementById('umcInpDownPct').value) || 0;
+      document.getElementById('umcInpDownDollar').value = Math.round((hp * pct) / 100);
+      umcCalculate();
+    }
+
+    function umcSyncDownDollar(val) {
+      const hp = parseFloat(document.getElementById('umcInpHomePrice').value) || 0;
+      const down = parseFloat(val) || 0;
+      const pct = hp > 0 ? (down / hp) * 100 : 0;
+      document.getElementById('umcInpDownPct').value = pct.toFixed(1);
+      umcCalculate();
+    }
+
+    function umcSyncDownPct(val) {
+      const hp = parseFloat(document.getElementById('umcInpHomePrice').value) || 0;
+      const pct = parseFloat(val) || 0;
+      document.getElementById('umcInpDownDollar').value = Math.round((hp * pct) / 100);
+      umcCalculate();
+    }
+
+    function umcLoadExample() {
+      document.getElementById('umcInpHomePrice').value = 400000;
+      document.getElementById('umcRangeHomePrice').value = 400000;
+      document.getElementById('umcValHomePrice').textContent = '$400,000';
+      document.getElementById('umcInpDownDollar').value = 80000;
+      document.getElementById('umcInpDownPct').value = 20;
+      document.getElementById('umcInpRate').value = 6.50;
+      document.getElementById('umcInpTerm').value = 30;
+      document.getElementById('umcInpTaxRate').value = 1.20;
+      document.getElementById('umcInpInsurance').value = 1800;
+      document.getElementById('umcInpPMI').checked = false;
+      document.getElementById('umcPMIBox').style.display = 'none';
+      document.getElementById('umcInpHOA').value = 0;
+      document.getElementById('umcInpExtra').value = 0;
+      umcCalculate();
+    }
+
+    function umcReset() {
+      umcLoadExample();
+    }
+
+    function umcCalculate() {
+      const hp = parseFloat(document.getElementById('umcInpHomePrice').value) || 0;
+      const down = parseFloat(document.getElementById('umcInpDownDollar').value) || 0;
+      const loanAmt = Math.max(0, hp - down);
+      const rateAnnual = parseFloat(document.getElementById('umcInpRate').value) || 0;
+      const termYears = parseInt(document.getElementById('umcInpTerm').value, 10) || 30;
+      const taxRate = parseFloat(document.getElementById('umcInpTaxRate').value) || 0;
+      const insAnnual = parseFloat(document.getElementById('umcInpInsurance').value) || 0;
+      const includePMI = document.getElementById('umcInpPMI').checked;
+      const pmiRate = parseFloat(document.getElementById('umcInpPMIRate')?.value) || 0.50;
+      const hoaMonthly = parseFloat(document.getElementById('umcInpHOA').value) || 0;
+      const extraMonthly = parseFloat(document.getElementById('umcInpExtra').value) || 0;
+
+      // LTV
+      const ltv = hp > 0 ? (loanAmt / hp) * 100 : 0;
+      document.getElementById('umcLtvBadge').textContent = 'LTV: ' + ltv.toFixed(1) + '%';
+
+      // Monthly rate & months
+      const r = rateAnnual / 100 / 12;
+      const n = termYears * 12;
+
+      let monthlyPI = 0;
+      if (loanAmt > 0) {
+        if (r === 0) {
+          monthlyPI = loanAmt / n;
+        } else {
+          const comp = Math.pow(1 + r, n);
+          monthlyPI = (loanAmt * (r * comp)) / (comp - 1);
+        }
+      }
+
+      const monthlyTax = (hp * (taxRate / 100)) / 12;
+      const monthlyIns = insAnnual / 12;
+      const monthlyPMI = (includePMI && loanAmt > 0) ? ((loanAmt * (pmiRate / 100)) / 12) : 0;
+      const monthlyEscrow = monthlyTax + monthlyIns;
+      const totalMonthly = monthlyPI + monthlyTax + monthlyIns + monthlyPMI + hoaMonthly;
+
+      // Update DOM
+      document.getElementById('umcDispTotal').textContent = umcFormatCurrency(totalMonthly);
+      document.getElementById('umcDispPI').textContent = umcFormatCurrency(monthlyPI);
+      document.getElementById('umcDispTax').textContent = umcFormatCurrency(monthlyTax);
+      document.getElementById('umcDispIns').textContent = umcFormatCurrency(monthlyIns);
+      document.getElementById('umcDispEscrow').textContent = umcFormatCurrency(monthlyEscrow);
+      document.getElementById('umcDispLoanAmt').textContent = umcFormatCurrency(loanAmt);
+
+      const rowPMI = document.getElementById('umcRowPMI');
+      if (rowPMI) {
+        rowPMI.style.display = includePMI && monthlyPMI > 0 ? 'flex' : 'none';
+        document.getElementById('umcDispPMI').textContent = umcFormatCurrency(monthlyPMI);
+      }
+
+      const rowHOA = document.getElementById('umcRowHOA');
+      if (rowHOA) {
+        rowHOA.style.display = hoaMonthly > 0 ? 'flex' : 'none';
+        document.getElementById('umcDispHOA').textContent = umcFormatCurrency(hoaMonthly);
+      }
+
+      // Amortization (first 12 months)
+      let bal = loanAmt;
+      let totInt = 0;
+      const tbody = document.getElementById('umcAmortBody');
+      tbody.innerHTML = '';
+
+      for (let m = 1; m <= 12 && bal > 0.01; m++) {
+        const intPmt = bal * r;
+        let prinPmt = monthlyPI - intPmt;
+        if (prinPmt > bal) prinPmt = bal;
+        let extraPmt = extraMonthly;
+        if (extraPmt > (bal - prinPmt)) extraPmt = bal - prinPmt;
+        const endBal = Math.max(0, bal - prinPmt - extraPmt);
+
+        totInt += intPmt;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + m + '</td><td>Month ' + m + '</td><td>' + umcFormatCurrency(bal) + '</td><td style="color:#1d4ed8;font-weight:700;">' + umcFormatCurrency(prinPmt) + '</td><td style="color:#d97706;">' + umcFormatCurrency(intPmt) + '</td><td style="color:#059669;">' + (extraPmt > 0 ? umcFormatCurrency(extraPmt) : '—') + '</td><td style="font-weight:800;">' + umcFormatCurrency(endBal) + '</td>';
+        tbody.appendChild(tr);
+
+        bal = endBal;
+      }
+
+      // Estimate total interest for full loan
+      const totalEstimatedInterest = (monthlyPI * n) - loanAmt;
+      document.getElementById('umcDispTotInt').textContent = umcFormatCurrency(Math.max(0, totalEstimatedInterest));
+    }
+
+    function umcCopySummary() {
+      const txt = 'MORTGAGE SUMMARY:\n' +
+        'Monthly Payment: ' + document.getElementById('umcDispTotal').textContent + '\n' +
+        'Principal & Interest: ' + document.getElementById('umcDispPI').textContent + '\n' +
+        'Property Taxes: ' + document.getElementById('umcDispTax').textContent + '\n' +
+        'Homeowners Insurance: ' + document.getElementById('umcDispIns').textContent + '\n' +
+        'Loan Amount: ' + document.getElementById('umcDispLoanAmt').textContent;
+      navigator.clipboard.writeText(txt);
+      alert('Mortgage Summary copied to clipboard!');
+    }
+
+    // Initialize on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', umcCalculate);
+    } else {
+      umcCalculate();
+    }
+  </script>
+
+  <!-- JSON-LD WebApplication Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Mortgage Calculator with Taxes, PMI & Insurance",
+    "description": "Estimate your monthly mortgage payment with property taxes, homeowners insurance, PMI, HOA fees and extra payments using this free U.S. mortgage calculator.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</div>
