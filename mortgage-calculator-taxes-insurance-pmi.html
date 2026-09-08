@@ -1,0 +1,2171 @@
+<!--
+BLOGGER TITLE:
+Mortgage Calculator with Taxes, PMI & Insurance – Estimate Monthly Payment
+
+BLOGGER SEARCH DESCRIPTION:
+Estimate your monthly mortgage payment with property taxes, homeowners insurance, PMI, HOA fees and extra payments using this free U.S. mortgage calculator.
+
+BLOGGER LABELS:
+Mortgage Calculator, Mortgage Payment Calculator, Home Loan Calculator, PMI Calculator, PITI Calculator, Property Tax Calculator, Mortgage Amortization Calculator, Finance Tools, Real Estate Tools, Home Buying Tools, Free Online Tools
+-->
+
+<style>
+/* ==========================================================================
+   SCOPED BLOGGER SAFE STYLES - #usaMortgageCalculatorApp
+   ========================================================================== */
+#usaMortgageCalculatorApp {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    line-height: 1.6 !important;
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+#usaMortgageCalculatorApp *,
+#usaMortgageCalculatorApp *::before,
+#usaMortgageCalculatorApp *::after {
+    box-sizing: border-box !important;
+}
+
+/* Typography */
+#usaMortgageCalculatorApp h1,
+#usaMortgageCalculatorApp h2,
+#usaMortgageCalculatorApp h3,
+#usaMortgageCalculatorApp h4 {
+    color: #0f172a !important;
+    margin-top: 0 !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+}
+
+#usaMortgageCalculatorApp h1 { font-size: 2rem !important; }
+#usaMortgageCalculatorApp h2 { font-size: 1.4rem !important; }
+#usaMortgageCalculatorApp h3 { font-size: 1.2rem !important; }
+#usaMortgageCalculatorApp h4 { font-size: 1.05rem !important; }
+
+#usaMortgageCalculatorApp p {
+    margin: 0 0 1rem 0 !important;
+    font-size: 0.975rem !important;
+    color: #475569 !important;
+}
+
+/* Layout Grid */
+#usaMortgageCalculatorApp .mc-hero {
+    text-align: center !important;
+    padding: 1.5rem 1rem 1rem 1rem !important;
+    background: #ffffff !important;
+}
+
+#usaMortgageCalculatorApp .mc-badge-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    background-color: #ecfdf5 !important;
+    color: #047857 !important;
+    border: 1px solid #a7f3d0 !important;
+    padding: 0.35rem 0.85rem !important;
+    border-radius: 9999px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.75rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-badge-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.4rem !important;
+    margin-top: 0.85rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-badge-item {
+    background-color: #f1f5f9 !important;
+    color: #334155 !important;
+    padding: 0.25rem 0.65rem !important;
+    border-radius: 9999px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+}
+
+#usaMortgageCalculatorApp .mc-container {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 1rem !important;
+}
+
+@media (min-width: 992px) {
+    #usaMortgageCalculatorApp .mc-container {
+        grid-template-columns: 7fr 5fr !important;
+        padding: 1.25rem 0 !important;
+    }
+}
+
+/* Cards */
+#usaMortgageCalculatorApp .mc-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 1rem !important;
+    padding: 1.35rem !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    margin-bottom: 1.25rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-card-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+
+#usaMortgageCalculatorApp .mc-sticky-results {
+    position: relative !important;
+}
+
+@media (min-width: 992px) {
+    #usaMortgageCalculatorApp .mc-sticky-results {
+        position: sticky !important;
+        top: 20px !important;
+    }
+}
+
+/* Form Controls */
+#usaMortgageCalculatorApp .mc-form-group {
+    margin-bottom: 1.15rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-label-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 0.35rem !important;
+}
+
+#usaMortgageCalculatorApp label {
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+}
+
+#usaMortgageCalculatorApp .mc-input-wrap {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+#usaMortgageCalculatorApp .mc-input-prefix,
+#usaMortgageCalculatorApp .mc-input-suffix {
+    position: absolute !important;
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    pointer-events: none !important;
+}
+
+#usaMortgageCalculatorApp .mc-input-prefix { left: 0.85rem !important; }
+#usaMortgageCalculatorApp .mc-input-suffix { right: 0.85rem !important; }
+
+#usaMortgageCalculatorApp input[type="number"],
+#usaMortgageCalculatorApp input[type="text"],
+#usaMortgageCalculatorApp input[type="date"],
+#usaMortgageCalculatorApp select {
+    width: 100% !important;
+    height: 44px !important;
+    padding: 0.5rem 0.85rem !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 0.65rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    background: #ffffff !important;
+    outline: none !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+#usaMortgageCalculatorApp input.has-prefix { padding-left: 1.9rem !important; }
+#usaMortgageCalculatorApp input.has-suffix { padding-right: 2rem !important; }
+
+#usaMortgageCalculatorApp input:focus,
+#usaMortgageCalculatorApp select:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+#usaMortgageCalculatorApp input[type="range"] {
+    width: 100% !important;
+    margin: 0.5rem 0 0 0 !important;
+    accent-color: #2563eb !important;
+    cursor: pointer !important;
+}
+
+/* Preset Buttons */
+#usaMortgageCalculatorApp .mc-preset-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+    margin-top: 0.5rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-btn-preset {
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.5rem !important;
+    padding: 0.25rem 0.65rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    cursor: pointer !important;
+    transition: all 0.15s !important;
+}
+
+#usaMortgageCalculatorApp .mc-btn-preset:hover,
+#usaMortgageCalculatorApp .mc-btn-preset.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+
+/* Term Selector Grid */
+#usaMortgageCalculatorApp .mc-term-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0.35rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-term-btn {
+    padding: 0.5rem 0.25rem !important;
+    text-align: center !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    border-radius: 0.5rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    cursor: pointer !important;
+}
+
+#usaMortgageCalculatorApp .mc-term-btn.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+
+/* Toggle Switch */
+#usaMortgageCalculatorApp .mc-toggle-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.75rem !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-switch {
+    position: relative !important;
+    display: inline-block !important;
+    width: 44px !important;
+    height: 24px !important;
+}
+
+#usaMortgageCalculatorApp .mc-switch input {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+#usaMortgageCalculatorApp .mc-slider-switch {
+    position: absolute !important;
+    cursor: pointer !important;
+    top: 0; left: 0; right: 0; bottom: 0 !important;
+    background-color: #cbd5e1 !important;
+    transition: 0.2s !important;
+    border-radius: 24px !important;
+}
+
+#usaMortgageCalculatorApp .mc-slider-switch:before {
+    position: absolute !important;
+    content: "" !important;
+    height: 18px !important;
+    width: 18px !important;
+    left: 3px !important;
+    bottom: 3px !important;
+    background-color: white !important;
+    transition: 0.2s !important;
+    border-radius: 50% !important;
+}
+
+#usaMortgageCalculatorApp .mc-switch input:checked + .mc-slider-switch {
+    background-color: #2563eb !important;
+}
+
+#usaMortgageCalculatorApp .mc-switch input:checked + .mc-slider-switch:before {
+    transform: translateX(20px) !important;
+}
+
+/* Primary Action Buttons */
+#usaMortgageCalculatorApp .mc-btn-primary {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.95rem 1.25rem !important;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+    color: #ffffff !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    border: none !important;
+    border-radius: 0.75rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+    transition: transform 0.15s, box-shadow 0.15s !important;
+}
+
+#usaMortgageCalculatorApp .mc-btn-primary:hover {
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35) !important;
+    transform: translateY(-1px) !important;
+}
+
+#usaMortgageCalculatorApp .mc-btn-primary:active {
+    transform: translateY(1px) !important;
+}
+
+#usaMortgageCalculatorApp .mc-btn-outline {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #334155 !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    padding: 0.5rem 0.95rem !important;
+    border-radius: 0.5rem !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    transition: all 0.15s !important;
+}
+
+#usaMortgageCalculatorApp .mc-btn-outline:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+}
+
+/* Results Display */
+#usaMortgageCalculatorApp .mc-main-result-card {
+    background: #ffffff !important;
+    border: 2px solid #2563eb !important;
+    border-radius: 1.25rem !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08) !important;
+}
+
+#usaMortgageCalculatorApp .mc-main-payment {
+    font-size: 2.75rem !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    line-height: 1.1 !important;
+    margin: 0.35rem 0 1rem 0 !important;
+}
+
+#usaMortgageCalculatorApp .mc-main-payment span {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+}
+
+#usaMortgageCalculatorApp .mc-breakdown-list {
+    border-top: 1px solid #f1f5f9 !important;
+    padding-top: 0.85rem !important;
+    margin-bottom: 1rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-breakdown-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.45rem 0 !important;
+    font-size: 0.9rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-color-dot {
+    display: inline-block !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    margin-right: 0.5rem !important;
+}
+
+/* Lightweight Visual Bar Chart */
+#usaMortgageCalculatorApp .mc-visual-bar {
+    height: 14px !important;
+    width: 100% !important;
+    background: #f1f5f9 !important;
+    border-radius: 9999px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    margin: 0.85rem 0 !important;
+}
+
+#usaMortgageCalculatorApp .mc-bar-segment {
+    height: 100% !important;
+    transition: width 0.3s ease !important;
+}
+
+/* Metric Dashboards */
+#usaMortgageCalculatorApp .mc-metric-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    margin-top: 1rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-metric-box {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 0.75rem !important;
+    padding: 0.75rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-metric-title {
+    font-size: 0.725rem !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.025em !important;
+    display: block !important;
+}
+
+#usaMortgageCalculatorApp .mc-metric-value {
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    display: block !important;
+    margin-top: 0.15rem !important;
+}
+
+/* Schedule Table */
+#usaMortgageCalculatorApp .mc-table-responsive {
+    width: 100% !important;
+    overflow-x: auto !important;
+    margin-top: 1rem !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+#usaMortgageCalculatorApp table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 0.8rem !important;
+    text-align: left !important;
+}
+
+#usaMortgageCalculatorApp th {
+    background: #f8fafc !important;
+    color: #475569 !important;
+    padding: 0.65rem 0.75rem !important;
+    font-weight: 700 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    white-space: nowrap !important;
+}
+
+#usaMortgageCalculatorApp td {
+    padding: 0.55rem 0.75rem !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    color: #334155 !important;
+    white-space: nowrap !important;
+}
+
+#usaMortgageCalculatorApp tr:hover td {
+    background: #f8fafc !important;
+}
+
+/* Social Share Bar */
+#usaMortgageCalculatorApp .mc-share-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.45rem !important;
+    margin-top: 0.75rem !important;
+}
+
+#usaMortgageCalculatorApp .mc-share-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 0.5rem !important;
+    color: #ffffff !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    border: none !important;
+}
+
+/* Advertisements Safe Wrappers */
+#usaMortgageCalculatorApp .mc-ad-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin: 1.5rem auto !important;
+    overflow: hidden !important;
+}
+
+#usaMortgageCalculatorApp .mc-ad-label {
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #94a3b8 !important;
+    margin-bottom: 0.25rem !important;
+    display: block !important;
+}
+
+/* Tooltip & Helper Text */
+#usaMortgageCalculatorApp .mc-help-text {
+    font-size: 0.75rem !important;
+    color: #64748b !important;
+    margin-top: 0.35rem !important;
+    display: block !important;
+}
+
+/* Print Styles */
+@media print {
+    #usaMortgageCalculatorApp .mc-no-print,
+    #usaMortgageCalculatorApp .mc-ad-wrapper,
+    #usaMortgageCalculatorApp .mc-share-buttons,
+    #usaMortgageCalculatorApp .mc-btn-primary,
+    #usaMortgageCalculatorApp .mc-btn-outline {
+        display: none !important;
+    }
+    #usaMortgageCalculatorApp .mc-container {
+        display: block !important;
+    }
+}
+</style>
+
+<!-- ROOT WRAPPER FOR BLOGGER ISOLATION -->
+<div id="usaMortgageCalculatorApp">
+
+    <!-- HERO HEADER -->
+    <header class="mc-hero">
+        <div class="mc-badge-pill">
+            <span>🇺🇸</span> Free U.S. Mortgage Planning Tool
+        </div>
+        <h1>Mortgage Calculator with Taxes, PMI & Insurance</h1>
+        <p style="font-size: 1.15rem; font-weight: 600; color: #2563eb; margin-bottom: 0.5rem;">
+            Estimate Your Complete Monthly Home Payment
+        </p>
+        <p style="max-width: 760px; margin-left: auto; margin-right: auto;">
+            Estimate your monthly mortgage payment using your home price, down payment, interest rate and loan term.
+            Include property taxes, homeowners insurance, PMI, HOA fees and optional extra principal payments for a more complete monthly housing estimate.
+        </p>
+
+        <div class="mc-badge-group">
+            <span class="mc-badge-item">✓ 100% Free</span>
+            <span class="mc-badge-item">✓ No Signup</span>
+            <span class="mc-badge-item">✓ Taxes Included</span>
+            <span class="mc-badge-item">✓ Insurance Included</span>
+            <span class="mc-badge-item">✓ PMI Support</span>
+            <span class="mc-badge-item">✓ Extra Payment Analysis</span>
+            <span class="mc-badge-item">✓ Instant Results</span>
+        </div>
+        <div style="margin-top: 0.6rem; font-size: 0.8rem; font-weight: 700; color: #047857;">
+            100% Free • Unlimited Use • No Signup
+        </div>
+    </header>
+
+    <!-- ADVERTISEMENT SPOT 1: 468x60 BANNER -->
+    <div class="mc-ad-wrapper mc-no-print">
+        <span class="mc-ad-label">Advertisement</span>
+        <div style="width: 100%; max-width: 468px; margin: 0 auto; overflow: hidden;">
+            <script>
+            atOptions = {
+            'key' : '294198e908506e5d909d0b383f167eaa',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+            };
+            </script>
+            <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+        </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN CALCULATOR -->
+    <div class="mc-container">
+
+        <!-- LEFT COLUMN: INPUT PANEL -->
+        <div class="mc-inputs-col">
+            
+            <!-- Core Loan Details -->
+            <div class="mc-card">
+                <div class="mc-card-header">
+                    <h2>1. Home Price & Loan Details</h2>
+                    <span id="mcLtvBadge" style="font-size: 0.8rem; font-weight: 800; color: #2563eb; background: #eff6ff; padding: 0.2rem 0.5rem; border-radius: 0.4rem;">
+                        LTV: 80.0%
+                    </span>
+                </div>
+
+                <!-- Home Price -->
+                <div class="mc-form-group">
+                    <div class="mc-label-row">
+                        <label for="mcHomePrice">Home Purchase Price</label>
+                        <strong id="mcHomePriceDisp" style="color: #0f172a; font-size: 0.95rem;">$400,000</strong>
+                    </div>
+                    <div class="mc-input-wrap">
+                        <span class="mc-input-prefix">$</span>
+                        <input type="number" id="mcHomePrice" class="has-prefix" value="400000" min="10000" max="20000000" step="1000">
+                    </div>
+                    <input type="range" id="mcHomePriceSlider" min="50000" max="1500000" step="5000" value="400000">
+                </div>
+
+                <!-- Down Payment -->
+                <div class="mc-form-group">
+                    <div class="mc-label-row">
+                        <label>Down Payment</label>
+                        <span style="font-size: 0.8rem; color: #64748b;">
+                            Loan Principal: <strong id="mcLoanAmountDisp" style="color: #0f172a;">$320,000</strong>
+                        </span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                        <div class="mc-input-wrap">
+                            <span class="mc-input-prefix">$</span>
+                            <input type="number" id="mcDownPaymentAmount" class="has-prefix" value="80000" min="0" step="500">
+                        </div>
+                        <div class="mc-input-wrap">
+                            <input type="number" id="mcDownPaymentPct" class="has-suffix" value="20" min="0" max="100" step="0.1">
+                            <span class="mc-input-suffix">%</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Down Payment Presets -->
+                    <div class="mc-preset-row">
+                        <span style="font-size: 0.75rem; color: #64748b; font-weight: 600; align-self: center;">Presets:</span>
+                        <button type="button" class="mc-btn-preset" data-pct="3">3%</button>
+                        <button type="button" class="mc-btn-preset" data-pct="3.5">3.5%</button>
+                        <button type="button" class="mc-btn-preset" data-pct="5">5%</button>
+                        <button type="button" class="mc-btn-preset" data-pct="10">10%</button>
+                        <button type="button" class="mc-btn-preset" data-pct="15">15%</button>
+                        <button type="button" class="mc-btn-preset active" data-pct="20">20%</button>
+                        <button type="button" class="mc-btn-preset" data-pct="25">25%</button>
+                    </div>
+                    <div id="mcPmiAlertNote" style="display: none; margin-top: 0.5rem; padding: 0.5rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 0.5rem; font-size: 0.75rem; color: #92400e;">
+                        ℹ️ PMI may apply to some conventional mortgages with a down payment below 20%. Actual requirements and costs vary by lender and loan program.
+                    </div>
+                </div>
+
+                <!-- Interest Rate & Loan Term -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                    <div class="mc-form-group">
+                        <label for="mcInterestRate">Interest Rate</label>
+                        <div class="mc-input-wrap">
+                            <input type="number" id="mcInterestRate" class="has-suffix" value="6.50" min="0" max="25" step="0.05">
+                            <span class="mc-input-suffix">%</span>
+                        </div>
+                        <span class="mc-help-text">Enter quoted or expected rate.</span>
+                    </div>
+
+                    <div class="mc-form-group">
+                        <label>Loan Term</label>
+                        <div class="mc-term-grid">
+                            <button type="button" class="mc-term-btn" data-term="10">10y</button>
+                            <button type="button" class="mc-term-btn" data-term="15">15y</button>
+                            <button type="button" class="mc-term-btn" data-term="20">20y</button>
+                            <button type="button" class="mc-term-btn" data-term="25">25y</button>
+                            <button type="button" class="mc-term-btn active" data-term="30">30y</button>
+                        </div>
+                        <input type="hidden" id="mcLoanTerm" value="30">
+                        <span id="mcTermText" class="mc-help-text">Selected: 30 Years (360 mos)</span>
+                    </div>
+                </div>
+
+                <!-- First Payment Date -->
+                <div class="mc-form-group" style="margin-bottom: 0;">
+                    <label for="mcStartDate">First Payment / Start Date</label>
+                    <input type="date" id="mcStartDate">
+                </div>
+            </div>
+
+            <!-- Taxes, Insurance, PMI & HOA -->
+            <div class="mc-card">
+                <div class="mc-card-header">
+                    <h2>2. Taxes, Insurance, PMI & HOA</h2>
+                </div>
+
+                <!-- Property Tax -->
+                <div class="mc-form-group">
+                    <div class="mc-label-row">
+                        <label for="mcTaxValue">Property Taxes (Annual)</label>
+                        <div style="display: flex; gap: 0.25rem;">
+                            <button type="button" id="mcTaxModePct" class="mc-btn-preset active">% / Yr</button>
+                            <button type="button" id="mcTaxModeAmt" class="mc-btn-preset">$ / Yr</button>
+                        </div>
+                    </div>
+                    <div class="mc-input-wrap">
+                        <span id="mcTaxPrefix" class="mc-input-prefix" style="display:none;">$</span>
+                        <input type="number" id="mcTaxValue" class="has-suffix" value="1.20" step="0.05">
+                        <span id="mcTaxSuffix" class="mc-input-suffix">%</span>
+                    </div>
+                    <span id="mcMonthlyTaxCalc" class="mc-help-text">Estimated monthly tax: $400/mo</span>
+                </div>
+
+                <!-- Homeowners Insurance -->
+                <div class="mc-form-group">
+                    <div class="mc-label-row">
+                        <label for="mcInsuranceAnnual">Homeowners Insurance (Annual)</label>
+                        <span id="mcMonthlyInsCalc" style="font-size: 0.8rem; font-weight: 700; color: #0f172a;">$150/mo</span>
+                    </div>
+                    <div class="mc-input-wrap">
+                        <span class="mc-input-prefix">$</span>
+                        <input type="number" id="mcInsuranceAnnual" class="has-prefix" value="1800" step="50">
+                    </div>
+                    <span class="mc-help-text">Annual hazard/home insurance premium.</span>
+                </div>
+
+                <!-- PMI Section -->
+                <div class="mc-toggle-wrap">
+                    <div>
+                        <strong style="font-size: 0.9rem; color: #0f172a; display: block;">Include Private Mortgage Insurance (PMI)</strong>
+                        <span style="font-size: 0.75rem; color: #64748b;">Typically required for down payments under 20%</span>
+                    </div>
+                    <label class="mc-switch">
+                        <input type="checkbox" id="mcIncludePmi">
+                        <span class="mc-slider-switch"></span>
+                    </label>
+                </div>
+
+                <div id="mcPmiDetailsBox" style="display: none; padding: 0.85rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; margin-bottom: 1rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                        <div>
+                            <label for="mcPmiRate" style="font-size: 0.75rem;">PMI Rate (%/Yr)</label>
+                            <div class="mc-input-wrap">
+                                <input type="number" id="mcPmiRate" class="has-suffix" value="0.50" step="0.05">
+                                <span class="mc-input-suffix">%</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label style="font-size: 0.75rem;">Monthly PMI</label>
+                            <div style="height: 44px; display: flex; align-items: center; padding: 0 0.85rem; background: #fff; border: 1px solid #cbd5e1; border-radius: 0.65rem; font-weight: 700;">
+                                <span id="mcMonthlyPmiDisp">$133/mo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mcPmiThresholdNote" style="margin-top: 0.6rem; font-size: 0.75rem; color: #475569; background: #ffffff; padding: 0.5rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+                        <strong>Estimated 80% LTV Threshold:</strong> Balance reaches approx 80% of original value in month <span id="mcPmiThreshMonth">--</span> (<span id="mcPmiThreshDate">--</span>).
+                        <div style="font-size: 0.65rem; color: #94a3b8; margin-top: 0.2rem;">
+                            This is an estimate only. Actual PMI cancellation rules depend on your mortgage, lender and applicable requirements.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HOA Fees -->
+                <div class="mc-form-group" style="margin-bottom: 0;">
+                    <label for="mcHoaMonthly">Monthly HOA Fees</label>
+                    <div class="mc-input-wrap">
+                        <span class="mc-input-prefix">$</span>
+                        <input type="number" id="mcHoaMonthly" class="has-prefix" value="0" min="0" step="10">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra Principal Payments -->
+            <div class="mc-card">
+                <div class="mc-card-header">
+                    <h2>3. Extra Principal Payments (Optional)</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+                    <div class="mc-form-group">
+                        <label for="mcExtraMonthly" style="font-size: 0.75rem;">Monthly Extra</label>
+                        <div class="mc-input-wrap">
+                            <span class="mc-input-prefix">$</span>
+                            <input type="number" id="mcExtraMonthly" class="has-prefix" value="0" min="0" step="25">
+                        </div>
+                    </div>
+                    <div class="mc-form-group">
+                        <label for="mcOneTimeExtra" style="font-size: 0.75rem;">One-Time Extra</label>
+                        <div class="mc-input-wrap">
+                            <span class="mc-input-prefix">$</span>
+                            <input type="number" id="mcOneTimeExtra" class="has-prefix" value="0" min="0" step="250">
+                        </div>
+                    </div>
+                    <div class="mc-form-group">
+                        <label for="mcAnnualExtra" style="font-size: 0.75rem;">Annual Extra</label>
+                        <div class="mc-input-wrap">
+                            <span class="mc-input-prefix">$</span>
+                            <input type="number" id="mcAnnualExtra" class="has-prefix" value="0" min="0" step="250">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra Payment Savings Highlight Card -->
+                <div id="mcExtraSavingsCard" style="display: none; padding: 0.85rem; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 0.75rem; margin-top: 0.5rem;">
+                    <strong style="color: #6d28d9; font-size: 0.85rem; display: block; margin-bottom: 0.4rem;">
+                        ✨ Extra Payment Savings Analysis
+                    </strong>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; text-align: center;">
+                        <div style="background: #fff; padding: 0.4rem; border-radius: 0.5rem;">
+                            <span style="font-size: 0.7rem; color: #64748b; display: block;">Interest Saved</span>
+                            <strong id="mcInterestSavedVal" style="color: #047857; font-size: 0.95rem;">$0</strong>
+                        </div>
+                        <div style="background: #fff; padding: 0.4rem; border-radius: 0.5rem;">
+                            <span style="font-size: 0.7rem; color: #64748b; display: block;">Time Saved</span>
+                            <strong id="mcTimeSavedVal" style="color: #6d28d9; font-size: 0.95rem;">0 yrs</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing Costs Section -->
+            <div class="mc-card">
+                <div class="mc-card-header" style="cursor: pointer;" id="mcClosingCostsToggle">
+                    <h2 style="font-size: 1.05rem;">Optional Closing Cost Estimator</h2>
+                    <span style="font-size: 0.8rem; color: #2563eb; font-weight: 700;">[Toggle]</span>
+                </div>
+                <div id="mcClosingCostsBody" style="display: none; padding-top: 0.5rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem;">
+                        <div>
+                            <label for="mcClosingCostPct" style="font-size: 0.75rem;">Estimated Costs (%)</label>
+                            <div class="mc-input-wrap">
+                                <input type="number" id="mcClosingCostPct" class="has-suffix" value="2.5" step="0.1">
+                                <span class="mc-input-suffix">%</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label style="font-size: 0.75rem;">Estimated Total</label>
+                            <div style="height: 44px; display: flex; align-items: center; padding: 0 0.85rem; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 0.65rem; font-weight: 700;">
+                                <span id="mcClosingCostTotalDisp">$10,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; cursor: pointer;">
+                        <input type="checkbox" id="mcIncludeClosingInLoan"> Include Closing Costs in Mortgage Principal
+                    </label>
+                </div>
+            </div>
+
+            <!-- Large Primary Action Button -->
+            <button type="button" class="mc-btn-primary mc-no-print" id="mcBtnCalculate">
+                CALCULATE MORTGAGE PAYMENT
+            </button>
+
+            <!-- Reset & Example Tools -->
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;" class="mc-no-print">
+                <button type="button" class="mc-btn-outline" id="mcBtnLoadExample" style="flex: 1;">
+                    🔄 Load Example
+                </button>
+                <button type="button" class="mc-btn-outline" id="mcBtnReset" style="flex: 1;">
+                    ↺ Reset
+                </button>
+                <button type="button" class="mc-btn-outline" id="mcBtnClearAll" style="flex: 1;">
+                    🗑️ Clear All
+                </button>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: RESULTS & SUMMARY (STICKY) -->
+        <div class="mc-results-col mc-sticky-results">
+            
+            <!-- Main Highlighted Result Card -->
+            <div class="mc-main-result-card" id="mcResultsCard">
+                <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: #2563eb; letter-spacing: 0.05em; display: block;">
+                    Estimated Monthly Housing Payment
+                </span>
+                <div class="mc-main-payment" id="mcTotalMonthlyPayment">
+                    $2,823<span>/mo</span>
+                </div>
+
+                <!-- Visual Stacked Bar -->
+                <div class="mc-visual-bar" id="mcVisualBar">
+                    <div id="mcBarPI" class="mc-bar-segment" style="background-color: #2563eb; width: 70%;"></div>
+                    <div id="mcBarTax" class="mc-bar-segment" style="background-color: #10b981; width: 15%;"></div>
+                    <div id="mcBarIns" class="mc-bar-segment" style="background-color: #f59e0b; width: 8%;"></div>
+                    <div id="mcBarPmi" class="mc-bar-segment" style="background-color: #f43f5e; width: 7%;"></div>
+                    <div id="mcBarHoa" class="mc-bar-segment" style="background-color: #8b5cf6; width: 0%;"></div>
+                </div>
+
+                <!-- Breakdown List -->
+                <div class="mc-breakdown-list">
+                    <div class="mc-breakdown-row">
+                        <span><span class="mc-color-dot" style="background-color: #2563eb;"></span>Principal & Interest</span>
+                        <strong id="mcBreakdownPI">$2,023</strong>
+                    </div>
+                    <div class="mc-breakdown-row">
+                        <span><span class="mc-color-dot" style="background-color: #10b981;"></span>Property Taxes</span>
+                        <strong id="mcBreakdownTax">$400</strong>
+                    </div>
+                    <div class="mc-breakdown-row">
+                        <span><span class="mc-color-dot" style="background-color: #f59e0b;"></span>Homeowners Insurance</span>
+                        <strong id="mcBreakdownIns">$150</strong>
+                    </div>
+                    <div class="mc-breakdown-row" id="mcBreakdownPmiRow" style="display: none;">
+                        <span><span class="mc-color-dot" style="background-color: #f43f5e;"></span>PMI</span>
+                        <strong id="mcBreakdownPmi">$0</strong>
+                    </div>
+                    <div class="mc-breakdown-row" id="mcBreakdownHoaRow" style="display: none;">
+                        <span><span class="mc-color-dot" style="background-color: #8b5cf6;"></span>HOA Fees</span>
+                        <strong id="mcBreakdownHoa">$0</strong>
+                    </div>
+                    <div class="mc-breakdown-row" id="mcBreakdownExtraRow" style="display: none; border-top: 1px dashed #e2e8f0; margin-top: 0.35rem; padding-top: 0.35rem; color: #6d28d9;">
+                        <span>+ Extra Principal</span>
+                        <strong id="mcBreakdownExtra">$0</strong>
+                    </div>
+                </div>
+
+                <!-- Escrow Note -->
+                <div style="padding: 0.65rem; background: #f8fafc; border-radius: 0.5rem; font-size: 0.75rem; color: #475569; display: flex; justify-content: space-between;">
+                    <span>Estimated Monthly Escrow:</span>
+                    <strong id="mcEscrowDisp" style="color: #0f172a;">$550/mo</strong>
+                </div>
+            </div>
+
+            <!-- Summary Dashboard Metrics Grid -->
+            <div class="mc-metric-grid">
+                <div class="mc-metric-box">
+                    <span class="mc-metric-title">Loan Amount</span>
+                    <span class="mc-metric-value" id="mcMetricLoanAmt">$320,000</span>
+                </div>
+                <div class="mc-metric-box">
+                    <span class="mc-metric-title">Down Payment</span>
+                    <span class="mc-metric-value" id="mcMetricDownPayment">$80,000 (20%)</span>
+                </div>
+                <div class="mc-metric-box">
+                    <span class="mc-metric-title">Total Interest Paid</span>
+                    <span class="mc-metric-value" id="mcMetricTotalInterest">$408,187</span>
+                </div>
+                <div class="mc-metric-box">
+                    <span class="mc-metric-title">Estimated Payoff</span>
+                    <span class="mc-metric-value" id="mcMetricPayoffDate">Oct 2056</span>
+                </div>
+            </div>
+
+            <!-- Copy & Print Buttons -->
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;" class="mc-no-print">
+                <button type="button" class="mc-btn-outline" id="mcBtnCopySummary" style="flex: 1;">
+                    📋 Copy Mortgage Summary
+                </button>
+                <button type="button" class="mc-btn-outline" id="mcBtnPrintSummary" style="flex: 1;">
+                    🖨️ Print Summary
+                </button>
+            </div>
+
+            <!-- Social Sharing -->
+            <div class="mc-card mc-no-print" style="margin-top: 1rem; padding: 1rem;">
+                <span style="font-size: 0.8rem; font-weight: 700; color: #334155; display: block;">
+                    Share This Free Mortgage Calculator
+                </span>
+                <div class="mc-share-buttons">
+                    <a id="mcShareFb" class="mc-share-btn" style="background:#1877f2;" target="_blank" rel="noopener">Facebook</a>
+                    <a id="mcShareTw" class="mc-share-btn" style="background:#000000;" target="_blank" rel="noopener">X / Twitter</a>
+                    <a id="mcShareWa" class="mc-share-btn" style="background:#25d366;" target="_blank" rel="noopener">WhatsApp</a>
+                    <a id="mcShareLi" class="mc-share-btn" style="background:#0a66c2;" target="_blank" rel="noopener">LinkedIn</a>
+                    <a id="mcShareRd" class="mc-share-btn" style="background:#ff4500;" target="_blank" rel="noopener">Reddit</a>
+                    <button type="button" id="mcShareNative" class="mc-share-btn" style="background:#2563eb;">Share Tool</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADVERTISEMENT SPOT 2: NATIVE BANNER -->
+    <div class="mc-ad-wrapper mc-no-print">
+        <span class="mc-ad-label">Advertisement</span>
+        <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+        <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+
+    <!-- PRINCIPAL VS INTEREST & LOAN BALANCE TIMELINE -->
+    <div class="mc-card" style="margin: 1.5rem 1rem;">
+        <div class="mc-card-header">
+            <h2>Principal vs. Interest Breakdown & Balance Milestones</h2>
+            <div style="display: flex; gap: 0.25rem;">
+                <button type="button" class="mc-btn-preset" data-pv-view="1">1 Year</button>
+                <button type="button" class="mc-btn-preset" data-pv-view="5">5 Years</button>
+                <button type="button" class="mc-btn-preset" data-pv-view="10">10 Years</button>
+                <button type="button" class="mc-btn-preset active" data-pv-view="full">Full Loan</button>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; align-items: center;">
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div style="padding: 0.75rem; background: #eff6ff; border-radius: 0.5rem;">
+                    <span style="font-size: 0.75rem; color: #1e40af; font-weight: 700; display: block;">Principal (Equity)</span>
+                    <strong id="mcPviPrincipalVal" style="font-size: 1.2rem; color: #1e3a8a;">$320,000</strong>
+                    <span id="mcPviPrincipalPct" style="font-size: 0.7rem; color: #64748b; display: block;">44% of payments</span>
+                </div>
+                <div style="padding: 0.75rem; background: #fff1f2; border-radius: 0.5rem;">
+                    <span style="font-size: 0.75rem; color: #9f1239; font-weight: 700; display: block;">Interest (Financing Cost)</span>
+                    <strong id="mcPviInterestVal" style="font-size: 1.2rem; color: #881337;">$408,187</strong>
+                    <span id="mcPviInterestPct" style="font-size: 0.7rem; color: #64748b; display: block;">56% of payments</span>
+                </div>
+            </div>
+            <div>
+                <div style="height: 28px; width: 100%; background: #f1f5f9; border-radius: 0.5rem; overflow: hidden; display: flex;">
+                    <div id="mcPviBarPrincipal" style="height: 100%; background: #2563eb; width: 44%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.75rem; font-weight: 700;">Equity</div>
+                    <div id="mcPviBarInterest" style="height: 100%; background: #f43f5e; width: 56%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.75rem; font-weight: 700;">Interest</div>
+                </div>
+
+                <!-- Timeline Milestones -->
+                <div style="margin-top: 1rem;">
+                    <span style="font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 0.35rem;">
+                        Remaining Loan Balance Milestones:
+                    </span>
+                    <div id="mcTimelineMilestones" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 0.35rem; text-align: center;">
+                        <!-- Injected via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 15-YEAR VS. 30-YEAR COMPARISON -->
+    <div class="mc-card" style="margin: 1.5rem 1rem;">
+        <div class="mc-card-header">
+            <h2>15-Year vs. 30-Year Mortgage Comparison</h2>
+        </div>
+        <p style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+            See how a shorter 15-year term compares in monthly payments and overall lifetime interest savings using your current loan amount (<strong id="mcCompLoanAmt">$320,000</strong>).
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <strong style="font-size: 0.95rem; color: #0f172a;">30-Year Fixed</strong>
+                    <span style="font-size: 0.7rem; background: #e2e8f0; padding: 0.15rem 0.45rem; border-radius: 0.35rem; font-weight: 700;">Standard</span>
+                </div>
+                <div style="font-size: 0.8rem; line-height: 1.8;">
+                    <div>Monthly P&I: <strong id="mcComp30PI">$2,023</strong></div>
+                    <div>Total Monthly Housing: <strong id="mcComp30Total">$2,823</strong></div>
+                    <div>Estimated Total Interest: <strong id="mcComp30Interest" style="color: #991b1b;">$408,187</strong></div>
+                    <div>Payoff Timeline: <strong>360 Months (30 Years)</strong></div>
+                </div>
+            </div>
+
+            <div style="background: #ecfdf5; border: 1.5px solid #10b981; border-radius: 0.75rem; padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <strong style="font-size: 0.95rem; color: #047857;">15-Year Fixed</strong>
+                    <span style="font-size: 0.7rem; background: #a7f3d0; color: #065f46; padding: 0.15rem 0.45rem; border-radius: 0.35rem; font-weight: 700;">Save Big on Interest</span>
+                </div>
+                <div style="font-size: 0.8rem; line-height: 1.8;">
+                    <div>Monthly P&I: <strong id="mcComp15PI">$2,674</strong></div>
+                    <div>Total Monthly Housing: <strong id="mcComp15Total">$3,474</strong></div>
+                    <div>Estimated Total Interest: <strong id="mcComp15Interest" style="color: #047857;">$161,288</strong></div>
+                    <div>Payoff Timeline: <strong>180 Months (15 Years)</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AMORTIZATION SCHEDULE TABLE -->
+    <div class="mc-card" style="margin: 1.5rem 1rem;">
+        <div class="mc-card-header">
+            <h2>Loan Amortization Schedule</h2>
+            <div style="display: flex; gap: 0.25rem;">
+                <button type="button" id="mcViewMonthlySched" class="mc-btn-preset active">Monthly Schedule</button>
+                <button type="button" id="mcViewYearlySched" class="mc-btn-preset">Annual Summary</button>
+            </div>
+        </div>
+
+        <div class="mc-table-responsive">
+            <table id="mcAmortizationTable">
+                <thead>
+                    <tr id="mcTableHeadRow">
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Beginning Balance</th>
+                        <th>Payment</th>
+                        <th>Principal</th>
+                        <th>Interest</th>
+                        <th>Extra Principal</th>
+                        <th>Ending Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="mcAmortizationBody">
+                    <!-- Amortization Rows populated by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem;" class="mc-no-print">
+            <button type="button" id="mcToggleFullScheduleBtn" class="mc-btn-outline">
+                Show Full Schedule (360 Payments)
+            </button>
+        </div>
+    </div>
+
+    <!-- ADVERTISEMENT SPOT 3: 300x250 BANNER -->
+    <div class="mc-ad-wrapper mc-no-print">
+        <span class="mc-ad-label">Advertisement</span>
+        <div style="width: 300px; height: 250px; margin: 0 auto; overflow: hidden;">
+            <script>
+            atOptions = {
+            'key' : '224e7394c28834c8ac1ce24682c420e3',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+            };
+            </script>
+            <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+        </div>
+    </div>
+
+    <!-- FEATURES SECTION -->
+    <section class="mc-card" style="margin: 1.5rem 1rem;">
+        <h2>Why Use Our Free Mortgage Calculator?</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <div style="padding: 0.75rem; background: #f8fafc; border-radius: 0.5rem;">
+                <strong style="color: #2563eb; display: block; margin-bottom: 0.2rem;">100% Free & Unlimited</strong>
+                <p style="font-size: 0.8rem; margin: 0;">Calculate payments endlessly without paying, subscribing, or providing personal info.</p>
+            </div>
+            <div style="padding: 0.75rem; background: #f8fafc; border-radius: 0.5rem;">
+                <strong style="color: #2563eb; display: block; margin-bottom: 0.2rem;">No Signup or Login</strong>
+                <p style="font-size: 0.8rem; margin: 0;">Access every feature immediately with zero barriers and zero tracking.</p>
+            </div>
+            <div style="padding: 0.75rem; background: #f8fafc; border-radius: 0.5rem;">
+                <strong style="color: #2563eb; display: block; margin-bottom: 0.2rem;">Taxes & Insurance Included</strong>
+                <p style="font-size: 0.8rem; margin: 0;">Compute realistic PITI monthly payments rather than bare-bones principal and interest.</p>
+            </div>
+            <div style="padding: 0.75rem; background: #f8fafc; border-radius: 0.5rem;">
+                <strong style="color: #2563eb; display: block; margin-bottom: 0.2rem;">PMI & HOA Support</strong>
+                <p style="font-size: 0.8rem; margin: 0;">Accurately model private mortgage insurance rules and condo/neighborhood association fees.</p>
+            </div>
+            <div style="padding: 0.75rem; background: #f8fafc; border-radius: 0.5rem;">
+                <strong style="color: #2563eb; display: block; margin-bottom: 0.2rem;">Extra Payment Analysis</strong>
+                <p style="font-size: 0.8rem; margin: 0;">Quantify how monthly or lump-sum principal payments shave years and save thousands.</p>
+            </div>
+            <div style="padding: 0.75rem; background: #f8fafc; border-radius: 0.5rem;">
+                <strong style="color: #2563eb; display: block; margin-bottom: 0.2rem;">Complete Amortization</strong>
+                <p style="font-size: 0.8rem; margin: 0;">Inspect full month-by-month and year-by-year principal reductions and balance tracking.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO USE -->
+    <section class="mc-card" style="margin: 1.5rem 1rem;">
+        <h2>How to Use This Mortgage Calculator</h2>
+        <ol style="font-size: 0.9rem; color: #475569; padding-left: 1.25rem; line-height: 1.8; margin: 0;">
+            <li>Enter your agreed or prospective <strong>home price</strong>.</li>
+            <li>Input your <strong>down payment</strong> dollar amount or percentage (choose a convenient quick preset).</li>
+            <li>Type in your expected or lender-quoted <strong>mortgage interest rate</strong>.</li>
+            <li>Select your <strong>loan term</strong> (e.g. 15 or 30 years).</li>
+            <li>Specify annual <strong>property taxes</strong> (as a percentage or dollar amount).</li>
+            <li>Add annual <strong>homeowners insurance</strong> costs.</li>
+            <li>Toggle <strong>PMI</strong> if your down payment is less than 20%, and enter monthly <strong>HOA dues</strong> if applicable.</li>
+            <li>Optionally test <strong>extra principal payments</strong> to calculate interest savings and accelerated payoff dates.</li>
+            <li>Click <strong>CALCULATE MORTGAGE PAYMENT</strong> to review your complete estimated housing cost.</li>
+            <li>Explore the <strong>amortization schedule</strong> and comparison tools, then copy or print your personalized summary.</li>
+        </ol>
+    </section>
+
+    <!-- COMPREHENSIVE SEO ARTICLE (1,300 - 1,800 WORDS) -->
+    <article class="mc-card" style="margin: 1.5rem 1rem; line-height: 1.75; color: #334155;">
+        <h2>Understanding U.S. Mortgage Payments, Taxes, PMI & Insurance</h2>
+        
+        <h3>What Is a Mortgage Calculator?</h3>
+        <p>
+            A mortgage calculator is an essential personal finance and real estate modeling tool designed to help prospective homebuyers, refinancing homeowners, and real estate investors forecast the true financial commitment of purchasing residential property. While simplistic mortgage calculators calculate only principal and interest, our comprehensive U.S. mortgage payment calculator integrates every critical element of homeownership: property taxes, homeowners insurance, private mortgage insurance (PMI), homeowners association (HOA) dues, and closing costs.
+        </p>
+
+        <h3>How Is a Mortgage Payment Calculated?</h3>
+        <p>
+            Standard fixed-rate mortgages in the United States utilize an amortization formula to distribute principal and interest payments evenly across the term of the loan:
+        </p>
+        <div style="background: #f8fafc; padding: 1rem; border-left: 4px solid #2563eb; font-family: monospace; font-size: 0.9rem; margin: 1rem 0;">
+            M = P × [r(1 + r)^n] / [(1 + r)^n - 1]
+        </div>
+        <p>
+            Where <strong>M</strong> equals the monthly principal and interest payment, <strong>P</strong> represents the total loan principal (purchase price minus down payment), <strong>r</strong> represents the monthly interest rate (annual interest rate divided by 12 and converted to decimal), and <strong>n</strong> represents the total number of monthly payments across the loan term (e.g., 360 payments for a standard 30-year mortgage).
+        </p>
+
+        <h3>What Is Included in a Monthly Mortgage Payment? (The Meaning of PITI)</h3>
+        <p>
+            When lenders evaluate your monthly housing expense and debt-to-income (DTI) ratio, they do not look at principal and interest alone. Instead, they calculate your <strong>PITI</strong> payment:
+        </p>
+        <ul>
+            <li><strong>Principal:</strong> The portion of each monthly payment that repays the original borrowed capital, building your home equity.</li>
+            <li><strong>Interest:</strong> The cost charged by the mortgage lender for financing the debt. In the early years of a mortgage, interest constitutes the vast majority of each payment.</li>
+            <li><strong>Taxes:</strong> Real estate and municipal property taxes collected by your county or city government to fund schools, roads, and municipal emergency services. Lenders generally collect 1/12th of your annual tax bill each month and hold it in an escrow account.</li>
+            <li><strong>Insurance:</strong> Homeowners hazard insurance protects the property against fire, storms, and casualty losses. Similar to taxes, this premium is typically collected monthly into an escrow account.</li>
+        </ul>
+
+        <h3>What Is Private Mortgage Insurance (PMI)?</h3>
+        <p>
+            Private Mortgage Insurance (PMI) is an insurance policy that protects the mortgage lender—not the borrower—if you default on your home loan. Under standard conventional mortgage underwriting guidelines, borrowers who contribute a down payment of less than 20% of the property value are generally required to pay PMI. PMI premiums typically range between 0.3% and 1.5% of the original loan balance annually, depending on credit score, loan-to-value ratio, and loan program.
+        </p>
+        <p>
+            Under the federal <strong>Homeowners Protection Act of 1998</strong>, homeowners have the legal right to request the cancellation of PMI once their mortgage principal balance drops to 80% of the original home purchase value, and loan servicers are required by federal law to automatically terminate PMI once the principal balance reaches 78% of the original value.
+        </p>
+
+        <h3>What Is Loan-to-Value (LTV) Ratio?</h3>
+        <p>
+            The Loan-to-Value (LTV) ratio is a mathematical measurement that compares the size of your mortgage loan to the appraised value or purchase price of the home:
+        </p>
+        <div style="background: #f8fafc; padding: 1rem; border-left: 4px solid #10b981; font-family: monospace; font-size: 0.9rem; margin: 1rem 0;">
+            LTV = (Mortgage Loan Amount ÷ Total Home Value) × 100
+        </div>
+        <p>
+            For instance, purchasing a $400,000 house with an $80,000 down payment requires a $320,000 mortgage, resulting in an 80% LTV ($320,000 ÷ $400,000 × 100). A lower LTV ratio minimizes lender risk, helps secure more competitive interest rates, and eliminates the extra expense of private mortgage insurance.
+        </p>
+
+        <h3>How Does a Down Payment Affect a Mortgage?</h3>
+        <p>
+            Your down payment is the initial upfront cash contribution you provide toward the purchase of real estate. A larger down payment produces three immediate financial benefits:
+        </p>
+        <ol>
+            <li>It reduces your required loan amount, directly decreasing your monthly principal and interest obligation.</li>
+            <li>It eliminates private mortgage insurance (PMI) if you put down 20% or more on a conventional loan.</li>
+            <li>It lowers the total compound interest paid over the lifespan of the loan by tens or hundreds of thousands of dollars.</li>
+        </ol>
+
+        <h3>How Do Property Taxes and Homeowners Insurance Affect Escrow?</h3>
+        <p>
+            Most mortgage lenders require borrowers to establish an escrow account. Each month, your mortgage servicer collects 1/12th of your estimated annual property taxes and homeowners insurance along with your regular principal and interest payment. When taxes and insurance premiums come due, the loan servicer pays them directly to the tax authority and insurance carrier on your behalf.
+        </p>
+
+        <h3>What Are HOA Fees?</h3>
+        <p>
+            Homeowners Association (HOA) fees are recurring dues paid by property owners in condominiums, townhome communities, and planned subdivisions. HOA fees cover common area landscaping, exterior maintenance, roofing, amenities (swimming pools, fitness centers, community centers), and reserve funds. Although HOA fees are paid directly to your association rather than the lender, mortgage underwriters count them in full when determining your qualifying debt-to-income ratio.
+        </p>
+
+        <h3>How Extra Mortgage Payments Work</h3>
+        <p>
+            Because amortized loans calculate interest based on your remaining principal balance, making extra principal payments can yield substantial financial savings. When you apply extra money specifically toward your principal, 100% of that payment reduces your balance immediately. This prevents future interest from compounding on that capital, effectively compressing your loan amortization timeline.
+        </p>
+
+        <h3>15-Year vs. 30-Year Mortgages</h3>
+        <p>
+            Choosing between a 15-year and 30-year fixed-rate mortgage is one of the most consequential decisions in home financing:
+        </p>
+        <ul>
+            <li><strong>30-Year Fixed Mortgage:</strong> Delivers the lowest possible mandatory monthly payment by spreading amortization over 360 months. This maximizes monthly purchasing power and cash flow flexibility, but results in considerably higher lifetime interest costs.</li>
+            <li><strong>15-Year Fixed Mortgage:</strong> Requires higher monthly payments because principal is amortized across only 180 months, but typically carries lower interest rates and saves more than 60% of total lifetime interest expenses while building rapid equity.</li>
+        </ul>
+
+        <h3>What Is an Amortization Schedule?</h3>
+        <p>
+            An amortization schedule is a complete chronological table detailing each periodic payment over the life of a loan. Each line indicates the exact payment date, the breakdown between principal and interest, any extra principal contributed, and the declining loan balance. In the initial years of a 30-year mortgage, the majority of every dollar goes toward interest; as time progresses, the principal portion grows exponentially until the debt is completely extinguished.
+        </p>
+
+        <h3>How Closing Costs Work</h3>
+        <p>
+            Closing costs are the administrative, legal, and lending fees required to finalize a real estate transaction. In the United States, closing costs typically average between 2% and 5% of the purchase price. Common closing costs include loan origination fees, appraisal fees, title insurance, attorney fees, recording fees, and prepaid escrow deposits.
+        </p>
+    </article>
+
+    <!-- FREQUENTLY ASKED QUESTIONS (18+ USEFUL FAQS) -->
+    <section class="mc-card" style="margin: 1.5rem 1rem;">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem;">
+            <div>
+                <h4>1. Is this mortgage calculator completely free?</h4>
+                <p>Yes. This mortgage calculator is 100% free with unlimited calculations. There are no subscriptions, no premium tiers, no registrations, and no credit cards required.</p>
+            </div>
+            <div>
+                <h4>2. Does this calculator include property taxes?</h4>
+                <p>Yes. You can enter property taxes either as an annual percentage of the property value or as an exact annual dollar amount to determine your accurate monthly tax escrow.</p>
+            </div>
+            <div>
+                <h4>3. Does it include homeowners insurance?</h4>
+                <p>Yes. You can enter your annual homeowners insurance premium to accurately estimate your monthly hazard insurance costs.</p>
+            </div>
+            <div>
+                <h4>4. Does this tool calculate Private Mortgage Insurance (PMI)?</h4>
+                <p>Yes. You can toggle PMI on or off, configure custom percentage or dollar rates, and view the estimated date and balance when you reach 80% LTV.</p>
+            </div>
+            <div>
+                <h4>5. What is PMI?</h4>
+                <p>Private Mortgage Insurance protects conventional lenders when a borrower puts down less than 20% on a home purchase.</p>
+            </div>
+            <div>
+                <h4>6. What does PITI stand for?</h4>
+                <p>PITI stands for Principal, Interest, Taxes, and Insurance—the four core parts of a complete monthly housing payment.</p>
+            </div>
+            <div>
+                <h4>7. What is Loan-to-Value (LTV)?</h4>
+                <p>Loan-to-Value (LTV) is the ratio of your mortgage loan amount compared to the total appraised value or purchase price of the home.</p>
+            </div>
+            <div>
+                <h4>8. How is the monthly mortgage payment computed?</h4>
+                <p>The principal and interest payment is calculated using the standard fixed-rate amortization formula: M = P[r(1+r)^n] / [(1+r)^n - 1].</p>
+            </div>
+            <div>
+                <h4>9. How does down payment impact my mortgage payment?</h4>
+                <p>A higher down payment reduces your loan principal, lowers monthly interest charges, and eliminates PMI when reaching 20% or more.</p>
+            </div>
+            <div>
+                <h4>10. What is a 30-year fixed-rate mortgage?</h4>
+                <p>A loan repaid over 30 years (360 monthly payments) with a locked interest rate that never changes over the loan term.</p>
+            </div>
+            <div>
+                <h4>11. What is a 15-year fixed-rate mortgage?</h4>
+                <p>A mortgage amortized over 15 years (180 payments) featuring higher monthly payments but dramatically reduced total interest charges.</p>
+            </div>
+            <div>
+                <h4>12. Can I calculate extra principal payments?</h4>
+                <p>Yes. You can enter monthly, one-time, or annual extra principal payments to calculate interest savings and accelerated payoff dates.</p>
+            </div>
+            <div>
+                <h4>13. What is an amortization schedule?</h4>
+                <p>An amortization schedule is a complete payment-by-payment breakdown showing starting balance, principal paid, interest paid, and remaining balance.</p>
+            </div>
+            <div>
+                <h4>14. Does this calculator include HOA fees?</h4>
+                <p>Yes. You can input monthly Homeowners Association (HOA) fees to reflect true total monthly housing expenses.</p>
+            </div>
+            <div>
+                <h4>15. Does it estimate closing costs?</h4>
+                <p>Yes. The optional closing cost section estimates typical closing costs and lets you choose whether to finance them into the mortgage.</p>
+            </div>
+            <div>
+                <h4>16. Does this tool fetch live mortgage rates?</h4>
+                <p>No. You can enter any interest rate you expect or have been quoted by your mortgage lender or broker.</p>
+            </div>
+            <div>
+                <h4>17. Does this calculator determine mortgage approval?</h4>
+                <p>No. This tool is for planning and estimation only. Actual loan approval requires underwriting by a licensed mortgage provider.</p>
+            </div>
+            <div>
+                <h4>18. Does this calculator store my personal financial data?</h4>
+                <p>No. All calculations take place entirely inside your web browser. No personal or financial values are transmitted or stored on any server.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVACY & DISCLAIMER -->
+    <footer class="mc-card" style="margin: 1.5rem 1rem; font-size: 0.8rem; color: #64748b; line-height: 1.6;">
+        <h4 style="font-size: 0.95rem; color: #0f172a; margin-bottom: 0.35rem;">Privacy & Local Calculations</h4>
+        <p style="font-size: 0.8rem;">
+            All mortgage estimates and financial computations are performed locally in your web browser. No financial data, purchase values, or loan numbers are sent to external databases or APIs.
+        </p>
+
+        <h4 style="font-size: 0.95rem; color: #0f172a; margin-top: 1rem; margin-bottom: 0.35rem;">Financial Disclaimer</h4>
+        <p style="font-size: 0.8rem; margin-bottom: 0;">
+            This mortgage calculator is provided for general educational and planning purposes only. Results are estimates based on the information entered and may not reflect your actual mortgage payment, interest rate, property taxes, homeowners insurance, PMI, HOA fees, escrow requirements, closing costs or other expenses. This tool does not provide financial, legal, tax, lending or investment advice and does not determine mortgage eligibility or approval. Actual mortgage terms and costs vary by lender, loan program, property and borrower. Verify actual terms and costs with qualified professionals and your mortgage provider before making financial decisions. This tool is not affiliated with or endorsed by the U.S. government.
+        </p>
+    </footer>
+
+    <!-- SOCIAL BAR ADVERTISEMENT (EXACT SCRIPT PLACED SAFELY) -->
+    <div class="mc-no-print">
+        <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+    </div>
+
+</div> <!-- END #usaMortgageCalculatorApp -->
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Mortgage Calculator with Taxes, PMI & Insurance",
+  "description": "Free U.S. mortgage calculator estimating monthly housing payments including principal, interest, property taxes, homeowners insurance, PMI, and HOA fees.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- ==========================================================================
+     COMPLETE FUNCTIONAL JAVASCRIPT
+     ========================================================================== -->
+<script>
+(function() {
+    // Unique namespace for safe Blogger execution
+    var mcApp = {
+        taxMode: 'pct', // 'pct' or 'amt'
+        pmiMode: 'pct',
+        scheduleView: 'monthly',
+        showFullSchedule: false,
+        pvView: 'full',
+        scheduleData: [],
+        yearlyData: []
+    };
+
+    // Currency Formatter
+    function formatUSD(val) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0
+        }).format(val || 0);
+    }
+
+    // Safe Float Parser
+    function parseNum(id, defaultVal) {
+        var el = document.getElementById(id);
+        if (!el) return defaultVal || 0;
+        var v = parseFloat(el.value);
+        return isNaN(v) ? (defaultVal || 0) : v;
+    }
+
+    // Set Today's Date as Default Start Date
+    var startInput = document.getElementById('mcStartDate');
+    if (startInput && !startInput.value) {
+        var now = new Date();
+        var y = now.getFullYear();
+        var m = String(now.getMonth() + 1).padStart(2, '0');
+        var d = String(now.getDate()).padStart(2, '0');
+        startInput.value = y + '-' + m + '-' + d;
+    }
+
+    // Core Calculation Logic
+    function recalculate() {
+        var homePrice = parseNum('mcHomePrice', 400000);
+        var downPayment = parseNum('mcDownPaymentAmount', 80000);
+        var downPaymentPct = parseNum('mcDownPaymentPct', 20);
+        var interestRate = parseNum('mcInterestRate', 6.5);
+        var termYears = parseNum('mcLoanTerm', 30);
+        var taxValue = parseNum('mcTaxValue', 1.2);
+        var insAnnual = parseNum('mcInsuranceAnnual', 1800);
+        var includePmi = document.getElementById('mcIncludePmi') ? document.getElementById('mcIncludePmi').checked : false;
+        var pmiRate = parseNum('mcPmiRate', 0.5);
+        var hoaMonthly = parseNum('mcHoaMonthly', 0);
+        var extraMonthly = parseNum('mcExtraMonthly', 0);
+        var oneTimeExtra = parseNum('mcOneTimeExtra', 0);
+        var annualExtra = parseNum('mcAnnualExtra', 0);
+        var includeClosing = document.getElementById('mcIncludeClosingInLoan') ? document.getElementById('mcIncludeClosingInLoan').checked : false;
+        var closingCostPct = parseNum('mcClosingCostPct', 2.5);
+
+        // Update Slider and Labels
+        var slider = document.getElementById('mcHomePriceSlider');
+        if (slider && document.activeElement !== slider) {
+            slider.value = Math.min(1500000, homePrice);
+        }
+        var priceDisp = document.getElementById('mcHomePriceDisp');
+        if (priceDisp) priceDisp.textContent = formatUSD(homePrice);
+
+        // Closing Cost Calculation
+        var closingCostAmt = (homePrice * closingCostPct) / 100;
+        var closingDisp = document.getElementById('mcClosingCostTotalDisp');
+        if (closingDisp) closingDisp.textContent = formatUSD(closingCostAmt);
+
+        // Loan Principal
+        var baseLoan = Math.max(0, homePrice - downPayment);
+        var loanPrincipal = includeClosing ? (baseLoan + closingCostAmt) : baseLoan;
+
+        var loanAmtDisp = document.getElementById('mcLoanAmountDisp');
+        if (loanAmtDisp) loanAmtDisp.textContent = formatUSD(loanPrincipal);
+
+        // LTV Calculation
+        var ltv = homePrice > 0 ? (baseLoan / homePrice) * 100 : 0;
+        var ltvBadge = document.getElementById('mcLtvBadge');
+        if (ltvBadge) ltvBadge.textContent = 'LTV: ' + ltv.toFixed(1) + '%';
+
+        // PMI Alert for < 20% down
+        var pmiNote = document.getElementById('mcPmiAlertNote');
+        if (pmiNote) {
+            pmiNote.style.display = (downPaymentPct < 20) ? 'block' : 'none';
+        }
+
+        // Standard Amortization Formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
+        var n = termYears * 12;
+        var r = (interestRate / 100) / 12;
+        var monthlyPI = 0;
+
+        if (n > 0) {
+            if (r === 0) {
+                monthlyPI = loanPrincipal / n;
+            } else {
+                monthlyPI = (loanPrincipal * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1);
+            }
+        }
+        if (isNaN(monthlyPI) || monthlyPI < 0) monthlyPI = 0;
+
+        // Taxes
+        var annualTax = (mcApp.taxMode === 'pct') ? ((homePrice * taxValue) / 100) : taxValue;
+        var monthlyTax = annualTax / 12;
+        var monthlyTaxDisp = document.getElementById('mcMonthlyTaxCalc');
+        if (monthlyTaxDisp) monthlyTaxDisp.textContent = 'Estimated monthly tax: ' + formatUSD(monthlyTax) + '/mo';
+
+        // Insurance
+        var monthlyIns = insAnnual / 12;
+        var monthlyInsDisp = document.getElementById('mcMonthlyInsCalc');
+        if (monthlyInsDisp) monthlyInsDisp.textContent = formatUSD(monthlyIns) + '/mo';
+
+        // PMI
+        var monthlyPmi = 0;
+        if (includePmi && downPaymentPct < 20) {
+            var annualPmi = (loanPrincipal * pmiRate) / 100;
+            monthlyPmi = annualPmi / 12;
+        }
+        var monthlyPmiDisp = document.getElementById('mcMonthlyPmiDisp');
+        if (monthlyPmiDisp) monthlyPmiDisp.textContent = formatUSD(monthlyPmi) + '/mo';
+
+        // Total Monthly Payment & Escrow
+        var escrow = monthlyTax + monthlyIns;
+        var totalMonthly = monthlyPI + monthlyTax + monthlyIns + monthlyPmi + hoaMonthly;
+
+        // DOM Updates for Main Results
+        var totalDisp = document.getElementById('mcTotalMonthlyPayment');
+        if (totalDisp) totalDisp.innerHTML = formatUSD(totalMonthly) + '<span>/mo</span>';
+
+        var piDisp = document.getElementById('mcBreakdownPI');
+        if (piDisp) piDisp.textContent = formatUSD(monthlyPI);
+
+        var taxDisp = document.getElementById('mcBreakdownTax');
+        if (taxDisp) taxDisp.textContent = formatUSD(monthlyTax);
+
+        var insDisp = document.getElementById('mcBreakdownIns');
+        if (insDisp) insDisp.textContent = formatUSD(monthlyIns);
+
+        var pmiRow = document.getElementById('mcBreakdownPmiRow');
+        var pmiBreakDisp = document.getElementById('mcBreakdownPmi');
+        if (pmiRow && pmiBreakDisp) {
+            pmiRow.style.display = monthlyPmi > 0 ? 'flex' : 'none';
+            pmiBreakDisp.textContent = formatUSD(monthlyPmi);
+        }
+
+        var hoaRow = document.getElementById('mcBreakdownHoaRow');
+        var hoaBreakDisp = document.getElementById('mcBreakdownHoa');
+        if (hoaRow && hoaBreakDisp) {
+            hoaRow.style.display = hoaMonthly > 0 ? 'flex' : 'none';
+            hoaBreakDisp.textContent = formatUSD(hoaMonthly);
+        }
+
+        var extraRow = document.getElementById('mcBreakdownExtraRow');
+        var extraBreakDisp = document.getElementById('mcBreakdownExtra');
+        if (extraRow && extraBreakDisp) {
+            extraRow.style.display = extraMonthly > 0 ? 'flex' : 'none';
+            extraBreakDisp.textContent = formatUSD(extraMonthly);
+        }
+
+        var escrowDisp = document.getElementById('mcEscrowDisp');
+        if (escrowDisp) escrowDisp.textContent = formatUSD(escrow) + '/mo';
+
+        // Proportional Bar Chart
+        if (totalMonthly > 0) {
+            var barPI = document.getElementById('mcBarPI');
+            var barTax = document.getElementById('mcBarTax');
+            var barIns = document.getElementById('mcBarIns');
+            var barPmi = document.getElementById('mcBarPmi');
+            var barHoa = document.getElementById('mcBarHoa');
+
+            if (barPI) barPI.style.width = ((monthlyPI / totalMonthly) * 100) + '%';
+            if (barTax) barTax.style.width = ((monthlyTax / totalMonthly) * 100) + '%';
+            if (barIns) barIns.style.width = ((monthlyIns / totalMonthly) * 100) + '%';
+            if (barPmi) barPmi.style.width = ((monthlyPmi / totalMonthly) * 100) + '%';
+            if (barHoa) barHoa.style.width = ((hoaMonthly / totalMonthly) * 100) + '%';
+        }
+
+        // Generate Amortization Schedule
+        generateAmortization(loanPrincipal, monthlyPI, r, n, homePrice, extraMonthly, oneTimeExtra, annualExtra);
+
+        // Update 15 vs 30 Comparison
+        updateTermComparison(loanPrincipal, interestRate, monthlyTax, monthlyIns, monthlyPmi, hoaMonthly);
+    }
+
+    // Amortization Generator
+    function generateAmortization(P, monthlyPI, r, maxMonths, homePrice, extraMonthly, oneTimeExtra, annualExtra) {
+        var schedule = [];
+        var yearly = [];
+        var balance = P;
+        var totalInterest = 0;
+        var totalExtra = 0;
+        var pmiThresholdMonth = null;
+        var pmiThresholdDate = null;
+        var threshold80 = homePrice * 0.8;
+
+        var startDateEl = document.getElementById('mcStartDate');
+        var baseDate = startDateEl && startDateEl.value ? new Date(startDateEl.value) : new Date();
+
+        var yrPrincipal = 0;
+        var yrInterest = 0;
+        var yrExtra = 0;
+        var yrStartBal = balance;
+        var yrCounter = 1;
+
+        for (var m = 1; m <= maxMonths; m++) {
+            if (balance <= 0.01) break;
+
+            var payDate = new Date(baseDate.getFullYear(), baseDate.getMonth() + m - 1, 1);
+            var dateStr = payDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+            var interestM = (r === 0) ? 0 : balance * r;
+            var regularPrincipal = Math.min(balance, monthlyPI - interestM);
+            if (regularPrincipal < 0) regularPrincipal = 0;
+
+            var extraM = extraMonthly || 0;
+            if (m === 12 && oneTimeExtra > 0) extraM += oneTimeExtra;
+            if (annualExtra > 0 && m % 12 === 0) extraM += annualExtra;
+
+            if (regularPrincipal + extraM > balance) {
+                extraM = Math.max(0, balance - regularPrincipal);
+            }
+
+            var actualPrincipal = regularPrincipal + extraM;
+            var endBalance = Math.max(0, balance - actualPrincipal);
+
+            if (balance >= threshold80 && endBalance < threshold80 && !pmiThresholdMonth) {
+                pmiThresholdMonth = m;
+                pmiThresholdDate = dateStr;
+            }
+
+            schedule.push({
+                num: m,
+                date: dateStr,
+                startBal: balance,
+                payment: regularPrincipal + interestM,
+                principal: regularPrincipal,
+                interest: interestM,
+                extra: extraM,
+                endBal: endBalance
+            });
+
+            yrPrincipal += regularPrincipal;
+            yrInterest += interestM;
+            yrExtra += extraM;
+            totalInterest += interestM;
+            totalExtra += extraM;
+
+            balance = endBalance;
+
+            if (m % 12 === 0 || balance <= 0.01 || m === maxMonths) {
+                yearly.push({
+                    year: yrCounter,
+                    startBal: yrStartBal,
+                    principal: yrPrincipal,
+                    interest: yrInterest,
+                    extra: yrExtra,
+                    endBal: balance
+                });
+                yrCounter++;
+                yrPrincipal = 0;
+                yrInterest = 0;
+                yrExtra = 0;
+                yrStartBal = balance;
+            }
+        }
+
+        mcApp.scheduleData = schedule;
+        mcApp.yearlyData = yearly;
+
+        // Baseline Interest without extra
+        var baseInt = 0;
+        var bBal = P;
+        for (var bm = 1; bm <= maxMonths; bm++) {
+            if (bBal <= 0.01) break;
+            var bIntM = (r === 0) ? 0 : bBal * r;
+            var bPrinM = Math.min(bBal, monthlyPI - bIntM);
+            baseInt += bIntM;
+            bBal -= bPrinM;
+        }
+
+        var intSaved = Math.max(0, baseInt - totalInterest);
+        var monthsSaved = Math.max(0, maxMonths - schedule.length);
+
+        // Update Extra Payments Highlight Card
+        var extraCard = document.getElementById('mcExtraSavingsCard');
+        if (extraCard) {
+            if (extraMonthly > 0 || oneTimeExtra > 0 || annualExtra > 0) {
+                extraCard.style.display = 'block';
+                var intSavedEl = document.getElementById('mcInterestSavedVal');
+                var timeSavedEl = document.getElementById('mcTimeSavedVal');
+                if (intSavedEl) intSavedEl.textContent = formatUSD(intSaved);
+                if (timeSavedEl) {
+                    var ySaved = Math.floor(monthsSaved / 12);
+                    var mSaved = monthsSaved % 12;
+                    timeSavedEl.textContent = ySaved + 'y ' + mSaved + 'm';
+                }
+            } else {
+                extraCard.style.display = 'none';
+            }
+        }
+
+        // PMI Threshold Note
+        var pmiThreshBox = document.getElementById('mcPmiThresholdNote');
+        if (pmiThreshBox) {
+            if (pmiThresholdDate) {
+                pmiThreshBox.style.display = 'block';
+                var mSpan = document.getElementById('mcPmiThreshMonth');
+                var dSpan = document.getElementById('mcPmiThreshDate');
+                if (mSpan) mSpan.textContent = pmiThresholdMonth;
+                if (dSpan) dSpan.textContent = pmiThresholdDate;
+            } else {
+                pmiThreshBox.style.display = 'none';
+            }
+        }
+
+        // Metrics Dashboard
+        var metricLoan = document.getElementById('mcMetricLoanAmt');
+        if (metricLoan) metricLoan.textContent = formatUSD(P);
+
+        var downAmt = parseNum('mcDownPaymentAmount', 80000);
+        var downPct = parseNum('mcDownPaymentPct', 20);
+        var metricDown = document.getElementById('mcMetricDownPayment');
+        if (metricDown) metricDown.textContent = formatUSD(downAmt) + ' (' + downPct + '%)';
+
+        var metricInt = document.getElementById('mcMetricTotalInterest');
+        if (metricInt) metricInt.textContent = formatUSD(totalInterest);
+
+        var finalDate = schedule.length > 0 ? schedule[schedule.length - 1].date : '--';
+        var metricPayoff = document.getElementById('mcMetricPayoffDate');
+        if (metricPayoff) metricPayoff.textContent = finalDate;
+
+        // Render Principal vs Interest Section
+        renderPVI(P, totalInterest, schedule);
+
+        // Render Table
+        renderTable();
+    }
+
+    // Render Principal vs Interest & Milestones
+    function renderPVI(P, totalInterest, schedule) {
+        var targetMonths = schedule.length;
+        if (mcApp.pvView === '1') targetMonths = Math.min(12, schedule.length);
+        if (mcApp.pvView === '5') targetMonths = Math.min(60, schedule.length);
+        if (mcApp.pvView === '10') targetMonths = Math.min(120, schedule.length);
+
+        var pPaid = 0;
+        var iPaid = 0;
+        for (var i = 0; i < targetMonths; i++) {
+            if (schedule[i]) {
+                pPaid += schedule[i].principal + schedule[i].extra;
+                iPaid += schedule[i].interest;
+            }
+        }
+
+        var total = pPaid + iPaid;
+        var pctP = total > 0 ? Math.round((pPaid / total) * 100) : 50;
+        var pctI = total > 0 ? Math.round((iPaid / total) * 100) : 50;
+
+        var pValEl = document.getElementById('mcPviPrincipalVal');
+        var iValEl = document.getElementById('mcPviInterestVal');
+        var pPctEl = document.getElementById('mcPviPrincipalPct');
+        var iPctEl = document.getElementById('mcPviInterestPct');
+        var pBarEl = document.getElementById('mcPviBarPrincipal');
+        var iBarEl = document.getElementById('mcPviBarInterest');
+
+        if (pValEl) pValEl.textContent = formatUSD(pPaid);
+        if (iValEl) iValEl.textContent = formatUSD(iPaid);
+        if (pPctEl) pPctEl.textContent = pctP + '% of payments';
+        if (iPctEl) iPctEl.textContent = pctI + '% of payments';
+
+        if (pBarEl) {
+            pBarEl.style.width = pctP + '%';
+            pBarEl.textContent = pctP > 10 ? pctP + '% Equity' : '';
+        }
+        if (iBarEl) {
+            iBarEl.style.width = pctI + '%';
+            iBarEl.textContent = pctI > 10 ? pctI + '% Interest' : '';
+        }
+
+        // Timeline Milestones
+        var mWrap = document.getElementById('mcTimelineMilestones');
+        if (mWrap) {
+            var html = '';
+            var milestones = [1, 5, 10, 15, 20, 25, 30];
+            var termYears = parseNum('mcLoanTerm', 30);
+            for (var m = 0; m < milestones.length; m++) {
+                var yr = milestones[m];
+                if (yr <= termYears) {
+                    var tMonth = Math.min(yr * 12, schedule.length);
+                    var row = schedule[tMonth - 1];
+                    var bal = row ? row.endBal : 0;
+                    html += '<div style="background:#f8fafc; padding:0.4rem; border:1px solid #e2e8f0; border-radius:0.4rem;">' +
+                            '<span style="font-size:0.65rem; color:#64748b; display:block;">Year ' + yr + '</span>' +
+                            '<strong style="font-size:0.75rem; color:#0f172a;">' + formatUSD(bal) + '</strong>' +
+                            '</div>';
+                }
+            }
+            mWrap.innerHTML = html;
+        }
+    }
+
+    // Render Amortization Table
+    function renderTable() {
+        var tbody = document.getElementById('mcAmortizationBody');
+        var theadRow = document.getElementById('mcTableHeadRow');
+        if (!tbody || !theadRow) return;
+
+        if (mcApp.scheduleView === 'monthly') {
+            theadRow.innerHTML = '<th>#</th><th>Date</th><th>Beginning Balance</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Extra Principal</th><th>Ending Balance</th>';
+            var rows = mcApp.showFullSchedule ? mcApp.scheduleData : mcApp.scheduleData.slice(0, 12);
+            var html = '';
+            for (var i = 0; i < rows.length; i++) {
+                var r = rows[i];
+                html += '<tr>' +
+                        '<td style="font-weight:700;">' + r.num + '</td>' +
+                        '<td>' + r.date + '</td>' +
+                        '<td>' + formatUSD(r.startBal) + '</td>' +
+                        '<td style="font-weight:600;">' + formatUSD(r.payment) + '</td>' +
+                        '<td style="color:#2563eb;">' + formatUSD(r.principal) + '</td>' +
+                        '<td style="color:#e11d48;">' + formatUSD(r.interest) + '</td>' +
+                        '<td style="color:#7c3aed;">' + formatUSD(r.extra) + '</td>' +
+                        '<td style="font-weight:700;">' + formatUSD(r.endBal) + '</td>' +
+                        '</tr>';
+            }
+            tbody.innerHTML = html;
+
+            var toggleBtn = document.getElementById('mcToggleFullScheduleBtn');
+            if (toggleBtn) {
+                toggleBtn.style.display = 'inline-block';
+                toggleBtn.textContent = mcApp.showFullSchedule ? 'Show First 12 Payments Only' : 'Show Full Schedule (' + mcApp.scheduleData.length + ' Payments)';
+            }
+        } else {
+            theadRow.innerHTML = '<th>Year</th><th>Starting Balance</th><th>Principal Paid</th><th>Interest Paid</th><th>Extra Principal</th><th>Ending Balance</th>';
+            var yHtml = '';
+            for (var j = 0; j < mcApp.yearlyData.length; j++) {
+                var y = mcApp.yearlyData[j];
+                yHtml += '<tr>' +
+                         '<td style="font-weight:700;">Year ' + y.year + '</td>' +
+                         '<td>' + formatUSD(y.startBal) + '</td>' +
+                         '<td style="color:#2563eb;">' + formatUSD(y.principal) + '</td>' +
+                         '<td style="color:#e11d48;">' + formatUSD(y.interest) + '</td>' +
+                         '<td style="color:#7c3aed;">' + formatUSD(y.extra) + '</td>' +
+                         '<td style="font-weight:700;">' + formatUSD(y.endBal) + '</td>' +
+                         '</tr>';
+            }
+            tbody.innerHTML = yHtml;
+
+            var toggleBtn2 = document.getElementById('mcToggleFullScheduleBtn');
+            if (toggleBtn2) toggleBtn2.style.display = 'none';
+        }
+    }
+
+    // 15 vs 30 Year Comparison Calculation
+    function updateTermComparison(P, rate, monthlyTax, monthlyIns, monthlyPmi, hoaMonthly) {
+        var compLoanDisp = document.getElementById('mcCompLoanAmt');
+        if (compLoanDisp) compLoanDisp.textContent = formatUSD(P);
+
+        function calc(years, rRate) {
+            var n = years * 12;
+            var r = (rRate / 100) / 12;
+            var pi = (r === 0) ? (P / n) : (P * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1);
+            var totInt = (pi * n) - P;
+            return {
+                pi: pi,
+                total: pi + monthlyTax + monthlyIns + monthlyPmi + hoaMonthly,
+                interest: Math.max(0, totInt)
+            };
+        }
+
+        var res30 = calc(30, rate);
+        var res15 = calc(15, Math.max(0.5, rate - 0.65)); // 15yr loans typically have lower rates
+
+        var c30PI = document.getElementById('mcComp30PI');
+        var c30Tot = document.getElementById('mcComp30Total');
+        var c30Int = document.getElementById('mcComp30Interest');
+        if (c30PI) c30PI.textContent = formatUSD(res30.pi);
+        if (c30Tot) c30Tot.textContent = formatUSD(res30.total);
+        if (c30Int) c30Int.textContent = formatUSD(res30.interest);
+
+        var c15PI = document.getElementById('mcComp15PI');
+        var c15Tot = document.getElementById('mcComp15Total');
+        var c15Int = document.getElementById('mcComp15Interest');
+        if (c15PI) c15PI.textContent = formatUSD(res15.pi);
+        if (c15Tot) c15Tot.textContent = formatUSD(res15.total);
+        if (c15Int) c15Int.textContent = formatUSD(res15.interest);
+    }
+
+    // EVENT LISTENERS & WIRING
+
+    // Home Price input & slider sync
+    var priceInput = document.getElementById('mcHomePrice');
+    var priceSlider = document.getElementById('mcHomePriceSlider');
+    if (priceInput && priceSlider) {
+        priceInput.addEventListener('input', function() {
+            var hp = parseNum('mcHomePrice', 400000);
+            var dpPct = parseNum('mcDownPaymentPct', 20);
+            var dpEl = document.getElementById('mcDownPaymentAmount');
+            if (dpEl) dpEl.value = Math.round((hp * dpPct) / 100);
+            recalculate();
+        });
+        priceSlider.addEventListener('input', function() {
+            priceInput.value = priceSlider.value;
+            var hp = parseFloat(priceSlider.value);
+            var dpPct = parseNum('mcDownPaymentPct', 20);
+            var dpEl = document.getElementById('mcDownPaymentAmount');
+            if (dpEl) dpEl.value = Math.round((hp * dpPct) / 100);
+            recalculate();
+        });
+    }
+
+    // Down payment amount & percentage sync
+    var dpAmtInput = document.getElementById('mcDownPaymentAmount');
+    var dpPctInput = document.getElementById('mcDownPaymentPct');
+    if (dpAmtInput && dpPctInput) {
+        dpAmtInput.addEventListener('input', function() {
+            var hp = parseNum('mcHomePrice', 400000);
+            var dp = parseNum('mcDownPaymentAmount', 80000);
+            if (hp > 0) {
+                dpPctInput.value = ((dp / hp) * 100).toFixed(1);
+            }
+            recalculate();
+        });
+        dpPctInput.addEventListener('input', function() {
+            var hp = parseNum('mcHomePrice', 400000);
+            var pct = parseNum('mcDownPaymentPct', 20);
+            dpAmtInput.value = Math.round((hp * pct) / 100);
+            recalculate();
+        });
+    }
+
+    // Quick preset buttons
+    var presetBtns = document.querySelectorAll('#usaMortgageCalculatorApp .mc-btn-preset[data-pct]');
+    presetBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            presetBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var pct = parseFloat(btn.getAttribute('data-pct'));
+            if (dpPctInput) dpPctInput.value = pct;
+            var hp = parseNum('mcHomePrice', 400000);
+            if (dpAmtInput) dpAmtInput.value = Math.round((hp * pct) / 100);
+            recalculate();
+        });
+    });
+
+    // Loan term buttons
+    var termBtns = document.querySelectorAll('#usaMortgageCalculatorApp .mc-term-btn');
+    termBtns.forEach(function(tBtn) {
+        tBtn.addEventListener('click', function() {
+            termBtns.forEach(function(b) { b.classList.remove('active'); });
+            tBtn.classList.add('active');
+            var term = tBtn.getAttribute('data-term');
+            var hiddenTerm = document.getElementById('mcLoanTerm');
+            if (hiddenTerm) hiddenTerm.value = term;
+            var termTxt = document.getElementById('mcTermText');
+            if (termTxt) termTxt.textContent = 'Selected: ' + term + ' Years (' + (parseInt(term, 10) * 12) + ' mos)';
+            recalculate();
+        });
+    });
+
+    // PMI toggle
+    var pmiToggle = document.getElementById('mcIncludePmi');
+    var pmiBox = document.getElementById('mcPmiDetailsBox');
+    if (pmiToggle && pmiBox) {
+        pmiToggle.addEventListener('change', function() {
+            pmiBox.style.display = pmiToggle.checked ? 'block' : 'none';
+            recalculate();
+        });
+    }
+
+    // Property Tax modes
+    var taxPctBtn = document.getElementById('mcTaxModePct');
+    var taxAmtBtn = document.getElementById('mcTaxModeAmt');
+    var taxPrefix = document.getElementById('mcTaxPrefix');
+    var taxSuffix = document.getElementById('mcTaxSuffix');
+    var taxValInput = document.getElementById('mcTaxValue');
+
+    if (taxPctBtn && taxAmtBtn && taxValInput) {
+        taxPctBtn.addEventListener('click', function() {
+            mcApp.taxMode = 'pct';
+            taxPctBtn.classList.add('active');
+            taxAmtBtn.classList.remove('active');
+            taxPrefix.style.display = 'none';
+            taxSuffix.style.display = 'block';
+            taxValInput.value = '1.20';
+            recalculate();
+        });
+        taxAmtBtn.addEventListener('click', function() {
+            mcApp.taxMode = 'amt';
+            taxAmtBtn.classList.add('active');
+            taxPctBtn.classList.remove('active');
+            taxPrefix.style.display = 'block';
+            taxSuffix.style.display = 'none';
+            var hp = parseNum('mcHomePrice', 400000);
+            taxValInput.value = Math.round((hp * 0.012));
+            recalculate();
+        });
+    }
+
+    // Closing costs accordion
+    var closingToggle = document.getElementById('mcClosingCostsToggle');
+    var closingBody = document.getElementById('mcClosingCostsBody');
+    if (closingToggle && closingBody) {
+        closingToggle.addEventListener('click', function() {
+            closingBody.style.display = closingBody.style.display === 'none' ? 'block' : 'none';
+        });
+    }
+
+    // Generic recalculate triggers on other inputs
+    var autoInputs = [
+        'mcInterestRate', 'mcStartDate', 'mcTaxValue', 'mcInsuranceAnnual',
+        'mcPmiRate', 'mcHoaMonthly', 'mcExtraMonthly', 'mcOneTimeExtra',
+        'mcAnnualExtra', 'mcClosingCostPct', 'mcIncludeClosingInLoan'
+    ];
+    autoInputs.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', recalculate);
+            el.addEventListener('change', recalculate);
+        }
+    });
+
+    // Big Calculate button smooth scroll to results
+    var calcBtn = document.getElementById('mcBtnCalculate');
+    if (calcBtn) {
+        calcBtn.addEventListener('click', function() {
+            recalculate();
+            var res = document.getElementById('mcResultsCard');
+            if (res) res.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Principal vs Interest tab buttons
+    var pviButtons = document.querySelectorAll('#usaMortgageCalculatorApp button[data-pv-view]');
+    pviButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            pviButtons.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            mcApp.pvView = btn.getAttribute('data-pv-view');
+            recalculate();
+        });
+    });
+
+    // Amortization Schedule view switchers
+    var mSchedBtn = document.getElementById('mcViewMonthlySched');
+    var ySchedBtn = document.getElementById('mcViewYearlySched');
+    if (mSchedBtn && ySchedBtn) {
+        mSchedBtn.addEventListener('click', function() {
+            mcApp.scheduleView = 'monthly';
+            mSchedBtn.classList.add('active');
+            ySchedBtn.classList.remove('active');
+            renderTable();
+        });
+        ySchedBtn.addEventListener('click', function() {
+            mcApp.scheduleView = 'yearly';
+            ySchedBtn.classList.add('active');
+            mSchedBtn.classList.remove('active');
+            renderTable();
+        });
+    }
+
+    // Toggle full schedule button
+    var toggleSchedBtn = document.getElementById('mcToggleFullScheduleBtn');
+    if (toggleSchedBtn) {
+        toggleSchedBtn.addEventListener('click', function() {
+            mcApp.showFullSchedule = !mcApp.showFullSchedule;
+            renderTable();
+        });
+    }
+
+    // Load Example button
+    var exBtn = document.getElementById('mcBtnLoadExample');
+    if (exBtn) {
+        exBtn.addEventListener('click', function() {
+            document.getElementById('mcHomePrice').value = '400000';
+            document.getElementById('mcDownPaymentAmount').value = '80000';
+            document.getElementById('mcDownPaymentPct').value = '20';
+            document.getElementById('mcInterestRate').value = '6.50';
+            document.getElementById('mcLoanTerm').value = '30';
+            document.getElementById('mcInsuranceAnnual').value = '1800';
+            document.getElementById('mcTaxValue').value = '1.20';
+            document.getElementById('mcIncludePmi').checked = false;
+            document.getElementById('mcPmiDetailsBox').style.display = 'none';
+            document.getElementById('mcHoaMonthly').value = '0';
+            document.getElementById('mcExtraMonthly').value = '0';
+            document.getElementById('mcOneTimeExtra').value = '0';
+            document.getElementById('mcAnnualExtra').value = '0';
+            recalculate();
+        });
+    }
+
+    // Reset button
+    var resetBtn = document.getElementById('mcBtnReset');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            if (exBtn) exBtn.click();
+        });
+    }
+
+    // Clear All button
+    var clearBtn = document.getElementById('mcBtnClearAll');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            document.getElementById('mcHomePrice').value = '0';
+            document.getElementById('mcDownPaymentAmount').value = '0';
+            document.getElementById('mcDownPaymentPct').value = '0';
+            document.getElementById('mcInterestRate').value = '0';
+            document.getElementById('mcTaxValue').value = '0';
+            document.getElementById('mcInsuranceAnnual').value = '0';
+            document.getElementById('mcHoaMonthly').value = '0';
+            document.getElementById('mcExtraMonthly').value = '0';
+            document.getElementById('mcOneTimeExtra').value = '0';
+            document.getElementById('mcAnnualExtra').value = '0';
+            recalculate();
+        });
+    }
+
+    // Copy Summary button
+    var copyBtn = document.getElementById('mcBtnCopySummary');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+            var text = '--- U.S. Mortgage Payment Summary ---\n' +
+                'Home Price: ' + (document.getElementById('mcHomePriceDisp') ? document.getElementById('mcHomePriceDisp').textContent : '') + '\n' +
+                'Down Payment: ' + (document.getElementById('mcMetricDownPayment') ? document.getElementById('mcMetricDownPayment').textContent : '') + '\n' +
+                'Loan Amount: ' + (document.getElementById('mcMetricLoanAmt') ? document.getElementById('mcMetricLoanAmt').textContent : '') + '\n' +
+                'Estimated Monthly Payment: ' + (document.getElementById('mcTotalMonthlyPayment') ? document.getElementById('mcTotalMonthlyPayment').textContent.replace('/mo', '') : '') + '\n' +
+                'Principal & Interest: ' + (document.getElementById('mcBreakdownPI') ? document.getElementById('mcBreakdownPI').textContent : '') + '\n' +
+                'Property Taxes: ' + (document.getElementById('mcBreakdownTax') ? document.getElementById('mcBreakdownTax').textContent : '') + '\n' +
+                'Homeowners Insurance: ' + (document.getElementById('mcBreakdownIns') ? document.getElementById('mcBreakdownIns').textContent : '') + '\n' +
+                'Estimated Total Interest: ' + (document.getElementById('mcMetricTotalInterest') ? document.getElementById('mcMetricTotalInterest').textContent : '') + '\n' +
+                'Estimated Payoff: ' + (document.getElementById('mcMetricPayoffDate') ? document.getElementById('mcMetricPayoffDate').textContent : '') + '\n' +
+                '------------------------------------\n' +
+                'Calculated via Free U.S. Mortgage Planning Tool';
+
+            navigator.clipboard.writeText(text).then(function() {
+                var prev = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✅ Copied to Clipboard!';
+                setTimeout(function() { copyBtn.innerHTML = prev; }, 2500);
+            }).catch(function() {
+                alert('Mortgage summary copied!');
+            });
+        });
+    }
+
+    // Print button
+    var printBtn = document.getElementById('mcBtnPrintSummary');
+    if (printBtn) {
+        printBtn.addEventListener('click', function() {
+            window.print();
+        });
+    }
+
+    // Dynamic Social Share Links
+    var pageUrl = encodeURIComponent(window.location.href);
+    var pageTitle = encodeURIComponent('Free U.S. Mortgage Calculator with Taxes, PMI & Insurance');
+
+    var fb = document.getElementById('mcShareFb');
+    if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+
+    var tw = document.getElementById('mcShareTw');
+    if (tw) tw.href = 'https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle;
+
+    var wa = document.getElementById('mcShareWa');
+    if (wa) wa.href = 'https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl;
+
+    var li = document.getElementById('mcShareLi');
+    if (li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+
+    var rd = document.getElementById('mcShareRd');
+    if (rd) rd.href = 'https://reddit.com/submit?url=' + pageUrl + '&title=' + pageTitle;
+
+    var natShare = document.getElementById('mcShareNative');
+    if (natShare) {
+        natShare.addEventListener('click', function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Free U.S. Mortgage Calculator with Taxes, PMI & Insurance',
+                    url: window.location.href
+                }).catch(function() {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(function() {
+                    alert('Page URL copied to clipboard!');
+                });
+            }
+        });
+    }
+
+    // Initial Execution
+    recalculate();
+})();
+</script>
