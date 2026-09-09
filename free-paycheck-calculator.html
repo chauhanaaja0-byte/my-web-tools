@@ -1,0 +1,1681 @@
+<!-- BLOGGER TITLE: Free Paycheck Calculator – Estimate Take-Home Pay After Taxes -->
+<!-- BLOGGER SEARCH DESCRIPTION: Estimate your take-home pay after federal taxes, Social Security, Medicare and deductions with this free U.S. salary and hourly paycheck calculator. -->
+<!-- BLOGGER LABELS: Paycheck Calculator, Take Home Pay Calculator, Salary Calculator, Hourly Paycheck Calculator, Payroll Calculator, Federal Tax Calculator, Finance Tools, Salary Tools, Free Online Tools, Web Tools -->
+
+<style>
+/* ==========================================================================
+   BLOGGER CSS SCOPE: #usaPaycheckCalculator
+   Pure White Background, FinTech Color Accents, Mobile-First
+   ========================================================================== */
+#usaPaycheckCalculator {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 12px;
+}
+#usaPaycheckCalculator *,
+#usaPaycheckCalculator *::before,
+#usaPaycheckCalculator *::after {
+  box-sizing: border-box;
+}
+
+/* Layout */
+#usaPaycheckCalculator .uspay-shell {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+#usaPaycheckCalculator .uspay-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 900px) {
+  #usaPaycheckCalculator .uspay-main-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
+  }
+  #usaPaycheckCalculator .uspay-sticky-dashboard {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+/* Cards & Shells */
+#usaPaycheckCalculator .uspay-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+#usaPaycheckCalculator .uspay-result-card {
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+/* Typography */
+#usaPaycheckCalculator h1,
+#usaPaycheckCalculator h2,
+#usaPaycheckCalculator h3,
+#usaPaycheckCalculator h4 {
+  color: #0f172a;
+  margin-top: 0;
+}
+#usaPaycheckCalculator .uspay-hero-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+#usaPaycheckCalculator .uspay-hero-sub {
+  font-size: 1.15rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+#usaPaycheckCalculator .uspay-hero-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  max-width: 720px;
+  margin: 0 auto 16px;
+  line-height: 1.6;
+}
+
+/* Badges */
+#usaPaycheckCalculator .uspay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+#usaPaycheckCalculator .uspay-badge-green {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* Inputs & Form Controls */
+#usaPaycheckCalculator label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+#usaPaycheckCalculator input[type="text"],
+#usaPaycheckCalculator input[type="number"],
+#usaPaycheckCalculator select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+#usaPaycheckCalculator input:focus,
+#usaPaycheckCalculator select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+#usaPaycheckCalculator .uspay-input-prefix-wrap {
+  position: relative;
+}
+#usaPaycheckCalculator .uspay-input-prefix {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+#usaPaycheckCalculator .uspay-input-prefix-wrap input {
+  padding-left: 28px;
+}
+
+/* Mode Switch Tabs */
+#usaPaycheckCalculator .uspay-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 5px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+#usaPaycheckCalculator .uspay-tab-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  color: #64748b;
+  transition: all 0.2s;
+  text-align: center;
+}
+#usaPaycheckCalculator .uspay-tab-btn.uspay-active {
+  background: #ffffff;
+  color: #1d4ed8;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
+}
+
+/* Action Buttons */
+#usaPaycheckCalculator .uspay-btn-calc {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  transition: transform 0.1s, box-shadow 0.15s;
+  text-align: center;
+  margin-bottom: 12px;
+}
+#usaPaycheckCalculator .uspay-btn-calc:hover {
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
+  transform: translateY(-1px);
+}
+#usaPaycheckCalculator .uspay-btn-calc:active {
+  transform: scale(0.99);
+}
+#usaPaycheckCalculator .uspay-secondary-btns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+#usaPaycheckCalculator .uspay-btn-sub {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s;
+}
+#usaPaycheckCalculator .uspay-btn-sub:hover {
+  background: #e2e8f0;
+}
+
+/* Results Display */
+#usaPaycheckCalculator .uspay-takehome-hero {
+  background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #ecfdf5 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#usaPaycheckCalculator .uspay-takehome-val {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #047857;
+  letter-spacing: -0.02em;
+  margin: 6px 0;
+  line-height: 1;
+}
+
+/* Metric Pills */
+#usaPaycheckCalculator .uspay-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+@media (min-width: 500px) {
+  #usaPaycheckCalculator .uspay-metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+#usaPaycheckCalculator .uspay-metric-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+#usaPaycheckCalculator .uspay-metric-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+#usaPaycheckCalculator .uspay-metric-num {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 3px;
+}
+
+/* Result Table */
+#usaPaycheckCalculator .uspay-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+#usaPaycheckCalculator table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+#usaPaycheckCalculator table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #f1f5f9;
+}
+#usaPaycheckCalculator table tr.uspay-row-bold td {
+  font-weight: 800;
+  color: #0f172a;
+  border-top: 2px solid #e2e8f0;
+  border-bottom: 2px solid #e2e8f0;
+  background: #f8fafc;
+}
+#usaPaycheckCalculator table tr.uspay-row-highlight td {
+  background: #ecfdf5;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #065f46;
+}
+
+/* SVG Donut Chart */
+#usaPaycheckCalculator .uspay-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 18px 0;
+}
+@media (min-width: 480px) {
+  #usaPaycheckCalculator .uspay-chart-container {
+    flex-direction: row;
+  }
+}
+#usaPaycheckCalculator .uspay-chart-legend {
+  flex: 1;
+  width: 100%;
+  font-size: 0.78rem;
+}
+#usaPaycheckCalculator .uspay-legend-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Ads */
+#usaPaycheckCalculator .uspay-ad-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 20px auto;
+  min-height: 50px;
+}
+#usaPaycheckCalculator .uspay-ad-tag {
+  font-size: 10px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+/* FAQ & Content */
+#usaPaycheckCalculator .uspay-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+#usaPaycheckCalculator .uspay-faq-q {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1e293b;
+  cursor: pointer;
+  user-select: none;
+  background: #ffffff;
+  border: none;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#usaPaycheckCalculator .uspay-faq-a {
+  padding: 12px 16px 16px;
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+  border-top: 1px solid #f1f5f9;
+  background: #f8fafc;
+}
+
+/* Social Share */
+#usaPaycheckCalculator .uspay-share-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+#usaPaycheckCalculator .uspay-share-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s;
+}
+#usaPaycheckCalculator .uspay-share-btn:hover {
+  opacity: 0.9;
+}
+
+/* Print CSS */
+@media print {
+  #usaPaycheckCalculator .uspay-ad-wrap,
+  #usaPaycheckCalculator .uspay-share-card,
+  #usaPaycheckCalculator .uspay-btn-calc,
+  #usaPaycheckCalculator .uspay-secondary-btns,
+  #usaPaycheckCalculator .uspay-tabs,
+  #usaPaycheckCalculator .uspay-faq-section,
+  #usaPaycheckCalculator .uspay-seo-article {
+    display: none !important;
+  }
+}
+</style>
+
+<div id="usaPaycheckCalculator">
+  <div class="uspay-shell">
+    
+    <!-- Hero Header -->
+    <header style="text-align: center; padding: 15px 0 25px;">
+      <div class="uspay-badge" style="margin-bottom: 10px;">
+        <span>🇺🇸 Free U.S. Paycheck &amp; Take-Home Pay Calculator</span>
+        <span style="background:#2563eb; color:#fff; border-radius:12px; padding:2px 8px; font-size:11px;">Tax Year: 2026</span>
+      </div>
+      <h1 class="uspay-hero-title">US Paycheck Calculator</h1>
+      <div class="uspay-hero-sub">Estimate Your Take-Home Pay After Taxes &amp; Deductions</div>
+      <p class="uspay-hero-desc">
+        Estimate your paycheck after federal withholding, Social Security, Medicare and payroll deductions. Calculate take-home pay for salary or hourly earnings using your pay frequency and Form W-4 information.
+      </p>
+      <div style="font-size: 0.8rem; color: #475569; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+        <span class="uspay-badge uspay-badge-green">✓ 100% Free</span>
+        <span class="uspay-badge">✓ Salary &amp; Hourly Pay</span>
+        <span class="uspay-badge">✓ 2026 Federal Withholding</span>
+        <span class="uspay-badge">✓ Social Security &amp; Medicare</span>
+        <span class="uspay-badge">✓ No Signup</span>
+        <span class="uspay-badge">✓ No Payroll API</span>
+      </div>
+      <div style="font-size: 11px; color: #94a3b8; margin-top: 8px; font-style: italic;">
+        Tax rules can change. Verify current withholding information when accuracy is important.
+      </div>
+    </header>
+
+    <!-- Ad: 468x60 Banner -->
+    <div class="uspay-ad-wrap">
+      <div class="uspay-ad-tag">Advertisement</div>
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+
+    <!-- Main Two-Column Layout -->
+    <div class="uspay-main-grid">
+      
+      <!-- LEFT COLUMN: INPUTS -->
+      <div class="uspay-inputs-col">
+        
+        <!-- Step 1: Mode & Pay Inputs -->
+        <div class="uspay-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <h2 style="font-size:1.1rem; font-weight:800; margin:0;">Earnings &amp; Pay Frequency</h2>
+            <span style="font-size:11px; font-weight:700; color:#2563eb; background:#eff6ff; padding:3px 8px; border-radius:6px;">Step 1 of 4</span>
+          </div>
+
+          <!-- Mode Switch Tabs -->
+          <div class="uspay-tabs">
+            <button type="button" class="uspay-tab-btn uspay-active" id="uspayTabSalary">💼 Salary Employee</button>
+            <button type="button" class="uspay-tab-btn" id="uspayTabHourly">⏱️ Hourly Employee</button>
+          </div>
+
+          <!-- Salary Mode Inputs -->
+          <div id="uspaySalarySection">
+            <div style="margin-bottom:14px;">
+              <label for="uspayAnnualSalary">Gross Annual Salary ($)</label>
+              <div class="uspay-input-prefix-wrap">
+                <span class="uspay-input-prefix">$</span>
+                <input type="number" id="uspayAnnualSalary" value="75000" min="0" step="1000" placeholder="75,000" />
+              </div>
+            </div>
+            <div>
+              <label for="uspayWeeklyHours">Standard Weekly Hours (for hourly equivalent)</label>
+              <input type="number" id="uspayWeeklyHours" value="40" min="1" max="168" />
+            </div>
+          </div>
+
+          <!-- Hourly Mode Inputs -->
+          <div id="uspayHourlySection" style="display:none;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+              <div>
+                <label for="uspayHourlyRate">Hourly Rate ($/hr)</label>
+                <div class="uspay-input-prefix-wrap">
+                  <span class="uspay-input-prefix">$</span>
+                  <input type="number" id="uspayHourlyRate" value="30.00" min="0" step="0.5" />
+                </div>
+              </div>
+              <div>
+                <label for="uspayRegularHours">Regular Hours / Pay Period</label>
+                <input type="number" id="uspayRegularHours" value="80" min="0" step="1" />
+              </div>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; margin-bottom:14px;">
+              <div style="font-size:11px; font-weight:700; color:#334155; margin-bottom:8px;">Overtime &amp; Premium Hours (Optional)</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+                <div>
+                  <label for="uspayOvertimeHours">Overtime Hours</label>
+                  <input type="number" id="uspayOvertimeHours" value="0" min="0" />
+                </div>
+                <div>
+                  <label for="uspayOvertimeMult">OT Multiplier</label>
+                  <input type="number" id="uspayOvertimeMult" value="1.5" min="1" step="0.1" />
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <div>
+                  <label for="uspayDoubleHours">Double-Time Hours</label>
+                  <input type="number" id="uspayDoubleHours" value="0" min="0" />
+                </div>
+                <div>
+                  <label for="uspayDoubleMult">DT Multiplier</label>
+                  <input type="number" id="uspayDoubleMult" value="2.0" min="1" step="0.1" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pay Frequency -->
+          <div style="margin-top:14px; border-top:1px solid #f1f5f9; padding-top:12px;">
+            <label for="uspayPayFrequency">Pay Frequency</label>
+            <select id="uspayPayFrequency">
+              <option value="weekly">Weekly (52 pay periods / year)</option>
+              <option value="biweekly" selected>Biweekly (26 pay periods / year)</option>
+              <option value="semimonthly">Semimonthly (24 pay periods / year)</option>
+              <option value="monthly">Monthly (12 pay periods / year)</option>
+              <option value="quarterly">Quarterly (4 pay periods / year)</option>
+              <option value="annually">Annually (1 pay period / year)</option>
+            </select>
+            <div style="font-size:11px; color:#64748b; margin-top:4px;">
+              💡 <strong>Biweekly</strong> = usually 26 pay periods/year. <strong>Semimonthly</strong> = twice a month (24 pay periods/year).
+            </div>
+          </div>
+
+          <!-- Additional Earnings -->
+          <details style="margin-top:12px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px;">
+            <summary style="font-size:11px; font-weight:700; color:#1e293b; cursor:pointer;">+ Additional Earnings This Period (Bonus, Commission, Tips)</summary>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">
+              <div>
+                <label for="uspayBonus">Bonus ($)</label>
+                <input type="number" id="uspayBonus" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayCommission">Commission ($)</label>
+                <input type="number" id="uspayCommission" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayTips">Tips ($)</label>
+                <input type="number" id="uspayTips" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayOtherEarnings">Other Earnings ($)</label>
+                <input type="number" id="uspayOtherEarnings" value="0" min="0" />
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- Step 2: Form W-4 -->
+        <div class="uspay-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <h2 style="font-size:1.1rem; font-weight:800; margin:0;">Federal Form W-4 (2026)</h2>
+            <span style="font-size:11px; font-weight:700; color:#2563eb; background:#eff6ff; padding:3px 8px; border-radius:6px;">Step 2 of 4</span>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label for="uspayFilingStatus">Step 1: Federal Filing Status</label>
+            <select id="uspayFilingStatus">
+              <option value="single" selected>Single or Married Filing Separately</option>
+              <option value="married_joint">Married Filing Jointly or Qualifying Surviving Spouse</option>
+              <option value="head_of_household">Head of Household</option>
+            </select>
+          </div>
+
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px; margin-bottom:14px;">
+            <label style="display:flex; align-items:flex-start; gap:8px; cursor:pointer; text-transform:none;">
+              <input type="checkbox" id="uspayW4Step2" style="width:auto; margin-top:2px;" />
+              <span>
+                <strong style="display:block; color:#1e293b;">Step 2: Multiple Jobs or Spouse Works</strong>
+                <span style="font-size:11px; color:#64748b; font-weight:normal;">Check if you hold more than one job at a time or are married filing jointly and both work. Applies higher withholding brackets.</span>
+              </span>
+            </label>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <label for="uspayW4Credits">Step 3: Dependents &amp; Child Credits (Annual $)</label>
+            <input type="number" id="uspayW4Credits" value="0" min="0" step="500" placeholder="e.g. 2000" />
+            <div style="font-size:10px; color:#64748b;">Directly reduces annual federal income tax withholding.</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+            <div>
+              <label for="uspayW4OtherIncome">Step 4(a): Other Income ($/yr)</label>
+              <input type="number" id="uspayW4OtherIncome" value="0" min="0" />
+            </div>
+            <div>
+              <label for="uspayW4Deductions">Step 4(b): Deductions ($/yr)</label>
+              <input type="number" id="uspayW4Deductions" value="0" min="0" />
+            </div>
+          </div>
+
+          <div>
+            <label for="uspayW4Extra">Step 4(c): Extra Withholding Per Paycheck ($)</label>
+            <input type="number" id="uspayW4Extra" value="0" min="0" />
+          </div>
+        </div>
+
+        <!-- Step 3: Deductions -->
+        <div class="uspay-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <h2 style="font-size:1.1rem; font-weight:800; margin:0;">Pre-Tax &amp; Post-Tax Deductions</h2>
+            <span style="font-size:11px; font-weight:700; color:#2563eb; background:#eff6ff; padding:3px 8px; border-radius:6px;">Step 3 of 4</span>
+          </div>
+
+          <!-- 401(k) -->
+          <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:12px; margin-bottom:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:12px; font-weight:800; color:#14532d;">Traditional 401(k) / 403(b) / 457</span>
+              <select id="uspay401kType" style="width:auto; padding:3px 8px; font-size:11px;">
+                <option value="percent" selected>% of Pay</option>
+                <option value="fixed">$ Fixed</option>
+              </select>
+            </div>
+            <input type="number" id="uspay401kVal" value="5.0" min="0" step="0.5" />
+            <div style="font-size:10px; color:#15803d; margin-top:4px;">
+              Reduces federal income taxable wages. Subject to Social Security (6.2%) and Medicare (1.45%).
+            </div>
+          </div>
+
+          <!-- Section 125 -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+            <div>
+              <label for="uspayHealth">Health / Dental Insurance ($)</label>
+              <input type="number" id="uspayHealth" value="0" min="0" />
+              <div style="font-size:10px; color:#16a34a;">Sec. 125 (reduces FICA)</div>
+            </div>
+            <div>
+              <label for="uspayHsa">HSA Contribution ($)</label>
+              <input type="number" id="uspayHsa" value="0" min="0" />
+              <div style="font-size:10px; color:#16a34a;">Reduces Income &amp; FICA</div>
+            </div>
+            <div>
+              <label for="uspayFsa">FSA Flexible Spending ($)</label>
+              <input type="number" id="uspayFsa" value="0" min="0" />
+            </div>
+            <div>
+              <label for="uspayOtherPreTax">Other Pre-Tax ($)</label>
+              <input type="number" id="uspayOtherPreTax" value="0" min="0" />
+            </div>
+          </div>
+
+          <!-- Post-Tax -->
+          <div style="border-top:1px solid #f1f5f9; padding-top:12px;">
+            <div style="font-size:11px; font-weight:700; color:#334155; margin-bottom:8px;">Post-Tax Deductions (Subtracted After Taxes)</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div>
+                <label for="uspayRoth">Roth 401(k) / IRA ($)</label>
+                <input type="number" id="uspayRoth" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayUnion">Union Dues ($)</label>
+                <input type="number" id="uspayUnion" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayAfterTaxIns">After-Tax Insurance ($)</label>
+                <input type="number" id="uspayAfterTaxIns" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayOtherPostTax">Other Post-Tax ($)</label>
+                <input type="number" id="uspayOtherPostTax" value="0" min="0" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: State & Local Withholding -->
+        <div class="uspay-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <h2 style="font-size:1.1rem; font-weight:800; margin:0;">State &amp; Local Withholding</h2>
+            <span style="font-size:11px; font-weight:700; color:#2563eb; background:#eff6ff; padding:3px 8px; border-radius:6px;">Step 4 of 4</span>
+          </div>
+
+          <div style="background:#fffbeb; border:1px solid #fef3c7; border-radius:10px; padding:10px; font-size:11px; color:#92400e; margin-bottom:12px; line-height:1.5;">
+            <strong>Notice:</strong> State and local payroll withholding rules vary by jurisdiction. Enter an estimated withholding amount from your payroll information, employer, or applicable tax guidance.
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <label for="uspayStateSelect">State of Employment / Residence</label>
+            <select id="uspayStateSelect">
+              <option value="FED_ONLY">Federal Taxes Only (No State Withholding)</option>
+              <option value="AL">Alabama</option><option value="AK">Alaska (No State Income Tax)</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida (No State Income Tax)</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada (No State Income Tax)</option><option value="NH">New Hampshire (No Wage Tax)</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota (No State Income Tax)</option><option value="TN">Tennessee (No State Wage Tax)</option><option value="TX">Texas (No State Income Tax)</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington (No Wage Tax)</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming (No State Income Tax)</option>
+            </select>
+          </div>
+
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:12px; font-weight:700; color:#1e293b;">Estimated State Tax Withholding</span>
+              <select id="uspayStateMethod" style="width:auto; padding:3px 8px; font-size:11px;">
+                <option value="fixed" selected>$ Per Paycheck</option>
+                <option value="percent">% of Pay</option>
+              </select>
+            </div>
+            <input type="number" id="uspayStateVal" value="0.00" min="0" step="10" />
+          </div>
+
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:12px; font-weight:700; color:#1e293b;">Estimated Local / City Withholding</span>
+              <select id="uspayLocalMethod" style="width:auto; padding:3px 8px; font-size:11px;">
+                <option value="fixed" selected>$ Per Paycheck</option>
+                <option value="percent">% of Pay</option>
+              </select>
+            </div>
+            <input type="number" id="uspayLocalVal" value="0.00" min="0" step="5" />
+            <div style="font-size:10px; color:#64748b; margin-top:4px;">
+              Local payroll taxes may vary by city, county, school district, or other jurisdiction.
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional YTD Section -->
+        <details class="uspay-card" style="padding:14px;">
+          <summary style="font-size:13px; font-weight:700; color:#1e293b; cursor:pointer;">
+            📅 Year-to-Date Information (Optional for High Earners)
+          </summary>
+          <div style="margin-top:10px; padding-top:8px; border-top:1px solid #f1f5f9; font-size:11px; color:#64748b;">
+            Optional: Enter cumulative earnings to adjust for 2026 Social Security wage cap ($184,500) and Additional Medicare threshold ($200,000).
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">
+              <div>
+                <label for="uspayYtdSS">YTD Social Security Wages ($)</label>
+                <input type="number" id="uspayYtdSS" value="0" min="0" />
+              </div>
+              <div>
+                <label for="uspayYtdMed">YTD Medicare Wages ($)</label>
+                <input type="number" id="uspayYtdMed" value="0" min="0" />
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Primary & Secondary Action Buttons -->
+        <button type="button" class="uspay-btn-calc" id="uspayBtnCalculate">⚡ CALCULATE TAKE-HOME PAY</button>
+        <div class="uspay-secondary-btns">
+          <button type="button" class="uspay-btn-sub" id="uspayBtnLoadExample">📂 Load Example ($75k)</button>
+          <button type="button" class="uspay-btn-sub" id="uspayBtnCopySummary">📋 Copy Summary</button>
+          <button type="button" class="uspay-btn-sub" id="uspayBtnPrint">🖨️ Print Summary</button>
+          <button type="button" class="uspay-btn-sub" id="uspayBtnReset">🔄 Reset All</button>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: RESULTS DASHBOARD -->
+      <div class="uspay-results-col uspay-sticky-dashboard">
+        
+        <div class="uspay-result-card" id="uspayResultsCard">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
+            <span style="font-size:11px; font-weight:800; color:#2563eb; text-transform:uppercase; letter-spacing:0.04em;">
+              Estimated Results (2026)
+            </span>
+            <span style="font-size:11px; font-weight:700; color:#64748b; background:#f1f5f9; padding:2px 8px; border-radius:6px;" id="uspayResultPeriodBadge">
+              Per Paycheck (Biweekly)
+            </span>
+          </div>
+
+          <!-- Hero Take-Home Display -->
+          <div class="uspay-takehome-hero">
+            <span style="font-size:12px; font-weight:800; color:#475569; text-transform:uppercase; letter-spacing:0.05em; display:block;">
+              Estimated Take-Home Pay
+            </span>
+            <div class="uspay-takehome-val" id="uspayTakeHomeDisplay">$2,184.37</div>
+            <div style="font-size:12px; font-weight:700; color:#334155; margin-top:6px;">
+              Take-Home: <span style="color:#047857;" id="uspayTakeHomePct">75.7%</span> | Total Taxes: <span style="color:#2563eb;" id="uspayTotalTaxPct">19.3%</span>
+            </div>
+          </div>
+
+          <!-- 4 Quick Metric Boxes -->
+          <div class="uspay-metrics-grid">
+            <div class="uspay-metric-box">
+              <div class="uspay-metric-label">Gross Pay</div>
+              <div class="uspay-metric-num" id="uspayMetricGross">$2,884.62</div>
+            </div>
+            <div class="uspay-metric-box">
+              <div class="uspay-metric-label">Total Taxes</div>
+              <div class="uspay-metric-num" style="color:#dc2626;" id="uspayMetricTaxes">-$556.02</div>
+            </div>
+            <div class="uspay-metric-box">
+              <div class="uspay-metric-label">Deductions</div>
+              <div class="uspay-metric-num" style="color:#7c3aed;" id="uspayMetricDeductions">-$144.23</div>
+            </div>
+            <div class="uspay-metric-box">
+              <div class="uspay-metric-label">Net Rate</div>
+              <div class="uspay-metric-num" style="color:#047857;" id="uspayMetricNetRate">75.7%</div>
+            </div>
+          </div>
+
+          <!-- Lightweight Donut Chart -->
+          <div class="uspay-chart-container" id="uspayChartWrap">
+            <div style="position:relative; width:150px; height:150px; flex-shrink:0;">
+              <svg width="150" height="150" viewBox="0 0 150 150" style="transform: rotate(-90deg);" id="uspaySvgChart">
+                <circle cx="75" cy="75" r="55" fill="none" stroke="#e2e8f0" stroke-width="22"></circle>
+              </svg>
+              <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+                <span style="font-size:10px; color:#64748b; font-weight:600;">Net Pay</span>
+                <span style="font-size:16px; font-weight:900; color:#047857;" id="uspayChartCenterPct">75.7%</span>
+              </div>
+            </div>
+            <div class="uspay-chart-legend" id="uspayChartLegend">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+          <!-- Detailed Line Item Table -->
+          <div class="uspay-table-wrap">
+            <table>
+              <tbody>
+                <tr class="uspay-row-bold">
+                  <td>Gross Pay</td>
+                  <td style="text-align:right;" id="uspayRowGross">$2,884.62</td>
+                </tr>
+                <tr style="color:#7c3aed;">
+                  <td style="padding-left:12px;">− Pre-Tax Deductions (401k, Health, HSA)</td>
+                  <td style="text-align:right;" id="uspayRowPreTax">-$144.23</td>
+                </tr>
+                <tr>
+                  <td style="padding-left:12px;">− Federal Income Tax (IRS Pub 15-T)</td>
+                  <td style="text-align:right; color:#dc2626;" id="uspayRowFed">-$293.35</td>
+                </tr>
+                <tr>
+                  <td style="padding-left:12px;">− Social Security Tax (6.2%)</td>
+                  <td style="text-align:right; color:#dc2626;" id="uspayRowSS">-$178.85</td>
+                </tr>
+                <tr>
+                  <td style="padding-left:12px;">− Medicare Tax (1.45%)</td>
+                  <td style="text-align:right; color:#dc2626;" id="uspayRowMed">-$41.83</td>
+                </tr>
+                <tr id="uspayRowAddlMedTr" style="display:none;">
+                  <td style="padding-left:12px;">− Additional Medicare Tax (0.9%)</td>
+                  <td style="text-align:right; color:#dc2626;" id="uspayRowAddlMed">$0.00</td>
+                </tr>
+                <tr>
+                  <td style="padding-left:12px;">− State Withholding (Manual)</td>
+                  <td style="text-align:right; color:#dc2626;" id="uspayRowState">$0.00</td>
+                </tr>
+                <tr>
+                  <td style="padding-left:12px;">− Local Withholding (Manual)</td>
+                  <td style="text-align:right; color:#dc2626;" id="uspayRowLocal">$0.00</td>
+                </tr>
+                <tr id="uspayRowPostTaxTr" style="display:none; color:#7c3aed;">
+                  <td style="padding-left:12px;">− Post-Tax Deductions (Roth, Union)</td>
+                  <td style="text-align:right;" id="uspayRowPostTax">$0.00</td>
+                </tr>
+                <tr class="uspay-row-highlight">
+                  <td>Estimated Take-Home Pay</td>
+                  <td style="text-align:right;" id="uspayRowNet">$2,184.37</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Hourly / Salary Conversions -->
+          <div id="uspaySalaryEquivBox" style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:10px; font-size:12px; color:#1e40af; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <span>Hourly Equivalent (40 hrs/wk):</span>
+            <strong style="font-size:14px;" id="uspayHourlyEquivVal">$36.06/hr</strong>
+          </div>
+
+          <!-- Annualized Summary Box -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; margin-bottom:14px;">
+            <div style="font-size:11px; font-weight:800; color:#334155; text-transform:uppercase; margin-bottom:6px;">Annualized Estimate</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; font-size:11px;">
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:6px; text-align:center;">
+                <span style="color:#64748b; font-size:9px; display:block;">Annual Gross</span>
+                <strong id="uspayAnnualGross">$75,000.00</strong>
+              </div>
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:6px; text-align:center;">
+                <span style="color:#64748b; font-size:9px; display:block;">Annual Taxes</span>
+                <strong style="color:#dc2626;" id="uspayAnnualTaxes">-$14,456.52</strong>
+              </div>
+              <div style="background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:6px; text-align:center;">
+                <span style="color:#64748b; font-size:9px; display:block;">Annual Net Pay</span>
+                <strong style="color:#047857;" id="uspayAnnualTakeHome">$56,793.48</strong>
+              </div>
+            </div>
+            <div style="font-size:10px; color:#94a3b8; margin-top:4px; font-style:italic;">
+              *Projected annualized estimates based on current paycheck assumptions.
+            </div>
+          </div>
+
+          <!-- Transparent Calculation Summary -->
+          <details style="background:#f1f5f9; border-radius:10px; padding:10px; font-size:11px; color:#475569;">
+            <summary style="font-weight:700; color:#1e293b; cursor:pointer;">🔍 How This Estimate Was Calculated</summary>
+            <div style="margin-top:8px; padding-top:6px; border-top:1px solid #cbd5e1; line-height:1.6;">
+              <div style="display:flex; justify-content:space-between;">
+                <span>Federal Taxable Wages:</span>
+                <strong id="uspayWageFed">$2,740.39</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span>Social Security Taxable Wages:</span>
+                <strong id="uspayWageSS">$2,884.62</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span>Medicare Taxable Wages:</span>
+                <strong id="uspayWageMed">$2,884.62</strong>
+              </div>
+              <div style="margin-top:6px; font-size:10px; color:#64748b;">
+                Traditional 401(k) reduces federal taxable wages, but is subject to Social Security &amp; Medicare taxes under federal payroll law. Section 125 deductions reduce both income and FICA taxes.
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Ad: Native Banner -->
+    <div class="uspay-ad-wrap">
+      <div class="uspay-ad-tag">Advertisement</div>
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+
+    <!-- Privacy Banner -->
+    <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:14px; padding:16px; margin:24px 0; text-align:center;">
+      <div style="font-size:13px; font-weight:800; color:#065f46; margin-bottom:4px;">
+        🔒 Private Browser-Based Calculation
+      </div>
+      <p style="font-size:12px; color:#047857; margin:0; line-height:1.5;">
+        Your paycheck calculations are performed locally in your browser. This calculator does not require your salary or payroll information to be sent to an external paycheck-calculation API. No financial data is saved, tracked, or shared.
+      </p>
+    </div>
+
+    <!-- Social Share Section -->
+    <div class="uspay-card" style="text-align:center; padding:20px;">
+      <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:4px;">Share This Free Paycheck Calculator</h3>
+      <p style="font-size:12px; color:#64748b; margin:0 auto 12px; max-width:480px;">
+        Share with coworkers and friends. Only the page link is shared—never your private salary or calculations.
+      </p>
+      <div class="uspay-share-grid">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" rel="noopener noreferrer" class="uspay-share-btn" style="background:#1877f2;" id="uspayShareFb">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?text=Free%20US%20Paycheck%20Calculator&url=" target="_blank" rel="noopener noreferrer" class="uspay-share-btn" style="background:#000000;" id="uspayShareTw">X (Twitter)</a>
+        <a href="https://api.whatsapp.com/send?text=Free%20US%20Paycheck%20Calculator%20" target="_blank" rel="noopener noreferrer" class="uspay-share-btn" style="background:#25d366;" id="uspayShareWa">WhatsApp</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=" target="_blank" rel="noopener noreferrer" class="uspay-share-btn" style="background:#0a66c2;" id="uspayShareLi">LinkedIn</a>
+        <a href="https://reddit.com/submit?url=&title=Free%20US%20Paycheck%20Calculator" target="_blank" rel="noopener noreferrer" class="uspay-share-btn" style="background:#ff4500;" id="uspayShareRd">Reddit</a>
+        <button type="button" class="uspay-share-btn" style="background:#475569;" id="uspayShareCopyLink">🔗 Copy Link</button>
+      </div>
+    </div>
+
+    <!-- SEO Educational Content Article (~1,500 words) -->
+    <article class="uspay-seo-article" style="margin:40px 0; border-top:1px solid #e2e8f0; padding-top:30px; font-size:14px; line-height:1.7; color:#334155;">
+      <h2 style="font-size:1.8rem; font-weight:900; color:#0f172a; margin-bottom:12px;">
+        The Complete Guide to Understanding Your U.S. Paycheck &amp; Take-Home Pay
+      </h2>
+      <p>
+        For millions of American workers, looking at a pay stub can be confusing. You accept a job with an annual salary of $75,000 or an hourly wage of $30 per hour, but the amount deposited into your checking account every other week is significantly less than the gross rate divided by 26 pay periods. Understanding every component of your paycheck—from federal income tax withholding and FICA assessments to pre-tax retirement accounts and state payroll rules—is essential for taking control of your personal financial life.
+      </p>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">What Is a Paycheck Calculator?</h3>
+      <p>
+        A paycheck calculator is a specialized financial model that computes your net take-home pay by applying current federal, state, and local tax schedules to your gross earnings. Unlike simple percentage estimators, an accurate payroll calculator incorporates official statutory withholding guidelines—most notably IRS Publication 15-T (Federal Income Tax Withholding Methods)—as well as annual Social Security wage limits, Medicare thresholds, Form W-4 elections, and pre-tax benefit deductions.
+      </p>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">Gross Pay vs. Net Pay: The Fundamental Difference</h3>
+      <p>
+        The difference between gross compensation and net take-home pay is the core principle of payroll accounting:
+      </p>
+      <ul>
+        <li><strong>Gross Pay:</strong> The total compensation you earn before any deductions, taxes, or withholdings are applied. It includes your base salary or hourly wages, along with supplemental pay like overtime, bonuses, commissions, and tips.</li>
+        <li><strong>Net Pay (Take-Home Pay):</strong> The actual dollar amount you receive via direct deposit or physical check after all mandatory payroll taxes (federal, state, local, Social Security, Medicare) and voluntary employee contributions (such as health insurance premiums and 401(k) contributions) have been deducted.</li>
+      </ul>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">How Federal Income Tax Withholding Works</h3>
+      <p>
+        The United States operates on a pay-as-you-go tax system. Under the Internal Revenue Code, employers must withhold a portion of employee wages during each payroll cycle to cover their anticipated federal income tax liability. For tax year 2026, withholding is governed by IRS Publication 15-T using the percentage method for automated payroll systems. This calculation accounts for your pay frequency (converting wages to an annualized basis), filing status, and specific instructions on your Form W-4.
+      </p>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">How Form W-4 Affects Your Paycheck</h3>
+      <p>
+        When you begin employment or update your payroll elections, you submit Form W-4 (Employee’s Withholding Certificate). The modern Form W-4 replaced outdated withholding allowances with a five-step structure:
+      </p>
+      <ul>
+        <li><strong>Step 1 (Filing Status):</strong> Designates whether you file as Single, Married Filing Jointly, or Head of Household, determining which standard tax bracket table applies.</li>
+        <li><strong>Step 2 (Multiple Jobs or Working Spouse):</strong> Applies a higher withholding rate schedule to prevent underwithholding when household income spans more than one job.</li>
+        <li><strong>Step 3 (Claim Dependents):</strong> Provides a dollar-for-dollar annual tax credit reduction ($2,000 for each child under 17, and $500 for other dependents), lowering the federal tax withheld per pay period.</li>
+        <li><strong>Step 4(a) (Other Income):</strong> Incorporates non-wage taxable income (such as investments or retirement) to increase withholding.</li>
+        <li><strong>Step 4(b) (Deductions):</strong> Lowers withholding if you claim itemized deductions exceeding the standard deduction.</li>
+        <li><strong>Step 4(c) (Extra Withholding):</strong> Adds an exact voluntary dollar amount to be deducted from each paycheck.</li>
+      </ul>
+
+      <!-- Ad: 300x250 Banner in Content -->
+      <div class="uspay-ad-wrap">
+        <div class="uspay-ad-tag">Advertisement</div>
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '224e7394c28834c8ac1ce24682c420e3',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+      </div>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">FICA Taxes: Social Security &amp; Medicare</h3>
+      <p>
+        The Federal Insurance Contributions Act (FICA) funds Social Security and Medicare:
+      </p>
+      <ul>
+        <li><strong>Social Security Tax (OASDI):</strong> Withheld at an employee rate of 6.2% of eligible wages. For 2026, the statutory Social Security wage base cap is $184,500. Once your year-to-date earnings exceed $184,500, no further Social Security tax is withheld for the remainder of the calendar year.</li>
+        <li><strong>Medicare Tax (HI):</strong> Withheld at an employee rate of 1.45% on all covered wages, with no annual wage limit.</li>
+        <li><strong>Additional Medicare Tax:</strong> Federal law requires employers to withhold an extra 0.9% Additional Medicare Tax on wages exceeding $200,000 in a calendar year, regardless of marital filing status.</li>
+      </ul>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">Pre-Tax vs. Post-Tax Deductions and 401(k) Treatment</h3>
+      <p>
+        Not all deductions are treated equally under federal tax regulations:
+      </p>
+      <ul>
+        <li><strong>Traditional 401(k) / 403(b) / 457 Contributions:</strong> These retirement savings reduce your <em>Federal Taxable Wages</em>, lowering the federal income tax withheld from your check. However, they do <strong>not</strong> reduce your FICA wages—Social Security (6.2%) and Medicare (1.45%) are calculated on your gross earnings before 401(k) deductions.</li>
+        <li><strong>Section 125 Cafeteria Plans:</strong> Pre-tax contributions for employer health, dental, and vision insurance premiums, Health Savings Accounts (HSAs), and Flexible Spending Accounts (FSAs) are fully exempt from federal income tax, Social Security tax, and Medicare tax.</li>
+        <li><strong>Post-Tax Deductions:</strong> Contributions to Roth 401(k) accounts, union dues, after-tax life insurance, and wage garnishments are subtracted from your pay after all taxes are calculated.</li>
+      </ul>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">Salary vs. Hourly Pay and Overtime</h3>
+      <p>
+        Salaried exempt employees receive a fixed predetermined salary across pay periods, while hourly non-exempt workers are compensated strictly for hours logged. Under the Fair Labor Standards Act (FLSA), hourly workers must receive overtime pay of at least one and one-half times (1.5x) their regular rate for hours worked beyond 40 in a workweek.
+      </p>
+
+      <h3 style="font-size:1.3rem; font-weight:800; color:#0f172a; margin-top:24px; margin-bottom:8px;">Biweekly vs. Semimonthly Pay</h3>
+      <p>
+        A biweekly pay schedule pays employees every two weeks, generating 26 paychecks per year. Because standard months have slightly more than 4 weeks, employees receive three paychecks in two calendar months each year. A semimonthly schedule pays twice per month (typically the 15th and last day of the month), producing exactly 24 paychecks per year.
+      </p>
+    </article>
+
+    <!-- 20+ FAQ Section -->
+    <section class="uspay-faq-section" style="margin:40px 0;">
+      <h2 style="font-size:1.8rem; font-weight:900; color:#0f172a; text-align:center; margin-bottom:6px;">
+        Frequently Asked Questions
+      </h2>
+      <p style="text-align:center; color:#64748b; font-size:13px; margin-bottom:24px;">
+        Common questions about federal withholding, Social Security, Medicare, and take-home pay calculations.
+      </p>
+
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Is this paycheck calculator completely free? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. This U.S. Paycheck Calculator is 100% free with unlimited calculations. There are no subscriptions, no premium tiers, no credit cards, and no signup needed.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Does this calculator estimate take-home pay? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. It estimates net take-home pay after federal income tax withholding, Social Security (6.2%), Medicare (1.45%), Additional Medicare (0.9%), pre-tax benefits, and post-tax deductions.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Can I calculate a salary paycheck? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. In Salary Mode, enter your annual salary and choose your pay frequency (weekly, biweekly, semimonthly, monthly, quarterly, or annually).</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Can I calculate an hourly paycheck? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. In Hourly Mode, enter your hourly wage, regular hours worked, and any overtime or double-time hours.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Does it estimate federal income tax withholding? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. The calculator implements the percentage method from IRS Publication 15-T for tax year 2026, accounting for filing status and Form W-4 steps.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Does it calculate Social Security tax? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. Social Security tax is calculated at 6.2% up to the 2026 annual wage base of $184,500. Wages above this limit are exempt.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Does it calculate Medicare tax? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. Standard Medicare tax is calculated at 1.45% on all covered wages without an annual wage cap.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">What is Additional Medicare Tax? <span>+</span></button>
+        <div class="uspay-faq-a">Employers must withhold an Additional Medicare Tax of 0.9% on an employee’s wages exceeding $200,000 in a calendar year.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">What is gross pay? <span>+</span></button>
+        <div class="uspay-faq-a">Gross pay is total compensation earned before any taxes, payroll withholdings, or benefit deductions are subtracted.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">What is net pay? <span>+</span></button>
+        <div class="uspay-faq-a">Net pay is the actual cash deposited into your bank account after all taxes and employee deductions are subtracted from gross pay.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">What is take-home pay? <span>+</span></button>
+        <div class="uspay-faq-a">Take-home pay is synonymous with net pay—the liquid disposable income you receive each pay period.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">How does Form W-4 affect my paycheck? <span>+</span></button>
+        <div class="uspay-faq-a">Form W-4 instructs your employer how much federal income tax to withhold based on filing status, dependents, multiple jobs, and deductions.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">How do pre-tax deductions affect take-home pay? <span>+</span></button>
+        <div class="uspay-faq-a">Pre-tax deductions reduce your taxable income, lowering your overall tax withholding while funding healthcare and retirement.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">How does a traditional 401(k) affect my paycheck? <span>+</span></button>
+        <div class="uspay-faq-a">Traditional 401(k) contributions reduce federal income taxable wages, but are still subject to 6.2% Social Security and 1.45% Medicare taxes.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Can I calculate overtime pay? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. In Hourly Mode, you can enter overtime hours with a 1.5x multiplier and double-time hours with a 2.0x multiplier.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Can I include bonuses and commissions? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. You can enter bonuses, commissions, tips, and other supplemental earnings in the Additional Earnings drawer.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Can I calculate a biweekly paycheck? <span>+</span></button>
+        <div class="uspay-faq-a">Yes. Select Biweekly (26 pay periods per year) in the Pay Frequency dropdown.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">What is the difference between biweekly and semimonthly pay? <span>+</span></button>
+        <div class="uspay-faq-a">Biweekly pays every two weeks (26 checks/year). Semimonthly pays twice a month (24 checks/year).</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">How are state and local taxes handled? <span>+</span></button>
+        <div class="uspay-faq-a">To avoid inaccurate automatic guesses, this calculator provides manual state and local withholding inputs ($ or %) from your pay stub.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Why might my actual paycheck differ? <span>+</span></button>
+        <div class="uspay-faq-a">Actual paychecks can differ due to state disability taxes (SDI), local wage taxes, supplemental bonus withholding rules, or wage garnishments.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Does this calculate my final annual income-tax liability? <span>+</span></button>
+        <div class="uspay-faq-a">No. It estimates payroll withholding—advance tax payments to the IRS. Final liability is determined on Form 1040.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Is my salary information stored? <span>+</span></button>
+        <div class="uspay-faq-a">No. All calculations run locally in your web browser. No personal or salary data is stored or transmitted anywhere.</div>
+      </div>
+      <div class="uspay-faq-item">
+        <button type="button" class="uspay-faq-q">Does this tool use an external payroll API? <span>+</span></button>
+        <div class="uspay-faq-a">No. It uses an embedded, client-side calculation engine built strictly on official 2026 IRS Publication 15-T methods.</div>
+      </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <footer style="border-top:1px solid #e2e8f0; padding:24px 0; font-size:11px; color:#64748b; line-height:1.6;">
+      <div style="font-weight:800; color:#334155; text-transform:uppercase; margin-bottom:6px;">Tax &amp; Payroll Disclaimer</div>
+      <p>
+        This paycheck calculator is provided for general educational and planning purposes only. Results are estimates based on the information entered and the tax rules implemented for the displayed tax year (2026). Actual paycheck withholding and take-home pay may vary because of employer payroll methods, Form W-4 information, state and local taxes, payroll deductions, benefits, year-to-date wages, supplemental earnings, and other factors. This calculator does not provide tax, accounting, payroll, legal, or financial advice and should not be used as a substitute for official payroll calculations or professional guidance.
+      </p>
+      <p>
+        This tool is not affiliated with or endorsed by the Internal Revenue Service, Social Security Administration, U.S. Department of Labor, or the U.S. government.
+      </p>
+      <div style="margin-top:10px; text-align:center; color:#94a3b8;">
+        © 2026 Free U.S. Paycheck Calculator. 100% Free • Unlimited Calculations • Browser-Based Privacy.
+      </div>
+    </footer>
+
+    <!-- Ad: Social Bar -->
+    <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+  </div>
+</div>
+
+<script>
+/**
+ * 2026 U.S. Paycheck Calculator Engine (Vanilla JavaScript)
+ * Source: IRS Publication 15-T (2026) Percentage Method for Automated Payroll Systems
+ * Before changing the tax year displayed to users, update and verify all federal payroll withholding tables and FICA limits.
+ */
+(function() {
+  var USPAY_TAX_2026 = {
+    taxYear: 2026,
+    socialSecurity: { rate: 0.062, wageBase: 184500 },
+    medicare: { rate: 0.0145, additionalRate: 0.009, additionalThreshold: 200000 },
+    payPeriods: { weekly: 52, biweekly: 26, semimonthly: 24, monthly: 12, quarterly: 4, annually: 1 },
+    federalStandard: {
+      married_joint: [
+        { min: 0, max: 16500, base: 0, rate: 0 },
+        { min: 16500, max: 41300, base: 0, rate: 0.10 },
+        { min: 41300, max: 117150, base: 2480, rate: 0.12 },
+        { min: 117150, max: 231250, base: 11582, rate: 0.22 },
+        { min: 231250, max: 424900, base: 36684, rate: 0.24 },
+        { min: 424900, max: 534400, base: 83160, rate: 0.32 },
+        { min: 534400, max: 791800, base: 118200, rate: 0.35 },
+        { min: 791800, max: Infinity, base: 208290, rate: 0.37 }
+      ],
+      single: [
+        { min: 0, max: 6400, base: 0, rate: 0 },
+        { min: 6400, max: 18800, base: 0, rate: 0.10 },
+        { min: 18800, max: 56725, base: 1240, rate: 0.12 },
+        { min: 56725, max: 113775, base: 5791, rate: 0.22 },
+        { min: 113775, max: 210600, base: 18342, rate: 0.24 },
+        { min: 210600, max: 265350, base: 41580, rate: 0.32 },
+        { min: 265350, max: 653000, base: 59100, rate: 0.35 },
+        { min: 653000, max: Infinity, base: 194777.5, rate: 0.37 }
+      ],
+      head_of_household: [
+        { min: 0, max: 13400, base: 0, rate: 0 },
+        { min: 13400, max: 31100, base: 0, rate: 0.10 },
+        { min: 31100, max: 80750, base: 1770, rate: 0.12 },
+        { min: 80750, max: 137800, base: 7728, rate: 0.22 },
+        { min: 137800, max: 234650, base: 20279, rate: 0.24 },
+        { min: 234650, max: 289400, base: 43523, rate: 0.32 },
+        { min: 289400, max: 677050, base: 61043, rate: 0.35 },
+        { min: 677050, max: Infinity, base: 196720.5, rate: 0.37 }
+      ]
+    },
+    federalStep2: {
+      married_joint: [
+        { min: 0, max: 14750, base: 0, rate: 0 },
+        { min: 14750, max: 27150, base: 0, rate: 0.10 },
+        { min: 27150, max: 65075, base: 1240, rate: 0.12 },
+        { min: 65075, max: 122125, base: 5791, rate: 0.22 },
+        { min: 122125, max: 218950, base: 18342, rate: 0.24 },
+        { min: 218950, max: 273700, base: 41580, rate: 0.32 },
+        { min: 273700, max: 402400, base: 59100, rate: 0.35 },
+        { min: 402400, max: Infinity, base: 104145, rate: 0.37 }
+      ],
+      single: [
+        { min: 0, max: 3200, base: 0, rate: 0 },
+        { min: 3200, max: 9400, base: 0, rate: 0.10 },
+        { min: 9400, max: 28363, base: 620, rate: 0.12 },
+        { min: 28363, max: 56888, base: 2895.56, rate: 0.22 },
+        { min: 56888, max: 105300, base: 9171.06, rate: 0.24 },
+        { min: 105300, max: 132675, base: 20790, rate: 0.32 },
+        { min: 132675, max: 326500, base: 29550, rate: 0.35 },
+        { min: 326500, max: Infinity, base: 97388.75, rate: 0.37 }
+      ],
+      head_of_household: [
+        { min: 0, max: 8150, base: 0, rate: 0 },
+        { min: 8150, max: 17000, base: 0, rate: 0.10 },
+        { min: 17000, max: 41825, base: 885, rate: 0.12 },
+        { min: 41825, max: 70350, base: 3864, rate: 0.22 },
+        { min: 70350, max: 118775, base: 10139.5, rate: 0.24 },
+        { min: 118775, max: 146150, base: 21761.5, rate: 0.32 },
+        { min: 146150, max: 339975, base: 30521.5, rate: 0.35 },
+        { min: 339975, max: Infinity, base: 98360.25, rate: 0.37 }
+      ]
+    }
+  };
+
+  var currentMode = 'salary';
+
+  function fmtUSD(num) {
+    return '$' + (Number(num) || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function getVal(id) {
+    var el = document.getElementById(id);
+    return el ? (parseFloat(el.value) || 0) : 0;
+  }
+
+  function getStr(id) {
+    var el = document.getElementById(id);
+    return el ? el.value : '';
+  }
+
+  function getBool(id) {
+    var el = document.getElementById(id);
+    return el ? !!el.checked : false;
+  }
+
+  function calculate() {
+    try {
+      var freq = getStr('uspayPayFrequency') || 'biweekly';
+      var periods = USPAY_TAX_2026.payPeriods[freq] || 26;
+
+      // 1. Gross Earnings
+      var regularEarnings = 0;
+      var overtimeEarnings = 0;
+      var doubleTimeEarnings = 0;
+
+      if (currentMode === 'salary') {
+        var salary = Math.max(0, getVal('uspayAnnualSalary'));
+        regularEarnings = salary / periods;
+      } else {
+        var rate = Math.max(0, getVal('uspayHourlyRate'));
+        var regHours = Math.max(0, getVal('uspayRegularHours'));
+        var otHours = Math.max(0, getVal('uspayOvertimeHours'));
+        var otMult = Math.max(1, getVal('uspayOvertimeMult') || 1.5);
+        var dtHours = Math.max(0, getVal('uspayDoubleHours'));
+        var dtMult = Math.max(1, getVal('uspayDoubleMult') || 2.0);
+
+        regularEarnings = rate * regHours;
+        overtimeEarnings = rate * otHours * otMult;
+        doubleTimeEarnings = rate * dtHours * dtMult;
+      }
+
+      var bonus = Math.max(0, getVal('uspayBonus'));
+      var commission = Math.max(0, getVal('uspayCommission'));
+      var tips = Math.max(0, getVal('uspayTips'));
+      var otherEarnings = Math.max(0, getVal('uspayOtherEarnings'));
+      var grossPay = regularEarnings + overtimeEarnings + doubleTimeEarnings + bonus + commission + tips + otherEarnings;
+
+      // 2. Pre-Tax Deductions
+      var k401Type = getStr('uspay401kType') || 'percent';
+      var k401Val = Math.max(0, getVal('uspay401kVal'));
+      var k401 = k401Type === 'percent' ? grossPay * (Math.min(100, k401Val) / 100) : k401Val;
+      k401 = Math.min(grossPay, k401);
+
+      var health = Math.min(grossPay, Math.max(0, getVal('uspayHealth')));
+      var hsa = Math.min(grossPay, Math.max(0, getVal('uspayHsa')));
+      var fsa = Math.min(grossPay, Math.max(0, getVal('uspayFsa')));
+      var otherPre = Math.min(grossPay, Math.max(0, getVal('uspayOtherPreTax')));
+
+      var totalPreTax = Math.min(grossPay, k401 + health + hsa + fsa + otherPre);
+      var ficaExemptPre = health + hsa + fsa; // Sec 125 reduces FICA; 401k does NOT
+
+      // 3. Taxable Wages
+      var fedTaxable = Math.max(0, grossPay - totalPreTax);
+      var ssTaxable = Math.max(0, grossPay - ficaExemptPre);
+      var medTaxable = Math.max(0, grossPay - ficaExemptPre);
+
+      // 4. Social Security (6.2% up to $184,500)
+      var ytdSS = Math.max(0, getVal('uspayYtdSS'));
+      var remainingSSCap = Math.max(0, USPAY_TAX_2026.socialSecurity.wageBase - ytdSS);
+      var currentSSTaxable = Math.min(ssTaxable, remainingSSCap);
+      var ssTax = currentSSTaxable * USPAY_TAX_2026.socialSecurity.rate;
+
+      // 5. Medicare (1.45% base, 0.9% additional > $200k)
+      var medTax = medTaxable * USPAY_TAX_2026.medicare.rate;
+      var ytdMed = Math.max(0, getVal('uspayYtdMed'));
+      var addlThreshold = USPAY_TAX_2026.medicare.additionalThreshold;
+      var addlMedWages = 0;
+      if (ytdMed >= addlThreshold) {
+        addlMedWages = medTaxable;
+      } else if (ytdMed + medTaxable > addlThreshold) {
+        addlMedWages = ytdMed + medTaxable - addlThreshold;
+      }
+      var addlMedTax = addlMedWages * USPAY_TAX_2026.medicare.additionalRate;
+
+      // 6. Federal Withholding (IRS Pub 15-T)
+      var status = getStr('uspayFilingStatus') || 'single';
+      var step2 = getBool('uspayW4Step2');
+      var step3 = Math.max(0, getVal('uspayW4Credits'));
+      var step4a = Math.max(0, getVal('uspayW4OtherIncome'));
+      var step4b = Math.max(0, getVal('uspayW4Deductions'));
+      var step4c = Math.max(0, getVal('uspayW4Extra'));
+
+      var annualizedFedWages = Math.max(0, fedTaxable * periods + step4a - step4b);
+      var brackets = step2 ? USPAY_TAX_2026.federalStep2[status] : USPAY_TAX_2026.federalStandard[status];
+      var tentativeAnnualTax = 0;
+      if (brackets) {
+        for (var i = 0; i < brackets.length; i++) {
+          var b = brackets[i];
+          if (annualizedFedWages > b.min) {
+            var inBracket = Math.min(annualizedFedWages - b.min, b.max - b.min);
+            tentativeAnnualTax = b.base + inBracket * b.rate;
+          }
+        }
+      }
+      var annualTaxAfterCredits = Math.max(0, tentativeAnnualTax - step3);
+      var fedWithholding = Math.max(0, (annualTaxAfterCredits / periods) + step4c);
+
+      // 7. State & Local (Manual)
+      var stateMethod = getStr('uspayStateMethod');
+      var stateVal = Math.max(0, getVal('uspayStateVal'));
+      var stateTax = stateMethod === 'percent' ? fedTaxable * (Math.min(100, stateVal) / 100) : stateVal;
+
+      var localMethod = getStr('uspayLocalMethod');
+      var localVal = Math.max(0, getVal('uspayLocalVal'));
+      var localTax = localMethod === 'percent' ? fedTaxable * (Math.min(100, localVal) / 100) : localVal;
+
+      var totalTaxes = fedWithholding + ssTax + medTax + addlMedTax + stateTax + localTax;
+
+      // 8. Post-Tax Deductions
+      var roth = Math.max(0, getVal('uspayRoth'));
+      var unionDues = Math.max(0, getVal('uspayUnion'));
+      var afterTaxIns = Math.max(0, getVal('uspayAfterTaxIns'));
+      var otherPost = Math.max(0, getVal('uspayOtherPostTax'));
+      var totalPostTax = roth + unionDues + afterTaxIns + otherPost;
+      var totalDeductions = totalPreTax + totalPostTax;
+
+      // 9. Take-Home Pay
+      var takeHome = Math.max(0, grossPay - totalTaxes - totalDeductions);
+      var takeHomePct = grossPay > 0 ? (takeHome / grossPay) * 100 : 0;
+      var taxPct = grossPay > 0 ? (totalTaxes / grossPay) * 100 : 0;
+
+      // DOM Updates
+      document.getElementById('uspayTakeHomeDisplay').textContent = fmtUSD(takeHome);
+      document.getElementById('uspayTakeHomePct').textContent = takeHomePct.toFixed(1) + '%';
+      document.getElementById('uspayTotalTaxPct').textContent = taxPct.toFixed(1) + '%';
+
+      document.getElementById('uspayMetricGross').textContent = fmtUSD(grossPay);
+      document.getElementById('uspayMetricTaxes').textContent = '-' + fmtUSD(totalTaxes);
+      document.getElementById('uspayMetricDeductions').textContent = '-' + fmtUSD(totalDeductions);
+      document.getElementById('uspayMetricNetRate').textContent = takeHomePct.toFixed(1) + '%';
+
+      document.getElementById('uspayRowGross').textContent = fmtUSD(grossPay);
+      document.getElementById('uspayRowPreTax').textContent = '-' + fmtUSD(totalPreTax);
+      document.getElementById('uspayRowFed').textContent = '-' + fmtUSD(fedWithholding);
+      document.getElementById('uspayRowSS').textContent = '-' + fmtUSD(ssTax);
+      document.getElementById('uspayRowMed').textContent = '-' + fmtUSD(medTax);
+      document.getElementById('uspayRowState').textContent = '-' + fmtUSD(stateTax);
+      document.getElementById('uspayRowLocal').textContent = '-' + fmtUSD(localTax);
+      document.getElementById('uspayRowPostTax').textContent = '-' + fmtUSD(totalPostTax);
+      document.getElementById('uspayRowNet').textContent = fmtUSD(takeHome);
+
+      var addlRow = document.getElementById('uspayRowAddlMedTr');
+      if (addlRow) {
+        addlRow.style.display = addlMedTax > 0 ? 'table-row' : 'none';
+        document.getElementById('uspayRowAddlMed').textContent = '-' + fmtUSD(addlMedTax);
+      }
+
+      var postRow = document.getElementById('uspayRowPostTaxTr');
+      if (postRow) {
+        postRow.style.display = totalPostTax > 0 ? 'table-row' : 'none';
+      }
+
+      // Annualized
+      document.getElementById('uspayAnnualGross').textContent = fmtUSD(grossPay * periods);
+      document.getElementById('uspayAnnualTaxes').textContent = '-' + fmtUSD(totalTaxes * periods);
+      document.getElementById('uspayAnnualTakeHome').textContent = fmtUSD(takeHome * periods);
+
+      // Taxable Wages
+      document.getElementById('uspayWageFed').textContent = fmtUSD(fedTaxable);
+      document.getElementById('uspayWageSS').textContent = fmtUSD(currentSSTaxable);
+      document.getElementById('uspayWageMed').textContent = fmtUSD(medTaxable);
+
+      // Hourly Equiv
+      var equivBox = document.getElementById('uspaySalaryEquivBox');
+      if (equivBox) {
+        if (currentMode === 'salary') {
+          equivBox.style.display = 'flex';
+          var wkHrs = Math.max(1, getVal('uspayWeeklyHours') || 40);
+          var hRate = (getVal('uspayAnnualSalary') || 0) / (wkHrs * 52);
+          document.getElementById('uspayHourlyEquivVal').textContent = '$' + hRate.toFixed(2) + '/hr';
+        } else {
+          equivBox.style.display = 'none';
+        }
+      }
+
+      // Period badge
+      var periodLabels = { weekly: 'Weekly', biweekly: 'Biweekly', semimonthly: 'Semimonthly', monthly: 'Monthly', quarterly: 'Quarterly', annually: 'Annually' };
+      document.getElementById('uspayResultPeriodBadge').textContent = 'Per Paycheck (' + (periodLabels[freq] || 'Biweekly') + ')';
+
+      // Update Chart
+      updateChart(takeHome, fedWithholding, ssTax, medTax + addlMedTax, stateTax + localTax, totalDeductions, grossPay);
+
+    } catch (err) {
+      // safe error resilience
+    }
+  }
+
+  function updateChart(net, fed, ss, med, stateLocal, ded, gross) {
+    var g = gross > 0 ? gross : 1;
+    var chartCenter = document.getElementById('uspayChartCenterPct');
+    if (chartCenter) chartCenter.textContent = ((net / g) * 100).toFixed(1) + '%';
+
+    var items = [
+      { label: 'Take-Home Pay', amt: net, color: '#10b981' },
+      { label: 'Federal Withholding', amt: fed, color: '#2563eb' },
+      { label: 'Social Security (6.2%)', amt: ss, color: '#7c3aed' },
+      { label: 'Medicare (1.45%+)', amt: med, color: '#06b6d4' },
+      { label: 'State & Local', amt: stateLocal, color: '#f59e0b' },
+      { label: 'Deductions', amt: ded, color: '#ec4899' }
+    ].filter(function(i) { return i.amt > 0; });
+
+    var svg = document.getElementById('uspaySvgChart');
+    if (!svg) return;
+    svg.innerHTML = '<circle cx="75" cy="75" r="55" fill="none" stroke="#e2e8f0" stroke-width="22"></circle>';
+
+    var r = 55;
+    var circ = 2 * Math.PI * r;
+    var cumPct = 0;
+
+    for (var j = 0; j < items.length; j++) {
+      var it = items[j];
+      var frac = Math.min(1, it.amt / g);
+      var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', '75');
+      circle.setAttribute('cy', '75');
+      circle.setAttribute('r', r);
+      circle.setAttribute('fill', 'none');
+      circle.setAttribute('stroke', it.color);
+      circle.setAttribute('stroke-width', '22');
+      circle.setAttribute('stroke-dasharray', (frac * circ) + ' ' + circ);
+      circle.setAttribute('stroke-dashoffset', (-cumPct * circ));
+      svg.appendChild(circle);
+      cumPct += frac;
+    }
+
+    var legend = document.getElementById('uspayChartLegend');
+    if (legend) {
+      var html = '';
+      for (var k = 0; k < items.length; k++) {
+        var item = items[k];
+        var pct = ((item.amt / g) * 100).toFixed(1);
+        html += '<div class="uspay-legend-row">' +
+          '<div style="display:flex;align-items:center;gap:6px;">' +
+            '<span style="width:10px;height:10px;border-radius:50%;background:' + item.color + ';display:inline-block;"></span>' +
+            '<span>' + item.label + '</span>' +
+          '</div>' +
+          '<div><strong>' + fmtUSD(item.amt) + '</strong> <span style="color:#94a3b8;font-size:10px;">(' + pct + '%)</span></div>' +
+        '</div>';
+      }
+      legend.innerHTML = html;
+    }
+  }
+
+  // Setup Event Listeners
+  function init() {
+    var salaryTab = document.getElementById('uspayTabSalary');
+    var hourlyTab = document.getElementById('uspayTabHourly');
+    var salarySec = document.getElementById('uspaySalarySection');
+    var hourlySec = document.getElementById('uspayHourlySection');
+
+    if (salaryTab && hourlyTab) {
+      salaryTab.addEventListener('click', function() {
+        currentMode = 'salary';
+        salaryTab.classList.add('uspay-active');
+        hourlyTab.classList.remove('uspay-active');
+        if (salarySec) salarySec.style.display = 'block';
+        if (hourlySec) hourlySec.style.display = 'none';
+        calculate();
+      });
+
+      hourlyTab.addEventListener('click', function() {
+        currentMode = 'hourly';
+        hourlyTab.classList.add('uspay-active');
+        salaryTab.classList.remove('uspay-active');
+        if (salarySec) salarySec.style.display = 'none';
+        if (hourlySec) hourlySec.style.display = 'block';
+        calculate();
+      });
+    }
+
+    // Auto calculate on input
+    var container = document.getElementById('usaPaycheckCalculator');
+    if (container) {
+      container.addEventListener('input', function(e) {
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT')) {
+          calculate();
+        }
+      });
+    }
+
+    var calcBtn = document.getElementById('uspayBtnCalculate');
+    if (calcBtn) calcBtn.addEventListener('click', calculate);
+
+    var loadExBtn = document.getElementById('uspayBtnLoadExample');
+    if (loadExBtn) {
+      loadExBtn.addEventListener('click', function() {
+        if (salaryTab) salaryTab.click();
+        document.getElementById('uspayAnnualSalary').value = 75000;
+        document.getElementById('uspayPayFrequency').value = 'biweekly';
+        document.getElementById('uspayFilingStatus').value = 'single';
+        document.getElementById('uspayW4Step2').checked = false;
+        document.getElementById('uspayW4Credits').value = 0;
+        document.getElementById('uspay401kType').value = 'percent';
+        document.getElementById('uspay401kVal').value = 5.0;
+        document.getElementById('uspayStateVal').value = '0.00';
+        document.getElementById('uspayLocalVal').value = '0.00';
+        calculate();
+      });
+    }
+
+    var resetBtn = document.getElementById('uspayBtnReset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        if (salaryTab) salaryTab.click();
+        document.getElementById('uspayAnnualSalary').value = 0;
+        document.getElementById('uspayBonus').value = 0;
+        document.getElementById('uspayCommission').value = 0;
+        document.getElementById('uspayTips').value = 0;
+        document.getElementById('uspayOtherEarnings').value = 0;
+        document.getElementById('uspayW4Credits').value = 0;
+        document.getElementById('uspayW4OtherIncome').value = 0;
+        document.getElementById('uspayW4Deductions').value = 0;
+        document.getElementById('uspayW4Extra').value = 0;
+        document.getElementById('uspay401kVal').value = 0;
+        document.getElementById('uspayHealth').value = 0;
+        document.getElementById('uspayHsa').value = 0;
+        document.getElementById('uspayFsa').value = 0;
+        document.getElementById('uspayOtherPreTax').value = 0;
+        document.getElementById('uspayRoth').value = 0;
+        document.getElementById('uspayUnion').value = 0;
+        document.getElementById('uspayAfterTaxIns').value = 0;
+        document.getElementById('uspayOtherPostTax').value = 0;
+        document.getElementById('uspayStateVal').value = 0;
+        document.getElementById('uspayLocalVal').value = 0;
+        calculate();
+      });
+    }
+
+    var printBtn = document.getElementById('uspayBtnPrint');
+    if (printBtn) printBtn.addEventListener('click', function() { window.print(); });
+
+    var copyBtn = document.getElementById('uspayBtnCopySummary');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        var summary = '=== U.S. Paycheck Summary (2026) ===\n' +
+          'Take-Home Pay: ' + document.getElementById('uspayTakeHomeDisplay').textContent + '\n' +
+          'Gross Pay: ' + document.getElementById('uspayRowGross').textContent + '\n' +
+          'Total Taxes: ' + document.getElementById('uspayMetricTaxes').textContent + '\n' +
+          'Deductions: ' + document.getElementById('uspayMetricDeductions').textContent + '\n' +
+          'Take-Home Rate: ' + document.getElementById('uspayTakeHomePct').textContent + '\n' +
+          '====================================';
+        try {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(summary);
+            copyBtn.textContent = '✓ Copied!';
+            setTimeout(function() { copyBtn.textContent = '📋 Copy Summary'; }, 2000);
+          }
+        } catch(e) {}
+      });
+    }
+
+    // FAQ Accordions
+    var faqs = document.querySelectorAll('#usaPaycheckCalculator .uspay-faq-q');
+    for (var f = 0; f < faqs.length; f++) {
+      faqs[f].addEventListener('click', function() {
+        var a = this.nextElementSibling;
+        var icon = this.querySelector('span');
+        if (a.style.display === 'none' || !a.style.display) {
+          a.style.display = 'block';
+          if (icon) icon.textContent = '−';
+        } else {
+          a.style.display = 'none';
+          if (icon) icon.textContent = '+';
+        }
+      });
+    }
+
+    // Social share links
+    var pageUrl = encodeURIComponent(window.location.href);
+    var pageTitle = encodeURIComponent('Free US Paycheck Calculator (2026)');
+    var shareFb = document.getElementById('uspayShareFb');
+    if (shareFb) shareFb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+    var shareTw = document.getElementById('uspayShareTw');
+    if (shareTw) shareTw.href = 'https://twitter.com/intent/tweet?text=' + pageTitle + '&url=' + pageUrl;
+    var shareWa = document.getElementById('uspayShareWa');
+    if (shareWa) shareWa.href = 'https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl;
+    var shareLi = document.getElementById('uspayShareLi');
+    if (shareLi) shareLi.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+    var shareRd = document.getElementById('uspayShareRd');
+    if (shareRd) shareRd.href = 'https://reddit.com/submit?url=' + pageUrl + '&title=' + pageTitle;
+    var copyLinkBtn = document.getElementById('uspayShareCopyLink');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', function() {
+        try {
+          navigator.clipboard.writeText(window.location.href);
+          copyLinkBtn.textContent = '✓ Link Copied!';
+          setTimeout(function() { copyLinkBtn.textContent = '🔗 Copy Link'; }, 2000);
+        } catch(e) {}
+      });
+    }
+
+    // Initial calculation run
+    calculate();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
