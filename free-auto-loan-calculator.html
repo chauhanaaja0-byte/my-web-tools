@@ -1,0 +1,2660 @@
+<!-- BLOGGER TITLE: Free Auto Loan Calculator – Estimate Monthly Car Payment -->
+<!-- BLOGGER SEARCH DESCRIPTION: Estimate your monthly car payment with APR, down payment, trade-in, sales tax and fees using this free U.S. auto loan calculator. -->
+<!-- BLOGGER LABELS: Auto Loan Calculator, Car Loan Calculator, Car Payment Calculator, Auto Payment Calculator, Vehicle Loan Calculator, Finance Tools, Car Buying Tools, Loan Calculator, Free Online Tools, Web Tools -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Free Auto Loan Calculator – Estimate Monthly Car Payment",
+      "description": "Estimate your monthly car payment with APR, down payment, trade-in, sales tax and fees using this free U.S. auto loan calculator.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this auto loan calculator completely free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, this auto loan calculator is 100% free with unlimited calculations. There are no subscriptions, no premium paywalls, no trial limits, and no registration or credit card requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a monthly car payment calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Car payments are computed using the standard fixed-rate amortization formula: M = P * [r(1+r)^n] / [(1+r)^n - 1], where M is monthly payment, P is principal amount financed, r is monthly interest rate (APR / 12 / 100), and n is total months. For 0% APR, payment is simply the principal divided by the number of months."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is APR on an auto loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "APR stands for Annual Percentage Rate. It reflects the annual cost of borrowing money, including the base interest rate and any prepaid lender charges. A lower APR means you pay less total interest over the life of your vehicle financing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator include vehicle sales tax?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can enter your specific state and municipal sales tax rate. You can also configure whether sales tax is calculated before or after trade-in credits, and choose whether to roll taxes into the loan or pay them upfront."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I include a down payment in the calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can enter a custom dollar down payment or click convenient presets (0%, 5%, 10%, 15%, 20%, 25%). The calculator automatically synchronizes the dollar value and the corresponding percentage of the vehicle price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I include a vehicle trade-in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Enter your trade-in market value and the amount you currently owe on it. The tool automatically determines your net equity, subtracting positive equity from your purchase price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I owe more on my trade-in than it is worth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Owing more than your vehicle is worth is known as negative equity (being \"underwater\"). The calculator calculates this shortfall and gives you the option to roll that balance into your new loan or cover it upfront with cash."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is negative equity, and how does it affect my new loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Negative equity occurs when your current loan balance exceeds your vehicle’s market value. Rolling negative equity into a new car loan increases the total amount financed, raising your monthly payment and resulting in higher interest charges over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add dealer doc fees and title/registration fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Dedicated fields let you enter dealer documentation fees, government title/registration fees, and other miscellaneous charges. You can choose whether these are financed into the loan balance or paid out of pocket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate a 60-month or 72-month auto loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. One-click term buttons support 24, 36, 48, 60, 72, and 84-month terms, along with a custom term field. The calculator also features a side-by-side comparison table showing how payment and total interest shift across terms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does choosing a longer loan term affect total interest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A longer loan term (like 72 or 84 months) lowers your monthly payment by stretching principal repayment over more time. However, interest accrues for longer, significantly increasing the total amount of interest paid over the life of the loan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate the effect of extra monthly principal payments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Enter an extra monthly amount (such as $50 or $100/mo) or a one-time lump sum payment. The calculator reveals exactly how many months you will shave off your loan and how much interest you will save."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much total interest will I pay on my car loan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Total interest is calculated as your total scheduled monthly payments minus the principal amount financed. This figure is prominently displayed in the summary card and updated whenever inputs change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an auto loan amortization schedule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An amortization schedule is a month-by-month table detailing every payment throughout your loan term. It shows how each installment is split between interest and principal reduction, along with the declining remaining balance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator use live interest rates or an API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator does not connect to external financial APIs or credit bureaus. You enter the APR offered by your lender or an estimated rate for planning, ensuring fast, private, and independent modeling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this calculator guarantee loan approval or rates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This calculator is strictly an educational and planning tool. It does not provide credit approvals, pre-qualifications, or official lender binding quotes. Actual loan terms depend on your credit score, income, lender policies, and dealer negotiations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my financial calculations saved or transmitted anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All calculations are executed locally inside your web browser using vanilla JavaScript. No vehicle prices, trade-in numbers, down payments, or results are sent to our servers, stored in databases, or logged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Amount Financed and Total Vehicle Cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Amount Financed is the net principal borrowed from your lender. Total Vehicle Cost encompasses everything: your upfront cash down payment, out-of-pocket taxes and fees, net trade-in value applied, and all loan payments (principal plus interest)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the impact of cash rebates or manufacturer incentives?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A manufacturer cash rebate acts like a cash discount or down payment, lowering the gross purchase price and reducing the initial amount financed before interest begins accruing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I print or copy my auto loan summary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use the \"Copy Loan Summary\" button to copy clean text results to your clipboard, or click \"Print Auto Loan Summary\" to generate a printer-friendly version formatted specifically for clean paper or PDF output."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at 0% APR financing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At 0% APR, there is zero interest expense. Your monthly payment is simply the exact amount financed divided by the number of months, and total payments equal the amount financed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does sales tax credit work on trade-in vehicles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In many U.S. states, you only pay vehicle sales tax on the net difference between the new car purchase price and your trade-in allowance. Our calculator allows you to select either method (\"Tax Price After Trade-In Credit\" or \"Tax Full Price Before Trade-In\") according to your state laws."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+<style>
+/* Scoped Blogger Styles for USA Auto Loan Calculator */
+#usaAutoLoanCalculator {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#usaAutoLoanCalculator *,
+#usaAutoLoanCalculator *::before,
+#usaAutoLoanCalculator *::after {
+  box-sizing: border-box;
+}
+
+/* Headings & Text */
+#usaAutoLoanCalculator h1,
+#usaAutoLoanCalculator h2,
+#usaAutoLoanCalculator h3,
+#usaAutoLoanCalculator h4 {
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+#usaAutoLoanCalculator p {
+  margin: 0 0 12px 0;
+  color: #475569;
+}
+
+/* Hero Section */
+#usaAutoLoanCalculator .usalc-hero {
+  text-align: center;
+  padding: 24px 16px 20px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+#usaAutoLoanCalculator .usalc-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border: 1px solid #bfdbfe;
+  white-space: nowrap;
+}
+
+#usaAutoLoanCalculator .usalc-hero-title {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+#usaAutoLoanCalculator .usalc-hero-subtitle {
+  font-size: 18px;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+#usaAutoLoanCalculator .usalc-hero-desc {
+  max-width: 720px;
+  margin: 0 auto 16px;
+  font-size: 15px;
+  color: #475569;
+}
+
+#usaAutoLoanCalculator .usalc-trust-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+#usaAutoLoanCalculator .usalc-tag {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+/* Ad Wrappers */
+#usaAutoLoanCalculator .usalc-ad-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 20px auto;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#usaAutoLoanCalculator .usalc-ad-label {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* Main Grid Layout */
+#usaAutoLoanCalculator .usalc-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 860px) {
+  #usaAutoLoanCalculator .usalc-layout-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
+  }
+}
+
+/* Cards */
+#usaAutoLoanCalculator .usalc-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 18px;
+}
+
+#usaAutoLoanCalculator .usalc-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+#usaAutoLoanCalculator .usalc-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Form Controls */
+#usaAutoLoanCalculator .usalc-form-group {
+  margin-bottom: 16px;
+}
+
+#usaAutoLoanCalculator .usalc-form-group:last-child {
+  margin-bottom: 0;
+}
+
+#usaAutoLoanCalculator .usalc-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+#usaAutoLoanCalculator .usalc-label-hint {
+  font-size: 12px;
+  color: #64748b;
+}
+
+#usaAutoLoanCalculator .usalc-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#usaAutoLoanCalculator .usalc-input-affix {
+  position: absolute;
+  left: 12px;
+  color: #64748b;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+#usaAutoLoanCalculator .usalc-input-affix-right {
+  position: absolute;
+  right: 12px;
+  color: #64748b;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+#usaAutoLoanCalculator .usalc-input {
+  width: 100%;
+  height: 44px;
+  padding: 8px 12px;
+  font-size: 15px;
+  color: #0f172a;
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#usaAutoLoanCalculator .usalc-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#usaAutoLoanCalculator .usalc-input.has-prefix {
+  padding-left: 28px;
+}
+
+#usaAutoLoanCalculator .usalc-input.has-suffix {
+  padding-right: 30px;
+}
+
+#usaAutoLoanCalculator .usalc-helper {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+#usaAutoLoanCalculator .usalc-error-text {
+  font-size: 12px;
+  color: #dc2626;
+  margin-top: 4px;
+  display: none;
+}
+
+/* Preset Buttons */
+#usaAutoLoanCalculator .usalc-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+#usaAutoLoanCalculator .usalc-preset-btn {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#usaAutoLoanCalculator .usalc-preset-btn:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+#usaAutoLoanCalculator .usalc-preset-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Term Button Grid */
+#usaAutoLoanCalculator .usalc-term-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 480px) {
+  #usaAutoLoanCalculator .usalc-term-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#usaAutoLoanCalculator .usalc-term-btn {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#usaAutoLoanCalculator .usalc-term-btn:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+#usaAutoLoanCalculator .usalc-term-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Toggle Switch */
+#usaAutoLoanCalculator .usalc-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+#usaAutoLoanCalculator .usalc-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+#usaAutoLoanCalculator .usalc-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#usaAutoLoanCalculator .usalc-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .2s;
+  border-radius: 24px;
+}
+
+#usaAutoLoanCalculator .usalc-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .2s;
+  border-radius: 50%;
+}
+
+#usaAutoLoanCalculator .usalc-switch input:checked + .usalc-slider {
+  background-color: #2563eb;
+}
+
+#usaAutoLoanCalculator .usalc-switch input:checked + .usalc-slider:before {
+  transform: translateX(22px);
+}
+
+/* Equity Badge */
+#usaAutoLoanCalculator .usalc-equity-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-equity-positive {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+#usaAutoLoanCalculator .usalc-equity-negative {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+/* Action Buttons */
+#usaAutoLoanCalculator .usalc-btn-main {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  margin-top: 8px;
+}
+
+#usaAutoLoanCalculator .usalc-btn-main:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+#usaAutoLoanCalculator .usalc-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+#usaAutoLoanCalculator .usalc-btn-secondary {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+#usaAutoLoanCalculator .usalc-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Primary Result Display (Right Column) */
+#usaAutoLoanCalculator .usalc-result-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 18px;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+}
+
+#usaAutoLoanCalculator .usalc-result-hero-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-result-hero-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: #38bdf8;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-result-hero-sub {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+/* Result Metric Grid */
+#usaAutoLoanCalculator .usalc-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#usaAutoLoanCalculator .usalc-metric-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+#usaAutoLoanCalculator .usalc-metric-label {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 3px;
+}
+
+#usaAutoLoanCalculator .usalc-metric-val {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Extra Payment Alert Card */
+#usaAutoLoanCalculator .usalc-extra-card {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+#usaAutoLoanCalculator .usalc-extra-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-extra-desc {
+  font-size: 13px;
+  color: #15803d;
+  margin: 0;
+}
+
+/* Donut Chart */
+#usaAutoLoanCalculator .usalc-chart-box {
+  text-align: center;
+  padding: 12px 0;
+}
+
+#usaAutoLoanCalculator .usalc-chart-svg {
+  width: 140px;
+  height: 140px;
+  transform: rotate(-90deg);
+}
+
+#usaAutoLoanCalculator .usalc-chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+#usaAutoLoanCalculator .usalc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Milestone Timeline */
+#usaAutoLoanCalculator .usalc-milestone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+#usaAutoLoanCalculator .usalc-milestone-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+/* Tables */
+#usaAutoLoanCalculator .usalc-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 12px 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+#usaAutoLoanCalculator table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+#usaAutoLoanCalculator th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid #cbd5e1;
+  white-space: nowrap;
+}
+
+#usaAutoLoanCalculator td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+  white-space: nowrap;
+}
+
+#usaAutoLoanCalculator tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Social Share Bar */
+#usaAutoLoanCalculator .usalc-share-wrap {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  margin: 24px 0;
+}
+
+#usaAutoLoanCalculator .usalc-share-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+#usaAutoLoanCalculator .usalc-share-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+#usaAutoLoanCalculator .usalc-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+#usaAutoLoanCalculator .usalc-share-facebook { background: #1877f2; }
+#usaAutoLoanCalculator .usalc-share-x { background: #000000; }
+#usaAutoLoanCalculator .usalc-share-whatsapp { background: #25d366; }
+#usaAutoLoanCalculator .usalc-share-linkedin { background: #0a66c2; }
+#usaAutoLoanCalculator .usalc-share-reddit { background: #ff4500; }
+#usaAutoLoanCalculator .usalc-share-telegram { background: #0088cc; }
+#usaAutoLoanCalculator .usalc-share-email { background: #475569; }
+#usaAutoLoanCalculator .usalc-share-copy { background: #2563eb; }
+
+/* Features & Education */
+#usaAutoLoanCalculator .usalc-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+#usaAutoLoanCalculator .usalc-feature-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+#usaAutoLoanCalculator .usalc-feature-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+#usaAutoLoanCalculator .usalc-feature-text {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* FAQ Accordion */
+#usaAutoLoanCalculator .usalc-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+#usaAutoLoanCalculator .usalc-faq-btn {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+#usaAutoLoanCalculator .usalc-faq-btn:hover {
+  background: #f8fafc;
+}
+
+#usaAutoLoanCalculator .usalc-faq-ans {
+  padding: 0 16px 14px;
+  font-size: 14px;
+  color: #475569;
+}
+
+/* Privacy & Disclaimer Notice */
+#usaAutoLoanCalculator .usalc-notice-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 13px;
+  color: #475569;
+  margin: 20px 0;
+}
+
+#usaAutoLoanCalculator .usalc-notice-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+/* Notification Toast */
+#usaAutoLoanCalculator .usalc-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 999999;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Print CSS */
+@media print {
+  #usaAutoLoanCalculator .usalc-ad-wrap,
+  #usaAutoLoanCalculator .usalc-share-wrap,
+  #usaAutoLoanCalculator .usalc-btn-main,
+  #usaAutoLoanCalculator .usalc-quick-actions,
+  #usaAutoLoanCalculator .usalc-presets,
+  #usaAutoLoanCalculator .usalc-term-grid {
+    display: none !important;
+  }
+  #usaAutoLoanCalculator {
+    padding: 0 !important;
+  }
+}
+</style>
+
+<div id="usaAutoLoanCalculator">
+  <!-- Toast Notification -->
+  <div id="usalc-toast" class="usalc-toast">Loan Summary Copied to Clipboard!</div>
+
+  <!-- Hero Section -->
+  <div class="usalc-hero">
+    <div class="usalc-badge-pill">
+      <span>🇺🇸</span>
+      <span>Free U.S. Auto Loan & Car Payment Calculator</span>
+    </div>
+    <h1 class="usalc-hero-title">Auto Loan Calculator</h1>
+    <div class="usalc-hero-subtitle">Estimate Your Monthly Car Payment</div>
+    <p class="usalc-hero-desc">
+      Estimate your monthly auto loan payment using the vehicle price, down payment, APR and loan term. Add sales tax, trade-in value, outstanding trade-in balance, rebates and fees for a more complete car financing estimate.
+    </p>
+    <div class="usalc-trust-tags">
+      <span class="usalc-tag">✓ 100% Free</span>
+      <span class="usalc-tag">✓ No Signup</span>
+      <span class="usalc-tag">✓ Monthly Payment Estimate</span>
+      <span class="usalc-tag">✓ Trade-In Support</span>
+      <span class="usalc-tag">✓ Taxes & Fees</span>
+      <span class="usalc-tag">✓ Extra Payment Analysis</span>
+      <span class="usalc-tag">✓ No Loan API</span>
+    </div>
+  </div>
+
+  <!-- 468x60 Top Ad -->
+  <div class="usalc-ad-wrap">
+    <div class="usalc-ad-label">Advertisement</div>
+    <script>
+    atOptions = {
+    'key' : '294198e908506e5d909d0b383f167eaa',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+    };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- Main Calculator Grid -->
+  <div class="usalc-layout-grid">
+    <!-- Left Column: Inputs -->
+    <div class="usalc-col-left">
+      
+      <!-- Primary Loan Parameters Card -->
+      <div class="usalc-card">
+        <div class="usalc-card-header">
+          <h2 class="usalc-card-title">🚗 Vehicle & Financing Details</h2>
+        </div>
+
+        <!-- Vehicle Price -->
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-price">Vehicle Price</label>
+            <span class="usalc-label-hint">Purchase or sticker price</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-price" class="usalc-input has-prefix" value="35000" min="500" step="100" />
+          </div>
+          <div id="usalc-err-price" class="usalc-error-text">Enter a vehicle price greater than $0.</div>
+        </div>
+
+        <!-- Down Payment -->
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-down">Down Payment</label>
+            <span id="usalc-down-percent-label" class="usalc-label-hint">14.29% of price</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-down" class="usalc-input has-prefix" value="5000" min="0" step="100" />
+          </div>
+          <div class="usalc-presets">
+            <button type="button" class="usalc-preset-btn" data-pct="0">0%</button>
+            <button type="button" class="usalc-preset-btn" data-pct="5">5%</button>
+            <button type="button" class="usalc-preset-btn" data-pct="10">10%</button>
+            <button type="button" class="usalc-preset-btn active" data-pct="14.29">15%</button>
+            <button type="button" class="usalc-preset-btn" data-pct="20">20%</button>
+            <button type="button" class="usalc-preset-btn" data-pct="25">25%</button>
+          </div>
+        </div>
+
+        <!-- APR -->
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-apr">Interest Rate (APR)</label>
+            <span class="usalc-label-hint">Annual rate</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <input type="number" id="usalc-input-apr" class="usalc-input has-suffix" value="6.50" min="0" max="30" step="0.05" />
+            <span class="usalc-input-affix-right">%</span>
+          </div>
+          <div class="usalc-helper">Enter the APR offered by your lender or an estimated rate for planning.</div>
+        </div>
+
+        <!-- Loan Term -->
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label">Loan Term</label>
+            <span id="usalc-term-display" class="usalc-label-hint">60 Months (5 Years)</span>
+          </div>
+          <div class="usalc-term-grid">
+            <button type="button" class="usalc-term-btn" data-term="24">24 Mo (2 Yrs)</button>
+            <button type="button" class="usalc-term-btn" data-term="36">36 Mo (3 Yrs)</button>
+            <button type="button" class="usalc-term-btn" data-term="48">48 Mo (4 Yrs)</button>
+            <button type="button" class="usalc-term-btn active" data-term="60">60 Mo (5 Yrs)</button>
+            <button type="button" class="usalc-term-btn" data-term="72">72 Mo (6 Yrs)</button>
+            <button type="button" class="usalc-term-btn" data-term="84">84 Mo (7 Yrs)</button>
+          </div>
+          <div class="usalc-input-wrap" style="margin-top: 6px;">
+            <input type="number" id="usalc-input-custom-term" class="usalc-input has-suffix" placeholder="Or enter custom term" value="60" min="6" max="120" />
+            <span class="usalc-input-affix-right">Months</span>
+          </div>
+        </div>
+
+        <!-- Start Date -->
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-date">Loan Start Date</label>
+            <span class="usalc-label-hint">First scheduled payment date</span>
+          </div>
+          <input type="date" id="usalc-input-date" class="usalc-input" />
+        </div>
+
+      </div>
+
+      <!-- Trade-In Section Card -->
+      <div class="usalc-card">
+        <div class="usalc-card-header">
+          <h2 class="usalc-card-title">🔄 Trade-In & Equity</h2>
+        </div>
+
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-trade-val">Trade-In Market Value</label>
+            <span class="usalc-label-hint">Dealer appraisal value</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-trade-val" class="usalc-input has-prefix" value="0" min="0" step="100" />
+          </div>
+        </div>
+
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-trade-owed">Amount Owed on Trade-In</label>
+            <span class="usalc-label-hint">Remaining loan balance</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-trade-owed" class="usalc-input has-prefix" value="0" min="0" step="100" />
+          </div>
+        </div>
+
+        <div id="usalc-equity-status" style="margin-top: 4px;">
+          <!-- Injected dynamically: Positive or Negative Equity Badge -->
+        </div>
+
+        <div id="usalc-neg-equity-option" class="usalc-toggle-row" style="display: none; border-top: 1px dashed #e2e8f0; margin-top: 12px; padding-top: 12px;">
+          <div>
+            <div class="usalc-label">Roll Trade-In Balance Into New Loan</div>
+            <div class="usalc-helper">Negative equity increases the amount financed.</div>
+          </div>
+          <label class="usalc-switch">
+            <input type="checkbox" id="usalc-toggle-roll-equity" checked />
+            <span class="usalc-slider"></span>
+          </label>
+        </div>
+
+        <!-- Cash Rebate -->
+        <div class="usalc-form-group" style="margin-top: 16px;">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-rebate">Cash Rebate / Manufacturer Incentive</label>
+            <span class="usalc-label-hint">Reduces purchase price</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-rebate" class="usalc-input has-prefix" value="0" min="0" step="50" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Taxes & Fees Card -->
+      <div class="usalc-card">
+        <div class="usalc-card-header">
+          <h2 class="usalc-card-title">📋 Taxes & Documentation Fees</h2>
+        </div>
+
+        <!-- Sales Tax Rate -->
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-tax-rate">Sales Tax Rate</label>
+            <span id="usalc-tax-amount-label" class="usalc-label-hint">Est. Tax: $0.00</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <input type="number" id="usalc-input-tax-rate" class="usalc-input has-suffix" value="7.00" min="0" max="25" step="0.1" />
+            <span class="usalc-input-affix-right">%</span>
+          </div>
+          <div class="usalc-helper">Vehicle sales tax rules vary by state and local jurisdiction. Enter the rate and taxable treatment that apply to your purchase.</div>
+        </div>
+
+        <!-- Tax Treatment Method -->
+        <div class="usalc-form-group">
+          <label class="usalc-label" for="usalc-select-tax-method">Sales Tax Calculation Method</label>
+          <select id="usalc-select-tax-method" class="usalc-input" style="margin-top: 4px;">
+            <option value="after-trade" selected>Tax Price After Trade-In Credit (Standard in most states)</option>
+            <option value="before-trade">Tax Full Vehicle Price Before Trade-In</option>
+          </select>
+        </div>
+
+        <!-- Fees -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div class="usalc-form-group">
+            <label class="usalc-label" for="usalc-input-dealer-fee">Dealer / Doc Fee</label>
+            <div class="usalc-input-wrap">
+              <span class="usalc-input-affix">$</span>
+              <input type="number" id="usalc-input-dealer-fee" class="usalc-input has-prefix" value="500" min="0" step="25" />
+            </div>
+          </div>
+          <div class="usalc-form-group">
+            <label class="usalc-label" for="usalc-input-title-fee">Title & Reg Fees</label>
+            <div class="usalc-input-wrap">
+              <span class="usalc-input-affix">$</span>
+              <input type="number" id="usalc-input-title-fee" class="usalc-input has-prefix" value="250" min="0" step="25" />
+            </div>
+          </div>
+        </div>
+
+        <div class="usalc-form-group">
+          <label class="usalc-label" for="usalc-input-other-fee">Other Financed Fees</label>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-other-fee" class="usalc-input has-prefix" value="0" min="0" step="25" />
+          </div>
+        </div>
+
+        <!-- Finance Taxes Toggle -->
+        <div class="usalc-toggle-row" style="border-top: 1px solid #f1f5f9; margin-top: 8px; padding-top: 12px;">
+          <div>
+            <div class="usalc-label">Finance Taxes & Fees in Loan</div>
+            <div class="usalc-helper">If ON, fees are added to loan. If OFF, paid upfront in cash.</div>
+          </div>
+          <label class="usalc-switch">
+            <input type="checkbox" id="usalc-toggle-finance-tax" checked />
+            <span class="usalc-slider"></span>
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Extra Principal Payments Card -->
+      <div class="usalc-card">
+        <div class="usalc-card-header">
+          <h2 class="usalc-card-title">⚡ Extra Principal Payments (Optional)</h2>
+        </div>
+
+        <div class="usalc-form-group">
+          <div class="usalc-label-row">
+            <label class="usalc-label" for="usalc-input-extra-month">Extra Monthly Payment</label>
+            <span class="usalc-label-hint">Applied directly to principal</span>
+          </div>
+          <div class="usalc-input-wrap">
+            <span class="usalc-input-affix">$</span>
+            <input type="number" id="usalc-input-extra-month" class="usalc-input has-prefix" value="0" min="0" step="25" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 10px;">
+          <div class="usalc-form-group">
+            <label class="usalc-label" for="usalc-input-one-time-amt">One-Time Lump Sum</label>
+            <div class="usalc-input-wrap">
+              <span class="usalc-input-affix">$</span>
+              <input type="number" id="usalc-input-one-time-amt" class="usalc-input has-prefix" value="0" min="0" step="100" />
+            </div>
+          </div>
+          <div class="usalc-form-group">
+            <label class="usalc-label" for="usalc-input-one-time-m">On Month #</label>
+            <input type="number" id="usalc-input-one-time-m" class="usalc-input" value="12" min="1" max="84" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <button type="button" id="usalc-btn-calc" class="usalc-btn-main">CALCULATE CAR PAYMENT</button>
+      <div class="usalc-quick-actions">
+        <button type="button" id="usalc-btn-load-sample" class="usalc-btn-secondary">Load Example</button>
+        <button type="button" id="usalc-btn-reset" class="usalc-btn-secondary">Reset</button>
+        <button type="button" id="usalc-btn-clear" class="usalc-btn-secondary">Clear All</button>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Results & Summaries -->
+    <div class="usalc-col-right">
+      
+      <!-- Primary Hero Result -->
+      <div class="usalc-result-hero">
+        <div class="usalc-result-hero-label">Estimated Monthly Payment</div>
+        <div id="usalc-res-monthly" class="usalc-result-hero-number">$578.42</div>
+        <div id="usalc-res-hero-sub" class="usalc-result-hero-sub">Based on 60 Months @ 6.50% APR</div>
+      </div>
+
+      <!-- Key Financial Metrics Grid -->
+      <div class="usalc-metrics-grid">
+        <div class="usalc-metric-card">
+          <div class="usalc-metric-label">Amount Financed</div>
+          <div id="usalc-res-financed" class="usalc-metric-val">$33,200.00</div>
+        </div>
+        <div class="usalc-metric-card">
+          <div class="usalc-metric-label">Total Loan Interest</div>
+          <div id="usalc-res-interest" class="usalc-metric-val">$5,825.20</div>
+        </div>
+        <div class="usalc-metric-card">
+          <div class="usalc-metric-label">Total Loan Payments</div>
+          <div id="usalc-res-total-payments" class="usalc-metric-val">$39,025.20</div>
+        </div>
+        <div class="usalc-metric-card">
+          <div class="usalc-metric-label">Estimated Upfront Cost</div>
+          <div id="usalc-res-upfront" class="usalc-metric-val">$5,000.00</div>
+        </div>
+        <div class="usalc-metric-card">
+          <div class="usalc-metric-label">Total Vehicle Cost</div>
+          <div id="usalc-res-total-cost" class="usalc-metric-val">$44,025.20</div>
+        </div>
+        <div class="usalc-metric-card">
+          <div class="usalc-metric-label">Estimated Payoff Date</div>
+          <div id="usalc-res-payoff-date" class="usalc-metric-val">Oct 2031</div>
+        </div>
+      </div>
+
+      <!-- Extra Savings Banner (Dynamic) -->
+      <div id="usalc-extra-banner" class="usalc-extra-card" style="display: none;">
+        <div class="usalc-extra-title">
+          <span>🎉</span>
+          <span>Extra Principal Savings Detected</span>
+        </div>
+        <p id="usalc-extra-summary-text" class="usalc-extra-desc">
+          You will save <strong>$0</strong> in interest and pay off your car <strong>0 months earlier</strong>!
+        </p>
+      </div>
+
+      <!-- Principal vs Interest Chart Card -->
+      <div class="usalc-card">
+        <div class="usalc-card-header">
+          <h3 class="usalc-card-title">📊 Principal vs. Interest Breakdown</h3>
+        </div>
+        <div class="usalc-chart-box">
+          <svg class="usalc-chart-svg" viewBox="0 0 36 36">
+            <!-- Background ring -->
+            <path stroke="#e2e8f0" stroke-width="3.8" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <!-- Principal segment (Blue) -->
+            <path id="usalc-svg-principal" stroke="#2563eb" stroke-width="3.8" stroke-dasharray="85, 100" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <!-- Interest segment (Purple) -->
+            <path id="usalc-svg-interest" stroke="#9333ea" stroke-width="3.8" stroke-dasharray="15, 100" stroke-dashoffset="-85" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+          </svg>
+          <div class="usalc-chart-legend">
+            <div class="usalc-legend-item">
+              <span class="usalc-legend-dot" style="background:#2563eb;"></span>
+              <span id="usalc-legend-principal">Principal: 85%</span>
+            </div>
+            <div class="usalc-legend-item">
+              <span class="usalc-legend-dot" style="background:#9333ea;"></span>
+              <span id="usalc-legend-interest">Interest: 15%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone Timeline Card -->
+      <div class="usalc-card">
+        <div class="usalc-card-header">
+          <h3 class="usalc-card-title">⏱️ Loan Balance Milestones</h3>
+        </div>
+        <div id="usalc-milestone-box" class="usalc-milestone-list">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons for Export & Print -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+        <button type="button" id="usalc-btn-copy" class="usalc-btn-secondary" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">📋 Copy Loan Summary</button>
+        <button type="button" id="usalc-btn-print" class="usalc-btn-secondary" style="background:#f8fafc; color:#0f172a;">🖨️ Print Summary</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Loan Term Comparison Section -->
+  <div class="usalc-card">
+    <div class="usalc-card-header">
+      <h2 class="usalc-card-title">🔍 Compare Loan Terms (36 to 84 Months)</h2>
+    </div>
+    <p style="font-size: 13px; color: #64748b; margin-bottom: 10px;">
+      Compare monthly payments and total interest across typical financing durations using your current amount financed and APR. Note that lower monthly payments incur higher overall interest expense.
+    </p>
+    <div class="usalc-table-wrap">
+      <table id="usalc-table-terms">
+        <thead>
+          <tr>
+            <th>Loan Term</th>
+            <th>Monthly Payment</th>
+            <th>Total Interest</th>
+            <th>Total Payments</th>
+          </tr>
+        </thead>
+        <tbody id="usalc-tbody-terms">
+          <!-- Populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- APR Comparison Tool -->
+  <div class="usalc-card">
+    <div class="usalc-card-header">
+      <h2 class="usalc-card-title">📈 Compare Interest Rates (APR Impact)</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+      <div>
+        <label class="usalc-label">Current APR: <span id="usalc-apr-label-curr">6.50%</span></label>
+        <div style="font-size: 14px; color: #334155; margin-top: 4px;">Payment: <strong id="usalc-apr-pay-curr">$578.42</strong></div>
+      </div>
+      <div>
+        <label class="usalc-label" for="usalc-input-alt-apr">Alternative APR</label>
+        <div class="usalc-input-wrap">
+          <input type="number" id="usalc-input-alt-apr" class="usalc-input has-suffix" value="5.50" step="0.1" />
+          <span class="usalc-input-affix-right">%</span>
+        </div>
+      </div>
+    </div>
+    <div id="usalc-apr-diff-box" style="padding: 10px; background: #eff6ff; border-radius: 8px; font-size: 13px; color: #1e40af;">
+      <!-- Populated via JS -->
+    </div>
+  </div>
+
+  <!-- Amortization Schedule Card -->
+  <div class="usalc-card">
+    <div class="usalc-card-header">
+      <h2 class="usalc-card-title">📅 Auto Loan Amortization Schedule</h2>
+      <div>
+        <button type="button" id="usalc-btn-toggle-annual" class="usalc-btn-secondary" style="padding: 4px 10px; margin-right: 4px;">Annual Summary</button>
+        <button type="button" id="usalc-btn-toggle-sched" class="usalc-btn-secondary" style="padding: 4px 10px;">Show Full Schedule</button>
+      </div>
+    </div>
+
+    <!-- Annual Summary Table (Initially Hidden) -->
+    <div id="usalc-annual-box" style="display: none; margin-bottom: 14px;">
+      <h4 style="margin: 6px 0; font-size: 14px; color: #334155;">Annual Repayment Overview</h4>
+      <div class="usalc-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Starting Balance</th>
+              <th>Principal Paid</th>
+              <th>Interest Paid</th>
+              <th>Extra Principal</th>
+              <th>Ending Balance</th>
+            </tr>
+          </thead>
+          <tbody id="usalc-tbody-annual"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Monthly Amortization Table -->
+    <div class="usalc-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Beginning Balance</th>
+            <th>Payment</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Extra</th>
+            <th>Ending Balance</th>
+          </tr>
+        </thead>
+        <tbody id="usalc-tbody-amort">
+          <!-- Initial 12 rows populated via JS -->
+        </tbody>
+      </table>
+    </div>
+    <div id="usalc-amort-note" style="font-size: 12px; color: #64748b; margin-top: 6px; text-align: center;">
+      Showing first 12 monthly payments. Click "Show Full Schedule" to view every month.
+    </div>
+  </div>
+
+  <!-- Native Banner Ad (After Calculator) -->
+  <div class="usalc-ad-wrap">
+    <div class="usalc-ad-label">Advertisement</div>
+    <script async="async" data-cfasync="false" src="https://pl30728025.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- Social Sharing Bar -->
+  <div class="usalc-share-wrap">
+    <div class="usalc-share-title">Share This Free Auto Loan Calculator</div>
+    <div class="usalc-share-grid">
+      <button type="button" class="usalc-share-btn usalc-share-facebook" id="usalc-share-fb">Facebook</button>
+      <button type="button" class="usalc-share-btn usalc-share-x" id="usalc-share-x">X / Twitter</button>
+      <button type="button" class="usalc-share-btn usalc-share-whatsapp" id="usalc-share-wa">WhatsApp</button>
+      <button type="button" class="usalc-share-btn usalc-share-linkedin" id="usalc-share-li">LinkedIn</button>
+      <button type="button" class="usalc-share-btn usalc-share-reddit" id="usalc-share-rd">Reddit</button>
+      <button type="button" class="usalc-share-btn usalc-share-telegram" id="usalc-share-tg">Telegram</button>
+      <button type="button" class="usalc-share-btn usalc-share-email" id="usalc-share-em">Email</button>
+      <button type="button" class="usalc-share-btn usalc-share-copy" id="usalc-share-link">Copy Link</button>
+    </div>
+  </div>
+
+  <!-- Private Browser Notice -->
+  <div class="usalc-notice-box">
+    <div class="usalc-notice-heading">🔒 Private Browser-Based Calculation</div>
+    <p style="margin: 0;">Your auto loan calculations are performed locally in your browser. This calculator does not require your vehicle or loan information to be sent to an external auto-loan calculation API. We do not store your private financial figures in browser cookies, local storage, or server databases.</p>
+  </div>
+
+  <!-- Features Section -->
+  <div style="margin: 30px 0;">
+    <h2 style="font-size: 24px; text-align: center; margin-bottom: 6px;">Why Use Our Free Auto Loan Calculator?</h2>
+    <p style="text-align: center; font-size: 15px; color: #64748b; max-width: 600px; margin: 0 auto 20px;">
+      100% Free • Unlimited Use • No Signup Required
+    </p>
+    <div class="usalc-features-grid">
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">100% Free & Unlimited</div>
+          <p class="usalc-feature-text">No subscription, no paid tier, no trial period, and no calculation limits. Use it freely as often as needed.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">No Signup or Login</div>
+          <p class="usalc-feature-text">Jump straight into your calculations. No account creation, passwords, phone numbers, or credit card forms required.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Monthly Payment Breakdown</div>
+          <p class="usalc-feature-text">Accurately calculates your monthly installment along with principal, interest, taxes, and fees breakdown.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Down Payment Calculator</div>
+          <p class="usalc-feature-text">Easily balance cash amounts and percentages with one-touch quick preset buttons from 0% to 25%.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Trade-In & Equity Support</div>
+          <p class="usalc-feature-text">Account for trade-in allowance and loan payoff to determine your net trade equity toward the purchase.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Negative Equity Rollover</div>
+          <p class="usalc-feature-text">Transparently model rolling an existing loan balance into your new loan with clear warnings and cost tracking.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Sales Tax & Fees Modeling</div>
+          <p class="usalc-feature-text">Customize state and local sales tax rates, documentation fees, and choose whether to finance or pay upfront.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Amortization Schedule</div>
+          <p class="usalc-feature-text">Inspect full month-by-month and annual schedules showing principal, interest, and declining loan balances.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Extra Principal Savings</div>
+          <p class="usalc-feature-text">Discover how extra monthly or one-time lump sum payments shorten your payoff date and save thousands in interest.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Loan Term & APR Comparison</div>
+          <p class="usalc-feature-text">Side-by-side term comparisons (36 to 84 months) and interest rate scenarios to help you find the best loan structure.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Private Browser-Based Engine</div>
+          <p class="usalc-feature-text">All formulas run locally inside your browser. No personal financial data is transmitted to external loan APIs.</p>
+        </div>
+      
+        <div class="usalc-feature-box">
+          <div class="usalc-feature-heading">Mobile-Optimized Layout</div>
+          <p class="usalc-feature-text">Responsive, fluid design tailored for seamless operation on iPhones, iPads, Android devices, and desktops.</p>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- How to Use Section -->
+  <div class="usalc-card">
+    <div class="usalc-card-header">
+      <h2 class="usalc-card-title">📖 How to Use the Auto Loan Calculator</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">1</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Enter Vehicle Price</div>
+            <div style="font-size: 13px; color: #64748b;">Input the negotiated or sticker price of the new or used vehicle.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">2</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Set Your Down Payment</div>
+            <div style="font-size: 13px; color: #64748b;">Type in your cash down payment or select a percentage preset (0% to 25%).</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">3</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Input Lender APR</div>
+            <div style="font-size: 13px; color: #64748b;">Enter the estimated annual percentage rate offered by your bank, credit union, or dealer.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">4</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Select Loan Term</div>
+            <div style="font-size: 13px; color: #64748b;">Choose a term duration from 24 to 84 months, or enter a custom duration.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">5</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Add Trade-In Details</div>
+            <div style="font-size: 13px; color: #64748b;">Enter trade-in value and amount owed to see positive or negative equity.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">6</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Include Sales Tax & Fees</div>
+            <div style="font-size: 13px; color: #64748b;">Add local tax percentage, dealer doc fees, and title fees, selecting whether to finance them.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">7</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Add Extra Payments</div>
+            <div style="font-size: 13px; color: #64748b;">Optionally model additional monthly or one-time principal payments to see interest savings.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">8</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Review Payment Summary</div>
+            <div style="font-size: 13px; color: #64748b;">Instantly inspect monthly payments, total interest, loan amount, and upfront cost.</div>
+          </div>
+        </div>
+      
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="background: #eff6ff; color: #2563eb; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 13px;">9</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 2px;">Explore Schedules & Comparisons</div>
+            <div style="font-size: 13px; color: #64748b;">Review the detailed amortization schedule, term comparisons, and export or print your summary.</div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- 300x250 Banner Ad -->
+  <div class="usalc-ad-wrap">
+    <div class="usalc-ad-label">Advertisement</div>
+    <script>
+    atOptions = {
+    'key' : '224e7394c28834c8ac1ce24682c420e3',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+    };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- Educational In-Depth Guide -->
+  <div style="margin: 36px 0;">
+    <h2 style="font-size: 26px; margin-bottom: 12px; color: #0f172a;">The Complete Guide to U.S. Auto Loans & Car Financing</h2>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">What Is an Auto Loan Calculator?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">An auto loan calculator is an essential personal finance utility designed to give prospective vehicle buyers complete transparency into the true costs of vehicle financing. Whether you are purchasing a brand-new crossover, a certified pre-owned sedan, or a dependable used truck, financing terms involve several moving variables: vehicle purchase price, cash down payment, trade-in equity, lender annual percentage rate (APR), loan duration, local taxes, and documentation fees. By aggregating these factors into a cohesive mathematical model, an auto loan calculator empowers consumers to budget accurately, negotiate effectively, and avoid common dealership financing pitfalls.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">How Is a Car Payment Calculated?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">Auto loans are structured as fixed-rate installment loans that amortize over a predefined schedule. In the United States, lenders calculate monthly car payments using standard amortization math:
+    
+    Formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
+    
+    Where:
+    • M is your monthly installment
+    • P is the principal amount financed
+    • r is the periodic monthly interest rate (APR divided by 12, then divided by 100)
+    • n is the total number of monthly payments (e.g., 60 for a 5-year loan)
+    
+    In the early months of the loan, a larger share of each installment is allocated toward paying accrued interest, because interest is assessed on the remaining principal balance. As you make on-time payments, the principal gradually declines, meaning a progressively larger fraction of each monthly installment goes directly toward principal reduction.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">What Is APR on a Car Loan?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">The Annual Percentage Rate (APR) represents the comprehensive annualized cost of borrowing funds for a vehicle purchase. Unlike a simple nominal interest rate, APR incorporates the interest rate plus any mandatory lender financing charges or origination fees. In the United States, auto loan APRs are heavily influenced by your FICO credit score, the prime rate established by the Federal Reserve, whether the vehicle is new or used, the loan-to-value (LTV) ratio, and the term length. Borrowers with excellent credit (750+) typically secure the lowest promotional APRs, while subprime borrowers face higher rates to offset perceived lender risk.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">How Does a Down Payment Affect a Car Loan?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">A cash down payment is one of the most powerful levers a car buyer has. Providing an upfront down payment achieves three vital financial objectives:
+    1. Reduces the Principal Borrowed: A smaller loan amount immediately lowers both your monthly payment and the cumulative interest paid over the life of the loan.
+    2. Minimizes Depreciation Risk (Gap Protection): New vehicles can lose 15% to 20% of their market value during the first year. A 10% to 20% down payment provides immediate equity, preventing you from becoming "underwater" (owing more on the loan than the vehicle is worth).
+    3. Improves Loan Terms: Lenders view borrowers with substantial down payments as lower risk, which often translates into lower APR offers and reduced dealer markup.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">How Does a Trade-In Affect Financing?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">Trading in your current vehicle allows you to apply its net cash value directly toward your new vehicle purchase. Your net trade-in equity equals the dealer's trade-in allowance minus any balance you still owe on your existing vehicle loan. Positive equity acts exactly like a cash down payment, reducing your amount financed. Furthermore, in many U.S. states, state tax regulations allow a trade-in tax credit: you only pay sales tax on the net difference between the new car's purchase price and the trade-in valuation, potentially saving hundreds of dollars in upfront tax.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">What Is Negative Equity on a Trade-In?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">Negative equity—commonly referred to in the automotive trade as being "upside down" or "underwater"—occurs when your outstanding car loan balance is greater than the trade-in market value of your vehicle. For instance, if you owe $18,000 on your current car but the dealer only offers $14,000, you have $4,000 of negative equity.
+    
+    If you choose to "roll" this negative equity into your new auto loan, the dealer adds that $4,000 balance into the new vehicle financing amount. This increases your monthly payment, results in paying interest on old vehicle debt, and leaves you deeply underwater on your new car from day one. Financial advisors generally recommend paying off negative equity in cash or postponing the purchase until the existing loan is paid down.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">How Does Sales Tax Affect a Car Loan?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">State and local vehicle sales taxes represent one of the largest additional costs in any automotive transaction. Rates across the United States vary from 0% (in states like Delaware, Montana, New Hampshire, and Oregon) to over 9% or 10% in combined state, county, and city districts (such as parts of California, Tennessee, or Washington).
+    
+    Buyers must choose whether to pay sales tax out of pocket at the time of purchase or roll the tax amount into their monthly loan balance. Financing your sales tax avoids a large upfront cash outlay, but it increases the principal borrowed and incurs monthly interest charges over your entire loan duration.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">What Fees Can Affect the Amount Financed?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">Beyond vehicle price and sales tax, several administrative and governmental fees factor into your total out-the-door price:
+    • Dealer Documentation Fee (Doc Fee): Charged by dealerships for processing paperwork, titling, and compliance. Some states cap doc fees by law (e.g., California, Pennsylvania), while other states allow dealers to set their own fees, occasionally exceeding $700–$1,000.
+    • Title and Registration Fees: Mandatory government fees paid to your state Department of Motor Vehicles (DMV) or equivalent agency for license plates, state registration, and vehicle title assignment.
+    • Destination / Delivery Charges: Manufacturer freight charges for transporting the vehicle from the assembly plant to the dealership (standard on all new vehicles).
+    • Optional Dealer Add-ons: Extended warranties, GAP insurance, tire protection, and fabric coatings. When financed into the loan, these add-ons dramatically increase your monthly obligation.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">How Does Loan Term Affect Monthly Payments?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">The loan term—the total duration over which you repay the borrowed funds—creates a direct trade-off between short-term affordability and long-term borrowing costs. Stretching a loan from 48 months to 72 or 84 months reduces your required monthly payment, making a more expensive vehicle fit into a monthly cash flow budget. However, longer terms keep principal outstanding for years longer, meaning you pay substantially more total interest and remain in negative equity territory for a much longer window.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">48-Month vs. 60-Month vs. 72-Month Car Loans</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">Consider a typical $35,000 amount financed at a 6.50% APR:
+    • 48-Month Loan: Monthly payment is approximately $829.74. Total interest paid equals $4,827.52.
+    • 60-Month Loan: Monthly payment drops to $684.85 (saving ~$145/month). However, total interest rises to $6,091.00 (an extra $1,263 in interest).
+    • 72-Month Loan: Monthly payment is $588.63 (saving another ~$96/month). But total interest surges to $7,381.36—over $2,550 more than the 48-month loan.
+    
+    A 60-month term is historically considered the benchmark balance between manageable monthly outlays and controlled interest expenses, while 72- and 84-month terms carry elevated depreciation risks.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">How Extra Car Payments Can Reduce Interest</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">Because auto loans accrue interest based on the daily or monthly unpaid principal balance, making extra principal payments can yield immediate financial benefits. Every dollar allocated directly toward principal reduces the remaining balance upon which future interest is calculated.
+    
+    For example, paying an extra $100 per month on a 60-month, $35,000 loan at 6.5% APR can shorten your loan term by approximately 8 to 9 months and save over $800 in total interest. Similarly, applying a one-time tax refund or work bonus directly toward principal accelerates your payoff date without refinancing fees.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">What Is an Auto Loan Amortization Schedule?</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">An amortization schedule is an itemized, chronological ledger showing every scheduled payment over the lifecycle of your loan. Each row captures the payment date, starting balance, total payment amount, split between interest and principal, any extra principal contributed, and the concluding ending balance. Examining an amortization schedule helps car buyers see the exact "crossover point" where monthly principal reduction overtakes interest charges, as well as their equity standing at critical annual milestones.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">Why Your Actual Car Payment May Be Different</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">This online calculator provides a mathematically precise model based on standard installment loan mechanics. However, actual lender quotes may slightly vary due to several real-world dealership and banking practices:
+    • Odd-Days Interest: The number of days between signing your contract and your first payment due date (often 30 to 45 days) can alter the initial interest charge.
+    • Daily Simple Interest vs. Monthly Compounding: Some auto lenders use a 365-day simple interest method, calculating interest daily rather than strictly monthly.
+    • Dealer Reserves & Rate Markup: Dealers often negotiate an APR marked up 1% to 2% above the wholesale buy rate approved by the bank.
+    • Regional Fee Differences: Local county excise taxes, tire recycling fees, and electronic filing surcharges may alter the final amount financed.</p>
+      </div>
+    
+      <div style="margin-bottom: 24px;">
+        <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 8px;">Tips for Comparing Auto Loan Offers</h3>
+        <p style="font-size: 14.5px; color: #475569; line-height: 1.65; white-space: pre-line;">To secure the most competitive auto loan financing, savvy buyers follow these proven steps:
+    1. Get Pre-Approved Before Visiting Dealerships: Apply for pre-approval at your local credit union or community bank. Having a pre-approved APR and loan limit gives you a solid benchmark that dealerships must compete against.
+    2. Shop Within a 14-Day Credit Window: Credit bureaus treat multiple auto loan inquiries submitted within a short 14- to 45-day window as a single credit inquiry, preserving your credit score.
+    3. Negotiate Out-the-Door Price First: Always finalize the vehicle sale price, trade-in valuation, and fee schedule before discussing monthly payments. Dealers often adjust terms to hit a target monthly payment while quietly increasing overall loan cost.
+    4. Scrutinize the Finance Contract: Before signing, confirm that the APR, loan term, cash down payment, and listed fees match the numbers you calculated here.</p>
+      </div>
+    
+  </div>
+
+  <!-- SEO Mini-Topics -->
+  <div style="margin: 30px 0;">
+    <h3 style="font-size: 20px; margin-bottom: 14px;">Specialized Financing Scenarios</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px;">
+      
+        <div class="usalc-card" style="margin-bottom: 0;">
+          <h4 style="font-size: 15px; color: #0f172a; margin-bottom: 6px;">Auto Loan Calculator With Tax</h4>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">Easily calculate monthly payments including state and local vehicle sales tax. Choose whether to finance sales tax over the loan term or pay it out of pocket at signing.</p>
+        </div>
+      
+        <div class="usalc-card" style="margin-bottom: 0;">
+          <h4 style="font-size: 15px; color: #0f172a; margin-bottom: 6px;">Auto Loan Calculator With Trade-In</h4>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">Determine how your existing vehicle’s market value and remaining loan balance affect your new financing. Easily account for positive trade-in equity or rolled-over negative equity.</p>
+        </div>
+      
+        <div class="usalc-card" style="margin-bottom: 0;">
+          <h4 style="font-size: 15px; color: #0f172a; margin-bottom: 6px;">Auto Loan Calculator With Down Payment</h4>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">Model the impact of upfront cash down payments on monthly installments, interest expenses, and loan-to-value ratios using instant percentage presets from 0% to 25%.</p>
+        </div>
+      
+        <div class="usalc-card" style="margin-bottom: 0;">
+          <h4 style="font-size: 15px; color: #0f172a; margin-bottom: 6px;">60-Month & 72-Month Car Loan Calculator</h4>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">Compare standard 60-month financing against extended 72-month and 84-month terms to understand the trade-off between lower monthly payments and higher overall interest.</p>
+        </div>
+      
+        <div class="usalc-card" style="margin-bottom: 0;">
+          <h4 style="font-size: 15px; color: #0f172a; margin-bottom: 6px;">Auto Loan Calculator With Extra Payments</h4>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">Calculate how paying an additional $50, $100, or lump sum toward your principal shortens your loan payoff date and saves thousands of dollars in interest.</p>
+        </div>
+      
+        <div class="usalc-card" style="margin-bottom: 0;">
+          <h4 style="font-size: 15px; color: #0f172a; margin-bottom: 6px;">New vs. Used Car Financing Calculator</h4>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">Estimate payments for both brand-new vehicles with factory rebates and pre-owned vehicles with competitive credit union rates.</p>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- 20+ Frequently Asked Questions -->
+  <div style="margin: 36px 0;">
+    <h2 style="font-size: 24px; text-align: center; margin-bottom: 6px;">Frequently Asked Questions</h2>
+    <p style="text-align: center; font-size: 14px; color: #64748b; margin-bottom: 20px;">Clear, straightforward answers about vehicle loans, interest rates, and dealership financing.</p>
+    <div id="usalc-faq-container">
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="0">
+            <span>Is this auto loan calculator completely free to use?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-0">
+            Yes, this auto loan calculator is 100% free with unlimited calculations. There are no subscriptions, no premium paywalls, no trial limits, and no registration or credit card requirements.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="1">
+            <span>How is a monthly car payment calculated?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-1">
+            Car payments are computed using the standard fixed-rate amortization formula: M = P * [r(1+r)^n] / [(1+r)^n - 1], where M is monthly payment, P is principal amount financed, r is monthly interest rate (APR / 12 / 100), and n is total months. For 0% APR, payment is simply the principal divided by the number of months.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="2">
+            <span>What is APR on an auto loan?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-2">
+            APR stands for Annual Percentage Rate. It reflects the annual cost of borrowing money, including the base interest rate and any prepaid lender charges. A lower APR means you pay less total interest over the life of your vehicle financing.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="3">
+            <span>Does this calculator include vehicle sales tax?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-3">
+            Yes. You can enter your specific state and municipal sales tax rate. You can also configure whether sales tax is calculated before or after trade-in credits, and choose whether to roll taxes into the loan or pay them upfront.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="4">
+            <span>Can I include a down payment in the calculation?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-4">
+            Yes. You can enter a custom dollar down payment or click convenient presets (0%, 5%, 10%, 15%, 20%, 25%). The calculator automatically synchronizes the dollar value and the corresponding percentage of the vehicle price.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="5">
+            <span>Can I include a vehicle trade-in?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-5">
+            Yes. Enter your trade-in market value and the amount you currently owe on it. The tool automatically determines your net equity, subtracting positive equity from your purchase price.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="6">
+            <span>What happens if I owe more on my trade-in than it is worth?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-6">
+            Owing more than your vehicle is worth is known as negative equity (being "underwater"). The calculator calculates this shortfall and gives you the option to roll that balance into your new loan or cover it upfront with cash.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="7">
+            <span>What is negative equity, and how does it affect my new loan?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-7">
+            Negative equity occurs when your current loan balance exceeds your vehicle’s market value. Rolling negative equity into a new car loan increases the total amount financed, raising your monthly payment and resulting in higher interest charges over time.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="8">
+            <span>Can I add dealer doc fees and title/registration fees?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-8">
+            Yes. Dedicated fields let you enter dealer documentation fees, government title/registration fees, and other miscellaneous charges. You can choose whether these are financed into the loan balance or paid out of pocket.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="9">
+            <span>Can I calculate a 60-month or 72-month auto loan?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-9">
+            Yes. One-click term buttons support 24, 36, 48, 60, 72, and 84-month terms, along with a custom term field. The calculator also features a side-by-side comparison table showing how payment and total interest shift across terms.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="10">
+            <span>How does choosing a longer loan term affect total interest?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-10">
+            A longer loan term (like 72 or 84 months) lowers your monthly payment by stretching principal repayment over more time. However, interest accrues for longer, significantly increasing the total amount of interest paid over the life of the loan.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="11">
+            <span>Can I calculate the effect of extra monthly principal payments?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-11">
+            Yes. Enter an extra monthly amount (such as $50 or $100/mo) or a one-time lump sum payment. The calculator reveals exactly how many months you will shave off your loan and how much interest you will save.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="12">
+            <span>How much total interest will I pay on my car loan?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-12">
+            Total interest is calculated as your total scheduled monthly payments minus the principal amount financed. This figure is prominently displayed in the summary card and updated whenever inputs change.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="13">
+            <span>What is an auto loan amortization schedule?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-13">
+            An amortization schedule is a month-by-month table detailing every payment throughout your loan term. It shows how each installment is split between interest and principal reduction, along with the declining remaining balance.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="14">
+            <span>Does this calculator use live interest rates or an API?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-14">
+            No. This calculator does not connect to external financial APIs or credit bureaus. You enter the APR offered by your lender or an estimated rate for planning, ensuring fast, private, and independent modeling.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="15">
+            <span>Does this calculator guarantee loan approval or rates?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-15">
+            No. This calculator is strictly an educational and planning tool. It does not provide credit approvals, pre-qualifications, or official lender binding quotes. Actual loan terms depend on your credit score, income, lender policies, and dealer negotiations.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="16">
+            <span>Are my financial calculations saved or transmitted anywhere?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-16">
+            No. All calculations are executed locally inside your web browser using vanilla JavaScript. No vehicle prices, trade-in numbers, down payments, or results are sent to our servers, stored in databases, or logged.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="17">
+            <span>What is the difference between Amount Financed and Total Vehicle Cost?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-17">
+            Amount Financed is the net principal borrowed from your lender. Total Vehicle Cost encompasses everything: your upfront cash down payment, out-of-pocket taxes and fees, net trade-in value applied, and all loan payments (principal plus interest).
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="18">
+            <span>What is the impact of cash rebates or manufacturer incentives?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-18">
+            A manufacturer cash rebate acts like a cash discount or down payment, lowering the gross purchase price and reducing the initial amount financed before interest begins accruing.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="19">
+            <span>Can I print or copy my auto loan summary?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-19">
+            Yes. Use the "Copy Loan Summary" button to copy clean text results to your clipboard, or click "Print Auto Loan Summary" to generate a printer-friendly version formatted specifically for clean paper or PDF output.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="20">
+            <span>What happens at 0% APR financing?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-20">
+            At 0% APR, there is zero interest expense. Your monthly payment is simply the exact amount financed divided by the number of months, and total payments equal the amount financed.
+          </div>
+        </div>
+      
+        <div class="usalc-faq-item">
+          <button type="button" class="usalc-faq-btn" data-faq="21">
+            <span>How does sales tax credit work on trade-in vehicles?</span>
+            <span style="font-weight: 700; color: #64748b;">+</span>
+          </button>
+          <div class="usalc-faq-ans" id="usalc-faq-ans-21">
+            In many U.S. states, you only pay vehicle sales tax on the net difference between the new car purchase price and your trade-in allowance. Our calculator allows you to select either method ("Tax Price After Trade-In Credit" or "Tax Full Price Before Trade-In") according to your state laws.
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Financial Disclaimer -->
+  <div class="usalc-notice-box" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+    <div class="usalc-notice-heading" style="color: #92400e;">⚠️ Financial Disclaimer</div>
+    <p style="margin: 0; color: #78350f; font-size: 12.5px; line-height: 1.6;">This auto loan calculator is provided for general educational and planning purposes only. Results are estimates based on the information entered and may not reflect an actual financing offer, monthly payment, APR, taxes, fees, trade-in value, lender requirements or final vehicle cost. Sales tax and fee rules vary by state and local jurisdiction. This calculator does not provide financial, legal, tax, lending or investment advice and does not determine credit eligibility or loan approval. Verify actual financing terms, taxes, fees and payment requirements with your lender, dealer and applicable government agencies before making a financial decision. This tool is not affiliated with or endorsed by the U.S. government.</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Safe isolated scope for Blogger
+  var root = document.getElementById('usaAutoLoanCalculator');
+  if (!root) return;
+
+  // Currency formatter
+  var fmtCurrency = function(val) {
+    if (isNaN(val) || !isFinite(val)) return '$0.00';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(val);
+  };
+
+  // Helper date adder
+  var addMonths = function(dateStr, months) {
+    var d = dateStr ? new Date(dateStr) : new Date();
+    if (isNaN(d.getTime())) d = new Date();
+    d.setMonth(d.getMonth() + months);
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
+
+  // Input elements
+  var elPrice = document.getElementById('usalc-input-price');
+  var elDown = document.getElementById('usalc-input-down');
+  var elDownLabel = document.getElementById('usalc-down-percent-label');
+  var elApr = document.getElementById('usalc-input-apr');
+  var elCustomTerm = document.getElementById('usalc-input-custom-term');
+  var elTermDisplay = document.getElementById('usalc-term-display');
+  var elDate = document.getElementById('usalc-input-date');
+  var elTradeVal = document.getElementById('usalc-input-trade-val');
+  var elTradeOwed = document.getElementById('usalc-input-trade-owed');
+  var elEquityStatus = document.getElementById('usalc-equity-status');
+  var elNegOption = document.getElementById('usalc-neg-equity-option');
+  var elToggleRoll = document.getElementById('usalc-toggle-roll-equity');
+  var elRebate = document.getElementById('usalc-input-rebate');
+  var elTaxRate = document.getElementById('usalc-input-tax-rate');
+  var elTaxMethod = document.getElementById('usalc-select-tax-method');
+  var elTaxLabel = document.getElementById('usalc-tax-amount-label');
+  var elDealerFee = document.getElementById('usalc-input-dealer-fee');
+  var elTitleFee = document.getElementById('usalc-input-title-fee');
+  var elOtherFee = document.getElementById('usalc-input-other-fee');
+  var elToggleTax = document.getElementById('usalc-toggle-finance-tax');
+  var elExtraMonth = document.getElementById('usalc-input-extra-month');
+  var elOneTimeAmt = document.getElementById('usalc-input-one-time-amt');
+  var elOneTimeM = document.getElementById('usalc-input-one-time-m');
+  var elAltApr = document.getElementById('usalc-input-alt-apr');
+
+  // Result elements
+  var elResMonthly = document.getElementById('usalc-res-monthly');
+  var elResHeroSub = document.getElementById('usalc-res-hero-sub');
+  var elResFinanced = document.getElementById('usalc-res-financed');
+  var elResInterest = document.getElementById('usalc-res-interest');
+  var elResTotalPay = document.getElementById('usalc-res-total-payments');
+  var elResUpfront = document.getElementById('usalc-res-upfront');
+  var elResTotalCost = document.getElementById('usalc-res-total-cost');
+  var elResPayoff = document.getElementById('usalc-res-payoff-date');
+  var elExtraBanner = document.getElementById('usalc-extra-banner');
+  var elExtraSummary = document.getElementById('usalc-extra-summary-text');
+  var elMilestones = document.getElementById('usalc-milestone-box');
+  var elTbodyTerms = document.getElementById('usalc-tbody-terms');
+  var elTbodyAmort = document.getElementById('usalc-tbody-amort');
+  var elTbodyAnnual = document.getElementById('usalc-tbody-annual');
+  var elSvgPrincipal = document.getElementById('usalc-svg-principal');
+  var elSvgInterest = document.getElementById('usalc-svg-interest');
+  var elLegendPrincipal = document.getElementById('usalc-legend-principal');
+  var elLegendInterest = document.getElementById('usalc-legend-interest');
+  var elToast = document.getElementById('usalc-toast');
+  var elAprLabelCurr = document.getElementById('usalc-apr-label-curr');
+  var elAprPayCurr = document.getElementById('usalc-apr-pay-curr');
+  var elAprDiffBox = document.getElementById('usalc-apr-diff-box');
+  var elAnnualBox = document.getElementById('usalc-annual-box');
+  var elAmortNote = document.getElementById('usalc-amort-note');
+
+  // Current selected term
+  var currentTerm = 60;
+  var showFullAmort = false;
+
+  // Initialize start date to current month
+  if (elDate && !elDate.value) {
+    var today = new Date();
+    elDate.value = today.toISOString().split('T')[0];
+  }
+
+  // Monthly payment calculation function
+  function calcPayment(p, annualApr, n) {
+    if (p <= 0 || n <= 0) return 0;
+    if (annualApr <= 0) return p / n;
+    var r = annualApr / 100 / 12;
+    var factor = Math.pow(1 + r, n);
+    return p * ((r * factor) / (factor - 1));
+  }
+
+  // Toast notification
+  function showToast(msg) {
+    if (!elToast) return;
+    elToast.innerText = msg;
+    elToast.style.display = 'block';
+    setTimeout(function() {
+      elToast.style.display = 'none';
+    }, 2800);
+  }
+
+  // Core Calculator function
+  function calculate() {
+    var price = parseFloat(elPrice ? elPrice.value : 0) || 0;
+    var down = parseFloat(elDown ? elDown.value : 0) || 0;
+    var apr = parseFloat(elApr ? elApr.value : 0) || 0;
+    var term = currentTerm;
+    if (elCustomTerm && parseInt(elCustomTerm.value, 10)) {
+      term = parseInt(elCustomTerm.value, 10);
+    }
+    term = Math.max(1, term);
+
+    var tradeVal = parseFloat(elTradeVal ? elTradeVal.value : 0) || 0;
+    var tradeOwed = parseFloat(elTradeOwed ? elTradeOwed.value : 0) || 0;
+    var rollEquity = elToggleRoll ? elToggleRoll.checked : true;
+    var rebate = parseFloat(elRebate ? elRebate.value : 0) || 0;
+    var taxRate = parseFloat(elTaxRate ? elTaxRate.value : 0) || 0;
+    var taxMethod = elTaxMethod ? elTaxMethod.value : 'after-trade';
+    var dealerFee = parseFloat(elDealerFee ? elDealerFee.value : 0) || 0;
+    var titleFee = parseFloat(elTitleFee ? elTitleFee.value : 0) || 0;
+    var otherFee = parseFloat(elOtherFee ? elOtherFee.value : 0) || 0;
+    var financeTax = elToggleTax ? elToggleTax.checked : true;
+    var extraMonthly = parseFloat(elExtraMonth ? elExtraMonth.value : 0) || 0;
+    var oneTimeAmt = parseFloat(elOneTimeAmt ? elOneTimeAmt.value : 0) || 0;
+    var oneTimeMonth = parseInt(elOneTimeM ? elOneTimeM.value : 1, 10) || 1;
+    var startDateStr = elDate ? elDate.value : new Date().toISOString().split('T')[0];
+
+    // Down payment percentage update
+    if (elDownLabel && price > 0) {
+      var pct = ((down / price) * 100).toFixed(2);
+      elDownLabel.innerText = pct + '% of price';
+    }
+
+    // Trade-in equity
+    var rawEquity = tradeVal - tradeOwed;
+    var posEquity = rawEquity > 0 ? rawEquity : 0;
+    var negEquity = rawEquity < 0 ? Math.abs(rawEquity) : 0;
+
+    if (elEquityStatus) {
+      if (tradeVal === 0 && tradeOwed === 0) {
+        elEquityStatus.innerHTML = '';
+        if (elNegOption) elNegOption.style.display = 'none';
+      } else if (rawEquity >= 0) {
+        elEquityStatus.innerHTML = '<span class="usalc-equity-badge usalc-equity-positive">Positive Equity: +' + fmtCurrency(posEquity) + '</span>';
+        if (elNegOption) elNegOption.style.display = 'none';
+      } else {
+        elEquityStatus.innerHTML = '<span class="usalc-equity-badge usalc-equity-negative">Negative Equity: -' + fmtCurrency(negEquity) + '</span>';
+        if (elNegOption) elNegOption.style.display = 'flex';
+      }
+    }
+
+    // Tax calculation
+    var taxableBase = price - rebate;
+    if (taxMethod === 'after-trade') {
+      taxableBase = Math.max(0, price - rebate - tradeVal);
+    }
+    taxableBase = Math.max(0, taxableBase);
+    var estTax = taxableBase * (taxRate / 100);
+    if (elTaxLabel) {
+      elTaxLabel.innerText = 'Est. Tax: ' + fmtCurrency(estTax);
+    }
+
+    // Amount Financed
+    var totalFees = dealerFee + titleFee + otherFee;
+    var financed = price - down - posEquity - rebate;
+    if (negEquity > 0 && rollEquity) {
+      financed += negEquity;
+    }
+    if (financeTax) {
+      financed += (estTax + totalFees);
+    }
+    financed = Math.max(0, financed);
+
+    // Standard payments
+    var monthly = calcPayment(financed, apr, term);
+    var stdTotalPayments = monthly * term;
+    var stdTotalInterest = Math.max(0, stdTotalPayments - financed);
+
+    // Upfront cost
+    var upfront = down;
+    if (!financeTax) {
+      upfront += (estTax + totalFees);
+    }
+    if (negEquity > 0 && !rollEquity) {
+      upfront += negEquity;
+    }
+
+    // Amortization loop
+    var currentBal = financed;
+    var r = apr / 100 / 12;
+    var rows = [];
+    var annualMap = {};
+    var totInterestExtra = 0;
+    var totPayExtra = 0;
+    var actualMonths = 0;
+
+    for (var m = 1; m <= term && currentBal > 0.005; m++) {
+      var bBal = currentBal;
+      var intCharge = apr > 0 ? bBal * r : 0;
+      var schPrin = monthly - intCharge;
+      if (schPrin > currentBal) schPrin = currentBal;
+
+      var extra = extraMonthly;
+      if (m === oneTimeMonth) extra += oneTimeAmt;
+      if (schPrin + extra > currentBal) {
+        extra = Math.max(0, currentBal - schPrin);
+      }
+
+      var prinPaid = schPrin;
+      var pmt = schPrin + intCharge;
+      var eBal = Math.max(0, bBal - prinPaid - extra);
+
+      currentBal = eBal;
+      totInterestExtra += intCharge;
+      totPayExtra += (pmt + extra);
+      actualMonths = m;
+
+      var rowDate = addMonths(startDateStr, m - 1);
+      rows.push({
+        num: m,
+        date: rowDate,
+        start: bBal,
+        pmt: pmt + extra,
+        prin: prinPaid,
+        interest: intCharge,
+        extra: extra,
+        end: eBal
+      });
+
+      var y = new Date(startDateStr).getFullYear() + Math.floor((m - 1) / 12);
+      if (!annualMap[y]) {
+        annualMap[y] = { start: bBal, prin: 0, interest: 0, extra: 0, end: eBal };
+      }
+      annualMap[y].prin += prinPaid;
+      annualMap[y].interest += intCharge;
+      annualMap[y].extra += extra;
+      annualMap[y].end = eBal;
+    }
+
+    var hasExtra = (extraMonthly > 0 || oneTimeAmt > 0) && financed > 0;
+    var finalInterest = hasExtra ? totInterestExtra : stdTotalInterest;
+    var finalPayments = hasExtra ? totPayExtra : stdTotalPayments;
+    var totalVehicleCost = upfront + finalPayments + posEquity;
+
+    // Render results
+    if (elResMonthly) elResMonthly.innerText = fmtCurrency(monthly);
+    if (elResHeroSub) elResHeroSub.innerText = 'Based on ' + term + ' Months @ ' + apr.toFixed(2) + '% APR';
+    if (elResFinanced) elResFinanced.innerText = fmtCurrency(financed);
+    if (elResInterest) elResInterest.innerText = fmtCurrency(finalInterest);
+    if (elResTotalPay) elResTotalPay.innerText = fmtCurrency(finalPayments);
+    if (elResUpfront) elResUpfront.innerText = fmtCurrency(upfront);
+    if (elResTotalCost) elResTotalCost.innerText = fmtCurrency(totalVehicleCost);
+    if (elResPayoff) elResPayoff.innerText = addMonths(startDateStr, actualMonths || term);
+
+    // Extra savings banner
+    if (elExtraBanner) {
+      if (hasExtra && actualMonths < term) {
+        var intSaved = Math.max(0, stdTotalInterest - totInterestExtra);
+        var moSaved = Math.max(0, term - actualMonths);
+        elExtraBanner.style.display = 'block';
+        if (elExtraSummary) {
+          elExtraSummary.innerHTML = 'You will save <strong>' + fmtCurrency(intSaved) + '</strong> in interest and pay off your car <strong>' + moSaved + ' months earlier</strong>!';
+        }
+      } else {
+        elExtraBanner.style.display = 'none';
+      }
+    }
+
+    // Update SVG chart
+    if (elSvgPrincipal && elSvgInterest) {
+      var totalCostForChart = financed + finalInterest;
+      var pPct = totalCostForChart > 0 ? (financed / totalCostForChart) * 100 : 100;
+      var iPct = totalCostForChart > 0 ? (finalInterest / totalCostForChart) * 100 : 0;
+      elSvgPrincipal.setAttribute('stroke-dasharray', pPct.toFixed(1) + ', 100');
+      elSvgInterest.setAttribute('stroke-dasharray', iPct.toFixed(1) + ', 100');
+      elSvgInterest.setAttribute('stroke-dashoffset', '-' + pPct.toFixed(1));
+      if (elLegendPrincipal) elLegendPrincipal.innerText = 'Principal: ' + pPct.toFixed(1) + '%';
+      if (elLegendInterest) elLegendInterest.innerText = 'Interest: ' + iPct.toFixed(1) + '%';
+    }
+
+    // Milestones
+    if (elMilestones) {
+      var ms = [12, 24, 36, 48, 60, 72, 84];
+      var msHtml = '';
+      ms.forEach(function(mNum) {
+        if (mNum <= term) {
+          var targetRow = rows.filter(function(r) { return r.num === mNum; })[0];
+          var bal = targetRow ? targetRow.end : (mNum > actualMonths ? 0 : financed);
+          msHtml += '<div class="usalc-milestone-row"><span><strong>' + mNum + ' Months</strong> (' + addMonths(startDateStr, mNum) + ')</span><span>' + fmtCurrency(bal) + '</span></div>';
+        }
+      });
+      elMilestones.innerHTML = msHtml;
+    }
+
+    // Term comparison table
+    if (elTbodyTerms) {
+      var tList = [36, 48, 60, 72, 84];
+      var tHtml = '';
+      tList.forEach(function(tMo) {
+        var tPay = calcPayment(financed, apr, tMo);
+        var tTot = tPay * tMo;
+        var tInt = Math.max(0, tTot - financed);
+        var isCurrent = (tMo === term);
+        var rowStyle = isCurrent ? 'style="background-color: #eff6ff; font-weight: 700;"' : '';
+        tHtml += '<tr ' + rowStyle + '><td>' + tMo + ' Months' + (isCurrent ? ' (Selected)' : '') + '</td><td>' + fmtCurrency(tPay) + '</td><td>' + fmtCurrency(tInt) + '</td><td>' + fmtCurrency(tTot) + '</td></tr>';
+      });
+      elTbodyTerms.innerHTML = tHtml;
+    }
+
+    // APR comparison
+    if (elAprLabelCurr) elAprLabelCurr.innerText = apr.toFixed(2) + '%';
+    if (elAprPayCurr) elAprPayCurr.innerText = fmtCurrency(monthly);
+    if (elAltApr && elAprDiffBox) {
+      var altAprVal = parseFloat(elAltApr.value) || 0;
+      var altPay = calcPayment(financed, altAprVal, term);
+      var altTotInt = Math.max(0, (altPay * term) - financed);
+      var payDiff = monthly - altPay;
+      var intDiff = stdTotalInterest - altTotInt;
+      var diffText = '';
+      if (altAprVal < apr) {
+        diffText = 'Lowering APR to ' + altAprVal.toFixed(2) + '% saves <strong>' + fmtCurrency(payDiff) + '/month</strong> and <strong>' + fmtCurrency(intDiff) + ' total interest</strong> over ' + term + ' months.';
+      } else if (altAprVal > apr) {
+        diffText = 'An APR of ' + altAprVal.toFixed(2) + '% increases payment by <strong>' + fmtCurrency(Math.abs(payDiff)) + '/month</strong> and adds <strong>' + fmtCurrency(Math.abs(intDiff)) + ' in interest</strong>.';
+      } else {
+        diffText = 'Alternative APR matches your current rate exactly.';
+      }
+      elAprDiffBox.innerHTML = diffText;
+    }
+
+    // Amortization Table Render
+    if (elTbodyAmort) {
+      var limit = showFullAmort ? rows.length : Math.min(12, rows.length);
+      var aHtml = '';
+      for (var i = 0; i < limit; i++) {
+        var rItem = rows[i];
+        aHtml += '<tr><td>' + rItem.num + '</td><td>' + rItem.date + '</td><td>' + fmtCurrency(rItem.start) + '</td><td>' + fmtCurrency(rItem.pmt) + '</td><td>' + fmtCurrency(rItem.prin) + '</td><td>' + fmtCurrency(rItem.interest) + '</td><td>' + (rItem.extra > 0 ? fmtCurrency(rItem.extra) : '-') + '</td><td>' + fmtCurrency(rItem.end) + '</td></tr>';
+      }
+      elTbodyAmort.innerHTML = aHtml;
+      if (elAmortNote) {
+        elAmortNote.innerText = showFullAmort ? 'Showing all ' + rows.length + ' monthly payments.' : 'Showing first 12 monthly payments. Click "Show Full Schedule" to view every month.';
+      }
+    }
+
+    // Annual Summary Table Render
+    if (elTbodyAnnual) {
+      var annHtml = '';
+      var years = Object.keys(annualMap);
+      years.forEach(function(yr) {
+        var item = annualMap[yr];
+        annHtml += '<tr><td>' + yr + '</td><td>' + fmtCurrency(item.start) + '</td><td>' + fmtCurrency(item.prin) + '</td><td>' + fmtCurrency(item.interest) + '</td><td>' + fmtCurrency(item.extra) + '</td><td>' + fmtCurrency(item.end) + '</td></tr>';
+      });
+      elTbodyAnnual.innerHTML = annHtml;
+    }
+  }
+
+  // Bind input listeners
+  var inputs = root.querySelectorAll('input, select');
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('input', calculate);
+    inputs[i].addEventListener('change', calculate);
+  }
+
+  // Term button handlers
+  var termBtns = root.querySelectorAll('.usalc-term-btn');
+  termBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      termBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentTerm = parseInt(btn.getAttribute('data-term'), 10);
+      if (elCustomTerm) elCustomTerm.value = currentTerm;
+      if (elTermDisplay) elTermDisplay.innerText = currentTerm + ' Months (' + (currentTerm/12).toFixed(1) + ' Years)';
+      calculate();
+    });
+  });
+
+  if (elCustomTerm) {
+    elCustomTerm.addEventListener('input', function() {
+      var val = parseInt(elCustomTerm.value, 10);
+      if (val && val > 0) {
+        currentTerm = val;
+        termBtns.forEach(function(b) {
+          if (parseInt(b.getAttribute('data-term'), 10) === val) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+        if (elTermDisplay) elTermDisplay.innerText = val + ' Months (' + (val/12).toFixed(1) + ' Years)';
+        calculate();
+      }
+    });
+  }
+
+  // Preset down payment buttons
+  var downPresets = root.querySelectorAll('.usalc-preset-btn');
+  downPresets.forEach(function(pBtn) {
+    pBtn.addEventListener('click', function() {
+      downPresets.forEach(function(b) { b.classList.remove('active'); });
+      pBtn.classList.add('active');
+      var pct = parseFloat(pBtn.getAttribute('data-pct'));
+      var price = parseFloat(elPrice ? elPrice.value : 0) || 0;
+      if (elDown && price > 0) {
+        elDown.value = Math.round(price * (pct / 100));
+        calculate();
+      }
+    });
+  });
+
+  // Calculate button
+  var btnCalc = document.getElementById('usalc-btn-calc');
+  if (btnCalc) btnCalc.addEventListener('click', calculate);
+
+  // Load Example
+  var btnExample = document.getElementById('usalc-btn-load-sample');
+  if (btnExample) {
+    btnExample.addEventListener('click', function() {
+      if (elPrice) elPrice.value = 35000;
+      if (elDown) elDown.value = 5000;
+      if (elApr) elApr.value = 6.50;
+      if (elTradeVal) elTradeVal.value = 0;
+      if (elTradeOwed) elTradeOwed.value = 0;
+      if (elRebate) elRebate.value = 0;
+      if (elTaxRate) elTaxRate.value = 7.00;
+      if (elDealerFee) elDealerFee.value = 500;
+      if (elTitleFee) elTitleFee.value = 250;
+      if (elOtherFee) elOtherFee.value = 0;
+      if (elExtraMonth) elExtraMonth.value = 0;
+      if (elOneTimeAmt) elOneTimeAmt.value = 0;
+      currentTerm = 60;
+      if (elCustomTerm) elCustomTerm.value = 60;
+      termBtns.forEach(function(b) {
+        if (b.getAttribute('data-term') === '60') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      calculate();
+      showToast('Sample Auto Loan Loaded!');
+    });
+  }
+
+  // Reset
+  var btnReset = document.getElementById('usalc-btn-reset');
+  if (btnReset) {
+    btnReset.addEventListener('click', function() {
+      if (btnExample) btnExample.click();
+    });
+  }
+
+  // Clear All
+  var btnClear = document.getElementById('usalc-btn-clear');
+  if (btnClear) {
+    btnClear.addEventListener('click', function() {
+      if (elTradeVal) elTradeVal.value = 0;
+      if (elTradeOwed) elTradeOwed.value = 0;
+      if (elRebate) elRebate.value = 0;
+      if (elTaxRate) elTaxRate.value = 0;
+      if (elDealerFee) elDealerFee.value = 0;
+      if (elTitleFee) elTitleFee.value = 0;
+      if (elOtherFee) elOtherFee.value = 0;
+      if (elExtraMonth) elExtraMonth.value = 0;
+      if (elOneTimeAmt) elOneTimeAmt.value = 0;
+      calculate();
+      showToast('Optional values cleared.');
+    });
+  }
+
+  // Copy Loan Summary
+  var btnCopy = document.getElementById('usalc-btn-copy');
+  if (btnCopy) {
+    btnCopy.addEventListener('click', function() {
+      var summary = [
+        '=== U.S. Auto Loan Summary ===',
+        'Vehicle Price: ' + fmtCurrency(parseFloat(elPrice.value) || 0),
+        'Down Payment: ' + fmtCurrency(parseFloat(elDown.value) || 0),
+        'Interest Rate (APR): ' + (parseFloat(elApr.value) || 0).toFixed(2) + '%',
+        'Loan Term: ' + currentTerm + ' Months',
+        'Amount Financed: ' + (elResFinanced ? elResFinanced.innerText : '$0.00'),
+        'Estimated Monthly Payment: ' + (elResMonthly ? elResMonthly.innerText : '$0.00'),
+        'Total Loan Interest: ' + (elResInterest ? elResInterest.innerText : '$0.00'),
+        'Total Loan Payments: ' + (elResTotalPay ? elResTotalPay.innerText : '$0.00'),
+        'Total Vehicle Cost: ' + (elResTotalCost ? elResTotalCost.innerText : '$0.00'),
+        'Upfront Cost: ' + (elResUpfront ? elResUpfront.innerText : '$0.00'),
+        'Payoff Date: ' + (elResPayoff ? elResPayoff.innerText : 'N/A'),
+        'Calculated Free at: ' + window.location.href
+      ].join('\n');
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(summary).then(function() {
+          showToast('Loan Summary Copied to Clipboard!');
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = summary;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Loan Summary Copied!');
+      }
+    });
+  }
+
+  // Print Summary
+  var btnPrint = document.getElementById('usalc-btn-print');
+  if (btnPrint) {
+    btnPrint.addEventListener('click', function() {
+      window.print();
+    });
+  }
+
+  // Toggle Amortization Schedule (Full vs 12)
+  var btnToggleSched = document.getElementById('usalc-btn-toggle-sched');
+  if (btnToggleSched) {
+    btnToggleSched.addEventListener('click', function() {
+      showFullAmort = !showFullAmort;
+      btnToggleSched.innerText = showFullAmort ? 'Hide Schedule' : 'Show Full Schedule';
+      calculate();
+    });
+  }
+
+  // Toggle Annual Summary
+  var btnToggleAnnual = document.getElementById('usalc-btn-toggle-annual');
+  if (btnToggleAnnual && elAnnualBox) {
+    btnToggleAnnual.addEventListener('click', function() {
+      var isHidden = elAnnualBox.style.display === 'none';
+      elAnnualBox.style.display = isHidden ? 'block' : 'none';
+      btnToggleAnnual.innerText = isHidden ? 'Hide Annual' : 'Annual Summary';
+    });
+  }
+
+  // FAQ Accordion
+  var faqBtns = root.querySelectorAll('.usalc-faq-btn');
+  faqBtns.forEach(function(fBtn) {
+    fBtn.addEventListener('click', function() {
+      var idx = fBtn.getAttribute('data-faq');
+      var ans = document.getElementById('usalc-faq-ans-' + idx);
+      if (ans) {
+        var isExpanded = ans.style.display !== 'none';
+        ans.style.display = isExpanded ? 'none' : 'block';
+        fBtn.querySelector('span:last-child').innerText = isExpanded ? '+' : '−';
+      }
+    });
+  });
+
+  // Social Sharing
+  var pageUrl = encodeURIComponent(window.location.href);
+  var pageTitle = encodeURIComponent(document.title || 'Free Auto Loan Calculator – Estimate Monthly Car Payment');
+
+  function openShare(url) {
+    window.open(url, '_blank', 'noopener,noreferrer,width=600,height=480');
+  }
+
+  var btnFb = document.getElementById('usalc-share-fb');
+  if (btnFb) btnFb.addEventListener('click', function() { openShare('https://www.facebook.com/sharer/sharer.php?u=' + pageUrl); });
+
+  var btnX = document.getElementById('usalc-share-x');
+  if (btnX) btnX.addEventListener('click', function() { openShare('https://twitter.com/intent/tweet?url=' + pageUrl + '&text=' + pageTitle); });
+
+  var btnWa = document.getElementById('usalc-share-wa');
+  if (btnWa) btnWa.addEventListener('click', function() { openShare('https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl); });
+
+  var btnLi = document.getElementById('usalc-share-li');
+  if (btnLi) btnLi.addEventListener('click', function() { openShare('https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl); });
+
+  var btnRd = document.getElementById('usalc-share-rd');
+  if (btnRd) btnRd.addEventListener('click', function() { openShare('https://reddit.com/submit?url=' + pageUrl + '&title=' + pageTitle); });
+
+  var btnTg = document.getElementById('usalc-share-tg');
+  if (btnTg) btnTg.addEventListener('click', function() { openShare('https://t.me/share/url?url=' + pageUrl + '&text=' + pageTitle); });
+
+  var btnEm = document.getElementById('usalc-share-em');
+  if (btnEm) btnEm.addEventListener('click', function() {
+    window.location.href = 'mailto:?subject=' + pageTitle + '&body=Check%20out%20this%20free%20auto%20loan%20calculator:%20' + pageUrl;
+  });
+
+  var btnLink = document.getElementById('usalc-share-link');
+  if (btnLink) {
+    btnLink.addEventListener('click', function() {
+      if (navigator.share) {
+        navigator.share({ title: document.title, url: window.location.href }).catch(function() {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+          showToast('Page link copied to clipboard!');
+        });
+      }
+    });
+  }
+
+  // Initial Calculation
+  calculate();
+})();
+</script>
