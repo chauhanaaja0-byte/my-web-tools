@@ -1,0 +1,2166 @@
+<!--
+BLOGGER TITLE:
+Free Credit Card Payoff Calculator – Estimate Payoff Time & Interest
+
+BLOGGER SEARCH DESCRIPTION:
+Estimate credit card payoff time, total interest, payoff date and extra-payment savings with this free U.S. credit card payoff calculator.
+
+BLOGGER LABELS:
+Credit Card Payoff Calculator, Credit Card Calculator, Credit Card Interest Calculator, Credit Card Payment Calculator, Debt Payoff Calculator, Debt Calculator, Finance Tools, Debt Tools, Money Tools, Free Online Tools
+
+BLOGGER PERMALINK:
+free-credit-card-payoff-calculator
+
+GITHUB FILE NAME:
+free-credit-card-payoff-calculator.html
+-->
+
+<style>
+/* SCOPED BLOGGER SAFE FINTECH STYLES - PURE WHITE BACKGROUND */
+#ccpBloggerSafeApp,
+#ccpBloggerSafeApp * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#ccpBloggerSafeApp {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    background-color: #ffffff;
+    color: #1e293b;
+    line-height: 1.5;
+    padding: 16px;
+    margin: 0 auto;
+}
+
+/* Typography & Colors */
+#ccpBloggerSafeApp h1,
+#ccpBloggerSafeApp h2,
+#ccpBloggerSafeApp h3,
+#ccpBloggerSafeApp h4 {
+    color: #0f172a;
+    font-weight: 700;
+    margin-top: 0;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+#ccpBloggerSafeApp p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #475569;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Hero Section */
+#ccpBloggerSafeApp .ccpbs-hero {
+    text-align: center;
+    padding: 24px 16px 20px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+#ccpBloggerSafeApp .ccpbs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid #bfdbfe;
+    margin-bottom: 12px;
+    white-space: normal;
+    text-align: center;
+}
+
+#ccpBloggerSafeApp .ccpbs-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+#ccpBloggerSafeApp .ccpbs-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #2563eb;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+#ccpBloggerSafeApp .ccpbs-desc {
+    max-width: 680px;
+    margin: 0 auto 16px;
+    font-size: 15px;
+    color: #64748b;
+}
+
+#ccpBloggerSafeApp .ccpbs-trust-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+#ccpBloggerSafeApp .ccpbs-chip {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #f1f5f9;
+    color: #334155;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+/* Card Containers */
+#ccpBloggerSafeApp .ccpbs-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    min-width: 0;
+}
+
+/* Tabs */
+#ccpBloggerSafeApp .ccpbs-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+}
+
+#ccpBloggerSafeApp .ccpbs-tab-btn {
+    flex: 1 1 auto;
+    min-width: 130px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    color: #475569;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 1.3;
+    transition: all 0.2s ease;
+}
+
+#ccpBloggerSafeApp .ccpbs-tab-btn.ccpbs-active {
+    background-color: #1d4ed8;
+    color: #ffffff;
+    border-color: #1d4ed8;
+    box-shadow: 0 2px 4px rgba(29, 78, 216, 0.25);
+}
+
+/* Form Inputs */
+#ccpBloggerSafeApp .ccpbs-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+#ccpBloggerSafeApp .ccpbs-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#ccpBloggerSafeApp .ccpbs-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#ccpBloggerSafeApp .ccpbs-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#ccpBloggerSafeApp .ccpbs-prefix,
+#ccpBloggerSafeApp .ccpbs-suffix {
+    position: absolute;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+#ccpBloggerSafeApp .ccpbs-prefix { left: 12px; }
+#ccpBloggerSafeApp .ccpbs-suffix { right: 12px; }
+
+#ccpBloggerSafeApp input[type="number"],
+#ccpBloggerSafeApp input[type="text"],
+#ccpBloggerSafeApp input[type="month"],
+#ccpBloggerSafeApp select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 46px;
+    padding: 10px 14px;
+    font-size: 16px;
+    color: #0f172a;
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ccpBloggerSafeApp input.ccpbs-has-prefix { padding-left: 30px; }
+#ccpBloggerSafeApp input.ccpbs-has-suffix { padding-right: 32px; }
+
+#ccpBloggerSafeApp input:focus,
+#ccpBloggerSafeApp select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Button & Action Rules */
+#ccpBloggerSafeApp .ccpbs-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+#ccpBloggerSafeApp .ccpbs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 18px;
+    min-height: 48px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    flex: 1 1 auto;
+    min-width: 0;
+    box-sizing: border-box;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#ccpBloggerSafeApp .ccpbs-btn:active {
+    transform: scale(0.99);
+}
+
+#ccpBloggerSafeApp .ccpbs-btn-primary {
+    background-color: #1d4ed8;
+    color: #ffffff;
+    border-color: #1d4ed8;
+}
+#ccpBloggerSafeApp .ccpbs-btn-primary:hover {
+    background-color: #1e40af;
+}
+
+#ccpBloggerSafeApp .ccpbs-btn-secondary {
+    background-color: #f1f5f9;
+    color: #334155;
+    border-color: #cbd5e1;
+}
+#ccpBloggerSafeApp .ccpbs-btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+#ccpBloggerSafeApp .ccpbs-btn-emerald {
+    background-color: #059669;
+    color: #ffffff;
+    border-color: #059669;
+}
+#ccpBloggerSafeApp .ccpbs-btn-emerald:hover {
+    background-color: #047857;
+}
+
+#ccpBloggerSafeApp .ccpbs-btn-outline {
+    background-color: #ffffff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+#ccpBloggerSafeApp .ccpbs-btn-outline:hover {
+    background-color: #eff6ff;
+}
+
+/* Warnings */
+#ccpBloggerSafeApp .ccpbs-alert {
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 16px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    overflow-wrap: anywhere;
+}
+#ccpBloggerSafeApp .ccpbs-alert-danger {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+#ccpBloggerSafeApp .ccpbs-alert-info {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+}
+
+/* Primary Results Grid */
+#ccpBloggerSafeApp .ccpbs-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 14px;
+    margin-top: 16px;
+}
+
+#ccpBloggerSafeApp .ccpbs-result-card {
+    background-color: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+#ccpBloggerSafeApp .ccpbs-result-card.ccpbs-highlight {
+    border-color: #2563eb;
+    background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+}
+
+#ccpBloggerSafeApp .ccpbs-res-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+}
+
+#ccpBloggerSafeApp .ccpbs-res-val {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+#ccpBloggerSafeApp .ccpbs-res-sub {
+    font-size: 13px;
+    color: #059669;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+/* Extra Payment Savings Banner */
+#ccpBloggerSafeApp .ccpbs-savings-banner {
+    background-color: #ecfdf5;
+    border: 1.5px solid #a7f3d0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+#ccpBloggerSafeApp .ccpbs-savings-text {
+    flex: 1 1 240px;
+    min-width: 0;
+}
+
+#ccpBloggerSafeApp .ccpbs-savings-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 4px;
+}
+
+#ccpBloggerSafeApp .ccpbs-savings-stat {
+    font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+    font-weight: 800;
+    color: #047857;
+}
+
+/* Milestones & Breakdown */
+#ccpBloggerSafeApp .ccpbs-milestones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+    gap: 10px;
+    margin-top: 16px;
+}
+
+#ccpBloggerSafeApp .ccpbs-milestone-item {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+#ccpBloggerSafeApp .ccpbs-ms-pct {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+#ccpBloggerSafeApp .ccpbs-ms-date {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 2px;
+}
+
+/* Chart */
+#ccpBloggerSafeApp .ccpbs-chart-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+#ccpBloggerSafeApp .ccpbs-chart-canvas {
+    width: 100%;
+    max-width: 100%;
+    height: 240px;
+    display: block;
+}
+
+/* Native Details Accordions */
+#ccpBloggerSafeApp details {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+#ccpBloggerSafeApp summary {
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    cursor: pointer;
+    background-color: #f8fafc;
+    border-bottom: 1px solid transparent;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#ccpBloggerSafeApp summary::-webkit-details-marker {
+    display: none;
+}
+
+#ccpBloggerSafeApp summary::after {
+    content: "▼";
+    font-size: 12px;
+    color: #64748b;
+    transition: transform 0.2s ease;
+}
+
+#ccpBloggerSafeApp details[open] summary {
+    border-bottom-color: #e2e8f0;
+    background-color: #f1f5f9;
+}
+
+#ccpBloggerSafeApp details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+#ccpBloggerSafeApp .ccpbs-details-content {
+    padding: 20px;
+    overflow-wrap: anywhere;
+}
+
+/* Tables */
+#ccpBloggerSafeApp .ccpbs-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+#ccpBloggerSafeApp table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: right;
+}
+
+#ccpBloggerSafeApp th {
+    background-color: #f8fafc;
+    color: #334155;
+    font-weight: 700;
+    padding: 10px 12px;
+    border-bottom: 1px solid #cbd5e1;
+    white-space: nowrap;
+}
+
+#ccpBloggerSafeApp td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+}
+
+#ccpBloggerSafeApp tr:nth-child(even) td {
+    background-color: #fbfcfe;
+}
+
+#ccpBloggerSafeApp td:first-child,
+#ccpBloggerSafeApp th:first-child {
+    text-align: left;
+}
+
+/* Feature Grid */
+#ccpBloggerSafeApp .ccpbs-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+#ccpBloggerSafeApp .ccpbs-feat-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+#ccpBloggerSafeApp .ccpbs-feat-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+#ccpBloggerSafeApp .ccpbs-feat-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+/* Social Share */
+#ccpBloggerSafeApp .ccpbs-social-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+#ccpBloggerSafeApp .ccpbs-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    flex: 1 1 auto;
+    min-width: 110px;
+}
+
+#ccpBloggerSafeApp .ccpbs-social-fb { background-color: #1877f2; }
+#ccpBloggerSafeApp .ccpbs-social-tw { background-color: #000000; }
+#ccpBloggerSafeApp .ccpbs-social-wa { background-color: #25d366; }
+#ccpBloggerSafeApp .ccpbs-social-li { background-color: #0a66c2; }
+#ccpBloggerSafeApp .ccpbs-social-rd { background-color: #ff4500; }
+#ccpBloggerSafeApp .ccpbs-social-tg { background-color: #229ed9; }
+#ccpBloggerSafeApp .ccpbs-social-em { background-color: #475569; }
+
+/* Ads Wrapper */
+#ccpBloggerSafeApp .ccpbs-ad-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: center;
+    margin: 24px auto;
+    box-sizing: border-box;
+}
+
+#ccpBloggerSafeApp .ccpbs-ad-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+
+/* Print CSS */
+@media print {
+    #ccpBloggerSafeApp .ccpbs-ad-wrap,
+    #ccpBloggerSafeApp .ccpbs-social-wrap,
+    #ccpBloggerSafeApp .ccpbs-btn-group,
+    #ccpBloggerSafeApp .ccpbs-tabs,
+    #ccpBloggerSafeApp summary::after {
+        display: none !important;
+    }
+    #ccpBloggerSafeApp details {
+        border: none !important;
+    }
+    #ccpBloggerSafeApp details .ccpbs-details-content {
+        display: block !important;
+    }
+}
+</style>
+
+<div id="ccpBloggerSafeApp">
+
+    <!-- HERO SECTION -->
+    <div class="ccpbs-hero" id="ccpbs-hero">
+        <div class="ccpbs-badge">
+            <span>🇺🇸</span> Free U.S. Credit Card Payoff &amp; Interest Calculator
+        </div>
+        <h1 class="ccpbs-title">Credit Card Payoff Calculator</h1>
+        <div class="ccpbs-subtitle">Estimate Your Payoff Time, Interest &amp; Extra Payment Savings</div>
+        <p class="ccpbs-desc">
+            Enter your credit card balance, APR and monthly payment to estimate how long it may take to pay off your balance, how much interest you may pay, and how extra payments could affect your payoff plan.
+        </p>
+        <div class="ccpbs-trust-chips">
+            <span class="ccpbs-chip">✓ 100% Free</span>
+            <span class="ccpbs-chip">✓ No Signup</span>
+            <span class="ccpbs-chip">✓ No Bank Connection</span>
+            <span class="ccpbs-chip">✓ Extra Payment Analysis</span>
+            <span class="ccpbs-chip">✓ Payoff Date Estimate</span>
+            <span class="ccpbs-chip">✓ Private Browser Calculation</span>
+        </div>
+        <div style="font-size: 12px; color: #059669; font-weight: 700; margin-top: 12px;">
+            100% Free • Unlimited Use • No Signup
+        </div>
+    </div>
+
+    <!-- AD 1: 468x60 TOP BANNER -->
+    <div class="ccpbs-ad-wrap" id="ccpbs-ad-top">
+        <span class="ccpbs-ad-label">Advertisement</span>
+        <script>
+        atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+        };
+        </script>
+        <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+
+    <!-- MAIN CALCULATOR CARD -->
+    <div class="ccpbs-card" id="ccpbs-main-calc">
+        
+        <!-- Calculator Mode Tabs -->
+        <div class="ccpbs-tabs" id="ccpbs-mode-tabs">
+            <button type="button" class="ccpbs-tab-btn ccpbs-active" id="ccpbs-tab-mode1">1. How Long to Pay It Off?</button>
+            <button type="button" class="ccpbs-tab-btn" id="ccpbs-tab-mode2">2. How Much Should I Pay?</button>
+            <button type="button" class="ccpbs-tab-btn" id="ccpbs-tab-mode3">3. Extra Payment Savings</button>
+        </div>
+
+        <!-- Primary Form Inputs -->
+        <div class="ccpbs-form-grid">
+            <div class="ccpbs-field">
+                <label class="ccpbs-label" for="ccpbs-balance">Credit Card Balance</label>
+                <div class="ccpbs-input-wrap">
+                    <span class="ccpbs-prefix">$</span>
+                    <input type="number" id="ccpbs-balance" class="ccpbs-has-prefix" value="8500" min="0" step="10" placeholder="8,500">
+                </div>
+            </div>
+
+            <div class="ccpbs-field">
+                <label class="ccpbs-label" for="ccpbs-apr">Annual APR</label>
+                <div class="ccpbs-input-wrap">
+                    <input type="number" id="ccpbs-apr" class="ccpbs-has-suffix" value="24.99" min="0" max="100" step="0.01" placeholder="24.99">
+                    <span class="ccpbs-suffix">%</span>
+                </div>
+            </div>
+
+            <!-- Standard Monthly Payment (Active in Mode 1 & 3) -->
+            <div class="ccpbs-field" id="ccpbs-field-payment">
+                <label class="ccpbs-label" for="ccpbs-payment">Monthly Payment</label>
+                <div class="ccpbs-input-wrap">
+                    <span class="ccpbs-prefix">$</span>
+                    <input type="number" id="ccpbs-payment" class="ccpbs-has-prefix" value="300" min="0" step="5" placeholder="300">
+                </div>
+            </div>
+
+            <!-- Target Payoff Months (Active in Mode 2) -->
+            <div class="ccpbs-field" id="ccpbs-field-target-months" style="display: none;">
+                <label class="ccpbs-label" for="ccpbs-target-months">Target Payoff Timeline</label>
+                <div class="ccpbs-input-wrap">
+                    <input type="number" id="ccpbs-target-months" class="ccpbs-has-suffix" value="24" min="1" max="360" step="1" placeholder="24">
+                    <span class="ccpbs-suffix">Mos</span>
+                </div>
+            </div>
+
+            <div class="ccpbs-field" id="ccpbs-field-extra-payment">
+                <label class="ccpbs-label" for="ccpbs-extra-payment">Extra Monthly Payment</label>
+                <div class="ccpbs-input-wrap">
+                    <span class="ccpbs-prefix">$</span>
+                    <input type="number" id="ccpbs-extra-payment" class="ccpbs-has-prefix" value="50" min="0" step="5" placeholder="50">
+                </div>
+            </div>
+
+            <div class="ccpbs-field">
+                <label class="ccpbs-label" for="ccpbs-start-date">First Payment Month</label>
+                <div class="ccpbs-input-wrap">
+                    <input type="month" id="ccpbs-start-date">
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="ccpbs-btn-group">
+            <button type="button" class="ccpbs-btn ccpbs-btn-primary" id="ccpbs-btn-calc">Calculate Payoff</button>
+            <button type="button" class="ccpbs-btn ccpbs-btn-secondary" id="ccpbs-btn-example">Load Example</button>
+            <button type="button" class="ccpbs-btn ccpbs-btn-secondary" id="ccpbs-btn-reset">Reset Calculator</button>
+            <button type="button" class="ccpbs-btn ccpbs-btn-secondary" id="ccpbs-btn-clear">Clear All</button>
+        </div>
+
+        <!-- Payment Too Low Alert -->
+        <div id="ccpbs-payment-alert" class="ccpbs-alert ccpbs-alert-danger" style="display: none;">
+            ⚠️ Under these assumptions, your payment may not be enough to reduce the balance. Please increase your monthly payment to exceed the monthly finance charges.
+        </div>
+
+        <!-- Primary Results Display -->
+        <div id="ccpbs-primary-results">
+            <h3 style="margin-top: 24px; margin-bottom: 8px; font-size: 18px;">Estimated Payoff Summary</h3>
+            <div class="ccpbs-results-grid">
+                <div class="ccpbs-result-card ccpbs-highlight">
+                    <div class="ccpbs-res-label">Estimated Payoff Time</div>
+                    <div class="ccpbs-res-val" id="ccpbs-payoff-time">2 Yrs 11 Mos</div>
+                    <div class="ccpbs-res-sub" id="ccpbs-payoff-months-badge">35 Total Months</div>
+                </div>
+                <div class="ccpbs-result-card">
+                    <div class="ccpbs-res-label">Estimated Payoff Date</div>
+                    <div class="ccpbs-res-val" id="ccpbs-payoff-date">August 2029</div>
+                    <div class="ccpbs-res-sub" style="color: #64748b;">Zero Balance Date</div>
+                </div>
+                <div class="ccpbs-result-card">
+                    <div class="ccpbs-res-label">Estimated Total Interest</div>
+                    <div class="ccpbs-res-val" style="color: #dc2626;" id="ccpbs-total-interest">$3,412.50</div>
+                    <div class="ccpbs-res-sub" style="color: #64748b;" id="ccpbs-interest-ratio">28.6% of Total Paid</div>
+                </div>
+                <div class="ccpbs-result-card">
+                    <div class="ccpbs-res-label">Estimated Total Paid</div>
+                    <div class="ccpbs-res-val" id="ccpbs-total-paid">$11,912.50</div>
+                    <div class="ccpbs-res-sub" style="color: #64748b;" id="ccpbs-principal-paid">Principal: $8,500.00</div>
+                </div>
+            </div>
+
+            <!-- Extra Payment Savings Callout -->
+            <div class="ccpbs-savings-banner" id="ccpbs-savings-banner">
+                <div class="ccpbs-savings-text">
+                    <div class="ccpbs-savings-title">💰 Extra Payment Impact (+$50/mo)</div>
+                    <p style="margin: 0; font-size: 14px; color: #064e3b;">
+                        By adding an extra monthly payment, you accelerate principal reduction and minimize issuer interest accrual.
+                    </p>
+                </div>
+                <div>
+                    <div class="ccpbs-savings-stat" id="ccpbs-savings-interest">$1,142.10 Saved</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #047857;" id="ccpbs-savings-months">14 Months Faster</div>
+                </div>
+            </div>
+
+            <!-- First Payment Breakdown & Milestones -->
+            <div style="margin-top: 20px;">
+                <div style="font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 8px;">First Monthly Payment Allocation</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="flex: 1 1 180px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                        <span style="font-size: 12px; color: #64748b;">Interest in 1st Payment:</span>
+                        <div style="font-size: 16px; font-weight: 700; color: #dc2626;" id="ccpbs-first-interest">$177.01</div>
+                    </div>
+                    <div style="flex: 1 1 180px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                        <span style="font-size: 12px; color: #64748b;">Principal in 1st Payment:</span>
+                        <div style="font-size: 16px; font-weight: 700; color: #059669;" id="ccpbs-first-principal">$172.99</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestones -->
+            <div style="margin-top: 20px;">
+                <div style="font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 6px;">Payoff Milestones</div>
+                <div class="ccpbs-milestones">
+                    <div class="ccpbs-milestone-item">
+                        <div class="ccpbs-ms-pct">25% Paid Off</div>
+                        <div class="ccpbs-ms-date" id="ccpbs-ms-25">Month 10</div>
+                    </div>
+                    <div class="ccpbs-milestone-item">
+                        <div class="ccpbs-ms-pct">50% Paid Off</div>
+                        <div class="ccpbs-ms-date" id="ccpbs-ms-50">Month 19</div>
+                    </div>
+                    <div class="ccpbs-milestone-item">
+                        <div class="ccpbs-ms-pct">75% Paid Off</div>
+                        <div class="ccpbs-ms-date" id="ccpbs-ms-75">Month 27</div>
+                    </div>
+                    <div class="ccpbs-milestone-item">
+                        <div class="ccpbs-ms-pct">100% Debt-Free</div>
+                        <div class="ccpbs-ms-date" id="ccpbs-ms-100">Month 35</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Balance-Over-Time Visual Chart -->
+            <div class="ccpbs-chart-wrap">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div style="font-size: 14px; font-weight: 700; color: #0f172a;">Balance Over Time: Scheduled vs. Extra Payment</div>
+                    <div style="display: flex; gap: 12px; font-size: 12px;">
+                        <span style="color: #64748b;">● Scheduled Payment</span>
+                        <span style="color: #059669; font-weight: 600;">● With Extra Payment</span>
+                    </div>
+                </div>
+                <canvas id="ccpbs-balance-chart" class="ccpbs-chart-canvas" width="600" height="240"></canvas>
+            </div>
+
+            <!-- Payment Comparison Matrix -->
+            <div style="margin-top: 24px;">
+                <div style="font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">Extra Payment Comparison Scenarios</div>
+                <div class="ccpbs-table-wrap">
+                    <table id="ccpbs-comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Monthly Payment</th>
+                                <th>Payoff Time</th>
+                                <th>Total Interest</th>
+                                <th>Interest Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ccpbs-comparison-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Export & Print Actions -->
+            <div class="ccpbs-btn-group" style="margin-top: 20px;">
+                <button type="button" class="ccpbs-btn ccpbs-btn-outline" id="ccpbs-btn-copy">📋 Copy Payoff Summary</button>
+                <button type="button" class="ccpbs-btn ccpbs-btn-outline" id="ccpbs-btn-dl-txt">📄 Download Summary (.TXT)</button>
+                <button type="button" class="ccpbs-btn ccpbs-btn-outline" id="ccpbs-btn-dl-csv">📊 Download Schedule (.CSV)</button>
+                <button type="button" class="ccpbs-btn ccpbs-btn-outline" id="ccpbs-btn-print">🖨️ Print Payoff Plan</button>
+            </div>
+            <div id="ccpbs-copy-msg" style="display: none; font-size: 13px; color: #059669; font-weight: 600; text-align: center; margin-top: 6px;">
+                ✓ Payoff Summary copied to clipboard!
+            </div>
+        </div>
+    </div>
+
+    <!-- ADVANCED SETTINGS ACCORDION -->
+    <details id="ccpbs-adv-details">
+        <summary>Advanced Payoff Settings (Promotional APR, Fees &amp; Lump Sums)</summary>
+        <div class="ccpbs-details-content">
+            <p style="font-size: 14px; color: #64748b; margin-bottom: 16px;">
+                Customize exact credit card compounding parameters, promotional rate cliffs, one-time bonuses, or ongoing fees.
+            </p>
+            <div class="ccpbs-form-grid">
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-promo-apr">Intro / Promo APR</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-promo-apr" class="ccpbs-has-suffix" min="0" step="0.01" placeholder="0.00">
+                        <span class="ccpbs-suffix">%</span>
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-promo-months">Promo Duration (Months)</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-promo-months" class="ccpbs-has-suffix" min="0" max="60" placeholder="12">
+                        <span class="ccpbs-suffix">Mos</span>
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-post-promo-apr">APR After Promo Ends</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-post-promo-apr" class="ccpbs-has-suffix" min="0" max="100" step="0.01" placeholder="24.99">
+                        <span class="ccpbs-suffix">%</span>
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-new-charges">New Monthly Charges</label>
+                    <div class="ccpbs-input-wrap">
+                        <span class="ccpbs-prefix">$</span>
+                        <input type="number" id="ccpbs-new-charges" class="ccpbs-has-prefix" value="0" min="0" step="10" placeholder="0">
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-monthly-fees">Recurring Monthly Fees</label>
+                    <div class="ccpbs-input-wrap">
+                        <span class="ccpbs-prefix">$</span>
+                        <input type="number" id="ccpbs-monthly-fees" class="ccpbs-has-prefix" value="0" min="0" step="1" placeholder="0">
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-onetime-extra">One-Time Lump Sum Extra</label>
+                    <div class="ccpbs-input-wrap">
+                        <span class="ccpbs-prefix">$</span>
+                        <input type="number" id="ccpbs-onetime-extra" class="ccpbs-has-prefix" value="0" min="0" step="50" placeholder="0">
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-onetime-month">Apply Lump Sum at Month #</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-onetime-month" value="1" min="1" max="120" placeholder="1">
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-annual-extra">Annual Extra Payment</label>
+                    <div class="ccpbs-input-wrap">
+                        <span class="ccpbs-prefix">$</span>
+                        <input type="number" id="ccpbs-annual-extra" class="ccpbs-has-prefix" value="0" min="0" step="50" placeholder="0">
+                    </div>
+                </div>
+            </div>
+            <div class="ccpbs-alert ccpbs-alert-info">
+                ℹ️ <strong>Deferred Interest Notice:</strong> A 0% promotional APR and a deferred-interest offer are not always the same. Review your cardholder agreement for actual promotional terms.
+            </div>
+        </div>
+    </details>
+
+    <!-- PAYOFF SCHEDULE ACCORDION -->
+    <details id="ccpbs-schedule-details">
+        <summary>Credit Card Payoff Schedule &amp; Amortization</summary>
+        <div class="ccpbs-details-content">
+            <p style="font-size: 14px; color: #64748b;">
+                Detailed month-by-month accounting of beginning balances, interest accrued, principal reduced, and remaining debt.
+            </p>
+            
+            <!-- Amortization Table -->
+            <div class="ccpbs-table-wrap">
+                <table id="ccpbs-schedule-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Beginning</th>
+                            <th>Interest</th>
+                            <th>Fees</th>
+                            <th>Payment</th>
+                            <th>Extra</th>
+                            <th>Principal</th>
+                            <th>Ending</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ccpbs-schedule-tbody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center; margin-top: 12px;">
+                <button type="button" class="ccpbs-btn ccpbs-btn-secondary" id="ccpbs-btn-toggle-schedule" style="max-width: 280px;">Show Full Schedule</button>
+            </div>
+
+            <!-- Yearly Amortization Summary -->
+            <h4 style="margin-top: 24px; margin-bottom: 8px;">Year-by-Year Payoff Summary</h4>
+            <div class="ccpbs-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Starting Balance</th>
+                            <th>Total Payments</th>
+                            <th>Total Interest</th>
+                            <th>Total Principal</th>
+                            <th>Ending Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ccpbs-yearly-tbody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </details>
+
+    <!-- BALANCE TRANSFER COMPARISON ACCORDION -->
+    <details id="ccpbs-bt-details">
+        <summary>Balance Transfer Comparison Scenario</summary>
+        <div class="ccpbs-details-content">
+            <p style="font-size: 14px; color: #64748b;">
+                Evaluate moving your current credit card debt to a 0% or low-interest promotional balance transfer card.
+            </p>
+            <div class="ccpbs-form-grid">
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-bt-fee">Transfer Fee (%)</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-bt-fee" class="ccpbs-has-suffix" value="3.0" min="0" max="10" step="0.5">
+                        <span class="ccpbs-suffix">%</span>
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-bt-intro-apr">Intro APR</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-bt-intro-apr" class="ccpbs-has-suffix" value="0.0" min="0" max="25" step="0.1">
+                        <span class="ccpbs-suffix">%</span>
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-bt-months">Intro Duration</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-bt-months" class="ccpbs-has-suffix" value="15" min="1" max="36" step="1">
+                        <span class="ccpbs-suffix">Mos</span>
+                    </div>
+                </div>
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-bt-post-apr">Post-Intro APR</label>
+                    <div class="ccpbs-input-wrap">
+                        <input type="number" id="ccpbs-bt-post-apr" class="ccpbs-has-suffix" value="24.99" min="0" max="50" step="0.01">
+                        <span class="ccpbs-suffix">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ccpbs-btn-group">
+                <button type="button" class="ccpbs-btn ccpbs-btn-emerald" id="ccpbs-btn-bt-compare">Compare Balance Transfer</button>
+            </div>
+            <div id="ccpbs-bt-results" style="margin-top: 16px; display: none;">
+                <div class="ccpbs-results-grid">
+                    <div class="ccpbs-result-card">
+                        <div class="ccpbs-res-label">Upfront Transfer Fee</div>
+                        <div class="ccpbs-res-val" id="ccpbs-bt-res-fee">$255.00</div>
+                    </div>
+                    <div class="ccpbs-result-card ccpbs-highlight">
+                        <div class="ccpbs-res-label">Estimated Net Savings</div>
+                        <div class="ccpbs-res-val" style="color: #059669;" id="ccpbs-bt-res-savings">$1,280.40</div>
+                    </div>
+                    <div class="ccpbs-result-card">
+                        <div class="ccpbs-res-label">Time Saved</div>
+                        <div class="ccpbs-res-val" id="ccpbs-bt-res-time">7 Months</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- MULTIPLE CREDIT CARDS PLANNER ACCORDION -->
+    <details id="ccpbs-multi-details">
+        <summary>Multiple Credit Card Payoff Planner (Avalanche vs. Snowball)</summary>
+        <div class="ccpbs-details-content">
+            <p style="font-size: 14px; color: #64748b;">
+                Simulate up to 8 credit cards simultaneously. Never enter actual card numbers, PINs, or confidential credentials.
+            </p>
+            <div id="ccpbs-cards-container">
+                <!-- Dynamically generated or default cards -->
+            </div>
+            <div class="ccpbs-form-grid" style="margin-top: 14px;">
+                <div class="ccpbs-field">
+                    <label class="ccpbs-label" for="ccpbs-multi-extra">Monthly Extra Debt Payoff Budget</label>
+                    <div class="ccpbs-input-wrap">
+                        <span class="ccpbs-prefix">$</span>
+                        <input type="number" id="ccpbs-multi-extra" class="ccpbs-has-prefix" value="150" min="0" step="25">
+                    </div>
+                </div>
+            </div>
+            <div class="ccpbs-btn-group">
+                <button type="button" class="ccpbs-btn ccpbs-btn-secondary" id="ccpbs-btn-add-card">+ Add Another Card</button>
+                <button type="button" class="ccpbs-btn ccpbs-btn-primary" id="ccpbs-btn-multi-sim">Compare Debt Strategies</button>
+            </div>
+            <div id="ccpbs-multi-results" style="margin-top: 18px; display: none;">
+                <div class="ccpbs-results-grid">
+                    <div class="ccpbs-result-card">
+                        <div class="ccpbs-res-label">Debt Avalanche (Highest APR First)</div>
+                        <div class="ccpbs-res-val" style="font-size: 1.3rem;" id="ccpbs-avalanche-time">2 Yrs 4 Mos</div>
+                        <div class="ccpbs-res-sub" id="ccpbs-avalanche-interest">Interest: $2,840.12</div>
+                    </div>
+                    <div class="ccpbs-result-card">
+                        <div class="ccpbs-res-label">Debt Snowball (Lowest Balance First)</div>
+                        <div class="ccpbs-res-val" style="font-size: 1.3rem;" id="ccpbs-snowball-time">2 Yrs 6 Mos</div>
+                        <div class="ccpbs-res-sub" id="ccpbs-snowball-interest">Interest: $3,105.80</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- AD 2: NATIVE BANNER -->
+    <div class="ccpbs-ad-wrap" id="ccpbs-ad-native">
+        <span class="ccpbs-ad-label">Advertisement</span>
+        <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+        <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+
+    <!-- FEATURES GRID SECTION -->
+    <div class="ccpbs-card" id="ccpbs-features">
+        <h2 style="font-size: 22px; margin-bottom: 6px;">Key Calculator Capabilities</h2>
+        <p style="font-size: 14px; color: #64748b; margin-bottom: 18px;">
+            Engineered specifically for U.S. cardholders to plan, optimize, and execute an accelerated debt-elimination plan.
+        </p>
+        <div class="ccpbs-feature-grid">
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">⏱️</div>
+                <div class="ccpbs-feat-title">Payoff Time Estimate</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Calculate the exact months and years required to achieve a zero balance.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">📅</div>
+                <div class="ccpbs-feat-title">Payoff Date Estimate</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Pinpoint the calendar month and year your card will be fully paid off.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">📉</div>
+                <div class="ccpbs-feat-title">Interest Estimate</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Transparently project total finance charges across the life of your debt.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">⚡</div>
+                <div class="ccpbs-feat-title">Extra Payment Savings</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">See how putting an extra $25, $50, or $100 per month slashes interest.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">🎯</div>
+                <div class="ccpbs-feat-title">Target Payoff Planning</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Determine the exact monthly payment needed to finish by a desired deadline.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">🎁</div>
+                <div class="ccpbs-feat-title">Promotional APR Support</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Accurately model 0% introductory offers with post-promo rate adjustments.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">📊</div>
+                <div class="ccpbs-feat-title">Payoff Schedule</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Inspect full amortization schedules with principal and interest breakdowns.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">🔄</div>
+                <div class="ccpbs-feat-title">Balance Transfer Analysis</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Compare upfront 3% to 5% transfer fees against long-term interest savings.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">🏔️</div>
+                <div class="ccpbs-feat-title">Debt Avalanche &amp; Snowball</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">Compare mathematically optimal vs. psychologically motivating multi-card payoff.</p>
+            </div>
+            <div class="ccpbs-feat-card">
+                <div class="ccpbs-feat-icon">🔒</div>
+                <div class="ccpbs-feat-title">Private Browser Execution</div>
+                <p style="font-size: 13px; color: #64748b; margin: 0;">100% private. Computations run locally without storing or sending personal data.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <div class="ccpbs-card" id="ccpbs-how-to-use">
+        <h2 style="font-size: 22px; margin-bottom: 8px;">How to Use the Credit Card Payoff Calculator</h2>
+        <ol style="margin-top: 10px; margin-bottom: 0; padding-left: 20px; color: #334155; line-height: 1.8; font-size: 15px;">
+            <li><strong>Enter your current credit card balance:</strong> Locate the current balance on your recent monthly statement or mobile banking app.</li>
+            <li><strong>Enter your APR:</strong> Input your current Annual Percentage Rate (found in the Interest Charges section of your statement).</li>
+            <li><strong>Enter your monthly payment:</strong> Input what you plan to pay each month, ensuring it exceeds your minimum payment.</li>
+            <li><strong>Add an optional extra monthly payment:</strong> Test how small additional contributions accelerate your debt elimination.</li>
+            <li><strong>Select Calculate Payoff:</strong> Review your primary payoff summary, zero-balance date, and total estimated finance charges.</li>
+            <li><strong>Review your estimated payoff time, date and interest:</strong> Compare alternative payment scenarios in the comparison matrix.</li>
+            <li><strong>Explore advanced payoff options if needed:</strong> Model promotional 0% offers, balance transfers, or multi-card debt strategies.</li>
+        </ol>
+    </div>
+
+    <!-- EDUCATIONAL SEO ARTICLES -->
+    <div class="ccpbs-card" id="ccpbs-educational">
+        <h2 style="font-size: 24px; margin-bottom: 16px;">Comprehensive Guide to Credit Card Debt &amp; Repayment</h2>
+
+        <h3>What Is a Credit Card Payoff Calculator?</h3>
+        <p>
+            A credit card payoff calculator is a specialized financial utility designed to project the exact timeframe and total finance charges required to eliminate revolving credit card debt. Because credit cards are open-ended revolving credit lines, your monthly minimum payment fluctuates constantly as your balance decreases. This calculator models fixed monthly payments, helping you understand how consistent contributions systematically conquer compounding interest.
+        </p>
+
+        <h3>How Credit Card APR Works</h3>
+        <p>
+            Your Annual Percentage Rate (APR) represents the annualized interest rate charged on unpaid credit card balances. Most major U.S. credit card issuers calculate interest using your Daily Periodic Rate (DPR), which equals your APR divided by 365. This rate is applied to your Average Daily Balance across the days in your billing cycle. If you carry a balance from month to month, interest accrues continuously without a grace period.
+        </p>
+
+        <h3>How Long Does It Take to Pay Off a Credit Card?</h3>
+        <p>
+            Repayment duration depends directly on your payment amount relative to your balance and APR. Making fixed payments well above the issuer's required minimum ensures that a growing percentage of each payment attacks the principal balance. Conversely, paying only the minimum required payment can stretch repayment across 10 to 25 years because minimum formulas decrease in tandem with your balance.
+        </p>
+
+        <h3>How Extra Payments Affect Credit Card Debt</h3>
+        <p>
+            Because interest charges are calculated directly against your outstanding principal balance, every additional dollar paid above the scheduled monthly obligation immediately reduces the principal. A smaller principal in Month 1 leads to lower interest in Month 2, which allows more of Month 2's payment to reduce principal. This virtuous compounding cycle can save thousands of dollars and shave years off your payoff timeline.
+        </p>
+
+        <h3>How to Pay Off a Credit Card by a Target Date</h3>
+        <p>
+            If you need to become debt-free before a major financial milestone—such as purchasing a home, starting a family, or retiring—you can calculate backward from your desired date. By dividing your amortization term into a specific number of months, you can establish an exact fixed monthly target payment to reach a zero balance on time.
+        </p>
+
+        <h3>Why Minimum Payments Can Extend Payoff Time</h3>
+        <p>
+            Under the federal Credit Card Accountability Responsibility and Disclosure (CARD) Act of 2009, issuers must display a Minimum Payment Warning on every billing statement. Minimum payments are typically set at just 1% to 2% of the principal plus monthly interest and fees. As your balance drops, your minimum payment drops, keeping you indebted for decades while maximizing interest revenue for the card issuer.
+        </p>
+
+        <h3>How Credit Card Interest Is Estimated</h3>
+        <p>
+            Standard financial modeling calculates monthly credit card interest using the periodic monthly formula: Monthly Interest = Current Balance × (APR / 12 / 100). While individual issuers may use average daily balances with transaction-specific posting dates, this periodic benchmark delivers close accuracy for strategic financial planning.
+        </p>
+
+        <h3>What Is a Promotional APR?</h3>
+        <p>
+            A promotional APR is a temporary introductory rate (often 0% APR) offered to attract new borrowers or incentivize balance transfers. During the promotional window (typically 12 to 21 months), finance charges are waived or substantially reduced. Once the promotional period concludes, any remaining unpaid balance automatically resets to the standard ongoing APR.
+        </p>
+
+        <h3>0% APR vs. Deferred Interest</h3>
+        <p>
+            Borrowers must distinguish between a genuine 0% promotional APR and deferred interest agreements commonly found on retail and store financing cards. With a true 0% APR, interest only accrues on balances remaining after the promotion ends. With deferred interest, failing to pay the balance in full by the deadline triggers retroactive interest charges on the entire purchase amount dating back to day one.
+        </p>
+
+        <h3>How New Purchases Affect Payoff Time</h3>
+        <p>
+            Adding new purchases while attempting to eliminate existing revolving debt stalls repayment progress. Revolving an existing balance forfeits your interest-free grace period, meaning new transactions begin accumulating interest the day they post. For maximum debt elimination velocity, consumers should avoid using the card for new purchases while executing a payoff plan.
+        </p>
+
+        <h3>What Is a Balance Transfer?</h3>
+        <p>
+            A balance transfer involves transferring debt from an existing high-APR credit card to a new card offering a lower introductory rate. Issuers charge a one-time balance transfer fee—typically 3% to 5% of the transferred balance. If the interest saved during the 0% intro period exceeds the upfront fee, a balance transfer can be a powerful tool to accelerate debt freedom.
+        </p>
+
+        <h3>Debt Avalanche vs. Debt Snowball</h3>
+        <p>
+            When tackling debt across multiple credit cards, two proven repayment strategies exist:
+        </p>
+        <ul style="color: #475569; font-size: 15px; line-height: 1.7; padding-left: 20px;">
+            <li><strong>Debt Avalanche:</strong> Prioritize paying extra toward the credit card with the highest APR first while making minimum payments on the rest. This method is mathematically optimal, minimizing total interest paid.</li>
+            <li><strong>Debt Snowball:</strong> Prioritize paying off the card with the smallest balance first regardless of interest rate. Eliminating small debts quickly generates psychological momentum and behavioral commitment.</li>
+        </ul>
+
+        <h3>Why Your Actual Credit Card Interest May Differ</h3>
+        <p>
+            Online calculators provide educational mathematical projections. Actual statement interest may vary slightly due to daily balance fluctuations, leap years, varying monthly calendar days (28 to 31 days), variable prime rate adjustments, and account-specific transaction timing rules. Always consult your monthly statement for your issuer's verified figures.
+        </p>
+    </div>
+
+    <!-- AD 3: 300x250 RECTANGLE BANNER -->
+    <div class="ccpbs-ad-wrap" id="ccpbs-ad-mid">
+        <span class="ccpbs-ad-label">Advertisement</span>
+        <script>
+        atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+        };
+        </script>
+        <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+
+    <!-- FAQ SECTION (22 ITEMS) -->
+    <div class="ccpbs-card" id="ccpbs-faq">
+        <h2 style="font-size: 22px; margin-bottom: 12px;">Frequently Asked Questions</h2>
+        <div id="ccpbs-faq-container">
+            <!-- Rendered in raw HTML for instant visibility -->
+            <details>
+                <summary>Is this credit card payoff calculator free?</summary>
+                <div class="ccpbs-details-content"><p>Yes, this Credit Card Payoff Calculator is 100% free with unlimited calculations. There are no signups, subscriptions, watermarks, paywalls, or hidden fees.</p></div>
+            </details>
+            <details>
+                <summary>How long will it take to pay off my credit card?</summary>
+                <div class="ccpbs-details-content"><p>Your estimated payoff time depends directly on your current balance, your Annual Percentage Rate (APR), and how much you pay each month above your minimum interest charges. By paying more than the minimum, you reduce the principal faster and shorten your total debt duration.</p></div>
+            </details>
+            <details>
+                <summary>How is credit card interest estimated?</summary>
+                <div class="ccpbs-details-content"><p>Most credit cards assess interest based on an Annual Percentage Rate (APR) divided across your billing cycle. By default, this calculator uses a standard monthly periodic rate (APR divided by 12). For daily precision, you can also toggle our Approximate Daily Periodic Rate (APR divided by 365 multiplied by your billing cycle days).</p></div>
+            </details>
+            <details>
+                <summary>What is APR?</summary>
+                <div class="ccpbs-details-content"><p>APR stands for Annual Percentage Rate. It represents the yearly cost of borrowing money on your credit card, expressed as a percentage. For revolving balances, this rate determines how much interest accrues on unpaid purchases each billing cycle.</p></div>
+            </details>
+            <details>
+                <summary>How do extra payments affect payoff time?</summary>
+                <div class="ccpbs-details-content"><p>Every extra dollar paid above your scheduled monthly payment goes 100% toward principal reduction. By cutting down the principal immediately, less interest accrues in subsequent cycles, creating a compound acceleration that shaves months or even years off your repayment timeline.</p></div>
+            </details>
+            <details>
+                <summary>How much interest could I save by paying extra?</summary>
+                <div class="ccpbs-details-content"><p>Depending on your balance and APR, even an extra $50 to $100 per month can save hundreds or thousands of dollars in total interest charges over the life of the debt.</p></div>
+            </details>
+            <details>
+                <summary>Can I set a target payoff date?</summary>
+                <div class="ccpbs-details-content"><p>Yes. Switch to 'How Much Should I Pay?' mode, input your desired payoff timeline in months, and the calculator instantly solves for the exact monthly payment needed to eliminate the balance on schedule.</p></div>
+            </details>
+            <details>
+                <summary>Can I calculate the payment needed for a certain payoff date?</summary>
+                <div class="ccpbs-details-content"><p>Yes. In the required payment mode, you can select the exact number of months until your target date, and the engine calculates the required monthly amortization payment.</p></div>
+            </details>
+            <details>
+                <summary>Does this calculator support 0% APR?</summary>
+                <div class="ccpbs-details-content"><p>Yes, 0% APR is fully supported. When the APR is 0%, no interest is assessed, and 100% of your monthly payment goes toward reducing your principal balance without producing errors.</p></div>
+            </details>
+            <details>
+                <summary>What happens after a promotional APR ends?</summary>
+                <div class="ccpbs-details-content"><p>Under the Advanced Payoff Settings, you can enter a promotional 0% or low APR along with its duration (e.g., 12 or 15 months), plus the standard post-promo APR. The simulator automatically transitions to the higher rate once the promo period expires.</p></div>
+            </details>
+            <details>
+                <summary>What is deferred interest?</summary>
+                <div class="ccpbs-details-content"><p>Deferred interest is common on retail financing promotions. Unlike a true 0% APR, if you do not pay off the entire balance before the promotional window closes, the issuer retroactively charges all the interest accrued from day one. Always review your cardholder agreement.</p></div>
+            </details>
+            <details>
+                <summary>Can I include new monthly purchases?</summary>
+                <div class="ccpbs-details-content"><p>Yes. In the Advanced Payoff Settings, you can specify an amount for recurring new monthly charges. The simulator accounts for these additions before calculating the ending monthly balance.</p></div>
+            </details>
+            <details>
+                <summary>Can I include monthly fees?</summary>
+                <div class="ccpbs-details-content"><p>Yes. You can enter recurring monthly fees (such as monthly maintenance or account fees) to see their true long-term impact on your debt payoff trajectory.</p></div>
+            </details>
+            <details>
+                <summary>Can I add a one-time extra payment?</summary>
+                <div class="ccpbs-details-content"><p>Yes. You can specify a one-time lump-sum payment (e.g., from a tax refund or work bonus) and choose the specific month in which it will be credited.</p></div>
+            </details>
+            <details>
+                <summary>What is a payoff schedule?</summary>
+                <div class="ccpbs-details-content"><p>A payoff schedule (or amortization table) displays a month-by-month accounting of your beginning balance, interest accrued, fees, scheduled and extra payments, principal paid, and remaining balance until your debt reaches zero.</p></div>
+            </details>
+            <details>
+                <summary>What is debt avalanche?</summary>
+                <div class="ccpbs-details-content"><p>The Debt Avalanche strategy prioritizes paying off the credit card with the highest APR first while making minimum payments on all other cards. Mathematically, this strategy minimizes the total interest you pay across multiple accounts.</p></div>
+            </details>
+            <details>
+                <summary>What is debt snowball?</summary>
+                <div class="ccpbs-details-content"><p>The Debt Snowball strategy prioritizes paying off the card with the smallest balance first, regardless of APR. When the first balance is wiped out, you roll its payment into the next smallest balance, providing rapid psychological wins and behavioral momentum.</p></div>
+            </details>
+            <details>
+                <summary>What is a balance transfer?</summary>
+                <div class="ccpbs-details-content"><p>A balance transfer involves moving high-interest credit card debt to a new card offering a low or 0% introductory APR for a fixed period (often 12 to 21 months), typically subject to a 3% to 5% upfront transfer fee.</p></div>
+            </details>
+            <details>
+                <summary>Can I compare multiple cards?</summary>
+                <div class="ccpbs-details-content"><p>Yes. Open the Multiple Credit Card Payoff Planner in our advanced section to input up to 8 cards with balances, APRs, and minimum payments, and view a side-by-side comparison of Debt Avalanche vs. Debt Snowball.</p></div>
+            </details>
+            <details>
+                <summary>Why might my actual interest be different?</summary>
+                <div class="ccpbs-details-content"><p>Issuers utilize average daily balance calculations, distinct compounding rules, varying billing cycle lengths (28 to 31 days), different APR tiers for purchases vs. cash advances, and specific payment allocation rules mandated by the CARD Act of 2009.</p></div>
+            </details>
+            <details>
+                <summary>Does this tool connect to my bank?</summary>
+                <div class="ccpbs-details-content"><p>No. This tool runs 100% locally in your web browser. It does not connect to any bank, credit bureau, or external financial institution.</p></div>
+            </details>
+            <details>
+                <summary>Does this tool store my debt information?</summary>
+                <div class="ccpbs-details-content"><p>No. Your financial figures are kept strictly private inside your browser's local memory. We do not store your debt amounts or balances in cookies, databases, or tracking logs.</p></div>
+            </details>
+        </div>
+    </div>
+
+    <!-- PRIVACY SECTION -->
+    <div class="ccpbs-card" id="ccpbs-privacy">
+        <h3 style="font-size: 18px; margin-bottom: 8px;">Private Browser-Based Calculation</h3>
+        <p style="font-size: 14px; margin-bottom: 0;">
+            Your balance, APR and payment calculations are processed locally in your browser. This tool does not require a bank connection, credit card login, or external financial-calculation API. We do not transmit or store your personal financial data on remote servers.
+        </p>
+    </div>
+
+    <!-- FINANCIAL DISCLAIMER -->
+    <div class="ccpbs-card" style="background-color: #f8fafc; border-color: #cbd5e1;" id="ccpbs-disclaimer">
+        <h3 style="font-size: 16px; color: #334155; margin-bottom: 8px;">Financial Disclaimer</h3>
+        <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 8px;">
+            This Credit Card Payoff Calculator is provided for general educational and planning purposes only. Results are estimates based on the balance, APR, payment amounts and assumptions entered. Actual credit card interest, minimum payments, fees and payoff timing may differ because issuers may use daily or average daily balance methods, different billing-cycle lengths, transaction dates, payment posting dates, promotional terms, multiple APR categories and other account-specific rules. Review your credit card statement and cardholder agreement for your actual account terms.
+        </p>
+        <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 4px;">
+            This tool does not provide financial, legal, tax, credit or debt-management advice.
+        </p>
+        <p style="font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 0;">
+            This tool is not affiliated with or endorsed by any credit card issuer, bank or U.S. government agency.
+        </p>
+    </div>
+
+    <!-- SOCIAL SHARING -->
+    <div class="ccpbs-card" id="ccpbs-social-section">
+        <h3 style="font-size: 17px; margin-bottom: 6px;">Share This Free Credit Card Payoff Calculator</h3>
+        <p style="font-size: 14px; color: #64748b; margin-bottom: 12px;">
+            Help friends and family calculate debt payoff timelines and discover potential interest savings. (Shares tool link only; your debt information is never shared.)
+        </p>
+        <div class="ccpbs-social-wrap">
+            <button type="button" class="ccpbs-social-btn ccpbs-social-fb" id="ccpbs-share-fb">Facebook</button>
+            <button type="button" class="ccpbs-social-btn ccpbs-social-tw" id="ccpbs-share-tw">X / Twitter</button>
+            <button type="button" class="ccpbs-social-btn ccpbs-social-wa" id="ccpbs-share-wa">WhatsApp</button>
+            <button type="button" class="ccpbs-social-btn ccpbs-social-li" id="ccpbs-share-li">LinkedIn</button>
+            <button type="button" class="ccpbs-social-btn ccpbs-social-rd" id="ccpbs-share-rd">Reddit</button>
+            <button type="button" class="ccpbs-social-btn ccpbs-social-tg" id="ccpbs-share-tg">Telegram</button>
+            <button type="button" class="ccpbs-social-btn ccpbs-social-em" id="ccpbs-share-em">Email</button>
+            <button type="button" class="ccpbs-btn ccpbs-btn-secondary" id="ccpbs-share-copy">🔗 Copy Link</button>
+        </div>
+        <div id="ccpbs-link-copied" style="display: none; font-size: 13px; color: #059669; font-weight: 600; text-align: center; margin-top: 8px;">
+            ✓ Link copied to clipboard!
+        </div>
+    </div>
+
+    <!-- AD 4: SOCIAL BAR SCRIPT (Placed at bottom, outside main flow) -->
+    <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+</div>
+
+<script>
+(function () {
+    var root = document.getElementById('ccpBloggerSafeApp');
+    if (!root) return;
+
+    // Helper utilities
+    function $(id) { return root.querySelector('#' + id); }
+    function fmtCur(val) {
+        if (isNaN(val) || !isFinite(val)) return '$0.00';
+        return '$' + Number(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function fmtMos(mos) {
+        if (mos <= 0) return '0 Months';
+        var y = Math.floor(mos / 12);
+        var r = mos % 12;
+        if (y === 0) return r + (r === 1 ? ' Month' : ' Months');
+        if (r === 0) return y + (y === 1 ? ' Year' : ' Years');
+        return y + ' Yrs ' + r + ' Mos';
+    }
+    function getOffsetDate(startStr, addMonths) {
+        var d = new Date();
+        if (startStr && startStr.indexOf('-') !== -1) {
+            var parts = startStr.split('-');
+            d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, 1);
+        }
+        var target = new Date(d.getFullYear(), d.getMonth() + addMonths, 1);
+        return target.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    }
+
+    // Set default month
+    var dateInput = $('ccpbs-start-date');
+    if (dateInput && !dateInput.value) {
+        var now = new Date();
+        var ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+        dateInput.value = ym;
+    }
+
+    // Tab switcher
+    var currentMode = 1;
+    var tab1 = $('ccpbs-tab-mode1');
+    var tab2 = $('ccpbs-tab-mode2');
+    var tab3 = $('ccpbs-tab-mode3');
+    var fieldPayment = $('ccpbs-field-payment');
+    var fieldTarget = $('ccpbs-field-target-months');
+    var fieldExtra = $('ccpbs-field-extra-payment');
+
+    function setMode(mode) {
+        currentMode = mode;
+        if (tab1) tab1.classList.toggle('ccpbs-active', mode === 1);
+        if (tab2) tab2.classList.toggle('ccpbs-active', mode === 2);
+        if (tab3) tab3.classList.toggle('ccpbs-active', mode === 3);
+
+        if (mode === 2) {
+            if (fieldPayment) fieldPayment.style.display = 'none';
+            if (fieldTarget) fieldTarget.style.display = 'flex';
+            if (fieldExtra) fieldExtra.style.display = 'none';
+        } else if (mode === 3) {
+            if (fieldPayment) fieldPayment.style.display = 'flex';
+            if (fieldTarget) fieldTarget.style.display = 'none';
+            if (fieldExtra) fieldExtra.style.display = 'flex';
+        } else {
+            if (fieldPayment) fieldPayment.style.display = 'flex';
+            if (fieldTarget) fieldTarget.style.display = 'none';
+            if (fieldExtra) fieldExtra.style.display = 'flex';
+        }
+        calculate();
+    }
+
+    if (tab1) tab1.onclick = function() { setMode(1); };
+    if (tab2) tab2.onclick = function() { setMode(2); };
+    if (tab3) tab3.onclick = function() { setMode(3); };
+
+    // Core Simulation
+    var lastSchedule = [];
+    var lastSimResult = null;
+    var isFullScheduleVisible = false;
+
+    function runSimulation(p) {
+        var bal = Math.max(0, p.balance);
+        var apr = Math.max(0, p.apr);
+        var pmt = Math.max(0, p.payment);
+        var extra = Math.max(0, p.extra || 0);
+        var promoApr = p.promoApr !== undefined ? Math.max(0, p.promoApr) : apr;
+        var promoMos = Math.max(0, p.promoMonths || 0);
+        var postApr = p.postPromoApr !== undefined ? Math.max(0, p.postPromoApr) : apr;
+        var newChg = Math.max(0, p.newCharges || 0);
+        var fees = Math.max(0, p.fees || 0);
+        var oneExtra = Math.max(0, p.oneTimeExtra || 0);
+        var oneMonth = Math.max(1, p.oneTimeMonth || 1);
+        var annExtra = Math.max(0, p.annualExtra || 0);
+
+        var curBal = bal;
+        var totInt = 0;
+        var totPrin = 0;
+        var totPaid = 0;
+        var sched = [];
+        var month = 0;
+        var maxM = 1200;
+        var firstInt = 0;
+        var firstPrin = 0;
+        var m25 = -1, m50 = -1, m75 = -1, m100 = -1;
+
+        if (curBal <= 0) {
+            return {
+                ok: true,
+                months: 0,
+                payoffDate: getOffsetDate(p.startDate, 0),
+                totalInterest: 0,
+                totalPaid: 0,
+                schedule: [],
+                yearly: []
+            };
+        }
+
+        while (curBal > 0.005 && month < maxM) {
+            month++;
+            var beg = curBal;
+            var effApr = (promoMos > 0) ? (month <= promoMos ? promoApr : postApr) : apr;
+            var rate = (effApr / 100) / 12;
+            var interest = effApr === 0 ? 0 : Math.round((beg * rate) * 100) / 100;
+            var addl = newChg + fees;
+
+            var oneAmt = (month === oneMonth) ? oneExtra : 0;
+            var annAmt = (annExtra > 0 && ((month - 1) % 12) === 11) ? annExtra : 0;
+            var totalIntended = pmt + extra + oneAmt + annAmt;
+
+            if (month <= 3 && totalIntended <= (interest + addl)) {
+                return { ok: false, warning: 'Payment is too low to reduce balance.' };
+            }
+
+            var payoffReq = beg + interest + addl;
+            var actualPmt = Math.min(totalIntended, payoffReq);
+            var prin = Math.max(0, actualPmt - interest - addl);
+            var end = Math.max(0, beg + interest + addl - actualPmt);
+
+            if (month === 1) {
+                firstInt = interest;
+                firstPrin = prin;
+            }
+
+            totInt += interest;
+            totPrin += prin;
+            totPaid += actualPmt;
+
+            var cumPrin = bal - end;
+            if (m25 === -1 && cumPrin >= bal * 0.25) m25 = month;
+            if (m50 === -1 && cumPrin >= bal * 0.50) m50 = month;
+            if (m75 === -1 && cumPrin >= bal * 0.75) m75 = month;
+            if (end <= 0.005 && m100 === -1) m100 = month;
+
+            sched.push({
+                num: month,
+                date: getOffsetDate(p.startDate, month),
+                beg: beg,
+                interest: interest,
+                fees: addl,
+                pmt: Math.min(pmt, actualPmt),
+                extra: Math.max(0, actualPmt - pmt),
+                prin: prin,
+                end: end
+            });
+
+            curBal = end;
+        }
+
+        // Yearly summary
+        var yearly = [];
+        var curY = 1, yBeg = bal, yPmt = 0, yInt = 0, yPrin = 0;
+        for (var i = 0; i < sched.length; i++) {
+            var r = sched[i];
+            yPmt += (r.pmt + r.extra);
+            yInt += r.interest;
+            yPrin += r.prin;
+            if ((i + 1) % 12 === 0 || i === sched.length - 1) {
+                yearly.push({
+                    year: curY,
+                    beg: yBeg,
+                    pmt: yPmt,
+                    interest: yInt,
+                    prin: yPrin,
+                    end: r.end
+                });
+                curY++;
+                yBeg = r.end;
+                yPmt = 0; yInt = 0; yPrin = 0;
+            }
+        }
+
+        return {
+            ok: true,
+            months: month,
+            payoffDate: getOffsetDate(p.startDate, month),
+            totalInterest: totInt,
+            totalPrincipal: totPrin,
+            totalPaid: totPaid,
+            firstInterest: firstInt,
+            firstPrincipal: firstPrin,
+            m25: m25 > 0 ? m25 : 0,
+            m50: m50 > 0 ? m50 : 0,
+            m75: m75 > 0 ? m75 : 0,
+            m100: m100 > 0 ? m100 : month,
+            schedule: sched,
+            yearly: yearly
+        };
+    }
+
+    function calculate() {
+        var balance = parseFloat($('ccpbs-balance').value) || 0;
+        var apr = parseFloat($('ccpbs-apr').value) || 0;
+        var payment = parseFloat($('ccpbs-payment').value) || 0;
+        var extra = parseFloat($('ccpbs-extra-payment').value) || 0;
+        var startDate = $('ccpbs-start-date').value;
+
+        // Advanced inputs
+        var promoAprVal = $('ccpbs-promo-apr') ? parseFloat($('ccpbs-promo-apr').value) : NaN;
+        var promoMosVal = $('ccpbs-promo-months') ? parseInt($('ccpbs-promo-months').value, 10) : 0;
+        var postAprVal = $('ccpbs-post-promo-apr') ? parseFloat($('ccpbs-post-promo-apr').value) : NaN;
+        var newChgVal = $('ccpbs-new-charges') ? parseFloat($('ccpbs-new-charges').value) : 0;
+        var feesVal = $('ccpbs-monthly-fees') ? parseFloat($('ccpbs-monthly-fees').value) : 0;
+        var oneExtraVal = $('ccpbs-onetime-extra') ? parseFloat($('ccpbs-onetime-extra').value) : 0;
+        var oneMonthVal = $('ccpbs-onetime-month') ? parseInt($('ccpbs-onetime-month').value, 10) : 1;
+        var annExtraVal = $('ccpbs-annual-extra') ? parseFloat($('ccpbs-annual-extra').value) : 0;
+
+        var alertBox = $('ccpbs-payment-alert');
+        var resWrap = $('ccpbs-primary-results');
+
+        if (currentMode === 2) {
+            // Target months solver
+            var targetMos = parseInt($('ccpbs-target-months').value, 10) || 24;
+            if (targetMos <= 0) targetMos = 12;
+            if (apr === 0) {
+                payment = Math.ceil((balance / targetMos) * 100) / 100;
+            } else {
+                var r = (apr / 100) / 12;
+                var fac = Math.pow(1 + r, targetMos);
+                payment = Math.ceil((balance * (r * fac) / (fac - 1)) * 100) / 100;
+            }
+            if ($('ccpbs-payment')) $('ccpbs-payment').value = payment;
+            extra = 0;
+        }
+
+        var sim = runSimulation({
+            balance: balance,
+            apr: apr,
+            payment: payment,
+            extra: extra,
+            startDate: startDate,
+            promoApr: isNaN(promoAprVal) ? undefined : promoAprVal,
+            promoMonths: promoMosVal,
+            postPromoApr: isNaN(postAprVal) ? undefined : postAprVal,
+            newCharges: newChgVal,
+            fees: feesVal,
+            oneTimeExtra: oneExtraVal,
+            oneTimeMonth: oneMonthVal,
+            annualExtra: annExtraVal
+        });
+
+        if (!sim.ok) {
+            if (alertBox) alertBox.style.display = 'flex';
+            if (resWrap) resWrap.style.display = 'none';
+            return;
+        }
+
+        if (alertBox) alertBox.style.display = 'none';
+        if (resWrap) resWrap.style.display = 'block';
+
+        lastSimResult = sim;
+        lastSchedule = sim.schedule;
+
+        // Populate primary results
+        $('ccpbs-payoff-time').textContent = fmtMos(sim.months);
+        $('ccpbs-payoff-months-badge').textContent = sim.months + ' Total Months';
+        $('ccpbs-payoff-date').textContent = sim.payoffDate;
+        $('ccpbs-total-interest').textContent = fmtCur(sim.totalInterest);
+        $('ccpbs-total-paid').textContent = fmtCur(sim.totalPaid);
+
+        var intRatio = sim.totalPaid > 0 ? Math.round((sim.totalInterest / sim.totalPaid) * 1000) / 10 : 0;
+        $('ccpbs-interest-ratio').textContent = intRatio + '% of Total Payments';
+        $('ccpbs-principal-paid').textContent = 'Principal: ' + fmtCur(sim.totalPrincipal);
+
+        $('ccpbs-first-interest').textContent = fmtCur(sim.firstInterest);
+        $('ccpbs-first-principal').textContent = fmtCur(sim.firstPrincipal);
+
+        $('ccpbs-ms-25').textContent = sim.m25 > 0 ? getOffsetDate(startDate, sim.m25) : 'N/A';
+        $('ccpbs-ms-50').textContent = sim.m50 > 0 ? getOffsetDate(startDate, sim.m50) : 'N/A';
+        $('ccpbs-ms-75').textContent = sim.m75 > 0 ? getOffsetDate(startDate, sim.m75) : 'N/A';
+        $('ccpbs-ms-100').textContent = sim.payoffDate;
+
+        // Extra savings banner
+        var baseSim = runSimulation({
+            balance: balance,
+            apr: apr,
+            payment: payment,
+            extra: 0,
+            startDate: startDate
+        });
+
+        var savingsBanner = $('ccpbs-savings-banner');
+        if (extra > 0 && baseSim.ok) {
+            var intSaved = Math.max(0, baseSim.totalInterest - sim.totalInterest);
+            var mosSaved = Math.max(0, baseSim.months - sim.months);
+            $('ccpbs-savings-interest').textContent = fmtCur(intSaved) + ' Saved';
+            $('ccpbs-savings-months').textContent = mosSaved + ' Months Faster';
+            if (savingsBanner) savingsBanner.style.display = 'flex';
+        } else {
+            if (savingsBanner) savingsBanner.style.display = 'none';
+        }
+
+        renderComparisonMatrix(balance, apr, payment, extra, startDate);
+        renderScheduleTable();
+        renderYearlyTable(sim.yearly);
+        drawChart(baseSim, sim);
+    }
+
+    function renderComparisonMatrix(bal, apr, pmt, extra, start) {
+        var tbody = $('ccpbs-comparison-tbody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+
+        var scenarios = [
+            { name: 'Current Payment', add: 0 },
+            { name: '+$25 / month', add: 25 },
+            { name: '+$50 / month', add: 50 },
+            { name: '+$100 / month', add: 100 }
+        ];
+        if (extra > 0 && extra !== 25 && extra !== 50 && extra !== 100) {
+            scenarios.push({ name: 'Your Extra (+$' + extra + ')', add: extra });
+        }
+
+        var baseSim = runSimulation({ balance: bal, apr: apr, payment: pmt, extra: 0, startDate: start });
+
+        scenarios.forEach(function(sc) {
+            var s = runSimulation({ balance: bal, apr: apr, payment: pmt, extra: sc.add, startDate: start });
+            if (!s.ok) return;
+            var diff = baseSim.ok ? (s.totalInterest - baseSim.totalInterest) : 0;
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td><strong>' + sc.name + '</strong></td>' +
+                '<td>' + fmtCur(pmt + sc.add) + '</td>' +
+                '<td>' + fmtMos(s.months) + '</td>' +
+                '<td>' + fmtCur(s.totalInterest) + '</td>' +
+                '<td style="color:' + (diff < 0 ? '#059669' : '#475569') + '; font-weight:600;">' +
+                (diff === 0 ? '$0.00' : '-' + fmtCur(Math.abs(diff))) + '</td>';
+            tbody.appendChild(tr);
+        });
+    }
+
+    function renderScheduleTable() {
+        var tbody = $('ccpbs-schedule-tbody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+
+        var limit = isFullScheduleVisible ? lastSchedule.length : Math.min(24, lastSchedule.length);
+        for (var i = 0; i < limit; i++) {
+            var r = lastSchedule[i];
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + r.num + '</td>' +
+                '<td>' + r.date + '</td>' +
+                '<td>' + fmtCur(r.beg) + '</td>' +
+                '<td>' + fmtCur(r.interest) + '</td>' +
+                '<td>' + fmtCur(r.fees) + '</td>' +
+                '<td>' + fmtCur(r.pmt) + '</td>' +
+                '<td>' + fmtCur(r.extra) + '</td>' +
+                '<td>' + fmtCur(r.prin) + '</td>' +
+                '<td><strong>' + fmtCur(r.end) + '</strong></td>';
+            tbody.appendChild(tr);
+        }
+
+        var btn = $('ccpbs-btn-toggle-schedule');
+        if (btn) {
+            btn.textContent = isFullScheduleVisible ? 'Show First 24 Months' : 'Show Full Schedule (' + lastSchedule.length + ' Months)';
+        }
+    }
+
+    function renderYearlyTable(yearly) {
+        var tbody = $('ccpbs-yearly-tbody');
+        if (!tbody || !yearly) return;
+        tbody.innerHTML = '';
+        yearly.forEach(function(y) {
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>Year ' + y.year + '</td>' +
+                '<td>' + fmtCur(y.beg) + '</td>' +
+                '<td>' + fmtCur(y.pmt) + '</td>' +
+                '<td>' + fmtCur(y.interest) + '</td>' +
+                '<td>' + fmtCur(y.prin) + '</td>' +
+                '<td><strong>' + fmtCur(y.end) + '</strong></td>';
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Lightweight Canvas Chart
+    function drawChart(baseSim, extraSim) {
+        var canvas = $('ccpbs-balance-chart');
+        if (!canvas || !canvas.getContext) return;
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width;
+        var h = canvas.height;
+
+        ctx.clearRect(0, 0, w, h);
+
+        var padL = 60, padR = 20, padT = 20, padB = 40;
+        var chartW = w - padL - padR;
+        var chartH = h - padT - padB;
+
+        var maxBal = baseSim && baseSim.schedule && baseSim.schedule.length > 0 ? baseSim.schedule[0].beg : 8500;
+        var maxMos = Math.max(
+            baseSim && baseSim.schedule ? baseSim.schedule.length : 1,
+            extraSim && extraSim.schedule ? extraSim.schedule.length : 1
+        );
+
+        // Draw grid lines
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 1;
+        for (var g = 0; g <= 4; g++) {
+            var y = padT + (chartH * g / 4);
+            ctx.beginPath();
+            ctx.moveTo(padL, y);
+            ctx.lineTo(w - padR, y);
+            ctx.stroke();
+
+            var val = Math.round(maxBal * (4 - g) / 4);
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('$' + val, padL - 8, y + 4);
+        }
+
+        // Helper to plot curve
+        function plotLine(sched, color) {
+            if (!sched || sched.length === 0) return;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            for (var i = 0; i < sched.length; i++) {
+                var x = padL + (chartW * (i / maxMos));
+                var y = padT + chartH - (chartH * (sched[i].end / maxBal));
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
+
+        if (baseSim && baseSim.schedule) plotLine(baseSim.schedule, '#94a3b8');
+        if (extraSim && extraSim.schedule) plotLine(extraSim.schedule, '#059669');
+    }
+
+    // Toggle Schedule Table
+    var toggleBtn = $('ccpbs-btn-toggle-schedule');
+    if (toggleBtn) {
+        toggleBtn.onclick = function() {
+            isFullScheduleVisible = !isFullScheduleVisible;
+            renderScheduleTable();
+        };
+    }
+
+    // Button Events
+    if ($('ccpbs-btn-calc')) $('ccpbs-btn-calc').onclick = calculate;
+    if ($('ccpbs-btn-example')) {
+        $('ccpbs-btn-example').onclick = function() {
+            $('ccpbs-balance').value = 8500;
+            $('ccpbs-apr').value = 24.99;
+            $('ccpbs-payment').value = 300;
+            $('ccpbs-extra-payment').value = 50;
+            setMode(1);
+        };
+    }
+    if ($('ccpbs-btn-reset')) {
+        $('ccpbs-btn-reset').onclick = function() {
+            $('ccpbs-balance').value = 8500;
+            $('ccpbs-apr').value = 24.99;
+            $('ccpbs-payment').value = 300;
+            $('ccpbs-extra-payment').value = 0;
+            calculate();
+        };
+    }
+    if ($('ccpbs-btn-clear')) {
+        $('ccpbs-btn-clear').onclick = function() {
+            $('ccpbs-balance').value = 0;
+            $('ccpbs-apr').value = 0;
+            $('ccpbs-payment').value = 0;
+            $('ccpbs-extra-payment').value = 0;
+            calculate();
+        };
+    }
+
+    // Clipboard & Download handlers
+    if ($('ccpbs-btn-copy')) {
+        $('ccpbs-btn-copy').onclick = function() {
+            if (!lastSimResult) return;
+            var text = 'CREDIT CARD PAYOFF SUMMARY\n' +
+                '-----------------------------------\n' +
+                'Current Balance: ' + fmtCur(parseFloat($('ccpbs-balance').value)) + '\n' +
+                'APR: ' + $('ccpbs-apr').value + '%\n' +
+                'Monthly Payment: ' + fmtCur(parseFloat($('ccpbs-payment').value)) + '\n' +
+                'Extra Payment: ' + fmtCur(parseFloat($('ccpbs-extra-payment').value)) + '\n' +
+                'Estimated Payoff Time: ' + fmtMos(lastSimResult.months) + '\n' +
+                'Estimated Payoff Date: ' + lastSimResult.payoffDate + '\n' +
+                'Estimated Total Interest: ' + fmtCur(lastSimResult.totalInterest) + '\n' +
+                'Estimated Total Paid: ' + fmtCur(lastSimResult.totalPaid) + '\n' +
+                '-----------------------------------\n' +
+                'Calculated via Free Credit Card Payoff Calculator';
+
+            navigator.clipboard.writeText(text).then(function() {
+                var msg = $('ccpbs-copy-msg');
+                if (msg) {
+                    msg.style.display = 'block';
+                    setTimeout(function() { msg.style.display = 'none'; }, 3000);
+                }
+            });
+        };
+    }
+
+    if ($('ccpbs-btn-dl-txt')) {
+        $('ccpbs-btn-dl-txt').onclick = function() {
+            if (!lastSimResult) return;
+            var text = 'CREDIT CARD PAYOFF PLAN\n' +
+                'Balance: ' + fmtCur(parseFloat($('ccpbs-balance').value)) + '\n' +
+                'APR: ' + $('ccpbs-apr').value + '%\n' +
+                'Payoff Date: ' + lastSimResult.payoffDate + '\n' +
+                'Total Interest: ' + fmtCur(lastSimResult.totalInterest) + '\n' +
+                'Total Paid: ' + fmtCur(lastSimResult.totalPaid);
+            var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'credit-card-payoff-summary.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+    }
+
+    if ($('ccpbs-btn-dl-csv')) {
+        $('ccpbs-btn-dl-csv').onclick = function() {
+            if (!lastSchedule || lastSchedule.length === 0) return;
+            var csv = 'Payment Number,Date,Beginning Balance,Interest,Fees,Scheduled Payment,Extra Payment,Principal,Ending Balance\n';
+            lastSchedule.forEach(function(r) {
+                csv += [r.num, r.date, r.beg.toFixed(2), r.interest.toFixed(2), r.fees.toFixed(2), r.pmt.toFixed(2), r.extra.toFixed(2), r.prin.toFixed(2), r.end.toFixed(2)].join(',') + '\n';
+            });
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'credit-card-payoff-schedule.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+    }
+
+    if ($('ccpbs-btn-print')) {
+        $('ccpbs-btn-print').onclick = function() { window.print(); };
+    }
+
+    // Balance Transfer Simulation
+    if ($('ccpbs-btn-bt-compare')) {
+        $('ccpbs-btn-bt-compare').onclick = function() {
+            var bal = parseFloat($('ccpbs-balance').value) || 8500;
+            var curApr = parseFloat($('ccpbs-apr').value) || 24.99;
+            var pmt = parseFloat($('ccpbs-payment').value) || 300;
+            var feePct = parseFloat($('ccpbs-bt-fee').value) || 3;
+            var introApr = parseFloat($('ccpbs-bt-intro-apr').value) || 0;
+            var introMos = parseInt($('ccpbs-bt-months').value, 10) || 15;
+            var postApr = parseFloat($('ccpbs-bt-post-apr').value) || 24.99;
+
+            var base = runSimulation({ balance: bal, apr: curApr, payment: pmt, extra: 0 });
+            var feeAmt = Math.round((bal * (feePct / 100)) * 100) / 100;
+            var transfer = runSimulation({
+                balance: bal + feeAmt,
+                apr: postApr,
+                promoApr: introApr,
+                promoMonths: introMos,
+                postPromoApr: postApr,
+                payment: pmt,
+                extra: 0
+            });
+
+            var resBox = $('ccpbs-bt-results');
+            if (resBox) resBox.style.display = 'block';
+
+            $('ccpbs-bt-res-fee').textContent = fmtCur(feeAmt);
+            var net = base.totalPaid - transfer.totalPaid;
+            $('ccpbs-bt-res-savings').textContent = fmtCur(net);
+            $('ccpbs-bt-res-time').textContent = Math.max(0, base.months - transfer.months) + ' Months Faster';
+        };
+    }
+
+    // Multiple Cards Planner
+    var defaultCards = [
+        { id: 1, name: 'Card 1 (High APR)', bal: 4500, apr: 28.99, min: 135 },
+        { id: 2, name: 'Card 2 (Store Card)', bal: 1800, apr: 26.99, min: 60 },
+        { id: 3, name: 'Card 3 (Bank Card)', bal: 6200, apr: 19.99, min: 150 }
+    ];
+
+    function renderMultiCards() {
+        var container = $('ccpbs-cards-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        defaultCards.forEach(function(c, idx) {
+            var div = document.createElement('div');
+            div.className = 'ccpbs-form-grid';
+            div.style.marginBottom = '12px';
+            div.style.padding = '12px';
+            div.style.backgroundColor = '#f8fafc';
+            div.style.borderRadius = '8px';
+            div.style.border = '1px solid #e2e8f0';
+
+            div.innerHTML = '<div class="ccpbs-field">' +
+                '<label class="ccpbs-label">Card Nickname</label>' +
+                '<input type="text" class="ccpbs-mc-name" data-idx="' + idx + '" value="' + c.name + '">' +
+                '</div>' +
+                '<div class="ccpbs-field">' +
+                '<label class="ccpbs-label">Balance ($)</label>' +
+                '<input type="number" class="ccpbs-mc-bal" data-idx="' + idx + '" value="' + c.bal + '">' +
+                '</div>' +
+                '<div class="ccpbs-field">' +
+                '<label class="ccpbs-label">APR (%)</label>' +
+                '<input type="number" class="ccpbs-mc-apr" data-idx="' + idx + '" value="' + c.apr + '">' +
+                '</div>' +
+                '<div class="ccpbs-field">' +
+                '<label class="ccpbs-label">Min. Payment ($)</label>' +
+                '<input type="number" class="ccpbs-mc-min" data-idx="' + idx + '" value="' + c.min + '">' +
+                '</div>';
+            container.appendChild(div);
+        });
+    }
+    renderMultiCards();
+
+    if ($('ccpbs-btn-add-card')) {
+        $('ccpbs-btn-add-card').onclick = function() {
+            if (defaultCards.length >= 8) return;
+            defaultCards.push({
+                id: defaultCards.length + 1,
+                name: 'Card ' + (defaultCards.length + 1),
+                bal: 2000,
+                apr: 24.99,
+                min: 50
+            });
+            renderMultiCards();
+        };
+    }
+
+    if ($('ccpbs-btn-multi-sim')) {
+        $('ccpbs-btn-multi-sim').onclick = function() {
+            // Read inputs
+            var names = root.querySelectorAll('.ccpbs-mc-name');
+            var bals = root.querySelectorAll('.ccpbs-mc-bal');
+            var aprs = root.querySelectorAll('.ccpbs-mc-apr');
+            var mins = root.querySelectorAll('.ccpbs-mc-min');
+
+            var cardList = [];
+            for (var i = 0; i < names.length; i++) {
+                cardList.push({
+                    name: names[i].value,
+                    bal: parseFloat(bals[i].value) || 0,
+                    apr: parseFloat(aprs[i].value) || 0,
+                    min: parseFloat(mins[i].value) || 0
+                });
+            }
+
+            var extraPool = parseFloat($('ccpbs-multi-extra').value) || 100;
+
+            function simStrategy(strat) {
+                var cList = JSON.parse(JSON.stringify(cardList));
+                var m = 0, totInt = 0;
+                while (cList.some(function(c) { return c.bal > 0.01; }) && m < 600) {
+                    m++;
+                    var freed = 0;
+                    for (var k = 0; k < cList.length; k++) {
+                        var card = cList[k];
+                        if (card.bal > 0.01) {
+                            var intr = (card.bal * (card.apr / 100 / 12));
+                            card.bal += intr;
+                            totInt += intr;
+                            var p = Math.min(card.bal, card.min);
+                            card.bal -= p;
+                            if (card.bal <= 0.01) freed += (card.min - p);
+                        } else {
+                            freed += card.min;
+                        }
+                    }
+                    var rem = cList.filter(function(c) { return c.bal > 0.01; });
+                    if (rem.length > 0) {
+                        if (strat === 'avalanche') rem.sort(function(a, b) { return b.apr - a.apr; });
+                        else rem.sort(function(a, b) { return a.bal - b.bal; });
+                        var pot = extraPool + freed;
+                        for (var j = 0; j < rem.length; j++) {
+                            if (pot <= 0) break;
+                            var apply = Math.min(rem[j].bal, pot);
+                            rem[j].bal -= apply;
+                            pot -= apply;
+                        }
+                    }
+                }
+                return { mos: m, int: totInt };
+            }
+
+            var av = simStrategy('avalanche');
+            var sn = simStrategy('snowball');
+
+            var resBox = $('ccpbs-multi-results');
+            if (resBox) resBox.style.display = 'block';
+
+            $('ccpbs-avalanche-time').textContent = fmtMos(av.mos);
+            $('ccpbs-avalanche-interest').textContent = 'Total Interest: ' + fmtCur(av.int);
+
+            $('ccpbs-snowball-time').textContent = fmtMos(sn.mos);
+            $('ccpbs-snowball-interest').textContent = 'Total Interest: ' + fmtCur(sn.int);
+        };
+    }
+
+    // Social Sharing
+    var pageUrl = encodeURIComponent(window.location.href);
+    var pageTitle = encodeURIComponent(document.title || 'Free Credit Card Payoff Calculator');
+
+    if ($('ccpbs-share-fb')) $('ccpbs-share-fb').onclick = function() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + pageUrl, '_blank'); };
+    if ($('ccpbs-share-tw')) $('ccpbs-share-tw').onclick = function() { window.open('https://twitter.com/intent/tweet?text=' + pageTitle + '&url=' + pageUrl, '_blank'); };
+    if ($('ccpbs-share-wa')) $('ccpbs-share-wa').onclick = function() { window.open('https://api.whatsapp.com/send?text=' + pageTitle + '%20' + pageUrl, '_blank'); };
+    if ($('ccpbs-share-li')) $('ccpbs-share-li').onclick = function() { window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl, '_blank'); };
+    if ($('ccpbs-share-rd')) $('ccpbs-share-rd').onclick = function() { window.open('https://reddit.com/submit?url=' + pageUrl + '&title=' + pageTitle, '_blank'); };
+    if ($('ccpbs-share-tg')) $('ccpbs-share-tg').onclick = function() { window.open('https://t.me/share/url?url=' + pageUrl + '&text=' + pageTitle, '_blank'); };
+    if ($('ccpbs-share-em')) $('ccpbs-share-em').onclick = function() { window.location.href = 'mailto:?subject=' + pageTitle + '&body=Check%20out%20this%20free%20calculator:%20' + pageUrl; };
+    if ($('ccpbs-share-copy')) {
+        $('ccpbs-share-copy').onclick = function() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                var lMsg = $('ccpbs-link-copied');
+                if (lMsg) {
+                    lMsg.style.display = 'block';
+                    setTimeout(function() { lMsg.style.display = 'none'; }, 3000);
+                }
+            });
+        };
+    }
+
+    // Auto-calculate on initial load
+    calculate();
+
+})();
+</script>
