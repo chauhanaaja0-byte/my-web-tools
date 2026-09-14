@@ -1,0 +1,794 @@
+<style>
+#pctBloggerProApp,#pctBloggerProApp *{box-sizing:border-box;}
+#pctBloggerProApp{--pctpro-primary:#2563eb;--pctpro-primary-dark:#1d4ed8;--pctpro-navy:#0f172a;--pctpro-electric:#0284c7;--pctpro-emerald:#059669;--pctpro-danger:#dc2626;--pctpro-text:#1e293b;--pctpro-text-muted:#64748b;--pctpro-bg:#ffffff;--pctpro-card-bg:#ffffff;--pctpro-subtle-bg:#f8fafc;--pctpro-border:#e2e8f0;--pctpro-border-focus:#3b82f6;--pctpro-radius:16px;--pctpro-radius-sm:10px;--pctpro-shadow-sm:0 1px 3px rgba(15,23,42,0.06);--pctpro-shadow:0 4px 16px -2px rgba(15,23,42,0.08);--pctpro-shadow-lg:0 10px 30px -4px rgba(15,23,42,0.1);width:100%;max-width:100%;min-width:0;margin:0 auto;padding:16px 0;background-color:var(--pctpro-bg);color:var(--pctpro-text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+#pctBloggerProApp h1,#pctBloggerProApp h2,#pctBloggerProApp h3,#pctBloggerProApp h4{color:var(--pctpro-navy);font-weight:800;line-height:1.25;margin:0 0 12px 0;overflow-wrap:anywhere;}
+#pctBloggerProApp p{margin:0 0 16px 0;color:var(--pctpro-text);font-size:16px;line-height:1.65;overflow-wrap:anywhere;}
+#pctBloggerProApp .pctpro-hero{text-align:center;padding:36px 20px 28px;background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius);margin-bottom:24px;}
+#pctBloggerProApp .pctpro-badge{display:inline-flex;align-items:center;gap:8px;background-color:#dbeafe;color:var(--pctpro-primary-dark);font-size:14px;font-weight:700;padding:6px 14px;border-radius:9999px;margin-bottom:16px;border:1px solid #bfdbfe;}
+#pctBloggerProApp .pctpro-hero h1{font-size:clamp(2rem,5.5vw,3.4rem);letter-spacing:-0.025em;margin-bottom:12px;}
+#pctBloggerProApp .pctpro-hero-sub{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:600;color:var(--pctpro-primary-dark);margin-bottom:14px;}
+#pctBloggerProApp .pctpro-hero-desc{font-size:clamp(1rem,2.2vw,1.15rem);color:var(--pctpro-text-muted);max-width:780px;margin:0 auto 24px;}
+#pctBloggerProApp .pctpro-trust-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px;}
+#pctBloggerProApp .pctpro-trust-pill{display:inline-flex;align-items:center;gap:6px;background:#ffffff;border:1px solid var(--pctpro-border);color:var(--pctpro-text);font-size:13px;font-weight:600;padding:6px 12px;border-radius:9999px;box-shadow:var(--pctpro-shadow-sm);white-space:nowrap;}
+#pctBloggerProApp .pctpro-ad-wrapper{width:100%;max-width:100%;text-align:center;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;margin:28px 0;padding:14px 10px;background-color:var(--pctpro-subtle-bg);border:1px dashed var(--pctpro-border);border-radius:var(--pctpro-radius-sm);}
+#pctBloggerProApp .pctpro-ad-label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--pctpro-text-muted);margin-bottom:8px;}
+#pctBloggerProApp .pctpro-main-card{width:100%;max-width:100%;background:var(--pctpro-card-bg);border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius);box-shadow:var(--pctpro-shadow-lg);padding:32px 28px;margin-bottom:28px;}
+@media (max-width:640px){#pctBloggerProApp .pctpro-main-card{padding:20px 16px;}}
+#pctBloggerProApp .pctpro-form-group{margin-bottom:22px;width:100%;min-width:0;}
+#pctBloggerProApp .pctpro-label{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700;color:var(--pctpro-navy);margin-bottom:8px;}
+#pctBloggerProApp .pctpro-label-hint{font-size:13px;font-weight:500;color:var(--pctpro-text-muted);}
+#pctBloggerProApp select.pctpro-select,#pctBloggerProApp input.pctpro-input{width:100%;max-width:100%;min-width:0;min-height:52px;height:auto;font-size:16px;font-family:inherit;color:var(--pctpro-navy);background-color:#ffffff;border:2px solid var(--pctpro-border);border-radius:var(--pctpro-radius-sm);padding:12px 16px;outline:none;transition:border-color 0.15s ease,box-shadow 0.15s ease;}
+#pctBloggerProApp select.pctpro-select:focus,#pctBloggerProApp input.pctpro-input:focus{border-color:var(--pctpro-border-focus);box-shadow:0 0 0 4px rgba(37,99,235,0.12);}
+#pctBloggerProApp .pctpro-input-affix-wrap{position:relative;display:flex;align-items:center;width:100%;}
+#pctBloggerProApp .pctpro-input-affix{position:absolute;right:16px;font-size:15px;font-weight:700;color:var(--pctpro-text-muted);pointer-events:none;}
+#pctBloggerProApp .pctpro-input-has-affix{padding-right:42px!important;}
+#pctBloggerProApp .pctpro-inputs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px;margin-bottom:22px;width:100%;}
+#pctBloggerProApp .pctpro-btn-group{display:flex;flex-wrap:wrap;gap:12px;width:100%;margin-top:18px;}
+#pctBloggerProApp .pctpro-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;max-width:100%;min-width:0;min-height:52px;height:auto;padding:13px 22px;font-size:16px;font-weight:700;line-height:1.3;text-align:center;border-radius:var(--pctpro-radius-sm);border:1px solid transparent;cursor:pointer;white-space:normal;overflow-wrap:anywhere;transition:all 0.15s ease;user-select:none;text-decoration:none;}
+#pctBloggerProApp .pctpro-btn-primary{flex:2 1 240px;background:linear-gradient(135deg,var(--pctpro-primary) 0%,var(--pctpro-primary-dark) 100%);color:#ffffff;box-shadow:0 4px 14px rgba(37,99,235,0.35);}
+#pctBloggerProApp .pctpro-btn-primary:hover{background:linear-gradient(135deg,var(--pctpro-primary-dark) 0%,#172554 100%);transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,99,235,0.4);}
+#pctBloggerProApp .pctpro-btn-secondary{flex:1 1 150px;background-color:#ffffff;color:var(--pctpro-navy);border-color:var(--pctpro-border);box-shadow:var(--pctpro-shadow-sm);}
+#pctBloggerProApp .pctpro-btn-secondary:hover{background-color:var(--pctpro-subtle-bg);border-color:#cbd5e1;}
+#pctBloggerProApp .pctpro-btn-sm{min-height:44px;padding:9px 16px;font-size:14px;}
+@media (max-width:480px){#pctBloggerProApp .pctpro-btn-group{flex-direction:column;}#pctBloggerProApp .pctpro-btn{width:100%;flex:1 1 auto;}}
+#pctBloggerProApp .pctpro-result-card{width:100%;max-width:100%;background:linear-gradient(180deg,#f8fafc 0%,#ffffff 100%);border:2px solid #bfdbfe;border-radius:var(--pctpro-radius);padding:28px 24px;margin-top:28px;box-shadow:var(--pctpro-shadow);}
+#pctBloggerProApp .pctpro-result-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;border-bottom:1px solid var(--pctpro-border);padding-bottom:12px;}
+#pctBloggerProApp .pctpro-result-tag{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--pctpro-primary-dark);background-color:#dbeafe;padding:4px 10px;border-radius:6px;}
+#pctBloggerProApp .pctpro-status-badge{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;padding:4px 12px;border-radius:9999px;}
+#pctBloggerProApp .pctpro-status-increase{background-color:#dcfce7;color:var(--pctpro-emerald);}
+#pctBloggerProApp .pctpro-status-decrease{background-color:#fee2e2;color:var(--pctpro-danger);}
+#pctBloggerProApp .pctpro-status-neutral{background-color:#f1f5f9;color:var(--pctpro-text-muted);}
+#pctBloggerProApp .pctpro-result-number{font-size:clamp(2rem,7vw,3.4rem);font-weight:800;color:var(--pctpro-navy);line-height:1.15;margin-bottom:8px;overflow-wrap:anywhere;}
+#pctBloggerProApp .pctpro-result-summary{font-size:17px;font-weight:600;color:var(--pctpro-text-muted);margin-bottom:20px;}
+#pctBloggerProApp .pctpro-steps-box{background-color:#ffffff;border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius-sm);padding:18px 20px;margin-bottom:20px;}
+#pctBloggerProApp .pctpro-steps-title{font-size:15px;font-weight:700;color:var(--pctpro-navy);margin-bottom:12px;}
+#pctBloggerProApp .pctpro-formula-code{display:block;background-color:var(--pctpro-subtle-bg);border-left:4px solid var(--pctpro-primary);padding:10px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:15px;font-weight:600;color:var(--pctpro-navy);border-radius:4px;margin-bottom:14px;overflow-x:auto;}
+#pctBloggerProApp .pctpro-step-item{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--pctpro-text);margin-bottom:8px;line-height:1.5;}
+#pctBloggerProApp .pctpro-step-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background-color:#e0f2fe;color:var(--pctpro-primary-dark);font-size:12px;font-weight:800;border-radius:50%;flex-shrink:0;margin-top:2px;}
+#pctBloggerProApp .pctpro-copy-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+#pctBloggerProApp .pctpro-error-banner{display:none;background-color:#fee2e2;border:1px solid #fca5a5;color:#991b1b;padding:12px 16px;border-radius:var(--pctpro-radius-sm);font-size:14px;font-weight:600;margin-bottom:18px;}
+#pctBloggerProApp .pctpro-quick-modes{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+#pctBloggerProApp .pctpro-quick-btn{background:var(--pctpro-subtle-bg);border:1px solid var(--pctpro-border);color:var(--pctpro-text);font-size:13px;font-weight:600;padding:8px 14px;border-radius:9999px;cursor:pointer;transition:all 0.15s ease;white-space:nowrap;}
+#pctBloggerProApp .pctpro-quick-btn:hover,#pctBloggerProApp .pctpro-quick-btn.pctpro-active{background:var(--pctpro-primary);color:#ffffff;border-color:var(--pctpro-primary);}
+#pctBloggerProApp .pctpro-section{width:100%;max-width:100%;margin:40px 0;padding:0;}
+#pctBloggerProApp .pctpro-section-header{margin-bottom:22px;}
+#pctBloggerProApp .pctpro-section-header h2{font-size:clamp(1.4rem,4vw,2.1rem);margin-bottom:8px;}
+#pctBloggerProApp .pctpro-section-header p{color:var(--pctpro-text-muted);font-size:16px;margin:0;}
+#pctBloggerProApp .pctpro-grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;width:100%;}
+#pctBloggerProApp .pctpro-grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px;width:100%;}
+#pctBloggerProApp .pctpro-card{background-color:var(--pctpro-card-bg);border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius);padding:24px;box-shadow:var(--pctpro-shadow-sm);transition:transform 0.15s ease,box-shadow 0.15s ease;min-width:0;}
+#pctBloggerProApp .pctpro-card:hover{transform:translateY(-2px);box-shadow:var(--pctpro-shadow);border-color:#cbd5e1;}
+#pctBloggerProApp .pctpro-card-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background-color:#eff6ff;color:var(--pctpro-primary);font-size:20px;margin-bottom:14px;}
+#pctBloggerProApp .pctpro-card h3{font-size:18px;margin-bottom:10px;}
+#pctBloggerProApp .pctpro-card p{font-size:15px;color:var(--pctpro-text-muted);margin-bottom:0;}
+#pctBloggerProApp .pctpro-formula-card{background-color:#ffffff;border:1px solid var(--pctpro-border);border-top:4px solid var(--pctpro-primary);border-radius:var(--pctpro-radius-sm);padding:20px;}
+#pctBloggerProApp .pctpro-formula-card h3{font-size:17px;margin-bottom:8px;}
+#pctBloggerProApp .pctpro-formula-card .pctpro-formula-math{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background-color:var(--pctpro-subtle-bg);padding:10px 12px;border-radius:6px;font-size:14px;font-weight:700;color:var(--pctpro-primary-dark);margin:10px 0;overflow-x:auto;}
+#pctBloggerProApp .pctpro-how-step{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background-color:#ffffff;border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius-sm);margin-bottom:12px;}
+#pctBloggerProApp .pctpro-how-num{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--pctpro-primary) 0%,var(--pctpro-primary-dark) 100%);color:#ffffff;font-size:16px;font-weight:800;flex-shrink:0;}
+#pctBloggerProApp .pctpro-how-content h3{font-size:16px;margin-bottom:4px;}
+#pctBloggerProApp .pctpro-how-content p{font-size:14px;color:var(--pctpro-text-muted);margin:0;}
+#pctBloggerProApp .pctpro-article-box{background-color:#ffffff;border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius);padding:32px 28px;margin-bottom:24px;line-height:1.7;}
+@media (max-width:640px){#pctBloggerProApp .pctpro-article-box{padding:20px 16px;}}
+#pctBloggerProApp .pctpro-article-box h3{font-size:20px;margin-top:24px;margin-bottom:10px;color:var(--pctpro-navy);}
+#pctBloggerProApp .pctpro-article-box h3:first-child{margin-top:0;}
+#pctBloggerProApp .pctpro-article-box ul{padding-left:24px;margin:0 0 18px;}
+#pctBloggerProApp .pctpro-article-box li{margin-bottom:8px;color:var(--pctpro-text);font-size:15px;}
+#pctBloggerProApp .pctpro-faq-list{display:flex;flex-direction:column;gap:12px;width:100%;}
+#pctBloggerProApp details.pctpro-faq-item{background-color:#ffffff;border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius-sm);overflow:hidden;}
+#pctBloggerProApp details.pctpro-faq-item[open]{border-color:#93c5fd;box-shadow:var(--pctpro-shadow-sm);}
+#pctBloggerProApp summary.pctpro-faq-q{padding:18px 22px;font-size:16px;font-weight:700;color:var(--pctpro-navy);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none;}
+#pctBloggerProApp summary.pctpro-faq-q::-webkit-details-marker{display:none;}
+#pctBloggerProApp summary.pctpro-faq-q::after{content:"+";font-size:22px;font-weight:400;color:var(--pctpro-primary);line-height:1;}
+#pctBloggerProApp details.pctpro-faq-item[open] summary.pctpro-faq-q::after{content:"−";}
+#pctBloggerProApp .pctpro-faq-a{padding:0 22px 20px 22px;font-size:15px;color:var(--pctpro-text);line-height:1.65;}
+#pctBloggerProApp .pctpro-faq-a p:last-child{margin-bottom:0;}
+#pctBloggerProApp .pctpro-info-banner{background-color:var(--pctpro-subtle-bg);border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius);padding:24px;margin:24px 0;}
+#pctBloggerProApp .pctpro-info-banner h3{font-size:18px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+#pctBloggerProApp .pctpro-info-banner p{font-size:14.5px;color:var(--pctpro-text-muted);margin-bottom:0;line-height:1.6;}
+#pctBloggerProApp .pctpro-share-section{text-align:center;padding:32px 20px;background:linear-gradient(180deg,#ffffff 0%,#f0f7ff 100%);border:1px solid var(--pctpro-border);border-radius:var(--pctpro-radius);margin:32px 0;}
+#pctBloggerProApp .pctpro-share-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px;}
+#pctBloggerProApp .pctpro-share-btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 18px;font-size:14px;font-weight:700;border-radius:9999px;color:#ffffff;text-decoration:none;border:none;cursor:pointer;transition:transform 0.15s ease;white-space:nowrap;}
+#pctBloggerProApp .pctpro-share-btn:hover{transform:translateY(-2px);opacity:0.92;}
+#pctBloggerProApp .pctpro-share-fb{background-color:#1877f2;}
+#pctBloggerProApp .pctpro-share-x{background-color:#000000;}
+#pctBloggerProApp .pctpro-share-wa{background-color:#25d366;}
+#pctBloggerProApp .pctpro-share-li{background-color:#0a66c2;}
+#pctBloggerProApp .pctpro-share-rd{background-color:#ff4500;}
+#pctBloggerProApp .pctpro-share-tg{background-color:#229ed9;}
+#pctBloggerProApp .pctpro-share-email{background-color:#475569;}
+#pctBloggerProApp .pctpro-share-copy{background-color:var(--pctpro-primary);}
+#pctBloggerProApp .pctpro-share-native{background-color:#059669;}
+#pctBloggerProApp .pctpro-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background-color:var(--pctpro-navy);color:#ffffff;padding:12px 24px;border-radius:9999px;font-size:14px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,0.2);z-index:99999;opacity:0;pointer-events:none;transition:transform 0.25s ease,opacity 0.25s ease;}
+#pctBloggerProApp .pctpro-toast.pctpro-toast-show{transform:translateX(-50%) translateY(0);opacity:1;}
+</style>
+
+<div id="pctBloggerProApp">
+  <!-- 1. HERO SECTION -->
+  <header class="pctpro-hero" id="pctpro-hero">
+    <div class="pctpro-badge">
+      <span>🇺🇸</span>
+      <span>Free Percentage Calculator for U.S. Users</span>
+    </div>
+    <h1>Percentage Calculator</h1>
+    <div class="pctpro-hero-sub">Calculate Percentage, Increase, Decrease, Change &amp; Difference</div>
+    <p class="pctpro-hero-desc">
+      Quickly calculate percentages, percentage increases, decreases, changes, differences and reverse percentages with clear formulas and step-by-step results.
+    </p>
+    <div class="pctpro-trust-badges">
+      <span class="pctpro-trust-pill">✓ 100% Free</span>
+      <span class="pctpro-trust-pill">✓ No Signup</span>
+      <span class="pctpro-trust-pill">✓ Instant Results</span>
+      <span class="pctpro-trust-pill">✓ Formula &amp; Steps</span>
+      <span class="pctpro-trust-pill">✓ Private Browser Calculation</span>
+      <span class="pctpro-trust-pill">✓ Mobile Friendly</span>
+    </div>
+  </header>
+
+  <!-- 2. FIRST AD — 468×60 -->
+  <div class="pctpro-ad-wrapper" id="pctpro-ad-hero">
+    <span class="pctpro-ad-label">Advertisement</span>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- 3. MAIN CALCULATOR CARD -->
+  <section class="pctpro-main-card" id="pctpro-main-card">
+    <div class="pctpro-form-group">
+      <label class="pctpro-label" for="pctpro-mode-select">
+        <span>Choose a Calculation</span>
+        <span class="pctpro-label-hint">11 calculation modes</span>
+      </label>
+      <select class="pctpro-select" id="pctpro-mode-select">
+        <option value="pct_of_num" selected="selected">What is X% of Y?</option>
+        <option value="num_is_pct">X is What Percent of Y?</option>
+        <option value="pct_increase">Percentage Increase</option>
+        <option value="pct_decrease">Percentage Decrease</option>
+        <option value="pct_change">Percentage Change</option>
+        <option value="pct_diff">Percentage Difference</option>
+        <option value="reverse_increase">Original Value Before Increase</option>
+        <option value="reverse_decrease">Original Value Before Decrease</option>
+        <option value="add_pct">Add a Percentage</option>
+        <option value="subtract_pct">Subtract a Percentage</option>
+        <option value="find_whole">Find Total from Part and Percentage</option>
+      </select>
+    </div>
+
+    <!-- Error Banner -->
+    <div class="pctpro-error-banner" id="pctpro-error"></div>
+
+    <!-- Dynamic Inputs -->
+    <div class="pctpro-inputs-grid">
+      <div class="pctpro-form-group">
+        <label class="pctpro-label" for="pctpro-val1" id="pctpro-label-val1">Percentage (%)</label>
+        <div class="pctpro-input-affix-wrap">
+          <input type="number" step="any" class="pctpro-input pctpro-input-has-affix" id="pctpro-val1" value="20" placeholder="e.g. 20" />
+          <span class="pctpro-input-affix" id="pctpro-affix-val1">%</span>
+        </div>
+      </div>
+
+      <div class="pctpro-form-group">
+        <label class="pctpro-label" for="pctpro-val2" id="pctpro-label-val2">Total Number</label>
+        <div class="pctpro-input-affix-wrap">
+          <input type="number" step="any" class="pctpro-input pctpro-input-has-affix" id="pctpro-val2" value="250" placeholder="e.g. 250" />
+          <span class="pctpro-input-affix" id="pctpro-affix-val2">#</span>
+        </div>
+      </div>
+
+      <div class="pctpro-form-group">
+        <label class="pctpro-label" for="pctpro-precision">Decimal Places</label>
+        <select class="pctpro-select" id="pctpro-precision">
+          <option value="0">0 (Whole numbers)</option>
+          <option value="1">1 Decimal place</option>
+          <option value="2" selected="selected">2 Decimal places (Default)</option>
+          <option value="3">3 Decimal places</option>
+          <option value="4">4 Decimal places</option>
+          <option value="6">6 Decimal places</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="pctpro-btn-group">
+      <button type="button" class="pctpro-btn pctpro-btn-primary" id="pctpro-btn-calc">Calculate Percentage</button>
+      <button type="button" class="pctpro-btn pctpro-btn-secondary" id="pctpro-btn-example">Load Example</button>
+      <button type="button" class="pctpro-btn pctpro-btn-secondary" id="pctpro-btn-reset">Reset Calculator</button>
+    </div>
+
+    <!-- 4. LARGE RESULT DASHBOARD -->
+    <div class="pctpro-result-card" id="pctpro-result-card">
+      <div class="pctpro-result-header">
+        <span class="pctpro-result-tag" id="pctpro-result-tag">Percentage of Number</span>
+        <span class="pctpro-status-badge pctpro-status-neutral" id="pctpro-status-badge">Calculated Value</span>
+      </div>
+      <div class="pctpro-result-number" id="pctpro-result-number">50</div>
+      <div class="pctpro-result-summary" id="pctpro-result-summary">20% of 250 is 50</div>
+
+      <!-- 5. FORMULA & STEPS -->
+      <div class="pctpro-steps-box">
+        <div class="pctpro-steps-title">📐 Formula &amp; Substituted Values:</div>
+        <code class="pctpro-formula-code" id="pctpro-formula-code">Result = (Percentage ÷ 100) × Number&#10;(20 ÷ 100) × 250 = 50</code>
+
+        <div class="pctpro-steps-title" style="margin-top:16px;">📝 Step-by-Step Calculation:</div>
+        <div id="pctpro-steps-list">
+          <div class="pctpro-step-item">
+            <span class="pctpro-step-num">1</span>
+            <span>Divide percentage by 100: 20 ÷ 100 = 0.20</span>
+          </div>
+          <div class="pctpro-step-item">
+            <span class="pctpro-step-num">2</span>
+            <span>Multiply by total number: 0.20 × 250 = 50</span>
+          </div>
+          <div class="pctpro-step-item">
+            <span class="pctpro-step-num">3</span>
+            <span>Final Answer: 50</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pctpro-copy-actions">
+        <button type="button" class="pctpro-btn pctpro-btn-secondary pctpro-btn-sm" id="pctpro-copy-result">📋 Copy Result</button>
+        <button type="button" class="pctpro-btn pctpro-btn-secondary pctpro-btn-sm" id="pctpro-copy-steps">📄 Copy Formula &amp; Steps</button>
+      </div>
+    </div>
+
+    <!-- 6. ADDITIONAL CALCULATION MODES -->
+    <div style="margin-top: 28px;">
+      <label class="pctpro-label">
+        <span>Quick Modes &amp; Fast Jump</span>
+      </label>
+      <div class="pctpro-quick-modes">
+        <button type="button" class="pctpro-quick-btn pctpro-active" data-mode="pct_of_num">What is X% of Y?</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="num_is_pct">X is What % of Y?</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="pct_increase">Percentage Increase</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="pct_decrease">Percentage Decrease</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="pct_change">Percentage Change</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="pct_diff">Percentage Difference</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="reverse_increase">Reverse Increase</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="reverse_decrease">Reverse Decrease</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="add_pct">Add %</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="subtract_pct">Subtract %</button>
+        <button type="button" class="pctpro-quick-btn" data-mode="find_whole">Find Whole Total</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SECOND AD — NATIVE -->
+  <div class="pctpro-ad-wrapper" id="pctpro-ad-native">
+    <span class="pctpro-ad-label">Advertisement</span>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- 8. FEATURE GRID -->
+  <section class="pctpro-section" id="pctpro-features">
+    <div class="pctpro-section-header">
+      <h2>Comprehensive Percentage Features</h2>
+      <p>Engineered for high accuracy across personal finance, business, discounts, academic grading, and statistics.</p>
+    </div>
+    <div class="pctpro-grid-3">
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🎯</div>
+        <h3>Percentage of a Number</h3>
+        <p>Determine exact portions, such as 20% of 250 or 8.25% sales tax on an invoice, using standard decimal conversion.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">📊</div>
+        <h3>Percent of Total</h3>
+        <p>Calculate what share a partial value represents of the whole, such as scoring 45 out of 50 on an exam.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">📈</div>
+        <h3>Percentage Increase</h3>
+        <p>Model price hikes, annual cost-of-living adjustments, tip additions, and portfolio expansion with instant dollar additions.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">📉</div>
+        <h3>Percentage Decrease</h3>
+        <p>Calculate store markdowns, promotional coupon savings, asset depreciation, and diet weight loss in seconds.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🔄</div>
+        <h3>Percentage Change</h3>
+        <p>Compare two sequential periods (old value vs. new value) with direction indicators for growth or contraction.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">⚖️</div>
+        <h3>Percentage Difference</h3>
+        <p>Compare two independent values without an implicit chronological order using standard average-denominator scaling.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">⏪</div>
+        <h3>Reverse Percentage</h3>
+        <p>Uncover the original starting price before a coupon was applied or before inflation adjustments took place.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">📐</div>
+        <h3>Formula Explanations</h3>
+        <p>View the exact algebraic formulas used in American high school and college mathematics curriculums.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">📝</div>
+        <h3>Step-by-Step Results</h3>
+        <p>Examine transparent intermediate calculations to double-check homework or verify business accounting spreadsheets.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🔢</div>
+        <h3>Decimal Precision</h3>
+        <p>Customize floating point outputs from 0 to 6 decimal places for high-precision scientific or financial rounding.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🔒</div>
+        <h3>Private Calculation</h3>
+        <p>Your inputs never leave your device. All calculations are executed purely inside your local browser memory.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🆓</div>
+        <h3>100% Free Forever</h3>
+        <p>No account creation, no email newsletters, no subscriptions, and zero paywalls for any calculation tool.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FORMULA REFERENCE -->
+  <section class="pctpro-section" id="pctpro-formulas">
+    <div class="pctpro-section-header">
+      <h2>Percentage Formula Reference</h2>
+      <p>Standard mathematical formulas used across textbook algebra, statistics, and commerce.</p>
+    </div>
+    <div class="pctpro-grid-2">
+      <div class="pctpro-formula-card">
+        <h3>1. Percentage of a Number</h3>
+        <div class="pctpro-formula-math">Result = (P ÷ 100) × V</div>
+        <p>Where <strong>P</strong> is the percentage and <strong>V</strong> is the total value. Example: 20% of 250 = (20/100) × 250 = 50.</p>
+      </div>
+
+      <div class="pctpro-formula-card">
+        <h3>2. Percent of Total (What Percent Is X of Y?)</h3>
+        <div class="pctpro-formula-math">Percentage = (Part ÷ Whole) × 100</div>
+        <p>Where <strong>Part</strong> is the numerator and <strong>Whole</strong> is the denominator. Example: 50 is (50/250) × 100 = 20% of 250.</p>
+      </div>
+
+      <div class="pctpro-formula-card">
+        <h3>3. Percentage Increase</h3>
+        <div class="pctpro-formula-math">New Value = Original + [Original × (Increase % ÷ 100)]</div>
+        <p>Alternatively: <em>Original × (1 + Increase % / 100)</em>. Example: $80 + 25% = $80 + $20 = $100.</p>
+      </div>
+
+      <div class="pctpro-formula-card">
+        <h3>4. Percentage Decrease</h3>
+        <div class="pctpro-formula-math">New Value = Original - [Original × (Decrease % ÷ 100)]</div>
+        <p>Alternatively: <em>Original × (1 - Decrease % / 100)</em>. Example: $120 - 15% = $120 - $18 = $102.</p>
+      </div>
+
+      <div class="pctpro-formula-card">
+        <h3>5. Percentage Change</h3>
+        <div class="pctpro-formula-math">Change % = [(New Value - Old Value) ÷ |Old Value|] × 100</div>
+        <p>Measures proportional shift relative to the initial baseline. Negative result indicates a decrease.</p>
+      </div>
+
+      <div class="pctpro-formula-card">
+        <h3>6. Percentage Difference</h3>
+        <div class="pctpro-formula-math">Difference % = [|A - B| ÷ ((|A| + |B|) ÷ 2)] × 100</div>
+        <p>Divides the absolute variance by the mean of both quantities when neither value is an older baseline.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. PRACTICAL EXAMPLES -->
+  <section class="pctpro-section" id="pctpro-examples">
+    <div class="pctpro-section-header">
+      <h2>Practical Everyday Examples</h2>
+      <p>Real-world consumer and professional scenarios commonly solved with this calculator.</p>
+    </div>
+    <div class="pctpro-grid-3">
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🏷️</div>
+        <h3>Retail Discount Example</h3>
+        <p>A winter jacket is marked down 30% from its original price of $89.99. The discount amount is $27.00, resulting in a register price of $62.99 before tax.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">⛽</div>
+        <h3>Price Increase Example</h3>
+        <p>A gallon of gasoline increases from $3.20 to $3.68. The price change is +$0.48, representing a 15.0% increase at the pump.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">💼</div>
+        <h3>Salary Raise Example</h3>
+        <p>An employee earning a base salary of $65,000 receives a 5.5% annual merit increase. Their compensation rises by $3,575 to a new annual salary of $68,575.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🍽️</div>
+        <h3>Restaurant Tip Example</h3>
+        <p>A dinner bill totals $84.50. Leaving a standard 20% gratuity adds $16.90 to the check, bringing the final payment to $101.40.</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🎓</div>
+        <h3>Academic Test Score</h3>
+        <p>A student correctly answers 42 questions out of 50 on a biology midterm exam. Dividing 42 by 50 yields 0.84, which equals an 84% grade (B).</p>
+      </div>
+      <div class="pctpro-card">
+        <div class="pctpro-card-icon">🚀</div>
+        <h3>Quarterly Sales Growth</h3>
+        <p>A small business generates $120,000 in Q1 and expands to $145,000 in Q2. That represents an absolute revenue increase of $25,000, or a 20.83% quarterly expansion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. HOW TO USE -->
+  <section class="pctpro-section" id="pctpro-how-to-use">
+    <div class="pctpro-section-header">
+      <h2>How to Use the Percentage Calculator</h2>
+      <p>Follow these quick steps to calculate any percentage question in seconds.</p>
+    </div>
+    <div class="pctpro-how-step">
+      <div class="pctpro-how-num">1</div>
+      <div class="pctpro-how-content">
+        <h3>Choose your calculation type</h3>
+        <p>Select from the 11 available calculation modes in the dropdown menu or click any of the quick mode buttons.</p>
+      </div>
+    </div>
+    <div class="pctpro-how-step">
+      <div class="pctpro-how-num">2</div>
+      <div class="pctpro-how-content">
+        <h3>Enter the required numbers</h3>
+        <p>Type your values into the designated input fields. The calculator accepts positive numbers, decimals, and negative amounts.</p>
+      </div>
+    </div>
+    <div class="pctpro-how-step">
+      <div class="pctpro-how-num">3</div>
+      <div class="pctpro-how-content">
+        <h3>Select Calculate</h3>
+        <p>Click the primary "Calculate" button or simply update the values; results compute dynamically as you type.</p>
+      </div>
+    </div>
+    <div class="pctpro-how-step">
+      <div class="pctpro-how-num">4</div>
+      <div class="pctpro-how-content">
+        <h3>Review the result</h3>
+        <p>Inspect the bold highlighted answer displayed prominently in the responsive result dashboard.</p>
+      </div>
+    </div>
+    <div class="pctpro-how-step">
+      <div class="pctpro-how-num">5</div>
+      <div class="pctpro-how-content">
+        <h3>Check the formula and step-by-step calculation</h3>
+        <p>Examine the mathematical breakdown to understand each stage of the formula substitution.</p>
+      </div>
+    </div>
+    <div class="pctpro-how-step">
+      <div class="pctpro-how-num">6</div>
+      <div class="pctpro-how-content">
+        <h3>Copy the result or calculate another percentage</h3>
+        <p>Use the one-click "Copy Result" or "Copy Formula &amp; Steps" buttons to paste clean data into your spreadsheet or document.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. EDUCATIONAL CONTENT PART 1 -->
+  <section class="pctpro-section" id="pctpro-edu-part1">
+    <div class="pctpro-section-header">
+      <h2>Understanding Percentages: Core Concepts</h2>
+      <p>A comprehensive educational guide to percentages in modern mathematics and commerce.</p>
+    </div>
+    <div class="pctpro-article-box">
+      <h3>What Is a Percentage Calculator?</h3>
+      <p>
+        A percentage calculator is a digital computational tool designed to solve mathematical problems involving fractions of 100. The term <em>percent</em> originates from the Latin phrase <em>per centum</em>, which literally translates to "by the hundred." In modern society, percentages are the universal language for expressing rates, discounts, taxes, interest charges, statistical changes, and financial performances.
+      </p>
+      <p>
+        Rather than manually juggling long decimal divisions or converting fractions with uncommon denominators, an online percentage calculator instantly standardizes values onto a 1-to-100 scale, making comparisons intuitive and immediate.
+      </p>
+
+      <h3>How to Calculate a Percentage of a Number</h3>
+      <p>
+        Finding a percentage of a given number is one of the most frequent arithmetic tasks in daily life. The standard mathematical procedure consists of two simple steps:
+      </p>
+      <ul>
+        <li><strong>Step 1:</strong> Convert the percentage into a decimal by dividing the percentage by 100 (move the decimal point two positions to the left).</li>
+        <li><strong>Step 2:</strong> Multiply that resulting decimal by the total number.</li>
+      </ul>
+      <p>
+        For instance, to calculate 15% of $80: divide 15 by 100 to obtain 0.15. Then multiply 0.15 by 80, which equals $12.00. This same formula applies whether you are computing sales tax, retirement contribution withholdings, or grocery store discounts.
+      </p>
+
+      <h3>How to Find What Percent One Number Is of Another</h3>
+      <p>
+        When you have a part and a whole and wish to discover the proportional share as a percentage, you invert the process:
+      </p>
+      <p>
+        <strong>Formula:</strong> <code>(Part ÷ Whole) × 100</code>
+      </p>
+      <p>
+        For example, if an energy-efficient light bulb uses 12 watts compared to a traditional 60-watt incandescent bulb, what percent of the original power does it draw? Dividing 12 by 60 gives 0.20. Multiplying 0.20 by 100 produces 20%. The efficient bulb uses only 20% of the energy consumed by the old model.
+      </p>
+
+      <h3>How to Calculate Percentage Increase</h3>
+      <p>
+        Percentage increase quantifies how much a value has grown relative to its initial starting point. Whether measuring rent hikes, population growth, or wholesale commodity price increases, the standard formula is:
+      </p>
+      <p>
+        <code>New Value = Original Value + [Original Value × (Percentage ÷ 100)]</code>
+      </p>
+      <p>
+        Alternatively, you can multiply the original value by <code>(1 + Rate)</code>. If your monthly health insurance premium is $400 and goes up by 8%, multiply $400 by 1.08 to find your new monthly cost: $432.00.
+      </p>
+
+      <h3>How to Calculate Percentage Decrease</h3>
+      <p>
+        Percentage decrease calculates the reduction of an amount from its original base. It is the cornerstone of retail sales discounts, vehicle depreciation models, and body weight tracking:
+      </p>
+      <p>
+        <code>New Value = Original Value - [Original Value × (Percentage ÷ 100)]</code>
+      </p>
+      <p>
+        To determine a 25% discount on an item marked at $60, compute 25% of $60 (which is $15) and subtract that from $60. The final purchase price is $45.00.
+      </p>
+
+      <h3>How to Calculate Percentage Change</h3>
+      <p>
+        Percentage change evaluates the degree of change between an older baseline and a newer observation. Unlike simple percentage of a number, percentage change can be positive (growth) or negative (shrinkage):
+      </p>
+      <p>
+        <code>Percentage Change = [(New Value - Old Value) ÷ |Old Value|] × 100</code>
+      </p>
+      <p>
+        Notice that the absolute value of the original quantity is used in the denominator to preserve proper directionality when dealing with financial losses or negative balances. If a website had 2,000 visitors last week and 2,600 visitors this week: <code>[(2,600 - 2,000) / 2,000] × 100 = (600 / 2,000) × 100 = +30%</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- 13. THIRD AD — 300×250 -->
+  <div class="pctpro-ad-wrapper" id="pctpro-ad-content">
+    <span class="pctpro-ad-label">Advertisement</span>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- 14. EDUCATIONAL CONTENT PART 2 -->
+  <section class="pctpro-section" id="pctpro-edu-part2">
+    <div class="pctpro-section-header">
+      <h2>Advanced Applications &amp; Financial Analysis</h2>
+      <p>Practical nuances of difference metrics, reverse formulas, business economics, and common errors.</p>
+    </div>
+    <div class="pctpro-article-box">
+      <h3>Percentage Change vs. Percentage Difference</h3>
+      <p>
+        One of the most frequent points of confusion in data analysis is confusing percentage change with percentage difference:
+      </p>
+      <ul>
+        <li><strong>Percentage Change:</strong> Used when there is a distinct chronological sequence or cause-and-effect relationship (e.g., stock price in January vs. December). The earlier value serves as the natural benchmark.</li>
+        <li><strong>Percentage Difference:</strong> Used when comparing two coexisting, independent items where neither serves as the benchmark (e.g., comparing the price of milk in New York versus Chicago). Because neither city came first, the average of both prices serves as the denominator.</li>
+      </ul>
+
+      <h3>How to Calculate Percentage Difference</h3>
+      <p>
+        The percentage difference formula computes the absolute variance divided by the average of the two numbers:
+      </p>
+      <p>
+        <code>Difference % = [|A - B| ÷ ((|A| + |B|) ÷ 2)] × 100</code>
+      </p>
+      <p>
+        If Company A produces 80 units and Company B produces 100 units, the difference between them is: <code>|80 - 100| / ((80 + 100) / 2) = 20 / 90 ≈ 22.22%</code>. Regardless of whether you evaluate A compared to B or B compared to A, the percentage difference remains identical.
+      </p>
+
+      <h3>How Reverse Percentages Work</h3>
+      <p>
+        Reverse percentage calculations allow you to work backwards from a final, modified number to discover the original starting balance. This is indispensable when checking store receipts or reconciling tax-inclusive invoices.
+      </p>
+      <p>
+        A classic mistake is believing that if a price was reduced by 20%, adding 20% to the sale price will restore the original cost. That is mathematically incorrect because the discount was taken on the larger original base, whereas adding 20% to the discounted price uses the smaller reduced base.
+      </p>
+      <p>
+        To find the original price after a 20% discount on an item marked at $80:
+        <code>Original = $80 ÷ (1 - 0.20) = $80 ÷ 0.80 = $100.00</code>.
+      </p>
+
+      <h3>Using Percentages for Discounts, Price Changes &amp; Salary Raises</h3>
+      <p>
+        Percentages simplify financial decisions:
+      </p>
+      <ul>
+        <li><strong>Stacking Discounts:</strong> When a department store offers "20% off already reduced clearance items (marked 30% off)", the total discount is not 50%. A $100 item first becomes $70 (30% off). Then 20% of $70 ($14) is subtracted, yielding $56 (an effective 44% total discount).</li>
+        <li><strong>Cost of Living &amp; Merit Raises:</strong> Over a multi-year career, compounding salary raises significantly elevate total lifetime earnings. A 4% annual raise on a $70,000 salary yields $72,800 in year one, and $75,712 in year two due to compounding on the new baseline.</li>
+      </ul>
+
+      <h3>Common Percentage Calculation Mistakes to Avoid</h3>
+      <ul>
+        <li><strong>Confusing Percentage Points with Percent:</strong> If an interest rate climbs from 3% to 4%, it rose by <em>1 percentage point</em>, but the proportional increase in interest cost is <em>33.33%</em>.</li>
+        <li><strong>Dividing by Zero:</strong> Calculating percentage change from a starting value of zero is mathematically undefined. An increase from $0 to $50 cannot be expressed as a finite percentage.</li>
+        <li><strong>Forgetting to Re-anchor Baselines:</strong> When calculating sequential increases and decreases, always calculate each step on the updated intermediate balance.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 15. FAQ SECTION (18+ QUESTIONS) -->
+  <section class="pctpro-section" id="pctpro-faq">
+    <div class="pctpro-section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Answers to common questions regarding percentage math, calculator mechanics, and browser privacy.</p>
+    </div>
+    <div class="pctpro-faq-list">
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Is this percentage calculator free?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. This calculator is 100% free to use with no subscription, no hidden charges, and no feature limits.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">How do I calculate a percentage?</summary>
+        <div class="pctpro-faq-a">
+          <p>To find a percentage of any number, divide the percentage by 100 to convert it into a decimal, then multiply by the total number. For example, 20% of 250 is (20 ÷ 100) × 250 = 50.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">How do I calculate percentage increase?</summary>
+        <div class="pctpro-faq-a">
+          <p>To calculate percentage increase, multiply the original value by the percentage divided by 100 to find the addition, then add that amount to the original value.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">How do I calculate percentage decrease?</summary>
+        <div class="pctpro-faq-a">
+          <p>Multiply the original number by the decrease percentage divided by 100, then subtract that result from the original value to arrive at the discounted total.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">What is percentage change?</summary>
+        <div class="pctpro-faq-a">
+          <p>Percentage change expresses the relative difference between an older baseline and a newer value. It shows whether a quantity increased or decreased over time relative to where it started.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">What is percentage difference?</summary>
+        <div class="pctpro-faq-a">
+          <p>Percentage difference measures the relative variance between two numbers without establishing one as an older baseline. It divides the absolute difference by the average of both numbers.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">What is the difference between percentage change and percentage difference?</summary>
+        <div class="pctpro-faq-a">
+          <p>Percentage change has a chronological starting point and divides by the original value. Percentage difference compares two unordered values and divides by the average of both values.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">How do I calculate reverse percentage?</summary>
+        <div class="pctpro-faq-a">
+          <p>To find the original amount before a discount or increase, divide the final value by 1 minus the discount rate (for decreases) or 1 plus the increase rate (for increases).</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Can percentages be over 100%?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. Percentages greater than 100% simply indicate that the quantity is larger than the original reference point. For example, 250% of 100 is 250.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Can percentage change be negative?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. A negative percentage change denotes a reduction or decrease from the starting value, such as a company stock falling from $50 to $40 (-20%).</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Can this calculator handle decimals?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. You can enter fractional percentages (such as 7.25% or 0.5%) and decimal amounts. You can also customize output precision up to 6 decimal places.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Can it handle negative values?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. Negative inputs are fully supported in all calculations, with formulas adjusted using absolute value conventions where appropriate.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">What happens if the original value is zero?</summary>
+        <div class="pctpro-faq-a">
+          <p>In percentage change and percent-of-total calculations, division by zero is mathematically undefined. The calculator displays a friendly notice explaining that zero denominators cannot be computed.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Does it work on Android?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. The tool features responsive touch inputs, fluid card layouts, and full support for Chrome and Firefox on Android smartphones and tablets.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Does it work on iPhone?</summary>
+        <div class="pctpro-faq-a">
+          <p>Yes. It is fully optimized for iOS Safari with standard 16px font inputs to prevent unwanted viewport zooming and large 52px touch-friendly buttons.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Do I need an account?</summary>
+        <div class="pctpro-faq-a">
+          <p>No. You can immediately perform unlimited calculations without registering, signing in, or providing personal details.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Are calculations stored?</summary>
+        <div class="pctpro-faq-a">
+          <p>No. Every calculation is processed instantaneously in your local browser memory. No data is sent to a server or saved in cookies or storage.</p>
+        </div>
+      </details>
+
+      <details class="pctpro-faq-item">
+        <summary class="pctpro-faq-q">Does the tool require an API?</summary>
+        <div class="pctpro-faq-a">
+          <p>No external APIs or network calls are required. The entire calculation engine runs completely client-side in pure vanilla JavaScript.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 16. PRIVACY -->
+  <section class="pctpro-info-banner" id="pctpro-privacy">
+    <h3>🛡️ Private Browser-Based Calculation</h3>
+    <p>Your calculations are processed locally in your browser. This calculator does not require an account or external calculation API.</p>
+  </section>
+
+  <!-- 17. DISCLAIMER -->
+  <section class="pctpro-info-banner" id="pctpro-disclaimer">
+    <h3>⚖️ Calculator Disclaimer</h3>
+    <p>This Percentage Calculator is provided for general educational, informational and everyday calculation purposes. Results depend on the values entered and the selected calculation method. Review important financial, academic or business calculations independently when accuracy is critical.</p>
+  </section>
+
+  <!-- 18. SOCIAL SHARING -->
+  <section class="pctpro-share-section" id="pctpro-social">
+    <h2>Share This Free Percentage Calculator</h2>
+    <p>Help colleagues, students, and friends calculate percentages accurately with one click.</p>
+    <div class="pctpro-share-grid">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://free-percentage-calculator.blogspot.com" target="_blank" rel="noopener noreferrer" class="pctpro-share-btn pctpro-share-fb" data-share="facebook">Facebook</a>
+      <a href="https://twitter.com/intent/tweet?text=Free%20Percentage%20Calculator&amp;url=https://free-percentage-calculator.blogspot.com" target="_blank" rel="noopener noreferrer" class="pctpro-share-btn pctpro-share-x" data-share="twitter">X / Twitter</a>
+      <a href="https://api.whatsapp.com/send?text=Free%20Percentage%20Calculator%20https://free-percentage-calculator.blogspot.com" target="_blank" rel="noopener noreferrer" class="pctpro-share-btn pctpro-share-wa" data-share="whatsapp">WhatsApp</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://free-percentage-calculator.blogspot.com" target="_blank" rel="noopener noreferrer" class="pctpro-share-btn pctpro-share-li" data-share="linkedin">LinkedIn</a>
+      <a href="https://reddit.com/submit?title=Free%20Percentage%20Calculator&amp;url=https://free-percentage-calculator.blogspot.com" target="_blank" rel="noopener noreferrer" class="pctpro-share-btn pctpro-share-rd" data-share="reddit">Reddit</a>
+      <a href="https://t.me/share/url?url=https://free-percentage-calculator.blogspot.com&amp;text=Free%20Percentage%20Calculator" target="_blank" rel="noopener noreferrer" class="pctpro-share-btn pctpro-share-tg" data-share="telegram">Telegram</a>
+      <a href="mailto:?subject=Free%20Percentage%20Calculator&amp;body=Check%20out%20this%20free%20percentage%20calculator:%20https://free-percentage-calculator.blogspot.com" class="pctpro-share-btn pctpro-share-email" data-share="email">Email</a>
+      <button type="button" class="pctpro-share-btn pctpro-share-copy" data-share="copy">Copy Link</button>
+      <button type="button" class="pctpro-share-btn pctpro-share-native" data-share="native">Share Tool</button>
+    </div>
+  </section>
+
+  <!-- 19. SOCIAL BAR ADVERTISEMENT -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+  <!-- In-app Toast Notification for Copying -->
+  <div class="pctpro-toast" id="pctpro-toast">Copied to clipboard!</div>
+</div>
+
+<script>
+(function(){function initPctPro(){var root=document.getElementById('pctBloggerProApp');if(!root)return;var modeSelect=root.querySelector('#pctpro-mode-select');var precisionSelect=root.querySelector('#pctpro-precision');var val1Input=root.querySelector('#pctpro-val1');var val2Input=root.querySelector('#pctpro-val2');var label1=root.querySelector('#pctpro-label-val1');var label2=root.querySelector('#pctpro-label-val2');var affix1=root.querySelector('#pctpro-affix-val1');var affix2=root.querySelector('#pctpro-affix-val2');var btnCalc=root.querySelector('#pctpro-btn-calc');var btnExample=root.querySelector('#pctpro-btn-example');var btnReset=root.querySelector('#pctpro-btn-reset');var errorBanner=root.querySelector('#pctpro-error');var resultNumber=root.querySelector('#pctpro-result-number');var resultTag=root.querySelector('#pctpro-result-tag');var statusBadge=root.querySelector('#pctpro-status-badge');var resultSummary=root.querySelector('#pctpro-result-summary');var formulaCode=root.querySelector('#pctpro-formula-code');var stepsList=root.querySelector('#pctpro-steps-list');var btnCopyResult=root.querySelector('#pctpro-copy-result');var btnCopySteps=root.querySelector('#pctpro-copy-steps');var toast=root.querySelector('#pctpro-toast');var quickBtns=root.querySelectorAll('.pctpro-quick-btn');var currentResultData={value:"50",type:"What is X% of Y?",formula:"Result = (Percentage ÷ 100) × Number",substituted:"(20 ÷ 100) × 250 = 50",steps:["Divide percentage by 100: 20 ÷ 100 = 0.20","Multiply by total number: 0.20 × 250 = 50","Final Result: 50"]};var modeConfigs={pct_of_num:{title:"What is X% of Y?",label1:"Percentage (X)",label2:"Total Number (Y)",affix1:"%",affix2:"#",placeholder1:"e.g. 20",placeholder2:"e.g. 250",def1:"20",def2:"250",btnText:"Calculate Percentage"},num_is_pct:{title:"X is What Percent of Y?",label1:"Part Value (X)",label2:"Total Value / Whole (Y)",affix1:"#",affix2:"#",placeholder1:"e.g. 50",placeholder2:"e.g. 250",def1:"50",def2:"250",btnText:"Calculate What Percent"},pct_increase:{title:"Percentage Increase",label1:"Original Value",label2:"Percentage Increase (%)",affix1:"$",affix2:"%",placeholder1:"e.g. 80",placeholder2:"e.g. 25",def1:"80",def2:"25",btnText:"Calculate Increase"},pct_decrease:{title:"Percentage Decrease",label1:"Original Value",label2:"Percentage Decrease (%)",affix1:"$",affix2:"%",placeholder1:"e.g. 120",placeholder2:"e.g. 15",def1:"120",def2:"15",btnText:"Calculate Decrease"},pct_change:{title:"Percentage Change",label1:"Old Value (Original)",label2:"New Value (Final)",affix1:"#",affix2:"#",placeholder1:"e.g. 80",placeholder2:"e.g. 100",def1:"80",def2:"100",btnText:"Calculate Percentage Change"},pct_diff:{title:"Percentage Difference",label1:"Value A (First Value)",label2:"Value B (Second Value)",affix1:"#",affix2:"#",placeholder1:"e.g. 80",placeholder2:"e.g. 100",def1:"80",def2:"100",btnText:"Calculate Percentage Difference"},reverse_increase:{title:"Original Value Before Increase",label1:"Final Value (After Increase)",label2:"Percentage Increase Added (%)",affix1:"$",affix2:"%",placeholder1:"e.g. 100",placeholder2:"e.g. 25",def1:"100",def2:"25",btnText:"Calculate Original Value"},reverse_decrease:{title:"Original Value Before Decrease",label1:"Final Value (After Decrease)",label2:"Percentage Decrease Subtracted (%)",affix1:"$",affix2:"%",placeholder1:"e.g. 102",placeholder2:"e.g. 15",def1:"102",def2:"15",btnText:"Calculate Original Value"},add_pct:{title:"Add a Percentage",label1:"Original Number",label2:"Percentage to Add (%)",affix1:"#",affix2:"%",placeholder1:"e.g. 150",placeholder2:"e.g. 10",def1:"150",def2:"10",btnText:"Calculate Total (Add %)"},subtract_pct:{title:"Subtract a Percentage",label1:"Original Number",label2:"Percentage to Subtract (%)",affix1:"#",affix2:"%",placeholder1:"e.g. 200",placeholder2:"e.g. 20",def1:"200",def2:"20",btnText:"Calculate Total (Subtract %)"},find_whole:{title:"Find Total from Part and Percentage",label1:"Part Amount (X)",label2:"Percentage it Represents (%)",affix1:"#",affix2:"%",placeholder1:"e.g. 45",placeholder2:"e.g. 30",def1:"45",def2:"30",btnText:"Calculate Total Whole"}};function showToast(msg){if(!toast)return;toast.textContent=msg;toast.classList.add('pctpro-toast-show');setTimeout(function(){toast.classList.remove('pctpro-toast-show');},3000);}function formatNumber(num,precision){if(isNaN(num))return"0";var factor=Math.pow(10,precision);var rounded=Math.round(num*factor)/factor;return rounded.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:precision});}function updateModeUI(modeKey,keepValues){var cfg=modeConfigs[modeKey]||modeConfigs.pct_of_num;if(label1)label1.textContent=cfg.label1;if(label2)label2.textContent=cfg.label2;if(affix1)affix1.textContent=cfg.affix1;if(affix2)affix2.textContent=cfg.affix2;if(val1Input){val1Input.placeholder=cfg.placeholder1;if(!keepValues)val1Input.value=cfg.def1;}if(val2Input){val2Input.placeholder=cfg.placeholder2;if(!keepValues)val2Input.value=cfg.def2;}if(btnCalc)btnCalc.textContent=cfg.btnText;quickBtns.forEach(function(b){if(b.getAttribute('data-mode')===modeKey){b.classList.add('pctpro-active');}else{b.classList.remove('pctpro-active');}});calculate();}function calculate(){if(errorBanner)errorBanner.style.display='none';var mode=modeSelect?modeSelect.value:'pct_of_num';var prec=precisionSelect?parseInt(precisionSelect.value,10):2;if(isNaN(prec))prec=2;var v1Str=val1Input?val1Input.value.trim():"";var v2Str=val2Input?val2Input.value.trim():"";if(v1Str===""||v2Str===""){if(errorBanner){errorBanner.textContent="Please enter both numbers to calculate.";errorBanner.style.display='block';}return;}var v1=parseFloat(v1Str);var v2=parseFloat(v2Str);if(isNaN(v1)||isNaN(v2)){if(errorBanner){errorBanner.textContent="Please enter valid numeric values.";errorBanner.style.display='block';}return;}var res=0;var tag="";var status="neutral";var statusText="";var formula="";var substituted="";var steps=[];var summary="";switch(mode){case"pct_of_num":tag="Percentage of Number";res=(v1/100)*v2;formula="Result = (Percentage ÷ 100) × Total Number";substituted="("+v1+" ÷ 100) × "+v2+" = "+formatNumber(res,prec);steps=["Convert percentage to decimal: "+v1+" ÷ 100 = "+formatNumber(v1/100,4),"Multiply decimal by total number: "+formatNumber(v1/100,4)+" × "+v2+" = "+formatNumber(res,prec),"Answer: "+v1+"% of "+v2+" is "+formatNumber(res,prec)];summary=v1+"% of "+v2+" is "+formatNumber(res,prec);statusText="Calculated Value";break;case"num_is_pct":tag="Percent of Total";if(v2===0){if(errorBanner){errorBanner.textContent="Cannot calculate percentage when the whole (total value) is zero.";errorBanner.style.display='block';}return;}res=(v1/v2)*100;formula="Percentage = (Part ÷ Whole) × 100";substituted="("+v1+" ÷ "+v2+") × 100 = "+formatNumber(res,prec)+"%";steps=["Divide the part ("+v1+") by the whole ("+v2+"): "+formatNumber(v1/v2,6),"Multiply by 100 to convert to percent: "+formatNumber(v1/v2,6)+" × 100 = "+formatNumber(res,prec)+"%","Answer: "+v1+" is "+formatNumber(res,prec)+"% of "+v2];summary=v1+" is "+formatNumber(res,prec)+"% of "+v2;statusText="Calculated Percent";break;case"pct_increase":tag="Percentage Increase";var incAmt=v1*(v2/100);res=v1+incAmt;formula="New Value = Original + (Original × Increase % ÷ 100)";substituted=v1+" + ("+v1+" × "+v2+"% ÷ 100) = "+formatNumber(res,prec);steps=["Calculate increase amount: "+v1+" × ("+v2+" ÷ 100) = "+formatNumber(incAmt,prec),"Add increase amount to original: "+v1+" + "+formatNumber(incAmt,prec)+" = "+formatNumber(res,prec),"Total increase amount: +"+formatNumber(incAmt,prec)];summary=v1+" increased by "+v2+"% is "+formatNumber(res,prec)+" (+"+formatNumber(incAmt,prec)+")";status="increase";statusText="↗ +"+v2+"% Increase";break;case"pct_decrease":tag="Percentage Decrease";var decAmt=v1*(v2/100);res=v1-decAmt;formula="New Value = Original - (Original × Decrease % ÷ 100)";substituted=v1+" - ("+v1+" × "+v2+"% ÷ 100) = "+formatNumber(res,prec);steps=["Calculate decrease amount: "+v1+" × ("+v2+" ÷ 100) = "+formatNumber(decAmt,prec),"Subtract decrease amount from original: "+v1+" - "+formatNumber(decAmt,prec)+" = "+formatNumber(res,prec),"Total savings / reduction: -"+formatNumber(decAmt,prec)];summary=v1+" decreased by "+v2+"% is "+formatNumber(res,prec)+" (-"+formatNumber(decAmt,prec)+")";status="decrease";statusText="↘ −"+v2+"% Decrease";break;case"pct_change":tag="Percentage Change";if(v1===0){if(errorBanner){errorBanner.textContent="Standard percentage change from 0 is undefined because you cannot divide by zero.";errorBanner.style.display='block';}return;}var diff=v2-v1;res=(diff/Math.abs(v1))*100;formula="Percentage Change = ((New Value - Old Value) ÷ |Old Value|) × 100";substituted="(("+v2+" - "+v1+") ÷ |"+v1+"|) × 100 = "+formatNumber(res,prec)+"%";if(diff>0){status="increase";statusText="↗ +"+formatNumber(res,prec)+"% Increase";}else if(diff<0){status="decrease";statusText="↘ "+formatNumber(res,prec)+"% Decrease";}else{status="neutral";statusText="= 0% No Change";}steps=["Calculate absolute change: "+v2+" - "+v1+" = "+formatNumber(diff,prec),"Divide by old value: "+formatNumber(diff,prec)+" ÷ |"+v1+"| = "+formatNumber(diff/Math.abs(v1),6),"Multiply by 100 for percent: "+formatNumber(diff/Math.abs(v1),6)+" × 100 = "+formatNumber(res,prec)+"%","Outcome: "+(diff>=0?"Increase":"Decrease")+" of "+formatNumber(Math.abs(res),prec)+"%"];summary="From "+v1+" to "+v2+" is a "+(res>=0?"+":"")+formatNumber(res,prec)+"% change";break;case"pct_diff":tag="Percentage Difference";if(v1===0&&v2===0){res=0;statusText="0% Difference";}else{var num=Math.abs(v1-v2);var den=(Math.abs(v1)+Math.abs(v2))/2;res=(num/den)*100;statusText=formatNumber(res,prec)+"% Difference";}formula="Percentage Difference = (|A - B| ÷ ((|A| + |B|) ÷ 2)) × 100";substituted="(||"+v1+" - "+v2+"|| ÷ (("+Math.abs(v1)+" + "+Math.abs(v2)+") ÷ 2)) × 100 = "+formatNumber(res,prec)+"%";steps=["Find absolute difference: |"+v1+" - "+v2+"| = "+formatNumber(Math.abs(v1-v2),prec),"Find average of both numbers: ("+Math.abs(v1)+" + "+Math.abs(v2)+") ÷ 2 = "+formatNumber((Math.abs(v1)+Math.abs(v2))/2,prec),"Divide difference by average: "+formatNumber(res/100,6),"Multiply by 100: "+formatNumber(res,prec)+"%"];summary="The percentage difference between "+v1+" and "+v2+" is "+formatNumber(res,prec)+"%";break;case"reverse_increase":tag="Original Value Before Increase";res=v1/(1+v2/100);formula="Original Value = Final Value ÷ (1 + Percentage Increase ÷ 100)";substituted=v1+" ÷ (1 + "+v2+" ÷ 100) = "+formatNumber(res,prec);steps=["Convert increase percent to factor: 1 + ("+v2+" ÷ 100) = "+formatNumber(1+v2/100,4),"Divide final value by factor: "+v1+" ÷ "+formatNumber(1+v2/100,4)+" = "+formatNumber(res,prec),"Answer: The original value was "+formatNumber(res,prec)];summary="Original value before +"+v2+"% increase was "+formatNumber(res,prec);statusText="Original Base";break;case"reverse_decrease":tag="Original Value Before Decrease";if(v2===100){if(errorBanner){errorBanner.textContent="A 100% decrease leaves 0. Original value cannot be calculated from a 100% decrease.";errorBanner.style.display='block';}return;}res=v1/(1-v2/100);formula="Original Value = Final Value ÷ (1 - Percentage Decrease ÷ 100)";substituted=v1+" ÷ (1 - "+v2+" ÷ 100) = "+formatNumber(res,prec);steps=["Convert discount percent to factor: 1 - ("+v2+" ÷ 100) = "+formatNumber(1-v2/100,4),"Divide final value by factor: "+v1+" ÷ "+formatNumber(1-v2/100,4)+" = "+formatNumber(res,prec),"Answer: The original value before "+v2+"% discount was "+formatNumber(res,prec)];summary="Original price before "+v2+"% discount was "+formatNumber(res,prec);statusText="Original Base";break;case"add_pct":tag="Add a Percentage";var addAmt=v1*(v2/100);res=v1+addAmt;formula="Final = Original + (Original × Added % ÷ 100)";substituted=v1+" + ("+v1+" × "+v2+" ÷ 100) = "+formatNumber(res,prec);steps=["Calculate "+v2+"% of "+v1+": "+formatNumber(addAmt,prec),"Add to original value: "+v1+" + "+formatNumber(addAmt,prec)+" = "+formatNumber(res,prec),"Answer: Final total is "+formatNumber(res,prec)];summary=v1+" + "+v2+"% ("+formatNumber(addAmt,prec)+") = "+formatNumber(res,prec);status="increase";statusText="↗ +"+v2+"% Added";break;case"subtract_pct":tag="Subtract a Percentage";var subAmt=v1*(v2/100);res=v1-subAmt;formula="Final = Original - (Original × Subtracted % ÷ 100)";substituted=v1+" - ("+v1+" × "+v2+" ÷ 100) = "+formatNumber(res,prec);steps=["Calculate "+v2+"% of "+v1+": "+formatNumber(subAmt,prec),"Subtract from original value: "+v1+" - "+formatNumber(subAmt,prec)+" = "+formatNumber(res,prec),"Answer: Final total is "+formatNumber(res,prec)];summary=v1+" - "+v2+"% ("+formatNumber(subAmt,prec)+") = "+formatNumber(res,prec);status="decrease";statusText="↘ −"+v2+"% Subtracted";break;case"find_whole":tag="Total from Part & Percentage";if(v2===0){if(errorBanner){errorBanner.textContent="Percentage cannot be zero when finding the whole.";errorBanner.style.display='block';}return;}res=v1/(v2/100);formula="Whole = Part ÷ (Percentage ÷ 100)";substituted=v1+" ÷ ("+v2+" ÷ 100) = "+formatNumber(res,prec);steps=["Convert percentage to decimal: "+v2+" ÷ 100 = "+formatNumber(v2/100,4),"Divide part by decimal: "+v1+" ÷ "+formatNumber(v2/100,4)+" = "+formatNumber(res,prec),"Answer: The 100% total whole is "+formatNumber(res,prec)];summary="If "+v1+" is "+v2+"%, the 100% total is "+formatNumber(res,prec);statusText="100% Total";break;}var finalFormatted=formatNumber(res,prec);if(mode==='num_is_pct'||mode==='pct_change'||mode==='pct_diff'){finalFormatted+="%";}if(resultNumber)resultNumber.textContent=finalFormatted;if(resultTag)resultTag.textContent=tag;if(resultSummary)resultSummary.textContent=summary;if(formulaCode)formulaCode.textContent=formula+"\n"+substituted;if(statusBadge){statusBadge.textContent=statusText;statusBadge.className="pctpro-status-badge";if(status==='increase')statusBadge.classList.add('pctpro-status-increase');else if(status==='decrease')statusBadge.classList.add('pctpro-status-decrease');else statusBadge.classList.add('pctpro-status-neutral');}if(stepsList){stepsList.innerHTML="";steps.forEach(function(st,idx){var row=document.createElement('div');row.className='pctpro-step-item';row.innerHTML='<span class="pctpro-step-num">'+(idx+1)+'</span><span>'+st+'</span>';stepsList.appendChild(row);});}currentResultData={value:finalFormatted,type:tag,formula:formula,substituted:substituted,steps:steps};}if(modeSelect){modeSelect.addEventListener('change',function(){updateModeUI(this.value,false);});}if(precisionSelect){precisionSelect.addEventListener('change',function(){calculate();});}if(val1Input){val1Input.addEventListener('input',calculate);}if(val2Input){val2Input.addEventListener('input',calculate);}if(btnCalc){btnCalc.addEventListener('click',calculate);}if(btnReset){btnReset.addEventListener('click',function(){if(val1Input)val1Input.value="";if(val2Input)val2Input.value="";if(errorBanner)errorBanner.style.display='none';if(resultNumber)resultNumber.textContent="0";if(resultSummary)resultSummary.textContent="Enter values and click calculate.";if(stepsList)stepsList.innerHTML='<div class="pctpro-step-item"><span class="pctpro-step-num">1</span><span>Awaiting your input...</span></div>';showToast("Calculator reset successfully");});}if(btnExample){btnExample.addEventListener('click',function(){var m=modeSelect?modeSelect.value:'pct_of_num';var cfg=modeConfigs[m]||modeConfigs.pct_of_num;if(val1Input)val1Input.value=cfg.def1;if(val2Input)val2Input.value=cfg.def2;calculate();showToast("Loaded sample values for "+cfg.title);});}quickBtns.forEach(function(b){b.addEventListener('click',function(){var m=this.getAttribute('data-mode');if(m&&modeSelect){modeSelect.value=m;updateModeUI(m,false);}});});if(btnCopyResult){btnCopyResult.addEventListener('click',function(){var t=currentResultData.value;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showToast("Result copied: "+t);});}else{showToast("Copied: "+t);}});}if(btnCopySteps){btnCopySteps.addEventListener('click',function(){var t="Calculation: "+currentResultData.type+"\nFormula: "+currentResultData.formula+"\nSubstituted: "+currentResultData.substituted+"\nSteps:\n"+currentResultData.steps.map(function(s,i){return(i+1)+". "+s;}).join("\n")+"\nResult: "+currentResultData.value;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showToast("Formula & steps copied to clipboard!");});}else{showToast("Formula & steps copied!");}});}var shareButtons=root.querySelectorAll('.pctpro-share-btn');shareButtons.forEach(function(btn){btn.addEventListener('click',function(e){var typ=this.getAttribute('data-share');var pageTitle=document.title||"Free Percentage Calculator";var pageUrl=window.location.href;if(typ==='copy'){e.preventDefault();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(pageUrl).then(function(){showToast("Website link copied to clipboard!");});}else{showToast("Link copied!");}}else if(typ==='native'){e.preventDefault();if(navigator.share){navigator.share({title:pageTitle,text:"Calculate percentages, increase, decrease, and change for free:",url:pageUrl}).catch(function(){});}else{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(pageUrl);showToast("Link copied to clipboard!");}}}});calculate();}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initPctPro);}else{initPctPro();}})();
+</script>
