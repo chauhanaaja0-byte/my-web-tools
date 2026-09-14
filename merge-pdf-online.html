@@ -1,0 +1,1897 @@
+<!-- BLOGGER TITLE: Merge PDF Online – Combine PDF Files Free -->
+<!-- BLOGGER SEARCH DESCRIPTION: Merge PDF files online for free. Arrange multiple PDFs, choose pages, combine documents and download one merged PDF with no signup or watermark. -->
+<!-- BLOGGER LABELS: Merge PDF, PDF Merger, Combine PDF Files, PDF Combiner, Join PDF Files, Merge PDF Pages, PDF Tools, Document Tools, Productivity Tools, Free Online Tools -->
+<!-- BLOGGER PERMALINK: merge-pdf-online -->
+<!-- GITHUB FILE NAME: merge-pdf-online.html -->
+
+<style>
+/* SCOPED CSS FOR #mergePdfEliteApp */
+#mergePdfEliteApp,
+#mergePdfEliteApp * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#mergePdfEliteApp {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    background-color: #ffffff;
+    color: #1e293b;
+    line-height: 1.5;
+    padding: 16px 12px 48px;
+}
+
+/* Typography & Layout */
+.mpelite-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 8px;
+}
+
+.mpelite-hero {
+    text-align: center;
+    padding: 24px 8px 16px;
+}
+
+.mpelite-badge-us {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 14px;
+}
+
+.mpelite-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.mpelite-subtitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.mpelite-description {
+    font-size: 15px;
+    color: #475569;
+    max-width: 680px;
+    margin: 0 auto 16px;
+    line-height: 1.6;
+}
+
+.mpelite-free-banner {
+    display: inline-block;
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.mpelite-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+    max-width: 800px;
+    margin: 0 auto 24px;
+}
+
+.mpelite-trust-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.mpelite-trust-item span.check {
+    color: #10b981;
+    font-weight: 800;
+}
+
+/* Ad Wrappers */
+.mpelite-ad-wrapper {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 24px auto;
+    padding: 8px 0;
+}
+
+.mpelite-ad-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+/* Upload Dropzone */
+.mpelite-upload-card {
+    background: #ffffff;
+    border: 2px dashed #93c5fd;
+    border-radius: 16px;
+    padding: 32px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 16px auto;
+}
+
+.mpelite-upload-card:hover {
+    border-color: #3b82f6;
+    background-color: #f8fafc;
+}
+
+.mpelite-upload-card.drag-active {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+    transform: scale(1.01);
+}
+
+.mpelite-upload-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: #dbeafe;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+}
+
+.mpelite-upload-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.mpelite-upload-subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 4px;
+}
+
+.mpelite-upload-hint {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.mpelite-btn-choose {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    min-height: 48px;
+    max-width: 100%;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+    transition: background-color 0.15s ease;
+}
+
+.mpelite-btn-choose:hover {
+    background-color: #1d4ed8;
+}
+
+.mpelite-upload-notes {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #64748b;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.mpelite-system-notes {
+    font-size: 12px;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 10px auto 20px;
+}
+
+/* File list */
+.mpelite-files-container {
+    margin: 24px auto;
+}
+
+.mpelite-files-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.mpelite-files-count {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.mpelite-files-sub {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.mpelite-btn-clear {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #be123c;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 40px;
+}
+
+.mpelite-file-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+@media (min-width: 640px) {
+    .mpelite-file-card {
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+.mpelite-card-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.mpelite-order-badge {
+    width: 32px;
+    height: 32px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    font-weight: 800;
+    font-size: 13px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mpelite-thumb-box {
+    width: 80px;
+    height: 100px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.mpelite-thumb-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mpelite-card-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.mpelite-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    word-break: break-word;
+}
+
+.mpelite-card-meta {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.mpelite-card-status {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    margin-top: 6px;
+}
+
+.mpelite-status-ready { background: #dcfce7; color: #166534; }
+.mpelite-status-loading { background: #dbeafe; color: #1e40af; }
+.mpelite-status-error { background: #fee2e2; color: #991b1b; }
+
+.mpelite-range-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 10px;
+}
+
+.mpelite-range-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.mpelite-range-input-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.mpelite-range-input {
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    width: 160px;
+    max-width: 100%;
+}
+
+.mpelite-range-error {
+    color: #dc2626;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.mpelite-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.mpelite-order-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.mpelite-btn-order {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 36px;
+}
+
+.mpelite-btn-order:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.mpelite-btn-remove {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #dc2626;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 36px;
+}
+
+.mpelite-btn-remove:hover {
+    background: #fee2e2;
+}
+
+/* Output filename & Merge button */
+.mpelite-output-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px auto;
+}
+
+.mpelite-output-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.mpelite-output-group {
+    display: flex;
+    max-width: 360px;
+}
+
+.mpelite-output-input {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px 0 0 8px;
+    background: #f8fafc;
+}
+
+.mpelite-output-ext {
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    border-left: none;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Merge CTA */
+.mpelite-merge-action {
+    text-align: center;
+    margin: 24px auto;
+}
+
+.mpelite-progress-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.mpelite-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 6px;
+}
+
+.mpelite-progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: #dbeafe;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.mpelite-progress-bar-fill {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+.mpelite-btn-merge {
+    width: 100%;
+    max-width: 340px;
+    min-height: 52px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    transition: all 0.15s ease;
+}
+
+.mpelite-btn-merge:hover {
+    filter: brightness(1.05);
+}
+
+.mpelite-btn-merge:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: none;
+}
+
+/* SUCCESS RESULT DASHBOARD */
+.mpelite-result-dashboard {
+    background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 100%);
+    border: 2px solid #34d399;
+    border-radius: 16px;
+    padding: 24px 16px;
+    margin: 32px auto;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.12);
+}
+
+.mpelite-result-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.mpelite-result-icon {
+    width: 44px;
+    height: 44px;
+    background: #10b981;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.mpelite-result-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #065f46;
+}
+
+.mpelite-result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.mpelite-result-stat {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.mpelite-stat-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.mpelite-stat-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-top: 4px;
+    word-break: break-all;
+}
+
+/* Download Buttons Priority */
+.mpelite-result-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (min-width: 520px) {
+    .mpelite-result-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.mpelite-btn-download {
+    width: 100%;
+    max-width: 320px;
+    min-height: 52px;
+    background: #059669;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.mpelite-btn-download:hover {
+    background: #047857;
+}
+
+.mpelite-btn-again {
+    min-height: 48px;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #334155;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.mpelite-btn-again:hover {
+    background: #f8fafc;
+}
+
+.mpelite-btn-reset {
+    min-height: 48px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.mpelite-btn-reset:hover {
+    background: #dbeafe;
+}
+
+/* Feature & Use case cards */
+.mpelite-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.mpelite-info-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.mpelite-info-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.mpelite-info-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.mpelite-info-desc {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.mpelite-section-heading {
+    text-align: center;
+    margin: 40px auto 16px;
+}
+
+.mpelite-section-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.mpelite-section-sub {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* How to use steps */
+.mpelite-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.mpelite-step-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.mpelite-step-num {
+    width: 32px;
+    height: 32px;
+    background: #2563eb;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+/* Articles / Educational */
+.mpelite-article {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 8px;
+    margin: 24px auto;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.7;
+}
+
+.mpelite-article h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 20px 0 10px;
+}
+
+.mpelite-article h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 18px 0 8px;
+}
+
+.mpelite-article p {
+    margin-bottom: 12px;
+}
+
+.mpelite-article ul, .mpelite-article ol {
+    margin-left: 20px;
+    margin-bottom: 14px;
+}
+
+.mpelite-article li {
+    margin-bottom: 6px;
+}
+
+/* FAQ Details */
+.mpelite-faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+
+.mpelite-faq-item summary {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mpelite-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.mpelite-faq-content {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Disclaimer & Privacy */
+.mpelite-legal-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 16px auto;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.mpelite-legal-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+/* Social Sharing */
+.mpelite-social-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px 16px;
+    margin: 32px auto;
+    text-align: center;
+}
+
+.mpelite-social-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.mpelite-social-sub {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 18px;
+}
+
+.mpelite-social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.mpelite-share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    min-height: 48px;
+    min-width: 120px;
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.3;
+}
+
+.mpelite-btn-fb { background-color: #1877f2; }
+.mpelite-btn-x { background-color: #000000; }
+.mpelite-btn-wa { background-color: #25d366; }
+.mpelite-btn-li { background-color: #0a66c2; }
+.mpelite-btn-rd { background-color: #ff4500; }
+.mpelite-btn-tg { background-color: #26a5e4; }
+.mpelite-btn-mail { background-color: #475569; }
+.mpelite-btn-copy { background-color: #ffffff; border: 2px solid #cbd5e1; color: #1e293b; }
+.mpelite-btn-webshare { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #ffffff; }
+
+.mpelite-share-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+</style>
+
+<div id="mergePdfEliteApp">
+  <div class="mpelite-container">
+
+    <!-- 1. HERO -->
+    <header class="mpelite-hero">
+      <div class="mpelite-badge-us">
+        <span>🇺🇸</span>
+        <span>Free Online PDF Merger for U.S. Users</span>
+      </div>
+
+      <h1 class="mpelite-title">Merge PDF Online</h1>
+
+      <p class="mpelite-subtitle">Combine Multiple PDF Files Into One Document</p>
+
+      <p class="mpelite-description">
+        Combine multiple PDF files directly in your browser. Arrange your documents, select specific pages when needed, merge them into one PDF and download the finished document with no signup or watermark.
+      </p>
+
+      <div class="mpelite-free-banner">
+        100% Free • No Signup • No Watermark
+      </div>
+
+      <div class="mpelite-trust-grid">
+        <div class="mpelite-trust-item"><span class="check">✓</span> 100% Free</div>
+        <div class="mpelite-trust-item"><span class="check">✓</span> No Signup</div>
+        <div class="mpelite-trust-item"><span class="check">✓</span> No Watermark</div>
+        <div class="mpelite-trust-item"><span class="check">✓</span> Arrange PDF Order</div>
+        <div class="mpelite-trust-item"><span class="check">✓</span> Select PDF Pages</div>
+        <div class="mpelite-trust-item"><span class="check">✓</span> Private Browser Processing</div>
+      </div>
+    </header>
+
+    <!-- 2. 468x60 ADVERTISEMENT -->
+    <div class="mpelite-ad-wrapper">
+      <div class="mpelite-ad-label">Advertisement</div>
+      <script>
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+
+    <!-- 3. PDF UPLOAD AREA -->
+    <section class="mpelite-upload-card" id="mpeliteDropzone">
+      <input type="file" id="mpeliteFileInput" accept=".pdf,application/pdf" multiple style="display:none;" />
+      <div class="mpelite-upload-icon">
+        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+      </div>
+      <h2 class="mpelite-upload-title">Add Your PDF Files</h2>
+      <p class="mpelite-upload-subtitle">Drag & drop PDF files here</p>
+      <p class="mpelite-upload-hint">or select files from your device</p>
+      <button type="button" class="mpelite-btn-choose" id="mpeliteChooseBtn">
+        Choose PDF Files
+      </button>
+      <div class="mpelite-upload-notes">
+        <span>⚡ 100% Client-side processing</span>
+        <span>🔒 Documents never leave your browser</span>
+        <span>📑 Supports all standard PDF versions</span>
+      </div>
+    </section>
+
+    <div class="mpelite-system-notes">
+      <p>💡 Large PDFs or large batches may require additional browser memory and processing time.</p>
+      <p>⚠️ Creating a new merged PDF changes the document structure. Existing digital signatures may no longer validate after merging.</p>
+    </div>
+
+    <!-- 4. SELECTED PDF SUMMARY & 5. FILE CARDS -->
+    <div id="mpeliteFilesContainer" class="mpelite-files-container" style="display:none;">
+      <div class="mpelite-files-header">
+        <div>
+          <span class="mpelite-files-count" id="mpeliteFileCountText">Selected PDF Files (0)</span>
+          <div class="mpelite-files-sub" id="mpeliteFileSummaryText">Total size: 0 B</div>
+        </div>
+        <button type="button" class="mpelite-btn-clear" id="mpeliteClearAllBtn">Clear All Files</button>
+      </div>
+
+      <div id="mpeliteCardsList"></div>
+
+      <!-- 8. OUTPUT FILENAME -->
+      <div class="mpelite-output-box">
+        <label class="mpelite-output-label" for="mpeliteOutputNameInput">Output File Name</label>
+        <div class="mpelite-output-group">
+          <input type="text" id="mpeliteOutputNameInput" class="mpelite-output-input" value="merged-document" placeholder="merged-document" />
+          <span class="mpelite-output-ext">.pdf</span>
+        </div>
+      </div>
+
+      <!-- 9. MERGE PDF FILES BUTTON & 10. MERGE PROGRESS -->
+      <div class="mpelite-merge-action">
+        <div id="mpeliteProgressBox" class="mpelite-progress-box" style="display:none;">
+          <div class="mpelite-progress-header">
+            <span id="mpeliteProgressLabel">Preparing PDFs…</span>
+            <span id="mpeliteProgressPercent">0%</span>
+          </div>
+          <div class="mpelite-progress-bar-bg">
+            <div id="mpeliteProgressBarFill" class="mpelite-progress-bar-fill" style="width:0%;"></div>
+          </div>
+        </div>
+
+        <button type="button" id="mpeliteMergeBtn" class="mpelite-btn-merge">
+          Merge PDF Files
+        </button>
+      </div>
+    </div>
+
+    <!-- 11. SUCCESS RESULT DASHBOARD -->
+    <div id="mpeliteResultDashboard" class="mpelite-result-dashboard" style="display:none;">
+      <div class="mpelite-result-header">
+        <div class="mpelite-result-icon">✓</div>
+        <div>
+          <span style="font-size:12px; font-weight:700; color:#059669; text-transform:uppercase;">Successfully Merged</span>
+          <h2 class="mpelite-result-title">Your Merged PDF Is Ready</h2>
+        </div>
+      </div>
+
+      <div class="mpelite-result-grid">
+        <div class="mpelite-result-stat">
+          <div class="mpelite-stat-label">Output Document</div>
+          <div class="mpelite-stat-value" id="mpeliteResFilename">merged-document.pdf</div>
+        </div>
+        <div class="mpelite-result-stat">
+          <div class="mpelite-stat-label">PDFs Combined</div>
+          <div class="mpelite-stat-value" id="mpeliteResFilesCount">0 Files</div>
+        </div>
+        <div class="mpelite-result-stat">
+          <div class="mpelite-stat-label">Total Pages</div>
+          <div class="mpelite-stat-value" id="mpeliteResPagesCount">0 Pages</div>
+        </div>
+        <div class="mpelite-result-stat">
+          <div class="mpelite-stat-label">Merged File Size</div>
+          <div class="mpelite-stat-value" id="mpeliteResSize" style="color:#059669;">0 B</div>
+        </div>
+      </div>
+
+      <!-- 12. DOWNLOAD MERGED PDF, 13. DOWNLOAD AGAIN, 14. MERGE ANOTHER SET -->
+      <div class="mpelite-result-actions">
+        <button type="button" class="mpelite-btn-download" id="mpelitePrimaryDownloadBtn">
+          ⬇ Download Merged PDF
+        </button>
+        <button type="button" class="mpelite-btn-again" id="mpeliteDownloadAgainBtn">
+          Download Again
+        </button>
+        <button type="button" class="mpelite-btn-reset" id="mpeliteResetBtn">
+          Merge Another Set
+        </button>
+      </div>
+    </div>
+
+    <!-- 15. NATIVE ADVERTISEMENT -->
+    <div class="mpelite-ad-wrapper">
+      <div class="mpelite-ad-label">Advertisement</div>
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+
+    <!-- 16. FEATURES -->
+    <div class="mpelite-section-heading">
+      <h2 class="mpelite-section-title">Powerful PDF Merging Features</h2>
+      <p class="mpelite-section-sub">Engineered for clean, fast document assembly directly in your browser.</p>
+    </div>
+    <div class="mpelite-cards-grid">
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📑</div><h3 class="mpelite-info-title">Merge Multiple PDFs</h3><p class="mpelite-info-desc">Combine two or dozens of PDF files into a single continuous master document effortlessly.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🔄</div><h3 class="mpelite-info-title">Arrange PDF Order</h3><p class="mpelite-info-desc">Reorganize pages using intuitive Move Up, Move Down, Top, and Bottom sequencing buttons.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📥</div><h3 class="mpelite-info-title">Drag & Drop</h3><p class="mpelite-info-desc">Quickly drop files from desktop folders straight into your browser workspace.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📱</div><h3 class="mpelite-info-title">Mobile Reordering</h3><p class="mpelite-info-desc">Generous touch controls make sorting documents smooth on iPhone, iPad, and Android.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">✂️</div><h3 class="mpelite-info-title">Select Page Ranges</h3><p class="mpelite-info-desc">Extract exact pages like 1-4, 6, 8-10 to omit unwanted covers or legal boilerplate.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">👁️</div><h3 class="mpelite-info-title">PDF Thumbnail Preview</h3><p class="mpelite-info-desc">Inspect first-page visual thumbnails so you never confuse similar contracts or invoices.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🔢</div><h3 class="mpelite-info-title">Page Count Detection</h3><p class="mpelite-info-desc">Immediate page validation protects against invalid ranges or missing sheets.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📐</div><h3 class="mpelite-info-title">Mixed Page Sizes</h3><p class="mpelite-info-desc">Preserves Letter, Legal, A4, and custom CAD dimensions without stretching.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🖼️</div><h3 class="mpelite-info-title">Portrait & Landscape</h3><p class="mpelite-info-desc">Maintains rotational flags so landscape spreadsheets stay upright next to portrait memos.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🏷️</div><h3 class="mpelite-info-title">Custom Output Name</h3><p class="mpelite-info-desc">Assign descriptive filenames easily with automatic extension sanitation.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">⬇️</div><h3 class="mpelite-info-title">Real PDF Download</h3><p class="mpelite-info-desc">Immediate client-side compilation generates authentic application/pdf byte streams.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🔁</div><h3 class="mpelite-info-title">Download Again</h3><p class="mpelite-info-desc">Retrieve a second download instantly anytime without repeating document compilation.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🛡️</div><h3 class="mpelite-info-title">Private Browser Processing</h3><p class="mpelite-info-desc">Files never leave your device. Zero cloud uploads and zero external server logging.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">💎</div><h3 class="mpelite-info-title">100% Free Forever</h3><p class="mpelite-info-desc">Enjoy full document manipulation capabilities with no fees or artificial limits.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🚀</div><h3 class="mpelite-info-title">No Signup Required</h3><p class="mpelite-info-desc">Skip registration forms and account activations. Merge your files instantly.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">✨</div><h3 class="mpelite-info-title">No Watermark Added</h3><p class="mpelite-info-desc">Produces pristine, professional documents suitable for court and business submissions.</p></div>
+    </div>
+
+    <!-- 17. PRACTICAL USE CASES -->
+    <div class="mpelite-section-heading">
+      <h2 class="mpelite-section-title">Practical Everyday Use Cases</h2>
+      <p class="mpelite-section-sub">Simplify document handling across personal, academic, and business workflows.</p>
+    </div>
+    <div class="mpelite-cards-grid">
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📊</div><h3 class="mpelite-info-title">Combine Work Reports</h3><p class="mpelite-info-desc">Group monthly financial sheets, summaries, and presentations into one master file.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🎓</div><h3 class="mpelite-info-title">Merge School Assignments</h3><p class="mpelite-info-desc">Stitch essays, reference sheets, lab charts, and cover pages into a neat submission.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🧾</div><h3 class="mpelite-info-title">Combine Invoices</h3><p class="mpelite-info-desc">Bundle recurring client invoices and timesheets together for clean bookkeeping.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">💳</div><h3 class="mpelite-info-title">Join Receipts</h3><p class="mpelite-info-desc">Collate individual expense scans into a chronological tax-deduction packet.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">🖨️</div><h3 class="mpelite-info-title">Combine Scanned Documents</h3><p class="mpelite-info-desc">Join loose multipage scans from phone apps or copiers into a single record.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">💼</div><h3 class="mpelite-info-title">Merge Application Files</h3><p class="mpelite-info-desc">Assemble resumes, cover letters, references, and portfolios for hiring managers.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📝</div><h3 class="mpelite-info-title">Combine Contracts</h3><p class="mpelite-info-desc">Bind master service agreements, terms, amendments, and sign-offs together.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📐</div><h3 class="mpelite-info-title">Assemble Project Documents</h3><p class="mpelite-info-desc">Unify technical blueprints, requirements specs, and meeting minutes.</p></div>
+      <div class="mpelite-info-card"><div class="mpelite-info-icon">📚</div><h3 class="mpelite-info-title">Merge PDF Chapters</h3><p class="mpelite-info-desc">Assemble individual dissertation chapters or guides into a comprehensive book.</p></div>
+    </div>
+
+    <!-- 18. HOW TO USE -->
+    <div class="mpelite-section-heading">
+      <h2 class="mpelite-section-title">How to Merge PDF Files Online</h2>
+      <p class="mpelite-section-sub">Follow these 8 simple steps to combine documents in seconds.</p>
+    </div>
+    <div class="mpelite-steps-grid">
+      <div class="mpelite-step-box"><div class="mpelite-step-num">1</div><h3 class="mpelite-info-title">Choose PDF files</h3><p class="mpelite-info-desc">Click Choose PDF Files or drag multiple documents into the workspace.</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">2</div><h3 class="mpelite-info-title">Arrange the PDFs</h3><p class="mpelite-info-desc">Use Move Up, Move Down, Top, or Bottom to set the order of your documents.</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">3</div><h3 class="mpelite-info-title">Select page ranges</h3><p class="mpelite-info-desc">Choose all pages or define custom page ranges (e.g. 1-4, 6, 8-10).</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">4</div><h3 class="mpelite-info-title">Output filename</h3><p class="mpelite-info-desc">Enter an optional custom name for your merged master document.</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">5</div><h3 class="mpelite-info-title">Select Merge PDF Files</h3><p class="mpelite-info-desc">Click the primary button to initiate client-side page compilation.</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">6</div><h3 class="mpelite-info-title">Wait for completion</h3><p class="mpelite-info-desc">Track real-time progress as pages are copied into memory.</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">7</div><h3 class="mpelite-info-title">Select Download</h3><p class="mpelite-info-desc">Click the prominent Download Merged PDF button to receive your file.</p></div>
+      <div class="mpelite-step-box"><div class="mpelite-step-num">8</div><h3 class="mpelite-info-title">Save to device</h3><p class="mpelite-info-desc">Store your completed PDF safely on your phone, tablet, or PC.</p></div>
+    </div>
+
+    <!-- 19. EDUCATIONAL CONTENT PART 1 -->
+    <article class="mpelite-article">
+      <h2>Comprehensive Guide to Merging PDF Files Online</h2>
+      <p>The Portable Document Format (PDF) has stood as the universal standard for digital documentation across government agencies, healthcare networks, corporate enterprises, and academic institutions worldwide for decades. However, handling multiple related PDF records can quickly become disorganized when attachments, forms, schedules, and appendices are scattered across dozens of individual files. Understanding how a browser-based PDF merger operates empowers you to streamline your document workflow without relying on expensive desktop licenses or compromising client confidentiality.</p>
+
+      <h3>What Is a PDF Merger?</h3>
+      <p>A PDF merger is a specialized document utility designed to inspect the internal cross-reference tables, object trees, typography dictionaries, vector paths, and content streams of multiple distinct PDF files and combine them into a single, cohesive PDF document structure. Rather than converting pages into lossy raster graphics or flat image scans, an authentic PDF merger parses the underlying PDF syntax directly.</p>
+      <p>In this modern browser-based implementation, the heavy computational work is executed locally on your device using compiled WebAssembly and JavaScript PDF engine primitives. This architecture allows your computer or smartphone to assemble a unified file instantly without sending confidential business records, medical forms, or tax returns across third-party web servers.</p>
+
+      <h3>How to Merge PDF Files Online</h3>
+      <p>Combining your documents online takes only a few intuitive actions:</p>
+      <ol>
+        <li><strong>Select or Drag Files:</strong> Choose two or more PDF files from your hard drive, flash storage, or mobile photo library.</li>
+        <li><strong>Organize Sequence:</strong> Adjust the arrangement of files using the Move Up, Move Down, Top, or Bottom controls to reflect your desired reading order.</li>
+        <li><strong>Customize Page Selections:</strong> Choose whether to incorporate every single page of each PDF or isolate specific page ranges (such as pages 1 through 5, or page 8 only).</li>
+        <li><strong>Name Your Output:</strong> Designate a clean, recognizable name for your new document before triggering the compilation process.</li>
+        <li><strong>Execute & Save:</strong> Click the "Merge PDF Files" button, monitor the real-time processing indicator, and download the finished file directly to your device storage.</li>
+      </ol>
+
+      <h3>Why Combine Multiple PDFs?</h3>
+      <p>Keeping related paperwork unified eliminates friction across countless personal, commercial, and professional situations:</p>
+      <ul>
+        <li><strong>Simplified Email Distribution:</strong> Avoid bombarding colleagues, clients, or instructors with multiple individual attachments when a single organized file delivers a superior reading experience.</li>
+        <li><strong>Standardized Archiving:</strong> Archiving unified project binders, closing documents, and tax filings in single containers prevents critical appendices or schedules from becoming separated over time.</li>
+        <li><strong>Guaranteed Presentation Continuity:</strong> When sharing materials with hiring managers or committee reviewers, a unified PDF ensures all materials are reviewed in the precise sequence you intended.</li>
+        <li><strong>Painless Printing:</strong> Sending one compiled master file to an office printer or commercial print shop eliminates the repetitive hassle of queuing dozens of distinct print jobs.</li>
+      </ul>
+
+      <h3>How to Change PDF File Order</h3>
+      <p>File sequencing dictates the order in which pages appear in the resulting document. When you upload files into the merger workspace, each document is assigned an order badge (#1, #2, #3). You can easily fine-tune the hierarchy using our touch-friendly directional buttons. Move a document up or down one step, or jump it immediately to the very top or bottom of your stack with a single tap. This eliminates the frustration of having to re-upload files if you accidentally select them out of chronological order.</p>
+
+      <h3>How to Merge Specific Pages</h3>
+      <p>Frequently, large PDF files contain unwanted blank pages, cover sheets, legal boilerplate, or irrelevant appendices that you do not want in your final deliverable. This tool features granular page range selection for each uploaded file. Toggle the "Custom Pages" radio button on any file card and input your desired ranges using commas and hyphens (such as <code>1-4, 7, 10-12</code>). The built-in syntax parser actively validates your entries against the actual page count of the PDF, providing instant alerts if you enter out-of-range numbers, zero, or malformed intervals.</p>
+
+      <h3>Can Different PDF Page Sizes Be Combined?</h3>
+      <p>Yes! A standard misconception is that all pages in a PDF document must share identical physical dimensions. In reality, the PDF specification allows every individual page object to possess its own distinct MediaBox and CropBox bounding dimensions. When merging files with our tool, standard U.S. Letter (8.5 x 11 inches), Legal (8.5 x 14 inches), European A4, Ledger, and custom architectural drawing sizes are preserved at their authentic scales without forced cropping or unsightly letterboxing.</p>
+
+      <h3>Can Portrait and Landscape PDFs Be Merged?</h3>
+      <p>Absolutely. Many corporate reports incorporate portrait-oriented textual summaries alongside wide landscape spreadsheets, financial Gantt charts, or engineering schematics. Our document engine copies the rotational metadata and transformation matrices of each individual page, ensuring that horizontal spreadsheets remain comfortably legible in landscape orientation while vertical memo pages remain in portrait.</p>
+
+      <h3>How to Merge PDFs on iPhone & Android</h3>
+      <p>Merging PDFs on modern mobile devices requires no specialized app downloads. On iPhone and iPad, open Safari, tap "Choose PDF Files", and select "Choose Files" to browse your iCloud Drive or Files app. On Android, open Chrome, tap "Choose PDF Files", and pick documents from your device or Google Drive. Tap the prominent download button upon completion to store the combined PDF in your local Downloads directory.</p>
+    </article>
+
+    <!-- 20. 300x250 ADVERTISEMENT -->
+    <div class="mpelite-ad-wrapper">
+      <div class="mpelite-ad-label">Advertisement</div>
+      <script>
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+
+    <!-- 21. EDUCATIONAL CONTENT PART 2 -->
+    <article class="mpelite-article">
+      <h3>Does Merging PDFs Reduce Quality?</h3>
+      <p>No. Because our merging algorithm does not re-compress, rasterize, or downscale high-resolution images or vector artwork, the pristine sharpness of your typography, CAD vectors, logos, and photographs is preserved intact. The merging engine functions by cleanly cloning existing page dictionaries and byte streams into a unified document structure without applying destructive lossy compression.</p>
+
+      <h3>Does Merging PDFs Reduce File Size?</h3>
+      <p>Not necessarily. A merged PDF contains all the page content streams, images, and embedded fonts from each included file. While redundant document header overhead is eliminated, the total combined file size will generally be approximately equal to the sum of the individual source files (or smaller if you omitted pages using custom page ranges). We never make false claims of magical file size compression because true PDF compilation respects authentic data preservation.</p>
+
+      <h3>What Happens to Digital Signatures?</h3>
+      <p>Digital cryptographic signatures rely on strict cryptographic checksum hashes calculated over the exact original byte sequence of the signed PDF container. When multiple PDFs are combined into an entirely new container document, the byte sequence inevitably changes. As a result, existing cryptographic signatures will no longer validate in PDF readers like Adobe Acrobat. If preserving verifiable digital signatures is legally required, always keep your standalone signed originals safely archived and apply signatures after assembling the final master document.</p>
+
+      <h3>Can Password-Protected PDFs Be Merged?</h3>
+      <p>If a PDF document is encrypted with an open/user password that restricts reading, browser-based tools cannot decrypt and access the inner page streams without that password. Our tool automatically detects password-protected documents and safely alerts you, marking the file so you can remove it or provide an unlocked version without interrupting the compilation of your remaining valid documents.</p>
+
+      <h3>What Happens to PDF Forms & Bookmarks?</h3>
+      <p>Standard visual content, text, lines, and flattened form values are faithfully transferred. However, complex AcroForms or Adobe XFA dynamic XML forms contain interactive scripts and field name dictionaries that may conflict when multiple files share identical field labels. Likewise, hierarchical document outlines and interactive bookmarks from individual files are not automatically combined into a unified outline tree. To retain form data without unexpected glitches, we recommend flattening interactive form fields prior to merging.</p>
+
+      <h3>Why Large PDFs Can Take Longer</h3>
+      <p>Because this tool prioritizes total user privacy by processing everything locally in your web browser, document rendering and byte merging rely entirely on your device's available RAM and CPU processing threads. Merging several 100-megabyte files or documents containing hundreds of high-resolution graphic pages will require additional browser memory. Modern browsers like Google Chrome, Apple Safari, Microsoft Edge, and Mozilla Firefox will handle these gracefully, but temporary processing pauses may occur while complex page streams are parsed.</p>
+
+      <h3>Pro Tips for Organizing PDF Documents</h3>
+      <ul>
+        <li><strong>Audit File Names in Advance:</strong> Renaming your files with sequential prefixes (e.g. <code>01-Cover-Letter.pdf</code>, <code>02-Resume.pdf</code>) helps you quickly confirm correct chronological order.</li>
+        <li><strong>Check Page Numbers Before Merging:</strong> Review the page counts displayed on each card to ensure your custom page ranges accurately reflect the content you intend to include.</li>
+        <li><strong>Keep Original Backups:</strong> Never delete your original source files until you have downloaded and inspected your newly assembled master document.</li>
+        <li><strong>Use Clear Output File Names:</strong> Choose descriptive output filenames containing dates or version numbers to prevent accidental overwriting of older versions.</li>
+      </ul>
+
+      <h3>Common PDF Merging Problems & How to Avoid Them</h3>
+      <p><strong>Problem: "Page X is outside range" error.</strong><br />Check the total page count indicated on the file card. PDF page numbering is 1-indexed, meaning the first page is 1 and cannot exceed the detected total count.</p>
+      <p><strong>Problem: Corrupted or unreadable PDF files.</strong><br />If a source PDF was downloaded incompletely or has broken cross-reference tables, our merger isolates only that damaged file. Simply click "Remove PDF" on the damaged card and proceed with your valid documents.</p>
+      <p><strong>Problem: Browser tab reloading during massive batches.</strong><br />Mobile devices with low RAM may restart tabs if too many gigabytes of raw PDF data are loaded at once. For very large batches (e.g. over 50 documents or 1,000 pages), merge them in smaller subsets of 10 to 15 files at a time.</p>
+    </article>
+
+    <!-- 22. FAQ -->
+    <section class="mpelite-faq-section">
+      <div class="mpelite-section-heading">
+        <h2 class="mpelite-section-title">Frequently Asked Questions</h2>
+        <p class="mpelite-section-sub">Quick answers to common questions about merging PDF files for free.</p>
+      </div>
+
+      <div class="mpelite-faq-list">
+        <details class="mpelite-faq-item"><summary>What is a PDF merger? <span>+</span></summary><div class="mpelite-faq-content">A PDF merger is a utility that combines multiple individual Portable Document Format (PDF) files into one unified PDF document, preserving the sequential pages, vector graphics, text, and layout of each file.</div></details>
+        <details class="mpelite-faq-item"><summary>How do I combine PDF files? <span>+</span></summary><div class="mpelite-faq-content">Simply click "Choose PDF Files" or drag your documents into the upload box. Arrange the file cards in your preferred sequence, select any specific page ranges you need, and click "Merge PDF Files" to download your combined document.</div></details>
+        <details class="mpelite-faq-item"><summary>Is this tool free? <span>+</span></summary><div class="mpelite-faq-content">Yes, this tool is 100% free with no hidden charges, trial periods, subscription fees, or restricted premium tiers.</div></details>
+        <details class="mpelite-faq-item"><summary>Do I need an account? <span>+</span></summary><div class="mpelite-faq-content">No signup, registration, or email address is required. You can use the merger immediately without ever creating an account.</div></details>
+        <details class="mpelite-faq-item"><summary>Does it add a watermark? <span>+</span></summary><div class="mpelite-faq-content">No. Your merged PDF will be clean and free of any watermarks, stamps, promo logos, or header/footer branding.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I arrange PDFs? <span>+</span></summary><div class="mpelite-faq-content">Yes. Each file card has Move Up, Move Down, Move to Top, and Move to Bottom buttons, allowing you to organize the exact sequence of your documents.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I select certain pages? <span>+</span></summary><div class="mpelite-faq-content">Yes! Toggle the "Custom Pages" option on any uploaded PDF and enter page numbers or ranges (e.g. 1-4, 6, 8-10) to include only the exact pages you need.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I merge on iPhone? <span>+</span></summary><div class="mpelite-faq-content">Yes. The application is fully mobile-responsive and works directly inside Safari and Chrome on iOS and iPadOS without needing any external App Store downloads.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I merge on Android? <span>+</span></summary><div class="mpelite-faq-content">Yes. Open the page in Google Chrome, Samsung Internet, or Firefox on your Android device and tap "Choose PDF Files" to pick files from your device or Google Drive.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I merge on Windows? <span>+</span></summary><div class="mpelite-faq-content">Yes. Any modern desktop browser (Chrome, Edge, Safari, Firefox, Opera, Brave) can run the application seamlessly.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I download the merged PDF? <span>+</span></summary><div class="mpelite-faq-content">Yes. As soon as the client-side compilation completes, a prominent "⬇ Download Merged PDF" button appears so you can save the file with a single click.</div></details>
+        <details class="mpelite-faq-item"><summary>Can I download it again? <span>+</span></summary><div class="mpelite-faq-content">Yes. The "Download Again" button allows you to re-download the compiled PDF during your current session without needing to re-process the files.</div></details>
+        <details class="mpelite-faq-item"><summary>Where is my merged PDF saved? <span>+</span></summary><div class="mpelite-faq-content">It is saved directly to your default browser downloads folder (e.g. Downloads on Windows/Mac/Android, or the Files app on iOS).</div></details>
+        <details class="mpelite-faq-item"><summary>Can different PDF sizes be combined? <span>+</span></summary><div class="mpelite-faq-content">Yes. Each page maintains its original dimensions (Letter, Legal, A4, Ledger, or custom) without being stretched or forced into a single standard size.</div></details>
+        <details class="mpelite-faq-item"><summary>Can portrait and landscape PDFs be combined? <span>+</span></summary><div class="mpelite-faq-content">Yes. The rotational metadata and orientation of each page are preserved so portrait letters and landscape spreadsheets display correctly side-by-side.</div></details>
+        <details class="mpelite-faq-item"><summary>Does merging reduce PDF quality? <span>+</span></summary><div class="mpelite-faq-content">No. The merger clones existing page streams directly without re-encoding or downscaling, ensuring all images, text, and vector graphics retain 100% of their original clarity.</div></details>
+        <details class="mpelite-faq-item"><summary>Are my PDFs uploaded to a server? <span>+</span></summary><div class="mpelite-faq-content">No. All processing happens 100% privately in your browser using local client-side WebAssembly and JavaScript libraries. Your files never leave your computer or phone.</div></details>
+        <details class="mpelite-faq-item"><summary>Can encrypted PDFs be merged? <span>+</span></summary><div class="mpelite-faq-content">Encrypted or password-locked PDFs cannot be merged unless unlocked first, as browser security cannot bypass document passwords. Unprotected PDFs will merge normally.</div></details>
+        <details class="mpelite-faq-item"><summary>What happens to digital signatures? <span>+</span></summary><div class="mpelite-faq-content">Combining files creates a new document structure with a different byte hash, which will invalidate existing cryptographic digital signatures. Always preserve your signed originals.</div></details>
+        <details class="mpelite-faq-item"><summary>What happens to forms? <span>+</span></summary><div class="mpelite-faq-content">Visual form values and text are retained, but interactive AcroForm scripts or duplicate field names may not remain interactive. Flattening forms before merging is recommended.</div></details>
+        <details class="mpelite-faq-item"><summary>Are bookmarks preserved? <span>+</span></summary><div class="mpelite-faq-content">Individual page content is combined, but separate bookmark trees from multiple files are not automatically woven into a unified outline index.</div></details>
+        <details class="mpelite-faq-item"><summary>Why can large PDFs take longer? <span>+</span></summary><div class="mpelite-faq-content">Since merging occurs in your local browser memory, very large files with hundreds of pages require extra RAM and CPU power to unpack and assemble.</div></details>
+        <details class="mpelite-faq-item"><summary>Does this tool store my PDFs? <span>+</span></summary><div class="mpelite-faq-content">No. We do not store, log, cache, or transmit your documents or personal data to any external server or local database.</div></details>
+      </div>
+    </section>
+
+    <!-- 23. PRIVACY -->
+    <div class="mpelite-legal-box">
+      <div class="mpelite-legal-title">🔒 Private Browser-Based PDF Merging</div>
+      <p>Your selected PDF files are processed locally in your browser by this PDF merging tool. The tool does not require a server-side PDF merging API or an account. Your document data is held temporarily in device memory solely to assemble the output PDF and is never stored in LocalStorage, SessionStorage, IndexedDB, or server databases.</p>
+    </div>
+
+    <!-- 24. DISCLAIMER -->
+    <div class="mpelite-legal-box" style="background:#fffbeb; border-color:#fde68a;">
+      <div class="mpelite-legal-title" style="color:#92400e;">⚠️ PDF Merger Disclaimer</div>
+      <p style="color:#78350f;">This PDF merger is provided for general document-processing purposes. Results may vary depending on encryption, digital signatures, interactive forms, annotations, bookmarks, attachments and other advanced PDF features. Creating a new merged PDF may invalidate existing digital signatures. Keep your original PDF files when signatures, forms, bookmarks, attachments or other advanced features are important.</p>
+    </div>
+
+    <!-- 25. SOCIAL SHARING SECTION -->
+    <section class="mpelite-social-section">
+      <h2 class="mpelite-social-title">Share This Free PDF Merger</h2>
+      <p class="mpelite-social-sub">Help friends, classmates, and coworkers combine PDF documents easily with no signup or watermark.</p>
+
+      <div class="mpelite-social-grid">
+        <!-- 26. Facebook -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-fb" id="mpeliteShareFb">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>Facebook</span>
+        </button>
+
+        <!-- 27. X / Twitter -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-x" id="mpeliteShareX">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <span>X / Twitter</span>
+        </button>
+
+        <!-- 28. WhatsApp -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-wa" id="mpeliteShareWa">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          <span>WhatsApp</span>
+        </button>
+
+        <!-- 29. LinkedIn -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-li" id="mpeliteShareLi">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn</span>
+        </button>
+
+        <!-- 30. Reddit -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-rd" id="mpeliteShareRd">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.703z"/></svg>
+          <span>Reddit</span>
+        </button>
+
+        <!-- 31. Telegram -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-tg" id="mpeliteShareTg">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          <span>Telegram</span>
+        </button>
+
+        <!-- 32. Email -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-mail" id="mpeliteShareMail">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Email</span>
+        </button>
+
+        <!-- 33. Copy Link -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-copy" id="mpeliteShareCopy">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+          <span id="mpeliteCopyText">Copy Link</span>
+        </button>
+
+        <!-- 34. Share Tool -->
+        <button type="button" class="mpelite-share-btn mpelite-btn-webshare" id="mpeliteShareNative">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          <span>Share Tool</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- PINNED PDF LIBRARY SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.9/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- 35. SOCIAL BAR ADVERTISEMENT -->
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+<script>
+(function () {
+  var root = document.getElementById('mergePdfEliteApp');
+  if (!root) return;
+
+  if (window.pdfjsLib) {
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  var filesList = [];
+  var currentResult = null;
+  var isMerging = false;
+
+  var dropzone = document.getElementById('mpeliteDropzone');
+  var fileInput = document.getElementById('mpeliteFileInput');
+  var chooseBtn = document.getElementById('mpeliteChooseBtn');
+  var filesContainer = document.getElementById('mpeliteFilesContainer');
+  var cardsList = document.getElementById('mpeliteCardsList');
+  var fileCountText = document.getElementById('mpeliteFileCountText');
+  var fileSummaryText = document.getElementById('mpeliteFileSummaryText');
+  var clearAllBtn = document.getElementById('mpeliteClearAllBtn');
+  var outputNameInput = document.getElementById('mpeliteOutputNameInput');
+  var mergeBtn = document.getElementById('mpeliteMergeBtn');
+  var progressBox = document.getElementById('mpeliteProgressBox');
+  var progressLabel = document.getElementById('mpeliteProgressLabel');
+  var progressPercent = document.getElementById('mpeliteProgressPercent');
+  var progressBarFill = document.getElementById('mpeliteProgressBarFill');
+  var resultDashboard = document.getElementById('mpeliteResultDashboard');
+  var resFilename = document.getElementById('mpeliteResFilename');
+  var resFilesCount = document.getElementById('mpeliteResFilesCount');
+  var resPagesCount = document.getElementById('mpeliteResPagesCount');
+  var resSize = document.getElementById('mpeliteResSize');
+  var primaryDownloadBtn = document.getElementById('mpelitePrimaryDownloadBtn');
+  var downloadAgainBtn = document.getElementById('mpeliteDownloadAgainBtn');
+  var resetBtn = document.getElementById('mpeliteResetBtn');
+
+  function formatBytes(bytes) {
+    if (bytes === 0) return '0 B';
+    var k = 1024;
+    var sizes = ['B', 'KB', 'MB', 'GB'];
+    var i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  function parseRanges(input, maxPages) {
+    var trimmed = (input || '').trim();
+    if (!trimmed) {
+      var all = [];
+      for (var p = 1; p <= maxPages; p++) all.push(p);
+      return { pages: all };
+    }
+    var parts = trimmed.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+    if (parts.length === 0) return { pages: [], error: 'Enter pages like 1-4, 6, 8-10.' };
+
+    var set = {};
+    for (var i = 0; i < parts.length; i++) {
+      var item = parts[i];
+      if (item.indexOf('-') !== -1) {
+        var range = item.split('-');
+        if (range.length !== 2) return { pages: [], error: 'Enter pages like 1-4, 6, 8-10.' };
+        var s = parseInt(range[0].trim(), 10);
+        var e = parseInt(range[1].trim(), 10);
+        if (isNaN(s) || isNaN(e)) return { pages: [], error: 'Enter pages like 1-4, 6, 8-10.' };
+        if (s === 0 || e === 0) return { pages: [], error: 'PDF page numbers start at 1.' };
+        if (s < 0 || e < 0) return { pages: [], error: 'Negative page numbers are not allowed.' };
+        if (s > maxPages) return { pages: [], error: "Page " + s + " is outside this PDF's " + maxPages + "-page range." };
+        if (e > maxPages) return { pages: [], error: "Page " + e + " is outside this PDF's " + maxPages + "-page range." };
+        if (s > e) return { pages: [], error: 'Start page cannot exceed end page in ' + item };
+        for (var j = s; j <= e; j++) set[j] = true;
+      } else {
+        var num = parseInt(item, 10);
+        if (isNaN(num)) return { pages: [], error: 'Enter pages like 1-4, 6, 8-10.' };
+        if (num === 0) return { pages: [], error: 'PDF page numbers start at 1.' };
+        if (num < 0) return { pages: [], error: 'Negative page numbers are not allowed.' };
+        if (num > maxPages) return { pages: [], error: "Page " + num + " is outside this PDF's " + maxPages + "-page range." };
+        set[num] = true;
+      }
+    }
+    var resultPages = Object.keys(set).map(function(x){ return parseInt(x, 10); }).sort(function(a,b){ return a-b; });
+    if (resultPages.length === 0) return { pages: [], error: 'Enter pages like 1-4, 6, 8-10.' };
+    return { pages: resultPages };
+  }
+
+  function addFiles(files) {
+    if (!files || files.length === 0) return;
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      var item = {
+        id: 'f_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+        file: f,
+        name: f.name,
+        size: f.size,
+        pageCount: 0,
+        thumbnailUrl: null,
+        mode: 'all',
+        pageRangeInput: '',
+        status: 'loading',
+        error: null
+      };
+      filesList.push(item);
+      inspectFile(item);
+    }
+    renderUI();
+  }
+
+  function inspectFile(item) {
+    if (!item.name.toLowerCase().endsWith('.pdf') && item.file.type && item.file.type !== 'application/pdf') {
+      item.status = 'error';
+      item.error = 'This file could not be opened as a valid PDF document.';
+      renderUI();
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var arrayBuffer = e.target.result;
+      var bytes = new Uint8Array(arrayBuffer);
+      var header = String.fromCharCode.apply(null, bytes.subarray(0, 8));
+      if (header.indexOf('%PDF') === -1) {
+        item.status = 'error';
+        item.error = 'This file could not be opened as a valid PDF document.';
+        renderUI();
+        return;
+      }
+
+      if (window.PDFLib) {
+        window.PDFLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true }).then(function(doc) {
+          if (doc.isEncrypted) {
+            item.status = 'error';
+            item.error = 'This PDF appears to be encrypted or password-protected and cannot be merged by this browser-based tool.';
+            renderUI();
+            return;
+          }
+          item.pageCount = doc.getPageCount();
+          item.status = 'ready';
+          renderUI();
+
+          if (window.pdfjsLib) {
+            window.pdfjsLib.getDocument({ data: new Uint8Array(arrayBuffer) }).promise.then(function(pdf) {
+              return pdf.getPage(1).then(function(page) {
+                var viewport = page.getViewport({ scale: 0.3 });
+                var canvas = document.createElement('canvas');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                var ctx = canvas.getContext('2d');
+                return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
+                  item.thumbnailUrl = canvas.toDataURL('image/jpeg', 0.85);
+                  renderUI();
+                });
+              });
+            }).catch(function(){});
+          }
+        }).catch(function(err) {
+          item.status = 'error';
+          var msg = (err && err.message) || '';
+          if (msg.toLowerCase().indexOf('encrypt') !== -1) {
+            item.error = 'This PDF appears to be encrypted or password-protected and cannot be merged by this browser-based tool.';
+          } else {
+            item.error = 'This file could not be opened as a valid PDF document.';
+          }
+          renderUI();
+        });
+      }
+    };
+    reader.onerror = function() {
+      item.status = 'error';
+      item.error = 'This file could not be opened as a valid PDF document.';
+      renderUI();
+    };
+    reader.readAsArrayBuffer(item.file);
+  }
+
+  function renderUI() {
+    if (filesList.length === 0) {
+      filesContainer.style.display = 'none';
+      return;
+    }
+    filesContainer.style.display = 'block';
+
+    var totalBytes = 0;
+    var readyCount = 0;
+    for (var i = 0; i < filesList.length; i++) {
+      totalBytes += filesList[i].size;
+      if (filesList[i].status === 'ready' && !filesList[i].error) readyCount++;
+    }
+
+    fileCountText.textContent = 'Selected PDF Files (' + filesList.length + ')';
+    fileSummaryText.textContent = 'Total size: ' + formatBytes(totalBytes);
+    mergeBtn.disabled = readyCount < 2 || isMerging;
+
+    cardsList.innerHTML = '';
+    for (var k = 0; k < filesList.length; k++) {
+      (function(idx) {
+        var it = filesList[idx];
+        var card = document.createElement('div');
+        card.className = 'mpelite-file-card';
+
+        var validation = it.mode === 'custom' ? parseRanges(it.pageRangeInput, it.pageCount) : { pages: [] };
+
+        var html = '<div class="mpelite-card-left">' +
+          '<div class="mpelite-order-badge">#' + (idx + 1) + '</div>' +
+          '<div class="mpelite-thumb-box">';
+        if (it.thumbnailUrl) {
+          html += '<img src="' + it.thumbnailUrl + '" alt="Preview">';
+        } else {
+          html += '<svg width="32" height="32" fill="#ef4444" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm4-4H6v-2h10v2zm0-4H6V7h10v2z"/></svg>';
+        }
+        html += '</div></div>';
+
+        html += '<div class="mpelite-card-main">' +
+          '<div class="mpelite-card-title">' + escapeHtml(it.name) + '</div>' +
+          '<div class="mpelite-card-meta">' + formatBytes(it.size) + (it.pageCount > 0 ? ' • ' + it.pageCount + ' pages' : '') + '</div>';
+
+        if (it.status === 'ready' && !it.error) {
+          html += '<span class="mpelite-card-status mpelite-status-ready">Ready to Merge</span>';
+        } else if (it.status === 'loading') {
+          html += '<span class="mpelite-card-status mpelite-status-loading">Inspecting PDF…</span>';
+        } else {
+          html += '<span class="mpelite-card-status mpelite-status-error">Error</span>' +
+                  '<div class="mpelite-range-error" style="margin-top:6px;">' + escapeHtml(it.error) + '</div>';
+        }
+
+        if (it.status === 'ready' && !it.error) {
+          html += '<div class="mpelite-range-box">' +
+            '<div class="mpelite-range-radios">' +
+              '<label><input type="radio" name="mode_' + it.id + '" value="all" ' + (it.mode === 'all' ? 'checked' : '') + ' /> All Pages (1–' + it.pageCount + ')</label>' +
+              '<label><input type="radio" name="mode_' + it.id + '" value="custom" ' + (it.mode === 'custom' ? 'checked' : '') + ' /> Custom Pages</label>' +
+            '</div>';
+
+          if (it.mode === 'custom') {
+            html += '<div class="mpelite-range-input-row">' +
+              '<input type="text" class="mpelite-range-input" id="rangeInput_' + it.id + '" value="' + escapeHtml(it.pageRangeInput) + '" placeholder="e.g. 1-' + Math.min(it.pageCount, 3) + '" />' +
+              '<span style="font-size:11px;color:#64748b;">Selected: ' + (validation.error ? 0 : validation.pages.length) + ' of ' + it.pageCount + ' pages</span>' +
+            '</div>';
+            if (validation.error) {
+              html += '<div class="mpelite-range-error">' + escapeHtml(validation.error) + '</div>';
+            }
+          }
+          html += '</div>';
+        }
+
+        html += '<div class="mpelite-card-actions">' +
+          '<div class="mpelite-order-btns">' +
+            '<button type="button" class="mpelite-btn-order btn-up" ' + (idx === 0 ? 'disabled' : '') + '>▲ Move Up</button>' +
+            '<button type="button" class="mpelite-btn-order btn-down" ' + (idx === filesList.length - 1 ? 'disabled' : '') + '>▼ Move Down</button>' +
+            '<button type="button" class="mpelite-btn-order btn-top" ' + (idx === 0 ? 'disabled' : '') + '>⏫ Top</button>' +
+            '<button type="button" class="mpelite-btn-order btn-bottom" ' + (idx === filesList.length - 1 ? 'disabled' : '') + '>⏬ Bottom</button>' +
+          '</div>' +
+          '<button type="button" class="mpelite-btn-remove btn-rem">✕ Remove PDF</button>' +
+        '</div></div>';
+
+        card.innerHTML = html;
+
+        var radioAll = card.querySelector('input[value="all"]');
+        var radioCustom = card.querySelector('input[value="custom"]');
+        if (radioAll) {
+          radioAll.onchange = function() { it.mode = 'all'; renderUI(); };
+        }
+        if (radioCustom) {
+          radioCustom.onchange = function() {
+            it.mode = 'custom';
+            if (!it.pageRangeInput) it.pageRangeInput = '1-' + it.pageCount;
+            renderUI();
+          };
+        }
+        var rangeInp = card.querySelector('#rangeInput_' + it.id);
+        if (rangeInp) {
+          rangeInp.oninput = function(e) {
+            it.pageRangeInput = e.target.value;
+            var valCheck = parseRanges(it.pageRangeInput, it.pageCount);
+            var errEl = card.querySelector('.mpelite-range-error');
+            if (valCheck.error) {
+              if (!errEl) {
+                errEl = document.createElement('div');
+                errEl.className = 'mpelite-range-error';
+                rangeInp.parentNode.appendChild(errEl);
+              }
+              errEl.textContent = valCheck.error;
+            } else if (errEl) {
+              errEl.remove();
+            }
+          };
+        }
+
+        card.querySelector('.btn-up').onclick = function() { moveItem(idx, idx - 1); };
+        card.querySelector('.btn-down').onclick = function() { moveItem(idx, idx + 1); };
+        card.querySelector('.btn-top').onclick = function() { moveItem(idx, 0); };
+        card.querySelector('.btn-bottom').onclick = function() { moveItem(idx, filesList.length - 1); };
+        card.querySelector('.btn-rem').onclick = function() {
+          filesList.splice(idx, 1);
+          renderUI();
+        };
+
+        cardsList.appendChild(card);
+      })(k);
+    }
+  }
+
+  function moveItem(from, to) {
+    if (to < 0 || to >= filesList.length) return;
+    var moved = filesList.splice(from, 1)[0];
+    filesList.splice(to, 0, moved);
+    renderUI();
+  }
+
+  function escapeHtml(s) {
+    return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function sanitizeName(n) {
+    var c = (n || '').trim().replace(/[\\/?:*"<>|]/g, '-');
+    if (!c) c = 'merged-document';
+    if (c.toLowerCase().endsWith('.pdf')) c = c.slice(0, -4);
+    return c + '.pdf';
+  }
+
+  mergeBtn.onclick = function() {
+    if (isMerging || filesList.length < 2) return;
+    var valid = filesList.filter(function(x){ return x.status === 'ready' && !x.error; });
+    if (valid.length < 2) {
+      alert('Please ensure you have at least two valid PDF files ready.');
+      return;
+    }
+
+    isMerging = true;
+    mergeBtn.disabled = true;
+    mergeBtn.textContent = 'Merging PDFs…';
+    progressBox.style.display = 'block';
+    updateProgress('Preparing PDFs…', 10);
+
+    setTimeout(async function() {
+      try {
+        var PDFDocument = window.PDFLib.PDFDocument;
+        var mergedDoc = await PDFDocument.create();
+        var totalCopied = 0;
+
+        for (var i = 0; i < valid.length; i++) {
+          var item = valid[i];
+          var pct = Math.round(((i + 1) / (valid.length + 2)) * 80);
+          updateProgress('Processing PDF ' + (i + 1) + ' of ' + valid.length + ': ' + item.name + '…', pct);
+
+          var buffer = await item.file.arrayBuffer();
+          var source = await PDFDocument.load(buffer);
+
+          var pageIndices = [];
+          if (item.mode === 'all') {
+            pageIndices = source.getPageIndices();
+          } else {
+            var rangeRes = parseRanges(item.pageRangeInput, item.pageCount);
+            if (rangeRes.error || rangeRes.pages.length === 0) {
+              pageIndices = source.getPageIndices();
+            } else {
+              pageIndices = rangeRes.pages.map(function(p){ return p - 1; });
+            }
+          }
+
+          var copied = await mergedDoc.copyPages(source, pageIndices);
+          for (var p = 0; p < copied.length; p++) {
+            mergedDoc.addPage(copied[p]);
+            totalCopied++;
+          }
+        }
+
+        updateProgress('Creating Merged PDF…', 90);
+        var bytes = await mergedDoc.save();
+
+        if (!bytes || bytes.byteLength === 0) {
+          throw new Error('PDF compilation failed.');
+        }
+
+        updateProgress('Finalizing Document…', 100);
+
+        var blob = new Blob([bytes], { type: 'application/pdf' });
+        if (currentResult && currentResult.url) {
+          URL.revokeObjectURL(currentResult.url);
+        }
+        var url = URL.createObjectURL(blob);
+        var finalName = sanitizeName(outputNameInput.value);
+
+        var totalOrig = 0;
+        for (var f = 0; f < filesList.length; f++) totalOrig += filesList[f].size;
+
+        currentResult = {
+          blob: blob,
+          url: url,
+          fileName: finalName,
+          fileSize: blob.size,
+          origSize: totalOrig,
+          filesCount: valid.length,
+          pagesCount: totalCopied
+        };
+
+        resFilename.textContent = finalName;
+        resFilesCount.textContent = valid.length + ' Files';
+        resPagesCount.textContent = totalCopied + ' Pages';
+        resSize.textContent = formatBytes(blob.size);
+        resultDashboard.style.display = 'block';
+
+        resultDashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (err) {
+        alert('An error occurred during merging: ' + ((err && err.message) || err));
+      } finally {
+        isMerging = false;
+        mergeBtn.disabled = false;
+        mergeBtn.textContent = 'Merge PDF Files';
+        progressBox.style.display = 'none';
+      }
+    }, 50);
+  };
+
+  function updateProgress(lbl, pct) {
+    progressLabel.textContent = lbl;
+    progressPercent.textContent = pct + '%';
+    progressBarFill.style.width = pct + '%';
+  }
+
+  function triggerDownload() {
+    if (!currentResult || !currentResult.url) return;
+    var a = document.createElement('a');
+    a.href = currentResult.url;
+    a.download = currentResult.fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  primaryDownloadBtn.onclick = triggerDownload;
+  downloadAgainBtn.onclick = triggerDownload;
+
+  resetBtn.onclick = function() {
+    if (currentResult && currentResult.url) {
+      URL.revokeObjectURL(currentResult.url);
+      currentResult = null;
+    }
+    filesList = [];
+    resultDashboard.style.display = 'none';
+    outputNameInput.value = 'merged-document';
+    renderUI();
+    dropzone.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  clearAllBtn.onclick = function() {
+    filesList = [];
+    renderUI();
+  };
+
+  chooseBtn.onclick = function() { fileInput.click(); };
+  dropzone.onclick = function(e) {
+    if (e.target !== chooseBtn) fileInput.click();
+  };
+  fileInput.onchange = function(e) {
+    if (e.target.files && e.target.files.length > 0) {
+      addFiles(e.target.files);
+      fileInput.value = '';
+    }
+  };
+
+  dropzone.ondragover = function(e) {
+    e.preventDefault();
+    dropzone.classList.add('drag-active');
+  };
+  dropzone.ondragleave = function(e) {
+    e.preventDefault();
+    dropzone.classList.remove('drag-active');
+  };
+  dropzone.ondrop = function(e) {
+    e.preventDefault();
+    dropzone.classList.remove('drag-active');
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      addFiles(e.dataTransfer.files);
+    }
+  };
+
+  function getShareData() {
+    var u = encodeURIComponent(window.location.href);
+    var t = encodeURIComponent(document.title);
+    return { u: u, t: t, rawU: window.location.href, rawT: document.title };
+  }
+
+  document.getElementById('mpeliteShareFb').onclick = function() {
+    var s = getShareData();
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + s.u, '_blank', 'noopener,noreferrer,width=600,height=400');
+  };
+  document.getElementById('mpeliteShareX').onclick = function() {
+    var s = getShareData();
+    window.open('https://twitter.com/intent/tweet?text=' + s.t + '&url=' + s.u, '_blank', 'noopener,noreferrer,width=600,height=400');
+  };
+  document.getElementById('mpeliteShareWa').onclick = function() {
+    var s = getShareData();
+    window.open('https://api.whatsapp.com/send?text=' + s.t + '%20' + s.u, '_blank', 'noopener,noreferrer');
+  };
+  document.getElementById('mpeliteShareLi').onclick = function() {
+    var s = getShareData();
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + s.u, '_blank', 'noopener,noreferrer,width=600,height=500');
+  };
+  document.getElementById('mpeliteShareRd').onclick = function() {
+    var s = getShareData();
+    window.open('https://reddit.com/submit?url=' + s.u + '&title=' + s.t, '_blank', 'noopener,noreferrer,width=600,height=500');
+  };
+  document.getElementById('mpeliteShareTg').onclick = function() {
+    var s = getShareData();
+    window.open('https://t.me/share/url?url=' + s.u + '&text=' + s.t, '_blank', 'noopener,noreferrer');
+  };
+  document.getElementById('mpeliteShareMail').onclick = function() {
+    var s = getShareData();
+    window.location.href = 'mailto:?subject=' + s.t + '&body=' + s.t + '%0A%0A' + s.u;
+  };
+  document.getElementById('mpeliteShareCopy').onclick = function() {
+    var s = getShareData();
+    var copyTxt = document.getElementById('mpeliteCopyText');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(s.rawU).then(function() {
+        copyTxt.textContent = 'Link Copied!';
+        setTimeout(function(){ copyTxt.textContent = 'Copy Link'; }, 2000);
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = s.rawU;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      copyTxt.textContent = 'Link Copied!';
+      setTimeout(function(){ copyTxt.textContent = 'Copy Link'; }, 2000);
+    }
+  };
+  document.getElementById('mpeliteShareNative').onclick = function() {
+    var s = getShareData();
+    if (navigator.share) {
+      navigator.share({ title: s.rawT, url: s.rawU }).catch(function(){});
+    } else {
+      document.getElementById('mpeliteShareCopy').click();
+    }
+  };
+})();
+</script>
