@@ -1,0 +1,2072 @@
+<!--
+BLOGGER TITLE: Free PDF Compressor – Reduce PDF File Size Online
+BLOGGER SEARCH DESCRIPTION: Compress PDF files online for free. Reduce PDF size, choose compression or target size, compare file-size savings and download your compressed PDF.
+BLOGGER LABELS: Compress PDF, PDF Compressor, Reduce PDF Size, PDF Size Reducer, Make PDF Smaller, PDF Compression, PDF Tools, Document Tools, Productivity Tools, Free Online Tools
+BLOGGER PERMALINK: compress-pdf-online
+GITHUB FILE NAME: compress-pdf-online.html
+-->
+
+<style>
+#pdfCompressEliteApp,
+#pdfCompressEliteApp * {
+  box-sizing: border-box;
+}
+#pdfCompressEliteApp {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+.pdfcmp-hero {
+  text-align: center;
+  padding: 16px 0 28px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.pdfcmp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 9999px;
+  color: #1e40af;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.pdfcmp-title {
+  font-size: 34px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.pdfcmp-subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 0 0 14px;
+}
+.pdfcmp-desc {
+  max-width: 680px;
+  margin: 0 auto 20px;
+  color: #475569;
+  font-size: 15px;
+}
+.pdfcmp-trust-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.pdfcmp-trust-item {
+  padding: 5px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+.pdfcmp-intro {
+  margin: 28px 0;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+.pdfcmp-intro h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 10px;
+}
+.pdfcmp-intro p {
+  margin: 0 0 10px;
+  color: #475569;
+  font-size: 15px;
+}
+.pdfcmp-ad-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 24px 0;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.pdfcmp-ad-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+.pdfcmp-upload-zone {
+  border: 2px dashed #93c5fd;
+  background: #f0f7ff;
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pdfcmp-upload-zone:hover {
+  border-color: #3b82f6;
+  background: #e6f0fd;
+}
+.pdfcmp-upload-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  background: #dbeafe;
+  color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pdfcmp-upload-icon svg {
+  width: 28px;
+  height: 28px;
+}
+.pdfcmp-upload-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+.pdfcmp-upload-sub {
+  font-size: 15px;
+  color: #475569;
+  margin: 0 0 4px;
+}
+.pdfcmp-upload-note {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 20px;
+}
+.pdfcmp-upload-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.pdfcmp-btn-choose {
+  min-height: 48px;
+  padding: 12px 28px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: background 0.15s ease;
+}
+.pdfcmp-btn-choose:hover {
+  background: #1d4ed8;
+}
+.pdfcmp-btn-sample {
+  min-height: 48px;
+  padding: 12px 20px;
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pdfcmp-btn-sample:hover {
+  background: #f1f5f9;
+}
+.pdfcmp-file-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.pdfcmp-file-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.pdfcmp-file-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pdfcmp-preview-thumb {
+  width: 60px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+}
+.pdfcmp-file-meta h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px;
+  word-break: break-all;
+}
+.pdfcmp-file-tags {
+  font-size: 13px;
+  color: #64748b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pdfcmp-file-actions {
+  display: flex;
+  gap: 8px;
+}
+.pdfcmp-btn-sm-secondary {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pdfcmp-btn-sm-danger {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pdfcmp-options-group {
+  margin-top: 20px;
+}
+.pdfcmp-options-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+.pdfcmp-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.pdfcmp-mode-card {
+  padding: 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.15s ease;
+}
+.pdfcmp-mode-card:hover {
+  border-color: #93c5fd;
+}
+.pdfcmp-mode-card.pdfcmp-mode-active {
+  border-color: #2563eb;
+  background: #f0f7ff;
+}
+.pdfcmp-mode-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.pdfcmp-mode-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+}
+.pdfcmp-pill {
+  font-size: 10px;
+  font-weight: 800;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.pdfcmp-mode-desc {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+.pdfcmp-preserve-box {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #334155;
+}
+.pdfcmp-target-box {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+}
+.pdfcmp-target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.pdfcmp-target-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.pdfcmp-chip {
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #334155;
+}
+.pdfcmp-chip.pdfcmp-chip-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+.pdfcmp-custom-box {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+.pdfcmp-slider-wrap {
+  margin-bottom: 14px;
+}
+.pdfcmp-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+.pdfcmp-slider {
+  width: 100%;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+.pdfcmp-custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.pdfcmp-custom-col {
+  flex: 1;
+  min-width: 180px;
+}
+.pdfcmp-sublabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+.pdfcmp-btn-group {
+  display: flex;
+  gap: 6px;
+}
+.pdfcmp-toggle-btn {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #334155;
+}
+.pdfcmp-toggle-btn.pdfcmp-toggle-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+.pdfcmp-btn-compress {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 54px;
+  padding: 14px 20px;
+  margin-top: 20px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  transition: background 0.15s ease;
+}
+.pdfcmp-btn-compress:hover {
+  background: #1d4ed8;
+}
+.pdfcmp-progress-box {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-align: center;
+}
+.pdfcmp-progress-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+}
+.pdfcmp-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.pdfcmp-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #2563eb;
+  transition: width 0.2s ease;
+}
+.pdfcmp-result-panel {
+  margin: 24px 0;
+  padding: 24px 20px;
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+}
+.pdfcmp-result-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.pdfcmp-result-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pdfcmp-result-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+.pdfcmp-result-sub {
+  font-size: 14px;
+  color: #475569;
+  margin: 0;
+}
+.pdfcmp-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.pdfcmp-metric-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+.pdfcmp-metric-card.pdfcmp-metric-comp {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.pdfcmp-metric-lbl {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.pdfcmp-metric-val {
+  display: block;
+  font-size: 20px;
+  font-weight: 900;
+  color: #0f172a;
+}
+.pdfcmp-val-green {
+  color: #16a34a;
+}
+.pdfcmp-val-blue {
+  color: #2563eb;
+}
+.pdfcmp-info-strip {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #475569;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.pdfcmp-btn-download-main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 54px;
+  padding: 16px 20px;
+  background: #16a34a;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 19px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+  transition: background 0.15s ease;
+  margin-bottom: 12px;
+}
+.pdfcmp-btn-download-main:hover {
+  background: #15803d;
+}
+.pdfcmp-btn-download-again {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 48px;
+  padding: 12px 18px;
+  background: #ffffff;
+  color: #166534;
+  border: 2px solid #16a34a;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  margin-bottom: 12px;
+  transition: all 0.15s ease;
+}
+.pdfcmp-btn-download-again:hover {
+  background: #f0fdf4;
+}
+.pdfcmp-result-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+.pdfcmp-btn-diff {
+  height: auto;
+  min-height: 46px;
+  padding: 10px 14px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.pdfcmp-btn-another {
+  height: auto;
+  min-height: 46px;
+  padding: 10px 14px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.pdfcmp-alert-box {
+  margin: 16px 0;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+  color: #b91c1c;
+  font-size: 14px;
+  border-radius: 6px;
+}
+.pdfcmp-section-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: center;
+  margin: 36px 0 6px;
+}
+.pdfcmp-section-sub {
+  font-size: 14px;
+  color: #64748b;
+  text-align: center;
+  margin: 0 0 24px;
+}
+.pdfcmp-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.pdfcmp-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+.pdfcmp-card h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+.pdfcmp-card p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.45;
+}
+.pdfcmp-usecase-num {
+  width: 28px;
+  height: 28px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.pdfcmp-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.pdfcmp-step-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+}
+.pdfcmp-step-num {
+  width: 28px;
+  height: 28px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.pdfcmp-article {
+  margin: 36px 0;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.pdfcmp-article h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 24px 0 10px;
+}
+.pdfcmp-article h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 18px 0 8px;
+}
+.pdfcmp-article p {
+  margin: 0 0 14px;
+}
+.pdfcmp-article ul {
+  margin: 0 0 14px 20px;
+  padding: 0;
+}
+.pdfcmp-article li {
+  margin-bottom: 6px;
+}
+.pdfcmp-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.pdfcmp-faq-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+.pdfcmp-faq-item summary {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pdfcmp-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.pdfcmp-faq-answer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.55;
+}
+.pdfcmp-policy-box {
+  margin: 24px 0;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+.pdfcmp-policy-box h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 10px;
+}
+.pdfcmp-share-box {
+  margin: 36px 0;
+  padding: 24px 16px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  text-align: center;
+}
+.pdfcmp-share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.pdfcmp-btn-share {
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+.pdfcmp-bg-fb { background: #1877f2; }
+.pdfcmp-bg-tw { background: #000000; }
+.pdfcmp-bg-wa { background: #25d366; }
+.pdfcmp-bg-li { background: #0a66c2; }
+.pdfcmp-bg-rd { background: #ff4500; }
+.pdfcmp-bg-tg { background: #229ed9; }
+.pdfcmp-bg-em { background: #475569; }
+.pdfcmp-bg-cp { background: #ffffff; color: #1e293b; border: 1px solid #cbd5e1; }
+.pdfcmp-bg-nt { background: #2563eb; }
+
+@media (max-width: 640px) {
+  .pdfcmp-title { font-size: 26px; }
+  .pdfcmp-subtitle { font-size: 18px; }
+  .pdfcmp-btn-download-main { font-size: 17px; }
+}
+</style>
+
+<div id="pdfCompressEliteApp">
+  <!-- 1. HERO -->
+  <div class="pdfcmp-hero">
+    <div class="pdfcmp-badge">
+      <span>🇺🇸</span>
+      <span>Free PDF Compressor for U.S. Users</span>
+    </div>
+    <h1 class="pdfcmp-title">Compress PDF Online</h1>
+    <div class="pdfcmp-subtitle">Reduce PDF File Size Online for Free</div>
+    <p class="pdfcmp-desc">
+      Reduce your PDF file size directly in your browser. Choose a compression level or target file size, compare the original and compressed PDF, see how much space you saved, and download your optimized PDF with no signup or watermark.
+    </p>
+    <div class="pdfcmp-trust-grid">
+      <span class="pdfcmp-trust-item">✓ Free</span>
+      <span class="pdfcmp-trust-item">✓ No Signup</span>
+      <span class="pdfcmp-trust-item">✓ No Watermark</span>
+      <span class="pdfcmp-trust-item">✓ Multiple Compression Levels</span>
+      <span class="pdfcmp-trust-item">✓ Target File Size</span>
+      <span class="pdfcmp-trust-item">✓ Savings Percentage</span>
+      <span class="pdfcmp-trust-item">✓ Download Compressed PDF</span>
+    </div>
+  </div>
+
+  <!-- 2. VISIBLE INTRO -->
+  <div class="pdfcmp-intro">
+    <h2>Free PDF Compressor – Reduce PDF File Size Online</h2>
+    <p>
+      Portable Document Format (PDF) files are the universal standard for sharing business agreements, school coursework, job applications, invoices, and government records. However, heavy image scans, multi-page attachments, and high-resolution graphics routinely bloat PDF files to 30 megabytes or larger. When a PDF becomes too big, standard email platforms like Gmail, Yahoo, and Outlook reject attachments exceeding 20 MB or 25 MB, and university or government application portals frequently fail with file size error warnings.
+    </p>
+    <p>
+      Our free web-based PDF compressor optimizes your documents instantly directly in your browser. With multiple compression modes—including Recommended, Higher Quality, Balanced, Smaller File, and specific Target File Size presets—you can tailor your file size reduction precisely to your needs. Once processed, inspect detailed before-and-after byte metrics, confirm the percentage saved, and click the prominent Download button to save your clean, watermark-free PDF to your device.
+    </p>
+  </div>
+
+  <!-- 3. FIRST ADVERTISEMENT (468x60) -->
+  <div class="pdfcmp-ad-wrapper">
+    <div class="pdfcmp-ad-label">Advertisement</div>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- 4. PDF UPLOAD AREA -->
+  <div id="pdfcmpUploadBox" class="pdfcmp-upload-zone">
+    <input type="file" id="pdfcmpFileInput" accept=".pdf,application/pdf" style="display:none;" />
+    <div class="pdfcmp-upload-icon">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+      </svg>
+    </div>
+    <div class="pdfcmp-upload-heading">Choose a PDF to Compress</div>
+    <div class="pdfcmp-upload-sub">Drag & drop your PDF here</div>
+    <div class="pdfcmp-upload-note">or choose a file from your device</div>
+    <div class="pdfcmp-upload-buttons">
+      <button type="button" id="pdfcmpBtnChoose" class="pdfcmp-btn-choose">Choose PDF</button>
+      <button type="button" id="pdfcmpBtnSample" class="pdfcmp-btn-sample">✨ Try a Sample PDF</button>
+    </div>
+  </div>
+
+  <!-- 5. SELECTED PDF INFORMATION -->
+  <div id="pdfcmpSelectedBox" class="pdfcmp-file-card" style="display:none;">
+    <div class="pdfcmp-file-header">
+      <div class="pdfcmp-file-details">
+        <img id="pdfcmpPreviewImg" class="pdfcmp-preview-thumb" style="display:none;" alt="Preview" />
+        <div id="pdfcmpFallbackIcon" class="pdfcmp-preview-thumb" style="display:flex;align-items:center;justify-content:center;background:#fee2e2;color:#dc2626;font-weight:900;font-size:13px;">PDF</div>
+        <div class="pdfcmp-file-meta">
+          <h4 id="pdfcmpFileName">document.pdf</h4>
+          <div class="pdfcmp-file-tags">
+            <span><strong>Original Size:</strong> <span id="pdfcmpFileSize">0 MB</span></span>
+            <span><strong>Pages:</strong> <span id="pdfcmpPageCount">--</span></span>
+            <span><strong>Status:</strong> Ready</span>
+          </div>
+        </div>
+      </div>
+      <div class="pdfcmp-file-actions">
+        <button type="button" id="pdfcmpBtnChangeFile" class="pdfcmp-btn-sm-secondary">Choose Another PDF</button>
+        <button type="button" id="pdfcmpBtnRemoveFile" class="pdfcmp-btn-sm-danger">Remove PDF</button>
+      </div>
+    </div>
+
+    <!-- 6. COMPRESSION MODES -->
+    <div id="pdfcmpSettingsSection" class="pdfcmp-options-group">
+      <label class="pdfcmp-options-label">Select Compression Mode</label>
+      <div class="pdfcmp-modes-grid">
+        <div class="pdfcmp-mode-card pdfcmp-mode-active" data-mode="recommended">
+          <div class="pdfcmp-mode-top">
+            <span class="pdfcmp-mode-name">Recommended</span>
+            <span class="pdfcmp-pill">POPULAR</span>
+          </div>
+          <p class="pdfcmp-mode-desc">A practical balance between document quality and file-size reduction.</p>
+        </div>
+        <div class="pdfcmp-mode-card" data-mode="higherQuality">
+          <div class="pdfcmp-mode-top">
+            <span class="pdfcmp-mode-name">Higher Quality</span>
+          </div>
+          <p class="pdfcmp-mode-desc">Uses gentler compression to preserve more visual detail. (Better quality, less reduction)</p>
+        </div>
+        <div class="pdfcmp-mode-card" data-mode="balanced">
+          <div class="pdfcmp-mode-top">
+            <span class="pdfcmp-mode-name">Balanced</span>
+          </div>
+          <p class="pdfcmp-mode-desc">A middle-ground option for smaller files while keeping documents easy to read.</p>
+        </div>
+        <div class="pdfcmp-mode-card" data-mode="smallerFile">
+          <div class="pdfcmp-mode-top">
+            <span class="pdfcmp-mode-name">Smaller File</span>
+          </div>
+          <p class="pdfcmp-mode-desc">Uses stronger compression for a smaller result where possible. Stronger compression may reduce image quality.</p>
+        </div>
+        <div class="pdfcmp-mode-card" data-mode="targetSize">
+          <div class="pdfcmp-mode-top">
+            <span class="pdfcmp-mode-name">Target File Size</span>
+          </div>
+          <p class="pdfcmp-mode-desc">Specify a desired goal like Under 1 MB, 2 MB, 5 MB, or a custom target limit.</p>
+        </div>
+        <div class="pdfcmp-mode-card" data-mode="custom">
+          <div class="pdfcmp-mode-top">
+            <span class="pdfcmp-mode-name">Custom Compression</span>
+          </div>
+          <p class="pdfcmp-mode-desc">Fine-tune image quality percentage, resolution DPI, and grayscale mode.</p>
+        </div>
+      </div>
+
+      <!-- Keep Document Structure Option -->
+      <div class="pdfcmp-preserve-box">
+        <input type="checkbox" id="pdfcmpPreserveCheck" style="margin-top:2px;cursor:pointer;" />
+        <label for="pdfcmpPreserveCheck" style="cursor:pointer;">
+          <strong>Preserve Text & Links (Keep Document Structure):</strong> This mode prioritizes document structure and avoids full page rasterization. It may provide less file-size reduction.
+        </label>
+      </div>
+
+      <!-- 7. TARGET FILE SIZE PANEL -->
+      <div id="pdfcmpTargetPanel" class="pdfcmp-target-box" style="display:none;">
+        <div class="pdfcmp-target-header">
+          <strong style="font-size:13px;color:#1e3a8a;">Choose Target File Size:</strong>
+          <span style="font-size:11px;font-weight:700;background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:4px;">Best-Effort Target</span>
+        </div>
+        <p style="font-size:12px;color:#475569;margin:0 0 8px;">
+          Best-Effort Target. Results depend on document content, images, and fonts. If target size cannot reasonably be reached, we will get as close as safely possible.
+        </p>
+        <div class="pdfcmp-target-chips">
+          <button type="button" class="pdfcmp-chip" data-preset="10mb">Under 10 MB</button>
+          <button type="button" class="pdfcmp-chip" data-preset="5mb">Under 5 MB</button>
+          <button type="button" class="pdfcmp-chip pdfcmp-chip-active" data-preset="2mb">Under 2 MB</button>
+          <button type="button" class="pdfcmp-chip" data-preset="1mb">Under 1 MB</button>
+          <button type="button" class="pdfcmp-chip" data-preset="500kb">Under 500 KB</button>
+          <button type="button" class="pdfcmp-chip" data-preset="custom">Custom Target</button>
+        </div>
+        <div id="pdfcmpCustomTargetRow" style="display:none;align-items:center;gap:8px;padding-top:8px;border-top:1px solid #bfdbfe;">
+          <span style="font-size:12px;font-weight:600;">Custom Value:</span>
+          <input type="number" id="pdfcmpCustomTargetNum" value="2" min="1" max="500" style="width:70px;padding:4px;border:1px solid #cbd5e1;border-radius:6px;" />
+          <select id="pdfcmpCustomTargetUnit" style="padding:4px;border:1px solid #cbd5e1;border-radius:6px;">
+            <option value="MB">MB</option>
+            <option value="KB">KB</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 8. CUSTOM SETTINGS PANEL -->
+      <div id="pdfcmpCustomPanel" class="pdfcmp-custom-box" style="display:none;">
+        <div class="pdfcmp-slider-wrap">
+          <div class="pdfcmp-slider-label">
+            <span>Image Quality: <span id="pdfcmpQualityVal">80%</span></span>
+            <span style="font-weight:normal;color:#64748b;">(30% - 95%)</span>
+          </div>
+          <input type="range" id="pdfcmpQualitySlider" class="pdfcmp-slider" min="30" max="95" step="5" value="80" />
+        </div>
+        <div class="pdfcmp-custom-row">
+          <div class="pdfcmp-custom-col">
+            <span class="pdfcmp-sublabel">Resolution Density:</span>
+            <div class="pdfcmp-btn-group">
+              <button type="button" class="pdfcmp-toggle-btn" data-res="high">High</button>
+              <button type="button" class="pdfcmp-toggle-btn pdfcmp-toggle-active" data-res="medium">Medium</button>
+              <button type="button" class="pdfcmp-toggle-btn" data-res="low">Low</button>
+            </div>
+          </div>
+          <div class="pdfcmp-custom-col">
+            <span class="pdfcmp-sublabel">Color Mode:</span>
+            <div class="pdfcmp-btn-group">
+              <button type="button" class="pdfcmp-toggle-btn pdfcmp-toggle-active" data-col="color">Color</button>
+              <button type="button" class="pdfcmp-toggle-btn" data-col="grayscale">Grayscale</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. COMPRESS PDF BUTTON -->
+      <button type="button" id="pdfcmpBtnCompress" class="pdfcmp-btn-compress">
+        <span>⚡ Compress PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ERROR ALERT -->
+  <div id="pdfcmpAlert" class="pdfcmp-alert-box" style="display:none;"></div>
+
+  <!-- 10. REAL PROCESSING PROGRESS -->
+  <div id="pdfcmpProgressBox" class="pdfcmp-progress-box" style="display:none;">
+    <div class="pdfcmp-progress-top">
+      <span id="pdfcmpProgressStatus">Loading PDF…</span>
+      <span id="pdfcmpProgressPercent">0%</span>
+    </div>
+    <div class="pdfcmp-progress-bar">
+      <div id="pdfcmpProgressFill" class="pdfcmp-progress-fill"></div>
+    </div>
+    <div style="font-size:12px;color:#64748b;margin-top:8px;">
+      Client-side processing in progress. Documents are converted safely on your device.
+    </div>
+  </div>
+
+  <!-- 11. RESULT DASHBOARD -->
+  <div id="pdfcmpResultBox" class="pdfcmp-result-panel" style="display:none;">
+    <div class="pdfcmp-result-header">
+      <div class="pdfcmp-result-badge">✓ Compression Complete</div>
+      <h3 class="pdfcmp-result-title">Your Compressed PDF Is Ready</h3>
+      <p class="pdfcmp-result-sub" id="pdfcmpResultDesc">
+        Download your verified, optimized document below.
+      </p>
+    </div>
+
+    <!-- 12, 13, 14, 15: BEFORE / AFTER METRICS -->
+    <div class="pdfcmp-metrics-grid">
+      <div class="pdfcmp-metric-card">
+        <span class="pdfcmp-metric-lbl">ORIGINAL</span>
+        <span id="pdfcmpResOrig" class="pdfcmp-metric-val">0 MB</span>
+      </div>
+      <div class="pdfcmp-metric-card pdfcmp-metric-comp">
+        <span class="pdfcmp-metric-lbl" style="color:#166534;">COMPRESSED</span>
+        <span id="pdfcmpResComp" class="pdfcmp-metric-val pdfcmp-val-green">0 MB</span>
+      </div>
+      <div class="pdfcmp-metric-card">
+        <span class="pdfcmp-metric-lbl">SAVED</span>
+        <span id="pdfcmpResSaved" class="pdfcmp-metric-val pdfcmp-val-blue">0 MB</span>
+      </div>
+      <div class="pdfcmp-metric-card">
+        <span class="pdfcmp-metric-lbl">REDUCTION</span>
+        <span id="pdfcmpResPercent" class="pdfcmp-metric-val pdfcmp-val-green">0%</span>
+      </div>
+    </div>
+
+    <!-- Info Notice (if larger or small reduction) -->
+    <div id="pdfcmpResultNotice" style="display:none;margin-bottom:16px;padding:12px;border-radius:8px;font-size:13px;"></div>
+
+    <!-- Details strip -->
+    <div class="pdfcmp-info-strip">
+      <span><strong>File:</strong> <span id="pdfcmpResFilename">document-compressed.pdf</span></span>
+      <span><strong>Pages:</strong> <span id="pdfcmpResPages">1</span></span>
+      <span><strong>Level:</strong> <span id="pdfcmpResMode">Recommended</span></span>
+      <span style="color:#16a34a;font-weight:700;">Status: Ready to Download</span>
+    </div>
+
+    <!-- 16, 17, 18, 19: RESULT PANEL BUTTON ORDER -->
+    <div>
+      <!-- 1. DOWNLOAD COMPRESSED PDF -->
+      <button type="button" id="pdfcmpBtnDownload" class="pdfcmp-btn-download-main">
+        <span>⬇ DOWNLOAD COMPRESSED PDF</span>
+      </button>
+
+      <!-- 2. DOWNLOAD AGAIN -->
+      <button type="button" id="pdfcmpBtnDownloadAgain" class="pdfcmp-btn-download-again">
+        <span>↻ Download Again</span>
+      </button>
+
+      <div class="pdfcmp-result-actions">
+        <!-- 3. TRY DIFFERENT COMPRESSION -->
+        <button type="button" id="pdfcmpBtnTryDiff" class="pdfcmp-btn-diff">
+          ⚙ Try Different Compression
+        </button>
+        <!-- 4. COMPRESS ANOTHER PDF -->
+        <button type="button" id="pdfcmpBtnAnother" class="pdfcmp-btn-another">
+          ➕ Compress Another PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. SECOND AD — NATIVE BANNER (Immediately after Result Panel) -->
+  <div class="pdfcmp-ad-wrapper">
+    <div class="pdfcmp-ad-label">Sponsored</div>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- 21. FEATURES (16 CARDS) -->
+  <div class="pdfcmp-section-title">Why Use This Free PDF Compressor?</div>
+  <div class="pdfcmp-section-sub">Engineered for speed, privacy, and versatile document reduction controls.</div>
+  <div class="pdfcmp-grid-cards">
+    <div class="pdfcmp-card"><h3>Reduce PDF File Size</h3><p>Shrink heavy documents by up to 85% to fit email attachments and application forms.</p></div>
+    <div class="pdfcmp-card"><h3>Recommended Compression</h3><p>Optimal balance between visual clarity and file-size byte savings.</p></div>
+    <div class="pdfcmp-card"><h3>Higher Quality</h3><p>Gentle compression preserving maximum image detail for high-resolution prints.</p></div>
+    <div class="pdfcmp-card"><h3>Balanced Compression</h3><p>Middle-ground option for smaller files while keeping paperwork easy to read.</p></div>
+    <div class="pdfcmp-card"><h3>Smaller File</h3><p>Aggressive compression designed to yield the absolute smallest downloadable PDF.</p></div>
+    <div class="pdfcmp-card"><h3>Target File Size</h3><p>Aim for exact thresholds like Under 1 MB, 2 MB, 5 MB, or custom kilobyte limits.</p></div>
+    <div class="pdfcmp-card"><h3>Custom Compression</h3><p>Granular control over JPEG quality percentage, resolution density, and grayscale.</p></div>
+    <div class="pdfcmp-card"><h3>Before & After Comparison</h3><p>Real-time metrics showing exact original and compressed bytes side by side.</p></div>
+    <div class="pdfcmp-card"><h3>Savings Percentage</h3><p>Calculated mathematical percentage showing space saved with decimal precision.</p></div>
+    <div class="pdfcmp-card"><h3>Download Compressed PDF</h3><p>One-tap verified PDF file download with no external redirects or wait counters.</p></div>
+    <div class="pdfcmp-card"><h3>Download Again</h3><p>Re-download your generated PDF immediately during your session without re-processing.</p></div>
+    <div class="pdfcmp-card"><h3>Browser-Based Processing</h3><p>All compression operations run locally on your device for complete privacy.</p></div>
+    <div class="pdfcmp-card"><h3>Mobile Friendly</h3><p>Fully responsive UI optimized for iPhones, iPads, Android smartphones, and PCs.</p></div>
+    <div class="pdfcmp-card"><h3>No Signup</h3><p>No account creation, email registration, password setups, or subscriptions required.</p></div>
+    <div class="pdfcmp-card"><h3>No Watermark</h3><p>Your generated PDF files remain 100% clean with zero stamps or branded marks.</p></div>
+    <div class="pdfcmp-card"><h3>100% Free</h3><p>Unrestricted document compression utility free for personal, educational, and business use.</p></div>
+  </div>
+
+  <!-- 22. USE CASES (8 CARDS) -->
+  <div class="pdfcmp-section-title">Popular U.S. PDF Compression Use Cases</div>
+  <div class="pdfcmp-section-sub">Everyday productivity solutions built for American businesses, students, and job seekers.</div>
+  <div class="pdfcmp-grid-cards">
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">1</div><h3>Compress PDF for Email</h3><p>Easily beat strict 20 MB / 25 MB file size limitations on Gmail, Outlook, Yahoo, and Apple Mail.</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">2</div><h3>Reduce PDF for Online Forms</h3><p>Comply with government websites, court filing portals, and healthcare uploads requiring files under 2 MB.</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">3</div><h3>Job Application Documents</h3><p>Ensure your resume, cover letter, and portfolio upload smoothly through Applicant Tracking Systems (ATS).</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">4</div><h3>Make School PDFs Smaller</h3><p>Submit homework, research papers, and slide decks effortlessly to Canvas, Blackboard, or Google Classroom.</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">5</div><h3>Reduce Scanned Documents</h3><p>Transform heavy 300 DPI flatbed scanner PDFs into compact, easily shareable digital files.</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">6</div><h3>Compress Business Reports</h3><p>Distribute quarterly financial summaries, annual reports, and marketing decks to teams rapidly.</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">7</div><h3>Compress Invoices</h3><p>Speed up billing cycles by attaching lightweight PDF receipts and purchase orders to accounting software.</p></div>
+    <div class="pdfcmp-card"><div class="pdfcmp-usecase-num">8</div><h3>Reduce Cloud Storage Usage</h3><p>Save gigabytes of paid quota on Google Drive, Dropbox, iCloud, and OneDrive by archiving compressed PDFs.</p></div>
+  </div>
+
+  <!-- 23. HOW TO USE (8 STEPS) -->
+  <div class="pdfcmp-section-title">How to Compress a PDF Online</div>
+  <div class="pdfcmp-section-sub">Follow these eight straightforward steps to optimize your document in seconds.</div>
+  <div class="pdfcmp-steps-grid">
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">1</div><div><strong>Choose a PDF file</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Click "Choose PDF" or drag and drop your document directly into the upload workspace.</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">2</div><div><strong>Select a compression level or target</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Pick Recommended, Balanced, Smaller File, or set a Target File Size (e.g., Under 2 MB).</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">3</div><div><strong>Select Compress PDF</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Click the large Compress button to initiate high-speed client-side processing.</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">4</div><div><strong>Wait for browser processing</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Track real-time page-by-page progress as each page is sequentially analyzed and optimized.</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">5</div><div><strong>Review file sizes</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Examine the Before and After metric cards showing original and compressed byte sizes.</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">6</div><div><strong>Check the percentage saved</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Confirm how much storage space you reclaimed (e.g., 65% smaller).</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">7</div><div><strong>Select Download Compressed PDF</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Tap the prominent green button to immediately save the verified .pdf file.</p></div></div>
+    <div class="pdfcmp-step-item"><div class="pdfcmp-step-num">8</div><div><strong>Save or re-download anytime</strong><p style="margin:4px 0 0;font-size:13px;color:#64748b;">Use "Download Again" if needed or "Try Different Compression" to test other profiles.</p></div></div>
+  </div>
+
+  <!-- 24. SEO ARTICLE PART 1 -->
+  <div class="pdfcmp-article">
+    <h2>What Is PDF Compression?</h2>
+    <p>
+      PDF compression is the computational process of re-encoding and reorganizing data structures within a Portable Document Format file to reduce total physical byte volume without compromising document legibility. PDFs are multifaceted container formats consisting of content streams, embedded TrueType and OpenType fonts, color vector drawings, interactive form fields, structural cross-reference tables, and raster bitmap images. By employing advanced image subsampling, DCT (JPEG) stream re-compression, and object stream coalescing, a compressor dramatically cuts down the document’s footprint.
+    </p>
+
+    <h3>How to Compress a PDF Online</h3>
+    <p>
+      Compressing a PDF online traditionally required uploading confidential company records to unknown remote servers. Our modern web application redefines this experience by operating entirely within your client browser. Using WebAssembly and high-performance JavaScript engines (PDF.js and pdf-lib), your files never leave your computer or phone. Simply choose your PDF, select a compression level that matches your intended distribution channel, click Compress PDF, and save your new file immediately.
+    </p>
+
+    <h3>How to Reduce PDF File Size</h3>
+    <p>
+      To achieve the best reduction, identify the primary contributors to bloated file size. In over 90% of cases, oversized PDFs are caused by uncompressed 300 DPI scanner images, embedded CMYK print assets, or duplicated font subsets. Applying lossy image re-quantization at standard web resolution (72 to 150 DPI) yields substantial size cuts while maintaining crystal-clear reading on screens and standard office printers.
+    </p>
+
+    <h3>Why Are PDF Files So Large?</h3>
+    <p>
+      Office multifunction copiers, desktop scanners, and professional publishing tools (such as Adobe InDesign, Illustrator, or Canva) prioritize visual fidelity over distribution efficiency. A single raw full-page scan captured at 600 DPI without aggressive compression can easily exceed 25 megabytes. When multiple high-resolution pages are combined into a multi-page binder, the resulting file can quickly swell past 100 megabytes, choking standard email servers and cloud storage quotas.
+    </p>
+
+    <h3>How Images Affect PDF Size</h3>
+    <p>
+      Images are virtually always the heaviest element inside any document. A vector PDF consisting purely of text and simple rules is typically under 100 kilobytes. However, the moment photographic scans, smartphone camera captures, or marketing graphics are embedded, file size skyrockets. PDF compression targets these image streams by re-encoding them with calibrated JPEG quantization tables, matching human perceptual acuity while stripping unneeded redundant data.
+    </p>
+
+    <h3>How to Choose the Right Compression Level</h3>
+    <p>
+      Choosing the optimal compression preset depends on the ultimate purpose of your document:
+    </p>
+    <ul>
+      <li><strong>Recommended:</strong> Best for standard daily use—emails, invoices, and website downloads.</li>
+      <li><strong>Higher Quality:</strong> Ideal for portfolios, design proofs, and documents with fine technical diagrams or architectural blueprints.</li>
+      <li><strong>Balanced:</strong> Great for multi-page manuals, academic textbooks, and contracts.</li>
+      <li><strong>Smaller File:</strong> The right pick when an upload portal strictly enforces a hard limit and every kilobyte counts.</li>
+    </ul>
+
+    <h3>Higher Quality vs. Smaller File</h3>
+    <p>
+      The difference between Higher Quality and Smaller File comes down to the compression ratio and visual fidelity trade-off. Higher Quality utilizes gentle compression ratios (85% to 90% image quality with 1.5x resolution density), ensuring fine text serifs, delicate pencil lines, and subtle photo gradients remain razor-sharp. Smaller File applies stronger quantization (45% to 50% image quality with 0.95x resolution), stripping microscopic image nuances to guarantee your document bypasses harsh web server file upload caps.
+    </p>
+
+    <h3>How to Compress Scanned PDFs</h3>
+    <p>
+      Scanned PDFs are essentially collections of full-page bitmap pictures wrapped in a PDF wrapper. Because they lack vector text streams, our image-based compression engine works wonders on them. By re-encoding each scanned page into optimized JPEG streams at 100 to 150 DPI, scanned documents frequently drop in size by 70% to 85% without sacrificing legibility.
+    </p>
+
+    <h3>How to Compress PDFs for Email</h3>
+    <p>
+      Major corporate email services (Microsoft Exchange, Google Workspace, Outlook, and Apple iCloud) universally impose hard 20 MB or 25 MB attachment caps. If your email exceeds this limit, your message bounces back with a transmission failure. To safely send PDFs via email, select our "Under 10 MB" or "Under 5 MB" Target File Size options, ensuring your attachments deliver smoothly into your client's or colleague's inbox.
+    </p>
+
+    <h3>How to Reduce PDF Size for Online Forms</h3>
+    <p>
+      State and federal government portals (such as USCIS for visa petitions, state unemployment filing platforms, and federal PACER court filings) often impose strict 2 MB or 4 MB limits per document. Use our "Under 2 MB" preset to safely compress your official documentation so your form submission is accepted on the first try.
+    </p>
+  </div>
+
+  <!-- 25. THIRD AD — 300x250 (Between SEO Article Part 1 and Part 2) -->
+  <div class="pdfcmp-ad-wrapper">
+    <div class="pdfcmp-ad-label">Advertisement</div>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- 26. SEO ARTICLE PART 2 -->
+  <div class="pdfcmp-article">
+    <h2>How to Compress PDF on iPhone & iPad</h2>
+    <p>
+      On iOS devices (iPhone and iPad), open Safari or Chrome and navigate directly to this tool. Tap "Choose PDF," select "Choose File" from the iOS Files app or iCloud Drive, pick your document, choose "Recommended" or a target size, and tap "Compress PDF." Once processing completes, tap "Download Compressed PDF." Safari will immediately save the optimized file directly to your iOS Downloads folder or Files app.
+    </p>
+
+    <h3>How to Compress PDF on Android</h3>
+    <p>
+      Android users can open Google Chrome or Samsung Internet, tap "Choose PDF," select their document via Google Drive or device storage, pick their preferred compression setting, and tap "Compress PDF." The resulting file downloads directly via the Android download manager, ready to be attached to WhatsApp, Gmail, or Slack.
+    </p>
+
+    <h3>How to Compress PDF on Windows 10 & Windows 11</h3>
+    <p>
+      On Windows PCs using Microsoft Edge, Google Chrome, or Mozilla Firefox, drag and drop your document directly from File Explorer onto the compression area. You can preview the first page instantly, customize the DPI and quality settings, compress in seconds, and click Download to save the file to your Downloads folder.
+    </p>
+
+    <h3>Does PDF Compression Reduce Quality?</h3>
+    <p>
+      PDF compression does not automatically mean blurred text or distorted layouts. Pure text glyphs and vector geometry (such as lines, tables, and borders) are mathematically rendered and scale losslessly to any resolution. Quality reductions only apply to raster bitmap images when strong lossy quantization is requested. For screen reading, documents compressed with our "Recommended" or "Balanced" settings appear virtually indistinguishable from uncompressed originals.
+    </p>
+
+    <h3>Why Some PDFs Do Not Compress Much</h3>
+    <p>
+      If your PDF only reduces by 1% to 3%, or shows minimal change, it is almost certainly because the document has already been pre-optimized by its authoring software. If an original PDF contains only clean vector text and pre-compressed JPEG images, there is very little redundant metadata left to remove. In such cases, our tool will honestly alert you that your PDF is already efficiently compressed.
+    </p>
+
+    <h3>Why a Compressed PDF Can Be Larger</h3>
+    <p>
+      Occasionally, running a compression algorithm on an already hyper-optimized or black-and-white JBIG2 binary document can yield a result that is marginally larger. This occurs when highly specialized proprietary compression streams are unpacked and re-encoded using standard baseline JPEG streams. If our tool detects that the output file has grown, we clearly display this notice and advise you to keep your original file or test different settings.
+    </p>
+
+    <h3>How Target File Size Compression Works</h3>
+    <p>
+      Our Target File Size mode operates on a best-effort adaptive feedback loop. By analyzing your document's total page count against your selected target byte threshold, the algorithm calculates an optimal byte budget per page. It dynamically configures rendering viewport scales and JPEG quality tables to stay beneath your required ceiling while safeguarding legibility.
+    </p>
+
+    <h3>What Happens to Searchable Text, Links, and Forms?</h3>
+    <p>
+      When using strong image-based compression, PDF pages are rendered and reconstructed as high-efficiency image pages. While this produces dramatic file size savings, interactive features—such as selectable text, search indexing, clickable hyperlinks, bookmarks, and fillable form fields—may be flattened or lost. If document structure and selectable text are essential for your workflow, check our "Preserve Text & Links" option or retain your original master document.
+    </p>
+
+    <h3>Expert Tips for Reducing PDF Size</h3>
+    <ul>
+      <li><strong>Scan at 150 DPI instead of 600 DPI:</strong> 150 DPI is more than adequate for high-contrast text and office paperwork.</li>
+      <li><strong>Use Grayscale for text documents:</strong> Removing three-channel color data cuts image payloads by up to 60%.</li>
+      <li><strong>Flatten interactive form fields:</strong> Converting dynamic XFA forms to static pages eliminates heavy XML structures.</li>
+      <li><strong>Remove duplicate embedded fonts:</strong> Always export documents using subsetted fonts rather than full typefaces.</li>
+    </ul>
+  </div>
+
+  <!-- 27. FAQ (28 DETAILED FAQS) -->
+  <div class="pdfcmp-section-title">Frequently Asked Questions</div>
+  <div class="pdfcmp-section-sub">Answers to common questions about free online PDF compression, file limits, and download behavior.</div>
+  <div class="pdfcmp-faq-list">
+    <details class="pdfcmp-faq-item"><summary><span>What is a PDF compressor?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">A PDF compressor is a productivity utility that reduces the file size (bytes) of PDF documents by optimizing images, removing duplicate streams, and reorganizing internal data structures so the file is easier to email, upload, and store.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>How do I reduce PDF file size?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Simply choose your PDF document using the upload tool above, pick your preferred compression mode (such as Recommended or Target File Size), click "Compress PDF," and download your compressed file.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Is this PDF compressor free?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes, this tool is 100% free with no hidden fees, subscriptions, or credit card requirements.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Do I need an account or login?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">No account, registration, login, or email address is ever required to compress or download your documents.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Does this add a watermark to my PDF?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">No. We never add watermarks, promotional stamps, headers, or footers to your files. Your documents remain 100% clean.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>How much can a PDF be compressed?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Depending on the original file contents, reductions typically range from 40% to 85%. Image-heavy and scanned documents compress the most, whereas text-only vector PDFs show more modest reductions.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF to under 10 MB?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. Select the "Target File Size" option and pick "Under 10 MB." The algorithm will adjust compression parameters to aim for this threshold.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF to under 5 MB?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. Choose "Target File Size" and select "Under 5 MB" to create a compact document suitable for cloud storage and team messaging.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF to under 2 MB?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. The "Under 2 MB" target is our most popular option for government portals, state filing systems, and college application uploads.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF to under 1 MB?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. Select "Under 1 MB" for aggressive compression ideal for quick smartphone previews and restrictive applicant tracking systems.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF to under 500 KB?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. Our "Under 500 KB" profile employs strong quantization to compress short documents for strict submission portals.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF for email attachments?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Absolutely. Major email providers like Gmail, Outlook, and Yahoo limit attachments to 20 MB or 25 MB. Our compressor ensures your attachments slip well beneath those thresholds.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress a PDF for an online form?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. Many online job applications, visa filing systems, and court platforms enforce file caps. Compressing your document allows immediate acceptance.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Does compression reduce PDF quality?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Text glyphs and vector elements remain sharp and readable. Raster photos and scanned images may show minor loss depending on whether you choose High Quality or Smaller File mode.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Which compression level should I choose?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">We suggest "Recommended" for daily office needs. If you are uploading to a strict web portal with an exact limit, use "Target File Size."</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can scanned PDFs be compressed?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes! Scanned PDFs are essentially photos of pages and represent the exact category of document that achieves the highest percentage reduction.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress PDFs on iPhone or iPad?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. The application runs natively in Safari and Chrome on iOS, allowing you to compress and download directly to your Files app.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I compress PDFs on Android devices?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. Fully supported in mobile Chrome and Samsung Internet on all Android smartphones and tablets.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Why did my PDF not become much smaller?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">If your PDF was already optimized during export (or contains mostly vector text with few pictures), there is minimal redundant data to remove. Our tool reports honest file sizes rather than faking artificial savings.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Why did my compressed PDF become slightly larger?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">If an existing PDF was already compressed using proprietary or JBIG2 monochrome algorithms, re-saving it in standard formats may marginally increase byte size. If this happens, retain your original file.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>What happens to searchable text?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">If you check "Preserve Text & Links," searchable text is preserved. In strong image-based compression modes, pages are converted to compressed images and interactive text searching may be flattened.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>What happens to PDF hyperlinks and form fields?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Hyperlinks and form fields remain interactive when using structure-preserving mode. Image-based compression flattens interactive elements into static page images.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>What happens to digital signatures?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Any process that modifies or compresses a PDF will invalidate pre-existing cryptographic digital signatures. Always apply digital signatures AFTER compressing your final document.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I download my compressed PDF immediately?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes! The moment compression finishes, a prominent "Download Compressed PDF" button appears for instant one-click downloading.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Can I download it again without recompressing?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">Yes. We provide a dedicated "Download Again" button that saves the exact same generated file without making you wait through another processing cycle.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Are my PDF files uploaded to a remote server?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">No. All PDF processing and compression occurs locally in your web browser via client-side JavaScript. The tool does not require a server-side PDF conversion API.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Does this website store or save my PDF?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">No. Because all file processing happens directly in your browser session, your document is never stored on our servers or databases.</div></details>
+    <details class="pdfcmp-faq-item"><summary><span>Is there a limit on how many PDFs I can compress?</span><span>▾</span></summary><div class="pdfcmp-faq-answer">No. You can compress as many documents as you need, all day, completely free of charge.</div></details>
+  </div>
+
+  <!-- 28. PRIVACY -->
+  <div class="pdfcmp-policy-box">
+    <h2>Private Browser-Based PDF Compression</h2>
+    <p>
+      Your selected PDF is processed locally in your browser by this PDF compression tool. The tool does not require a server-side PDF compression API or an account. Because calculations and page re-encodings run inside your device's memory, your sensitive financial records, legal contracts, and personal documents remain under your control.
+    </p>
+  </div>
+
+  <!-- 29. DISCLAIMER -->
+  <div class="pdfcmp-policy-box">
+    <h2>PDF Compressor Disclaimer</h2>
+    <p>
+      This PDF compressor is provided for general document-optimization and productivity purposes. File-size reduction depends on the original PDF structure, image content, fonts, page count and selected compression settings. Some PDFs may already be efficiently compressed and may show little or no additional size reduction.
+    </p>
+    <p>
+      Target file sizes are best-effort targets and cannot be guaranteed for every PDF.
+    </p>
+    <p>
+      Strong image-based compression may rebuild PDF pages as compressed images. Selectable text, search, links, forms, bookmarks, annotations or other interactive features may be reduced or lost.
+    </p>
+    <p>
+      Compressing or rebuilding a digitally signed PDF may invalidate an existing digital signature.
+    </p>
+    <p>
+      Keep your original PDF when document structure, searchable text, signatures, forms, metadata or advanced PDF features are important.
+    </p>
+  </div>
+
+  <!-- 30. SOCIAL SHARING -->
+  <div class="pdfcmp-share-box">
+    <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 6px;">Share This Free PDF Compressor</h2>
+    <p style="font-size:13px;color:#475569;margin:0;">
+      Help colleagues, students, and friends reduce their PDF file sizes quickly and securely for free.
+    </p>
+    <div class="pdfcmp-share-buttons">
+      <button type="button" id="pdfcmpShareFb" class="pdfcmp-btn-share pdfcmp-bg-fb">Facebook</button>
+      <button type="button" id="pdfcmpShareTw" class="pdfcmp-btn-share pdfcmp-bg-tw">X / Twitter</button>
+      <button type="button" id="pdfcmpShareWa" class="pdfcmp-btn-share pdfcmp-bg-wa">WhatsApp</button>
+      <button type="button" id="pdfcmpShareLi" class="pdfcmp-btn-share pdfcmp-bg-li">LinkedIn</button>
+      <button type="button" id="pdfcmpShareRd" class="pdfcmp-btn-share pdfcmp-bg-rd">Reddit</button>
+      <button type="button" id="pdfcmpShareTg" class="pdfcmp-btn-share pdfcmp-bg-tg">Telegram</button>
+      <button type="button" id="pdfcmpShareEm" class="pdfcmp-btn-share pdfcmp-bg-em">Email</button>
+      <button type="button" id="pdfcmpShareCp" class="pdfcmp-btn-share pdfcmp-bg-cp">📋 Copy Link</button>
+      <button type="button" id="pdfcmpShareNt" class="pdfcmp-btn-share pdfcmp-bg-nt">↗ Share Tool</button>
+    </div>
+  </div>
+
+  <!-- 31. FOURTH AD — SOCIAL BAR (Directly after Social Sharing) -->
+  <div class="pdfcmp-ad-wrapper">
+    <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+  </div>
+</div>
+
+<!-- REQUIRED PDF LIBRARY SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.9/pdf-lib.min.js"></script>
+
+<script>
+(function () {
+  var root = document.getElementById('pdfCompressEliteApp');
+  if (!root) return;
+
+  // Initialize PDF.js worker
+  if (window.pdfjsLib) {
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  // Application State
+  var state = {
+    sourceFile: null,
+    sourceBuffer: null,
+    sourceSize: 0,
+    sourceName: '',
+    pageCount: 0,
+    currentMode: 'recommended',
+    targetPreset: '2mb',
+    customTargetVal: 2,
+    customTargetUnit: 'MB',
+    customQuality: 80,
+    customResolution: 'medium',
+    customColor: 'color',
+    preserveStructure: false,
+    compressedBytes: null,
+    downloadBlob: null,
+    downloadUrl: null,
+    outputFilename: 'document-compressed.pdf',
+    isProcessing: false
+  };
+
+  // DOM Elements
+  var fileInput = document.getElementById('pdfcmpFileInput');
+  var uploadBox = document.getElementById('pdfcmpUploadBox');
+  var btnChoose = document.getElementById('pdfcmpBtnChoose');
+  var btnSample = document.getElementById('pdfcmpBtnSample');
+  var selectedBox = document.getElementById('pdfcmpSelectedBox');
+  var previewImg = document.getElementById('pdfcmpPreviewImg');
+  var fallbackIcon = document.getElementById('pdfcmpFallbackIcon');
+  var fileNameEl = document.getElementById('pdfcmpFileName');
+  var fileSizeEl = document.getElementById('pdfcmpFileSize');
+  var pageCountEl = document.getElementById('pdfcmpPageCount');
+  var btnChangeFile = document.getElementById('pdfcmpBtnChangeFile');
+  var btnRemoveFile = document.getElementById('pdfcmpBtnRemoveFile');
+  var preserveCheck = document.getElementById('pdfcmpPreserveCheck');
+  var targetPanel = document.getElementById('pdfcmpTargetPanel');
+  var customTargetRow = document.getElementById('pdfcmpCustomTargetRow');
+  var customTargetNum = document.getElementById('pdfcmpCustomTargetNum');
+  var customTargetUnit = document.getElementById('pdfcmpCustomTargetUnit');
+  var customPanel = document.getElementById('pdfcmpCustomPanel');
+  var qualitySlider = document.getElementById('pdfcmpQualitySlider');
+  var qualityValText = document.getElementById('pdfcmpQualityVal');
+  var btnCompress = document.getElementById('pdfcmpBtnCompress');
+  var alertBox = document.getElementById('pdfcmpAlert');
+  var progressBox = document.getElementById('pdfcmpProgressBox');
+  var progressStatus = document.getElementById('pdfcmpProgressStatus');
+  var progressPercent = document.getElementById('pdfcmpProgressPercent');
+  var progressFill = document.getElementById('pdfcmpProgressFill');
+  var resultBox = document.getElementById('pdfcmpResultBox');
+  var resOrig = document.getElementById('pdfcmpResOrig');
+  var resComp = document.getElementById('pdfcmpResComp');
+  var resSaved = document.getElementById('pdfcmpResSaved');
+  var resPercent = document.getElementById('pdfcmpResPercent');
+  var resNotice = document.getElementById('pdfcmpResultNotice');
+  var resFilename = document.getElementById('pdfcmpResFilename');
+  var resPages = document.getElementById('pdfcmpResPages');
+  var resMode = document.getElementById('pdfcmpResMode');
+  var btnDownload = document.getElementById('pdfcmpBtnDownload');
+  var btnDownloadAgain = document.getElementById('pdfcmpBtnDownloadAgain');
+  var btnTryDiff = document.getElementById('pdfcmpBtnTryDiff');
+  var btnAnother = document.getElementById('pdfcmpBtnAnother');
+
+  // Helpers
+  function formatBytes(bytes, decimals) {
+    if (!bytes || bytes <= 0) return '0 Bytes';
+    var k = 1024;
+    var dm = decimals || 2;
+    var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    var i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  }
+
+  function showError(msg) {
+    if (alertBox) {
+      alertBox.textContent = msg;
+      alertBox.style.display = 'block';
+    }
+  }
+
+  function hideError() {
+    if (alertBox) {
+      alertBox.style.display = 'none';
+      alertBox.textContent = '';
+    }
+  }
+
+  function updateProgress(status, percent) {
+    if (progressStatus) progressStatus.textContent = status;
+    if (progressPercent) progressPercent.textContent = Math.round(percent) + '%';
+    if (progressFill) progressFill.style.width = Math.round(percent) + '%';
+  }
+
+  function cleanupObjectURL() {
+    if (state.downloadUrl) {
+      URL.revokeObjectURL(state.downloadUrl);
+      state.downloadUrl = null;
+    }
+  }
+
+  // File Selection and Parsing
+  function validatePDF(file) {
+    if (!file) return false;
+    var name = file.name.toLowerCase();
+    return name.endsWith('.pdf') || file.type === 'application/pdf';
+  }
+
+  function selectFile(file) {
+    hideError();
+    if (!validatePDF(file)) {
+      showError('This file could not be opened as a valid PDF document. Please choose a .pdf file.');
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var buffer = e.target.result;
+      var header = new Uint8Array(buffer.slice(0, 5));
+      var headerStr = String.fromCharCode.apply(null, header);
+      if (headerStr.indexOf('%PDF') !== 0) {
+        showError('This file could not be opened as a valid PDF document.');
+        return;
+      }
+
+      state.sourceFile = file;
+      state.sourceBuffer = buffer;
+      state.sourceSize = file.size;
+      state.sourceName = file.name;
+      state.pageCount = 1;
+
+      // Update UI
+      if (fileNameEl) fileNameEl.textContent = file.name;
+      if (fileSizeEl) fileSizeEl.textContent = formatBytes(file.size);
+      if (pageCountEl) pageCountEl.textContent = 'Detecting…';
+
+      if (uploadBox) uploadBox.style.display = 'none';
+      if (selectedBox) selectedBox.style.display = 'block';
+      if (resultBox) resultBox.style.display = 'none';
+
+      renderPreview(buffer);
+    };
+    reader.onerror = function () {
+      showError('Could not read the selected PDF file.');
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  function renderPreview(buffer) {
+    if (!window.pdfjsLib) return;
+    try {
+      var task = window.pdfjsLib.getDocument({ data: buffer.slice(0) });
+      task.promise.then(function (pdf) {
+        state.pageCount = pdf.numPages;
+        if (pageCountEl) pageCountEl.textContent = pdf.numPages;
+        return pdf.getPage(1);
+      }).then(function (page) {
+        var viewport = page.getViewport({ scale: 0.5 });
+        var canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function () {
+          if (previewImg) {
+            previewImg.src = canvas.toDataURL('image/jpeg', 0.85);
+            previewImg.style.display = 'block';
+          }
+          if (fallbackIcon) fallbackIcon.style.display = 'none';
+        });
+      }).catch(function (err) {
+        console.warn('Preview fallback:', err);
+      });
+    } catch (e) {
+      console.warn('PDF.js preview initialization error:', e);
+    }
+  }
+
+  // Create Sample PDF
+  function createSamplePDF() {
+    if (!window.PDFLib) {
+      showError('PDF library is loading. Please try again in a moment.');
+      return;
+    }
+    hideError();
+    progressBox.style.display = 'block';
+    updateProgress('Generating sample multi-page PDF…', 40);
+
+    window.PDFLib.PDFDocument.create().then(function (doc) {
+      var p1 = doc.addPage([612, 792]);
+      var rgb = window.PDFLib.rgb;
+      p1.drawText('Sample Business Report & Documentation', { x: 50, y: 720, size: 22, color: rgb(0.1, 0.2, 0.5) });
+      p1.drawText('United States Corporate Operations & Annual Review', { x: 50, y: 690, size: 14, color: rgb(0.3, 0.3, 0.3) });
+
+      for (var i = 0; i < 5; i++) {
+        p1.drawRectangle({
+          x: 50, y: 240 + i * 80, width: 512, height: 65,
+          color: rgb(0.92 - i * 0.03, 0.95 - i * 0.02, 0.99),
+          borderColor: rgb(0.2, 0.4, 0.8), borderWidth: 1
+        });
+        p1.drawText('Operational Metric Analysis and Audit Summary Record #' + (1000 + i), {
+          x: 65, y: 265 + i * 80, size: 12, color: rgb(0.1, 0.1, 0.2)
+        });
+      }
+
+      var p2 = doc.addPage([612, 792]);
+      p2.drawText('Section 2: Detailed Financial Schedules & Audits', { x: 50, y: 720, size: 20, color: rgb(0.1, 0.2, 0.5) });
+      for (var j = 0; j < 12; j++) {
+        p2.drawRectangle({
+          x: 50, y: 150 + j * 42, width: 512, height: 32,
+          color: j % 2 === 0 ? rgb(0.96, 0.98, 1) : rgb(1, 1, 1),
+          borderColor: rgb(0.85, 0.88, 0.92), borderWidth: 1
+        });
+        p2.drawText('Line Item ' + (j + 1) + ': Reconciliation Entry - Verified Account Status: Approved', {
+          x: 65, y: 160 + j * 42, size: 11, color: rgb(0.2, 0.2, 0.2)
+        });
+      }
+
+      return doc.save();
+    }).then(function (bytes) {
+      progressBox.style.display = 'none';
+      var blob = new Blob([bytes], { type: 'application/pdf' });
+      var file = new File([blob], 'sample-business-report.pdf', { type: 'application/pdf' });
+      selectFile(file);
+    }).catch(function (err) {
+      progressBox.style.display = 'none';
+      showError('Could not generate sample PDF: ' + err.message);
+    });
+  }
+
+  // Mode Selection
+  function selectCompressionMode(mode) {
+    state.currentMode = mode;
+    var cards = root.querySelectorAll('.pdfcmp-mode-card');
+    cards.forEach(function (c) {
+      if (c.getAttribute('data-mode') === mode) {
+        c.classList.add('pdfcmp-mode-active');
+      } else {
+        c.classList.remove('pdfcmp-mode-active');
+      }
+    });
+
+    if (targetPanel) targetPanel.style.display = (mode === 'targetSize') ? 'block' : 'none';
+    if (customPanel) customPanel.style.display = (mode === 'custom') ? 'block' : 'none';
+  }
+
+  // Core Compression Execution
+  function compressPDF() {
+    if (!state.sourceBuffer) {
+      showError('Please select a valid PDF file first.');
+      return;
+    }
+    if (!window.pdfjsLib || !window.PDFLib) {
+      showError('PDF processing libraries are initializing. Please wait a few seconds.');
+      return;
+    }
+
+    hideError();
+    state.isProcessing = true;
+    if (progressBox) progressBox.style.display = 'block';
+    if (resultBox) resultBox.style.display = 'none';
+    btnCompress.disabled = true;
+
+    updateProgress('Loading PDF…', 10);
+
+    // Determine parameters
+    var scale = 1.25;
+    var quality = 0.72;
+    var isGrayscale = false;
+    var modeLabel = 'Recommended';
+
+    if (state.currentMode === 'recommended') {
+      scale = 1.25; quality = 0.72; modeLabel = 'Recommended';
+    } else if (state.currentMode === 'higherQuality') {
+      scale = 1.6; quality = 0.88; modeLabel = 'Higher Quality';
+    } else if (state.currentMode === 'balanced') {
+      scale = 1.15; quality = 0.65; modeLabel = 'Balanced';
+    } else if (state.currentMode === 'smallerFile') {
+      scale = 0.95; quality = 0.45; modeLabel = 'Smaller File';
+    } else if (state.currentMode === 'targetSize') {
+      modeLabel = 'Target File Size';
+      var targetBytes = 2 * 1024 * 1024;
+      if (state.targetPreset === '10mb') targetBytes = 10 * 1024 * 1024;
+      else if (state.targetPreset === '5mb') targetBytes = 5 * 1024 * 1024;
+      else if (state.targetPreset === '2mb') targetBytes = 2 * 1024 * 1024;
+      else if (state.targetPreset === '1mb') targetBytes = 1 * 1024 * 1024;
+      else if (state.targetPreset === '500kb') targetBytes = 500 * 1024;
+      else if (state.targetPreset === 'custom') {
+        var num = parseFloat(customTargetNum.value) || 1;
+        targetBytes = (customTargetUnit.value === 'MB') ? num * 1024 * 1024 : num * 1024;
+      }
+      var budget = targetBytes / Math.max(state.pageCount, 1);
+      if (budget > 300 * 1024) { scale = 1.35; quality = 0.80; }
+      else if (budget > 150 * 1024) { scale = 1.15; quality = 0.68; }
+      else if (budget > 75 * 1024) { scale = 1.0; quality = 0.55; }
+      else { scale = 0.85; quality = 0.40; }
+    } else if (state.currentMode === 'custom') {
+      modeLabel = 'Custom';
+      quality = state.customQuality / 100;
+      if (state.customResolution === 'high') scale = 1.5;
+      else if (state.customResolution === 'medium') scale = 1.0;
+      else scale = 0.75;
+      isGrayscale = (state.customColor === 'grayscale');
+    }
+
+    // Structure preserving mode check
+    if (preserveCheck && preserveCheck.checked) {
+      updateProgress('Preserving Document Structure…', 30);
+      window.PDFLib.PDFDocument.load(state.sourceBuffer, { ignoreEncryption: true })
+        .then(function (doc) {
+          doc.setTitle(''); doc.setAuthor(''); doc.setSubject('');
+          updateProgress('Finalizing PDF…', 85);
+          return doc.save({ useObjectStreams: true, addDefaultPage: false });
+        })
+        .then(function (bytes) {
+          renderResult(bytes, modeLabel + ' (Structure Preserved)');
+        })
+        .catch(function (err) {
+          console.warn('Structure mode fallback to image engine:', err);
+          executeImageEngine(scale, quality, isGrayscale, modeLabel);
+        });
+      return;
+    }
+
+    executeImageEngine(scale, quality, isGrayscale, modeLabel);
+  }
+
+  function executeImageEngine(scale, quality, isGrayscale, modeLabel) {
+    updateProgress('Analyzing PDF…', 15);
+
+    var pdfDocInstance = null;
+    var newDoc = null;
+    var totalPages = 1;
+
+    window.pdfjsLib.getDocument({ data: state.sourceBuffer.slice(0) }).promise
+      .then(function (pdf) {
+        pdfDocInstance = pdf;
+        totalPages = pdf.numPages;
+        return window.PDFLib.PDFDocument.create();
+      })
+      .then(function (createdDoc) {
+        newDoc = createdDoc;
+
+        var currentP = 1;
+        function processNextPage() {
+          if (currentP > totalPages) {
+            updateProgress('Finalizing PDF…', 92);
+            return newDoc.save({ useObjectStreams: true });
+          }
+
+          var pct = Math.round(20 + (currentP / totalPages) * 68);
+          updateProgress('Processing Page ' + currentP + ' of ' + totalPages + '…', pct);
+
+          return pdfDocInstance.getPage(currentP).then(function (page) {
+            var viewport = page.getViewport({ scale: scale });
+            var canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            var ctx = canvas.getContext('2d');
+
+            return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function () {
+              if (isGrayscale) {
+                var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var d = imgData.data;
+                for (var p = 0; p < d.length; p += 4) {
+                  var gray = 0.299 * d[p] + 0.587 * d[p + 1] + 0.114 * d[p + 2];
+                  d[p] = gray; d[p + 1] = gray; d[p + 2] = gray;
+                }
+                ctx.putImageData(imgData, 0, 0);
+              }
+
+              var jpegData = canvas.toDataURL('image/jpeg', quality);
+              return newDoc.embedJpg(jpegData).then(function (embeddedImg) {
+                var origViewport = page.getViewport({ scale: 1.0 });
+                var newPage = newDoc.addPage([origViewport.width, origViewport.height]);
+                newPage.drawImage(embeddedImg, {
+                  x: 0, y: 0, width: origViewport.width, height: origViewport.height
+                });
+
+                if (typeof page.cleanup === 'function') page.cleanup();
+                canvas.width = 0; canvas.height = 0;
+                currentP++;
+                return processNextPage();
+              });
+            });
+          });
+        }
+
+        return processNextPage();
+      })
+      .then(function (finalBytes) {
+        renderResult(finalBytes, modeLabel);
+      })
+      .catch(function (err) {
+        console.error('Compression failure:', err);
+        state.isProcessing = false;
+        btnCompress.disabled = false;
+        progressBox.style.display = 'none';
+        showError('Your PDF was processed, but the downloadable file could not be created. Please try again.');
+      });
+  }
+
+  // Result Rendering & Download Blob Creation
+  function renderResult(bytes, modeLabel) {
+    if (!bytes || bytes.length === 0) {
+      state.isProcessing = false;
+      btnCompress.disabled = false;
+      progressBox.style.display = 'none';
+      showError('Your PDF was processed, but the downloadable file could not be created. Please try again.');
+      return;
+    }
+
+    state.compressedBytes = bytes;
+    cleanupObjectURL();
+
+    // Create real application/pdf Blob and Object URL
+    var blob = new Blob([bytes], { type: 'application/pdf' });
+    state.downloadBlob = blob;
+    state.downloadUrl = URL.createObjectURL(blob);
+
+    // Output filename
+    var base = state.sourceName || 'document.pdf';
+    if (base.toLowerCase().endsWith('.pdf')) {
+      base = base.substring(0, base.length - 4);
+    }
+    state.outputFilename = base + '-compressed.pdf';
+
+    var orig = state.sourceSize;
+    var comp = bytes.length;
+    var saved = orig - comp;
+    var pct = Math.round(((orig - comp) / orig) * 1000) / 10;
+    var isLarger = comp > orig;
+
+    if (resOrig) resOrig.textContent = formatBytes(orig);
+    if (resComp) resComp.textContent = formatBytes(comp);
+    if (resSaved) resSaved.textContent = (saved > 0) ? formatBytes(saved) : '0 KB';
+    if (resPercent) {
+      resPercent.textContent = isLarger ? '+ ' + Math.abs(pct) + '%' : pct + '%';
+      resPercent.style.color = isLarger ? '#b91c1c' : '#16a34a';
+    }
+    if (resFilename) resFilename.textContent = state.outputFilename;
+    if (resPages) resPages.textContent = state.pageCount || 1;
+    if (resMode) resMode.textContent = modeLabel;
+
+    if (resNotice) {
+      if (isLarger) {
+        resNotice.style.display = 'block';
+        resNotice.style.background = '#fef3c7';
+        resNotice.style.border = '1px solid #fde68a';
+        resNotice.style.color = '#92400e';
+        resNotice.innerHTML = '<strong>Notice:</strong> Output is ' + Math.abs(pct) + '% larger than the original. This PDF may already be efficiently compressed. Try another compression level if you need a smaller result.';
+      } else if (Math.abs(pct) < 1) {
+        resNotice.style.display = 'block';
+        resNotice.style.background = '#eff6ff';
+        resNotice.style.border = '1px solid #bfdbfe';
+        resNotice.style.color = '#1e40af';
+        resNotice.innerHTML = '<strong>Notice:</strong> This PDF is already efficiently compressed, so this compression method did not significantly reduce its size.';
+      } else {
+        resNotice.style.display = 'none';
+      }
+    }
+
+    state.isProcessing = false;
+    btnCompress.disabled = false;
+    updateProgress('Ready to Download', 100);
+    progressBox.style.display = 'none';
+    resultBox.style.display = 'block';
+  }
+
+  // Real Download Action
+  function downloadCompressedPDF() {
+    if (!state.downloadUrl) {
+      showError('Downloadable file is not ready.');
+      return;
+    }
+    var a = document.createElement('a');
+    a.href = state.downloadUrl;
+    a.download = state.outputFilename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  // Download Again Action
+  function downloadAgain() {
+    downloadCompressedPDF();
+  }
+
+  // Try Different Compression Action
+  function tryDifferentCompression() {
+    resultBox.style.display = 'none';
+    progressBox.style.display = 'none';
+    // source PDF kept in memory!
+  }
+
+  // Compress Another PDF Action
+  function compressAnotherPDF() {
+    cleanupObjectURL();
+    state.sourceFile = null;
+    state.sourceBuffer = null;
+    state.sourceSize = 0;
+    state.sourceName = '';
+    state.pageCount = 0;
+    state.compressedBytes = null;
+    state.downloadBlob = null;
+    state.isProcessing = false;
+
+    if (fileInput) fileInput.value = '';
+    if (previewImg) { previewImg.src = ''; previewImg.style.display = 'none'; }
+    if (fallbackIcon) fallbackIcon.style.display = 'flex';
+    if (selectedBox) selectedBox.style.display = 'none';
+    if (resultBox) resultBox.style.display = 'none';
+    if (progressBox) progressBox.style.display = 'none';
+    if (uploadBox) uploadBox.style.display = 'block';
+    hideError();
+  }
+
+  // Event Listeners
+  if (btnChoose) btnChoose.onclick = function (e) { e.stopPropagation(); fileInput.click(); };
+  if (uploadBox) uploadBox.onclick = function () { fileInput.click(); };
+  if (btnSample) btnSample.onclick = function (e) { e.stopPropagation(); createSamplePDF(); };
+  if (fileInput) fileInput.onchange = function (e) { if (e.target.files && e.target.files[0]) selectFile(e.target.files[0]); };
+
+  if (uploadBox) {
+    uploadBox.ondragover = function (e) { e.preventDefault(); e.stopPropagation(); };
+    uploadBox.ondrop = function (e) {
+      e.preventDefault(); e.stopPropagation();
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) selectFile(e.dataTransfer.files[0]);
+    };
+  }
+
+  if (btnChangeFile) btnChangeFile.onclick = function () { fileInput.click(); };
+  if (btnRemoveFile) btnRemoveFile.onclick = compressAnotherPDF;
+  if (btnCompress) btnCompress.onclick = compressPDF;
+  if (btnDownload) btnDownload.onclick = downloadCompressedPDF;
+  if (btnDownloadAgain) btnDownloadAgain.onclick = downloadAgain;
+  if (btnTryDiff) btnTryDiff.onclick = tryDifferentCompression;
+  if (btnAnother) btnAnother.onclick = compressAnotherPDF;
+
+  // Mode Cards
+  var modeCards = root.querySelectorAll('.pdfcmp-mode-card');
+  modeCards.forEach(function (card) {
+    card.onclick = function () {
+      var m = this.getAttribute('data-mode');
+      selectCompressionMode(m);
+    };
+  });
+
+  // Target preset chips
+  var chips = root.querySelectorAll('.pdfcmp-chip');
+  chips.forEach(function (chip) {
+    chip.onclick = function () {
+      chips.forEach(function (c) { c.classList.remove('pdfcmp-chip-active'); });
+      this.classList.add('pdfcmp-chip-active');
+      state.targetPreset = this.getAttribute('data-preset');
+      if (customTargetRow) {
+        customTargetRow.style.display = (state.targetPreset === 'custom') ? 'flex' : 'none';
+      }
+    };
+  });
+
+  // Quality slider
+  if (qualitySlider) {
+    qualitySlider.oninput = function () {
+      state.customQuality = parseInt(this.value, 10);
+      if (qualityValText) qualityValText.textContent = state.customQuality + '%';
+    };
+  }
+
+  // Custom Resolution buttons
+  var resBtns = root.querySelectorAll('[data-res]');
+  resBtns.forEach(function (b) {
+    b.onclick = function () {
+      resBtns.forEach(function (btn) { btn.classList.remove('pdfcmp-toggle-active'); });
+      this.classList.add('pdfcmp-toggle-active');
+      state.customResolution = this.getAttribute('data-res');
+    };
+  });
+
+  // Custom Color buttons
+  var colBtns = root.querySelectorAll('[data-col]');
+  colBtns.forEach(function (b) {
+    b.onclick = function () {
+      colBtns.forEach(function (btn) { btn.classList.remove('pdfcmp-toggle-active'); });
+      this.classList.add('pdfcmp-toggle-active');
+      state.customColor = this.getAttribute('data-col');
+    };
+  });
+
+  // Social Sharing
+  function openShare(url) {
+    window.open(url, '_blank', 'noopener,noreferrer,width=600,height=450');
+  }
+
+  var curUrl = encodeURIComponent(window.location.href);
+  var curTitle = encodeURIComponent('Free PDF Compressor – Reduce PDF File Size Online');
+
+  var btnFb = document.getElementById('pdfcmpShareFb');
+  if (btnFb) btnFb.onclick = function () { openShare('https://www.facebook.com/sharer/sharer.php?u=' + curUrl); };
+  var btnTw = document.getElementById('pdfcmpShareTw');
+  if (btnTw) btnTw.onclick = function () { openShare('https://twitter.com/intent/tweet?url=' + curUrl + '&text=' + curTitle); };
+  var btnWa = document.getElementById('pdfcmpShareWa');
+  if (btnWa) btnWa.onclick = function () { openShare('https://api.whatsapp.com/send?text=' + curTitle + '%20' + curUrl); };
+  var btnLi = document.getElementById('pdfcmpShareLi');
+  if (btnLi) btnLi.onclick = function () { openShare('https://www.linkedin.com/sharing/share-offsite/?url=' + curUrl); };
+  var btnRd = document.getElementById('pdfcmpShareRd');
+  if (btnRd) btnRd.onclick = function () { openShare('https://reddit.com/submit?url=' + curUrl + '&title=' + curTitle); };
+  var btnTg = document.getElementById('pdfcmpShareTg');
+  if (btnTg) btnTg.onclick = function () { openShare('https://t.me/share/url?url=' + curUrl + '&text=' + curTitle); };
+  var btnEm = document.getElementById('pdfcmpShareEm');
+  if (btnEm) btnEm.onclick = function () { window.location.href = 'mailto:?subject=' + curTitle + '&body=Check%20out%20this%20free%20PDF%20compressor:%20' + curUrl; };
+
+  var btnCp = document.getElementById('pdfcmpShareCp');
+  if (btnCp) {
+    btnCp.onclick = function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          btnCp.textContent = '✓ Link Copied!';
+          setTimeout(function () { btnCp.textContent = '📋 Copy Link'; }, 3000);
+        }).catch(function () {
+          btnCp.textContent = '✓ Link Copied!';
+        });
+      } else {
+        var dummy = document.createElement('input');
+        dummy.value = window.location.href;
+        document.body.appendChild(dummy);
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        btnCp.textContent = '✓ Link Copied!';
+        setTimeout(function () { btnCp.textContent = '📋 Copy Link'; }, 3000);
+      }
+    };
+  }
+
+  var btnNt = document.getElementById('pdfcmpShareNt');
+  if (btnNt) {
+    btnNt.onclick = function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Free PDF Compressor – Reduce PDF File Size Online',
+          url: window.location.href
+        }).catch(function () {});
+      } else if (btnCp) {
+        btnCp.click();
+      }
+    };
+  }
+
+})();
+</script>
