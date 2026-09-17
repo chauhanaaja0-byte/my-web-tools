@@ -1,1 +1,1880 @@
 
+<!--
+BLOGGER TITLE:
+audiobook speed calculator
+
+BLOGGER SEARCH DESCRIPTION:
+Calculate audiobook listening time at different playback speeds, compare time saved, plan daily listening, and estimate when you'll finish.
+
+BLOGGER LABELS:
+Audiobook Tools, Listening Tools, Time Calculator, Playback Speed, Productivity Tools, Calculator Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+audiobook-speed-calculator
+
+GITHUB FILE NAME:
+audiobook-speed-calculator.html
+-->
+
+<style>
+#audiobookSpeedBloggerApp,
+#audiobookSpeedBloggerApp * {
+  box-sizing: border-box;
+}
+
+#audiobookSpeedBloggerApp {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  margin: 0 auto;
+  padding: 16px 12px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Base Headings & Texts */
+#audiobookSpeedBloggerApp h1,
+#audiobookSpeedBloggerApp h2,
+#audiobookSpeedBloggerApp h3,
+#audiobookSpeedBloggerApp h4 {
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+#audiobookSpeedBloggerApp h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+#audiobookSpeedBloggerApp h2 {
+  font-size: clamp(22px, 3.5vw, 28px);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+#audiobookSpeedBloggerApp h3 {
+  font-size: clamp(18px, 2.8vw, 22px);
+  margin-bottom: 10px;
+}
+
+#audiobookSpeedBloggerApp p {
+  margin: 0 0 16px;
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* Shell & Layout Cards */
+.abspd-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+}
+
+@media (max-width: 480px) {
+  .abspd-card {
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+}
+
+/* Hero Section */
+.abspd-hero {
+  text-align: center;
+  padding: 28px 16px 20px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.abspd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid #bfdbfe;
+  margin-bottom: 14px;
+  white-space: normal;
+  text-align: center;
+}
+
+.abspd-hero-desc {
+  max-width: 680px;
+  margin: 0 auto 20px;
+  font-size: 17px;
+  color: #475569;
+}
+
+.abspd-trust-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 18px;
+  font-size: 14px;
+  color: #059669;
+  font-weight: 600;
+}
+
+/* Ad Wrapper Safe Isolation */
+.abspd-ad-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 20px auto 28px;
+  text-align: center;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 0;
+}
+
+.abspd-ad-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Form Fields */
+.abspd-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.abspd-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.abspd-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.abspd-input {
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 16px;
+  color: #0f172a;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.abspd-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Speed Slider & Presets */
+.abspd-speed-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 10px 0 16px;
+}
+
+.abspd-range {
+  flex: 1;
+  height: 8px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  outline: none;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.abspd-speed-val-box {
+  min-width: 80px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1d4ed8;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.abspd-preset-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.abspd-preset-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 40px;
+}
+
+.abspd-preset-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.abspd-preset-btn.abspd-active {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+
+/* Examples Section */
+.abspd-examples-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 22px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+}
+
+.abspd-example-btn {
+  background: #ffffff;
+  border: 1px solid #94a3b8;
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.abspd-example-btn:hover {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+/* Main Action Buttons */
+.abspd-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.abspd-btn-primary {
+  flex: 1 1 220px;
+  min-height: 52px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.abspd-btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.abspd-btn-primary:active {
+  transform: translateY(1px);
+}
+
+.abspd-btn-secondary {
+  flex: 0 1 140px;
+  min-height: 52px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.abspd-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Error Message */
+.abspd-error-box {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Results Dashboard */
+.abspd-result-dashboard {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.abspd-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.abspd-metric-card {
+  padding: 16px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.abspd-metric-highlight {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.abspd-metric-saved {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.abspd-metric-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.abspd-metric-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.abspd-metric-highlight .abspd-metric-val {
+  color: #1d4ed8;
+}
+
+.abspd-metric-saved .abspd-metric-val {
+  color: #059669;
+}
+
+.abspd-metric-sub {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.abspd-summary-note {
+  background: #f1f5f9;
+  border-left: 4px solid #2563eb;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  font-size: 15px;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+/* Copy Result Action Bar */
+.abspd-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.abspd-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 20px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.abspd-copy-btn:hover {
+  background: #1e293b;
+}
+
+.abspd-toast-msg {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  color: #059669;
+  font-weight: 600;
+  padding: 4px 8px;
+}
+
+/* Speed Comparison Table */
+.abspd-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 16px 0 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.abspd-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.abspd-table th,
+.abspd-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.abspd-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.abspd-table tr:hover {
+  background: #f8fafc;
+}
+
+.abspd-table tr.abspd-row-selected {
+  background: #eff6ff;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.abspd-pill-faster {
+  color: #059669;
+  font-weight: 600;
+}
+
+.abspd-pill-slower {
+  color: #d97706;
+  font-weight: 600;
+}
+
+/* Accordion Details/Summary */
+.abspd-accordion {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.abspd-accordion summary {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  background: #f8fafc;
+  outline: none;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.abspd-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.abspd-accordion summary::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: 700;
+  color: #64748b;
+  transition: transform 0.2s;
+}
+
+.abspd-accordion[open] summary::after {
+  content: "−";
+  color: #2563eb;
+}
+
+.abspd-accordion-body {
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+/* Features Grid */
+.abspd-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.abspd-feature-item {
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.abspd-feature-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.abspd-feature-desc {
+  font-size: 14px;
+  color: #475569;
+  margin: 0;
+}
+
+/* Steps List */
+.abspd-steps-list {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: abspd-counter;
+  margin: 16px 0;
+}
+
+.abspd-steps-list li {
+  counter-increment: abspd-counter;
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #334155;
+}
+
+.abspd-steps-list li::before {
+  content: counter(abspd-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Social Sharing Section */
+.abspd-social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.abspd-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+  line-height: 1.3;
+  transition: opacity 0.15s ease, transform 0.05s ease;
+}
+
+.abspd-social-btn:hover {
+  opacity: 0.92;
+}
+
+.abspd-social-btn:active {
+  transform: translateY(1px);
+}
+
+.abspd-btn-fb { background: #1877f2; }
+.abspd-btn-x { background: #000000; }
+.abspd-btn-wa { background: #25d366; }
+.abspd-btn-li { background: #0a66c2; }
+.abspd-btn-rd { background: #ff4500; }
+.abspd-btn-tg { background: #229ed9; }
+.abspd-btn-em { background: #ea4335; }
+.abspd-btn-cp { background: #475569; }
+.abspd-btn-nt { background: #7c3aed; }
+
+/* SEO Article Styles */
+.abspd-article h2 {
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+  margin-top: 32px;
+}
+
+.abspd-article h3 {
+  margin-top: 24px;
+  color: #1e3a8a;
+}
+
+.abspd-article ul {
+  padding-left: 24px;
+  margin-bottom: 18px;
+}
+
+.abspd-article li {
+  margin-bottom: 8px;
+  color: #334155;
+}
+</style>
+
+<div id="audiobookSpeedBloggerApp">
+  <!-- 1. HERO -->
+  <div class="abspd-hero">
+    <div class="abspd-badge">
+      <span>🇺🇸</span> Free Audiobook Listening Calculator for U.S. Listeners
+    </div>
+    <h1>audiobook speed calculator</h1>
+    <p class="abspd-hero-desc">
+      Calculate listening time at different playback speeds, compare how much time you can save, and plan when you'll finish your audiobook.
+    </p>
+    <div class="abspd-trust-list">
+      <span>✓ 100% Free</span>
+      <span>✓ No Signup</span>
+      <span>✓ Instant Results</span>
+      <span>✓ Multiple Playback Speeds</span>
+      <span>✓ Time Saved</span>
+      <span>✓ Daily Listening Planning</span>
+    </div>
+  </div>
+
+  <!-- 2. FIRST ADVERTISEMENT — 468×60 -->
+  <div class="abspd-ad-container">
+    <div class="abspd-ad-label">Advertisement</div>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- 3. MAIN CALCULATOR CARD -->
+  <div class="abspd-card">
+    <h2>Calculate Listening Time</h2>
+    <p>Enter the standard length of your audiobook and choose your preferred listening speed.</p>
+
+    <!-- Quick Examples -->
+    <div class="abspd-examples-bar">
+      <span style="font-size:13px; font-weight:700; color:#475569;">Quick Examples:</span>
+      <button type="button" class="abspd-example-btn" onclick="audiobookApp.loadExample(8, 0, 0, 1.25)">8 Hours at 1.25x</button>
+      <button type="button" class="abspd-example-btn" onclick="audiobookApp.loadExample(10, 0, 0, 1.5)">10 Hours at 1.5x</button>
+      <button type="button" class="abspd-example-btn" onclick="audiobookApp.loadExample(12, 0, 0, 2)">12 Hours at 2x</button>
+      <button type="button" class="abspd-example-btn" onclick="audiobookApp.loadExample(20, 0, 0, 1.75)">20 Hours at 1.75x</button>
+    </div>
+
+    <!-- Duration Inputs -->
+    <div class="abspd-form-grid">
+      <div class="abspd-input-group">
+        <label for="abspd-hours" class="abspd-label">Hours</label>
+        <input type="number" id="abspd-hours" class="abspd-input" min="0" value="10" placeholder="0" />
+      </div>
+      <div class="abspd-input-group">
+        <label for="abspd-minutes" class="abspd-label">Minutes</label>
+        <input type="number" id="abspd-minutes" class="abspd-input" min="0" max="59" value="0" placeholder="0" />
+      </div>
+      <div class="abspd-input-group">
+        <label for="abspd-seconds" class="abspd-label">Seconds</label>
+        <input type="number" id="abspd-seconds" class="abspd-input" min="0" max="59" value="0" placeholder="0" />
+      </div>
+    </div>
+
+    <!-- Playback Speed Controls -->
+    <div class="abspd-input-group">
+      <label for="abspd-speed-slider" class="abspd-label">Playback Speed</label>
+      <div class="abspd-speed-row">
+        <input type="range" id="abspd-speed-slider" class="abspd-range" min="0.5" max="4.0" step="0.05" value="1.5" />
+        <div class="abspd-speed-val-box" id="abspd-speed-display">1.50x</div>
+      </div>
+      <div class="abspd-preset-group">
+        <button type="button" class="abspd-preset-btn" data-speed="0.75">0.75x</button>
+        <button type="button" class="abspd-preset-btn" data-speed="1.0">1x</button>
+        <button type="button" class="abspd-preset-btn" data-speed="1.25">1.25x</button>
+        <button type="button" class="abspd-preset-btn abspd-active" data-speed="1.5">1.5x</button>
+        <button type="button" class="abspd-preset-btn" data-speed="1.75">1.75x</button>
+        <button type="button" class="abspd-preset-btn" data-speed="2.0">2x</button>
+        <button type="button" class="abspd-preset-btn" data-speed="2.5">2.5x</button>
+        <button type="button" class="abspd-preset-btn" data-speed="3.0">3x</button>
+      </div>
+    </div>
+
+    <!-- Main Action Buttons -->
+    <div class="abspd-btn-group">
+      <button type="button" id="abspd-btn-calc" class="abspd-btn-primary">Calculate Listening Time</button>
+      <button type="button" id="abspd-btn-reset" class="abspd-btn-secondary">Reset</button>
+    </div>
+    <div id="abspd-error-box" class="abspd-error-box"></div>
+
+    <!-- 4. RESULTS DASHBOARD -->
+    <div id="abspd-results-section" class="abspd-result-dashboard" style="display:block;">
+      <h3>Your Listening Time</h3>
+      <div class="abspd-metric-grid">
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Original Length</div>
+          <div class="abspd-metric-val" id="abspd-res-original">10 hr</div>
+          <div class="abspd-metric-sub" id="abspd-res-original-decimal">10.00 hours</div>
+        </div>
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Playback Speed</div>
+          <div class="abspd-metric-val" id="abspd-res-speed">1.5x</div>
+          <div class="abspd-metric-sub">Listening pace</div>
+        </div>
+        <div class="abspd-metric-card abspd-metric-highlight">
+          <div class="abspd-metric-label">Actual Listening Time</div>
+          <div class="abspd-metric-val" id="abspd-res-actual">6 hr 40 min</div>
+          <div class="abspd-metric-sub" id="abspd-res-actual-decimal">6.67 hours</div>
+        </div>
+        <div class="abspd-metric-card abspd-metric-saved">
+          <div class="abspd-metric-label">Time Saved</div>
+          <div class="abspd-metric-val" id="abspd-res-saved">3 hr 20 min</div>
+          <div class="abspd-metric-sub" id="abspd-res-saved-decimal">3.33 hours saved</div>
+        </div>
+        <div class="abspd-metric-card abspd-metric-saved">
+          <div class="abspd-metric-label">Time Reduced</div>
+          <div class="abspd-metric-val" id="abspd-res-percent">33.3%</div>
+          <div class="abspd-metric-sub">Duration saved</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Explanation Summary -->
+      <div class="abspd-summary-note" id="abspd-res-summary">
+        At 1.5x playback speed, a 10-hour audiobook takes approximately 6 hours 40 minutes to finish, saving about 3 hours 20 minutes compared with listening at normal speed.
+      </div>
+
+      <div class="abspd-action-row">
+        <button type="button" id="abspd-btn-copy" class="abspd-copy-btn">
+          📋 Copy Result
+        </button>
+        <span id="abspd-copy-toast" class="abspd-toast-msg" style="display:none;">✓ Result Copied to Clipboard</span>
+      </div>
+    </div>
+
+    <!-- 5. SPEED COMPARISON TABLE -->
+    <div id="abspd-comparison-section">
+      <h3>Listening Time by Playback Speed</h3>
+      <p>Compare how your audiobook duration scales across common audio listening speeds:</p>
+      <div class="abspd-table-wrap">
+        <table class="abspd-table">
+          <thead>
+            <tr>
+              <th>Playback Speed</th>
+              <th>Listening Time</th>
+              <th>Time Saved / Added</th>
+              <th>Percentage Difference</th>
+            </tr>
+          </thead>
+          <tbody id="abspd-table-body">
+            <!-- Populated dynamically via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. REMAINING-TIME CALCULATOR (NATIVE DETAILS) -->
+  <details class="abspd-accordion">
+    <summary>Remaining Audiobook Time Calculator</summary>
+    <div class="abspd-accordion-body">
+      <p>Enter how much of your audiobook you have already finished to see the remaining listening commitment.</p>
+      <div class="abspd-form-grid">
+        <div class="abspd-input-group">
+          <label for="abspd-rem-total-hrs" class="abspd-label">Total Book (Hrs)</label>
+          <input type="number" id="abspd-rem-total-hrs" class="abspd-input" min="0" value="10" />
+        </div>
+        <div class="abspd-input-group">
+          <label for="abspd-rem-done-hrs" class="abspd-label">Already Listened (Hrs)</label>
+          <input type="number" id="abspd-rem-done-hrs" class="abspd-input" min="0" value="3" />
+        </div>
+        <div class="abspd-input-group">
+          <label for="abspd-rem-done-mins" class="abspd-label">Already Listened (Mins)</label>
+          <input type="number" id="abspd-rem-done-mins" class="abspd-input" min="0" max="59" value="30" />
+        </div>
+      </div>
+      <button type="button" id="abspd-btn-rem-calc" class="abspd-btn-primary" style="margin-bottom:16px;">Calculate Remaining Time</button>
+      <div id="abspd-rem-results" class="abspd-metric-grid">
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Original Remaining</div>
+          <div class="abspd-metric-val" id="abspd-rem-orig-val">6 hr 30 min</div>
+        </div>
+        <div class="abspd-metric-card abspd-metric-highlight">
+          <div class="abspd-metric-label">Remaining at Active Speed</div>
+          <div class="abspd-metric-val" id="abspd-rem-adj-val">4 hr 20 min</div>
+        </div>
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Progress Finished</div>
+          <div class="abspd-metric-val" id="abspd-rem-prog-val">35.0%</div>
+        </div>
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Percentage Left</div>
+          <div class="abspd-metric-val" id="abspd-rem-left-val">65.0%</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 7. DAILY LISTENING PLANNER (NATIVE DETAILS) -->
+  <details class="abspd-accordion">
+    <summary>Daily Listening Planner</summary>
+    <div class="abspd-accordion-body">
+      <p>Figure out how many days it will take to complete your audiobook based on your daily routine.</p>
+      <div class="abspd-form-grid">
+        <div class="abspd-input-group">
+          <label for="abspd-daily-mins" class="abspd-label">Listening Minutes Per Day</label>
+          <input type="number" id="abspd-daily-mins" class="abspd-input" min="5" max="1440" value="30" />
+        </div>
+      </div>
+      <div class="abspd-preset-group">
+        <button type="button" class="abspd-preset-btn" onclick="audiobookApp.setDailyMins(15)">15 min</button>
+        <button type="button" class="abspd-preset-btn abspd-active" onclick="audiobookApp.setDailyMins(30)">30 min</button>
+        <button type="button" class="abspd-preset-btn" onclick="audiobookApp.setDailyMins(45)">45 min</button>
+        <button type="button" class="abspd-preset-btn" onclick="audiobookApp.setDailyMins(60)">60 min</button>
+        <button type="button" class="abspd-preset-btn" onclick="audiobookApp.setDailyMins(90)">90 min</button>
+      </div>
+      <button type="button" id="abspd-btn-plan-calc" class="abspd-btn-primary" style="margin-bottom:16px;">Calculate Daily Schedule</button>
+      <div id="abspd-plan-results" class="abspd-metric-grid">
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Adjusted Total Duration</div>
+          <div class="abspd-metric-val" id="abspd-plan-total">6 hr 40 min</div>
+        </div>
+        <div class="abspd-metric-card abspd-metric-highlight">
+          <div class="abspd-metric-label">Estimated Days Needed</div>
+          <div class="abspd-metric-val" id="abspd-plan-days">14 Days</div>
+        </div>
+        <div class="abspd-metric-card">
+          <div class="abspd-metric-label">Daily Commitment</div>
+          <div class="abspd-metric-val" id="abspd-plan-comm">30 min/day</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 8. FINISH DATE ESTIMATOR (NATIVE DETAILS) -->
+  <details class="abspd-accordion">
+    <summary>Finish Date Estimator</summary>
+    <div class="abspd-accordion-body">
+      <p>Select your starting date and daily listening minutes to find your estimated completion day.</p>
+      <div class="abspd-form-grid">
+        <div class="abspd-input-group">
+          <label for="abspd-start-date" class="abspd-label">Start Date</label>
+          <input type="date" id="abspd-start-date" class="abspd-input" />
+        </div>
+        <div class="abspd-input-group">
+          <label for="abspd-finish-daily-mins" class="abspd-label">Minutes Per Day</label>
+          <input type="number" id="abspd-finish-daily-mins" class="abspd-input" min="5" value="30" />
+        </div>
+      </div>
+      <button type="button" id="abspd-btn-finish-calc" class="abspd-btn-primary" style="margin-bottom:16px;">Estimate Finish Date</button>
+      <div class="abspd-metric-grid">
+        <div class="abspd-metric-card abspd-metric-highlight">
+          <div class="abspd-metric-label">Projected Finish Date</div>
+          <div class="abspd-metric-val" id="abspd-finish-date-val">Calculating...</div>
+          <div class="abspd-metric-sub">Calendar estimate</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 9. REQUIRED PLAYBACK SPEED & TARGET FINISH DATE -->
+  <details class="abspd-accordion">
+    <summary>What Playback Speed Do I Need? & Target Finish Date</summary>
+    <div class="abspd-accordion-body">
+      <h4>Required Playback Speed Calculator</h4>
+      <p>Have a strict time budget? Find the exact speed multiplier required to finish in your target hours.</p>
+      <div class="abspd-form-grid">
+        <div class="abspd-input-group">
+          <label for="abspd-req-orig-hrs" class="abspd-label">Original Length (Hours)</label>
+          <input type="number" id="abspd-req-orig-hrs" class="abspd-input" min="0.1" value="12" step="0.1" />
+        </div>
+        <div class="abspd-input-group">
+          <label for="abspd-req-desired-hrs" class="abspd-label">Desired Time (Hours)</label>
+          <input type="number" id="abspd-req-desired-hrs" class="abspd-input" min="0.1" value="8" step="0.1" />
+        </div>
+      </div>
+      <button type="button" id="abspd-btn-req-speed-calc" class="abspd-btn-primary" style="margin-bottom:16px;">Calculate Required Speed</button>
+      <div class="abspd-metric-grid" style="margin-bottom:28px;">
+        <div class="abspd-metric-card abspd-metric-highlight">
+          <div class="abspd-metric-label">Required Playback Speed</div>
+          <div class="abspd-metric-val" id="abspd-req-speed-val">1.50x</div>
+        </div>
+      </div>
+
+      <hr style="border:0; border-top:1px solid #e2e8f0; margin:20px 0;" />
+
+      <h4>Finish By Date Planner</h4>
+      <p>Targeting a book club deadline or road trip arrival? Enter your target finish date to discover how many minutes you must listen daily.</p>
+      <div class="abspd-form-grid">
+        <div class="abspd-input-group">
+          <label for="abspd-target-date" class="abspd-label">Target Completion Date</label>
+          <input type="date" id="abspd-target-date" class="abspd-input" />
+        </div>
+      </div>
+      <button type="button" id="abspd-btn-target-date-calc" class="abspd-btn-primary" style="margin-bottom:16px;">Calculate Required Daily Minutes</button>
+      <div class="abspd-summary-note" id="abspd-target-date-res">
+        Select a future date above to calculate your daily listening target.
+      </div>
+    </div>
+  </details>
+
+  <!-- 11. SECOND ADVERTISEMENT — NATIVE -->
+  <div class="abspd-ad-container">
+    <div class="abspd-ad-label">Advertisement</div>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- 12. FEATURES SECTION -->
+  <div class="abspd-card">
+    <h2>Why Use This Calculator?</h2>
+    <div class="abspd-features-grid">
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Listening Time</div>
+        <p class="abspd-feature-desc">Compute exact hours, minutes, and seconds adjusted for any playback rate from 0.5x to 4x.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Playback Speed</div>
+        <p class="abspd-feature-desc">Fine-tune your rate with 0.05x micro-increments or one-touch quick preset multipliers.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Time Saved</div>
+        <p class="abspd-feature-desc">See the exact duration saved or added compared to standard normal 1.0x narration.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Speed Comparison</div>
+        <p class="abspd-feature-desc">Scan a comprehensive speed breakdown table comparing 0.75x up to 3.0x side by side.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Remaining Time</div>
+        <p class="abspd-feature-desc">Subtract already heard chapters to view how much actual listening commitment remains.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Listening Progress</div>
+        <p class="abspd-feature-desc">Track completion percentages and remaining duration at your current active speed.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Daily Listening Planning</div>
+        <p class="abspd-feature-desc">Map daily commute or exercise times directly to calendar days needed to complete the title.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Finish-Date Estimates</div>
+        <p class="abspd-feature-desc">Calculate your projected completion date based on daily habits and active speed settings.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Required Playback Speed</div>
+        <p class="abspd-feature-desc">Determine the exact narration multiplier needed to finish a book within an allocated window.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Instant Calculation</div>
+        <p class="abspd-feature-desc">100% real-time client-side calculation directly in your web browser with zero delays.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">No Signup</div>
+        <p class="abspd-feature-desc">Free access without accounts, memberships, downloads, subscriptions, or paywalls.</p>
+      </div>
+      <div class="abspd-feature-item">
+        <div class="abspd-feature-title">Mobile Friendly</div>
+        <p class="abspd-feature-desc">Designed with high-contrast accessibility and touch targets optimized for smartphones and tablets.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. HOW TO USE -->
+  <div class="abspd-card">
+    <h2>How to Calculate Your Listening Time</h2>
+    <ol class="abspd-steps-list">
+      <li>Enter the audiobook's original duration in hours, minutes, and seconds as listed in your library or player app.</li>
+      <li>Choose the playback speed using the interactive slider or one of the quick preset buttons.</li>
+      <li>Select Calculate Listening Time to process your adjusted time immediately.</li>
+      <li>Review the adjusted duration showing human-readable hours and minutes.</li>
+      <li>See how much time is saved along with the percentage of time reduced.</li>
+      <li>Compare additional playback speeds in the side-by-side comparison table.</li>
+      <li>Use the listening planner when you want a finish-date estimate or daily schedule plan.</li>
+    </ol>
+  </div>
+
+  <!-- 14. VISIBLE SEO INTRODUCTION (250-350 words) -->
+  <div class="abspd-card">
+    <h2>Understanding Playback Speed and Listening Time</h2>
+    <p>
+      Audiobooks are one of the most convenient ways for modern American readers to absorb fiction and nonfiction during daily commutes, morning walks, cardio routines, and household chores. However, finding the time to tackle a massive 20-hour biography or an epic fantasy saga can be challenging. An <strong>audiobook speed calculator</strong> helps listeners plan their schedule by converting publisher runtimes into realistic listening sessions at accelerated or reduced tempos.
+    </p>
+    <p>
+      When you adjust playback speed, the narration pace increases proportionally while modern playback software automatically preserves natural voice pitch. Listening at 1.25x or 1.5x allows you to understand every word clearly while significantly cutting down total hours. By using an intuitive <strong>audiobook calculator</strong>, you can calculate the exact hours and minutes required to complete your audio title, measure your total time saved, and establish a consistent daily listening routine.
+    </p>
+    <p>
+      Whether you are an ambitious student tackling academic audiobooks, a busy professional reviewing industry non-fiction, or a passionate fiction fan preparing for an upcoming book club meeting, tracking your speed multipliers allows you to set achievable milestones. Use this listening planner to estimate finish dates, balance daily commute times, and discover your personal sweet spot between speedy comprehension and listening pleasure.
+    </p>
+  </div>
+
+  <!-- 15. EXACT KEYWORD EDUCATIONAL SECTIONS -->
+  <div class="abspd-card">
+    <h2>audiobook calculator</h2>
+    <p>
+      An <strong>audiobook calculator</strong> is an essential planning utility for anyone who consumes spoken audio content regularly. It takes the baseline duration of any audio program and recalculates the true commitment required when listening at altered speeds. Rather than guessing how long your next road trip book will take, you get precise figures down to the exact minute.
+    </p>
+
+    <h2>audiobook time calculator</h2>
+    <p>
+      Using an <strong>audiobook time calculator</strong> eliminates mental math when scheduling your daily reading goals. If you have 45 minutes of driving each day and an 11-hour audiobook, this tool breaks down the exact number of days required to reach the final chapter, helping you build a predictable, rewarding daily listening habit.
+    </p>
+
+    <h2>listening speed calculator</h2>
+    <p>
+      A dedicated <strong>listening speed calculator</strong> lets you evaluate how incremental increases in speech rate impact your schedule. Accelerating from 1.0x to 1.25x saves 20% of your listening duration, while moving to 1.5x saves 33.3%. This calculator helps you pinpoint the most comfortable speed for your current activity and content complexity.
+    </p>
+
+    <h2>audiobook length calculator</h2>
+    <p>
+      An <strong>audiobook length calculator</strong> displays both the original publisher length and the customized playback duration side by side. It also calculates the remaining listening length of partially finished books, ensuring you always know how much audio commitment stands between you and completion.
+    </p>
+
+    <h2>audiobook calculator speed</h2>
+    <p>
+      The <strong>audiobook calculator speed</strong> functionality provides reciprocal calculations: if you must finish a title within a fixed 6-hour flight, the calculator determines the required narration multiplier to ensure you finish before touch down.
+    </p>
+  </div>
+
+  <!-- 16. MAIN EDUCATIONAL ARTICLE PART 1 -->
+  <div class="abspd-card abspd-article">
+    <h2>How Playback Speed Changes Listening Time</h2>
+    <p>
+      The fundamental relationship between narration speed and listening duration is inversely proportional. When an audiobook's narration pace is accelerated, the physical duration decreases according to the mathematical formula:
+    </p>
+    <p style="text-align:center; font-weight:700; background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+      Adjusted Listening Time = Original Duration ÷ Playback Speed Multiplier
+    </p>
+    <p>
+      For example, if you have a 12-hour title and listen at 1.5x, you divide 12 by 1.5 to get exactly 8 hours of total listening time. You have shaved 4 full hours off your commitment without skipping a single paragraph or dialogue exchange.
+    </p>
+
+    <h3>Listening at 1.25x</h3>
+    <p>
+      The 1.25x setting is widely regarded as the most accessible entry point for beginners. Professional narrators are trained to speak at an articulate, deliberate pace of approximately 130 to 160 words per minute to ensure clarity. At 1.25x, speech feels lively and natural, eliminating sluggish pauses while demanding virtually no extra cognitive effort. On a 10-hour audiobook, listening at 1.25x reduces the runtime to 8 hours, saving 2 full hours.
+    </p>
+
+    <h3>Listening at 1.5x</h3>
+    <p>
+      At 1.5x, narration moves at approximately 200 to 240 words per minute, which closely aligns with the speed of typical silent reading. At this rate, your total listening duration drops by exactly 33.3%. A 15-hour audiobook finishes in just 10 hours, liberating 5 hours of your week.
+    </p>
+
+    <h3>Listening at 1.75x</h3>
+    <p>
+      The 1.75x tempo requires focused attention. It is particularly popular among readers reviewing practical nonfiction, memoirs, productivity guides, or business manuals where the vocabulary is familiar and the narrator speaks evenly. At 1.75x, a 14-hour book takes only 8 hours.
+    </p>
+
+    <h3>Listening at 2x</h3>
+    <p>
+      At 2.0x, listening duration is cut exactly in half (50% time reduction). A massive 20-hour audiobook shrinks to a 10-hour weekend listen. While this tempo requires trained active listening and minimal ambient distractions, seasoned audiobook listeners often favor it for familiar genres and fast-paced informational titles.
+    </p>
+
+    <h3>How Much Time Faster Playback Can Save</h3>
+    <p>
+      Over the course of a single year, a listener who consumes two 12-hour audiobooks per month at 1.0x spends 288 hours listening. Increasing the listening pace to 1.5x reduces that total to 192 hours, saving 96 full hours—the equivalent of four entire days of free time returned to your life.
+    </p>
+  </div>
+
+  <!-- 17. THIRD ADVERTISEMENT — 300×250 -->
+  <div class="abspd-ad-container">
+    <div class="abspd-ad-label">Advertisement</div>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- 18. MAIN EDUCATIONAL ARTICLE PART 2 -->
+  <div class="abspd-card abspd-article">
+    <h2>Optimizing Your Daily Audiobook Routine</h2>
+    <p>
+      Calculating your listening duration is only the first step; turning that calculation into completed books requires a reliable routine.
+    </p>
+
+    <h3>Calculating Remaining Listening Time</h3>
+    <p>
+      When you are halfway through a long book, player interfaces often show chapter minutes rather than the remaining grand total at your custom speed. By entering your book's overall length alongside your current timestamp into our remaining time calculator, you can see the precise hours remaining at your current playback rate. This helps avoid late-night listening binges when you think a book only has "a little bit left."
+    </p>
+
+    <h3>Creating a Daily Listening Schedule</h3>
+    <p>
+      Most audio listeners build their habit around routine daily activities. For example:
+    </p>
+    <ul>
+      <li><strong>Morning and Evening Commutes:</strong> 20 to 35 minutes each way provides 40 to 70 minutes daily.</li>
+      <li><strong>Fitness and Walking:</strong> A daily 30-minute walk or gym session offers dedicated listening time.</li>
+      <li><strong>Domestic Chores:</strong> Washing dishes, folding laundry, and cooking easily yield another 20 to 30 minutes.</li>
+    </ul>
+    <p>
+      With just 45 minutes of scheduled listening per day at 1.5x speed, you effectively consume 67.5 minutes of original audio daily. In just ten days, you finish an 11-hour audiobook with zero disruption to your work or family life.
+    </p>
+
+    <h3>Estimating a Realistic Finish Date</h3>
+    <p>
+      Setting an estimated finish date creates gentle accountability. If you are reading along with a book club that meets in three weeks, enter your book's runtime and your daily available minutes to confirm whether your current pace will reach the epilogue in time.
+    </p>
+
+    <h3>Fiction vs. Nonfiction Playback Speed</h3>
+    <p>
+      One common mistake is using a single uniform speed across all titles. Consider adjusting based on genre:
+    </p>
+    <ul>
+      <li><strong>Literary Fiction & Poetry:</strong> Slower speeds (1.0x to 1.15x) honor the author's prose rhythm, character voices, dramatic pauses, and atmospheric sound design.</li>
+      <li><strong>Complex Nonfiction & Philosophy:</strong> Moderate speeds (1.1x to 1.25x) provide cognitive breathing room to absorb intricate concepts and unfamiliar terminology.</li>
+      <li><strong>Fast-Paced Thrillers & Mysteries:</strong> Intermediate speeds (1.3x to 1.5x) amplify tension and excitement without obscuring plot points.</li>
+      <li><strong>Business, Self-Improvement & Memoirs:</strong> Accelerated speeds (1.4x to 1.8x) allow rapid extraction of practical insights and core takeaways.</li>
+    </ul>
+
+    <h3>Listening Faster Without Losing Comprehension</h3>
+    <p>
+      If you want to train your brain to comprehend faster speech, increase your speed gradually in 0.05x or 0.1x steps over several days. Listen at 1.1x for three chapters until it sounds completely normal, then advance to 1.2x. Your auditory processing naturally adapts, allowing you to retain comprehension and enjoyment.
+    </p>
+  </div>
+
+  <!-- 19. FAQ SECTION (20+ ITEMS) -->
+  <div class="abspd-card">
+    <h2>Frequently Asked Questions</h2>
+    <p>Find answers to common questions about playback speeds, listening time formulas, and reading schedules.</p>
+
+    <details class="abspd-accordion">
+      <summary>How does playback speed change listening time?</summary>
+      <div class="abspd-accordion-body">
+        Playback speed alters the rate of audio playback inversely. Dividing the original audiobook duration by your playback multiplier gives the actual adjusted listening time. For instance, 10 hours played at 2x takes 5 hours.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How long does a 10-hour audiobook take at 1.5x?</summary>
+      <div class="abspd-accordion-body">
+        A 10-hour audiobook at 1.5x speed takes exactly 6 hours and 40 minutes, saving you 3 hours and 20 minutes (a 33.3% time reduction).
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How long does a 10-hour audiobook take at 2x?</summary>
+      <div class="abspd-accordion-body">
+        At 2.0x playback speed, a 10-hour audiobook takes exactly 5 hours, saving you 50% of the original duration.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How long does a 20-hour audiobook take at 1.5x?</summary>
+      <div class="abspd-accordion-body">
+        A 20-hour audiobook at 1.5x takes 13 hours and 20 minutes, shaving 6 hours and 40 minutes off your total listening time.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How much time can 1.25x save?</summary>
+      <div class="abspd-accordion-body">
+        Listening at 1.25x saves 20% of your total listening time. On a 10-hour audiobook, you save 2 full hours.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How much time can 1.5x save?</summary>
+      <div class="abspd-accordion-body">
+        Listening at 1.5x saves 33.33% of your listening duration. For every 3 hours of original audio, you spend only 2 hours listening.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How much time can 2x save?</summary>
+      <div class="abspd-accordion-body">
+        Listening at 2.0x saves exactly 50% of your time, cutting your audiobook duration straight in half.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can I calculate remaining listening time?</summary>
+      <div class="abspd-accordion-body">
+        Yes! Open the Remaining Audiobook Time Calculator section above, enter your book's total duration and the hours/minutes already listened, and the tool will show your remaining duration at your chosen speed.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can I estimate my finish date?</summary>
+      <div class="abspd-accordion-body">
+        Yes. Enter your start date, your daily listening minutes, and your preferred playback speed into the Finish Date Estimator to project your completion calendar date.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can I calculate how many minutes per day I need?</summary>
+      <div class="abspd-accordion-body">
+        Yes. Under the Finish By Date section, select your target deadline date to determine the exact number of daily listening minutes required.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>How do I calculate the playback speed needed to finish sooner?</summary>
+      <div class="abspd-accordion-body">
+        Use the "What Playback Speed Do I Need?" section. Divide your book's original runtime by your desired time window to find the required playback multiplier.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can I use this tool for podcasts?</summary>
+      <div class="abspd-accordion-body">
+        Absolutely. Any spoken audio—including podcasts, recorded lectures, interviews, and webinars—follows the exact same mathematical formulas.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can I use this tool for lectures?</summary>
+      <div class="abspd-accordion-body">
+        Yes. College students and continuing education learners frequently use our calculator to budget study sessions for recorded college lectures and audio training modules.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Does changing speed change the original audiobook length?</summary>
+      <div class="abspd-accordion-body">
+        No. The original publisher file length remains unchanged. Playback speed only modifies how rapidly the content streams through your audio player.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Does this tool require an account?</summary>
+      <div class="abspd-accordion-body">
+        No. This tool requires no registration, username, email, account, login, signup, subscription, or payment.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Does this calculator use an API?</summary>
+      <div class="abspd-accordion-body">
+        No. All calculations are handled locally inside your web browser using vanilla JavaScript without contacting any external servers or APIs.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Is calculation performed in my browser?</summary>
+      <div class="abspd-accordion-body">
+        Yes. Every calculation runs on your local device for instant responsiveness, privacy, and full offline reliability.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can playback speed be below 1x?</summary>
+      <div class="abspd-accordion-body">
+        Yes. Our calculator supports speeds down to 0.5x, which is especially helpful for language learners, note-takers, or complex instructional technical audio.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Can playback speed be above 2x?</summary>
+      <div class="abspd-accordion-body">
+        Yes. The calculator slider supports speeds up to 4.0x for rapid skimming and high-speed audio review.
+      </div>
+    </details>
+
+    <details class="abspd-accordion">
+      <summary>Are finish-date estimates exact?</summary>
+      <div class="abspd-accordion-body">
+        Finish-date estimates are mathematical projections based on consistent daily listening. Actual real-world completion times vary if you pause, skip days, or adjust your speed.
+      </div>
+    </details>
+  </div>
+
+  <!-- 20. PRIVACY -->
+  <div class="abspd-card">
+    <h2>Privacy</h2>
+    <p>
+      This calculator performs its calculations directly in your browser and does not require an account or a server-side calculation API. Your entered book lengths, speeds, and schedules stay strictly on your device.
+    </p>
+  </div>
+
+  <!-- 21. DISCLAIMER -->
+  <div class="abspd-card">
+    <h2>Disclaimer</h2>
+    <p>
+      This calculator provides mathematical estimates based on the audiobook duration, playback speed, dates and listening schedule you enter. Actual listening time can vary when you pause, rewind, skip sections, change playback speed or take breaks.
+    </p>
+    <p>
+      Finish-date and daily-listening estimates assume a reasonably consistent listening schedule and should be treated as estimates.
+    </p>
+    <p>
+      This website and tool are not affiliated with Audible, Amazon, Spotify, Apple Books or any audiobook platform.
+    </p>
+  </div>
+
+  <!-- 22. SOCIAL SHARING (MANDATORY) -->
+  <div class="abspd-card">
+    <h2>Share This Tool</h2>
+    <p>Find this calculator helpful? Share it with fellow audiobook lovers, students, and book club members:</p>
+    <div class="abspd-social-grid">
+      <button type="button" class="abspd-social-btn abspd-btn-fb" onclick="audiobookApp.facebookShare()">Facebook</button>
+      <button type="button" class="abspd-social-btn abspd-btn-x" onclick="audiobookApp.twitterShare()">X / Twitter</button>
+      <button type="button" class="abspd-social-btn abspd-btn-wa" onclick="audiobookApp.whatsappShare()">WhatsApp</button>
+      <button type="button" class="abspd-social-btn abspd-btn-li" onclick="audiobookApp.linkedinShare()">LinkedIn</button>
+      <button type="button" class="abspd-social-btn abspd-btn-rd" onclick="audiobookApp.redditShare()">Reddit</button>
+      <button type="button" class="abspd-social-btn abspd-btn-tg" onclick="audiobookApp.telegramShare()">Telegram</button>
+      <button type="button" class="abspd-social-btn abspd-btn-em" onclick="audiobookApp.emailShare()">Email</button>
+      <button type="button" class="abspd-social-btn abspd-btn-cp" id="abspd-btn-copylink" onclick="audiobookApp.copyLink()">Copy Link</button>
+      <button type="button" class="abspd-social-btn abspd-btn-nt" onclick="audiobookApp.nativeShare()">Share Tool</button>
+    </div>
+    <div id="abspd-link-toast" class="abspd-toast-msg" style="display:none; margin-top:12px;">✓ Link Copied to Clipboard</div>
+  </div>
+
+  <!-- 23. FOURTH ADVERTISEMENT — SOCIAL BAR -->
+  <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+</div>
+
+<script>
+var audiobookApp = (function () {
+  var root = document.getElementById('audiobookSpeedBloggerApp');
+  if (!root) return {};
+
+  function durationToSeconds(hrs, mins, secs) {
+    var h = parseFloat(hrs) || 0;
+    var m = parseFloat(mins) || 0;
+    var s = parseFloat(secs) || 0;
+    return Math.max(0, Math.floor(h * 3600 + m * 60 + s));
+  }
+
+  function secondsToReadableTime(totalSecs) {
+    if (isNaN(totalSecs) || totalSecs < 0 || !isFinite(totalSecs)) return "0 min";
+    totalSecs = Math.round(totalSecs);
+    var h = Math.floor(totalSecs / 3600);
+    var remainder = totalSecs % 3600;
+    var m = Math.floor(remainder / 60);
+    var s = remainder % 60;
+
+    var parts = [];
+    if (h > 0) parts.push(h + " hr");
+    if (m > 0 || (h > 0 && s > 0)) parts.push(m + " min");
+    if (h === 0 && m === 0) parts.push(s + " sec");
+    return parts.join(" ") || "0 min";
+  }
+
+  function calculateListeningTime(origSeconds, speed) {
+    if (!speed || speed <= 0) return origSeconds;
+    return origSeconds / speed;
+  }
+
+  function calculateTimeSaved(origSeconds, adjustedSeconds) {
+    return Math.max(0, origSeconds - adjustedSeconds);
+  }
+
+  function calculateSavedPercentage(origSeconds, savedSeconds) {
+    if (!origSeconds || origSeconds <= 0) return 0;
+    return ((savedSeconds / origSeconds) * 100);
+  }
+
+  function showError(msg) {
+    var errBox = document.getElementById('abspd-error-box');
+    if (!errBox) return;
+    if (msg) {
+      errBox.textContent = msg;
+      errBox.style.display = 'block';
+    } else {
+      errBox.textContent = '';
+      errBox.style.display = 'none';
+    }
+  }
+
+  function renderSpeedComparison(origSeconds, currentSpeed) {
+    var tbody = document.getElementById('abspd-table-body');
+    if (!tbody) return;
+    var speeds = [0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0];
+    var html = '';
+
+    for (var i = 0; i < speeds.length; i++) {
+      var sp = speeds[i];
+      var adjSec = origSeconds / sp;
+      var isSelected = Math.abs(sp - currentSpeed) < 0.02;
+      var diffSec = origSeconds - adjSec;
+      var diffPercent = ((diffSec / origSeconds) * 100).toFixed(1);
+
+      var diffLabel = '';
+      if (sp > 1.0) {
+        diffLabel = '<span class="abspd-pill-faster">Save ' + secondsToReadableTime(diffSec) + '</span>';
+      } else if (sp < 1.0) {
+        diffLabel = '<span class="abspd-pill-slower">Add ' + secondsToReadableTime(Math.abs(diffSec)) + '</span>';
+      } else {
+        diffLabel = '<span style="color:#64748b;">Baseline (0s)</span>';
+      }
+
+      var pctLabel = '';
+      if (sp > 1.0) {
+        pctLabel = '<span class="abspd-pill-faster">-' + diffPercent + '%</span>';
+      } else if (sp < 1.0) {
+        pctLabel = '<span class="abspd-pill-slower">+' + Math.abs(parseFloat(diffPercent)) + '%</span>';
+      } else {
+        pctLabel = '0.0%';
+      }
+
+      html += '<tr class="' + (isSelected ? 'abspd-row-selected' : '') + '">';
+      html += '<td><strong>' + sp.toFixed(2).replace(/\.00$/, '') + 'x</strong>' + (isSelected ? ' (Selected)' : '') + '</td>';
+      html += '<td>' + secondsToReadableTime(adjSec) + ' (' + (adjSec / 3600).toFixed(2) + ' hrs)</td>';
+      html += '<td>' + diffLabel + '</td>';
+      html += '<td>' + pctLabel + '</td>';
+      html += '</tr>';
+    }
+
+    tbody.innerHTML = html;
+  }
+
+  function renderResults() {
+    showError('');
+    var hrs = parseFloat(document.getElementById('abspd-hours').value) || 0;
+    var mins = parseFloat(document.getElementById('abspd-minutes').value) || 0;
+    var secs = parseFloat(document.getElementById('abspd-seconds').value) || 0;
+    var speed = parseFloat(document.getElementById('abspd-speed-slider').value) || 1.0;
+
+    if (hrs < 0 || mins < 0 || secs < 0 || mins > 59 || secs > 59) {
+      showError('Please enter valid duration values (Minutes and Seconds must be between 0 and 59).');
+      return;
+    }
+
+    var origSecs = durationToSeconds(hrs, mins, secs);
+    if (origSecs <= 0) {
+      showError('Please enter an audiobook length greater than 0 seconds.');
+      return;
+    }
+
+    if (speed < 0.5 || speed > 4.0 || isNaN(speed)) {
+      showError('Playback speed must be between 0.5x and 4.0x.');
+      return;
+    }
+
+    var adjSecs = calculateListeningTime(origSecs, speed);
+    var savedSecs = calculateTimeSaved(origSecs, adjSecs);
+    var savedPercent = calculateSavedPercentage(origSecs, savedSecs);
+
+    document.getElementById('abspd-res-original').textContent = secondsToReadableTime(origSecs);
+    document.getElementById('abspd-res-original-decimal').textContent = (origSecs / 3600).toFixed(2) + ' hours';
+
+    document.getElementById('abspd-res-speed').textContent = speed.toFixed(2).replace(/\.00$/, '') + 'x';
+
+    document.getElementById('abspd-res-actual').textContent = secondsToReadableTime(adjSecs);
+    document.getElementById('abspd-res-actual-decimal').textContent = (adjSecs / 3600).toFixed(2) + ' hours';
+
+    if (speed >= 1.0) {
+      document.getElementById('abspd-res-saved').textContent = secondsToReadableTime(savedSecs);
+      document.getElementById('abspd-res-saved-decimal').textContent = (savedSecs / 3600).toFixed(2) + ' hours saved';
+      document.getElementById('abspd-res-percent').textContent = savedPercent.toFixed(1) + '%';
+    } else {
+      var extraSecs = adjSecs - origSecs;
+      document.getElementById('abspd-res-saved').textContent = '+' + secondsToReadableTime(extraSecs);
+      document.getElementById('abspd-res-saved-decimal').textContent = (extraSecs / 3600).toFixed(2) + ' hours added';
+      document.getElementById('abspd-res-percent').textContent = '-' + Math.abs(savedPercent).toFixed(1) + '%';
+    }
+
+    // Dynamic Summary Text
+    var summaryEl = document.getElementById('abspd-res-summary');
+    if (summaryEl) {
+      var origText = secondsToReadableTime(origSecs);
+      var adjText = secondsToReadableTime(adjSecs);
+      var savedText = secondsToReadableTime(savedSecs);
+      if (speed > 1.0) {
+        summaryEl.textContent = 'At ' + speed.toFixed(2).replace(/\.00$/, '') + 'x playback speed, a ' + origText + ' audiobook takes approximately ' + adjText + ' to finish, saving about ' + savedText + ' compared with listening at normal speed.';
+      } else if (speed < 1.0) {
+        summaryEl.textContent = 'At ' + speed.toFixed(2).replace(/\.00$/, '') + 'x playback speed, a ' + origText + ' audiobook takes approximately ' + adjText + ' to finish, adding ' + secondsToReadableTime(adjSecs - origSecs) + ' of listening time.';
+      } else {
+        summaryEl.textContent = 'At normal 1.0x playback speed, your listening duration is unchanged at ' + origText + '.';
+      }
+    }
+
+    renderSpeedComparison(origSecs, speed);
+  }
+
+  function setSpeed(val) {
+    var speed = parseFloat(val) || 1.0;
+    var slider = document.getElementById('abspd-speed-slider');
+    var display = document.getElementById('abspd-speed-display');
+    if (slider) slider.value = speed;
+    if (display) display.textContent = speed.toFixed(2) + 'x';
+
+    var presetBtns = root.querySelectorAll('.abspd-preset-btn[data-speed]');
+    presetBtns.forEach(function (btn) {
+      if (Math.abs(parseFloat(btn.getAttribute('data-speed')) - speed) < 0.02) {
+        btn.classList.add('abspd-active');
+      } else {
+        btn.classList.remove('abspd-active');
+      }
+    });
+
+    renderResults();
+  }
+
+  function loadExample(hrs, mins, secs, sp) {
+    document.getElementById('abspd-hours').value = hrs;
+    document.getElementById('abspd-minutes').value = mins;
+    document.getElementById('abspd-seconds').value = secs;
+    setSpeed(sp);
+  }
+
+  function resetCalculator() {
+    document.getElementById('abspd-hours').value = 10;
+    document.getElementById('abspd-minutes').value = 0;
+    document.getElementById('abspd-seconds').value = 0;
+    setSpeed(1.5);
+    showError('');
+  }
+
+  function copyResult() {
+    var orig = document.getElementById('abspd-res-original').textContent;
+    var speed = document.getElementById('abspd-res-speed').textContent;
+    var actual = document.getElementById('abspd-res-actual').textContent;
+    var saved = document.getElementById('abspd-res-saved').textContent;
+    var pct = document.getElementById('abspd-res-percent').textContent;
+
+    var text = "Audiobook Length: " + orig + "\n" +
+               "Playback Speed: " + speed + "\n" +
+               "Listening Time: " + actual + "\n" +
+               "Time Saved: " + saved + "\n" +
+               "Time Reduced: " + pct;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        showCopyToast('abspd-copy-toast');
+      }).catch(function () {
+        fallbackCopy(text, 'abspd-copy-toast');
+      });
+    } else {
+      fallbackCopy(text, 'abspd-copy-toast');
+    }
+  }
+
+  function showCopyToast(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = 'inline-flex';
+    setTimeout(function () { el.style.display = 'none'; }, 2500);
+  }
+
+  function fallbackCopy(str, toastId) {
+    var el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    try {
+      document.execCommand('copy');
+      showCopyToast(toastId);
+    } catch (e) {}
+    document.body.removeChild(el);
+  }
+
+  // Remaining Calculator
+  function calcRemaining() {
+    var totHrs = parseFloat(document.getElementById('abspd-rem-total-hrs').value) || 0;
+    var doneHrs = parseFloat(document.getElementById('abspd-rem-done-hrs').value) || 0;
+    var doneMins = parseFloat(document.getElementById('abspd-rem-done-mins').value) || 0;
+    var speed = parseFloat(document.getElementById('abspd-speed-slider').value) || 1.5;
+
+    var totalSecs = totHrs * 3600;
+    var doneSecs = doneHrs * 3600 + doneMins * 60;
+    var remSecs = Math.max(0, totalSecs - doneSecs);
+    var adjRemSecs = remSecs / speed;
+    var progressPct = totalSecs > 0 ? ((doneSecs / totalSecs) * 100).toFixed(1) : 0;
+    var leftPct = (100 - progressPct).toFixed(1);
+
+    document.getElementById('abspd-rem-orig-val').textContent = secondsToReadableTime(remSecs);
+    document.getElementById('abspd-rem-adj-val').textContent = secondsToReadableTime(adjRemSecs);
+    document.getElementById('abspd-rem-prog-val').textContent = progressPct + '%';
+    document.getElementById('abspd-rem-left-val').textContent = leftPct + '%';
+  }
+
+  // Daily Listening Planner
+  function setDailyMins(mins) {
+    document.getElementById('abspd-daily-mins').value = mins;
+    calcDailyPlan();
+  }
+
+  function calcDailyPlan() {
+    var hrs = parseFloat(document.getElementById('abspd-hours').value) || 10;
+    var mins = parseFloat(document.getElementById('abspd-minutes').value) || 0;
+    var speed = parseFloat(document.getElementById('abspd-speed-slider').value) || 1.5;
+    var dailyMins = parseFloat(document.getElementById('abspd-daily-mins').value) || 30;
+
+    var origSecs = durationToSeconds(hrs, mins, 0);
+    var adjSecs = origSecs / speed;
+    var adjMins = adjSecs / 60;
+    var daysNeeded = Math.ceil(adjMins / dailyMins);
+
+    document.getElementById('abspd-plan-total').textContent = secondsToReadableTime(adjSecs);
+    document.getElementById('abspd-plan-days').textContent = daysNeeded + ' Days';
+    document.getElementById('abspd-plan-comm').textContent = dailyMins + ' min/day';
+  }
+
+  // Finish Date Estimator
+  function calcFinishDate() {
+    var hrs = parseFloat(document.getElementById('abspd-hours').value) || 10;
+    var mins = parseFloat(document.getElementById('abspd-minutes').value) || 0;
+    var speed = parseFloat(document.getElementById('abspd-speed-slider').value) || 1.5;
+    var dailyMins = parseFloat(document.getElementById('abspd-finish-daily-mins').value) || 30;
+    var startDateVal = document.getElementById('abspd-start-date').value;
+
+    var startDate = startDateVal ? new Date(startDateVal + 'T00:00:00') : new Date();
+    var origSecs = durationToSeconds(hrs, mins, 0);
+    var adjSecs = origSecs / speed;
+    var adjMins = adjSecs / 60;
+    var days = Math.ceil(adjMins / dailyMins);
+
+    var targetDate = new Date(startDate.getTime());
+    targetDate.setDate(targetDate.getDate() + days);
+
+    var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    document.getElementById('abspd-finish-date-val').textContent = targetDate.toLocaleDateString('en-US', options) + ' (' + days + ' days)';
+  }
+
+  // Required Playback Speed
+  function calcReqSpeed() {
+    var origHrs = parseFloat(document.getElementById('abspd-req-orig-hrs').value) || 12;
+    var desiredHrs = parseFloat(document.getElementById('abspd-req-desired-hrs').value) || 8;
+    if (desiredHrs <= 0) return;
+    var reqSpeed = (origHrs / desiredHrs);
+    document.getElementById('abspd-req-speed-val').textContent = reqSpeed.toFixed(2) + 'x';
+  }
+
+  // Target Finish Date
+  function calcTargetDateMinutes() {
+    var targetDateVal = document.getElementById('abspd-target-date').value;
+    if (!targetDateVal) {
+      document.getElementById('abspd-target-date-res').textContent = 'Please choose a target date first.';
+      return;
+    }
+    var targetDate = new Date(targetDateVal + 'T00:00:00');
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    var diffTime = targetDate.getTime() - today.getTime();
+    var days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (days <= 0) {
+      document.getElementById('abspd-target-date-res').textContent = 'Please select a date in the future.';
+      return;
+    }
+
+    var hrs = parseFloat(document.getElementById('abspd-hours').value) || 10;
+    var mins = parseFloat(document.getElementById('abspd-minutes').value) || 0;
+    var speed = parseFloat(document.getElementById('abspd-speed-slider').value) || 1.5;
+    var totalSecs = durationToSeconds(hrs, mins, 0);
+    var adjMins = (totalSecs / speed) / 60;
+
+    var minsPerDay = Math.ceil(adjMins / days);
+    document.getElementById('abspd-target-date-res').textContent =
+      'To finish by your selected date in ' + days + ' days, listen for approximately ' + minsPerDay + ' minutes per day at ' + speed.toFixed(2).replace(/\.00$/, '') + 'x speed.';
+  }
+
+  // Social Sharing Functions (Only share document.title & window.location.href)
+  function getShareUrl() {
+    return encodeURIComponent(window.location.href);
+  }
+  function getShareTitle() {
+    return encodeURIComponent(document.title || 'audiobook speed calculator');
+  }
+
+  function facebookShare() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + getShareUrl(), '_blank', 'noopener,noreferrer');
+  }
+  function twitterShare() {
+    window.open('https://twitter.com/intent/tweet?text=' + getShareTitle() + '&url=' + getShareUrl(), '_blank', 'noopener,noreferrer');
+  }
+  function whatsappShare() {
+    window.open('https://api.whatsapp.com/send?text=' + getShareTitle() + '%20' + getShareUrl(), '_blank', 'noopener,noreferrer');
+  }
+  function linkedinShare() {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + getShareUrl(), '_blank', 'noopener,noreferrer');
+  }
+  function redditShare() {
+    window.open('https://reddit.com/submit?url=' + getShareUrl() + '&title=' + getShareTitle(), '_blank', 'noopener,noreferrer');
+  }
+  function telegramShare() {
+    window.open('https://t.me/share/url?url=' + getShareUrl() + '&text=' + getShareTitle(), '_blank', 'noopener,noreferrer');
+  }
+  function emailShare() {
+    window.location.href = 'mailto:?subject=' + getShareTitle() + '&body=' + getShareTitle() + '%0A%0A' + getShareUrl();
+  }
+  function copyLink() {
+    var url = window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        showCopyToast('abspd-link-toast');
+      }).catch(function () {
+        fallbackCopy(url, 'abspd-link-toast');
+      });
+    } else {
+      fallbackCopy(url, 'abspd-link-toast');
+    }
+  }
+  function nativeShare() {
+    if (navigator.share) {
+      navigator.share({
+        title: document.title || 'audiobook speed calculator',
+        url: window.location.href
+      }).catch(function () {});
+    } else {
+      copyLink();
+    }
+  }
+
+  // Event Listeners initialization
+  function init() {
+    var calcBtn = document.getElementById('abspd-btn-calc');
+    var resetBtn = document.getElementById('abspd-btn-reset');
+    var slider = document.getElementById('abspd-speed-slider');
+    var copyBtn = document.getElementById('abspd-btn-copy');
+
+    if (calcBtn) calcBtn.addEventListener('click', renderResults);
+    if (resetBtn) resetBtn.addEventListener('click', resetCalculator);
+    if (copyBtn) copyBtn.addEventListener('click', copyResult);
+
+    if (slider) {
+      slider.addEventListener('input', function (e) {
+        setSpeed(e.target.value);
+      });
+    }
+
+    var presetBtns = root.querySelectorAll('.abspd-preset-btn[data-speed]');
+    presetBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setSpeed(this.getAttribute('data-speed'));
+      });
+    });
+
+    // Inputs change auto calculate
+    ['abspd-hours', 'abspd-minutes', 'abspd-seconds'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', renderResults);
+    });
+
+    // Sub sections
+    var btnRem = document.getElementById('abspd-btn-rem-calc');
+    if (btnRem) btnRem.addEventListener('click', calcRemaining);
+
+    var btnPlan = document.getElementById('abspd-btn-plan-calc');
+    if (btnPlan) btnPlan.addEventListener('click', calcDailyPlan);
+
+    var btnFinish = document.getElementById('abspd-btn-finish-calc');
+    if (btnFinish) btnFinish.addEventListener('click', calcFinishDate);
+
+    var btnReqSpeed = document.getElementById('abspd-btn-req-speed-calc');
+    if (btnReqSpeed) btnReqSpeed.addEventListener('click', calcReqSpeed);
+
+    var btnTargetDate = document.getElementById('abspd-btn-target-date-calc');
+    if (btnTargetDate) btnTargetDate.addEventListener('click', calcTargetDateMinutes);
+
+    // Initial Date inputs default to today and +14 days
+    var startDateInput = document.getElementById('abspd-start-date');
+    if (startDateInput) {
+      var now = new Date();
+      startDateInput.value = now.toISOString().split('T')[0];
+    }
+    var targetDateInput = document.getElementById('abspd-target-date');
+    if (targetDateInput) {
+      var future = new Date();
+      future.setDate(future.getDate() + 14);
+      targetDateInput.value = future.toISOString().split('T')[0];
+    }
+
+    renderResults();
+    calcRemaining();
+    calcDailyPlan();
+    calcFinishDate();
+    calcReqSpeed();
+  }
+
+  // Run on load or immediately if DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    setTimeout(init, 50);
+  }
+
+  return {
+    loadExample: loadExample,
+    setDailyMins: setDailyMins,
+    facebookShare: facebookShare,
+    twitterShare: twitterShare,
+    whatsappShare: whatsappShare,
+    linkedinShare: linkedinShare,
+    redditShare: redditShare,
+    telegramShare: telegramShare,
+    emailShare: emailShare,
+    copyLink: copyLink,
+    nativeShare: nativeShare
+  };
+})();
+</script>
