@@ -1,0 +1,2394 @@
+<!--
+BLOGGER TITLE:
+time calculator
+
+BLOGGER SEARCH DESCRIPTION:
+Calculate hours, minutes, elapsed time, work hours, breaks, download time and lead time with this free browser-based time calculator.
+
+BLOGGER LABELS:
+Time Calculator, Work Time, Elapsed Time, Hours Calculator, Minutes Calculator, Productivity Tools, Calculator Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+time-calculator
+
+GITHUB FILE NAME:
+time-calculator.html
+-->
+
+<style>
+
+#timeCalculatorBloggerApp,
+#timeCalculatorBloggerApp * {
+  box-sizing: border-box;
+}
+
+#timeCalculatorBloggerApp {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+  line-height: 1.6;
+  font-size: 16px;
+  padding: 16px 12px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 640px) {
+  #timeCalculatorBloggerApp {
+    padding: 24px 20px;
+  }
+}
+
+.timepro-hero {
+  text-align: center;
+  padding: 24px 12px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+.timepro-badge-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.timepro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid #dbeafe;
+}
+
+.timepro-hero h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 640px) {
+  .timepro-hero h1 {
+    font-size: 3rem;
+  }
+}
+
+.timepro-subtitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 0 0 12px 0;
+}
+
+.timepro-lead {
+  max-width: 720px;
+  margin: 0 auto 20px auto;
+  color: #475569;
+  font-size: 15px;
+}
+
+.timepro-trust-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  margin-top: 16px;
+}
+
+.timepro-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #a7f3d0;
+}
+
+.timepro-ad-wrapper {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 24px 0;
+  padding: 12px 0;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.timepro-ad-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.timepro-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: #f1f5f9;
+  padding: 8px;
+  border-radius: 14px;
+}
+
+.timepro-mode-btn {
+  flex: 1 1 calc(33.333% - 8px);
+  min-width: 130px;
+  min-height: 48px;
+  padding: 10px 14px;
+  background: transparent;
+  color: #334155;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}
+
+.timepro-mode-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.timepro-mode-btn.timepro-mode-active {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+@media (max-width: 480px) {
+  .timepro-mode-btn {
+    flex: 1 1 100%;
+  }
+}
+
+.timepro-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 18px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+}
+
+@media (min-width: 640px) {
+  .timepro-card {
+    padding: 28px 24px;
+  }
+}
+
+.timepro-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timepro-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  .timepro-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.timepro-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .timepro-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.timepro-group {
+  margin-bottom: 16px;
+}
+
+.timepro-label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.timepro-input,
+.timepro-select {
+  width: 100%;
+  max-width: 100%;
+  height: 48px;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.timepro-input:focus,
+.timepro-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: #ffffff;
+}
+
+.timepro-op-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.timepro-op-btn {
+  flex: 1;
+  max-width: 180px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.timepro-op-btn.timepro-op-active {
+  background: #1e40af;
+  color: #ffffff;
+  border-color: #1e40af;
+}
+
+.timepro-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.timepro-btn {
+  max-width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.3;
+}
+
+.timepro-btn-primary {
+  min-height: 52px;
+  background: #2563eb;
+  color: #ffffff;
+  flex: 1 1 200px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+}
+
+.timepro-btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.timepro-btn-secondary {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1.5px solid #cbd5e1;
+  flex: 0 1 auto;
+}
+
+.timepro-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.timepro-quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.timepro-chip {
+  padding: 6px 12px;
+  background: #e0e7ff;
+  color: #3730a3;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #c7d2fe;
+}
+
+.timepro-chip:hover {
+  background: #c7d2fe;
+}
+
+.timepro-result-box {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 20px 16px;
+  margin-top: 24px;
+}
+
+.timepro-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.timepro-result-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.timepro-big-result {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  line-height: 1.25;
+  margin: 6px 0 12px 0;
+  word-break: break-word;
+}
+
+@media (min-width: 640px) {
+  .timepro-big-result {
+    font-size: 2.25rem;
+  }
+}
+
+.timepro-metric-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+@media (min-width: 480px) {
+  .timepro-metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .timepro-metric-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.timepro-metric-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.timepro-metric-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.timepro-metric-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.timepro-copy-alert {
+  display: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #a7f3d0;
+  margin-top: 10px;
+}
+
+.timepro-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+@media (min-width: 600px) {
+  .timepro-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .timepro-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.timepro-feat-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 16px;
+}
+
+.timepro-feat-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+
+.timepro-feat-desc {
+  font-size: 14px;
+  color: #475569;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.timepro-steps-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.timepro-step-box {
+  display: flex;
+  gap: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.timepro-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.timepro-step-text {
+  font-size: 14.5px;
+  color: #334155;
+  margin: 0;
+  line-height: 1.4;
+  align-self: center;
+}
+
+.timepro-article {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin: 24px 0;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.timepro-article h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 28px 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.timepro-article h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 22px 0 10px 0;
+}
+
+.timepro-article p {
+  margin: 0 0 14px 0;
+}
+
+.timepro-article ul,
+.timepro-article ol {
+  margin: 0 0 16px 0;
+  padding-left: 24px;
+}
+
+.timepro-article li {
+  margin-bottom: 6px;
+}
+
+.timepro-faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.timepro-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.timepro-faq-summary {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #1e293b;
+  padding: 14px 18px;
+  cursor: pointer;
+  background: #f8fafc;
+  outline: none;
+  transition: background 0.15s;
+}
+
+.timepro-faq-summary:hover {
+  background: #f1f5f9;
+  color: #1d4ed8;
+}
+
+.timepro-faq-content {
+  padding: 16px 18px;
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.timepro-share-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px 18px;
+  margin: 24px 0;
+}
+
+.timepro-share-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.timepro-share-btn {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 120px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .timepro-share-btn {
+    flex: 1 1 calc(25% - 10px);
+  }
+}
+
+.timepro-share-btn:hover {
+  opacity: 0.9;
+}
+
+.timepro-sh-fb { background: #1877f2; }
+.timepro-sh-tw { background: #000000; }
+.timepro-sh-wa { background: #25d366; }
+.timepro-sh-li { background: #0a66c2; }
+.timepro-sh-rd { background: #ff4500; }
+.timepro-sh-tg { background: #24a1de; }
+.timepro-sh-em { background: #475569; }
+.timepro-sh-cp { background: #4338ca; }
+.timepro-sh-nt { background: #059669; }
+
+.timepro-session-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.timepro-session-row > div {
+  flex: 1 1 130px;
+}
+
+.timepro-del-btn {
+  height: 44px;
+  padding: 8px 14px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.timepro-del-btn:hover {
+  background: #fecaca;
+}
+
+</style>
+
+<div id="timeCalculatorBloggerApp">
+  <!-- 1. Hero Section -->
+  <header class="timepro-hero">
+    <div class="timepro-badge-group">
+      <span class="timepro-badge">🇺🇸 Free Time Tools for U.S. Users</span>
+    </div>
+    <h1>time calculator</h1>
+    <div class="timepro-subtitle">Calculate Hours, Minutes, Elapsed Time, Work Hours and More</div>
+    <p class="timepro-lead">
+      Add or subtract time, calculate elapsed time, track work hours and breaks, estimate download time, and solve everyday time calculations instantly in your browser.
+    </p>
+    <div class="timepro-trust-grid">
+      <span class="timepro-trust-item">✓ 100% Free</span>
+      <span class="timepro-trust-item">✓ No Signup</span>
+      <span class="timepro-trust-item">✓ Instant Results</span>
+      <span class="timepro-trust-item">✓ Hours &amp; Minutes</span>
+      <span class="timepro-trust-item">✓ Work Time</span>
+      <span class="timepro-trust-item">✓ Elapsed Time</span>
+      <span class="timepro-trust-item">✓ Browser-Based Calculation</span>
+    </div>
+  </header>
+
+  <!-- 2. First Advertisement: 468x60 Banner -->
+  <div class="timepro-ad-wrapper">
+    <div class="timepro-ad-label">Advertisement</div>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- 3. Main Mode Selector -->
+  <nav class="timepro-modes" role="tablist" aria-label="Calculator Modes">
+    <button type="button" class="timepro-mode-btn timepro-mode-active" data-mode="add-sub">Add / Subtract Time</button>
+    <button type="button" class="timepro-mode-btn" data-mode="elapsed">Elapsed Time</button>
+    <button type="button" class="timepro-mode-btn" data-mode="work">Work Time</button>
+    <button type="button" class="timepro-mode-btn" data-mode="hours-mins">Hours &amp; Minutes</button>
+    <button type="button" class="timepro-mode-btn" data-mode="date-diff">Date &amp; Time Difference</button>
+    <button type="button" class="timepro-mode-btn" data-mode="download">Download Time</button>
+    <button type="button" class="timepro-mode-btn" data-mode="lead-time">Lead Time</button>
+  </nav>
+
+  <!-- 4. Mode Panels -->
+  <!-- Panel 1: Add / Subtract Time (Default) -->
+  <section id="panel-add-sub" class="timepro-card timepro-panel">
+    <h2 class="timepro-card-title">Add or Subtract Time</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">First Duration</label>
+        <div class="timepro-grid-3">
+          <div>
+            <label class="timepro-label" style="font-size:11.5px;color:#64748b;">Hours</label>
+            <input type="number" id="as_h1" class="timepro-input" min="0" placeholder="0" value="2">
+          </div>
+          <div>
+            <label class="timepro-label" style="font-size:11.5px;color:#64748b;">Minutes</label>
+            <input type="number" id="as_m1" class="timepro-input" min="0" max="59" placeholder="0" value="45">
+          </div>
+          <div>
+            <label class="timepro-label" style="font-size:11.5px;color:#64748b;">Seconds</label>
+            <input type="number" id="as_s1" class="timepro-input" min="0" max="59" placeholder="0" value="0">
+          </div>
+        </div>
+      </div>
+      <div>
+        <label class="timepro-label">Second Duration</label>
+        <div class="timepro-grid-3">
+          <div>
+            <label class="timepro-label" style="font-size:11.5px;color:#64748b;">Hours</label>
+            <input type="number" id="as_h2" class="timepro-input" min="0" placeholder="0" value="1">
+          </div>
+          <div>
+            <label class="timepro-label" style="font-size:11.5px;color:#64748b;">Minutes</label>
+            <input type="number" id="as_m2" class="timepro-input" min="0" max="59" placeholder="0" value="30">
+          </div>
+          <div>
+            <label class="timepro-label" style="font-size:11.5px;color:#64748b;">Seconds</label>
+            <input type="number" id="as_s2" class="timepro-input" min="0" max="59" placeholder="0" value="0">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timepro-op-bar">
+      <button type="button" class="timepro-op-btn timepro-op-active" id="btn_op_add" data-op="add">+ Add</button>
+      <button type="button" class="timepro-op-btn" id="btn_op_sub" data-op="sub">- Subtract</button>
+    </div>
+
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_addsub" class="timepro-btn timepro-btn-primary">Calculate Time</button>
+      <button type="button" id="btn_copy_addsub" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_addsub" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_addsub" class="timepro-copy-alert">✓ Calculation copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_addsub">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Result Duration</span>
+        <span id="res_badge_addsub" style="font-size:12px;font-weight:700;color:#2563eb;background:#dbeafe;padding:3px 8px;border-radius:4px;">Addition (+)</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_addsub">4 hr 15 min 0 sec</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">First Duration</div>
+          <div class="timepro-metric-val" id="metric_as_d1">2h 45m 0s</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Operation</div>
+          <div class="timepro-metric-val" id="metric_as_op">+ Addition</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Second Duration</div>
+          <div class="timepro-metric-val" id="metric_as_d2">1h 30m 0s</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Minutes / Dec</div>
+          <div class="timepro-metric-val" id="metric_as_dec">255 min (4.25h)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 2: Elapsed Time -->
+  <section id="panel-elapsed" class="timepro-card timepro-panel" style="display:none;">
+    <h2 class="timepro-card-title">Elapsed Time Calculator</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">Start Time</label>
+        <input type="time" id="el_start_time" class="timepro-input" value="22:00">
+        <label class="timepro-label" style="margin-top:10px;font-size:12px;color:#64748b;">Optional Start Date</label>
+        <input type="date" id="el_start_date" class="timepro-input">
+      </div>
+      <div>
+        <label class="timepro-label">End Time</label>
+        <input type="time" id="el_end_time" class="timepro-input" value="06:00">
+        <label class="timepro-label" style="margin-top:10px;font-size:12px;color:#64748b;">Optional End Date</label>
+        <input type="date" id="el_end_date" class="timepro-input">
+      </div>
+    </div>
+    <div style="margin:12px 0;">
+      <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;font-size:14px;color:#334155;">
+        <input type="checkbox" id="el_next_day" checked style="width:18px;height:18px;">
+        End time is on the next day (overnight crossing midnight)
+      </label>
+    </div>
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_elapsed" class="timepro-btn timepro-btn-primary">Calculate Elapsed Time</button>
+      <button type="button" id="btn_copy_elapsed" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_elapsed" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_elapsed" class="timepro-copy-alert">✓ Elapsed time copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_elapsed">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Elapsed Difference</span>
+        <span style="font-size:12px;font-weight:700;color:#047857;background:#d1fae5;padding:3px 8px;border-radius:4px;">Calculated</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_elapsed">8 hr 0 min 0 sec</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Elapsed Hours</div>
+          <div class="timepro-metric-val" id="metric_el_hrs">8 hr</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Minutes</div>
+          <div class="timepro-metric-val" id="metric_el_mins">480 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Seconds</div>
+          <div class="timepro-metric-val" id="metric_el_secs">28,800 sec</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Decimal Hours</div>
+          <div class="timepro-metric-val" id="metric_el_dec">8.00 hr</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 3: Work Time -->
+  <section id="panel-work" class="timepro-card timepro-panel" style="display:none;">
+    <h2 class="timepro-card-title">Work Time &amp; Shift Calculator</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">Shift Start Time</label>
+        <input type="time" id="wk_start_time" class="timepro-input" value="08:30">
+      </div>
+      <div>
+        <label class="timepro-label">Shift End Time</label>
+        <input type="time" id="wk_end_time" class="timepro-input" value="17:00">
+      </div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;font-size:14px;color:#334155;">
+        <input type="checkbox" id="wk_overnight" style="width:18px;height:18px;">
+        Overnight Shift (ends the next calendar day)
+      </label>
+    </div>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">Primary Lunch / Break Duration</label>
+        <div style="display:flex;gap:8px;">
+          <input type="number" id="wk_break_hrs" class="timepro-input" min="0" placeholder="Hours" value="0" style="flex:1;">
+          <input type="number" id="wk_break_mins" class="timepro-input" min="0" max="59" placeholder="Minutes" value="30" style="flex:1;">
+        </div>
+        <div class="timepro-quick-chips">
+          <button type="button" class="timepro-chip" data-min="15">+15 min</button>
+          <button type="button" class="timepro-chip" data-min="30">+30 min</button>
+          <button type="button" class="timepro-chip" data-min="45">+45 min</button>
+          <button type="button" class="timepro-chip" data-min="60">+60 min</button>
+        </div>
+      </div>
+      <div>
+        <label class="timepro-label">Additional Break (Optional)</label>
+        <div style="display:flex;gap:8px;">
+          <input type="number" id="wk_break2_mins" class="timepro-input" min="0" placeholder="Extra Minutes (e.g. 15)" value="0">
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional Multiple Work Sessions -->
+    <details style="margin:20px 0;border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;background:#f8fafc;">
+      <summary style="font-weight:700;cursor:pointer;color:#2563eb;">+ Multiple Work Sessions (Split Shift Mode)</summary>
+      <div style="margin-top:14px;">
+        <p style="font-size:13.5px;color:#64748b;margin-bottom:12px;">Add multiple clock-in and clock-out periods for your daily work shift.</p>
+        <div id="wk_sessions_container">
+          <!-- Dynamically added rows -->
+        </div>
+        <button type="button" id="btn_add_session" class="timepro-btn timepro-btn-secondary" style="font-size:13px;min-height:40px;padding:8px 14px;">+ Add Another Work Period</button>
+      </div>
+    </details>
+
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_work" class="timepro-btn timepro-btn-primary">Calculate Work Hours</button>
+      <button type="button" id="btn_copy_work" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_work" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_work" class="timepro-copy-alert">✓ Work hours copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_work">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Net Work Time</span>
+        <span style="font-size:12px;font-weight:700;color:#047857;background:#d1fae5;padding:3px 8px;border-radius:4px;">Payroll Ready</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_work">8 hr 0 min</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Gross Shift Time</div>
+          <div class="timepro-metric-val" id="metric_wk_gross">8 hr 30 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Break Deducted</div>
+          <div class="timepro-metric-val" id="metric_wk_breaks">30 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Net Working Time</div>
+          <div class="timepro-metric-val" id="metric_wk_net">8 hr 0 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Decimal Work Hours</div>
+          <div class="timepro-metric-val" id="metric_wk_dec">8.00 hr</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 4: Hours & Minutes -->
+  <section id="panel-hours-mins" class="timepro-card timepro-panel" style="display:none;">
+    <h2 class="timepro-card-title">Hours &amp; Minutes Converter</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">Convert Minutes to Hours</label>
+        <input type="number" id="hm_input_mins" class="timepro-input" min="0" placeholder="e.g. 150" value="150">
+        <div style="font-size:12px;color:#64748b;margin-top:4px;">Example: 150 minutes = 2 hr 30 min (2.50 hr)</div>
+      </div>
+      <div>
+        <label class="timepro-label">Convert Decimal Hours to Minutes</label>
+        <input type="number" step="0.01" id="hm_input_decs" class="timepro-input" min="0" placeholder="e.g. 7.5" value="7.5">
+        <div style="font-size:12px;color:#64748b;margin-top:4px;">Example: 7.5 hours = 7 hr 30 min (450 minutes)</div>
+      </div>
+    </div>
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_hm" class="timepro-btn timepro-btn-primary">Convert &amp; Total Time</button>
+      <button type="button" id="btn_copy_hm" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_hm" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_hm" class="timepro-copy-alert">✓ Conversion copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_hm">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Conversion Breakdown</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_hm">150 min = 2 hr 30 min (2.50 hr)</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Minutes Entered</div>
+          <div class="timepro-metric-val" id="metric_hm_m">150 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Hours &amp; Minutes</div>
+          <div class="timepro-metric-val" id="metric_hm_hm">2 hr 30 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Decimal Hours</div>
+          <div class="timepro-metric-val" id="metric_hm_dec">2.50 hr</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Seconds</div>
+          <div class="timepro-metric-val" id="metric_hm_sec">9,000 sec</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 5: Date & Time Difference -->
+  <section id="panel-date-diff" class="timepro-card timepro-panel" style="display:none;">
+    <h2 class="timepro-card-title">Date &amp; Time Difference</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">Start Date &amp; Time</label>
+        <div style="display:flex;gap:8px;">
+          <input type="date" id="dd_start_date" class="timepro-input" style="flex:1;">
+          <input type="time" id="dd_start_time" class="timepro-input" value="09:00" style="flex:1;">
+        </div>
+      </div>
+      <div>
+        <label class="timepro-label">End Date &amp; Time</label>
+        <div style="display:flex;gap:8px;">
+          <input type="date" id="dd_end_date" class="timepro-input" style="flex:1;">
+          <input type="time" id="dd_end_time" class="timepro-input" value="17:30" style="flex:1;">
+        </div>
+      </div>
+    </div>
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_dd" class="timepro-btn timepro-btn-primary">Calculate Difference</button>
+      <button type="button" id="btn_copy_dd" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_dd" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_dd" class="timepro-copy-alert">✓ Date difference copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_dd">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Exact Duration Difference</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_dd">0 days, 8 hr 30 min</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Full Days</div>
+          <div class="timepro-metric-val" id="metric_dd_days">0 days</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Remaining Hours/Mins</div>
+          <div class="timepro-metric-val" id="metric_dd_rem">8 hr 30 min</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Hours</div>
+          <div class="timepro-metric-val" id="metric_dd_th">8.50 hr</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Minutes</div>
+          <div class="timepro-metric-val" id="metric_dd_tm">510 min</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 6: Download Time -->
+  <section id="panel-download" class="timepro-card timepro-panel" style="display:none;">
+    <h2 class="timepro-card-title">Download Time Calculator</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">File Size</label>
+        <div style="display:flex;gap:8px;">
+          <input type="number" step="any" id="dl_size_val" class="timepro-input" min="0" placeholder="e.g. 5" value="5" style="flex:2;">
+          <select id="dl_size_unit" class="timepro-select" style="flex:1;">
+            <option value="MB">MB</option>
+            <option value="GB" selected>GB</option>
+            <option value="TB">TB</option>
+            <option value="KB">KB</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="timepro-label">Internet Connection Speed</label>
+        <div style="display:flex;gap:8px;">
+          <input type="number" step="any" id="dl_speed_val" class="timepro-input" min="0" placeholder="e.g. 50" value="50" style="flex:2;">
+          <select id="dl_speed_unit" class="timepro-select" style="flex:1;">
+            <option value="Mbps" selected>Mbps</option>
+            <option value="Gbps">Gbps</option>
+            <option value="Kbps">Kbps</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:#64748b;margin:8px 0;">
+      Formula: Download Time = File Size in Bits / Speed in Bits per Second (1 Byte = 8 Bits).
+    </div>
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_dl" class="timepro-btn timepro-btn-primary">Calculate Download Time</button>
+      <button type="button" id="btn_copy_dl" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_dl" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_dl" class="timepro-copy-alert">✓ Download estimate copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_dl">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Estimated Download Duration</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_dl">13 min 20 sec</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">File Size</div>
+          <div class="timepro-metric-val" id="metric_dl_size">5 GB</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Bandwidth</div>
+          <div class="timepro-metric-val" id="metric_dl_speed">50 Mbps</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Total Seconds</div>
+          <div class="timepro-metric-val" id="metric_dl_sec">800 sec</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Transfer Rate</div>
+          <div class="timepro-metric-val" id="metric_dl_rate">6.25 MB/s</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-size:13px;color:#64748b;line-height:1.5;">
+        <em>“Actual download time can vary because of network overhead, Wi-Fi conditions, server speed and connection stability.”</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 7: Lead Time -->
+  <section id="panel-lead-time" class="timepro-card timepro-panel" style="display:none;">
+    <h2 class="timepro-card-title">Lead Time Calculator</h2>
+    <div class="timepro-grid-2">
+      <div>
+        <label class="timepro-label">Start Date</label>
+        <input type="date" id="lt_start_date" class="timepro-input">
+      </div>
+      <div>
+        <label class="timepro-label">Lead Time Duration</label>
+        <div style="display:flex;gap:8px;">
+          <input type="number" id="lt_val" class="timepro-input" min="0" placeholder="e.g. 10" value="10" style="flex:2;">
+          <select id="lt_unit" class="timepro-select" style="flex:2;">
+            <option value="days" selected>Calendar Days</option>
+            <option value="weeks">Weeks</option>
+            <option value="hours">Hours</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div style="margin:12px 0;">
+      <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;font-size:14px;color:#334155;">
+        <input type="checkbox" id="lt_exclude_weekends" style="width:18px;height:18px;">
+        Exclude Weekends (Business Days Only: Monday through Friday)
+      </label>
+    </div>
+    <div class="timepro-btn-group">
+      <button type="button" id="btn_calc_lt" class="timepro-btn timepro-btn-primary">Calculate Completion Date</button>
+      <button type="button" id="btn_copy_lt" class="timepro-btn timepro-btn-secondary">Copy Result</button>
+      <button type="button" id="btn_reset_lt" class="timepro-btn timepro-btn-secondary">Reset Calculator</button>
+    </div>
+    <div id="copy_alert_lt" class="timepro-copy-alert">✓ Lead time result copied to clipboard!</div>
+
+    <div class="timepro-result-box" id="res_box_lt">
+      <div class="timepro-result-header">
+        <span class="timepro-result-title">Projected Completion Date</span>
+      </div>
+      <div class="timepro-big-result" id="res_val_lt">--</div>
+      <div class="timepro-metric-grid">
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Start Date</div>
+          <div class="timepro-metric-val" id="metric_lt_start">--</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Lead Time</div>
+          <div class="timepro-metric-val" id="metric_lt_lead">10 Days</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Schedule Type</div>
+          <div class="timepro-metric-val" id="metric_lt_type">Calendar Days</div>
+        </div>
+        <div class="timepro-metric-card">
+          <div class="timepro-metric-name">Completion Day</div>
+          <div class="timepro-metric-val" id="metric_lt_dayname">--</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Second Advertisement: Native Banner -->
+  <div class="timepro-ad-wrapper">
+    <div class="timepro-ad-label">Advertisement</div>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- 6. Features Section -->
+  <section class="timepro-card">
+    <h2 class="timepro-card-title">What You Can Calculate</h2>
+    <div class="timepro-features-grid">
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Add Time</div>
+        <p class="timepro-feat-desc">Seamlessly sum multiple durations in hours, minutes, and seconds with carryover handling.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Subtract Time</div>
+        <p class="timepro-feat-desc">Deduct one duration from another with precise negative time representation and second-level precision.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Elapsed Time</div>
+        <p class="timepro-feat-desc">Measure the exact span between start and finish timestamps with full multi-day and overnight capabilities.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Work Hours</div>
+        <p class="timepro-feat-desc">Track shifts, calculate regular working schedules, and aggregate multiple daily clock-in sessions.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Break Deductions</div>
+        <p class="timepro-feat-desc">Subtract unpaid lunch periods and rest breaks to compute accurate net working hours for payroll records.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Overnight Shifts</div>
+        <p class="timepro-feat-desc">Handle graveyard and late shifts that cross midnight without negative hours or calculation errors.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Hours and Minutes</div>
+        <p class="timepro-feat-desc">Convert back and forth between raw minutes, standard clock notation, and full second counts.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Decimal Hours</div>
+        <p class="timepro-feat-desc">Generate exact decimal representations (such as 7.50 hours) ready for payroll and timesheet software.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Date &amp; Time Difference</div>
+        <p class="timepro-feat-desc">Span days, weeks, and hours across arbitrary calendar dates for project schedules and travel durations.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Download Duration</div>
+        <p class="timepro-feat-desc">Estimate file transfer times across modern broadband, fiber, and wireless internet connections.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Lead Time</div>
+        <p class="timepro-feat-desc">Project delivery dates and deadlines with optional weekend exclusion for business-day workflows.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Copy Results</div>
+        <p class="timepro-feat-desc">One-click export formatting lets you paste clean calculation summaries into emails or documents.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">No Signup</div>
+        <p class="timepro-feat-desc">Zero registration, passwords, or personal data collection required to use any calculator module.</p>
+      </div>
+      <div class="timepro-feat-item">
+        <div class="timepro-feat-title">Mobile Friendly</div>
+        <p class="timepro-feat-desc">Responsive layouts designed for flawless usability across iPhones, Android devices, tablets, and desktop computers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. How to Use Section -->
+  <section class="timepro-card">
+    <h2 class="timepro-card-title">How to Use the Calculator</h2>
+    <div class="timepro-steps-list">
+      <div class="timepro-step-box">
+        <div class="timepro-step-num">1</div>
+        <p class="timepro-step-text"><strong>Choose the calculation mode you need</strong> from the top navigation tabs (Add / Subtract, Elapsed Time, Work Time, Hours &amp; Minutes, Date Difference, Download Time, or Lead Time).</p>
+      </div>
+      <div class="timepro-step-box">
+        <div class="timepro-step-num">2</div>
+        <p class="timepro-step-text"><strong>Enter the relevant time values</strong> into the input fields, such as hours, minutes, seconds, clock times, calendar dates, or network speeds.</p>
+      </div>
+      <div class="timepro-step-box">
+        <div class="timepro-step-num">3</div>
+        <p class="timepro-step-text"><strong>Select Calculate</strong> to perform immediate mathematical computation right inside your browser without reloading the page.</p>
+      </div>
+      <div class="timepro-step-box">
+        <div class="timepro-step-num">4</div>
+        <p class="timepro-step-text"><strong>Review the result in hours, minutes and other useful formats</strong>, including decimal hours, total minutes, and supporting metrics displayed in the result cards.</p>
+      </div>
+      <div class="timepro-step-box">
+        <div class="timepro-step-num">5</div>
+        <p class="timepro-step-text"><strong>Use Copy Result when you want to save the calculation</strong> or paste a structured summary into your timesheet, invoice, project board, or message.</p>
+      </div>
+      <div class="timepro-step-box">
+        <div class="timepro-step-num">6</div>
+        <p class="timepro-step-text"><strong>Select Reset to start another calculation</strong> and clear current form values instantly without refreshing your browser.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Visible SEO Introduction (250-350 words) -->
+  <section class="timepro-article">
+    <h2>Professional Time Computation Workspace</h2>
+    <p>
+      Managing clock hours, payroll schedules, elapsed durations, and logistical timelines requires fast, dependable mathematics. The <strong>time calculator</strong> provides an all-in-one browser workspace engineered for American professionals, freelancers, shift workers, students, and project managers. Whether you need to sum daily project logs, deduct lunch breaks from an 8-hour shift, or measure the exact interval between two dates, this suite delivers immediate and transparent results.
+    </p>
+    <p>
+      Modern workflows frequently require switching between standard clock notation (hours, minutes, and seconds) and decimal hours required by payroll systems. With this tool, you can effortlessly calculate work duration, manage complex overnight schedules that span past midnight, and determine net payable hours with custom break deductions. When estimating data transfers, our download speed utility converts gigabytes into realistic download durations over broadband or mobile connections.
+    </p>
+    <p>
+      Every module operates purely inside your local browser without external server calls or account barriers. From manufacturing turnaround times to simple everyday clock math, this workspace eliminates manual errors and saves valuable administrative time.
+    </p>
+  </section>
+
+  <!-- 9. EXACT KEYWORD EDUCATIONAL SECTIONS -->
+  <section class="timepro-article">
+    <h2>work time calculator</h2>
+    <p>
+      Tracking employee shifts and personal freelance hours requires a reliable <strong>work time calculator</strong>. When managing work schedules, you must record work start and end times, account for mandatory unpaid meal periods, and verify net working duration. If an employee clocks in at 8:30 AM and leaves at 5:00 PM with a 30-minute unpaid lunch break, the gross shift is 8 hours and 30 minutes, but the net work time is exactly 8 hours.
+    </p>
+    <p>
+      Furthermore, modern payroll software processes time as decimal work hours. Converting 8 hours and 15 minutes into 8.25 decimal hours ensures accurate hourly wage multiplication. Our system also seamlessly calculates overnight shifts where workers clock in during the evening and clock out the following morning, preventing erroneous negative time calculations.
+    </p>
+
+    <h2>time calculator work</h2>
+    <p>
+      Using a dedicated <strong>time calculator work</strong> module ensures that both contractors and employers maintain consistent timesheet records. Whether calculating billable consulting increments, client project milestones, or cumulative weekly labor, automating clock arithmetic prevents payroll discrepancies. By entering start times, end times, and break intervals, you receive instant breakdowns of billable hours, standard minutes, and decimal totals tailored to modern United States workplace standards.
+    </p>
+
+    <h2>add time calculator</h2>
+    <p>
+      An <strong>add time calculator</strong> simplifies adding hours, minutes, and seconds across multiple activities. In standard arithmetic, units increment on a base-10 decimal scale, but time operates on a sexagesimal (base-60) system where 60 seconds compose a minute and 60 minutes compose an hour. Our tool automatically converts all inputs to seconds, performs the addition, and converts the sum back into days, hours, minutes, and seconds with carryover arithmetic. For example, adding 2 hours 45 minutes and 1 hour 30 minutes yields 4 hours 15 minutes.
+    </p>
+
+    <h2>elapsed time calculator</h2>
+    <p>
+      When measuring the duration between two events, an <strong>elapsed time calculator</strong> identifies the exact span between a start time and an end time. This is critical for sports timing, scientific experiments, flight durations, and production processes. The calculator handles complex overnight calculations where the clock rolls over 12:00 midnight, as well as multi-day date differences that span across calendar months and leap years.
+    </p>
+
+    <h2>time calculator hours</h2>
+    <p>
+      The <strong>time calculator hours</strong> feature allows users to calculate cumulative total hours and convert them directly into decimal hours. In many administrative and billing environments, an entry of 7 hours and 30 minutes must be billed as 7.50 hours, while 7 hours and 45 minutes represents 7.75 hours. Our tools calculate durations exceeding 24, 48, or even 500 hours, displaying both total hours and day-hour combinations.
+    </p>
+
+    <h2>download time calculator</h2>
+    <p>
+      With high-speed internet connections, understanding transfer times requires a <strong>download time calculator</strong>. File sizes are measured in bytes (such as Megabytes or Gigabytes), while internet bandwidth is measured in bits per second (such as Megabits per second). Because there are 8 bits in every byte, calculating download time requires multiplying the file size by 8 before dividing by the connection speed. This tool provides realistic duration estimates for downloads ranging from small media files to massive software packages.
+    </p>
+
+    <h2>time calculator minutes</h2>
+    <p>
+      A dedicated <strong>time calculator minutes</strong> section provides quick additions, subtractions, and conversions for minute-based workflows. If a manufacturing operation requires 150 minutes, the converter demonstrates that this equals 2 hours and 30 minutes, or 2.50 decimal hours. It prevents common mental math errors when aggregating minute increments from timers and job tickets.
+    </p>
+
+    <h2>free time calculator</h2>
+    <p>
+      This <strong>free time calculator</strong> provides full access to every productivity tool without charging subscription fees, demanding email registrations, or placing features behind paywalls. All algorithms execute directly on your computer or mobile device in real time, delivering high-speed privacy-preserving computations whenever you need them.
+    </p>
+
+    <h2>lead time calculator excel</h2>
+    <p>
+      Many supply chain managers and project coordinators look for a <strong>lead time calculator excel</strong> template or formula when planning inventory orders and manufacturing runs. While formulas such as WORKDAY and EDATE in spreadsheets are commonly used, our web-based tool computes completion dates instantly in your browser without requiring complex spreadsheet setups. You can enter a start date, input the required lead time in calendar days or weeks, and optionally exclude weekend days to forecast project milestones. Note that this browser tool operates independently and is not affiliated with Microsoft Excel or Microsoft.
+    </p>
+  </section>
+
+  <!-- 10. Main Educational Content Part 1 -->
+  <section class="timepro-article">
+    <h2>Comprehensive Guide to Time Mathematics</h2>
+    <h3>How Time Calculations Work</h3>
+    <p>
+      Time measurement in the modern world is based on astronomical cycles and historical base-60 (sexagesimal) numbering inherited from ancient Sumerian and Babylonian astronomers. Because 60 is divisible by 2, 3, 4, 5, 6, 10, 12, 15, 20, and 30, it allows convenient fractional division. However, this non-decimal system makes mental time arithmetic challenging when adding or subtracting across boundaries.
+    </p>
+    <p>
+      To calculate time accurately by computer, the safest mathematical approach is converting all temporal components into a single uniform atomic unit—usually total seconds or total milliseconds. Once converted, standard linear addition, subtraction, or division can be executed. After computation, integer division (modulo arithmetic) converts the total seconds back into days (86,400 seconds), hours (3,600 seconds), minutes (60 seconds), and remaining seconds.
+    </p>
+
+    <h3>How to Add Hours and Minutes</h3>
+    <p>
+      When adding durations manually, sum seconds first, then minutes, and finally hours. If the seconds total 60 or more, divide by 60: keep the remainder as the final seconds and carry the quotient over to the minutes column. Repeat this carryover process for minutes totaling 60 or more to add to the hours column. For instance, when adding 3 hours 40 minutes to 2 hours 35 minutes:
+    </p>
+    <ul>
+      <li>Minutes: 40 + 35 = 75 minutes.</li>
+      <li>75 minutes divided by 60 = 1 hour with a remainder of 15 minutes.</li>
+      <li>Hours: 3 + 2 + 1 (carried) = 6 hours.</li>
+      <li>Final Answer: 6 hours 15 minutes.</li>
+    </ul>
+
+    <h3>How to Subtract Time</h3>
+    <p>
+      Subtracting time durations requires borrowing from higher units when the subtrahend exceeds the minuend. If you must subtract 45 minutes from 20 minutes, borrow 1 hour (60 minutes) from the hours column, increasing the 20 minutes to 80 minutes before subtracting. If the second duration is larger than the first, the result is negative, indicating a deficit or earlier timestamp.
+    </p>
+
+    <h3>Calculating Time Across Midnight</h3>
+    <p>
+      One of the most common pitfalls in time calculation occurs when an event begins before midnight and concludes after midnight. For example, a shift starting at 10:00 PM (22:00) and ending at 6:00 AM (06:00) represents an overnight duration. A naive subtraction (6 minus 22) yields -16 hours, which is incorrect. In clock math, because a 24-hour cycle elapses, you add 24 hours to the end time when it is smaller than the start time: (6 + 24) - 22 = 8 hours.
+    </p>
+  </section>
+
+  <!-- 11. Third Advertisement: 300x250 Banner -->
+  <div class="timepro-ad-wrapper">
+    <div class="timepro-ad-label">Advertisement</div>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- 12. Main Educational Content Part 2 -->
+  <section class="timepro-article">
+    <h2>Advanced Workplace and Logistical Time Analysis</h2>
+    <h3>How Break Time Affects Work Hours</h3>
+    <p>
+      Under federal and state labor standards across the United States, meal breaks lasting 30 minutes or more where employees are completely relieved of all duties are typically unpaid. To calculate net payable hours, you must subtract all unpaid lunch and rest intervals from the gross elapsed shift duration. If an employee clocks in at 8:00 AM and clocks out at 4:30 PM, the gross time is 8 hours and 30 minutes. Deducting a 30-minute unpaid lunch results in exactly 8.00 net working hours.
+    </p>
+
+    <h3>Decimal Hours Explained</h3>
+    <p>
+      Accounting and payroll departments rely on decimal hours rather than hours and minutes because decimal numbers simplify multiplication with hourly wage rates. To convert minutes into decimal hours, divide the minutes by 60:
+    </p>
+    <ul>
+      <li>15 minutes = 15 / 60 = 0.25 hours</li>
+      <li>30 minutes = 30 / 60 = 0.50 hours</li>
+      <li>45 minutes = 45 / 60 = 0.75 hours</li>
+      <li>6 minutes = 6 / 60 = 0.10 hours</li>
+    </ul>
+
+    <h3>How Download Time Is Estimated: Bytes vs. Bits</h3>
+    <p>
+      A frequent source of confusion when assessing download speeds is the distinction between <em>Bytes</em> (capital B) and <em>bits</em> (lowercase b). Storage capacities on hard drives, phones, and servers are denoted in Megabytes (MB) or Gigabytes (GB). Conversely, network telecom speeds advertised by internet service providers are stated in Megabits per second (Mbps) or Gigabits per second (Gbps).
+    </p>
+    <p>
+      Because 1 Byte equals 8 bits, a 1 GB file contains 8 Gigabits (or approximately 8,000 Megabits). If your connection downloads at 100 Mbps, downloading an 8,000 Megabit file takes roughly 80 seconds under theoretical conditions. In real-world environments, protocol overhead (TCP/IP headers, packet loss, and handshakes) typically adds 5% to 15% to the elapsed transfer time.
+    </p>
+
+    <h3>Lead-Time Calculations: Calendar Days vs. Business Days</h3>
+    <p>
+      In supply chain logistics and procurement, lead time defines the latency between initiating an order and receiving the finished product. Calculating lead time involves two primary methodologies:
+    </p>
+    <ul>
+      <li><strong>Calendar Days:</strong> Counts every sequential day including Saturdays, Sundays, and holidays. Useful for continuous operations like web servers, shipping transit on 24/7 carriers, or biological processes.</li>
+      <li><strong>Business Days (Working Days):</strong> Excludes Saturdays and Sundays. Essential for manufacturing plants, banks, corporate approvals, and postal dispatch schedules. A 10-business-day lead time beginning on a Monday will span two full calendar weeks.</li>
+    </ul>
+  </section>
+
+  <!-- 13. FAQ Section (24+ Questions) -->
+  <section class="timepro-card">
+    <h2 class="timepro-card-title">Frequently Asked Questions</h2>
+    <div class="timepro-faq-grid">
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I add hours and minutes?</summary>
+        <div class="timepro-faq-content">
+          Select the Add / Subtract mode, enter hours, minutes, and seconds into the first duration, ensure the addition operator (+) is selected, input your second duration, and select Calculate Time. The calculator aggregates total seconds and formats the result with carryovers.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I subtract one time duration from another?</summary>
+        <div class="timepro-faq-content">
+          In the Add / Subtract mode, choose the Subtract (-) operator. Enter the starting duration in the first set of fields and the duration to deduct in the second set. If the second duration is larger, the result will cleanly indicate a negative duration.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I calculate elapsed time?</summary>
+        <div class="timepro-faq-content">
+          Switch to the Elapsed Time tab, choose your start clock time and finish clock time. The tool computes the difference in hours, minutes, seconds, total minutes, and decimal hours.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I calculate time across midnight?</summary>
+        <div class="timepro-faq-content">
+          When a shift or event crosses midnight, check the "End time is on the next day" option. The calculator mathematically adds 24 hours to the end time to avoid negative numbers (e.g. 10:00 PM to 6:00 AM equals 8 hours).
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I calculate work hours?</summary>
+        <div class="timepro-faq-content">
+          Open the Work Time mode, enter your clock-in and clock-out times, and enter any unpaid break periods. The calculator displays gross shift duration, break deduction, net work time, and decimal payroll hours.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I subtract a lunch break from work hours?</summary>
+        <div class="timepro-faq-content">
+          Use the break fields in the Work Time calculator. You can type the break duration or use the quick buttons (+15, +30, +45, +60 min). The tool subtracts the break from your gross shift duration.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I calculate an overnight work shift?</summary>
+        <div class="timepro-faq-content">
+          In Work Time mode, check the "Overnight Shift" box. Even if your end time (e.g. 7:00 AM) is earlier on the clock than your start time (e.g. 11:00 PM), the tool accurately calculates your shift duration.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I convert minutes to hours?</summary>
+        <div class="timepro-faq-content">
+          Use the Hours &amp; Minutes mode. Enter the number of minutes (e.g. 150) to instantly see the breakdown in hours and minutes (2 hr 30 min) as well as decimal hours (2.50 hr).
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I convert hours to minutes?</summary>
+        <div class="timepro-faq-content">
+          Multiply the number of hours by 60. For decimal hours like 1.5 hours, 1.5 × 60 = 90 minutes. You can also use our Hours &amp; Minutes converter to calculate this automatically.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">What are decimal hours?</summary>
+        <div class="timepro-faq-content">
+          Decimal hours express time as a standard base-10 number rather than hours and minutes. For instance, 8 hours and 30 minutes is 8.50 decimal hours, making it easy to multiply by an hourly wage rate.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How many hours is 150 minutes?</summary>
+        <div class="timepro-faq-content">
+          150 minutes is exactly 2 hours and 30 minutes, which equals 2.50 decimal hours.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I calculate time between two dates?</summary>
+        <div class="timepro-faq-content">
+          Use the Date &amp; Time Difference mode. Pick the starting date and time, pick the ending date and time, and click Calculate Difference to see elapsed days, hours, minutes, and total cumulative hours.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How is download time calculated?</summary>
+        <div class="timepro-faq-content">
+          Download time is calculated by converting the file size into bits (bytes × 8) and dividing by the internet connection speed in bits per second.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How long does a 1 GB download take?</summary>
+        <div class="timepro-faq-content">
+          On a 100 Mbps internet connection, 1 GB (8,000 Megabits) takes approximately 80 seconds under theoretical conditions. On a 25 Mbps connection, it takes about 5 minutes and 20 seconds.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Why is actual download time different from the estimate?</summary>
+        <div class="timepro-faq-content">
+          Real-world download times vary due to network packet overhead, Wi-Fi interference, remote server capacity limits, and internet routing fluctuations.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How does internet speed affect download time?</summary>
+        <div class="timepro-faq-content">
+          Internet speed is the rate of data transfer per second. Doubling your bandwidth cuts theoretical transfer time in half, assuming the host server can upload at that speed.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">How do I calculate lead time?</summary>
+        <div class="timepro-faq-content">
+          In Lead Time mode, enter the starting date, specify the duration in days, weeks, or hours, and indicate whether weekends should be excluded. The calculator determines the projected delivery date.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">What is the difference between calendar days and business days?</summary>
+        <div class="timepro-faq-content">
+          Calendar days include every day of the week (Monday through Sunday). Business days include only working weekdays (Monday through Friday), excluding Saturdays and Sundays.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Can weekends be excluded from lead time?</summary>
+        <div class="timepro-faq-content">
+          Yes. Checking the "Exclude Weekends" box in the Lead Time calculator ensures only business days (Monday through Friday) are counted toward the turnaround schedule.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Does the calculator require an account?</summary>
+        <div class="timepro-faq-content">
+          No. This is a 100% free tool that requires no account creation, email registration, password, or subscription.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Does this tool use an API?</summary>
+        <div class="timepro-faq-content">
+          No external calculation API is contacted. All computations execute locally on your device via client-side JavaScript.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Is calculation performed in the browser?</summary>
+        <div class="timepro-faq-content">
+          Yes. All arithmetic is executed directly in your web browser, ensuring instantaneous results and data privacy.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Can I copy my result?</summary>
+        <div class="timepro-faq-content">
+          Yes. Every calculation tab features a dedicated "Copy Result" button that places a clean text summary into your clipboard.
+        </div>
+      </details>
+      <details class="timepro-faq-item">
+        <summary class="timepro-faq-summary">Is this tool free?</summary>
+        <div class="timepro-faq-content">
+          Yes. The application is completely free to use for personal, educational, and business time calculation needs.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 14. Privacy Section -->
+  <section class="timepro-card">
+    <h2 class="timepro-card-title">Privacy</h2>
+    <p style="font-size:14.5px;color:#475569;line-height:1.6;margin:0;">
+      This calculator performs its calculations directly in your browser and does not require an account or server-side calculation API. Any hours, timestamps, work records, or estimates you enter remain strictly on your device and are not collected, transmitted, or stored by this tool.
+    </p>
+  </section>
+
+  <!-- 15. Disclaimer Section -->
+  <section class="timepro-card">
+    <h2 class="timepro-card-title">Disclaimer</h2>
+    <p style="font-size:14px;color:#475569;line-height:1.6;margin-bottom:12px;">
+      This tool provides mathematical time estimates based on the values you enter. Results should be reviewed before they are used for payroll, billing, employment records, project deadlines or other decisions where exact official records are required.
+    </p>
+    <p style="font-size:14px;color:#475569;line-height:1.6;margin-bottom:12px;">
+      Actual download duration can vary because of network overhead, server performance, Wi-Fi conditions and connection stability.
+    </p>
+    <p style="font-size:14px;color:#475569;line-height:1.6;margin-bottom:12px;">
+      Lead-time results are general date estimates. Business schedules, holidays, shipping rules and organization-specific calendar policies can affect actual completion dates.
+    </p>
+    <p style="font-size:14px;color:#475569;line-height:1.6;margin:0;">
+      This tool is not affiliated with Microsoft Excel or Microsoft.
+    </p>
+  </section>
+
+  <!-- 16. Social Sharing (Mandatory) -->
+  <section class="timepro-share-section">
+    <h2 class="timepro-card-title" style="margin-bottom:8px;">Share This Tool</h2>
+    <p style="font-size:14px;color:#64748b;margin:0;">
+      Share this free time calculator with friends, colleagues, and team members. (Social sharing transmits only the page URL and title—never your private calculation data).
+    </p>
+    <div class="timepro-share-btns">
+      <button type="button" class="timepro-share-btn timepro-sh-fb" id="sh_fb">Facebook</button>
+      <button type="button" class="timepro-share-btn timepro-sh-tw" id="sh_tw">X / Twitter</button>
+      <button type="button" class="timepro-share-btn timepro-sh-wa" id="sh_wa">WhatsApp</button>
+      <button type="button" class="timepro-share-btn timepro-sh-li" id="sh_li">LinkedIn</button>
+      <button type="button" class="timepro-share-btn timepro-sh-rd" id="sh_rd">Reddit</button>
+      <button type="button" class="timepro-share-btn timepro-sh-tg" id="sh_tg">Telegram</button>
+      <button type="button" class="timepro-share-btn timepro-sh-em" id="sh_em">Email</button>
+      <button type="button" class="timepro-share-btn timepro-sh-cp" id="sh_cp">Copy Link</button>
+      <button type="button" class="timepro-share-btn timepro-sh-nt" id="sh_nt">Share Tool</button>
+    </div>
+    <div id="copy_link_alert" class="timepro-copy-alert">✓ Link copied to clipboard!</div>
+  </section>
+</div>
+
+<!-- 17. Fourth Advertisement: Social Bar -->
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+<!-- 18. Vanilla JavaScript Application Logic -->
+<script>
+(function () {
+  var root = document.getElementById('timeCalculatorBloggerApp');
+  if (!root) return;
+
+  // Active state
+  var currentOp = 'add';
+  var lastResultText = '';
+
+  // Core Math Utility Functions
+  function durationToSeconds(h, m, s) {
+    var hours = parseFloat(h) || 0;
+    var minutes = parseFloat(m) || 0;
+    var seconds = parseFloat(s) || 0;
+    return Math.round(hours * 3600 + minutes * 60 + seconds);
+  }
+
+  function secondsToDuration(totalSec) {
+    var isNegative = totalSec < 0;
+    var sec = Math.abs(totalSec);
+    var days = Math.floor(sec / 86400);
+    var remainder = sec % 86400;
+    var hours = Math.floor(remainder / 3600);
+    remainder = remainder % 3600;
+    var minutes = Math.floor(remainder / 60);
+    var seconds = Math.floor(remainder % 60);
+    var totalHours = (sec / 3600).toFixed(2);
+    var totalMinutes = Math.floor(sec / 60);
+
+    return {
+      isNegative: isNegative,
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+      totalHours: parseFloat(totalHours),
+      totalMinutes: totalMinutes,
+      totalSeconds: sec
+    };
+  }
+
+  function formatReadableDuration(dur) {
+    var parts = [];
+    if (dur.days > 0) parts.push(dur.days + ' day' + (dur.days > 1 ? 's' : ''));
+    if (dur.hours > 0 || (dur.days === 0 && dur.minutes === 0 && dur.seconds === 0)) {
+      parts.push(dur.hours + ' hr');
+    }
+    if (dur.minutes > 0 || (dur.hours === 0 && dur.days === 0)) {
+      parts.push(dur.minutes + ' min');
+    }
+    if (dur.seconds > 0 || parts.length === 0) {
+      parts.push(dur.seconds + ' sec');
+    }
+    var str = parts.join(' ');
+    return dur.isNegative ? '-' + str : str;
+  }
+
+  function addDurations(sec1, sec2) {
+    return sec1 + sec2;
+  }
+
+  function subtractDurations(sec1, sec2) {
+    return sec1 - sec2;
+  }
+
+  function calculateDecimalHours(hours, minutes) {
+    var h = parseFloat(hours) || 0;
+    var m = parseFloat(minutes) || 0;
+    return parseFloat((h + (m / 60)).toFixed(2));
+  }
+
+  function minutesToHours(mins) {
+    var m = parseFloat(mins) || 0;
+    var h = Math.floor(m / 60);
+    var remM = Math.round(m % 60);
+    var dec = (m / 60).toFixed(2);
+    return { hours: h, minutes: remM, decimal: parseFloat(dec) };
+  }
+
+  function hoursToMinutes(hrs) {
+    var h = parseFloat(hrs) || 0;
+    return Math.round(h * 60);
+  }
+
+  // Safe Clipboard Copy
+  function copyToClipboard(text, alertElId) {
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        showAlert(alertElId);
+      }).catch(function () {
+        fallbackCopy(text, alertElId);
+      });
+    } else {
+      fallbackCopy(text, alertElId);
+    }
+  }
+
+  function fallbackCopy(text, alertElId) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showAlert(alertElId);
+    } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  function showAlert(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = 'block';
+    setTimeout(function () {
+      el.style.display = 'none';
+    }, 3000);
+  }
+
+  // Tab / Mode Switching
+  var modeButtons = root.querySelectorAll('.timepro-mode-btn');
+  var panels = root.querySelectorAll('.timepro-panel');
+
+  modeButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var mode = this.getAttribute('data-mode');
+      modeButtons.forEach(function (b) { b.classList.remove('timepro-mode-active'); });
+      this.classList.add('timepro-mode-active');
+
+      panels.forEach(function (p) { p.style.display = 'none'; });
+      var activePanel = document.getElementById('panel-' + mode);
+      if (activePanel) activePanel.style.display = 'block';
+    });
+  });
+
+  // Mode 1: Add / Subtract Duration
+  var btnOpAdd = document.getElementById('btn_op_add');
+  var btnOpSub = document.getElementById('btn_op_sub');
+
+  if (btnOpAdd && btnOpSub) {
+    btnOpAdd.addEventListener('click', function () {
+      currentOp = 'add';
+      btnOpAdd.classList.add('timepro-op-active');
+      btnOpSub.classList.remove('timepro-op-active');
+    });
+    btnOpSub.addEventListener('click', function () {
+      currentOp = 'sub';
+      btnOpSub.classList.add('timepro-op-active');
+      btnOpAdd.classList.remove('timepro-op-active');
+    });
+  }
+
+  function calcAddSub() {
+    var h1 = document.getElementById('as_h1').value;
+    var m1 = document.getElementById('as_m1').value;
+    var s1 = document.getElementById('as_s1').value;
+    var h2 = document.getElementById('as_h2').value;
+    var m2 = document.getElementById('as_m2').value;
+    var s2 = document.getElementById('as_s2').value;
+
+    var sec1 = durationToSeconds(h1, m1, s1);
+    var sec2 = durationToSeconds(h2, m2, s2);
+    var resSec = currentOp === 'add' ? addDurations(sec1, sec2) : subtractDurations(sec1, sec2);
+
+    var dur = secondsToDuration(resSec);
+    var formatted = formatReadableDuration(dur);
+
+    document.getElementById('res_val_addsub').textContent = formatted;
+    document.getElementById('res_badge_addsub').textContent = currentOp === 'add' ? 'Addition (+)' : 'Subtraction (-)';
+    document.getElementById('metric_as_d1').textContent = h1 + 'h ' + m1 + 'm ' + s1 + 's';
+    document.getElementById('metric_as_op').textContent = currentOp === 'add' ? '+ Addition' : '- Subtraction';
+    document.getElementById('metric_as_d2').textContent = h2 + 'h ' + m2 + 'm ' + s2 + 's';
+    var totalMins = dur.isNegative ? '-' + dur.totalMinutes : dur.totalMinutes;
+    var decHrs = dur.isNegative ? '-' + dur.totalHours : dur.totalHours;
+    document.getElementById('metric_as_dec').textContent = totalMins + ' min (' + decHrs + 'h)';
+
+    lastResultText = 'First Duration: ' + h1 + 'h ' + m1 + 'm ' + s1 + 's\n' +
+      'Operation: ' + (currentOp === 'add' ? '+' : '-') + '\n' +
+      'Second Duration: ' + h2 + 'h ' + m2 + 'm ' + s2 + 's\n' +
+      'Result: ' + formatted + ' (' + decHrs + ' decimal hours)';
+  }
+
+  var btnCalcAddSub = document.getElementById('btn_calc_addsub');
+  if (btnCalcAddSub) btnCalcAddSub.addEventListener('click', calcAddSub);
+
+  var btnCopyAddSub = document.getElementById('btn_copy_addsub');
+  if (btnCopyAddSub) {
+    btnCopyAddSub.addEventListener('click', function () {
+      calcAddSub();
+      copyToClipboard(lastResultText, 'copy_alert_addsub');
+    });
+  }
+
+  var btnResetAddSub = document.getElementById('btn_reset_addsub');
+  if (btnResetAddSub) {
+    btnResetAddSub.addEventListener('click', function () {
+      document.getElementById('as_h1').value = '0';
+      document.getElementById('as_m1').value = '0';
+      document.getElementById('as_s1').value = '0';
+      document.getElementById('as_h2').value = '0';
+      document.getElementById('as_m2').value = '0';
+      document.getElementById('as_s2').value = '0';
+      calcAddSub();
+    });
+  }
+
+  // Mode 2: Elapsed Time
+  function calcElapsed() {
+    var t1 = document.getElementById('el_start_time').value || '00:00';
+    var t2 = document.getElementById('el_end_time').value || '00:00';
+    var isNextDay = document.getElementById('el_next_day').checked;
+    var d1 = document.getElementById('el_start_date').value;
+    var d2 = document.getElementById('el_end_date').value;
+
+    var startSec, endSec, totalSec;
+
+    if (d1 && d2) {
+      var date1 = new Date(d1 + 'T' + t1 + ':00');
+      var date2 = new Date(d2 + 'T' + t2 + ':00');
+      var diffMs = date2.getTime() - date1.getTime();
+      totalSec = Math.round(diffMs / 1000);
+    } else {
+      var p1 = t1.split(':');
+      var p2 = t2.split(':');
+      startSec = parseInt(p1[0], 10) * 3600 + parseInt(p1[1], 10) * 60;
+      endSec = parseInt(p2[0], 10) * 3600 + parseInt(p2[1], 10) * 60;
+
+      if (endSec < startSec || isNextDay) {
+        endSec += 86400;
+      }
+      totalSec = endSec - startSec;
+    }
+
+    var dur = secondsToDuration(totalSec);
+    var formatted = formatReadableDuration(dur);
+
+    document.getElementById('res_val_elapsed').textContent = formatted;
+    document.getElementById('metric_el_hrs').textContent = dur.hours + ' hr' + (dur.days > 0 ? ' (' + dur.days + 'd)' : '');
+    document.getElementById('metric_el_mins').textContent = dur.totalMinutes.toLocaleString() + ' min';
+    document.getElementById('metric_el_secs').textContent = dur.totalSeconds.toLocaleString() + ' sec';
+    document.getElementById('metric_el_dec').textContent = dur.totalHours.toFixed(2) + ' hr';
+
+    lastResultText = 'Start Time: ' + t1 + '\n' +
+      'End Time: ' + t2 + (isNextDay ? ' (Next Day)' : '') + '\n' +
+      'Elapsed Duration: ' + formatted + '\n' +
+      'Total Minutes: ' + dur.totalMinutes + ' min\n' +
+      'Decimal Hours: ' + dur.totalHours.toFixed(2) + ' hr';
+  }
+
+  var btnCalcElapsed = document.getElementById('btn_calc_elapsed');
+  if (btnCalcElapsed) btnCalcElapsed.addEventListener('click', calcElapsed);
+
+  var btnCopyElapsed = document.getElementById('btn_copy_elapsed');
+  if (btnCopyElapsed) {
+    btnCopyElapsed.addEventListener('click', function () {
+      calcElapsed();
+      copyToClipboard(lastResultText, 'copy_alert_elapsed');
+    });
+  }
+
+  var btnResetElapsed = document.getElementById('btn_reset_elapsed');
+  if (btnResetElapsed) {
+    btnResetElapsed.addEventListener('click', function () {
+      document.getElementById('el_start_time').value = '08:00';
+      document.getElementById('el_end_time').value = '17:00';
+      document.getElementById('el_next_day').checked = false;
+      document.getElementById('el_start_date').value = '';
+      document.getElementById('el_end_date').value = '';
+      calcElapsed();
+    });
+  }
+
+  // Mode 3: Work Time & Shift
+  var chipButtons = root.querySelectorAll('.timepro-chip');
+  chipButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var min = parseInt(this.getAttribute('data-min'), 10) || 0;
+      document.getElementById('wk_break_mins').value = min;
+      calcWork();
+    });
+  });
+
+  // Multiple sessions
+  var sessionContainer = document.getElementById('wk_sessions_container');
+  var btnAddSession = document.getElementById('btn_add_session');
+  var sessionCount = 0;
+
+  if (btnAddSession && sessionContainer) {
+    btnAddSession.addEventListener('click', function () {
+      if (sessionCount >= 4) return;
+      sessionCount++;
+      var row = document.createElement('div');
+      row.className = 'timepro-session-row';
+      row.id = 'wk_sess_row_' + sessionCount;
+      row.innerHTML =
+        '<div><label class="timepro-label" style="font-size:11px;">Session ' + sessionCount + ' In</label><input type="time" class="timepro-input wk_s_in" value="13:00"></div>' +
+        '<div><label class="timepro-label" style="font-size:11px;">Session ' + sessionCount + ' Out</label><input type="time" class="timepro-input wk_s_out" value="17:00"></div>' +
+        '<div><button type="button" class="timepro-del-btn" data-del="' + sessionCount + '">Remove</button></div>';
+      sessionContainer.appendChild(row);
+
+      row.querySelector('.timepro-del-btn').addEventListener('click', function () {
+        sessionContainer.removeChild(row);
+        sessionCount--;
+        calcWork();
+      });
+    });
+  }
+
+  function calcWork() {
+    var t1 = document.getElementById('wk_start_time').value || '08:30';
+    var t2 = document.getElementById('wk_end_time').value || '17:00';
+    var isOvernight = document.getElementById('wk_overnight').checked;
+    var bHrs = parseFloat(document.getElementById('wk_break_hrs').value) || 0;
+    var bMins = parseFloat(document.getElementById('wk_break_mins').value) || 0;
+    var b2Mins = parseFloat(document.getElementById('wk_break2_mins').value) || 0;
+
+    var p1 = t1.split(':');
+    var p2 = t2.split(':');
+    var startSec = parseInt(p1[0], 10) * 3600 + parseInt(p1[1], 10) * 60;
+    var endSec = parseInt(p2[0], 10) * 3600 + parseInt(p2[1], 10) * 60;
+
+    if (endSec < startSec || isOvernight) {
+      endSec += 86400;
+    }
+    var grossSec = endSec - startSec;
+
+    // Check extra sessions
+    var extraSec = 0;
+    var sInList = root.querySelectorAll('.wk_s_in');
+    var sOutList = root.querySelectorAll('.wk_s_out');
+    for (var i = 0; i < sInList.length; i++) {
+      var inVal = sInList[i].value;
+      var outVal = sOutList[i].value;
+      if (inVal && outVal) {
+        var ip = inVal.split(':');
+        var op = outVal.split(':');
+        var is1 = parseInt(ip[0], 10) * 3600 + parseInt(ip[1], 10) * 60;
+        var is2 = parseInt(op[0], 10) * 3600 + parseInt(op[1], 10) * 60;
+        if (is2 < is1) is2 += 86400;
+        extraSec += (is2 - is1);
+      }
+    }
+
+    grossSec += extraSec;
+
+    var breakSec = Math.round(bHrs * 3600 + (bMins + b2Mins) * 60);
+    var netSec = Math.max(0, grossSec - breakSec);
+
+    var grossDur = secondsToDuration(grossSec);
+    var breakDur = secondsToDuration(breakSec);
+    var netDur = secondsToDuration(netSec);
+
+    var netFormatted = netDur.hours + ' hr ' + netDur.minutes + ' min';
+    var grossFormatted = grossDur.hours + ' hr ' + grossDur.minutes + ' min';
+    var breakFormatted = (breakDur.hours > 0 ? breakDur.hours + ' hr ' : '') + breakDur.minutes + ' min';
+    var decHours = (netSec / 3600).toFixed(2);
+
+    document.getElementById('res_val_work').textContent = netFormatted;
+    document.getElementById('metric_wk_gross').textContent = grossFormatted;
+    document.getElementById('metric_wk_breaks').textContent = breakFormatted;
+    document.getElementById('metric_wk_net').textContent = netFormatted;
+    document.getElementById('metric_wk_dec').textContent = decHours + ' hr';
+
+    lastResultText = 'Start Time: ' + t1 + '\n' +
+      'End Time: ' + t2 + (isOvernight ? ' (Overnight)' : '') + '\n' +
+      'Gross Shift Time: ' + grossFormatted + '\n' +
+      'Break Deductions: ' + breakFormatted + '\n' +
+      'Net Work Time: ' + netFormatted + '\n' +
+      'Decimal Hours: ' + decHours;
+  }
+
+  var btnCalcWork = document.getElementById('btn_calc_work');
+  if (btnCalcWork) btnCalcWork.addEventListener('click', calcWork);
+
+  var btnCopyWork = document.getElementById('btn_copy_work');
+  if (btnCopyWork) {
+    btnCopyWork.addEventListener('click', function () {
+      calcWork();
+      copyToClipboard(lastResultText, 'copy_alert_work');
+    });
+  }
+
+  var btnResetWork = document.getElementById('btn_reset_work');
+  if (btnResetWork) {
+    btnResetWork.addEventListener('click', function () {
+      document.getElementById('wk_start_time').value = '08:30';
+      document.getElementById('wk_end_time').value = '17:00';
+      document.getElementById('wk_break_hrs').value = '0';
+      document.getElementById('wk_break_mins').value = '30';
+      document.getElementById('wk_break2_mins').value = '0';
+      document.getElementById('wk_overnight').checked = false;
+      calcWork();
+    });
+  }
+
+  // Mode 4: Hours & Minutes
+  function calcHM() {
+    var rawM = parseFloat(document.getElementById('hm_input_mins').value) || 0;
+    var rawDec = parseFloat(document.getElementById('hm_input_decs').value) || 0;
+
+    var fromM = minutesToHours(rawM);
+    var fromDecM = hoursToMinutes(rawDec);
+
+    var formatted = rawM + ' min = ' + fromM.hours + ' hr ' + fromM.minutes + ' min (' + fromM.decimal.toFixed(2) + ' hr)';
+    document.getElementById('res_val_hm').textContent = formatted;
+    document.getElementById('metric_hm_m').textContent = rawM.toLocaleString() + ' min';
+    document.getElementById('metric_hm_hm').textContent = fromM.hours + ' hr ' + fromM.minutes + ' min';
+    document.getElementById('metric_hm_dec').textContent = fromM.decimal.toFixed(2) + ' hr';
+    document.getElementById('metric_hm_sec').textContent = (rawM * 60).toLocaleString() + ' sec';
+
+    lastResultText = 'Minutes Entered: ' + rawM + ' min\n' +
+      'Hours & Minutes: ' + fromM.hours + ' hr ' + fromM.minutes + ' min\n' +
+      'Decimal Hours: ' + fromM.decimal.toFixed(2) + ' hr\n' +
+      'Decimal Hours Converted: ' + rawDec + ' hr = ' + fromDecM + ' min';
+  }
+
+  var btnCalcHM = document.getElementById('btn_calc_hm');
+  if (btnCalcHM) btnCalcHM.addEventListener('click', calcHM);
+
+  var btnCopyHM = document.getElementById('btn_copy_hm');
+  if (btnCopyHM) {
+    btnCopyHM.addEventListener('click', function () {
+      calcHM();
+      copyToClipboard(lastResultText, 'copy_alert_hm');
+    });
+  }
+
+  var btnResetHM = document.getElementById('btn_reset_hm');
+  if (btnResetHM) {
+    btnResetHM.addEventListener('click', function () {
+      document.getElementById('hm_input_mins').value = '150';
+      document.getElementById('hm_input_decs').value = '7.5';
+      calcHM();
+    });
+  }
+
+  // Mode 5: Date & Time Difference
+  function calcDateDiff() {
+    var d1 = document.getElementById('dd_start_date').value;
+    var t1 = document.getElementById('dd_start_time').value || '00:00';
+    var d2 = document.getElementById('dd_end_date').value;
+    var t2 = document.getElementById('dd_end_time').value || '00:00';
+
+    if (!d1 || !d2) {
+      document.getElementById('res_val_dd').textContent = 'Please choose both dates';
+      return;
+    }
+
+    var date1 = new Date(d1 + 'T' + t1 + ':00');
+    var date2 = new Date(d2 + 'T' + t2 + ':00');
+    var diffSec = Math.round((date2.getTime() - date1.getTime()) / 1000);
+
+    var dur = secondsToDuration(diffSec);
+    var formatted = formatReadableDuration(dur);
+
+    document.getElementById('res_val_dd').textContent = formatted;
+    document.getElementById('metric_dd_days').textContent = dur.days + ' days';
+    document.getElementById('metric_dd_rem').textContent = dur.hours + ' hr ' + dur.minutes + ' min';
+    document.getElementById('metric_dd_th').textContent = dur.totalHours.toFixed(2) + ' hr';
+    document.getElementById('metric_dd_tm').textContent = dur.totalMinutes.toLocaleString() + ' min';
+
+    lastResultText = 'Start Date & Time: ' + d1 + ' ' + t1 + '\n' +
+      'End Date & Time: ' + d2 + ' ' + t2 + '\n' +
+      'Exact Difference: ' + formatted + '\n' +
+      'Total Hours: ' + dur.totalHours.toFixed(2) + ' hr\n' +
+      'Total Minutes: ' + dur.totalMinutes + ' min';
+  }
+
+  var btnCalcDD = document.getElementById('btn_calc_dd');
+  if (btnCalcDD) btnCalcDD.addEventListener('click', calcDateDiff);
+
+  var btnCopyDD = document.getElementById('btn_copy_dd');
+  if (btnCopyDD) {
+    btnCopyDD.addEventListener('click', function () {
+      calcDateDiff();
+      copyToClipboard(lastResultText, 'copy_alert_dd');
+    });
+  }
+
+  var btnResetDD = document.getElementById('btn_reset_dd');
+  if (btnResetDD) {
+    btnResetDD.addEventListener('click', function () {
+      initDates();
+      calcDateDiff();
+    });
+  }
+
+  // Mode 6: Download Time
+  function calcDownloadTime() {
+    var size = parseFloat(document.getElementById('dl_size_val').value) || 0;
+    var sizeUnit = document.getElementById('dl_size_unit').value;
+    var speed = parseFloat(document.getElementById('dl_speed_val').value) || 0;
+    var speedUnit = document.getElementById('dl_speed_unit').value;
+
+    if (speed <= 0 || size <= 0) {
+      document.getElementById('res_val_dl').textContent = '0 sec';
+      return;
+    }
+
+    // Convert size to Bits (1 Byte = 8 Bits)
+    // 1 KB = 1,000 Bytes, 1 MB = 1,000,000 Bytes, 1 GB = 1,000,000,000 Bytes, 1 TB = 1,000,000,000,000 Bytes
+    var sizeBytes = size;
+    if (sizeUnit === 'KB') sizeBytes = size * 1000;
+    else if (sizeUnit === 'MB') sizeBytes = size * 1000000;
+    else if (sizeUnit === 'GB') sizeBytes = size * 1000000000;
+    else if (sizeUnit === 'TB') sizeBytes = size * 1000000000000;
+
+    var sizeBits = sizeBytes * 8;
+
+    // Convert speed to Bits per second
+    var speedBps = speed;
+    if (speedUnit === 'Kbps') speedBps = speed * 1000;
+    else if (speedUnit === 'Mbps') speedBps = speed * 1000000;
+    else if (speedUnit === 'Gbps') speedBps = speed * 1000000000;
+
+    var totalSec = Math.round(sizeBits / speedBps);
+    var dur = secondsToDuration(totalSec);
+    var formatted = formatReadableDuration(dur);
+
+    // Transfer rate in MB/s
+    var transferRateMBS = (speedBps / 8 / 1000000).toFixed(2);
+
+    document.getElementById('res_val_dl').textContent = formatted;
+    document.getElementById('metric_dl_size').textContent = size + ' ' + sizeUnit;
+    document.getElementById('metric_dl_speed').textContent = speed + ' ' + speedUnit;
+    document.getElementById('metric_dl_sec').textContent = totalSec.toLocaleString() + ' sec';
+    document.getElementById('metric_dl_rate').textContent = transferRateMBS + ' MB/s';
+
+    lastResultText = 'File Size: ' + size + ' ' + sizeUnit + '\n' +
+      'Connection Speed: ' + speed + ' ' + speedUnit + '\n' +
+      'Estimated Download Time: ' + formatted + '\n' +
+      'Transfer Rate: ' + transferRateMBS + ' MB/s';
+  }
+
+  var btnCalcDL = document.getElementById('btn_calc_dl');
+  if (btnCalcDL) btnCalcDL.addEventListener('click', calcDownloadTime);
+
+  var btnCopyDL = document.getElementById('btn_copy_dl');
+  if (btnCopyDL) {
+    btnCopyDL.addEventListener('click', function () {
+      calcDownloadTime();
+      copyToClipboard(lastResultText, 'copy_alert_dl');
+    });
+  }
+
+  var btnResetDL = document.getElementById('btn_reset_dl');
+  if (btnResetDL) {
+    btnResetDL.addEventListener('click', function () {
+      document.getElementById('dl_size_val').value = '5';
+      document.getElementById('dl_size_unit').value = 'GB';
+      document.getElementById('dl_speed_val').value = '50';
+      document.getElementById('dl_speed_unit').value = 'Mbps';
+      calcDownloadTime();
+    });
+  }
+
+  // Mode 7: Lead Time
+  function addBusinessDays(startDate, days) {
+    var cur = new Date(startDate.getTime());
+    var added = 0;
+    while (added < days) {
+      cur.setDate(cur.getDate() + 1);
+      var dayOfWeek = cur.getDay();
+      if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Skip Sunday (0) and Saturday (6)
+        added++;
+      }
+    }
+    return cur;
+  }
+
+  function calcLeadTime() {
+    var dStr = document.getElementById('lt_start_date').value;
+    var val = parseFloat(document.getElementById('lt_val').value) || 0;
+    var unit = document.getElementById('lt_unit').value;
+    var excludeWeekends = document.getElementById('lt_exclude_weekends').checked;
+
+    if (!dStr) {
+      document.getElementById('res_val_lt').textContent = 'Please choose a start date';
+      return;
+    }
+
+    var start = new Date(dStr + 'T00:00:00');
+    var finish = new Date(start.getTime());
+
+    if (unit === 'days') {
+      if (excludeWeekends) {
+        finish = addBusinessDays(start, val);
+      } else {
+        finish.setDate(finish.getDate() + val);
+      }
+    } else if (unit === 'weeks') {
+      if (excludeWeekends) {
+        finish = addBusinessDays(start, val * 5);
+      } else {
+        finish.setDate(finish.getDate() + (val * 7));
+      }
+    } else if (unit === 'hours') {
+      finish.setHours(finish.getHours() + val);
+    }
+
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var formattedDate = finish.toLocaleDateString('en-US', options);
+
+    document.getElementById('res_val_lt').textContent = formattedDate;
+    document.getElementById('metric_lt_start').textContent = start.toLocaleDateString('en-US');
+    document.getElementById('metric_lt_lead').textContent = val + ' ' + unit;
+    document.getElementById('metric_lt_type').textContent = excludeWeekends ? 'Business Days (Mon-Fri)' : 'Calendar Days';
+    document.getElementById('metric_lt_dayname').textContent = finish.toLocaleDateString('en-US', { weekday: 'long' });
+
+    lastResultText = 'Start Date: ' + start.toLocaleDateString('en-US') + '\n' +
+      'Lead Time: ' + val + ' ' + unit + (excludeWeekends ? ' (Weekends Excluded)' : '') + '\n' +
+      'Projected Completion Date: ' + formattedDate;
+  }
+
+  var btnCalcLT = document.getElementById('btn_calc_lt');
+  if (btnCalcLT) btnCalcLT.addEventListener('click', calcLeadTime);
+
+  var btnCopyLT = document.getElementById('btn_copy_lt');
+  if (btnCopyLT) {
+    btnCopyLT.addEventListener('click', function () {
+      calcLeadTime();
+      copyToClipboard(lastResultText, 'copy_alert_lt');
+    });
+  }
+
+  var btnResetLT = document.getElementById('btn_reset_lt');
+  if (btnResetLT) {
+    btnResetLT.addEventListener('click', function () {
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById('lt_start_date').value = today;
+      document.getElementById('lt_val').value = '10';
+      document.getElementById('lt_unit').value = 'days';
+      document.getElementById('lt_exclude_weekends').checked = false;
+      calcLeadTime();
+    });
+  }
+
+  // Social Sharing Functions (Transmits only document.title & window.location.href)
+  var shareTitle = encodeURIComponent(document.title || 'time calculator');
+  var shareUrl = encodeURIComponent(window.location.href);
+
+  function openPopup(url) {
+    window.open(url, '_blank', 'noopener,noreferrer,width=600,height=450');
+  }
+
+  var btnFb = document.getElementById('sh_fb');
+  if (btnFb) btnFb.addEventListener('click', function () {
+    openPopup('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
+  });
+
+  var btnTw = document.getElementById('sh_tw');
+  if (btnTw) btnTw.addEventListener('click', function () {
+    openPopup('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href));
+  });
+
+  var btnWa = document.getElementById('sh_wa');
+  if (btnWa) btnWa.addEventListener('click', function () {
+    openPopup('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href));
+  });
+
+  var btnLi = document.getElementById('sh_li');
+  if (btnLi) btnLi.addEventListener('click', function () {
+    openPopup('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href));
+  });
+
+  var btnRd = document.getElementById('sh_rd');
+  if (btnRd) btnRd.addEventListener('click', function () {
+    openPopup('https://www.reddit.com/submit?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent(document.title));
+  });
+
+  var btnTg = document.getElementById('sh_tg');
+  if (btnTg) btnTg.addEventListener('click', function () {
+    openPopup('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title));
+  });
+
+  var btnEm = document.getElementById('sh_em');
+  if (btnEm) btnEm.addEventListener('click', function () {
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(document.title + '\n' + window.location.href);
+  });
+
+  var btnCp = document.getElementById('sh_cp');
+  if (btnCp) btnCp.addEventListener('click', function () {
+    copyToClipboard(window.location.href, 'copy_link_alert');
+  });
+
+  var btnNt = document.getElementById('sh_nt');
+  if (btnNt) btnNt.addEventListener('click', function () {
+    if (navigator.share) {
+      navigator.share({
+        title: document.title,
+        url: window.location.href
+      }).catch(function () {});
+    } else {
+      copyToClipboard(window.location.href, 'copy_link_alert');
+    }
+  });
+
+  // Date Inits
+  function initDates() {
+    var today = new Date().toISOString().split('T')[0];
+    var dStart = document.getElementById('dd_start_date');
+    var dEnd = document.getElementById('dd_end_date');
+    var ltStart = document.getElementById('lt_start_date');
+    if (dStart) dStart.value = today;
+    if (dEnd) dEnd.value = today;
+    if (ltStart) ltStart.value = today;
+  }
+
+  // Initial runs
+  initDates();
+  calcAddSub();
+  calcElapsed();
+  calcWork();
+  calcHM();
+  calcDateDiff();
+  calcDownloadTime();
+  calcLeadTime();
+})();
+</script>
