@@ -1,0 +1,3313 @@
+<!--
+BLOGGER TITLE:
+Free PDF to JPG Converter – Convert PDF Pages to JPG Online
+
+BLOGGER SEARCH DESCRIPTION:
+Convert PDF pages to high-quality JPG images online for free. Choose pages, DPI, image quality and output size, then download JPG files or a ZIP.
+
+BLOGGER LABELS:
+PDF to JPG Converter, PDF Converter, PDF to Image, JPG Converter, PDF Tools, Image Tools, Document Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+pdf-to-jpg-converter
+
+GITHUB FILE NAME:
+pdf-to-jpg-converter.html
+-->
+
+
+<style>
+#pdfToJpgBloggerApp,
+#pdfToJpgBloggerApp * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#pdfToJpgBloggerApp {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  padding: 16px 12px;
+  overflow-x: hidden;
+}
+@media (min-width: 640px) {
+  #pdfToJpgBloggerApp {
+    padding: 24px 16px;
+  }
+}
+@media (min-width: 1024px) {
+  #pdfToJpgBloggerApp {
+    padding: 32px 24px;
+  }
+}
+
+/* Typography & Layout */
+.p2j-container {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.p2j-hero {
+  text-align: center;
+  padding: 24px 12px 28px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+.p2j-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #bfdbfe;
+  margin-bottom: 12px;
+}
+.p2j-h1 {
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 640px) {
+  .p2j-h1 { font-size: 38px; }
+}
+.p2j-subhead {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+@media (min-width: 640px) {
+  .p2j-subhead { font-size: 20px; }
+}
+.p2j-desc {
+  font-size: 15px;
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  line-height: 1.6;
+}
+.p2j-trust-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.p2j-trust-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #047857;
+  background-color: #ecfdf5;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid #a7f3d0;
+  white-space: nowrap;
+}
+
+/* Advertisement Wrappers */
+.p2j-ad-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 24px auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 4px;
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+}
+.p2j-ad-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Cards & Sections */
+.p2j-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+@media (min-width: 640px) {
+  .p2j-card {
+    padding: 28px 24px;
+  }
+}
+.p2j-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.p2j-card-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: -6px;
+  margin-bottom: 16px;
+}
+
+/* Upload Area */
+.p2j-upload-area {
+  border: 2px dashed #3b82f6;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  padding: 32px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.p2j-upload-area:hover,
+.p2j-upload-area.p2j-dragover {
+  background-color: #eff6ff;
+  border-color: #1d4ed8;
+}
+.p2j-upload-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  color: #2563eb;
+}
+.p2j-upload-head {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+.p2j-upload-text {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+.p2j-file-input {
+  display: none;
+}
+
+/* Buttons */
+.p2j-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  min-height: 48px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  gap: 8px;
+}
+.p2j-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+  min-height: 52px;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+.p2j-btn-primary:hover {
+  background-color: #1d4ed8;
+}
+.p2j-btn-success {
+  background-color: #059669;
+  color: #ffffff;
+  border-color: #047857;
+  min-height: 52px;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+}
+.p2j-btn-success:hover {
+  background-color: #047857;
+}
+.p2j-btn-secondary {
+  background-color: #f1f5f9;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+.p2j-btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+.p2j-btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+.p2j-btn-danger:hover {
+  background-color: #dc2626;
+}
+.p2j-btn-full {
+  width: 100%;
+}
+.p2j-btn-sm {
+  padding: 6px 12px;
+  min-height: 38px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+.p2j-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* File Info Grid */
+.p2j-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 640px) {
+  .p2j-info-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.p2j-info-cell {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.p2j-info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.p2j-info-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Page Thumbnails */
+.p2j-thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding: 4px;
+}
+@media (min-width: 500px) {
+  .p2j-thumb-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .p2j-thumb-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.p2j-thumb-card {
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  position: relative;
+  transition: all 0.15s ease;
+}
+.p2j-thumb-card.p2j-selected {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+.p2j-thumb-img-box {
+  width: 100%;
+  aspect-ratio: 0.77;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.p2j-thumb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+.p2j-thumb-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.p2j-thumb-actions {
+  display: flex;
+  gap: 4px;
+}
+.p2j-icon-btn {
+  background: #e2e8f0;
+  border: none;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: #334155;
+}
+.p2j-icon-btn:hover {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+/* Selection & Options Group */
+.p2j-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.p2j-pill {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  text-align: center;
+}
+.p2j-pill:hover {
+  background-color: #e2e8f0;
+}
+.p2j-pill.p2j-active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+/* Tabs */
+.p2j-tabs {
+  display: flex;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 16px;
+  gap: 6px;
+}
+.p2j-tab {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-bottom: -2px;
+}
+.p2j-tab:hover {
+  color: #0f172a;
+}
+.p2j-tab.p2j-active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+/* Sliders & Forms */
+.p2j-slider-box {
+  margin: 14px 0;
+}
+.p2j-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.p2j-range {
+  width: 100%;
+  height: 8px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+.p2j-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0f172a;
+  background-color: #ffffff;
+}
+.p2j-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+.p2j-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 600px) {
+  .p2j-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.p2j-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Output Summary Card */
+.p2j-summary-box {
+  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.p2j-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+@media (min-width: 640px) {
+  .p2j-summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.p2j-summary-item {
+  font-size: 13px;
+  color: #334155;
+}
+.p2j-summary-item strong {
+  color: #0f172a;
+}
+
+/* Progress Bar */
+.p2j-progress-box {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.p2j-progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.p2j-progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #2563eb;
+  transition: width 0.2s ease;
+}
+.p2j-progress-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Before Conversion Placeholder Panel */
+.p2j-placeholder-panel {
+  margin-top: 20px;
+  background-color: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 36px 20px;
+  text-align: center;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.p2j-placeholder-icon {
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+.p2j-placeholder-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+}
+.p2j-placeholder-desc {
+  font-size: 14px;
+  color: #64748b;
+  max-width: 520px;
+  line-height: 1.5;
+}
+
+/* Results & Download Section Enhancements */
+.p2j-ready-card {
+  border: 2px solid #3b82f6 !important;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.12) !important;
+}
+.p2j-ready-header {
+  margin-bottom: 16px;
+}
+.p2j-ready-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.p2j-ready-title {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+}
+
+/* Converted Output Stats Box */
+.p2j-stats-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+@media (min-width: 680px) {
+  .p2j-stats-box {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.p2j-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+.p2j-stat-label {
+  font-size: 11px;
+  color: #1e40af;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 3px;
+}
+.p2j-stat-val {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Prominent Action Buttons */
+.p2j-download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.p2j-download-btn-lg {
+  min-height: 52px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  padding: 12px 20px !important;
+}
+@media (max-width: 640px) {
+  .p2j-download-actions button {
+    width: 100% !important;
+  }
+}
+
+/* Converted Result Cards */
+.p2j-result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+@media (min-width: 540px) {
+  .p2j-result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 840px) {
+  .p2j-result-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.p2j-res-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.p2j-res-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.p2j-res-card-btn {
+  min-height: 46px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+@media (max-width: 640px) {
+  .p2j-res-card-btn {
+    min-height: 52px !important;
+    font-size: 15px !important;
+  }
+}
+.p2j-res-img-box {
+  width: 100%;
+  aspect-ratio: 0.77;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.p2j-res-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.p2j-res-meta {
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.p2j-res-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Feature Grid */
+.p2j-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 600px) {
+  .p2j-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .p2j-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.p2j-feature-item {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+.p2j-feature-head {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.p2j-feature-text {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* Steps Grid */
+.p2j-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 600px) {
+  .p2j-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .p2j-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.p2j-step-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+}
+.p2j-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.p2j-step-content {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+/* FAQ Details */
+.p2j-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.p2j-faq-item {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.p2j-faq-item summary {
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.p2j-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.p2j-faq-answer {
+  padding: 0 16px 16px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Social Buttons */
+.p2j-social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 600px) {
+  .p2j-social-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 840px) {
+  .p2j-social-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.p2j-btn-fb { background-color: #1877f2; color: #fff; }
+.p2j-btn-tw { background-color: #000000; color: #fff; }
+.p2j-btn-wa { background-color: #25d366; color: #fff; }
+.p2j-btn-in { background-color: #0a66c2; color: #fff; }
+.p2j-btn-rd { background-color: #ff4500; color: #fff; }
+.p2j-btn-tg { background-color: #229ed9; color: #fff; }
+.p2j-btn-em { background-color: #475569; color: #fff; }
+.p2j-btn-cp { background-color: #0284c7; color: #fff; }
+.p2j-btn-sh { background-color: #7c3aed; color: #fff; }
+
+/* Modal */
+.p2j-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.85);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.p2j-modal.p2j-open {
+  display: flex;
+}
+.p2j-modal-box {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.p2j-modal-head {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+.p2j-modal-body {
+  padding: 16px;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p2j-modal-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+.p2j-modal-foot {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Article Styling */
+.p2j-article {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #334155;
+}
+.p2j-article h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 24px 0 10px;
+}
+.p2j-article h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 18px 0 8px;
+}
+.p2j-article p {
+  margin-bottom: 14px;
+}
+.p2j-article ul {
+  margin: 10px 0 16px 22px;
+}
+.p2j-article li {
+  margin-bottom: 6px;
+}
+
+/* Notice / Alerts */
+.p2j-alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.p2j-alert-warn {
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+.p2j-alert-error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+.p2j-alert-info {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+</style>
+
+
+<div id="pdfToJpgBloggerApp">
+  <div class="p2j-container">
+
+    <!-- 1. Hero Section -->
+    <header class="p2j-hero">
+      <div class="p2j-badge">
+        <span>🇺🇸</span> Free PDF Image Tool for U.S. Users
+      </div>
+      <h1 class="p2j-h1">PDF to JPG Converter</h1>
+      <div class="p2j-subhead">Convert PDF Pages to High-Quality JPG Images</div>
+      <p class="p2j-desc">
+        Convert PDF pages into high-quality JPG images directly in your browser. Select pages, choose JPG quality, DPI, image dimensions and color settings, then download individual JPG files or save all converted pages in a ZIP.
+      </p>
+      <div class="p2j-trust-list">
+        <span class="p2j-trust-item">✓ Free to Use</span>
+        <span class="p2j-trust-item">✓ No Signup</span>
+        <span class="p2j-trust-item">✓ No Watermark Added</span>
+        <span class="p2j-trust-item">✓ Page Selection</span>
+        <span class="p2j-trust-item">✓ JPG Quality Control</span>
+        <span class="p2j-trust-item">✓ Multiple Output Sizes</span>
+        <span class="p2j-trust-item">✓ DPI Control</span>
+        <span class="p2j-trust-item">✓ Individual Downloads</span>
+        <span class="p2j-trust-item">✓ ZIP Download</span>
+        <span class="p2j-trust-item">✓ Local PDF Processing</span>
+      </div>
+    </header>
+
+    <!-- 2. 468x60 Advertisement -->
+    
+<div class="p2j-ad-container">
+  <span class="p2j-ad-label">Advertisement</span>
+  <script>
+    atOptions = {
+      'key' : '294198e908506e5d909d0b383f167eaa',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+</div>
+
+
+    <!-- 3. PDF Upload Area -->
+    <section class="p2j-card">
+      <div class="p2j-card-title">Choose Your PDF</div>
+      <div class="p2j-card-subtitle">Select a PDF from your computer, Android phone, iPhone or tablet.</div>
+      
+      <div class="p2j-upload-area" id="p2jDropZone">
+        <svg class="p2j-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        </svg>
+        <div class="p2j-upload-head">Drag &amp; Drop PDF Here</div>
+        <div class="p2j-upload-text">Supports standard PDF documents (.pdf) up to multi-page files</div>
+        <button type="button" class="p2j-btn p2j-btn-primary" id="p2jBrowseBtn">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Choose PDF File
+        </button>
+        <input type="file" id="p2jFileInput" class="p2j-file-input" accept=".pdf,application/pdf" />
+      </div>
+
+      <div id="p2jPasswordBox" class="p2j-alert p2j-alert-warn" style="display:none; margin-top:16px;">
+        <div style="font-weight:700; margin-bottom:6px;">Password Required</div>
+        <p style="font-size:13px; margin-bottom:8px;">This PDF document is encrypted. Enter password to unlock:</p>
+        <div style="display:flex; gap:8px; max-width:400px;">
+          <input type="password" id="p2jPdfPassword" class="p2j-input" placeholder="PDF Password" />
+          <button type="button" class="p2j-btn p2j-btn-primary p2j-btn-sm" id="p2jUnlockBtn">Unlock PDF</button>
+        </div>
+        <div id="p2jPasswordErr" style="color:#b91c1c; font-size:12px; margin-top:6px; display:none;">Incorrect password. Please try again.</div>
+      </div>
+
+      <div id="p2jUploadAlert" class="p2j-alert" style="display:none; margin-top:16px;"></div>
+    </section>
+
+    <!-- WORKSPACE AREA: VISIBLE ONLY AFTER PDF IS LOADED -->
+    <div id="p2jWorkspace" style="display:none;">
+
+      <!-- 4. PDF File Information -->
+      <section class="p2j-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+          <div class="p2j-card-title" style="margin-bottom:0;">PDF File Information</div>
+          <div class="p2j-btn-row" style="margin-top:0;">
+            <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jDownloadOrigTopBtn">
+              Download Original PDF
+            </button>
+            <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jClearBtn">
+              Clear All
+            </button>
+          </div>
+        </div>
+        <div class="p2j-info-grid">
+          <div class="p2j-info-cell">
+            <div class="p2j-info-label">File Name</div>
+            <div class="p2j-info-val" id="p2jInfoName">-</div>
+          </div>
+          <div class="p2j-info-cell">
+            <div class="p2j-info-label">File Size</div>
+            <div class="p2j-info-val" id="p2jInfoSize">-</div>
+          </div>
+          <div class="p2j-info-cell">
+            <div class="p2j-info-label">Total Pages</div>
+            <div class="p2j-info-val" id="p2jInfoPages">-</div>
+          </div>
+          <div class="p2j-info-cell">
+            <div class="p2j-info-label">Page Dimensions</div>
+            <div class="p2j-info-val" id="p2jInfoDim">-</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. PDF Page Previews -->
+      <section class="p2j-card">
+        <div class="p2j-card-title">Page Preview</div>
+        <div class="p2j-card-subtitle">Click a page to preview larger or rotate individual pages.</div>
+        <div class="p2j-thumb-grid" id="p2jThumbnails">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- 6. Pages to Convert -->
+      <section class="p2j-card">
+        <div class="p2j-card-title">Pages to Convert</div>
+        <div class="p2j-card-subtitle">Choose which pages from the PDF document should be exported as JPG images.</div>
+        
+        <div class="p2j-pill-group" id="p2jPageQuickPills">
+          <div class="p2j-pill p2j-active" data-range-type="all">All Pages</div>
+          <div class="p2j-pill" data-range-type="odd">Odd Pages</div>
+          <div class="p2j-pill" data-range-type="even">Even Pages</div>
+          <div class="p2j-pill" data-range-type="first">First Page</div>
+          <div class="p2j-pill" data-range-type="last">Last Page</div>
+          <div class="p2j-pill" data-range-type="custom">Custom Page Range</div>
+        </div>
+
+        <div id="p2jCustomRangeBox" style="display:none; margin: 12px 0;">
+          <label style="display:block; font-size:13px; font-weight:600; margin-bottom:4px;" for="p2jCustomRangeInput">
+            Enter Page Range (e.g., 1-5, 1,3,5, 1-3,5,8-10):
+          </label>
+          <input type="text" id="p2jCustomRangeInput" class="p2j-input" placeholder="e.g. 1-3, 5, 8" />
+          <div id="p2jRangeValidationMsg" style="font-size:12px; color:#b91c1c; margin-top:4px; display:none;"></div>
+        </div>
+
+        <div class="p2j-btn-row">
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jSelectAllBtn">Select All</button>
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jDeselectAllBtn">Deselect All</button>
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jInvertSelectionBtn">Invert Selection</button>
+        </div>
+      </section>
+
+      <!-- 7. JPG Quality -->
+      <section class="p2j-card">
+        <div class="p2j-card-title">JPG Quality</div>
+        <div class="p2j-card-subtitle">Control JPEG compression ratio and visual fidelity.</div>
+        
+        <div class="p2j-pill-group" id="p2jQualityPills">
+          <div class="p2j-pill" data-quality="60">Small File (60%)</div>
+          <div class="p2j-pill" data-quality="80">Balanced (80%)</div>
+          <div class="p2j-pill p2j-active" data-quality="92">High Quality (92%)</div>
+          <div class="p2j-pill" data-quality="100">Maximum Quality (100%)</div>
+        </div>
+
+        <div class="p2j-slider-box">
+          <div class="p2j-slider-label">
+            <span>Compression Quality</span>
+            <strong id="p2jQualityDisplay">JPG Quality: 92%</strong>
+          </div>
+          <input type="range" id="p2jQualitySlider" class="p2j-range" min="10" max="100" value="92" />
+        </div>
+      </section>
+
+      <!-- 8-16. Output Size & Resolution Workspace -->
+      <section class="p2j-card">
+        <div class="p2j-card-title">Output Size &amp; Resolution</div>
+        <div class="p2j-card-subtitle">Choose how to scale or size your rendered JPG images.</div>
+
+        <!-- 9. Tabs -->
+        <div class="p2j-tabs" id="p2jSizingTabs">
+          <div class="p2j-tab p2j-active" data-tab="dpi">DPI Mode</div>
+          <div class="p2j-tab" data-tab="scale">Scale Mode</div>
+          <div class="p2j-tab" data-tab="pixels">Pixel Size Mode</div>
+        </div>
+
+        <!-- 10. DPI Controls -->
+        <div id="p2jTabDpi">
+          <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Select Resolution (DPI):</div>
+          <div class="p2j-pill-group" id="p2jDpiPills">
+            <div class="p2j-pill" data-dpi="72">72 DPI<br><small style="font-size:10px; opacity:0.8;">Basic Screen</small></div>
+            <div class="p2j-pill" data-dpi="96">96 DPI<br><small style="font-size:10px; opacity:0.8;">Web / Screen</small></div>
+            <div class="p2j-pill" data-dpi="150">150 DPI<br><small style="font-size:10px; opacity:0.8;">Standard Quality</small></div>
+            <div class="p2j-pill" data-dpi="200">200 DPI<br><small style="font-size:10px; opacity:0.8;">Enhanced Quality</small></div>
+            <div class="p2j-pill p2j-active" data-dpi="300">300 DPI<br><small style="font-size:10px; opacity:0.8;">Print Quality</small></div>
+            <div class="p2j-pill" data-dpi="600">600 DPI<br><small style="font-size:10px; opacity:0.8;">Ultra High Res</small></div>
+            <div class="p2j-pill" data-dpi="custom">Custom DPI</div>
+          </div>
+          <div id="p2jCustomDpiBox" style="display:none; margin-top:10px; max-width:280px;">
+            <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;" for="p2jCustomDpiInput">Custom DPI (72 to 600):</label>
+            <input type="number" id="p2jCustomDpiInput" class="p2j-input" min="72" max="600" value="300" />
+          </div>
+        </div>
+
+        <!-- 11. Scale Controls -->
+        <div id="p2jTabScale" style="display:none;">
+          <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Select Scale Multiplier:</div>
+          <div class="p2j-pill-group" id="p2jScalePills">
+            <div class="p2j-pill" data-scale="1">1× Standard</div>
+            <div class="p2j-pill" data-scale="1.5">1.5× Enhanced</div>
+            <div class="p2j-pill" data-scale="2">2× High Quality</div>
+            <div class="p2j-pill" data-scale="3">3× Very High Quality</div>
+            <div class="p2j-pill" data-scale="4">4× Ultra Resolution</div>
+          </div>
+        </div>
+
+        <!-- 12. Pixel Size Controls -->
+        <div id="p2jTabPixels" style="display:none;">
+          <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Select Target Pixel Dimension:</div>
+          <div class="p2j-pill-group" id="p2jPixelPills">
+            <div class="p2j-pill p2j-active" data-pixel="auto">Original / Auto</div>
+            <div class="p2j-pill" data-pixel="320">320 px</div>
+            <div class="p2j-pill" data-pixel="480">480 px</div>
+            <div class="p2j-pill" data-pixel="640">640 px</div>
+            <div class="p2j-pill" data-pixel="800">800 px</div>
+            <div class="p2j-pill" data-pixel="1024">1024 px</div>
+            <div class="p2j-pill" data-pixel="1280">1280 px</div>
+            <div class="p2j-pill" data-pixel="1600">1600 px</div>
+            <div class="p2j-pill" data-pixel="1920">1920 px</div>
+            <div class="p2j-pill" data-pixel="2048">2048 px</div>
+            <div class="p2j-pill" data-pixel="2560">2560 px</div>
+            <div class="p2j-pill" data-pixel="3840">3840 px</div>
+            <div class="p2j-pill" data-pixel="custom">Custom Size</div>
+          </div>
+        </div>
+
+        <!-- 13. Custom Width & Height -->
+        <div style="margin-top:16px; padding-top:14px; border-top:1px solid #e2e8f0;">
+          <div class="p2j-grid-2">
+            <div>
+              <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;" for="p2jCustomWidth">Width (px):</label>
+              <input type="number" id="p2jCustomWidth" class="p2j-input" placeholder="e.g. 2550" />
+            </div>
+            <div>
+              <label style="font-size:12px; font-weight:600; display:block; margin-bottom:4px;" for="p2jCustomHeight">Height (px):</label>
+              <input type="number" id="p2jCustomHeight" class="p2j-input" placeholder="e.g. 3300" />
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <label class="p2j-checkbox-label">
+              <input type="checkbox" id="p2jLockRatio" checked />
+              Lock Aspect Ratio (Prevents Page Distortion)
+            </label>
+          </div>
+        </div>
+
+        <!-- 14. Common Image Sizes -->
+        <details style="margin-top:16px; border:1px solid #e2e8f0; border-radius:8px; padding:8px 12px;">
+          <summary style="font-size:13px; font-weight:600; cursor:pointer; color:#2563eb;">
+            Common Image Sizes (Click to expand presets)
+          </summary>
+          <div class="p2j-pill-group" style="margin-top:10px;" id="p2jCommonImgPills">
+            <div class="p2j-pill" data-w="640" data-h="480">640 × 480</div>
+            <div class="p2j-pill" data-w="800" data-h="600">800 × 600</div>
+            <div class="p2j-pill" data-w="1024" data-h="768">1024 × 768</div>
+            <div class="p2j-pill" data-w="1280" data-h="720">1280 × 720</div>
+            <div class="p2j-pill" data-w="1280" data-h="960">1280 × 960</div>
+            <div class="p2j-pill" data-w="1600" data-h="900">1600 × 900</div>
+            <div class="p2j-pill" data-w="1920" data-h="1080">1920 × 1080</div>
+            <div class="p2j-pill" data-w="2048" data-h="1536">2048 × 1536</div>
+            <div class="p2j-pill" data-w="2560" data-h="1440">2560 × 1440</div>
+            <div class="p2j-pill" data-w="3840" data-h="2160">3840 × 2160</div>
+          </div>
+        </details>
+
+        <!-- 15. Document Size Presets -->
+        <details style="margin-top:10px; border:1px solid #e2e8f0; border-radius:8px; padding:8px 12px;">
+          <summary style="font-size:13px; font-weight:600; cursor:pointer; color:#2563eb;">
+            Document Size Presets (U.S. &amp; ISO Standards)
+          </summary>
+          <div class="p2j-pill-group" style="margin-top:10px;" id="p2jDocPresetPills">
+            <div class="p2j-pill p2j-active" data-doc="original">Original PDF Page Size</div>
+            <div class="p2j-pill" data-doc="letter">US Letter (8.5 × 11 in)</div>
+            <div class="p2j-pill" data-doc="legal">US Legal (8.5 × 14 in)</div>
+            <div class="p2j-pill" data-doc="tabloid">US Tabloid (11 × 17 in)</div>
+            <div class="p2j-pill" data-doc="executive">US Executive (7.25 × 10.5 in)</div>
+            <div class="p2j-pill" data-doc="a3">A3 (11.7 × 16.5 in)</div>
+            <div class="p2j-pill" data-doc="a4">A4 (8.27 × 11.69 in)</div>
+            <div class="p2j-pill" data-doc="a5">A5 (5.83 × 8.27 in)</div>
+          </div>
+        </details>
+
+        <!-- 16. Fit Mode -->
+        <div style="margin-top:14px;">
+          <div style="font-size:13px; font-weight:600; margin-bottom:6px;">Fit Mode for Target Dimensions:</div>
+          <div class="p2j-pill-group" id="p2jFitPills">
+            <div class="p2j-pill p2j-active" data-fit="contain">Contain (Keeps Complete Page Visible)</div>
+            <div class="p2j-pill" data-fit="cover">Cover (Fills Size, May Crop)</div>
+            <div class="p2j-pill" data-fit="stretch">Stretch (Fits Exact, May Distort)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17. Color Mode & 18. Page Rotation -->
+      <section class="p2j-card">
+        <div class="p2j-grid-2">
+          <!-- 17. Color Mode -->
+          <div>
+            <div class="p2j-card-title" style="font-size:16px;">Color Mode</div>
+            <div class="p2j-pill-group" id="p2jColorPills">
+              <div class="p2j-pill p2j-active" data-color="color">Full Color</div>
+              <div class="p2j-pill" data-color="grayscale">Grayscale</div>
+            </div>
+            <p style="font-size:12px; color:#64748b;">Grayscale applies real pixel luminance filtering.</p>
+          </div>
+
+          <!-- 18. Page Rotation -->
+          <div>
+            <div class="p2j-card-title" style="font-size:16px;">Global Page Rotation</div>
+            <div class="p2j-btn-row" style="margin-top:0;">
+              <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jRotateAllLeftBtn">
+                ↺ Rotate All Left (90°)
+              </button>
+              <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jRotateAllRightBtn">
+                ↻ Rotate All Right (90°)
+              </button>
+            </div>
+            <p style="font-size:12px; color:#64748b; margin-top:6px;">You can also rotate individual pages inside the Page Preview grid above.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 19. Output File Name -->
+      <section class="p2j-card">
+        <div class="p2j-card-title" style="font-size:16px;">Output File Name</div>
+        <div class="p2j-card-subtitle">Customize the prefix for your converted JPG images.</div>
+        <input type="text" id="p2jOutputPrefix" class="p2j-input" placeholder="e.g. my-converted-document" />
+        <div style="font-size:12px; color:#64748b; margin-top:4px;">
+          Generated files will be named: <code id="p2jOutputNamePreview">doc-page-001.jpg</code>
+        </div>
+      </section>
+
+      <!-- 20. Output Summary -->
+      <section class="p2j-summary-box">
+        <div style="font-weight:700; font-size:15px; color:#0f172a; margin-bottom:8px;">Output Summary</div>
+        <div class="p2j-summary-grid">
+          <div class="p2j-summary-item">Pages: <strong id="p2jSumPages">All Pages</strong></div>
+          <div class="p2j-summary-item">Format: <strong>JPG (image/jpeg)</strong></div>
+          <div class="p2j-summary-item">Quality: <strong id="p2jSumQuality">92%</strong></div>
+          <div class="p2j-summary-item">Resolution: <strong id="p2jSumRes">300 DPI</strong></div>
+          <div class="p2j-summary-item">Estimated Output: <strong id="p2jSumDim">2550 × 3300 px</strong></div>
+          <div class="p2j-summary-item">Color: <strong id="p2jSumColor">Full Color</strong></div>
+        </div>
+        <div id="p2jMobileMemoryNotice" style="font-size:12px; color:#92400e; margin-top:10px; display:none;">
+          ⚠️ High-resolution conversion can use significant memory. For large PDFs on a phone, 150–300 DPI or a smaller page range may provide better performance.
+        </div>
+      </section>
+
+      <!-- 21. Convert PDF to JPG Button -->
+      <div style="margin-bottom:24px;">
+        <button type="button" class="p2j-btn p2j-btn-primary p2j-btn-full" id="p2jConvertBtn" style="font-size:18px; font-weight:700;">
+          <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          Convert PDF to JPG
+        </button>
+      </div>
+
+      <!-- 22. Conversion Progress Area -->
+      <div id="p2jProgressArea" class="p2j-progress-box" style="display:none;">
+        <div class="p2j-progress-status">
+          <span id="p2jProgressLabel">Preparing Pages...</span>
+          <span id="p2jProgressPercent">0%</span>
+        </div>
+        <div class="p2j-progress-bar-bg">
+          <div class="p2j-progress-bar-fill" id="p2jProgressBar"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+          <span style="font-size:12px; color:#64748b;" id="p2jProgressSub">Sequential local page rendering</span>
+          <button type="button" class="p2j-btn p2j-btn-danger p2j-btn-sm" id="p2jCancelBtn">Cancel Conversion</button>
+        </div>
+      </div>
+
+    </div><!-- END #p2jWorkspace -->
+
+    <!-- BEFORE CONVERSION PLACEHOLDER PANEL -->
+    <div id="p2jDownloadPlaceholder" class="p2j-placeholder-panel">
+      <div class="p2j-placeholder-icon">
+        <svg width="44" height="44" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+      </div>
+      <div class="p2j-placeholder-title">Your JPG downloads will appear here after conversion.</div>
+      <div class="p2j-placeholder-desc">Choose a PDF file above, adjust your pages and quality settings, and click "Convert PDF to JPG". Converted JPG images and ZIP packages will be ready here instantly.</div>
+    </div>
+
+    <!-- 23-30. RESULTS & DOWNLOAD WORKSPACE (AFTER CONVERSION) -->
+    <div id="p2jResultsSection" style="display:none;">
+      <section class="p2j-card p2j-ready-card" style="border-color:#3b82f6; background-color:#ffffff;">
+        <div class="p2j-ready-header">
+          <div class="p2j-ready-badge">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Conversion Complete
+          </div>
+          <h2 class="p2j-card-title p2j-ready-title" style="color:#1d4ed8; margin: 4px 0 6px;">Your JPG Files Are Ready</h2>
+          <div style="font-size:14px; color:#475569;" id="p2jResultsMeta">Converted pages ready for instant download.</div>
+        </div>
+
+        <!-- Converted Output Stats Box -->
+        <div class="p2j-stats-box" id="p2jOutputStatsBox">
+          <div class="p2j-stat-item">
+            <span class="p2j-stat-label">JPG Images Created</span>
+            <strong class="p2j-stat-val" id="p2jStatCount">0</strong>
+          </div>
+          <div class="p2j-stat-item">
+            <span class="p2j-stat-label">JPG Quality</span>
+            <strong class="p2j-stat-val" id="p2jStatQuality">92%</strong>
+          </div>
+          <div class="p2j-stat-item">
+            <span class="p2j-stat-label">Resolution (DPI)</span>
+            <strong class="p2j-stat-val" id="p2jStatDpi">300 DPI</strong>
+          </div>
+          <div class="p2j-stat-item">
+            <span class="p2j-stat-label">Output Dimensions</span>
+            <strong class="p2j-stat-val" id="p2jStatDim">-</strong>
+          </div>
+          <div class="p2j-stat-item">
+            <span class="p2j-stat-label">Total Converted Size</span>
+            <strong class="p2j-stat-val" id="p2jStatTotalSize">-</strong>
+          </div>
+        </div>
+
+        <!-- 24-28. Download Action Buttons in exact mandatory priority order -->
+        <div class="p2j-btn-row p2j-download-actions" style="margin-bottom:18px;">
+          <!-- 1. Download All JPGs as ZIP -->
+          <button type="button" class="p2j-btn p2j-btn-success p2j-download-btn-lg" id="p2jDownloadZipBtn">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download All JPGs as ZIP
+          </button>
+          <!-- 2. Download Selected JPGs -->
+          <button type="button" class="p2j-btn p2j-btn-primary p2j-download-btn-lg" id="p2jDownloadSelectedBtn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Download Selected JPGs
+          </button>
+          <!-- 4. Download Again -->
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-download-btn-lg" id="p2jDownloadAgainBtn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Download Again
+          </button>
+          <!-- 5. Download Original PDF -->
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-download-btn-lg" id="p2jDownloadOrigBtn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            Download Original PDF
+          </button>
+          <!-- 6. Change Settings & Reconvert -->
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-download-btn-lg" id="p2jReconvertBtn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            Change Settings &amp; Reconvert
+          </button>
+          <!-- 7. Convert Another PDF / Reset Tool -->
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-download-btn-lg" id="p2jResetBtn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Convert Another PDF
+          </button>
+        </div>
+
+        <!-- Result Selection Helper Controls -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; padding:8px 12px; background-color:#f8fafc; border-radius:8px; border:1px solid #e2e8f0;">
+          <div style="font-size:13px; font-weight:600; color:#334155;">Individual Converted Pages:</div>
+          <div style="display:flex; gap:6px;">
+            <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jSelectAllResBtn">Select All</button>
+            <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jDeselectAllResBtn">Deselect All</button>
+          </div>
+        </div>
+
+        <!-- Individual JPG Cards Grid (3. Download JPG on every page card) -->
+        <div class="p2j-result-grid" id="p2jResultGrid">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- 31. Second Advertisement — Native Banner -->
+    
+<div class="p2j-ad-container">
+  <span class="p2j-ad-label">Advertisement</span>
+  <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+  <div id="container-269e962c1215493328aeb78f4303284c"></div>
+</div>
+
+
+    <!-- 32. Feature Cards Section -->
+    <section class="p2j-card">
+      <h2 class="p2j-card-title">Everything You Need to Convert PDF to JPG</h2>
+      <div class="p2j-card-subtitle">Comprehensive browser-based conversion with high-resolution image fidelity.</div>
+      <div class="p2j-features-grid">
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">📄 PDF Page Previews</div>
+          <div class="p2j-feature-text">Visual thumbnails of all document pages before converting so you verify page contents easily.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">🎯 Selected Pages to JPG</div>
+          <div class="p2j-feature-text">Choose individual pages, odd/even subsets, or custom ranges like 1-5, 8, 11-14 with pinpoint control.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">⚡ JPG Quality Control</div>
+          <div class="p2j-feature-text">Fine-tune compression from 10% to 100% or select quick presets (60%, 80%, 92%, 100%) to balance clarity and file size.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">🖨️ 72 to 600 DPI Presets</div>
+          <div class="p2j-feature-text">Select 72, 96, 150, 200, 300, or ultra-sharp 600 DPI print resolutions with true mathematical scale rendering.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">📐 Scale &amp; Pixel Controls</div>
+          <div class="p2j-feature-text">Scale up to 4× or specify exact pixel widths up to 3840px (4K) with automatic aspect ratio lock to prevent distortion.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">📋 Document Size Presets</div>
+          <div class="p2j-feature-text">Quickly conform output to standard US Letter, US Legal, US Tabloid, US Executive, A3, A4, and A5 specifications.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">↺ Flexible Page Rotation</div>
+          <div class="p2j-feature-text">Rotate single misaligned pages or orient all document pages 90°, 180°, or 270° clockwise or counter-clockwise.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">🎨 Color &amp; Grayscale</div>
+          <div class="p2j-feature-text">Convert colorful documents to crisp monochrome grayscale using true pixel-level luminance transformations.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">📦 ZIP &amp; Single Downloads</div>
+          <div class="p2j-feature-text">Download single JPGs with one click or package all converted pages into a clean, organized ZIP archive instantly.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">📁 Download Original PDF</div>
+          <div class="p2j-feature-text">Keep easy access to your original source document during your session without re-uploading.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">🔒 Local PDF Processing</div>
+          <div class="p2j-feature-text">Conversion runs locally inside your browser sandbox. Your files are not uploaded to a remote file-conversion server.</div>
+        </div>
+        <div class="p2j-feature-item">
+          <div class="p2j-feature-head">✨ 100% Free &amp; Clean</div>
+          <div class="p2j-feature-text">No account creation, no subscriptions, no watermark added by this tool, and no arbitrary file conversion limits.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 33. How to Use Section -->
+    <section class="p2j-card">
+      <h2 class="p2j-card-title">How to Convert PDF to JPG</h2>
+      <div class="p2j-card-subtitle">Follow these 12 straightforward steps to turn any PDF into crisp JPG images.</div>
+      <div class="p2j-steps-grid">
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">1</div>
+          <div class="p2j-step-content"><strong>Choose or Drag Your PDF:</strong> Click "Choose PDF File" or drag and drop your document into the upload area.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">2</div>
+          <div class="p2j-step-content"><strong>Review Page Previews:</strong> Verify the loaded file information and browse visual thumbnails of your pages.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">3</div>
+          <div class="p2j-step-content"><strong>Select Pages:</strong> Choose All Pages, Odd, Even, or define a custom page range like 1-5, 8, 10.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">4</div>
+          <div class="p2j-step-content"><strong>Select JPG Quality:</strong> Choose from Small File, Balanced, High Quality (92%), or Maximum (100%).</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">5</div>
+          <div class="p2j-step-content"><strong>Choose DPI or Scale:</strong> Select 72 to 600 DPI, multiplier scale (1x-4x), or target pixel dimensions.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">6</div>
+          <div class="p2j-step-content"><strong>Adjust Size Presets:</strong> Pick from US Letter, A4, or common resolutions like 1920×1080 with aspect ratio lock.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">7</div>
+          <div class="p2j-step-content"><strong>Pick Color Mode:</strong> Choose Full Color for rich graphics or Grayscale for ink-saving monochrome output.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">8</div>
+          <div class="p2j-step-content"><strong>Rotate Pages if Needed:</strong> Correct orientation using the 90° rotation buttons on individual pages or globally.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">9</div>
+          <div class="p2j-step-content"><strong>Review Output Summary:</strong> Confirm estimated pixel dimensions, quality, and selected page count.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">10</div>
+          <div class="p2j-step-content"><strong>Click Convert PDF to JPG:</strong> Start the client-side conversion engine and watch real-time progress.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">11</div>
+          <div class="p2j-step-content"><strong>Preview Converted JPGs:</strong> Inspect the resulting images, pixel dimensions, and file sizes.</div>
+        </div>
+        <div class="p2j-step-item">
+          <div class="p2j-step-num">12</div>
+          <div class="p2j-step-content"><strong>Download Output:</strong> Save individual JPGs or grab all pages in a single convenient ZIP file.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 34. Visible SEO Introduction -->
+    <section class="p2j-card p2j-article">
+      <h2>Free Online PDF to JPG Converter for High-Quality Images</h2>
+      <p>
+        The <strong>PDF to JPG Converter</strong> provides an intuitive, browser-based solution to convert PDF pages into crisp, high-resolution JPG images without software installation or remote file uploads. While PDF is the global standard for preserving document formatting, legal contracts, and multi-page reports, JPEG remains the universal standard for digital photography, web publishing, presentation slides, social media sharing, and mobile messaging. Converting PDF to JPG bridges the gap between fixed-layout documents and flexible digital imaging.
+      </p>
+      <p>
+        Whether you need to extract a single diagram from a 50-page technical manual, export architectural blueprints at 300 DPI or 600 DPI for commercial printing, or turn an invoice into a shareable JPEG snapshot for mobile text messaging, this tool gives you granular control. You can adjust DPI, scale multipliers, exact pixel widths and heights, color modes, and compression quality settings to achieve the exact balance of visual sharpness and lightweight file size needed for your project.
+      </p>
+      <p>
+        Unlike older web conversion portals that require you to upload confidential files to third-party servers and wait in email queues, this modern converter executes rendering directly inside your device's browser using HTML5 Canvas and WebAssembly. Your documents remain private on your computer or mobile device, processing completes instantly, and you can download individual JPG images or a neatly packaged ZIP archive with zero watermarks added.
+      </p>
+    </section>
+
+    <!-- 35. Educational Article Part 1 -->
+    <section class="p2j-card p2j-article">
+      <h2>Understanding PDF to JPG Conversion: Technology, Resolution, and Formats</h2>
+      
+      <h3>What Is a PDF to JPG Converter?</h3>
+      <p>
+        A <strong>PDF to JPG converter</strong> is a specialized document utility that rasterizes vector lines, embedded fonts, photographs, and layout geometries contained within an Adobe Portable Document Format (PDF) file into standardized Joint Photographic Experts Group (JPG/JPEG) raster bitmap images. Each PDF page is converted into a standalone image file made of distinct pixels.
+      </p>
+
+      <h3>How PDF Pages Become JPG Images</h3>
+      <p>
+        Under the hood, conversion involves parsing the internal PDF document tree, interpreting vector drawing instructions (PostScript curves, Bezier paths, font glyphs), and rendering them onto an in-memory virtual canvas. Once the visual layout is rendered, a white background is drawn underneath to eliminate transparency artifacts, and the pixel buffer is encoded into a standard JPEG byte stream based on your specified compression factor and DPI settings.
+      </p>
+
+      <h3>PDF vs. JPG: Key Structural Differences</h3>
+      <p>
+        PDF is a container format engineered for document preservation, supporting multi-page pagination, embedded TrueType/OpenType fonts, searchable text streams, hyperlinks, digital signatures, and vector artwork. JPG, by comparison, is a single-frame raster bitmap format optimized for photographic realism and smooth color gradients. When you convert a PDF page to JPG, vector graphics become fixed pixels, text becomes non-editable image data, and document interactive layers are flattened into a permanent visual capture.
+      </p>
+
+      <h3>JPG vs. JPEG: Is There Any Difference?</h3>
+      <p>
+        There is no functional or technical difference between JPG and JPEG. Both designations refer to the exact same image compression standard defined by the Joint Photographic Experts Group (ISO/IEC 10918-1). The three-letter <code>.jpg</code> extension originated due to the 8.3 character filename limitations of historical MS-DOS and early Windows FAT filesystems, whereas UNIX and modern operating systems commonly used <code>.jpeg</code>. Both extensions represent identical JPEG bitstreams.
+      </p>
+
+      <h3>Choosing the Right JPG Quality</h3>
+      <p>
+        JPEG uses lossy compression to dramatically reduce image byte size by discarding subtle high-frequency color variations that the human eye cannot easily distinguish:
+      </p>
+      <ul>
+        <li><strong>Small File (60%):</strong> Highest compression with noticeable artifacting around fine typography; ideal for quick email attachments or mobile thumbnails.</li>
+        <li><strong>Balanced (80%):</strong> The sweet spot for web publishing, offering an 80% reduction in file weight with virtually no visible degradation at regular viewing distances.</li>
+        <li><strong>High Quality (92%):</strong> Recommended default for professional presentations, archiving, and digital portfolios, preserving crisp typography edges.</li>
+        <li><strong>Maximum Quality (100%):</strong> Minimal quantization loss for critical archival and graphic design proofing, resulting in larger file sizes.</li>
+      </ul>
+
+      <h3>DPI Explained: 72 DPI, 96 DPI, 150 DPI, 200 DPI, 300 DPI, and 600 DPI</h3>
+      <p>
+        Dots Per Inch (DPI), or more accurately Pixels Per Inch (PPI), defines how many digital pixels are rendered for every physical inch of document space:
+      </p>
+      <ul>
+        <li><strong>72 DPI (Screen Standard):</strong> Based on early Macintosh monitors; renders a standard 8.5 × 11-inch US Letter page to 612 × 792 pixels.</li>
+        <li><strong>96 DPI (Modern Web Display):</strong> The default resolution for modern desktop operating systems; renders US Letter to 816 × 1056 pixels.</li>
+        <li><strong>150 DPI (Standard Office):</strong> Excellent for digital reports, tablet reading, and office laser proofing; renders US Letter to 1275 × 1650 pixels.</li>
+        <li><strong>200 DPI (Enhanced):</strong> Provides clean text clarity for detailed spreadsheets and technical drawings.</li>
+        <li><strong>300 DPI (Commercial Print Quality):</strong> The worldwide graphic arts standard for crisp, professional magazine and brochure printing; renders US Letter to 2550 × 3300 pixels.</li>
+        <li><strong>600 DPI (Ultra-High Resolution):</strong> Produces immense 5100 × 6600 pixel images suitable for fine-art lithography, archival scanning, and massive wall posters.</li>
+      </ul>
+    </section>
+
+    <!-- 36. 300x250 Advertisement -->
+    
+<div class="p2j-ad-container">
+  <span class="p2j-ad-label">Advertisement</span>
+  <script>
+    atOptions = {
+      'key' : '224e7394c28834c8ac1ce24682c420e3',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+</div>
+
+
+    <!-- 37. Educational Article Part 2 -->
+    <section class="p2j-card p2j-article">
+      <h2>Advanced Output Controls: Sizing, Mobile Performance, and Best Practices</h2>
+
+      <h3>Choosing DPI for Screen Use vs. Printing</h3>
+      <p>
+        When preparing images intended exclusively for computer monitors, mobile devices, or email newsletters, rendering between 96 DPI and 150 DPI is recommended. Higher DPIs on screen simply generate unneeded megabytes without visual enhancement, since screens cannot display more pixels than their physical hardware permits. However, when preparing images that will be printed on physical paper via inkjet or commercial offset presses, 300 DPI is essential to prevent blurry text and jagged pixelation.
+      </p>
+
+      <h3>Document Size Presets in North America and Globally</h3>
+      <p>
+        Different regions utilize distinct standard document formats:
+      </p>
+      <ul>
+        <li><strong>US Letter (8.5 × 11 inches):</strong> The standard business and academic paper size across the United States, Canada, and parts of Mexico.</li>
+        <li><strong>US Legal (8.5 × 14 inches):</strong> Widely utilized for legal contracts, accounting ledgers, and government filings.</li>
+        <li><strong>US Tabloid (11 × 17 inches):</strong> Common for newsletters, engineering schematics, and marketing posters.</li>
+        <li><strong>ISO A4 (8.27 × 11.69 inches / 210 × 297 mm):</strong> The official international standard utilized throughout Europe, Asia, Latin America, and Oceania.</li>
+      </ul>
+
+      <h3>Why JPG File Sizes Can Vary Substantially</h3>
+      <p>
+        You might notice that two different PDF pages converted with identical 300 DPI and 92% quality produce very different file weights. A text-only page with generous white margins might encode to 350 KB, while a page featuring dense high-resolution photographs, complex charts, or textured gradients might weigh 2.5 MB. This occurs because JPEG compression operates on discrete 8×8 pixel blocks; flat solid colors compress efficiently, whereas chaotic details require substantially more bits to represent.
+      </p>
+
+      <h3>When JPG Is Better Than PNG (and Vice Versa)</h3>
+      <p>
+        JPG is ideal for photographic documents, scanned receipts, colorful flyers, and continuous-tone artwork because its lossy algorithm compresses gradients into remarkably small files. Conversely, PNG is superior when transparent backgrounds must be preserved, or when diagrams feature sharp high-contrast geometric lines and text that must remain pixel-exact without compression artifacts.
+      </p>
+
+      <h3>Mobile Memory Management and High-Resolution Rendering</h3>
+      <p>
+        Mobile smartphones and tablets operate within strict browser tab memory ceilings. A single 600 DPI page at US Letter dimensions creates a 5100 × 6600 uncompressed 32-bit RGBA pixel buffer in RAM, occupying over 134 megabytes of memory simultaneously. If a multi-page PDF were rendered concurrently, mobile browsers would crash due to memory exhaustion. This converter safeguards your device by using <em>sequential page rendering</em>: each page is drawn, converted to a compact JPEG Blob, stored safely, and the working canvas is cleared before starting the subsequent page.
+      </p>
+    </section>
+
+    <!-- 38. FAQ Section (28+ Items) -->
+    <section class="p2j-card">
+      <h2 class="p2j-card-title">Frequently Asked Questions</h2>
+      <div class="p2j-card-subtitle">Clear answers to common questions about converting PDF pages to JPG images.</div>
+
+      <div class="p2j-faq-list">
+        <details class="p2j-faq-item">
+          <summary>What is a PDF to JPG converter? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            A PDF to JPG converter is an application that renders pages from a Portable Document Format (PDF) file into standardized Joint Photographic Experts Group (JPG) raster images, making them easy to share, view on mobile devices, or embed into websites.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>How do I convert PDF to JPG online? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Select your PDF using the "Choose PDF File" button or drag and drop it into the upload box. Choose your pages, set your desired JPG quality and DPI resolution, then click "Convert PDF to JPG". Once completed, download your images individually or as a single ZIP archive.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I convert every PDF page to JPG at once? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. By default, "All Pages" is selected. The tool will sequentially render every page in your document and allow you to download all generated JPGs in a single organized ZIP package.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I convert only one specific PDF page? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. You can click on specific page thumbnails to toggle selection, use the "First Page" or "Last Page" quick options, or type an exact page number in the Custom Page Range box.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>How do I specify a custom page range? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Select "Custom Page Range" and enter your desired pages using comma and hyphen notation, such as <code>1-5, 8, 11-14</code>. The converter will validate your input against total document pages.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Is JPG the same as JPEG? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes, JPG and JPEG are identical. The format was standardized by the Joint Photographic Experts Group. The three-letter abbreviation arose because early Windows operating systems enforced three-character file extensions.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I convert PDF to 300 DPI JPG? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes! This converter features full mathematical 300 DPI support (scale = 300/72 ≈ 4.167x). For a standard US Letter page (8.5 × 11 inches), it renders a sharp 2550 × 3300 pixel JPG image ready for professional printing.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I convert PDF to 600 DPI JPG? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. Choosing 600 DPI renders ultra-high-definition images (5100 × 6600 pixels for US Letter). Please note that 600 DPI generates very large images and requires more memory, so it is best suited for desktop browsers.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>What DPI should I choose for general use? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            For online sharing, mobile viewing, and presentations, 150 DPI or 200 DPI is ideal. For standard web thumbnails, 96 DPI is sufficient. For paper printing and commercial publishing, choose 300 DPI.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>What is the difference between 72 DPI and 300 DPI? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            A 72 DPI rendering produces 72 pixels per physical document inch (approx. 612 × 792 px for Letter), which looks soft on modern screens. A 300 DPI rendering produces 300 pixels per inch (approx. 2550 × 3300 px), delivering over 17 times more total pixels for exceptional clarity.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I set custom pixel dimensions for width and height? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. In the "Pixel Size Mode" or "Custom Width &amp; Height" controls, you can enter exact pixel values (e.g. 1920 × 1080). With "Lock Aspect Ratio" checked, the companion dimension recalculates automatically to prevent stretching.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I convert colorful PDF documents to grayscale? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. Under the "Color Mode" section, select "Grayscale". The converter will mathematically calculate ITU-R BT.601 luminance for every pixel to deliver true monochrome JPG images.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I rotate PDF pages before converting? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. You can rotate individual pages clockwise or counter-clockwise using the rotate icon on each thumbnail, or use the global "Rotate All Left" and "Rotate All Right" buttons to adjust all pages at once.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I download each converted page separately? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. Every converted page card includes an individual "Download JPG" button that saves that specific page directly to your device as an <code>image/jpeg</code> file.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I download all JPG files together in a ZIP file? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. Whenever multiple pages are converted, a prominent "Download All JPGs as ZIP" button is available. Clicking it generates a clean <code>.zip</code> file containing all converted JPGs.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I download my original PDF file again? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. A dedicated "Download Original PDF" button lets you re-download the exact, unmodified PDF file you selected during your session.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I convert password-protected PDFs? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. If your PDF is encrypted with standard user password protection, an unlock box will prompt you to enter the password. The password is used solely in your browser memory to decrypt the file and is never transmitted or saved.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Does this tool upload my PDF to a remote server? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            No. All PDF page parsing, canvas rendering, and JPEG encoding take place entirely inside your web browser's local sandbox. No remote file conversion API is used.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Does this converter add a watermark to my images? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            No. This tool never adds watermarks, stamps, or logos to your converted JPG images.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Do I need to sign up or create an account? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            No account, registration, email address, or credit card is required. The tool is 100% free and ready to use immediately.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Does the converter work on Android phones and tablets? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. The workspace is built mobile-first and works smoothly on Chrome, Firefox, Edge, and Samsung Internet on Android devices.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Does the converter work on iPhone and iPad? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. The application runs natively on Safari and other iOS/iPadOS browsers, allowing you to save JPG images directly to your Photos or Files app.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Why does 600 DPI require more memory? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Because a 600 DPI US Letter page generates over 33 million pixels (5100 × 6600 px), which requires approximately 135 MB of raw memory per page during the rendering phase.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Why do different JPG pages have different file sizes? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            JPEG compression adapts to visual complexity. Pages with plain white backgrounds and simple text compress into very small files, while pages with colorful photography or complex patterns require more data.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>What happens to selectable PDF text after conversion? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            JPG is a flat raster format. Selectable text characters become rendered pixels, meaning text can no longer be highlighted or edited without Optical Character Recognition (OCR) software.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can JPG preserve clickable PDF hyperlinks or forms? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            No. Image formats like JPG do not support interactive document features such as clickable URLs, fillable form fields, digital signatures, or navigation bookmarks.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>What should I do if a PDF fails to load? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Check that the file is not corrupted or truncated. If the document is password-protected, verify the password. Ensure you are using an updated modern web browser.
+          </div>
+        </details>
+
+        <details class="p2j-faq-item">
+          <summary>Can I change settings and reconvert without re-uploading? <span>▼</span></summary>
+          <div class="p2j-faq-answer">
+            Yes. Click the "Change Settings &amp; Reconvert" button after viewing your results. Your loaded PDF remains in browser memory, allowing you to modify DPI, quality, or page range and convert again instantly.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 39. Important PDF to JPG Limitations -->
+    <section class="p2j-card">
+      <h2 class="p2j-card-title">Important PDF to JPG Format Considerations</h2>
+      <div class="p2j-card-subtitle">Understand the technical characteristics of converting documents to raster images.</div>
+      <p style="font-size:14px; color:#475569; margin-bottom:12px; line-height:1.6;">
+        Converting a PDF document into JPG format transforms vector geometry and structured text streams into a static grid of pixels. While this ensures universal compatibility across all operating systems and image viewers, several important distinctions apply:
+      </p>
+      <ul style="font-size:14px; color:#475569; line-height:1.6; margin-left:20px; margin-bottom:12px;">
+        <li><strong>Selectable Text:</strong> Text is rasterized into visual pixels and cannot be directly highlighted, copied, or searched.</li>
+        <li><strong>Clickable Links:</strong> Embedded web links, email addresses, and internal cross-references are flattened and no longer interactive.</li>
+        <li><strong>Interactive Form Fields:</strong> Fillable text boxes, checkboxes, and signatures become permanent visual pixels.</li>
+        <li><strong>Document Bookmarks:</strong> Table of contents bookmarks and PDF outlines are not supported by the JPEG standard.</li>
+        <li><strong>Vector Scalability:</strong> Vector shapes and TrueType fonts are fixed at your chosen DPI; zooming beyond 100% reveals pixel boundaries.</li>
+        <li><strong>Transparency:</strong> JPG does not support transparent alpha channels; all transparent PDF backgrounds are automatically backed with solid white (#FFFFFF).</li>
+      </ul>
+    </section>
+
+    <!-- 40. Privacy & Disclaimer Sections -->
+    <section class="p2j-card">
+      <h2 class="p2j-card-title">Privacy</h2>
+      <p style="font-size:14px; color:#475569; line-height:1.6; margin-bottom:16px;">
+        This converter performs PDF rendering and JPG generation in your browser and does not require a remote file-conversion API or user account. Your documents and images are processed locally within your browser sandbox. PDF passwords entered into the converter are used for the current browser session and are not intentionally stored by the tool.
+      </p>
+
+      <h2 class="p2j-card-title" style="margin-top:20px;">PDF to JPG Converter Disclaimer</h2>
+      <p style="font-size:13px; color:#64748b; line-height:1.6; margin-bottom:8px;">
+        This converter creates raster JPG images from PDF pages. Output appearance, dimensions and file size can vary based on the original PDF, selected resolution, JPG quality, page dimensions, fonts, transparency and graphics.
+      </p>
+      <p style="font-size:13px; color:#64748b; line-height:1.6; margin-bottom:8px;">
+        High-resolution conversion may require significant browser memory, especially on mobile devices or with large multi-page PDFs.
+      </p>
+      <p style="font-size:13px; color:#64748b; line-height:1.6; margin-bottom:8px;">
+        JPG output does not preserve interactive PDF features such as selectable text, editable form fields, bookmarks or clickable hyperlinks.
+      </p>
+      <p style="font-size:13px; color:#64748b; line-height:1.6;">
+        Users are responsible for ensuring they have permission to convert and use the documents they select.
+      </p>
+    </section>
+
+    <!-- 41. Social Sharing Section -->
+    <section class="p2j-card">
+      <h2 class="p2j-card-title">Share This PDF to JPG Converter</h2>
+      <div class="p2j-card-subtitle">Help others convert PDF pages to high-quality JPG images for free.</div>
+      <div class="p2j-social-grid">
+        <button type="button" class="p2j-btn p2j-btn-fb p2j-btn-sm" id="p2jShareFb">Facebook</button>
+        <button type="button" class="p2j-btn p2j-btn-tw p2j-btn-sm" id="p2jShareTw">X / Twitter</button>
+        <button type="button" class="p2j-btn p2j-btn-wa p2j-btn-sm" id="p2jShareWa">WhatsApp</button>
+        <button type="button" class="p2j-btn p2j-btn-in p2j-btn-sm" id="p2jShareIn">LinkedIn</button>
+        <button type="button" class="p2j-btn p2j-btn-rd p2j-btn-sm" id="p2jShareRd">Reddit</button>
+        <button type="button" class="p2j-btn p2j-btn-tg p2j-btn-sm" id="p2jShareTg">Telegram</button>
+        <button type="button" class="p2j-btn p2j-btn-em p2j-btn-sm" id="p2jShareEm">Email</button>
+        <button type="button" class="p2j-btn p2j-btn-cp p2j-btn-sm" id="p2jShareCp">Copy Link</button>
+        <button type="button" class="p2j-btn p2j-btn-sh p2j-btn-sm" id="p2jShareNative">Share Tool</button>
+      </div>
+      <div id="p2jCopyAlert" style="display:none; color:#059669; font-size:13px; font-weight:600; margin-top:8px; text-align:center;">
+        ✓ Link Copied to Clipboard
+      </div>
+    </section>
+
+    <!-- 42. Fourth Advertisement — Social Bar -->
+    
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+
+    <!-- Modal Preview Viewer -->
+    <div id="p2jModal" class="p2j-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="p2j-modal-box">
+        <div class="p2j-modal-head">
+          <strong id="p2jModalTitle" style="font-size:15px; color:#0f172a;">Page Preview</strong>
+          <button type="button" class="p2j-icon-btn" id="p2jModalCloseBtn" style="font-size:18px; width:30px; height:30px;">✕</button>
+        </div>
+        <div class="p2j-modal-body">
+          <img id="p2jModalImg" class="p2j-modal-img" src="" alt="Page Preview" />
+        </div>
+        <div class="p2j-modal-foot">
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jModalPrevBtn">← Previous Page</button>
+          <button type="button" class="p2j-btn p2j-btn-secondary p2j-btn-sm" id="p2jModalNextBtn">Next Page →</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- END .p2j-container -->
+</div><!-- END #pdfToJpgBloggerApp -->
+
+
+<script>
+(function () {
+  var root = document.getElementById('pdfToJpgBloggerApp');
+  if (!root) return;
+
+  // Global Session State
+  var currentFile = null;
+  var pdfDoc = null;
+  var totalPages = 0;
+  var pageRotations = {}; // pageNum -> degrees (0, 90, 180, 270)
+  var pageSelected = {};  // pageNum -> boolean
+  var pageOriginalSizes = {}; // pageNum -> { width, height }
+  var convertedResults = []; // array of { pageNum, blob, url, width, height, sizeStr }
+  var isConverting = false;
+  var cancelRequested = false;
+
+  // Selected Options
+  var currentQuality = 0.92;
+  var currentSizingMode = 'dpi'; // 'dpi' | 'scale' | 'pixels'
+  var currentDpi = 300;
+  var currentScale = 1;
+  var currentPixelPreset = 'auto';
+  var customWidth = 0;
+  var customHeight = 0;
+  var lockRatio = true;
+  var docPreset = 'original';
+  var fitMode = 'contain';
+  var colorMode = 'color'; // 'color' | 'grayscale'
+  var outputPrefix = '';
+  var modalCurrentPage = 1;
+
+  // Library Dynamic Loaders (Ensures execution in Blogger or Standalone)
+  function loadScript(src, checkVar, callback) {
+    if (window[checkVar]) {
+      callback();
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = src;
+    s.onload = function () { callback(); };
+    s.onerror = function () {
+      console.error('Failed to load external dependency: ' + src);
+    };
+    document.head.appendChild(s);
+  }
+
+  function ensureLibraries(callback) {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', 'pdfjsLib', function () {
+      if (window.pdfjsLib && !window.pdfjsLib.GlobalWorkerOptions.workerSrc) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      }
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', 'JSZip', function () {
+        callback();
+      });
+    });
+  }
+
+  // DOM Elements
+  var dropZone = root.querySelector('#p2jDropZone');
+  var fileInput = root.querySelector('#p2jFileInput');
+  var browseBtn = root.querySelector('#p2jBrowseBtn');
+  var uploadAlert = root.querySelector('#p2jUploadAlert');
+  var passwordBox = root.querySelector('#p2jPasswordBox');
+  var pdfPassword = root.querySelector('#p2jPdfPassword');
+  var unlockBtn = root.querySelector('#p2jUnlockBtn');
+  var passwordErr = root.querySelector('#p2jPasswordErr');
+
+  var workspace = root.querySelector('#p2jWorkspace');
+  var resultsSection = root.querySelector('#p2jResultsSection');
+  var clearBtn = root.querySelector('#p2jClearBtn');
+  var downloadOrigTopBtn = root.querySelector('#p2jDownloadOrigTopBtn');
+
+  var infoName = root.querySelector('#p2jInfoName');
+  var infoSize = root.querySelector('#p2jInfoSize');
+  var infoPages = root.querySelector('#p2jInfoPages');
+  var infoDim = root.querySelector('#p2jInfoDim');
+
+  var thumbnails = root.querySelector('#p2jThumbnails');
+  var customRangeBox = root.querySelector('#p2jCustomRangeBox');
+  var customRangeInput = root.querySelector('#p2jCustomRangeInput');
+  var rangeValidationMsg = root.querySelector('#p2jRangeValidationMsg');
+
+  var selectAllBtn = root.querySelector('#p2jSelectAllBtn');
+  var deselectAllBtn = root.querySelector('#p2jDeselectAllBtn');
+  var invertSelectionBtn = root.querySelector('#p2jInvertSelectionBtn');
+
+  var qualitySlider = root.querySelector('#p2jQualitySlider');
+  var qualityDisplay = root.querySelector('#p2jQualityDisplay');
+
+  var sizingTabs = root.querySelector('#p2jSizingTabs');
+  var tabDpi = root.querySelector('#p2jTabDpi');
+  var tabScale = root.querySelector('#p2jTabScale');
+  var tabPixels = root.querySelector('#p2jTabPixels');
+  var customDpiBox = root.querySelector('#p2jCustomDpiBox');
+  var customDpiInput = root.querySelector('#p2jCustomDpiInput');
+
+  var customWidthInput = root.querySelector('#p2jCustomWidth');
+  var customHeightInput = root.querySelector('#p2jCustomHeight');
+  var lockRatioCheck = root.querySelector('#p2jLockRatio');
+
+  var rotateAllLeftBtn = root.querySelector('#p2jRotateAllLeftBtn');
+  var rotateAllRightBtn = root.querySelector('#p2jRotateAllRightBtn');
+
+  var outputPrefixInput = root.querySelector('#p2jOutputPrefix');
+  var outputNamePreview = root.querySelector('#p2jOutputNamePreview');
+
+  var sumPages = root.querySelector('#p2jSumPages');
+  var sumQuality = root.querySelector('#p2jSumQuality');
+  var sumRes = root.querySelector('#p2jSumRes');
+  var sumDim = root.querySelector('#p2jSumDim');
+  var sumColor = root.querySelector('#p2jSumColor');
+  var mobileMemoryNotice = root.querySelector('#p2jMobileMemoryNotice');
+
+  var convertBtn = root.querySelector('#p2jConvertBtn');
+  var progressArea = root.querySelector('#p2jProgressArea');
+  var progressBar = root.querySelector('#p2jProgressBar');
+  var progressLabel = root.querySelector('#p2jProgressLabel');
+  var progressPercent = root.querySelector('#p2jProgressPercent');
+  var progressSub = root.querySelector('#p2jProgressSub');
+  var cancelBtn = root.querySelector('#p2jCancelBtn');
+
+  var resultGrid = root.querySelector('#p2jResultGrid');
+  var resultsMeta = root.querySelector('#p2jResultsMeta');
+  var downloadPlaceholder = root.querySelector('#p2jDownloadPlaceholder');
+  var statCount = root.querySelector('#p2jStatCount');
+  var statQuality = root.querySelector('#p2jStatQuality');
+  var statDpi = root.querySelector('#p2jStatDpi');
+  var statDim = root.querySelector('#p2jStatDim');
+  var statTotalSize = root.querySelector('#p2jStatTotalSize');
+  var selectAllResBtn = root.querySelector('#p2jSelectAllResBtn');
+  var deselectAllResBtn = root.querySelector('#p2jDeselectAllResBtn');
+
+  var downloadZipBtn = root.querySelector('#p2jDownloadZipBtn');
+  var downloadSelectedBtn = root.querySelector('#p2jDownloadSelectedBtn');
+  var downloadAgainBtn = root.querySelector('#p2jDownloadAgainBtn');
+  var downloadOrigBtn = root.querySelector('#p2jDownloadOrigBtn');
+  var reconvertBtn = root.querySelector('#p2jReconvertBtn');
+  var resetBtn = root.querySelector('#p2jResetBtn');
+
+  var modal = root.querySelector('#p2jModal');
+  var modalImg = root.querySelector('#p2jModalImg');
+  var modalTitle = root.querySelector('#p2jModalTitle');
+  var modalCloseBtn = root.querySelector('#p2jModalCloseBtn');
+  var modalPrevBtn = root.querySelector('#p2jModalPrevBtn');
+  var modalNextBtn = root.querySelector('#p2jModalNextBtn');
+
+  var shareFb = root.querySelector('#p2jShareFb');
+  var shareTw = root.querySelector('#p2jShareTw');
+  var shareWa = root.querySelector('#p2jShareWa');
+  var shareIn = root.querySelector('#p2jShareIn');
+  var shareRd = root.querySelector('#p2jShareRd');
+  var shareTg = root.querySelector('#p2jShareTg');
+  var shareEm = root.querySelector('#p2jShareEm');
+  var shareCp = root.querySelector('#p2jShareCp');
+  var shareNative = root.querySelector('#p2jShareNative');
+  var copyAlert = root.querySelector('#p2jCopyAlert');
+
+  // Helper: Format file sizes cleanly
+  function formatFileSize(bytes) {
+    if (!bytes || bytes === 0) return '0 B';
+    var k = 1024;
+    var sizes = ['B', 'KB', 'MB', 'GB'];
+    var i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+  }
+
+  function showAlert(msg, isError) {
+    uploadAlert.style.display = 'block';
+    uploadAlert.className = 'p2j-alert ' + (isError ? 'p2j-alert-error' : 'p2j-alert-info');
+    uploadAlert.textContent = msg;
+  }
+
+  function hideAlert() {
+    uploadAlert.style.display = 'none';
+  }
+
+  // Upload Handlers
+  browseBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    fileInput.click();
+  });
+
+  dropZone.addEventListener('click', function () {
+    fileInput.click();
+  });
+
+  ['dragenter', 'dragover'].forEach(function (eventName) {
+    dropZone.addEventListener(eventName, function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.add('p2j-dragover');
+    });
+  });
+
+  ['dragleave', 'drop'].forEach(function (eventName) {
+    dropZone.addEventListener(eventName, function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.classList.remove('p2j-dragover');
+    });
+  });
+
+  dropZone.addEventListener('drop', function (e) {
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleFileSelected(e.dataTransfer.files[0]);
+    }
+  });
+
+  fileInput.addEventListener('change', function () {
+    if (fileInput.files && fileInput.files.length > 0) {
+      handleFileSelected(fileInput.files[0]);
+    }
+  });
+
+  function validatePdfFile(file) {
+    if (!file) return false;
+    var isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+    return isPdf;
+  }
+
+  function handleFileSelected(file) {
+    hideAlert();
+    passwordBox.style.display = 'none';
+    passwordErr.style.display = 'none';
+    pdfPassword.value = '';
+
+    if (!validatePdfFile(file)) {
+      showAlert('Invalid file format. Please select a valid PDF document (.pdf).', true);
+      return;
+    }
+
+    currentFile = file;
+    var baseName = file.name.replace(/\.pdf$/i, '');
+    outputPrefix = baseName;
+    outputPrefixInput.value = baseName;
+    updateOutputFilenamePreview();
+
+    infoName.textContent = file.name;
+    infoSize.textContent = formatFileSize(file.size);
+
+    loadPdfDocument('');
+  }
+
+  function loadPdfDocument(password) {
+    ensureLibraries(function () {
+      var fileReader = new FileReader();
+      fileReader.onload = function () {
+        var typedArray = new Uint8Array(this.result);
+        var loadingTask = window.pdfjsLib.getDocument({
+          data: typedArray,
+          password: password || undefined
+        });
+
+        loadingTask.promise.then(function (pdf) {
+          pdfDoc = pdf;
+          totalPages = pdf.numPages;
+          infoPages.textContent = totalPages;
+          passwordBox.style.display = 'none';
+          workspace.style.display = 'block';
+          resultsSection.style.display = 'none';
+          if (downloadPlaceholder) downloadPlaceholder.style.display = 'flex';
+
+          // Initialize page state
+          pageRotations = {};
+          pageSelected = {};
+          pageOriginalSizes = {};
+          for (var i = 1; i <= totalPages; i++) {
+            pageRotations[i] = 0;
+            pageSelected[i] = true;
+          }
+
+          // Fetch first page to show dimensions
+          pdf.getPage(1).then(function (firstPage) {
+            var vp = firstPage.getViewport({ scale: 1.0 });
+            var w = Math.round(vp.width);
+            var h = Math.round(vp.height);
+            infoDim.textContent = w + ' × ' + h + ' pt (' + (w > h ? 'Landscape' : 'Portrait') + ')';
+            pageOriginalSizes[1] = { width: w, height: h };
+            if (!customWidthInput.value) {
+              customWidth = Math.round((w / 72) * currentDpi);
+              customHeight = Math.round((h / 72) * currentDpi);
+              customWidthInput.value = customWidth;
+              customHeightInput.value = customHeight;
+            }
+            updateSummary();
+            generateThumbnails();
+          });
+        }).catch(function (err) {
+          if (err && err.name === 'PasswordException') {
+            passwordBox.style.display = 'block';
+            if (password) {
+              passwordErr.style.display = 'block';
+            }
+          } else {
+            showAlert("We couldn't read this PDF. The file may be damaged, incomplete, encrypted with an unsupported method or otherwise unsupported.", true);
+          }
+        });
+      };
+      fileReader.readAsArrayBuffer(currentFile);
+    });
+  }
+
+  unlockBtn.addEventListener('click', function () {
+    var pass = pdfPassword.value.trim();
+    if (pass && currentFile) {
+      loadPdfDocument(pass);
+    }
+  });
+
+  // Generate Lightweight Thumbnails
+  function generateThumbnails() {
+    thumbnails.innerHTML = '';
+    for (var i = 1; i <= totalPages; i++) {
+      createThumbCard(i);
+    }
+  }
+
+  function createThumbCard(pageNum) {
+    var card = document.createElement('div');
+    card.className = 'p2j-thumb-card' + (pageSelected[pageNum] ? ' p2j-selected' : '');
+    card.id = 'p2jThumbCard_' + pageNum;
+
+    var imgBox = document.createElement('div');
+    imgBox.className = 'p2j-thumb-img-box';
+    imgBox.title = 'Click to enlarge Page ' + pageNum;
+
+    var img = document.createElement('img');
+    img.className = 'p2j-thumb-img';
+    img.alt = 'Page ' + pageNum;
+    img.id = 'p2jThumbImg_' + pageNum;
+    imgBox.appendChild(img);
+
+    imgBox.addEventListener('click', function () {
+      openModal(pageNum);
+    });
+
+    var meta = document.createElement('div');
+    meta.className = 'p2j-thumb-meta';
+
+    var checkLabel = document.createElement('label');
+    checkLabel.style.display = 'flex';
+    checkLabel.style.alignItems = 'center';
+    checkLabel.style.gap = '4px';
+    checkLabel.style.cursor = 'pointer';
+
+    var chk = document.createElement('input');
+    chk.type = 'checkbox';
+    chk.checked = !!pageSelected[pageNum];
+    chk.addEventListener('change', function () {
+      pageSelected[pageNum] = chk.checked;
+      card.classList.toggle('p2j-selected', chk.checked);
+      updateSummary();
+    });
+
+    checkLabel.appendChild(chk);
+    checkLabel.appendChild(document.createTextNode('Page ' + pageNum));
+
+    var actions = document.createElement('div');
+    actions.className = 'p2j-thumb-actions';
+
+    var rotBtn = document.createElement('button');
+    rotBtn.type = 'button';
+    rotBtn.className = 'p2j-icon-btn';
+    rotBtn.title = 'Rotate 90° clockwise';
+    rotBtn.innerHTML = '↻';
+    rotBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      rotatePage(pageNum, 90);
+    });
+
+    actions.appendChild(rotBtn);
+    meta.appendChild(checkLabel);
+    meta.appendChild(actions);
+
+    card.appendChild(imgBox);
+    card.appendChild(meta);
+    thumbnails.appendChild(card);
+
+    // Render thumbnail into an offscreen canvas
+    renderThumbnailPage(pageNum, img);
+  }
+
+  function renderThumbnailPage(pageNum, imgEl) {
+    if (!pdfDoc) return;
+    pdfDoc.getPage(pageNum).then(function (page) {
+      var rotation = pageRotations[pageNum] || 0;
+      var vp = page.getViewport({ scale: 0.3, rotation: rotation });
+      pageOriginalSizes[pageNum] = { width: Math.round(page.view[2] - page.view[0]), height: Math.round(page.view[3] - page.view[1]) };
+
+      var canvas = document.createElement('canvas');
+      canvas.width = vp.width;
+      canvas.height = vp.height;
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
+        imgEl.src = canvas.toDataURL('image/jpeg', 0.7);
+        imgEl.style.transform = 'rotate(0deg)';
+      });
+    });
+  }
+
+  function rotatePage(pageNum, delta) {
+    pageRotations[pageNum] = ((pageRotations[pageNum] || 0) + delta + 360) % 360;
+    var imgEl = root.querySelector('#p2jThumbImg_' + pageNum);
+    if (imgEl) {
+      renderThumbnailPage(pageNum, imgEl);
+    }
+  }
+
+  rotateAllLeftBtn.addEventListener('click', function () {
+    for (var i = 1; i <= totalPages; i++) {
+      rotatePage(i, -90);
+    }
+  });
+
+  rotateAllRightBtn.addEventListener('click', function () {
+    for (var i = 1; i <= totalPages; i++) {
+      rotatePage(i, 90);
+    }
+  });
+
+  // Page Selection Range Parsing
+  function parsePageRange(rangeStr, maxPages) {
+    var clean = rangeStr.trim();
+    if (!clean) return [];
+    var parts = clean.split(',');
+    var pages = {};
+
+    for (var i = 0; i < parts.length; i++) {
+      var part = parts[i].trim();
+      if (!part) continue;
+      if (part.indexOf('-') !== -1) {
+        var bounds = part.split('-');
+        if (bounds.length !== 2) return null;
+        var start = parseInt(bounds[0], 10);
+        var end = parseInt(bounds[1], 10);
+        if (isNaN(start) || isNaN(end) || start < 1 || end < 1 || start > maxPages || end > maxPages || start > end) {
+          return null;
+        }
+        for (var p = start; p <= end; p++) pages[p] = true;
+      } else {
+        var single = parseInt(part, 10);
+        if (isNaN(single) || single < 1 || single > maxPages) return null;
+        pages[single] = true;
+      }
+    }
+    return Object.keys(pages).map(Number);
+  }
+
+  // Quick Range Pills
+  var pageQuickPills = root.querySelectorAll('#p2jPageQuickPills .p2j-pill');
+  pageQuickPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pageQuickPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      var type = pill.getAttribute('data-range-type');
+
+      customRangeBox.style.display = (type === 'custom') ? 'block' : 'none';
+      rangeValidationMsg.style.display = 'none';
+
+      if (type === 'all') {
+        for (var i = 1; i <= totalPages; i++) pageSelected[i] = true;
+      } else if (type === 'odd') {
+        for (var i = 1; i <= totalPages; i++) pageSelected[i] = (i % 2 !== 0);
+      } else if (type === 'even') {
+        for (var i = 1; i <= totalPages; i++) pageSelected[i] = (i % 2 === 0);
+      } else if (type === 'first') {
+        for (var i = 1; i <= totalPages; i++) pageSelected[i] = (i === 1);
+      } else if (type === 'last') {
+        for (var i = 1; i <= totalPages; i++) pageSelected[i] = (i === totalPages);
+      }
+      syncThumbCheckboxes();
+      updateSummary();
+    });
+  });
+
+  customRangeInput.addEventListener('input', function () {
+    var val = customRangeInput.value;
+    var parsed = parsePageRange(val, totalPages);
+    if (parsed === null) {
+      rangeValidationMsg.style.display = 'block';
+      rangeValidationMsg.textContent = 'Invalid page range. Use format like 1-5, 8, 10 up to ' + totalPages + '.';
+    } else {
+      rangeValidationMsg.style.display = 'none';
+      for (var i = 1; i <= totalPages; i++) pageSelected[i] = false;
+      parsed.forEach(function (p) { pageSelected[p] = true; });
+      syncThumbCheckboxes();
+      updateSummary();
+    }
+  });
+
+  function syncThumbCheckboxes() {
+    for (var i = 1; i <= totalPages; i++) {
+      var card = root.querySelector('#p2jThumbCard_' + i);
+      if (card) {
+        var chk = card.querySelector('input[type="checkbox"]');
+        if (chk) chk.checked = !!pageSelected[i];
+        card.classList.toggle('p2j-selected', !!pageSelected[i]);
+      }
+    }
+  }
+
+  selectAllBtn.addEventListener('click', function () {
+    for (var i = 1; i <= totalPages; i++) pageSelected[i] = true;
+    syncThumbCheckboxes();
+    updateSummary();
+  });
+
+  deselectAllBtn.addEventListener('click', function () {
+    for (var i = 1; i <= totalPages; i++) pageSelected[i] = false;
+    syncThumbCheckboxes();
+    updateSummary();
+  });
+
+  invertSelectionBtn.addEventListener('click', function () {
+    for (var i = 1; i <= totalPages; i++) pageSelected[i] = !pageSelected[i];
+    syncThumbCheckboxes();
+    updateSummary();
+  });
+
+  // JPG Quality
+  var qualityPills = root.querySelectorAll('#p2jQualityPills .p2j-pill');
+  qualityPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      qualityPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      var val = parseInt(pill.getAttribute('data-quality'), 10);
+      qualitySlider.value = val;
+      setQuality(val);
+    });
+  });
+
+  qualitySlider.addEventListener('input', function () {
+    var val = parseInt(qualitySlider.value, 10);
+    setQuality(val);
+  });
+
+  function setQuality(val) {
+    currentQuality = val / 100;
+    qualityDisplay.textContent = 'JPG Quality: ' + val + '%';
+    updateSummary();
+  }
+
+  // Sizing Tabs
+  var sTabs = root.querySelectorAll('#p2jSizingTabs .p2j-tab');
+  sTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      sTabs.forEach(function (t) { t.classList.remove('p2j-active'); });
+      tab.classList.add('p2j-active');
+      currentSizingMode = tab.getAttribute('data-tab');
+
+      tabDpi.style.display = (currentSizingMode === 'dpi') ? 'block' : 'none';
+      tabScale.style.display = (currentSizingMode === 'scale') ? 'block' : 'none';
+      tabPixels.style.display = (currentSizingMode === 'pixels') ? 'block' : 'none';
+      updateSummary();
+    });
+  });
+
+  // DPI Selection
+  var dpiPills = root.querySelectorAll('#p2jDpiPills .p2j-pill');
+  dpiPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      dpiPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      var val = pill.getAttribute('data-dpi');
+      if (val === 'custom') {
+        customDpiBox.style.display = 'block';
+        currentDpi = parseInt(customDpiInput.value, 10) || 300;
+      } else {
+        customDpiBox.style.display = 'none';
+        currentDpi = parseInt(val, 10);
+      }
+      recalculateEstimatedDimensions();
+      updateSummary();
+    });
+  });
+
+  customDpiInput.addEventListener('input', function () {
+    var val = parseInt(customDpiInput.value, 10);
+    if (!isNaN(val) && val >= 72 && val <= 600) {
+      currentDpi = val;
+      recalculateEstimatedDimensions();
+      updateSummary();
+    }
+  });
+
+  // Scale Selection
+  var scalePills = root.querySelectorAll('#p2jScalePills .p2j-pill');
+  scalePills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      scalePills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      currentScale = parseFloat(pill.getAttribute('data-scale'));
+      recalculateEstimatedDimensions();
+      updateSummary();
+    });
+  });
+
+  // Pixel Size Selection
+  var pixelPills = root.querySelectorAll('#p2jPixelPills .p2j-pill');
+  pixelPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pixelPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      currentPixelPreset = pill.getAttribute('data-pixel');
+      if (currentPixelPreset !== 'auto' && currentPixelPreset !== 'custom') {
+        var targetW = parseInt(currentPixelPreset, 10);
+        applyWidthWithRatio(targetW);
+      }
+      updateSummary();
+    });
+  });
+
+  // Aspect Ratio & Custom Dimensions
+  lockRatioCheck.addEventListener('change', function () {
+    lockRatio = lockRatioCheck.checked;
+  });
+
+  customWidthInput.addEventListener('input', function () {
+    var w = parseInt(customWidthInput.value, 10);
+    if (!isNaN(w) && w > 0) {
+      customWidth = w;
+      if (lockRatio && pageOriginalSizes[1]) {
+        var orig = pageOriginalSizes[1];
+        var ratio = orig.height / orig.width;
+        customHeight = Math.round(w * ratio);
+        customHeightInput.value = customHeight;
+      }
+      updateSummary();
+    }
+  });
+
+  customHeightInput.addEventListener('input', function () {
+    var h = parseInt(customHeightInput.value, 10);
+    if (!isNaN(h) && h > 0) {
+      customHeight = h;
+      if (lockRatio && pageOriginalSizes[1]) {
+        var orig = pageOriginalSizes[1];
+        var ratio = orig.width / orig.height;
+        customWidth = Math.round(h * ratio);
+        customWidthInput.value = customWidth;
+      }
+      updateSummary();
+    }
+  });
+
+  function applyWidthWithRatio(targetW) {
+    customWidth = targetW;
+    customWidthInput.value = targetW;
+    if (pageOriginalSizes[1]) {
+      var orig = pageOriginalSizes[1];
+      var ratio = orig.height / orig.width;
+      customHeight = Math.round(targetW * ratio);
+      customHeightInput.value = customHeight;
+    }
+  }
+
+  // Common Image Sizes
+  var commonImgPills = root.querySelectorAll('#p2jCommonImgPills .p2j-pill');
+  commonImgPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      commonImgPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      customWidth = parseInt(pill.getAttribute('data-w'), 10);
+      customHeight = parseInt(pill.getAttribute('data-h'), 10);
+      customWidthInput.value = customWidth;
+      customHeightInput.value = customHeight;
+      updateSummary();
+    });
+  });
+
+  // Document Presets (Dimensions in points at 72 pt/in)
+  var docPresetPills = root.querySelectorAll('#p2jDocPresetPills .p2j-pill');
+  var docSizesPt = {
+    original: null,
+    letter: { w: 612, h: 792 },
+    legal: { w: 612, h: 1008 },
+    tabloid: { w: 792, h: 1224 },
+    executive: { w: 522, h: 756 },
+    a3: { w: 842, h: 1191 },
+    a4: { w: 595, h: 842 },
+    a5: { w: 420, h: 595 }
+  };
+
+  docPresetPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      docPresetPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      docPreset = pill.getAttribute('data-doc');
+      recalculateEstimatedDimensions();
+      updateSummary();
+    });
+  });
+
+  // Fit Mode
+  var fitPills = root.querySelectorAll('#p2jFitPills .p2j-pill');
+  fitPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      fitPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      fitMode = pill.getAttribute('data-fit');
+    });
+  });
+
+  // Color Mode
+  var colorPills = root.querySelectorAll('#p2jColorPills .p2j-pill');
+  colorPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      colorPills.forEach(function (p) { p.classList.remove('p2j-active'); });
+      pill.classList.add('p2j-active');
+      colorMode = pill.getAttribute('data-color');
+      updateSummary();
+    });
+  });
+
+  // Output Filename
+  outputPrefixInput.addEventListener('input', function () {
+    outputPrefix = outputPrefixInput.value.trim() || 'converted-doc';
+    updateOutputFilenamePreview();
+  });
+
+  function updateOutputFilenamePreview() {
+    outputNamePreview.textContent = (outputPrefix || 'doc') + '-page-001.jpg';
+  }
+
+  function recalculateEstimatedDimensions() {
+    var baseW = 612;
+    var baseH = 792;
+    if (docPreset !== 'original' && docSizesPt[docPreset]) {
+      baseW = docSizesPt[docPreset].w;
+      baseH = docSizesPt[docPreset].h;
+    } else if (pageOriginalSizes[1]) {
+      baseW = pageOriginalSizes[1].width;
+      baseH = pageOriginalSizes[1].height;
+    }
+
+    var scale = 1.0;
+    if (currentSizingMode === 'dpi') {
+      scale = currentDpi / 72;
+    } else if (currentSizingMode === 'scale') {
+      scale = currentScale;
+    }
+
+    customWidth = Math.round(baseW * scale);
+    customHeight = Math.round(baseH * scale);
+    customWidthInput.value = customWidth;
+    customHeightInput.value = customHeight;
+  }
+
+  function updateSummary() {
+    var selectedCount = 0;
+    for (var i = 1; i <= totalPages; i++) {
+      if (pageSelected[i]) selectedCount++;
+    }
+
+    sumPages.textContent = selectedCount === totalPages ? 'All ' + totalPages + ' Pages' : selectedCount + ' of ' + totalPages + ' Pages';
+    sumQuality.textContent = Math.round(currentQuality * 100) + '%';
+
+    if (currentSizingMode === 'dpi') {
+      sumRes.textContent = currentDpi + ' DPI';
+    } else if (currentSizingMode === 'scale') {
+      sumRes.textContent = currentScale + '× Scale';
+    } else {
+      sumRes.textContent = 'Exact Pixel Size';
+    }
+
+    sumDim.textContent = (customWidth && customHeight) ? (customWidth + ' × ' + customHeight + ' px') : 'Original Aspect Ratio';
+    sumColor.textContent = colorMode === 'grayscale' ? 'Grayscale' : 'Full Color';
+
+    if (currentDpi >= 600 || (customWidth && customWidth >= 4000)) {
+      mobileMemoryNotice.style.display = 'block';
+    } else {
+      mobileMemoryNotice.style.display = 'none';
+    }
+  }
+
+  // Conversion Execution
+  convertBtn.addEventListener('click', function () {
+    if (isConverting) return;
+    startConversion();
+  });
+
+  cancelBtn.addEventListener('click', function () {
+    if (isConverting) {
+      cancelRequested = true;
+      progressLabel.textContent = 'Cancelling conversion...';
+    }
+  });
+
+  function startConversion() {
+    var pagesToConvert = [];
+    for (var i = 1; i <= totalPages; i++) {
+      if (pageSelected[i]) pagesToConvert.push(i);
+    }
+
+    if (pagesToConvert.length === 0) {
+      alert('Please select at least one page to convert.');
+      return;
+    }
+
+    isConverting = true;
+    cancelRequested = false;
+    progressArea.style.display = 'block';
+    convertBtn.disabled = true;
+    convertBtn.style.opacity = '0.7';
+
+    // Clear previous results and release URLs
+    cleanConvertedResults();
+
+    var currentIndex = 0;
+    var totalToConvert = pagesToConvert.length;
+
+    function processNextPage() {
+      if (cancelRequested) {
+        finishConversion(true);
+        return;
+      }
+
+      if (currentIndex >= totalToConvert) {
+        finishConversion(false);
+        return;
+      }
+
+      var pageNum = pagesToConvert[currentIndex];
+      var progress = Math.round(((currentIndex) / totalToConvert) * 100);
+      progressBar.style.width = progress + '%';
+      progressPercent.textContent = progress + '%';
+      progressLabel.textContent = 'Rendering Page ' + pageNum + ' (' + (currentIndex + 1) + ' of ' + totalToConvert + ')';
+      progressSub.textContent = 'Processing high-resolution canvas...';
+
+      renderFullResolutionPage(pageNum, function (resultItem) {
+        if (resultItem) {
+          convertedResults.push(resultItem);
+        }
+        currentIndex++;
+        // Allow DOM to breathe and update progress bar
+        setTimeout(processNextPage, 30);
+      });
+    }
+
+    processNextPage();
+  }
+
+  function finishConversion(wasCancelled) {
+    isConverting = false;
+    convertBtn.disabled = false;
+    convertBtn.style.opacity = '1';
+    progressArea.style.display = 'none';
+
+    if (wasCancelled) {
+      showAlert('Conversion was cancelled.', false);
+      return;
+    }
+
+    displayResults();
+  }
+
+  function cleanConvertedResults() {
+    convertedResults.forEach(function (item) {
+      if (item.url) URL.revokeObjectURL(item.url);
+    });
+    convertedResults = [];
+  }
+
+  // Sequential Page Rendering Engine
+  function renderFullResolutionPage(pageNum, callback) {
+    pdfDoc.getPage(pageNum).then(function (page) {
+      var rotation = (pageRotations[pageNum] || 0) % 360;
+      var origVp = page.getViewport({ scale: 1.0, rotation: rotation });
+
+      // Determine scale factor
+      var renderScale = 1.0;
+      if (currentSizingMode === 'dpi') {
+        renderScale = currentDpi / 72;
+      } else if (currentSizingMode === 'scale') {
+        renderScale = currentScale;
+      } else if (customWidth > 0 && customHeight > 0) {
+        var scaleX = customWidth / origVp.width;
+        var scaleY = customHeight / origVp.height;
+        if (fitMode === 'contain') {
+          renderScale = Math.min(scaleX, scaleY);
+        } else if (fitMode === 'cover') {
+          renderScale = Math.max(scaleX, scaleY);
+        } else {
+          renderScale = scaleX; // will stretch on draw
+        }
+      }
+
+      var vp = page.getViewport({ scale: renderScale, rotation: rotation });
+      var targetW = Math.round(vp.width);
+      var targetH = Math.round(vp.height);
+
+      if (currentSizingMode === 'pixels' && fitMode === 'stretch' && customWidth > 0 && customHeight > 0) {
+        targetW = customWidth;
+        targetH = customHeight;
+      }
+
+      var canvas = document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+      var ctx = canvas.getContext('2d');
+
+      // 1. Mandatory solid white background
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // 2. Render PDF Page
+      var renderContext = {
+        canvasContext: ctx,
+        viewport: vp
+      };
+
+      page.render(renderContext).promise.then(function () {
+        // 3. Grayscale processing if enabled
+        if (colorMode === 'grayscale') {
+          applyGrayscaleFilter(ctx, canvas.width, canvas.height);
+        }
+
+        // 4. Convert Canvas to real image/jpeg Blob
+        canvas.toBlob(function (blob) {
+          if (!blob) {
+            callback(null);
+            return;
+          }
+          var url = URL.createObjectURL(blob);
+          var sizeStr = formatFileSize(blob.size);
+
+          // Clear working canvas to release RAM
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          canvas.width = 1;
+          canvas.height = 1;
+
+          callback({
+            pageNum: pageNum,
+            blob: blob,
+            url: url,
+            width: targetW,
+            height: targetH,
+            sizeStr: sizeStr
+          });
+        }, 'image/jpeg', currentQuality);
+
+      }).catch(function (err) {
+        console.error('Error rendering page ' + pageNum, err);
+        callback(null);
+      });
+    });
+  }
+
+  // Grayscale Luminance Transformation (ITU-R BT.601)
+  function applyGrayscaleFilter(ctx, width, height) {
+    try {
+      var imgData = ctx.getImageData(0, 0, width, height);
+      var d = imgData.data;
+      for (var i = 0; i < d.length; i += 4) {
+        var gray = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+        d[i] = gray;
+        d[i + 1] = gray;
+        d[i + 2] = gray;
+      }
+      ctx.putImageData(imgData, 0, 0);
+    } catch (e) {
+      console.warn('Canvas security or allocation warning during grayscale:', e);
+    }
+  }
+
+  // Results & Download Display
+  function displayResults() {
+    workspace.style.display = 'none';
+    if (downloadPlaceholder) downloadPlaceholder.style.display = 'none';
+    resultsSection.style.display = 'block';
+    resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+    var totalBytes = 0;
+    var firstRes = convertedResults[0];
+    convertedResults.forEach(function (r) {
+      if (r.blob) totalBytes += r.blob.size;
+    });
+
+    resultsMeta.textContent = convertedResults.length + ' JPG image' + (convertedResults.length > 1 ? 's' : '') + ' created • ' + (colorMode === 'grayscale' ? 'Grayscale' : 'Full Color') + ' • Ready for instant download.';
+
+    if (statCount) statCount.textContent = convertedResults.length + (convertedResults.length === 1 ? ' Image' : ' Images');
+    if (statQuality) statQuality.textContent = Math.round(currentQuality * 100) + '%';
+    if (statDpi) statDpi.textContent = currentDpi + ' DPI';
+    if (statDim) statDim.textContent = firstRes ? (firstRes.width + ' × ' + firstRes.height + ' px') : '-';
+    if (statTotalSize) statTotalSize.textContent = formatFileSize(totalBytes);
+
+    // If only 1 page converted, hide or secondary-style the ZIP button if needed, but keep available
+    if (downloadZipBtn) {
+      if (convertedResults.length === 1) {
+        downloadZipBtn.style.display = 'none';
+      } else {
+        downloadZipBtn.style.display = 'inline-flex';
+      }
+    }
+
+    resultGrid.innerHTML = '';
+
+    convertedResults.forEach(function (res) {
+      var card = document.createElement('div');
+      card.className = 'p2j-res-card';
+      card.id = 'p2jResCard_' + res.pageNum;
+
+      var checkDiv = document.createElement('div');
+      checkDiv.className = 'p2j-res-check';
+      var chk = document.createElement('input');
+      chk.type = 'checkbox';
+      chk.checked = true;
+      chk.dataset.page = res.pageNum;
+      checkDiv.appendChild(chk);
+      checkDiv.appendChild(document.createTextNode('Page ' + res.pageNum));
+
+      var imgBox = document.createElement('div');
+      imgBox.className = 'p2j-res-img-box';
+      imgBox.title = 'Click to inspect full JPG preview';
+      var img = document.createElement('img');
+      img.className = 'p2j-res-img';
+      img.src = res.url;
+      img.alt = 'Converted Page ' + res.pageNum;
+      imgBox.appendChild(img);
+
+      imgBox.addEventListener('click', function () {
+        openModalImage(res.url, 'Page ' + res.pageNum + ' (' + res.width + ' × ' + res.height + ' px)');
+      });
+
+      var meta = document.createElement('div');
+      meta.className = 'p2j-res-meta';
+      meta.innerHTML = '<span>' + res.width + ' × ' + res.height + ' px</span><strong>' + res.sizeStr + '</strong>';
+
+      // 3. Download JPG on every page card (prominent touch-friendly button)
+      var dlBtn = document.createElement('button');
+      dlBtn.type = 'button';
+      dlBtn.className = 'p2j-btn p2j-btn-primary p2j-res-card-btn';
+      dlBtn.style.marginTop = 'auto';
+      dlBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Download JPG';
+      dlBtn.addEventListener('click', function () {
+        triggerDownload(res.url, getPageFilename(res.pageNum));
+      });
+
+      card.appendChild(checkDiv);
+      card.appendChild(imgBox);
+      card.appendChild(meta);
+      card.appendChild(dlBtn);
+      resultGrid.appendChild(card);
+    });
+  }
+
+  // Select/Deselect all result cards
+  if (selectAllResBtn) {
+    selectAllResBtn.addEventListener('click', function () {
+      var checkboxes = resultGrid.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(function (c) { c.checked = true; });
+    });
+  }
+  if (deselectAllResBtn) {
+    deselectAllResBtn.addEventListener('click', function () {
+      var checkboxes = resultGrid.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(function (c) { c.checked = false; });
+    });
+  }
+
+  function getPageFilename(pageNum) {
+    var prefix = outputPrefix || 'converted-doc';
+    var numStr = ('000' + pageNum).slice(-3);
+    return prefix + '-page-' + numStr + '.jpg';
+  }
+
+  function triggerDownload(url, filename) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  // 1. Download All JPGs as ZIP
+  downloadZipBtn.addEventListener('click', function () {
+    if (convertedResults.length === 0) return;
+    if (convertedResults.length === 1) {
+      triggerDownload(convertedResults[0].url, getPageFilename(convertedResults[0].pageNum));
+      return;
+    }
+    createAndDownloadZip(convertedResults, (outputPrefix || 'converted') + '-jpg-images.zip');
+  });
+
+  // 2. Download Selected JPGs
+  downloadSelectedBtn.addEventListener('click', function () {
+    var selected = [];
+    var checkboxes = resultGrid.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function (chk) {
+      if (chk.checked) {
+        var page = parseInt(chk.dataset.page, 10);
+        var match = convertedResults.find(function (r) { return r.pageNum === page; });
+        if (match) selected.push(match);
+      }
+    });
+
+    if (selected.length === 0) {
+      alert('Please check at least one page from the results.');
+      return;
+    }
+
+    if (selected.length === 1) {
+      triggerDownload(selected[0].url, getPageFilename(selected[0].pageNum));
+    } else {
+      createAndDownloadZip(selected, (outputPrefix || 'selected') + '-jpg-images.zip');
+    }
+  });
+
+  // ZIP Creation Function
+  function createAndDownloadZip(items, zipName) {
+    ensureLibraries(function () {
+      var zip = new window.JSZip();
+      items.forEach(function (item) {
+        zip.file(getPageFilename(item.pageNum), item.blob);
+      });
+
+      zip.generateAsync({ type: 'blob' }).then(function (content) {
+        var zipUrl = URL.createObjectURL(content);
+        triggerDownload(zipUrl, zipName);
+        setTimeout(function () { URL.revokeObjectURL(zipUrl); }, 15000);
+      }).catch(function (err) {
+        console.error('ZIP generation error:', err);
+        alert('Could not package ZIP file. You can download individual JPG images instead.');
+      });
+    });
+  }
+
+  // 4. Download Again (keeps generated object URLs active, triggers download without reconverting)
+  downloadAgainBtn.addEventListener('click', function () {
+    if (convertedResults.length === 0) return;
+    if (convertedResults.length === 1) {
+      triggerDownload(convertedResults[0].url, getPageFilename(convertedResults[0].pageNum));
+    } else {
+      createAndDownloadZip(convertedResults, (outputPrefix || 'converted') + '-jpg-images.zip');
+    }
+  });
+
+  // 5. Download Original PDF
+  function downloadOriginalPdf() {
+    if (!currentFile) return;
+    var origUrl = URL.createObjectURL(currentFile);
+    triggerDownload(origUrl, currentFile.name);
+    setTimeout(function () { URL.revokeObjectURL(origUrl); }, 15000);
+  }
+
+  downloadOrigTopBtn.addEventListener('click', downloadOriginalPdf);
+  downloadOrigBtn.addEventListener('click', downloadOriginalPdf);
+
+  // 6. Change Settings & Reconvert
+  reconvertBtn.addEventListener('click', function () {
+    resultsSection.style.display = 'none';
+    workspace.style.display = 'block';
+    if (downloadPlaceholder) downloadPlaceholder.style.display = 'flex';
+    workspace.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // 7. Convert Another PDF / Reset Tool
+  function resetAll() {
+    cleanConvertedResults();
+    currentFile = null;
+    pdfDoc = null;
+    totalPages = 0;
+    pageRotations = {};
+    pageSelected = {};
+    pageOriginalSizes = {};
+    fileInput.value = '';
+    workspace.style.display = 'none';
+    resultsSection.style.display = 'none';
+    if (downloadPlaceholder) downloadPlaceholder.style.display = 'flex';
+    passwordBox.style.display = 'none';
+    uploadAlert.style.display = 'none';
+    thumbnails.innerHTML = '';
+    resultGrid.innerHTML = '';
+  }
+
+  resetBtn.addEventListener('click', resetAll);
+  clearBtn.addEventListener('click', resetAll);
+
+  // Modal Viewer Controls
+  function openModal(pageNum) {
+    modalCurrentPage = pageNum;
+    modal.classList.add('p2j-open');
+    modal.setAttribute('aria-hidden', 'false');
+    updateModalView();
+  }
+
+  function openModalImage(src, title) {
+    modalTitle.textContent = title;
+    modalImg.src = src;
+    modalPrevBtn.style.display = 'none';
+    modalNextBtn.style.display = 'none';
+    modal.classList.add('p2j-open');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function updateModalView() {
+    modalTitle.textContent = 'Page ' + modalCurrentPage + ' of ' + totalPages;
+    modalPrevBtn.style.display = 'inline-flex';
+    modalNextBtn.style.display = 'inline-flex';
+
+    if (pdfDoc) {
+      pdfDoc.getPage(modalCurrentPage).then(function (page) {
+        var rotation = pageRotations[modalCurrentPage] || 0;
+        var vp = page.getViewport({ scale: 1.2, rotation: rotation });
+        var canvas = document.createElement('canvas');
+        canvas.width = vp.width;
+        canvas.height = vp.height;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
+          modalImg.src = canvas.toDataURL('image/jpeg', 0.85);
+        });
+      });
+    }
+  }
+
+  modalCloseBtn.addEventListener('click', function () {
+    modal.classList.remove('p2j-open');
+    modal.setAttribute('aria-hidden', 'true');
+    modalImg.src = '';
+  });
+
+  modalPrevBtn.addEventListener('click', function () {
+    if (modalCurrentPage > 1) {
+      modalCurrentPage--;
+      updateModalView();
+    }
+  });
+
+  modalNextBtn.addEventListener('click', function () {
+    if (modalCurrentPage < totalPages) {
+      modalCurrentPage++;
+      updateModalView();
+    }
+  });
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('p2j-open')) {
+      modalCloseBtn.click();
+    }
+  });
+
+  // Social Sharing Functions
+  var shareTitle = encodeURIComponent(document.title || 'Free PDF to JPG Converter');
+  var shareUrl = encodeURIComponent(window.location.href);
+
+  shareFb.addEventListener('click', function () {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + shareUrl, '_blank', 'width=600,height=400');
+  });
+
+  shareTw.addEventListener('click', function () {
+    window.open('https://twitter.com/intent/tweet?text=' + shareTitle + '&url=' + shareUrl, '_blank', 'width=600,height=400');
+  });
+
+  shareWa.addEventListener('click', function () {
+    window.open('https://api.whatsapp.com/send?text=' + shareTitle + '%20' + shareUrl, '_blank');
+  });
+
+  shareIn.addEventListener('click', function () {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl, '_blank', 'width=600,height=500');
+  });
+
+  shareRd.addEventListener('click', function () {
+    window.open('https://reddit.com/submit?url=' + shareUrl + '&title=' + shareTitle, '_blank');
+  });
+
+  shareTg.addEventListener('click', function () {
+    window.open('https://t.me/share/url?url=' + shareUrl + '&text=' + shareTitle, '_blank');
+  });
+
+  shareEm.addEventListener('click', function () {
+    window.location.href = 'mailto:?subject=' + encodeURIComponent('PDF to JPG Converter') + '&body=' + shareTitle + '%0A%0A' + shareUrl;
+  });
+
+  shareCp.addEventListener('click', function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        copyAlert.style.display = 'block';
+        setTimeout(function () { copyAlert.style.display = 'none'; }, 3000);
+      });
+    } else {
+      var tmp = document.createElement('input');
+      tmp.value = window.location.href;
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand('copy');
+      document.body.removeChild(tmp);
+      copyAlert.style.display = 'block';
+      setTimeout(function () { copyAlert.style.display = 'none'; }, 3000);
+    }
+  });
+
+  shareNative.addEventListener('click', function () {
+    if (navigator.share) {
+      navigator.share({
+        title: document.title,
+        url: window.location.href
+      }).catch(function () {});
+    } else {
+      shareCp.click();
+    }
+  });
+
+})();
+</script>
+
