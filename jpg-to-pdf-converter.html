@@ -1,0 +1,3169 @@
+<!--
+BLOGGER TITLE:
+Free JPG to PDF Converter – Convert Images to PDF Online
+
+BLOGGER SEARCH DESCRIPTION:
+Convert JPG images to PDF online for free. Combine multiple JPG files, choose page size, orientation and margins, then download your PDF instantly.
+
+BLOGGER LABELS:
+JPG to PDF Converter, JPG Converter, JPEG to PDF, Image to PDF, PDF Converter, PDF Tools, Image Tools, Document Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+jpg-to-pdf-converter
+
+GITHUB FILE NAME:
+jpg-to-pdf-converter.html
+-->
+
+<style>
+#jpgToPdfBloggerApp,
+#jpgToPdfBloggerApp * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#jpgToPdfBloggerApp {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  padding: 16px 8px;
+}
+@media (min-width: 640px) {
+  #jpgToPdfBloggerApp {
+    padding: 24px 16px;
+  }
+}
+@media (min-width: 1024px) {
+  #jpgToPdfBloggerApp {
+    padding: 32px 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+}
+
+/* Base Headings & Typography */
+#jpgToPdfBloggerApp h1,
+#jpgToPdfBloggerApp h2,
+#jpgToPdfBloggerApp h3,
+#jpgToPdfBloggerApp h4 {
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.3;
+}
+#jpgToPdfBloggerApp p {
+  margin-bottom: 14px;
+  color: #334155;
+}
+#jpgToPdfBloggerApp a {
+  color: #2563eb;
+  text-decoration: none;
+}
+#jpgToPdfBloggerApp a:hover {
+  text-decoration: underline;
+}
+
+/* Sections & Cards */
+.j2p-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+@media (min-width: 640px) {
+  .j2p-card {
+    padding: 28px;
+  }
+}
+.j2p-card-header {
+  margin-bottom: 18px;
+}
+.j2p-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.j2p-card-desc {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Hero Section */
+.j2p-hero {
+  text-align: center;
+  padding: 28px 16px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+.j2p-hero-flag {
+  font-size: 2.2rem;
+  line-height: 1;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.j2p-badge {
+  display: inline-block;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  margin-bottom: 14px;
+}
+.j2p-hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+@media (min-width: 640px) {
+  .j2p-hero h1 {
+    font-size: 2.6rem;
+  }
+}
+.j2p-hero-sub {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+.j2p-hero-desc {
+  font-size: 1.05rem;
+  color: #475569;
+  max-width: 720px;
+  margin: 0 auto 20px auto;
+  line-height: 1.6;
+}
+.j2p-trust-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  margin-top: 16px;
+}
+.j2p-trust-item {
+  font-size: 0.85rem;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1px solid #a7f3d0;
+}
+
+/* Ad Wrapper */
+.j2p-ad-wrapper {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+  padding: 8px 0;
+}
+.j2p-ad-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Upload Area */
+.j2p-dropzone {
+  border: 2px dashed #3b82f6;
+  background-color: #f8faff;
+  border-radius: 16px;
+  padding: 36px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.j2p-dropzone:hover,
+.j2p-dropzone.j2p-dragover {
+  border-color: #1d4ed8;
+  background-color: #eff6ff;
+}
+.j2p-dropzone-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #2563eb;
+  line-height: 1;
+}
+.j2p-dropzone-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+.j2p-dropzone-sub {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 18px;
+}
+.j2p-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 12px 24px;
+  font-size: 1rem;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.j2p-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff !important;
+  border-color: #1d4ed8;
+  min-height: 52px;
+}
+.j2p-btn-primary:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+.j2p-btn-secondary {
+  background-color: #f1f5f9;
+  color: #334155 !important;
+  border-color: #cbd5e1;
+  min-height: 48px;
+}
+.j2p-btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #0f172a !important;
+}
+.j2p-btn-danger {
+  background-color: #fee2e2;
+  color: #b91c1c !important;
+  border-color: #fca5a5;
+  min-height: 44px;
+}
+.j2p-btn-danger:hover {
+  background-color: #fecaca;
+}
+.j2p-btn-success {
+  background-color: #10b981;
+  color: #ffffff !important;
+  border-color: #059669;
+  min-height: 52px;
+  font-size: 1.1rem;
+}
+.j2p-btn-success:hover {
+  background-color: #059669;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+.j2p-btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  min-height: 38px;
+}
+
+/* File Actions Bar */
+.j2p-files-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+.j2p-files-summary {
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+}
+.j2p-action-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Image Preview Grid */
+.j2p-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 480px) {
+  .j2p-image-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.j2p-img-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.j2p-img-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.j2p-img-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  z-index: 2;
+}
+.j2p-thumb-container {
+  height: 180px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.j2p-thumb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+.j2p-img-meta {
+  padding: 12px;
+  font-size: 0.85rem;
+  color: #475569;
+  border-top: 1px solid #f1f5f9;
+  flex-grow: 1;
+}
+.j2p-img-name {
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.j2p-img-details {
+  display: flex;
+  justify-content: space-between;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+.j2p-img-controls {
+  padding: 8px 12px 12px 12px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.j2p-ctrl-row {
+  display: flex;
+  gap: 4px;
+  justify-content: space-between;
+}
+.j2p-ctrl-btn {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  border-radius: 4px;
+  padding: 6px 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+.j2p-ctrl-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.j2p-ctrl-btn-del {
+  color: #dc2626;
+  border-color: #fca5a5;
+  background: #fff5f5;
+}
+.j2p-ctrl-btn-del:hover {
+  background: #fee2e2;
+}
+
+/* Setting Groups & Selectors */
+.j2p-settings-section {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.j2p-settings-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.j2p-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+.j2p-subtext {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: -4px;
+  margin-bottom: 10px;
+}
+
+/* Size Categories & Grids */
+.j2p-size-category {
+  margin-bottom: 16px;
+}
+.j2p-category-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.j2p-grid-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+@media (min-width: 640px) {
+  .j2p-grid-buttons {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 10px;
+  }
+}
+.j2p-choice-btn {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.j2p-choice-btn:hover {
+  border-color: #3b82f6;
+  background: #f8faff;
+}
+.j2p-choice-btn.j2p-active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+.j2p-choice-btn strong {
+  font-size: 0.92rem;
+  color: #0f172a;
+  display: block;
+}
+.j2p-choice-btn span {
+  font-size: 0.76rem;
+  color: #64748b;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Custom Size Inputs */
+.j2p-input-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.j2p-input-group {
+  flex: 1;
+  min-width: 120px;
+}
+.j2p-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: #ffffff;
+  min-height: 44px;
+}
+.j2p-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Segmented Toggle / Pill buttons */
+.j2p-segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.j2p-pill-btn {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.j2p-pill-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+.j2p-pill-btn.j2p-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+/* Sliders */
+.j2p-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+.j2p-slider {
+  flex-grow: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+.j2p-slider-val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2563eb;
+  min-width: 54px;
+}
+
+/* Summary Card */
+.j2p-summary-card {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px 0;
+}
+.j2p-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.j2p-summary-item {
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+.j2p-summary-k {
+  font-size: 0.78rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.j2p-summary-v {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+/* Preview Stage */
+.j2p-preview-box {
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  margin: 20px 0;
+}
+.j2p-preview-sheet {
+  background: #ffffff;
+  border: 1px solid #94a3b8;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease;
+  max-width: 100%;
+}
+.j2p-preview-margin-box {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+.j2p-preview-img-mock {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Progress Box */
+.j2p-progress-card {
+  display: none;
+  background: #ffffff;
+  border: 2px solid #3b82f6;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+}
+.j2p-progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 16px 0 10px 0;
+}
+.j2p-progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.2s ease;
+}
+
+/* Result Card */
+.j2p-result-card {
+  display: none;
+  background: #f0fdf4;
+  border: 2px solid #22c55e;
+  border-radius: 12px;
+  padding: 28px 20px;
+  margin: 24px 0;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.15);
+}
+.j2p-result-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #15803d;
+  margin-bottom: 8px;
+}
+.j2p-result-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px 0 24px 0;
+  font-size: 0.95rem;
+  color: #166534;
+}
+.j2p-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Features Grid */
+.j2p-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.j2p-feature-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+  transition: all 0.2s ease;
+}
+.j2p-feature-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+}
+.j2p-feature-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+.j2p-feature-desc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* How to Steps */
+.j2p-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px 0;
+}
+.j2p-step-item {
+  display: flex;
+  gap: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+}
+.j2p-step-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.j2p-step-body h3 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  color: #0f172a;
+}
+.j2p-step-body p {
+  font-size: 0.92rem;
+  color: #475569;
+  margin: 0;
+}
+
+/* Educational Article */
+.j2p-article-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #334155;
+}
+.j2p-article-content h2 {
+  font-size: 1.4rem;
+  margin: 28px 0 12px 0;
+  color: #0f172a;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.j2p-article-content h3 {
+  font-size: 1.15rem;
+  margin: 20px 0 8px 0;
+  color: #1e293b;
+}
+.j2p-article-content ul,
+.j2p-article-content ol {
+  margin: 12px 0 16px 24px;
+}
+.j2p-article-content li {
+  margin-bottom: 8px;
+}
+
+/* FAQ Details/Summary */
+.j2p-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+.j2p-faq-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.j2p-faq-item summary {
+  padding: 16px 20px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: #0f172a;
+  cursor: pointer;
+  outline: none;
+  list-style: none;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.j2p-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.j2p-faq-item summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  color: #2563eb;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+.j2p-faq-item[open] summary::after {
+  content: "−";
+  transform: rotate(180deg);
+}
+.j2p-faq-item[open] summary {
+  border-bottom: 1px solid #f1f5f9;
+  background: #f8faff;
+}
+.j2p-faq-answer {
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* Social Sharing */
+.j2p-share-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.j2p-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  min-height: 48px;
+  transition: opacity 0.2s ease;
+}
+.j2p-share-btn:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+.j2p-bg-fb { background-color: #1877f2; }
+.j2p-bg-tw { background-color: #000000; }
+.j2p-bg-wa { background-color: #25d366; }
+.j2p-bg-li { background-color: #0a66c2; }
+.j2p-bg-rd { background-color: #ff4500; }
+.j2p-bg-tg { background-color: #229ed9; }
+.j2p-bg-em { background-color: #4b5563; }
+.j2p-bg-cp { background-color: #059669; }
+.j2p-bg-sh { background-color: #7c3aed; }
+
+/* Alert Box */
+.j2p-alert {
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  display: none;
+}
+.j2p-alert-error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+.j2p-alert-success {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+</style>
+
+<div id="jpgToPdfBloggerApp">
+
+  <!-- 1. Hero -->
+  <section class="j2p-hero">
+    <div class="j2p-hero-flag">🇺🇸</div>
+    <div><span class="j2p-badge">Free Image to PDF Tool for U.S. Users</span></div>
+    <h1>JPG to PDF Converter</h1>
+    <div class="j2p-hero-sub">Convert JPG Images into a Professional PDF</div>
+    <p class="j2p-hero-desc">
+      Turn one or multiple JPG images into a clean PDF directly in your browser. Arrange your images, choose page size, orientation, margins and image quality, then create and download your PDF.
+    </p>
+    <div class="j2p-trust-grid">
+      <span class="j2p-trust-item">✓ 100% Free</span>
+      <span class="j2p-trust-item">✓ No Signup</span>
+      <span class="j2p-trust-item">✓ Multiple JPG Images</span>
+      <span class="j2p-trust-item">✓ Drag & Drop Reordering</span>
+      <span class="j2p-trust-item">✓ U.S. Page Sizes</span>
+      <span class="j2p-trust-item">✓ Custom Page Sizes</span>
+      <span class="j2p-trust-item">✓ Orientation Controls</span>
+      <span class="j2p-trust-item">✓ Margin Controls</span>
+      <span class="j2p-trust-item">✓ PDF Download</span>
+      <span class="j2p-trust-item">✓ Local PDF Creation</span>
+    </div>
+  </section>
+
+  <!-- 2. First Advertisement — 468×60 -->
+  <div class="j2p-ad-wrapper">
+    <span class="j2p-ad-label">Advertisement</span>
+    <script>
+      atOptions = {
+        'key' : '294198e908506e5d909d0b383f167eaa',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+  </div>
+
+  <!-- Error / Alert Banner -->
+  <div id="j2pAlertBox" class="j2p-alert"></div>
+
+  <!-- 3. Add JPG Images (Upload Zone) -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">Add JPG Images</h2>
+      <p class="j2p-card-desc">Select one or multiple JPG or JPEG images from your computer, Android phone, iPhone or tablet.</p>
+    </div>
+
+    <div id="j2pDropzone" class="j2p-dropzone">
+      <div class="j2p-dropzone-icon">📁</div>
+      <div class="j2p-dropzone-title">Drag & Drop JPG Images Here</div>
+      <div class="j2p-dropzone-sub">or click to browse from your device</div>
+      <button type="button" id="j2pChooseBtn" class="j2p-btn j2p-btn-primary">
+        Choose JPG Images
+      </button>
+      <input type="file" id="j2pFileInput" accept="image/jpeg,image/jpg,image/png,image/webp" multiple style="display:none;" />
+    </div>
+
+    <!-- 4. Selected Image Information Header & Actions -->
+    <div id="j2pFilesActions" class="j2p-files-actions" style="display:none; margin-top:20px;">
+      <div id="j2pFilesSummary" class="j2p-files-summary">0 images selected</div>
+      <div class="j2p-action-group">
+        <button type="button" id="j2pAddMoreBtn" class="j2p-btn j2p-btn-secondary j2p-btn-sm">+ Add More Images</button>
+        <button type="button" id="j2pRotateAllLeftBtn" class="j2p-btn j2p-btn-secondary j2p-btn-sm">Rotate All ↺</button>
+        <button type="button" id="j2pRotateAllRightBtn" class="j2p-btn j2p-btn-secondary j2p-btn-sm">Rotate All ↻</button>
+        <button type="button" id="j2pClearAllBtn" class="j2p-btn j2p-btn-danger j2p-btn-sm">Clear All</button>
+      </div>
+    </div>
+
+    <!-- 5, 6, 7. Image Previews, Reordering & Rotation Container -->
+    <div id="j2pImageGrid" class="j2p-image-grid" style="margin-top:16px;"></div>
+  </section>
+
+  <!-- Converter Settings Panel -->
+  <section class="j2p-card" id="j2pSettingsCard">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">PDF Converter Settings</h2>
+      <p class="j2p-card-desc">Configure your PDF page dimensions, orientation, margins, alignment, and image quality.</p>
+    </div>
+
+    <!-- 8, 9, 10, 11. PDF Page Size -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">PDF Page Size</label>
+      <p class="j2p-subtext">Choose a paper preset or calculate dynamic page bounds.</p>
+
+      <!-- Auto / Special Sizes -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">⭐ Dynamic Sizes</div>
+        <div class="j2p-grid-buttons">
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="fit-to-image">
+            <strong>Fit to Image</strong>
+            <span>Matches photo aspect ratio</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="original-size">
+            <strong>Original Image Size</strong>
+            <span>Direct 1:1 image dimensions</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- U.S. Page Sizes -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">🇺🇸 United States Paper Sizes</div>
+        <div class="j2p-grid-buttons">
+          
+          <button type="button" class="j2p-choice-btn j2p-size-btn j2p-active" data-size-id="us-letter">
+            <strong>US Letter</strong>
+            <span>8.5 × 11 in (612 × 792 pt)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-legal">
+            <strong>US Legal</strong>
+            <span>8.5 × 14 in (612 × 1008 pt)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-tabloid">
+            <strong>US Tabloid</strong>
+            <span>11 × 17 in (792 × 1224 pt)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-ledger">
+            <strong>US Ledger</strong>
+            <span>17 × 11 in (1224 × 792 pt)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-executive">
+            <strong>US Executive</strong>
+            <span>7.25 × 10.5 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-half-letter">
+            <strong>Half Letter</strong>
+            <span>5.5 × 8.5 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-gov-letter">
+            <strong>Gov Letter</strong>
+            <span>8 × 10.5 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-gov-legal">
+            <strong>Gov Legal</strong>
+            <span>8.5 × 13 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="us-junior-legal">
+            <strong>Junior Legal</strong>
+            <span>5 × 8 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="ansi-a">
+            <strong>ANSI A</strong>
+            <span>8.5 × 11 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="ansi-b">
+            <strong>ANSI B</strong>
+            <span>11 × 17 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="ansi-c">
+            <strong>ANSI C</strong>
+            <span>17 × 22 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="ansi-d">
+            <strong>ANSI D</strong>
+            <span>22 × 34 in</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn " data-size-id="ansi-e">
+            <strong>ANSI E</strong>
+            <span>34 × 44 in</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ISO A-Series -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">🌐 ISO A-Series Sizes</div>
+        <div class="j2p-grid-buttons">
+          
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a0">
+            <strong>A0</strong>
+            <span>841 × 1189 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a1">
+            <strong>A1</strong>
+            <span>594 × 841 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a2">
+            <strong>A2</strong>
+            <span>420 × 594 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a3">
+            <strong>A3</strong>
+            <span>297 × 420 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a4">
+            <strong>A4</strong>
+            <span>210 × 297 mm (595 × 842 pt)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a5">
+            <strong>A5</strong>
+            <span>148 × 210 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-a6">
+            <strong>A6</strong>
+            <span>105 × 148 mm</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ISO B-Series -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">📐 ISO B-Series Sizes</div>
+        <div class="j2p-grid-buttons">
+          
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-b4">
+            <strong>B4</strong>
+            <span>250 × 353 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-b5">
+            <strong>B5</strong>
+            <span>176 × 250 mm</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="iso-b6">
+            <strong>B6</strong>
+            <span>125 × 176 mm</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Photo Sizes -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">📸 Photo Frame Sizes</div>
+        <div class="j2p-grid-buttons">
+          
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-4x6">
+            <strong>4 × 6 in</strong>
+            <span>Standard Postcard Photo</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-5x7">
+            <strong>5 × 7 in</strong>
+            <span>Framed Portrait Photo</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-8x10">
+            <strong>8 × 10 in</strong>
+            <span>Classic Portrait Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-8x12">
+            <strong>8 × 12 in</strong>
+            <span>3:2 DSLR Native Size</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-10x12">
+            <strong>10 × 12 in</strong>
+            <span>Studio Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-10x15">
+            <strong>10 × 15 in</strong>
+            <span>Panoramic Photo</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-11x14">
+            <strong>11 × 14 in</strong>
+            <span>Wall Gallery Size</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-12x18">
+            <strong>12 × 18 in</strong>
+            <span>3:2 Poster Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-16x20">
+            <strong>16 × 20 in</strong>
+            <span>Large Display Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-18x24">
+            <strong>18 × 24 in</strong>
+            <span>Architectural / Art Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-20x30">
+            <strong>20 × 30 in</strong>
+            <span>Exhibition Poster</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="photo-24x36">
+            <strong>24 × 36 in</strong>
+            <span>Full Commercial Poster</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Square Sizes -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">⏹ Square Sizes</div>
+        <div class="j2p-grid-buttons">
+          
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="sq-4x4">
+            <strong>4 × 4 in</strong>
+            <span>Square Mini Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="sq-5x5">
+            <strong>5 × 5 in</strong>
+            <span>Social Square Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="sq-6x6">
+            <strong>6 × 6 in</strong>
+            <span>Square Art Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="sq-8x8">
+            <strong>8 × 8 in</strong>
+            <span>Square Wall Tile</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="sq-10x10">
+            <strong>10 × 10 in</strong>
+            <span>Square Canvas Print</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="sq-12x12">
+            <strong>12 × 12 in</strong>
+            <span>Album / Scrapbook Size</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Digital Page Ratios -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">🖥 Presentation & Digital Ratios</div>
+        <div class="j2p-grid-buttons">
+          
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="ratio-4-3">
+            <strong>4:3 Ratio</strong>
+            <span>Traditional Slide (10 × 7.5 in)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="ratio-3-2">
+            <strong>3:2 Ratio</strong>
+            <span>DSLR Format (9 × 6 in)</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="ratio-16-9">
+            <strong>16:9 Ratio</strong>
+            <span>HD Widescreen Slide</span>
+          </button>
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="ratio-1-1">
+            <strong>1:1 Ratio</strong>
+            <span>Balanced Square Ratio</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 12. Custom Page Size -->
+      <div class="j2p-size-category">
+        <div class="j2p-category-title">✏️ Custom Page Size</div>
+        <div class="j2p-grid-buttons" style="margin-bottom:12px;">
+          <button type="button" class="j2p-choice-btn j2p-size-btn" data-size-id="custom-size">
+            <strong>Custom Page Size</strong>
+            <span>Enter specific dimensions</span>
+          </button>
+        </div>
+        <div id="j2pCustomSizePanel" style="display:none; background:#f8fafc; padding:16px; border-radius:8px; border:1px solid #e2e8f0;">
+          <div class="j2p-input-row">
+            <div class="j2p-input-group">
+              <label class="j2p-label" style="font-size:0.85rem;">Width</label>
+              <input type="number" id="j2pCustomWidth" class="j2p-input" value="8.5" step="0.1" min="1" />
+            </div>
+            <div class="j2p-input-group">
+              <label class="j2p-label" style="font-size:0.85rem;">Height</label>
+              <input type="number" id="j2pCustomHeight" class="j2p-input" value="11" step="0.1" min="1" />
+            </div>
+            <div class="j2p-input-group">
+              <label class="j2p-label" style="font-size:0.85rem;">Unit</label>
+              <select id="j2pCustomUnit" class="j2p-input">
+                <option value="in">Inches (in)</option>
+                <option value="mm">Millimeters (mm)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="pt">PDF Points (pt)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. Page Orientation -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Page Orientation</label>
+      <p class="j2p-subtext">Auto adapts page geometry to each photo's aspect ratio.</p>
+      <div class="j2p-segmented">
+        <button type="button" class="j2p-pill-btn j2p-orient-btn j2p-active" data-orient="auto">Auto Orientation</button>
+        <button type="button" class="j2p-pill-btn j2p-orient-btn" data-orient="portrait">Portrait</button>
+        <button type="button" class="j2p-pill-btn j2p-orient-btn" data-orient="landscape">Landscape</button>
+      </div>
+    </div>
+
+    <!-- 14. Margins & Bleed -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Page Margins</label>
+      <p class="j2p-subtext">Set the white boundary around your images.</p>
+      <div class="j2p-segmented" style="margin-bottom:12px;">
+        <button type="button" class="j2p-pill-btn j2p-margin-btn" data-margin="none">None (0 in)</button>
+        <button type="button" class="j2p-pill-btn j2p-margin-btn" data-margin="narrow">Narrow (0.125 in)</button>
+        <button type="button" class="j2p-pill-btn j2p-margin-btn j2p-active" data-margin="normal">Normal (0.25 in)</button>
+        <button type="button" class="j2p-pill-btn j2p-margin-btn" data-margin="wide">Wide (0.5 in)</button>
+        <button type="button" class="j2p-pill-btn j2p-margin-btn" data-margin="custom">Custom Margins</button>
+      </div>
+      <div id="j2pCustomMarginPanel" style="display:none; background:#f8fafc; padding:16px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:12px;">
+        <div class="j2p-input-row" style="margin-bottom:10px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; font-weight:600; cursor:pointer;">
+            <input type="checkbox" id="j2pSameMargins" checked />
+            Use Same Margin on All Sides
+          </label>
+        </div>
+        <div class="j2p-input-row">
+          <div class="j2p-input-group">
+            <label class="j2p-label" style="font-size:0.8rem;">Top</label>
+            <input type="number" id="j2pMarginTop" class="j2p-input" value="0.25" step="0.05" min="0" />
+          </div>
+          <div class="j2p-input-group">
+            <label class="j2p-label" style="font-size:0.8rem;">Right</label>
+            <input type="number" id="j2pMarginRight" class="j2p-input" value="0.25" step="0.05" min="0" />
+          </div>
+          <div class="j2p-input-group">
+            <label class="j2p-label" style="font-size:0.8rem;">Bottom</label>
+            <input type="number" id="j2pMarginBottom" class="j2p-input" value="0.25" step="0.05" min="0" />
+          </div>
+          <div class="j2p-input-group">
+            <label class="j2p-label" style="font-size:0.8rem;">Left</label>
+            <input type="number" id="j2pMarginLeft" class="j2p-input" value="0.25" step="0.05" min="0" />
+          </div>
+          <div class="j2p-input-group" style="max-width:120px;">
+            <label class="j2p-label" style="font-size:0.8rem;">Unit</label>
+            <select id="j2pMarginUnit" class="j2p-input">
+              <option value="in">Inches (in)</option>
+              <option value="mm">Millimeters (mm)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label style="display:flex; align-items:center; gap:8px; font-size:0.9rem; cursor:pointer; color:#475569;">
+          <input type="checkbox" id="j2pEdgeToEdge" />
+          <strong>Edge-to-Edge Mode (Zero Margins)</strong>
+          <span style="font-size:0.8rem; color:#64748b;">— Note: Consumer home printers may still apply mechanical margins</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 15. Image Fit -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Image Fit</label>
+      <p class="j2p-subtext">Control how photos sit on the page without distortion.</p>
+      <div class="j2p-segmented">
+        <button type="button" class="j2p-pill-btn j2p-fit-btn j2p-active" data-fit="fit">Fit (Full Image Visible)</button>
+        <button type="button" class="j2p-pill-btn j2p-fit-btn" data-fit="fill">Fill (No White Bars)</button>
+        <button type="button" class="j2p-pill-btn j2p-fit-btn" data-fit="original">Original Size</button>
+        <button type="button" class="j2p-pill-btn j2p-fit-btn" data-fit="stretch">Stretch</button>
+      </div>
+    </div>
+
+    <!-- 16. Image Alignment -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Image Alignment</label>
+      <div class="j2p-segmented">
+        <button type="button" class="j2p-pill-btn j2p-align-btn j2p-active" data-align="center">Center</button>
+        <button type="button" class="j2p-pill-btn j2p-align-btn" data-align="top">Top</button>
+        <button type="button" class="j2p-pill-btn j2p-align-btn" data-align="bottom">Bottom</button>
+        <button type="button" class="j2p-pill-btn j2p-align-btn" data-align="left">Left</button>
+        <button type="button" class="j2p-pill-btn j2p-align-btn" data-align="right">Right</button>
+      </div>
+    </div>
+
+    <!-- 17. Background Color -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Page Background</label>
+      <div class="j2p-segmented" style="align-items:center;">
+        <button type="button" class="j2p-pill-btn j2p-bg-btn j2p-active" data-bg="white">White</button>
+        <button type="button" class="j2p-pill-btn j2p-bg-btn" data-bg="lightgray">Light Gray</button>
+        <button type="button" class="j2p-pill-btn j2p-bg-btn" data-bg="black">Black</button>
+        <div style="display:inline-flex; align-items:center; gap:6px;">
+          <input type="color" id="j2pCustomBgColor" value="#FFFFFF" style="width:40px; height:40px; border-radius:6px; border:1px solid #cbd5e1; cursor:pointer;" />
+          <span style="font-size:0.85rem; color:#64748b;">Custom Color</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. Image Quality -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Image Quality & Compression</label>
+      <p class="j2p-subtext">Optimize PDF size vs visual fidelity. High Quality is recommended for general use.</p>
+      <div class="j2p-segmented" style="margin-bottom:12px;">
+        <button type="button" class="j2p-pill-btn j2p-qual-btn" data-qual="60">Smaller File (60%)</button>
+        <button type="button" class="j2p-pill-btn j2p-qual-btn" data-qual="80">Standard (80%)</button>
+        <button type="button" class="j2p-pill-btn j2p-qual-btn j2p-active" data-qual="92">High Quality (92%)</button>
+        <button type="button" class="j2p-pill-btn j2p-qual-btn" data-qual="100">Maximum Quality (100%)</button>
+      </div>
+      <div class="j2p-slider-container">
+        <input type="range" id="j2pQualitySlider" class="j2p-slider" min="50" max="100" value="92" />
+        <span id="j2pQualityVal" class="j2p-slider-val">92%</span>
+      </div>
+    </div>
+
+    <!-- 19. Advanced PDF File Size Controls -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">PDF File Size Target (Best-Effort)</label>
+      <p class="j2p-subtext">Select an automatic balance or target size limit for email attachments.</p>
+      <div class="j2p-segmented">
+        <button type="button" class="j2p-pill-btn j2p-target-btn j2p-active" data-target="auto">Automatic</button>
+        <button type="button" class="j2p-pill-btn j2p-target-btn" data-target="1mb">Under 1 MB</button>
+        <button type="button" class="j2p-pill-btn j2p-target-btn" data-target="2mb">Under 2 MB</button>
+        <button type="button" class="j2p-pill-btn j2p-target-btn" data-target="5mb">Under 5 MB</button>
+        <button type="button" class="j2p-pill-btn j2p-target-btn" data-target="10mb">Under 10 MB</button>
+      </div>
+    </div>
+
+    <!-- 20. Layout / Images Per Page -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Layout: Images Per Page</label>
+      <p class="j2p-subtext">Arrange single photos or compact multi-image grids.</p>
+      <div class="j2p-segmented" style="margin-bottom:12px;">
+        <button type="button" class="j2p-pill-btn j2p-layout-btn j2p-active" data-layout="1">1 Image Per Page</button>
+        <button type="button" class="j2p-pill-btn j2p-layout-btn" data-layout="2">2 Images</button>
+        <button type="button" class="j2p-pill-btn j2p-layout-btn" data-layout="4">4 Images</button>
+        <button type="button" class="j2p-pill-btn j2p-layout-btn" data-layout="6">6 Images</button>
+        <button type="button" class="j2p-pill-btn j2p-layout-btn" data-layout="9">9 Images</button>
+      </div>
+      <div id="j2pSpacingBox" style="display:none;">
+        <label class="j2p-label" style="font-size:0.85rem;">Grid Image Spacing</label>
+        <div class="j2p-segmented">
+          <button type="button" class="j2p-pill-btn j2p-space-btn" data-space="none">None</button>
+          <button type="button" class="j2p-pill-btn j2p-space-btn j2p-active" data-space="small">Small</button>
+          <button type="button" class="j2p-pill-btn j2p-space-btn" data-space="medium">Medium</button>
+          <button type="button" class="j2p-pill-btn j2p-space-btn" data-space="large">Large</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 21. Optional Title Page & PDF Metadata -->
+    <div class="j2p-settings-section">
+      <details style="cursor:pointer;">
+        <summary style="font-weight:700; color:#2563eb; font-size:0.95rem; margin-bottom:8px;">
+          + Optional Title Page & Document Metadata
+        </summary>
+        <div style="padding-top:12px;">
+          <div style="margin-bottom:14px;">
+            <label style="display:flex; align-items:center; gap:8px; font-weight:600; font-size:0.9rem;">
+              <input type="checkbox" id="j2pAddTitlePage" /> Add Cover / Title Page
+            </label>
+            <div id="j2pTitlePageInputs" style="display:none; margin-top:8px; display:grid; gap:8px;">
+              <input type="text" id="j2pDocTitle" class="j2p-input" placeholder="Document Title (e.g. 2026 Project Report)" />
+              <input type="text" id="j2pDocSubtitle" class="j2p-input" placeholder="Subtitle (e.g. Prepared for Board of Directors)" />
+              <input type="text" id="j2pDocDate" class="j2p-input" placeholder="Date (e.g. September 21, 2026)" />
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div>
+              <label class="j2p-label" style="font-size:0.8rem;">PDF Author</label>
+              <input type="text" id="j2pMetaAuthor" class="j2p-input" placeholder="Your Name or Organization" />
+            </div>
+            <div>
+              <label class="j2p-label" style="font-size:0.8rem;">Subject / Topic</label>
+              <input type="text" id="j2pMetaSubject" class="j2p-input" placeholder="Document Description" />
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Output Mode: Combined vs Separate -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">Output Mode</label>
+      <div class="j2p-segmented">
+        <button type="button" class="j2p-pill-btn j2p-mode-btn j2p-active" data-mode="combined">One Combined Multi-Page PDF</button>
+        <button type="button" class="j2p-pill-btn j2p-mode-btn" data-mode="separate">Separate PDFs (Download as ZIP)</button>
+      </div>
+    </div>
+
+    <!-- 22. PDF File Name -->
+    <div class="j2p-settings-section">
+      <label class="j2p-label">PDF File Name</label>
+      <div style="display:flex; align-items:center; max-width:420px;">
+        <input type="text" id="j2pFileNameInput" class="j2p-input" value="jpg-to-pdf.pdf" />
+      </div>
+    </div>
+
+    <!-- 23. PDF Summary Card -->
+    <div class="j2p-summary-card">
+      <h3 style="font-size:1.1rem; color:#0f172a; margin-bottom:4px;">PDF Summary</h3>
+      <div class="j2p-summary-grid">
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Images</div>
+          <div id="j2pSumImages" class="j2p-summary-v">0</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Planned Pages</div>
+          <div id="j2pSumPages" class="j2p-summary-v">0</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Page Size</div>
+          <div id="j2pSumSize" class="j2p-summary-v">US Letter</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Orientation</div>
+          <div id="j2pSumOrient" class="j2p-summary-v">Auto</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Margins</div>
+          <div id="j2pSumMargin" class="j2p-summary-v">0.25 in</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Image Fit</div>
+          <div id="j2pSumFit" class="j2p-summary-v">Fit</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Quality</div>
+          <div id="j2pSumQuality" class="j2p-summary-v">92%</div>
+        </div>
+        <div class="j2p-summary-item">
+          <div class="j2p-summary-k">Layout</div>
+          <div id="j2pSumLayout" class="j2p-summary-v">1 per page</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 24. PDF Layout Preview -->
+    <div>
+      <label class="j2p-label">PDF Layout Preview</label>
+      <p class="j2p-subtext">Interactive visual representation of your planned PDF page layout and margins.</p>
+      <div class="j2p-preview-box">
+        <div id="j2pPreviewSheet" class="j2p-preview-sheet" style="width:190px; height:245px;">
+          <div id="j2pPreviewMarginBox" class="j2p-preview-margin-box">
+            <span id="j2pPreviewPlaceholderText" style="font-size:0.75rem; color:#94a3b8; text-align:center;">Upload an image to see layout preview</span>
+            <img id="j2pPreviewImg" class="j2p-preview-img-mock" style="display:none;" />
+          </div>
+        </div>
+        <div id="j2pPreviewLabel" style="font-size:0.8rem; color:#64748b; margin-top:10px;">Page 1 Layout Preview</div>
+      </div>
+    </div>
+
+    <!-- 25. Main CTA Button: Convert JPG to PDF -->
+    <div style="margin-top:24px; text-align:center;">
+      <button type="button" id="j2pConvertBtn" class="j2p-btn j2p-btn-primary" style="width:100%; max-width:460px; font-size:1.2rem; min-height:56px;">
+        📄 Convert JPG to PDF
+      </button>
+    </div>
+  </section>
+
+  <!-- 26. Conversion Progress Box -->
+  <div id="j2pProgressCard" class="j2p-progress-card">
+    <h3 id="j2pProgressStage" style="font-size:1.25rem; font-weight:700; color:#0f172a;">Reading Images...</h3>
+    <div class="j2p-progress-bar-bg">
+      <div id="j2pProgressBarFill" class="j2p-progress-bar-fill"></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; font-size:0.88rem; color:#64748b;">
+      <span id="j2pProgressImgCount">Image 1 of 1</span>
+      <span id="j2pProgressPercent">0%</span>
+    </div>
+    <div style="margin-top:16px;">
+      <button type="button" id="j2pCancelBtn" class="j2p-btn j2p-btn-secondary j2p-btn-sm">Cancel</button>
+    </div>
+  </div>
+
+  <!-- 27, 28, 29, 30, 31, 32. Result & Download Section -->
+  <div id="j2pResultCard" class="j2p-result-card">
+    <div style="font-size:2.5rem; line-height:1; margin-bottom:6px;">🎉</div>
+    <div class="j2p-result-title">Your PDF Is Ready</div>
+    <p style="color:#166534; font-size:1rem;">Your images have been successfully converted into a high-quality PDF document.</p>
+
+    <div class="j2p-result-details">
+      <span><strong>File:</strong> <span id="j2pResFileName">images.pdf</span></span>
+      <span><strong>Pages:</strong> <span id="j2pResPages">1</span></span>
+      <span><strong>File Size:</strong> <span id="j2pResSize">0 KB</span></span>
+      <span><strong>Format:</strong> <span id="j2pResPageSize">US Letter</span></span>
+      <span><strong>Quality:</strong> <span id="j2pResQuality">92%</span></span>
+    </div>
+
+    <!-- Primary Download Button -->
+    <div style="margin-bottom:20px;">
+      <a id="j2pDownloadBtn" class="j2p-btn j2p-btn-success" style="width:100%; max-width:440px; font-size:1.25rem; min-height:56px;" download="jpg-to-pdf.pdf">
+        ⬇️ Download PDF
+      </a>
+    </div>
+
+    <!-- Secondary Action Buttons -->
+    <div class="j2p-btn-row">
+      <button type="button" id="j2pPreviewPdfBtn" class="j2p-btn j2p-btn-secondary">👁️ Preview PDF</button>
+      <button type="button" id="j2pDownloadAgainBtn" class="j2p-btn j2p-btn-secondary">🔄 Download Again</button>
+      <button type="button" id="j2pRebuildBtn" class="j2p-btn j2p-btn-secondary">⚙️ Change Settings & Rebuild</button>
+      <button type="button" id="j2pResetBtn" class="j2p-btn j2p-btn-secondary">✨ Create Another PDF</button>
+    </div>
+  </div>
+
+  <!-- 33. Second Advertisement — Native -->
+  <div class="j2p-ad-wrapper">
+    <span class="j2p-ad-label">Advertisement</span>
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- 34. Feature Section -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">Everything You Need to Convert JPG to PDF</h2>
+      <p class="j2p-card-desc">A complete, professional document conversion workspace built for speed, privacy, and accuracy.</p>
+    </div>
+    <div class="j2p-feature-grid">
+      
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Multiple JPG Upload</div>
+        <div class="j2p-feature-desc">Batch upload dozens of JPG or JPEG files simultaneously with zero file quantity restrictions.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Browser-Side Security</div>
+        <div class="j2p-feature-desc">All files process locally in your browser memory. Your confidential photos never touch remote servers.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Drag & Drop Reordering</div>
+        <div class="j2p-feature-desc">Rearrange pages naturally by dragging preview cards to achieve your desired narrative flow.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Mobile Order Controls</div>
+        <div class="j2p-feature-desc">Dedicated Move Up, Move Down, First, and Last buttons provide seamless reordering on smartphones.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Individual & Bulk Rotation</div>
+        <div class="j2p-feature-desc">Rotate single photos by 90° increments or rotate all selected images in one click.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Standard US Paper Sizes</div>
+        <div class="j2p-feature-desc">Includes US Letter (8.5×11), US Legal (8.5×14), Tabloid (11×17), Ledger, Executive, and Half Letter.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ ANSI Architectural Sizes</div>
+        <div class="j2p-feature-desc">Full support for ANSI A, ANSI B, ANSI C, ANSI D, and ANSI E engineering blueprints and posters.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Global ISO A & B Sizes</div>
+        <div class="j2p-feature-desc">Standard international dimensions including A0 through A6, plus B4, B5, and B6 formats.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Photo Print Presets</div>
+        <div class="j2p-feature-desc">Standard photo frame sizes: 4×6 in, 5×7 in, 8×10 in, 11×14 in, 16×20 in, and 24×36 in.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Square & Digital Ratios</div>
+        <div class="j2p-feature-desc">Dedicated square dimensions (4×4 to 12×12 in) and screen ratios: 16:9 widescreen, 4:3 presentation, and 3:2.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Custom Dimensions</div>
+        <div class="j2p-feature-desc">Specify arbitrary page widths and heights with accurate conversion across inches, mm, cm, and PDF points.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Intelligent Auto Orientation</div>
+        <div class="j2p-feature-desc">Automatically pairs portrait photos with vertical pages and landscape photos with horizontal pages.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Granular Margin Controls</div>
+        <div class="j2p-feature-desc">Choose preset margins (None, Narrow, Normal, Wide) or configure custom per-side padding.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Aspect-Safe Image Fit</div>
+        <div class="j2p-feature-desc">Choose between Fit (shows 100% of the image), Fill (covers the page), Original Size, or Stretch.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ 9 Alignment Points</div>
+        <div class="j2p-feature-desc">Anchor your photos to Center, Top, Bottom, Left, Right, or any of the four corners.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Quality & Compression</div>
+        <div class="j2p-feature-desc">Dial in image compression from 50% to 100% to create lightweight emailable PDFs or crisp print documents.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Direct JPEG Embedding</div>
+        <div class="j2p-feature-desc">Maximum Quality mode embeds pure untouched JPEG streams directly for zero loss of fidelity.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Multi-Image Grid Layouts</div>
+        <div class="j2p-feature-desc">Place 1, 2, 4, 6, or 9 photos onto a single PDF page with customizable grid spacing.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Custom Title Page</div>
+        <div class="j2p-feature-desc">Optionally insert a clean title page with document title, subtitle, and formatted date.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ PDF Document Metadata</div>
+        <div class="j2p-feature-desc">Embed custom title, author name, subject description, and search keywords into the PDF file header.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Separate PDFs as ZIP</div>
+        <div class="j2p-feature-desc">Optionally export each individual image as its own standalone PDF packaged in a single ZIP archive.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ No Watermarks Added</div>
+        <div class="j2p-feature-desc">Clean, professional document output with zero third-party stamps, ads, or intrusive branding.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ No Account Required</div>
+        <div class="j2p-feature-desc">100% free tool with no login screens, no email collection, and no subscription barriers.</div>
+      </div>
+      <div class="j2p-feature-card">
+        <div class="j2p-feature-title">✓ Mobile Touch Friendly</div>
+        <div class="j2p-feature-desc">Responsive user interface tested across mobile phones, tablets, Chromebooks, and desktop monitors.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 35. How to Use -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">How to Convert JPG to PDF</h2>
+      <p class="j2p-card-desc">Follow these straightforward steps to create professional PDF documents in seconds.</p>
+    </div>
+    <div class="j2p-steps-list">
+      
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">1</div>
+        <div class="j2p-step-body">
+          <h3>Select or Drag Your JPG Images</h3>
+          <p>Drag and drop your JPG or JPEG files into the upload box, or tap 'Choose JPG Images' to select files from your computer, phone, or tablet.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">2</div>
+        <div class="j2p-step-body">
+          <h3>Add Additional Images if Needed</h3>
+          <p>Use 'Add More Images' at any time to append extra photos without losing your existing selections.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">3</div>
+        <div class="j2p-step-body">
+          <h3>Reorder Images into Correct Page Sequence</h3>
+          <p>Drag image preview cards or use the Move Up, Move Down, Move to First, and Move to Last buttons to set your exact page flow.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">4</div>
+        <div class="j2p-step-body">
+          <h3>Rotate Sideways or Upside-Down Photos</h3>
+          <p>Click the 90° clockwise or counter-clockwise rotation buttons on any image card to ensure every document page is upright.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">5</div>
+        <div class="j2p-step-body">
+          <h3>Select Your Preferred PDF Page Size</h3>
+          <p>Pick standard US Letter, US Legal, Tabloid, ISO A4, photo sizes (4x6, 5x7, 8x10), or custom dimensions in inches or millimeters.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">6</div>
+        <div class="j2p-step-body">
+          <h3>Choose Page Orientation</h3>
+          <p>Set Auto Orientation (adapts page width/height to each image), or enforce uniform Portrait or Landscape pages throughout.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">7</div>
+        <div class="j2p-step-body">
+          <h3>Configure Page Margins</h3>
+          <p>Select None, Narrow (0.125 in), Normal (0.25 in), Wide (0.5 in), or enter custom top, right, bottom, and left margins.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">8</div>
+        <div class="j2p-step-body">
+          <h3>Choose Image Fit and Alignment</h3>
+          <p>Choose Fit to preserve the full photo, Fill for edge-to-edge coverage, or Stretch, and align to Center, Top, or Left.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">9</div>
+        <div class="j2p-step-body">
+          <h3>Set Image Quality and Target File Size</h3>
+          <p>Pick High Quality (92%), Standard (80%), or Smaller File (60%) to optimize the PDF file size for your specific sharing needs.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">10</div>
+        <div class="j2p-step-body">
+          <h3>Review the Live PDF Summary</h3>
+          <p>Inspect the summary panel to verify image count, page count, paper dimensions, orientation, and margin settings.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">11</div>
+        <div class="j2p-step-body">
+          <h3>Click 'Convert JPG to PDF'</h3>
+          <p>Hit the large primary conversion button to synthesize your PDF document directly inside your browser.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">12</div>
+        <div class="j2p-step-body">
+          <h3>Watch Real-Time Local Processing</h3>
+          <p>Follow the animated progress bar as your browser embeds image data, applies layout rules, and finalizes PDF bytes.</p>
+        </div>
+      </div>
+      <div class="j2p-step-item">
+        <div class="j2p-step-num">13</div>
+        <div class="j2p-step-body">
+          <h3>Download Your PDF Instantly</h3>
+          <p>Click 'Download PDF' to save your file. Use 'Preview PDF' to check it in a new tab, or 'Download Again' if needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 36. Visible SEO Introduction -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">Online JPG to PDF Conversion Guide</h2>
+    </div>
+    <div class="j2p-article-content">
+      
+Converting JPG and JPEG images into a unified PDF document is one of the most essential digital workflow tasks for professionals, students, and everyday computer users across the United States. Whether you are assembling photo receipts for an expense report, preparing medical records for insurance claims, gathering real estate photographs, or submitting homework assignments, standardizing multiple loose image files into a single, cohesive PDF file simplifies sharing, printing, and archiving.
+
+Standard image formats like JPG excel at storing photographic imagery with efficient lossy compression, but sending a recipient five, ten, or twenty separate picture files creates unnecessary friction. Email clients struggle with large attachment lists, file ordering easily gets scrambled, and varying photo orientations force the recipient to manually rotate individual images. By utilizing a dedicated JPG to PDF converter, you immediately transform those chaotic individual files into a clean, numbered multi-page document that opens consistently across Apple macOS, iOS, Windows, Android, and Linux devices.
+
+Our free online converter puts complete creative control into your hands without requiring third-party software installations, recurring subscriptions, or account logins. You can effortlessly combine multiple JPG files into a single PDF, arrange page sequences, choose standard American paper sizes like US Letter or US Legal, adjust margins, set fit modes to avoid photo distortion, and optimize image compression for lightweight emailing. Best of all, conversion executes securely inside your web browser—ensuring your sensitive personal photos and confidential documents remain private.
+
+    </div>
+  </section>
+
+  <!-- 37. Educational Article Part 1 -->
+  <section class="j2p-card">
+    <div class="j2p-article-content">
+      
+<h2>What Is a JPG to PDF Converter?</h2>
+<p>
+A JPG to PDF converter is a specialized document utility designed to take raster image files—primarily Joint Photographic Experts Group (JPEG or JPG) format—and embed them within the structured container of a Portable Document Format (PDF) file. While an image file represents a flat grid of colored pixels, a PDF file is a comprehensive electronic document standard created by Adobe and maintained by the International Organization for Standardization (ISO 32000). A PDF contains precise page geometries, vector coordinate systems, metadata headers, and standardized print layouts.
+</p>
+<p>
+When you use a browser-based converter like this one, each uploaded image is evaluated for its natural pixel dimensions, aspect ratio, and embedded orientation. The conversion engine translates those physical pixel values into standardized PDF points (where 1 inch equals exactly 72 PDF points), constructs pages adhering to selected paper standards (such as US Letter or ISO A4), applies your specified margin boundaries, and places the compressed image stream directly onto the electronic canvas. The result is an immutable, universally readable document that prints faithfully on any physical printer and renders identically on any digital screen.
+</p>
+
+<h2>JPG vs. PDF: Understanding the Architectural Differences</h2>
+<p>
+To understand why converting pictures to PDF is so widely recommended in business, legal, and academic settings, it is helpful to examine how JPG and PDF fundamentally differ:
+</p>
+<ul>
+  <li><strong>Single-Frame vs. Multi-Page Structure:</strong> A JPG file can only ever represent a single static picture. If you have a ten-page contract photographed with your phone, you are forced to manage ten disparate files. A PDF natively supports hundreds or thousands of sequenced pages within a single file wrapper.</li>
+  <li><strong>Fixed Dimensions vs. Standardized Print Geometry:</strong> A JPG has pixel dimensions (e.g., 4032 × 3024 pixels) but lacks a physical paper size until a printing application interprets it. Depending on the printer settings, that image could print on an entire 8.5 × 11-inch sheet, shrink to a 4 × 6 photo card, or get clipped at the margins. A PDF specifies physical paper dimensions (such as 8.5 × 11 inches) directly in its header, guaranteeing that every recipient sees and prints the exact same layout.</li>
+  <li><strong>Cross-Platform Consistency:</strong> PDFs look identical whether viewed in Adobe Acrobat, Google Chrome, Safari, or Microsoft Edge. Image viewers often apply automated scaling, automatic rotation, or background smoothing that varies from device to device.</li>
+  <li><strong>Security and Metadata:</strong> PDF documents support formal metadata fields (Title, Author, Subject, Keywords) and allow strict page-level pagination, header titles, and footer notes that make document presentation far more professional.</li>
+</ul>
+
+<h2>JPG vs. JPEG: Is There Any Technical Difference?</h2>
+<p>
+A frequent point of confusion among users is the distinction between .jpg and .jpeg file extensions. In short: <strong>there is absolutely no functional difference between JPG and JPEG.</strong> Both extensions refer to the exact same lossy photographic compression standard developed by the Joint Photographic Experts Group.
+</p>
+<p>
+The historical reason for the two separate extensions stems from early personal computing operating systems. In classic MS-DOS and Windows 3.1 environments, file systems adhered to the strict 8.3 filename convention, which mandated that file extensions could not exceed three characters. As a result, the four-letter extension ".jpeg" was shortened to ".jpg". Modern operating systems freely support four-letter extensions, but both ".jpg" and ".jpeg" remain widely used today. Our converter handles both formats interchangeably with equal precision.
+</p>
+
+<h2>Why Convert Photos to PDF? Common Real-World Use Cases</h2>
+<p>
+Every day, millions of people convert images to PDF for practical, everyday needs:
+</p>
+<ul>
+  <li><strong>Business Expense Reports and Receipts:</strong> Employees photograph taxi, meal, and hotel receipts throughout business travel. Assembling those scattered photos into one chronological PDF expense report makes reimbursement straightforward for accounting departments.</li>
+  <li><strong>Real Estate Inspections and Appraisal Portfolios:</strong> Realtors and home inspectors capture dozens of property photos—from exterior facades to plumbing fixtures. Organizing these pictures into a clean US Letter or Tabloid PDF provides clients with an authoritative property overview.</li>
+  <li><strong>Job and School Applications:</strong> Many official job submission portals, university admission boards, and government agencies restrict uploads to a single PDF document. Converting diplomas, recommendation letters, and ID scans into one PDF satisfies submission guidelines without file rejections.</li>
+  <li><strong>Legal and Contract Documentation:</strong> When legal agreements, signed leases, or court notices are received as physical documents, mobile scans converted to a US Legal PDF ensure legal teams can archive them reliably.</li>
+  <li><strong>Preserving Handwritten Notes and Sketches:</strong> Students and engineers frequently sketch ideas or photograph classroom whiteboards. A combined PDF organizes notes into chronological study guides.</li>
+</ul>
+
+<h2>How Image Order Becomes PDF Page Order</h2>
+<p>
+When compiling an electronic book, catalog, or multi-page report, the sequence of pages is critical. Our converter implements a transparent, intuitive ordering engine:
+</p>
+<ol>
+  <li><strong>Drag-and-Drop Sequencing:</strong> On desktop computers, you can simply click and drag any photo preview card to move it forward or backward in the sequence.</li>
+  <li><strong>Mobile Ordering Controls:</strong> On touch devices like iPhones and Android smartphones where dragging can sometimes trigger page scrolling, dedicated action buttons (Move Up, Move Down, Move to First, Move to Last) allow foolproof tactile reordering.</li>
+  <li><strong>Dynamic Page Numbering:</strong> Every card displays its active page assignment (e.g., "Page 1", "Page 2"). Whenever an image is repositioned, all numbers update in real time, giving you confidence that your final PDF will mirror your intended structure.</li>
+</ol>
+
+    </div>
+  </section>
+
+  <!-- 38. Third Advertisement — 300×250 -->
+  <div class="j2p-ad-wrapper">
+    <span class="j2p-ad-label">Advertisement</span>
+    <script>
+      atOptions = {
+        'key' : '224e7394c28834c8ac1ce24682c420e3',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+  </div>
+
+  <!-- 39. Educational Article Part 2 -->
+  <section class="j2p-card">
+    <div class="j2p-article-content">
+      
+<h2>Choosing the Right Page Size: US Standards vs. International Standards</h2>
+<p>
+Paper sizing is one of the most critical aspects of document preparation. In the United States and Canada, the paper sizing system is rooted in traditional loose-leaf standards rather than the metric ISO system used throughout Europe, Asia, and Latin America:
+</p>
+<ul>
+  <li><strong>US Letter (8.5 × 11.0 in / 612 × 792 pt):</strong> The undisputed standard for everyday office printing, school assignments, invoices, and standard business mail in the United States. If you are unsure which size to choose for a U.S. recipient, select US Letter.</li>
+  <li><strong>US Legal (8.5 × 14.0 in / 612 × 1008 pt):</strong> Three inches longer than US Letter, this size is universally recognized in legal practices, court filings, accounting sheets, and loan disclosures.</li>
+  <li><strong>US Tabloid (11.0 × 17.0 in / 792 × 1224 pt) and US Ledger (17.0 × 11.0 in):</strong> Twice the area of US Letter, Tabloid (vertical) and Ledger (horizontal) are standard for architectural schematics, engineering plans, restaurant menus, and broadsheet newsletters.</li>
+  <li><strong>ISO A4 (210 × 297 mm / 595 × 842 pt):</strong> The international counterpart to US Letter. A4 is slightly narrower (8.27 in) and slightly taller (11.69 in). If your document is destined for overseas partners, embassies, or international academic institutions, A4 is the expected format.</li>
+  <li><strong>Photo Frame Presets (4×6, 5×7, 8×10 in):</strong> Perfect for digital photography portfolios, family memory albums, and custom gallery print submissions.</li>
+  <li><strong>Fit to Image / Original Size:</strong> For artwork, panoramic landscape photos, or web graphics that do not need to fit physical paper trays, this mode creates custom page boundaries matching each individual photo’s natural aspect ratio.</li>
+</ul>
+
+<h2>Understanding Page Orientation: Auto vs. Portrait vs. Landscape</h2>
+<p>
+Nothing looks more unpolished than a widescreen landscape photo forced onto a tall, skinny portrait page with immense top and bottom margins, or a tall smartphone selfie rotated awkwardly sideways. Our tool provides three flexible orientation modes:
+</p>
+<p>
+<strong>Auto Orientation (Recommended):</strong> When set to Auto, the conversion engine calculates the aspect ratio of each individual image. If the image width exceeds its height, the engine creates a landscape page for that specific image. If the image is vertical, it creates a portrait page. This dynamic per-page adaptability ensures maximum image clarity without manual toggling.
+</p>
+<p>
+<strong>Forced Portrait or Landscape:</strong> In formal corporate binders or legal submissions, documents are often required to have uniform page geometries from cover to cover. Selecting Portrait forces all pages vertical, while Landscape forces all pages horizontal, centering non-matching images neatly within the chosen frame.
+</p>
+
+<h2>How PDF Margins Work: None, Narrow, Normal, Wide, and Edge-to-Edge</h2>
+<p>
+Margins represent the protective buffer zone between the outer edge of the paper and the printable content area. Choosing the right margin depends on how the document will be used:
+</p>
+<ul>
+  <li><strong>None (0.0 in / Edge-to-Edge):</strong> Maximizes every square millimeter of printable canvas. Ideal for digital viewing, slide presentations, and professional print shops with full-bleed printing capabilities. Keep in mind that standard consumer inkjet and laser printers typically cannot print to the absolute physical edge of paper.</li>
+  <li><strong>Narrow (0.125 in / 1/8 inch):</strong> A subtle border that prevents accidental clipping on borderless printers while maintaining generous visual real estate for photos.</li>
+  <li><strong>Normal (0.25 in / 1/4 inch):</strong> The sweet spot for most home and office printers. Ensures photos stay safely within standard printer feed rollers and prevents edge toner smearing.</li>
+  <li><strong>Wide (0.5 in / 1/2 inch):</strong> Excellent for documents destined for ring binders, spiral binding, report clips, or artistic framed prints.</li>
+  <li><strong>Custom Margins:</strong> Allows precise entry of top, right, bottom, and left margins in inches or millimeters for specialized corporate guidelines.</li>
+</ul>
+
+<h2>Fit vs. Fill vs. Original Size: Maintaining Aspect Ratio</h2>
+<p>
+When an image is placed onto a rectangular PDF page, their aspect ratios rarely match perfectly. Our tool offers four distinct image-fitting modes:
+</p>
+<ul>
+  <li><strong>Fit (Default):</strong> Scales the image proportionally so that 100% of the photograph is visible within the available margins. If the photo is narrower than the page, balanced white space appears on the sides. No cropping occurs.</li>
+  <li><strong>Fill:</strong> Scales the image to completely cover the printable area. While this eliminates all border whitespace, it will crop excess portions of the image that extend beyond the page boundaries.</li>
+  <li><strong>Original Size:</strong> Renders the image at its native calculated physical resolution. If the image is small, it sits neatly in the center; if it is large, it scales down to stay within margins.</li>
+  <li><strong>Stretch:</strong> Stretches the image horizontally and vertically to fill the exact margin rectangle. Note: this can distort photos and is only recommended for specific technical patterns.</li>
+</ul>
+
+<h2>Image Quality, Compression, and PDF File Size Optimization</h2>
+<p>
+Modern smartphones capture photos at 12 to 48 megapixels, resulting in individual JPEG files weighing between 3 MB and 15 MB. Combining ten raw smartphone photos can easily yield an unwieldy 50 MB to 100 MB document that gets blocked by email servers (which commonly enforce 20 MB or 25 MB attachment caps).
+</p>
+<p>
+Our converter incorporates an intelligent compression pipeline:
+</p>
+<ul>
+  <li><strong>Maximum Quality (100%):</strong> When no rotation or pixel resizing is required, the converter embeds the original JPEG byte stream directly into the PDF structure using direct stream embedding. This guarantees absolute zero generational loss.</li>
+  <li><strong>High Quality (92%):</strong> Visually indistinguishable from the original photo on high-DPI screens and Retina displays, while shedding redundant JPEG header metadata and excessive color quantization tables.</li>
+  <li><strong>Standard Quality (80%):</strong> The industry benchmark for balanced digital documents. Reduces file size by up to 60–70% while keeping fine text, invoice lines, and photographs crisp and legible.</li>
+  <li><strong>Smaller File (60%):</strong> Aggressive compression engineered specifically for government portals, job applications, and strict email attachment ceilings.</li>
+</ul>
+
+<h2>Why Smartphone Photos Sometimes Rotate and How to Fix It</h2>
+<p>
+Have you ever taken a photo with your iPhone or Android phone, only to have it appear sideways or upside down when viewed on a computer? This happens because smartphone camera sensors always capture images in a fixed physical orientation. Rather than physically rearranging the millions of pixels, the phone writes an "EXIF Orientation" metadata tag (values 1 through 8) into the file header, instructing viewing software to rotate the image upon display.
+</p>
+<p>
+Some basic PDF converters ignore EXIF tags, leading to sideways pages. Our converter reads image orientation data automatically, and provides manual 90° clockwise, counter-clockwise, and 180° rotation tools right on each preview card. A quick click fixes any stubborn photo before the PDF is compiled.
+</p>
+
+<h2>Privacy First: Why Client-Side Browser Conversion Matters</h2>
+<p>
+In an era of frequent data breaches and online tracking, uploading sensitive personal documents—such as passport scans, tax forms, family photos, or medical records—to unknown third-party conversion servers poses genuine privacy risks. Many online conversion websites upload your files to remote cloud servers, store them in temporary directories, and process them via background server scripts.
+</p>
+<p>
+Our tool operates on a fundamentally different, privacy-first architectural paradigm: <strong>100% client-side execution</strong>. The conversion code runs strictly within your web browser's local sandbox memory using client-side JavaScript and WebAssembly. Your images are never transmitted across the internet to an external processing server. When you close or refresh your browser tab, the temporary memory is automatically reclaimed by your operating system.
+</p>
+
+    </div>
+  </section>
+
+  <!-- 40. FAQ Section (25+ items) -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">Frequently Asked Questions</h2>
+      <p class="j2p-card-desc">Find quick answers to common questions about converting JPG and JPEG images into PDF files.</p>
+    </div>
+    <div class="j2p-faq-list">
+      
+      <details class="j2p-faq-item" open>
+        <summary>What is a JPG to PDF converter?</summary>
+        <div class="j2p-faq-answer">A JPG to PDF converter is a specialized document utility that takes one or more digital images in JPG or JPEG format and wraps them inside an industry-standard PDF (Portable Document Format) document. It allows you to organize photos, receipts, contracts, or scanned records into a single file with consistent page sizes, orientations, and margins.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>How do I convert JPG to PDF online?</summary>
+        <div class="j2p-faq-answer">Converting JPG images to PDF takes just three easy steps: first, upload your JPG or JPEG images using the upload area. Second, arrange your page order, select your desired page size (like US Letter or A4), orientation, margins, and image quality. Finally, click 'Convert JPG to PDF' and immediately download your freshly generated PDF file.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I combine multiple JPG images into one PDF?</summary>
+        <div class="j2p-faq-answer">Yes! You can select and upload multiple JPG or JPEG files simultaneously. The converter automatically compiles each image into a dedicated page (or multiple images per page if you choose a multi-image grid layout), producing one combined, professional PDF document ready for sharing or printing.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I change the order of images before creating the PDF?</summary>
+        <div class="j2p-faq-answer">Absolutely. The visual order of your image cards directly dictates the page order in the resulting PDF. You can drag and drop image cards into your preferred sequence or use the mobile-friendly 'Move Up', 'Move Down', 'Move to First', and 'Move to Last' buttons.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I rotate JPG images before conversion?</summary>
+        <div class="j2p-faq-answer">Yes. Every image card includes individual rotation controls for 90° clockwise, 90° counter-clockwise, and 180° flip. We also provide global 'Rotate All Left' and 'Rotate All Right' buttons. The rotation directly updates the generated PDF output so your photos never appear sideways.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use US Letter page size?</summary>
+        <div class="j2p-faq-answer">Yes. US Letter (8.5 × 11 inches / 612 × 792 PDF points) is the standard paper size across the United States and is available as a preset. It is ideal for standard office printers, job applications, tax forms, and business correspondence.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use US Legal page size?</summary>
+        <div class="j2p-faq-answer">Yes. US Legal (8.5 × 14 inches / 612 × 1008 PDF points) is fully supported. It is commonly used for legal contracts, court filings, real estate agreements, and administrative documentation.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use A4 page size?</summary>
+        <div class="j2p-faq-answer">Yes. ISO A4 (210 × 297 mm / approximately 595.28 × 841.89 PDF points) is the global standard outside of North America. Our converter uses mathematically exact point dimensions for A4 documents.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>What is the difference between US Letter and A4?</summary>
+        <div class="j2p-faq-answer">US Letter measures 8.5 × 11.0 inches (215.9 × 279.4 mm), while ISO A4 measures 8.27 × 11.69 inches (210 × 297 mm). US Letter is slightly wider and shorter, whereas A4 is narrower and taller. Using the correct preset ensures your document prints cleanly without unexpected clipping.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use the original image size without fixed paper boundaries?</summary>
+        <div class="j2p-faq-answer">Yes! Choose either 'Fit to Image' or 'Original Image Size'. In this mode, each PDF page dimension dynamically adapts to the exact proportions and pixel dimensions of each individual image.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I create custom PDF page dimensions?</summary>
+        <div class="j2p-faq-answer">Yes. Under Custom Page Size, enter your desired width and height, and pick your preferred unit: inches (in), millimeters (mm), centimeters (cm), or PDF points (pt).</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use portrait or landscape pages?</summary>
+        <div class="j2p-faq-answer">Yes. You can select 'Portrait' to force all pages vertical, 'Landscape' to force all pages horizontal, or 'Auto' which automatically evaluates each image to provide portrait pages for tall images and landscape pages for wide photos.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>What does Auto Orientation do?</summary>
+        <div class="j2p-faq-answer">Auto Orientation examines the width and height of each image (including any applied rotation). If an image is wider than it is tall, the converter generates a landscape PDF page; if it is taller, it generates a portrait page, preventing awkward black bars or excessive whitespace.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I remove PDF margins completely?</summary>
+        <div class="j2p-faq-answer">Yes. Select 'None' or activate 'Edge-to-Edge' mode. This sets the margins to 0 inches, allowing your image to span to the absolute edge of the PDF page canvas.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use custom margins?</summary>
+        <div class="j2p-faq-answer">Yes. You can specify exact top, right, bottom, and left margins in inches or millimeters. You can also toggle 'Use Same Margin on All Sides' to sync all four borders instantly.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>What is the difference between Fit and Fill?</summary>
+        <div class="j2p-faq-answer">'Fit' scales your image so the complete photo is visible on the page while preserving its aspect ratio, leaving background borders where dimensions differ. 'Fill' expands the image to cover the entire printable area without white bars, which may crop slight portions of the image edges.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Will my JPG be stretched or distorted?</summary>
+        <div class="j2p-faq-answer">No, unless you specifically choose 'Stretch'. The default 'Fit' mode strictly protects your image's aspect ratio so people and objects retain their natural proportions.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I control image quality and compression?</summary>
+        <div class="j2p-faq-answer">Yes. You can pick from presets—Smaller File (60%), Standard (80%), High Quality (92%), and Maximum Quality (100%)—or adjust the granular slider from 50% to 100% to balance visual sharpness against total file size.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>How can I make the PDF file smaller for email or upload portals?</summary>
+        <div class="j2p-faq-answer">To create a smaller PDF file, select 'Smaller File' (60%) or 'Standard' (80%) quality, or choose one of our targeted file size presets (e.g. Under 1 MB or Under 2 MB). Lowering JPEG quality compresses image data significantly while keeping text and photos legible.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I create one PDF from smartphone camera photos?</summary>
+        <div class="j2p-faq-answer">Yes. The converter accepts high-resolution JPG/JPEG photos directly from Apple iPhones, iPads, Android smartphones, and digital cameras. It automatically reads orientation data to keep photos oriented correctly.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I create separate individual PDFs for each image?</summary>
+        <div class="j2p-faq-answer">Yes. If you enable 'Create Separate PDFs', the tool generates an individual PDF for every uploaded image and bundles them together into a convenient ZIP archive for quick one-click downloading.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I download my PDF immediately without waiting for an email?</summary>
+        <div class="j2p-faq-answer">Yes. Your PDF is generated locally inside your web browser. Once processing completes, your download starts immediately upon clicking 'Download PDF'.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Does this tool add watermarks to my documents?</summary>
+        <div class="j2p-faq-answer">No. This tool never adds promotional watermarks, stamps, or logos. Your PDF contains only the images and layout settings you selected.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Do I need to create an account or sign up?</summary>
+        <div class="j2p-faq-answer">No signup, registration, or login is ever required. You have instant, unlimited access to all features free of charge.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Are my JPG images uploaded to a remote PDF-generation server?</summary>
+        <div class="j2p-faq-answer">No. All conversion operations, image resizing, and PDF document synthesis take place entirely inside your web browser using modern WebAssembly and JavaScript technologies. Your private photos are never uploaded to a remote processing server.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I use this tool on Android, iPhone, and iPad?</summary>
+        <div class="j2p-faq-answer">Yes. The converter is fully responsive and optimized for mobile touchscreens, tablets, laptops, and desktop computers. You can easily pick photos from your mobile photo library or camera roll.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Why was my smartphone photo sideways and how do I fix it?</summary>
+        <div class="j2p-faq-answer">Smartphone cameras often store orientation as EXIF metadata tags. If a photo displays sideways, simply tap the 'Rotate 90°' button on that image card to ensure it appears upright before generating your PDF.</div>
+      </details>
+      <details class="j2p-faq-item" >
+        <summary>Can I print the generated PDF?</summary>
+        <div class="j2p-faq-answer">Yes. The output is a standard PDF file compatible with Adobe Acrobat Reader, Apple Preview, Google Chrome, Microsoft Edge, and all home and commercial printers.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 41. Privacy -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">Privacy & Local Processing</h2>
+    </div>
+    <p>
+      This tool creates the PDF in your browser and does not require a remote PDF-generation API or user account. Your photographs, scanned documents, and generated PDF files remain securely on your local device. We do not transmit your image content to external cloud conversion servers, ensuring maximum confidential security for personal, financial, and legal records.
+    </p>
+  </section>
+
+  <!-- 42. Disclaimer -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">JPG to PDF Converter Disclaimer</h2>
+    </div>
+    <p>
+      This converter creates PDF documents from JPG or JPEG images using the page size, orientation, margin and image-quality settings you select. Output appearance and file size can vary depending on the source image dimensions, compression, page layout and selected PDF settings.
+    </p>
+    <p>
+      Large image collections or high-resolution photos may require significant browser memory, especially on mobile devices. If your phone or tablet experiences performance slowdowns, we recommend converting fewer images at a time or choosing a standard or smaller file quality setting.
+    </p>
+    <p>
+      Image quality settings that recompress JPG files may reduce visual quality in exchange for smaller file sizes. Users are responsible for ensuring they have permission to use and convert the selected images.
+    </p>
+  </section>
+
+  <!-- 43. Social Sharing -->
+  <section class="j2p-card">
+    <div class="j2p-card-header">
+      <h2 class="j2p-card-title">Share This JPG to PDF Converter</h2>
+      <p class="j2p-card-desc">Help friends, colleagues, and classmates convert their images to PDF for free.</p>
+    </div>
+    <div class="j2p-share-grid">
+      <button type="button" id="j2pShareFb" class="j2p-share-btn j2p-bg-fb">Facebook</button>
+      <button type="button" id="j2pShareTw" class="j2p-share-btn j2p-bg-tw">X / Twitter</button>
+      <button type="button" id="j2pShareWa" class="j2p-share-btn j2p-bg-wa">WhatsApp</button>
+      <button type="button" id="j2pShareLi" class="j2p-share-btn j2p-bg-li">LinkedIn</button>
+      <button type="button" id="j2pShareRd" class="j2p-share-btn j2p-bg-rd">Reddit</button>
+      <button type="button" id="j2pShareTg" class="j2p-share-btn j2p-bg-tg">Telegram</button>
+      <button type="button" id="j2pShareEm" class="j2p-share-btn j2p-bg-em">Email</button>
+      <button type="button" id="j2pShareCp" class="j2p-share-btn j2p-bg-cp">Copy Link</button>
+      <button type="button" id="j2pShareNt" class="j2p-share-btn j2p-bg-sh">Share Tool</button>
+    </div>
+  </section>
+
+  <!-- 44. Fourth Advertisement — Social Bar -->
+  <div class="j2p-ad-wrapper">
+    <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+  </div>
+
+</div>
+
+<!-- CDN Libraries for Browser PDF Synthesis -->
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+<!-- Complete Isolated Vanilla JavaScript Execution -->
+<script>
+(function () {
+  var root = document.getElementById('jpgToPdfBloggerApp');
+  if (!root) return;
+
+  var images = []; // Array of { id, file, name, size, width, height, rotation, url, rawBuffer }
+  var isConverting = false;
+  var cancelRequested = false;
+  var currentPdfBlob = null;
+  var currentPdfUrl = null;
+
+  var settings = {
+    pageSizeId: 'us-letter',
+    customWidth: 8.5,
+    customHeight: 11,
+    customUnit: 'in',
+    orientation: 'auto',
+    marginPreset: 'normal',
+    margins: { top: 0.25, right: 0.25, bottom: 0.25, left: 0.25 },
+    sameMargins: true,
+    marginUnit: 'in',
+    edgeToEdge: false,
+    fitMode: 'fit',
+    alignment: 'center',
+    backgroundColor: 'white',
+    customBgColor: '#FFFFFF',
+    qualityPercent: 92,
+    imagesPerPage: 1,
+    imageSpacing: 'small',
+    addTitlePage: false,
+    titlePage: { title: '', subtitle: '', date: '' },
+    metadata: { title: '', author: '', subject: '', keywords: '' },
+    outputFileName: 'jpg-to-pdf.pdf',
+    outputMode: 'combined'
+  };
+
+  // DOM Elements
+  var dropzone = document.getElementById('j2pDropzone');
+  var fileInput = document.getElementById('j2pFileInput');
+  var chooseBtn = document.getElementById('j2pChooseBtn');
+  var addMoreBtn = document.getElementById('j2pAddMoreBtn');
+  var clearAllBtn = document.getElementById('j2pClearAllBtn');
+  var rotateAllLeftBtn = document.getElementById('j2pRotateAllLeftBtn');
+  var rotateAllRightBtn = document.getElementById('j2pRotateAllRightBtn');
+  var filesActions = document.getElementById('j2pFilesActions');
+  var filesSummary = document.getElementById('j2pFilesSummary');
+  var imageGrid = document.getElementById('j2pImageGrid');
+  var alertBox = document.getElementById('j2pAlertBox');
+  var convertBtn = document.getElementById('j2pConvertBtn');
+  var progressCard = document.getElementById('j2pProgressCard');
+  var progressBarFill = document.getElementById('j2pProgressBarFill');
+  var progressStage = document.getElementById('j2pProgressStage');
+  var progressImgCount = document.getElementById('j2pProgressImgCount');
+  var progressPercent = document.getElementById('j2pProgressPercent');
+  var cancelBtn = document.getElementById('j2pCancelBtn');
+  var resultCard = document.getElementById('j2pResultCard');
+  var downloadBtn = document.getElementById('j2pDownloadBtn');
+  var previewPdfBtn = document.getElementById('j2pPreviewPdfBtn');
+  var downloadAgainBtn = document.getElementById('j2pDownloadAgainBtn');
+  var rebuildBtn = document.getElementById('j2pRebuildBtn');
+  var resetBtn = document.getElementById('j2pResetBtn');
+  var fileNameInput = document.getElementById('j2pFileNameInput');
+  var qualitySlider = document.getElementById('j2pQualitySlider');
+  var qualityVal = document.getElementById('j2pQualityVal');
+  var customSizePanel = document.getElementById('j2pCustomSizePanel');
+  var customWidthInput = document.getElementById('j2pCustomWidth');
+  var customHeightInput = document.getElementById('j2pCustomHeight');
+  var customUnitInput = document.getElementById('j2pCustomUnit');
+  var customMarginPanel = document.getElementById('j2pCustomMarginPanel');
+  var sameMarginsCheckbox = document.getElementById('j2pSameMargins');
+  var edgeToEdgeCheckbox = document.getElementById('j2pEdgeToEdge');
+  var customBgColorInput = document.getElementById('j2pCustomBgColor');
+  var spacingBox = document.getElementById('j2pSpacingBox');
+  var addTitlePageCheckbox = document.getElementById('j2pAddTitlePage');
+  var titlePageInputs = document.getElementById('j2pTitlePageInputs');
+
+  // Preview elements
+  var previewSheet = document.getElementById('j2pPreviewSheet');
+  var previewMarginBox = document.getElementById('j2pPreviewMarginBox');
+  var previewImg = document.getElementById('j2pPreviewImg');
+  var previewPlaceholderText = document.getElementById('j2pPreviewPlaceholderText');
+  var previewLabel = document.getElementById('j2pPreviewLabel');
+
+  function showAlert(msg, isError) {
+    if (!alertBox) return;
+    alertBox.textContent = msg;
+    alertBox.className = 'j2p-alert ' + (isError ? 'j2p-alert-error' : 'j2p-alert-success');
+    alertBox.style.display = 'block';
+    setTimeout(function () {
+      alertBox.style.display = 'none';
+    }, 5000);
+  }
+
+  function formatBytes(bytes) {
+    if (bytes === 0) return '0 B';
+    var k = 1024;
+    var sizes = ['B', 'KB', 'MB', 'GB'];
+    var i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  function handleFiles(fileList) {
+    var validExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+    var addedCount = 0;
+
+    Array.prototype.forEach.call(fileList, function (file) {
+      var ext = file.name.split('.').pop().toLowerCase();
+      if (!validExtensions.includes(ext) && !file.type.startsWith('image/')) {
+        showAlert('Skipped unsupported file: ' + file.name + '. Please select JPG or JPEG files.', true);
+        return;
+      }
+
+      var id = 'img_' + Math.random().toString(36).substr(2, 9);
+      var blobUrl = URL.createObjectURL(file);
+
+      var imgItem = {
+        id: id,
+        file: file,
+        name: file.name,
+        size: file.size,
+        width: 0,
+        height: 0,
+        rotation: 0,
+        url: blobUrl,
+        rawBuffer: null
+      };
+
+      // Read buffer for potential direct embedding
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        imgItem.rawBuffer = e.target.result;
+      };
+      reader.readAsArrayBuffer(file);
+
+      // Measure dimensions
+      var imgTest = new Image();
+      imgTest.onload = function () {
+        imgItem.width = imgTest.naturalWidth;
+        imgItem.height = imgTest.naturalHeight;
+        renderImages();
+        updateSummary();
+        updateLayoutPreview();
+      };
+      imgTest.src = blobUrl;
+
+      images.push(imgItem);
+      addedCount++;
+    });
+
+    if (addedCount > 0) {
+      renderImages();
+      updateSummary();
+      updateLayoutPreview();
+    }
+  }
+
+  function renderImages() {
+    if (!imageGrid) return;
+    imageGrid.innerHTML = '';
+
+    if (images.length === 0) {
+      if (filesActions) filesActions.style.display = 'none';
+      if (previewImg) previewImg.style.display = 'none';
+      if (previewPlaceholderText) previewPlaceholderText.style.display = 'block';
+      return;
+    }
+
+    if (filesActions) filesActions.style.display = 'flex';
+    var totalBytes = images.reduce(function (sum, item) { return sum + item.size; }, 0);
+    if (filesSummary) {
+      filesSummary.textContent = images.length + (images.length === 1 ? ' image' : ' images') + ' selected (' + formatBytes(totalBytes) + ')';
+    }
+
+    images.forEach(function (item, index) {
+      var card = document.createElement('div');
+      card.className = 'j2p-img-card';
+      card.draggable = true;
+
+      // Drag and drop events
+      card.addEventListener('dragstart', function (e) {
+        e.dataTransfer.setData('text/plain', index);
+      });
+      card.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        card.style.borderColor = '#2563eb';
+      });
+      card.addEventListener('dragleave', function () {
+        card.style.borderColor = '#e2e8f0';
+      });
+      card.addEventListener('drop', function (e) {
+        e.preventDefault();
+        card.style.borderColor = '#e2e8f0';
+        var fromIndex = parseInt(e.dataTransfer.getData('text/plain'), 10);
+        if (fromIndex !== index && !isNaN(fromIndex)) {
+          var moved = images.splice(fromIndex, 1)[0];
+          images.splice(index, 0, moved);
+          renderImages();
+          updateSummary();
+          updateLayoutPreview();
+        }
+      });
+
+      var isRotated90 = item.rotation === 90 || item.rotation === 270;
+      var effW = isRotated90 ? item.height : item.width;
+      var effH = isRotated90 ? item.width : item.height;
+      var orientLabel = effW > effH ? 'Landscape' : (effH > effW ? 'Portrait' : 'Square');
+
+      card.innerHTML = 
+        '<div class="j2p-img-badge">Page ' + (index + 1) + ' of ' + images.length + '</div>' +
+        '<div class="j2p-thumb-container">' +
+          '<img class="j2p-thumb-img" src="' + item.url + '" style="transform: rotate(' + item.rotation + 'deg);">' +
+        '</div>' +
+        '<div class="j2p-img-meta">' +
+          '<div class="j2p-img-name" title="' + item.name + '">' + item.name + '</div>' +
+          '<div class="j2p-img-details">' +
+            '<span>' + formatBytes(item.size) + '</span>' +
+            '<span>' + (effW || '?') + ' × ' + (effH || '?') + ' px</span>' +
+            '<span>' + orientLabel + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="j2p-img-controls">' +
+          '<div class="j2p-ctrl-row">' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="rot-l" title="Rotate Left 90°">↺ 90°</button>' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="rot-r" title="Rotate Right 90°">↻ 90°</button>' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="rot-180" title="Rotate 180°">180°</button>' +
+            '<button type="button" class="j2p-ctrl-btn j2p-ctrl-btn-del" data-action="remove" title="Remove Image">✕</button>' +
+          '</div>' +
+          '<div class="j2p-ctrl-row">' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="first" ' + (index === 0 ? 'disabled style="opacity:0.4;"' : '') + '>⏮ First</button>' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="up" ' + (index === 0 ? 'disabled style="opacity:0.4;"' : '') + '>▲ Up</button>' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="down" ' + (index === images.length - 1 ? 'disabled style="opacity:0.4;"' : '') + '>▼ Down</button>' +
+            '<button type="button" class="j2p-ctrl-btn" data-action="last" ' + (index === images.length - 1 ? 'disabled style="opacity:0.4;"' : '') + '>⏭ Last</button>' +
+          '</div>' +
+        '</div>';
+
+      // Control handlers
+      card.querySelectorAll('.j2p-ctrl-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var action = btn.getAttribute('data-action');
+          if (action === 'rot-l') {
+            item.rotation = (item.rotation + 270) % 360;
+          } else if (action === 'rot-r') {
+            item.rotation = (item.rotation + 90) % 360;
+          } else if (action === 'rot-180') {
+            item.rotation = (item.rotation + 180) % 360;
+          } else if (action === 'remove') {
+            images.splice(index, 1);
+          } else if (action === 'up' && index > 0) {
+            var temp = images[index];
+            images[index] = images[index - 1];
+            images[index - 1] = temp;
+          } else if (action === 'down' && index < images.length - 1) {
+            var temp = images[index];
+            images[index] = images[index + 1];
+            images[index + 1] = temp;
+          } else if (action === 'first' && index > 0) {
+            var moved = images.splice(index, 1)[0];
+            images.unshift(moved);
+          } else if (action === 'last' && index < images.length - 1) {
+            var moved = images.splice(index, 1)[0];
+            images.push(moved);
+          }
+          renderImages();
+          updateSummary();
+          updateLayoutPreview();
+        });
+      });
+
+      imageGrid.appendChild(card);
+    });
+  }
+
+  function updateSummary() {
+    var sumImg = document.getElementById('j2pSumImages');
+    var sumPages = document.getElementById('j2pSumPages');
+    var sumSize = document.getElementById('j2pSumSize');
+    var sumOrient = document.getElementById('j2pSumOrient');
+    var sumMargin = document.getElementById('j2pSumMargin');
+    var sumFit = document.getElementById('j2pSumFit');
+    var sumQuality = document.getElementById('j2pSumQuality');
+    var sumLayout = document.getElementById('j2pSumLayout');
+
+    if (sumImg) sumImg.textContent = images.length;
+    var planned = Math.ceil(images.length / settings.imagesPerPage);
+    if (settings.addTitlePage && planned > 0) planned += 1;
+    if (sumPages) sumPages.textContent = planned;
+
+    if (sumSize) {
+      if (settings.pageSizeId === 'custom-size') {
+        sumSize.textContent = settings.customWidth + '×' + settings.customHeight + ' ' + settings.customUnit;
+      } else {
+        var activeBtn = document.querySelector('.j2p-size-btn.j2p-active strong');
+        sumSize.textContent = activeBtn ? activeBtn.textContent : settings.pageSizeId;
+      }
+    }
+
+    if (sumOrient) {
+      sumOrient.textContent = settings.orientation.charAt(0).toUpperCase() + settings.orientation.slice(1);
+    }
+    if (sumMargin) {
+      if (settings.edgeToEdge || settings.marginPreset === 'none') {
+        sumMargin.textContent = 'None (0 in)';
+      } else if (settings.marginPreset === 'narrow') {
+        sumMargin.textContent = 'Narrow (0.125 in)';
+      } else if (settings.marginPreset === 'normal') {
+        sumMargin.textContent = 'Normal (0.25 in)';
+      } else if (settings.marginPreset === 'wide') {
+        sumMargin.textContent = 'Wide (0.5 in)';
+      } else {
+        sumMargin.textContent = 'Custom';
+      }
+    }
+    if (sumFit) sumFit.textContent = settings.fitMode.charAt(0).toUpperCase() + settings.fitMode.slice(1);
+    if (sumQuality) sumQuality.textContent = settings.qualityPercent + '%';
+    if (sumLayout) sumLayout.textContent = settings.imagesPerPage + ' per page';
+  }
+
+  function updateLayoutPreview() {
+    if (!previewSheet || !previewMarginBox) return;
+
+    if (images.length === 0) {
+      if (previewImg) previewImg.style.display = 'none';
+      if (previewPlaceholderText) previewPlaceholderText.style.display = 'block';
+      if (previewLabel) previewLabel.textContent = 'Page 1 Layout Preview';
+      return;
+    }
+
+    var firstImg = images[0];
+    if (previewPlaceholderText) previewPlaceholderText.style.display = 'none';
+    if (previewImg) {
+      previewImg.style.display = 'block';
+      previewImg.src = firstImg.url;
+      previewImg.style.transform = 'rotate(' + firstImg.rotation + 'deg)';
+    }
+
+    // Determine preview aspect ratio
+    var isLandscape = false;
+    var imgLandscape = (firstImg.rotation === 90 || firstImg.rotation === 270)
+      ? (firstImg.height > firstImg.width)
+      : (firstImg.width > firstImg.height);
+
+    if (settings.orientation === 'auto') {
+      isLandscape = imgLandscape;
+    } else if (settings.orientation === 'landscape') {
+      isLandscape = true;
+    }
+
+    if (isLandscape) {
+      previewSheet.style.width = '245px';
+      previewSheet.style.height = '190px';
+    } else {
+      previewSheet.style.width = '190px';
+      previewSheet.style.height = '245px';
+    }
+
+    // Margin box padding
+    var pad = 6;
+    if (settings.edgeToEdge || settings.marginPreset === 'none') pad = 0;
+    else if (settings.marginPreset === 'narrow') pad = 4;
+    else if (settings.marginPreset === 'wide') pad = 12;
+    previewMarginBox.style.padding = pad + 'px';
+
+    // Background
+    if (settings.backgroundColor === 'lightgray') {
+      previewSheet.style.backgroundColor = '#f1f5f9';
+    } else if (settings.backgroundColor === 'black') {
+      previewSheet.style.backgroundColor = '#0f172a';
+    } else if (settings.backgroundColor === 'custom') {
+      previewSheet.style.backgroundColor = settings.customBgColor || '#ffffff';
+    } else {
+      previewSheet.style.backgroundColor = '#ffffff';
+    }
+
+    if (previewLabel) {
+      previewLabel.textContent = 'Page 1 Preview (' + (isLandscape ? 'Landscape' : 'Portrait') + ')';
+    }
+  }
+
+  // Bind Upload Events
+  if (chooseBtn && fileInput) {
+    chooseBtn.addEventListener('click', function () {
+      fileInput.click();
+    });
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files && fileInput.files.length > 0) {
+        handleFiles(fileInput.files);
+        fileInput.value = '';
+      }
+    });
+  }
+
+  if (addMoreBtn && fileInput) {
+    addMoreBtn.addEventListener('click', function () {
+      fileInput.click();
+    });
+  }
+
+  if (clearAllBtn) {
+    clearAllBtn.addEventListener('click', function () {
+      if (confirm('Clear all uploaded images?')) {
+        images = [];
+        renderImages();
+        updateSummary();
+        updateLayoutPreview();
+      }
+    });
+  }
+
+  if (rotateAllLeftBtn) {
+    rotateAllLeftBtn.addEventListener('click', function () {
+      images.forEach(function (img) {
+        img.rotation = (img.rotation + 270) % 360;
+      });
+      renderImages();
+      updateSummary();
+      updateLayoutPreview();
+    });
+  }
+
+  if (rotateAllRightBtn) {
+    rotateAllRightBtn.addEventListener('click', function () {
+      images.forEach(function (img) {
+        img.rotation = (img.rotation + 90) % 360;
+      });
+      renderImages();
+      updateSummary();
+      updateLayoutPreview();
+    });
+  }
+
+  if (dropzone) {
+    dropzone.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      dropzone.classList.add('j2p-dragover');
+    });
+    dropzone.addEventListener('dragleave', function () {
+      dropzone.classList.remove('j2p-dragover');
+    });
+    dropzone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dropzone.classList.remove('j2p-dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleFiles(e.dataTransfer.files);
+      }
+    });
+  }
+
+  // Page Size Buttons
+  document.querySelectorAll('.j2p-size-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-size-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      var sizeId = btn.getAttribute('data-size-id');
+      settings.pageSizeId = sizeId;
+
+      if (customSizePanel) {
+        customSizePanel.style.display = sizeId === 'custom-size' ? 'block' : 'none';
+      }
+      updateSummary();
+      updateLayoutPreview();
+    });
+  });
+
+  if (customWidthInput) {
+    customWidthInput.addEventListener('input', function () {
+      settings.customWidth = parseFloat(customWidthInput.value) || 8.5;
+      updateSummary();
+    });
+  }
+  if (customHeightInput) {
+    customHeightInput.addEventListener('input', function () {
+      settings.customHeight = parseFloat(customHeightInput.value) || 11;
+      updateSummary();
+    });
+  }
+  if (customUnitInput) {
+    customUnitInput.addEventListener('change', function () {
+      settings.customUnit = customUnitInput.value;
+      updateSummary();
+    });
+  }
+
+  // Orientation Buttons
+  document.querySelectorAll('.j2p-orient-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-orient-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      settings.orientation = btn.getAttribute('data-orient');
+      updateSummary();
+      updateLayoutPreview();
+    });
+  });
+
+  // Margin Buttons
+  document.querySelectorAll('.j2p-margin-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-margin-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      var m = btn.getAttribute('data-margin');
+      settings.marginPreset = m;
+      if (customMarginPanel) {
+        customMarginPanel.style.display = m === 'custom' ? 'block' : 'none';
+      }
+      updateSummary();
+      updateLayoutPreview();
+    });
+  });
+
+  if (edgeToEdgeCheckbox) {
+    edgeToEdgeCheckbox.addEventListener('change', function () {
+      settings.edgeToEdge = edgeToEdgeCheckbox.checked;
+      updateSummary();
+      updateLayoutPreview();
+    });
+  }
+
+  // Image Fit
+  document.querySelectorAll('.j2p-fit-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-fit-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      settings.fitMode = btn.getAttribute('data-fit');
+      updateSummary();
+      updateLayoutPreview();
+    });
+  });
+
+  // Alignment
+  document.querySelectorAll('.j2p-align-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-align-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      settings.alignment = btn.getAttribute('data-align');
+      updateSummary();
+    });
+  });
+
+  // Background
+  document.querySelectorAll('.j2p-bg-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-bg-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      settings.backgroundColor = btn.getAttribute('data-bg');
+      updateSummary();
+      updateLayoutPreview();
+    });
+  });
+
+  if (customBgColorInput) {
+    customBgColorInput.addEventListener('input', function () {
+      settings.customBgColor = customBgColorInput.value;
+      settings.backgroundColor = 'custom';
+      document.querySelectorAll('.j2p-bg-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      updateSummary();
+      updateLayoutPreview();
+    });
+  }
+
+  // Quality Buttons & Slider
+  document.querySelectorAll('.j2p-qual-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-qual-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      var q = parseInt(btn.getAttribute('data-qual'), 10);
+      settings.qualityPercent = q;
+      if (qualitySlider) qualitySlider.value = q;
+      if (qualityVal) qualityVal.textContent = q + '%';
+      updateSummary();
+    });
+  });
+
+  if (qualitySlider) {
+    qualitySlider.addEventListener('input', function () {
+      var q = parseInt(qualitySlider.value, 10);
+      settings.qualityPercent = q;
+      if (qualityVal) qualityVal.textContent = q + '%';
+      document.querySelectorAll('.j2p-qual-btn').forEach(function (b) {
+        if (parseInt(b.getAttribute('data-qual'), 10) === q) {
+          b.classList.add('j2p-active');
+        } else {
+          b.classList.remove('j2p-active');
+        }
+      });
+      updateSummary();
+    });
+  }
+
+  // Layout / Images Per Page
+  document.querySelectorAll('.j2p-layout-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-layout-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      var lay = parseInt(btn.getAttribute('data-layout'), 10);
+      settings.imagesPerPage = lay;
+      if (spacingBox) spacingBox.style.display = lay > 1 ? 'block' : 'none';
+      updateSummary();
+    });
+  });
+
+  document.querySelectorAll('.j2p-space-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-space-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      settings.imageSpacing = btn.getAttribute('data-space');
+      updateSummary();
+    });
+  });
+
+  // Output mode
+  document.querySelectorAll('.j2p-mode-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.j2p-mode-btn').forEach(function (b) { b.classList.remove('j2p-active'); });
+      btn.classList.add('j2p-active');
+      settings.outputMode = btn.getAttribute('data-mode');
+    });
+  });
+
+  if (addTitlePageCheckbox) {
+    addTitlePageCheckbox.addEventListener('change', function () {
+      settings.addTitlePage = addTitlePageCheckbox.checked;
+      if (titlePageInputs) {
+        titlePageInputs.style.display = settings.addTitlePage ? 'grid' : 'none';
+      }
+      updateSummary();
+    });
+  }
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', function () {
+      cancelRequested = true;
+      progressStage.textContent = 'Cancelling...';
+    });
+  }
+
+  // Convert to PDF Engine
+  async function performConversion() {
+    if (images.length === 0) {
+      showAlert('Please select at least one JPG image first.', true);
+      return;
+    }
+
+    if (typeof PDFLib === 'undefined') {
+      showAlert('PDF engine is still initializing. Please wait a moment.', true);
+      return;
+    }
+
+    isConverting = true;
+    cancelRequested = false;
+
+    if (progressCard) progressCard.style.display = 'block';
+    if (resultCard) resultCard.style.display = 'none';
+    if (convertBtn) convertBtn.disabled = true;
+
+    // Helper progress updater
+    function updateProgress(stage, percent, cur, tot) {
+      if (progressStage) progressStage.textContent = stage;
+      if (progressBarFill) progressBarFill.style.width = percent + '%';
+      if (progressPercent) progressPercent.textContent = percent + '%';
+      if (progressImgCount) progressImgCount.textContent = 'Image ' + cur + ' of ' + tot;
+    }
+
+    try {
+      updateProgress('Reading Images', 5, 1, images.length);
+
+      var pdfDoc = await PDFLib.PDFDocument.create();
+
+      // Title Page
+      if (settings.addTitlePage) {
+        var docTitle = (document.getElementById('j2pDocTitle') && document.getElementById('j2pDocTitle').value) || 'Document Title';
+        var docSub = (document.getElementById('j2pDocSubtitle') && document.getElementById('j2pDocSubtitle').value) || '';
+        var docDate = (document.getElementById('j2pDocDate') && document.getElementById('j2pDocDate').value) || '';
+
+        var titlePage = pdfDoc.addPage([612, 792]);
+        var helvBold = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+        var helv = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+        var tw = helvBold.widthOfTextAtSize(docTitle, 28);
+        titlePage.drawText(docTitle, {
+          x: Math.max(30, (612 - tw) / 2),
+          y: 430,
+          size: 28,
+          font: helvBold,
+          color: PDFLib.rgb(0.1, 0.1, 0.2)
+        });
+
+        if (docSub) {
+          var sw = helv.widthOfTextAtSize(docSub, 16);
+          titlePage.drawText(docSub, {
+            x: Math.max(30, (612 - sw) / 2),
+            y: 390,
+            size: 16,
+            font: helv,
+            color: PDFLib.rgb(0.3, 0.3, 0.4)
+          });
+        }
+
+        if (docDate) {
+          var dw = helv.widthOfTextAtSize(docDate, 12);
+          titlePage.drawText(docDate, {
+            x: Math.max(30, (612 - dw) / 2),
+            y: 350,
+            size: 12,
+            font: helv,
+            color: PDFLib.rgb(0.5, 0.5, 0.6)
+          });
+        }
+      }
+
+      var imagesPerPage = settings.imagesPerPage || 1;
+      var totalPages = Math.ceil(images.length / imagesPerPage);
+
+      for (var p = 0; p < totalPages; p++) {
+        if (cancelRequested) throw new Error('Cancelled by user');
+
+        var startIdx = p * imagesPerPage;
+        var batch = images.slice(startIdx, startIdx + imagesPerPage);
+        var primaryImg = batch[0];
+
+        updateProgress(
+          'Preparing Image ' + (startIdx + 1) + ' of ' + images.length,
+          Math.round(15 + (startIdx / images.length) * 70),
+          startIdx + 1,
+          images.length
+        );
+
+        // Calculate page geometry
+        var pageW = 612;
+        var pageH = 792;
+
+        if (settings.pageSizeId === 'us-letter') { pageW = 612; pageH = 792; }
+        else if (settings.pageSizeId === 'us-legal') { pageW = 612; pageH = 1008; }
+        else if (settings.pageSizeId === 'us-tabloid') { pageW = 792; pageH = 1224; }
+        else if (settings.pageSizeId === 'iso-a4') { pageW = 595.28; pageH = 841.89; }
+        else if (settings.pageSizeId === 'photo-4x6') { pageW = 288; pageH = 432; }
+        else if (settings.pageSizeId === 'photo-5x7') { pageW = 360; pageH = 504; }
+        else if (settings.pageSizeId === 'photo-8x10') { pageW = 576; pageH = 720; }
+        else if (settings.pageSizeId === 'fit-to-image') {
+          var rot90 = primaryImg.rotation === 90 || primaryImg.rotation === 270;
+          var nw = rot90 ? primaryImg.height : primaryImg.width;
+          var nh = rot90 ? primaryImg.width : primaryImg.height;
+          var maxD = 1200;
+          var sc = Math.min(1, maxD / Math.max(nw, nh));
+          pageW = Math.max(72, Math.round(nw * sc));
+          pageH = Math.max(72, Math.round(nh * sc));
+        }
+
+        // Apply Orientation
+        if (settings.pageSizeId !== 'fit-to-image') {
+          var isLandscape = (primaryImg.rotation === 90 || primaryImg.rotation === 270)
+            ? (primaryImg.height > primaryImg.width)
+            : (primaryImg.width > primaryImg.height);
+
+          var targetOrient = settings.orientation === 'auto' ? (isLandscape ? 'landscape' : 'portrait') : settings.orientation;
+          if (targetOrient === 'portrait') {
+            var tempMin = Math.min(pageW, pageH);
+            var tempMax = Math.max(pageW, pageH);
+            pageW = tempMin;
+            pageH = tempMax;
+          } else if (targetOrient === 'landscape') {
+            var tempMin = Math.min(pageW, pageH);
+            var tempMax = Math.max(pageW, pageH);
+            pageW = tempMax;
+            pageH = tempMin;
+          }
+        }
+
+        var pdfPage = pdfDoc.addPage([pageW, pageH]);
+
+        // Margins
+        var marginPt = 18; // default 0.25 in
+        if (settings.edgeToEdge || settings.marginPreset === 'none') marginPt = 0;
+        else if (settings.marginPreset === 'narrow') marginPt = 9;
+        else if (settings.marginPreset === 'wide') marginPt = 36;
+
+        var availX = marginPt;
+        var availY = marginPt;
+        var availW = Math.max(20, pageW - marginPt * 2);
+        var availH = Math.max(20, pageH - marginPt * 2);
+
+        // Process images in page
+        for (var b = 0; b < batch.length; b++) {
+          var img = batch[b];
+          var cellX = availX;
+          var cellY = availY;
+          var cellW = availW;
+          var cellH = availH;
+
+          if (batch.length === 2) {
+            cellW = availW / 2;
+            cellX = availX + b * cellW;
+          } else if (batch.length > 2) {
+            var cols = batch.length <= 4 ? 2 : 3;
+            var rows = batch.length <= 4 ? 2 : 3;
+            cellW = availW / cols;
+            cellH = availH / rows;
+            var c = b % cols;
+            var r = Math.floor(b / cols);
+            cellX = availX + c * cellW;
+            cellY = availY + (rows - 1 - r) * cellH;
+          }
+
+          // Process image through Canvas
+          var processedBytes = await (function (item) {
+            return new Promise(function (resolve, reject) {
+              var tImg = new Image();
+              tImg.onload = function () {
+                var rot = item.rotation % 360;
+                var isQ = rot === 90 || rot === 270;
+                var cw = isQ ? tImg.naturalHeight : tImg.naturalWidth;
+                var ch = isQ ? tImg.naturalWidth : tImg.naturalHeight;
+
+                var cvs = document.createElement('canvas');
+                cvs.width = cw;
+                cvs.height = ch;
+                var ctx = cvs.getContext('2d');
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(0, 0, cw, ch);
+
+                ctx.save();
+                ctx.translate(cw / 2, ch / 2);
+                ctx.rotate((rot * Math.PI) / 180);
+                ctx.drawImage(tImg, -tImg.naturalWidth / 2, -tImg.naturalHeight / 2);
+                ctx.restore();
+
+                var q = Math.max(0.5, Math.min(1.0, settings.qualityPercent / 100));
+                cvs.toBlob(async function (blob) {
+                  var buf = await blob.arrayBuffer();
+                  resolve(new Uint8Array(buf));
+                }, 'image/jpeg', q);
+              };
+              tImg.onerror = reject;
+              tImg.src = item.url;
+            });
+          })(img);
+
+          var embedded = await pdfDoc.embedJpg(processedBytes);
+          var ew = embedded.width;
+          var eh = embedded.height;
+
+          var scale = Math.min(cellW / ew, cellH / eh);
+          var dw = ew * scale;
+          var dh = eh * scale;
+          var dx = cellX + (cellW - dw) / 2;
+          var dy = cellY + (cellH - dh) / 2;
+
+          pdfPage.drawImage(embedded, {
+            x: dx,
+            y: dy,
+            width: dw,
+            height: dh
+          });
+        }
+      }
+
+      updateProgress('Finalizing PDF', 95, images.length, images.length);
+
+      var pdfBytes = await pdfDoc.save();
+      currentPdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+      currentPdfUrl = URL.createObjectURL(currentPdfBlob);
+
+      updateProgress('Ready', 100, images.length, images.length);
+
+      // Populate Result Section
+      var finalName = (fileNameInput && fileNameInput.value.trim()) || 'jpg-to-pdf.pdf';
+      if (!finalName.toLowerCase().endsWith('.pdf')) finalName += '.pdf';
+
+      var resFileName = document.getElementById('j2pResFileName');
+      var resPages = document.getElementById('j2pResPages');
+      var resSize = document.getElementById('j2pResSize');
+      var resPageSize = document.getElementById('j2pResPageSize');
+      var resQuality = document.getElementById('j2pResQuality');
+
+      if (resFileName) resFileName.textContent = finalName;
+      if (resPages) resPages.textContent = pdfDoc.getPageCount();
+      if (resSize) resSize.textContent = formatBytes(currentPdfBlob.size);
+      if (resPageSize) resPageSize.textContent = settings.pageSizeId.toUpperCase();
+      if (resQuality) resQuality.textContent = settings.qualityPercent + '%';
+
+      if (downloadBtn) {
+        downloadBtn.href = currentPdfUrl;
+        downloadBtn.download = finalName;
+      }
+
+      if (progressCard) progressCard.style.display = 'none';
+      if (resultCard) {
+        resultCard.style.display = 'block';
+        resultCard.scrollIntoView({ behavior: 'smooth' });
+      }
+
+    } catch (err) {
+      if (progressCard) progressCard.style.display = 'none';
+      showAlert('PDF Conversion failed: ' + err.message, true);
+    } finally {
+      isConverting = false;
+      if (convertBtn) convertBtn.disabled = false;
+    }
+  }
+
+  if (convertBtn) {
+    convertBtn.addEventListener('click', performConversion);
+  }
+
+  if (previewPdfBtn) {
+    previewPdfBtn.addEventListener('click', function () {
+      if (currentPdfUrl) {
+        window.open(currentPdfUrl, '_blank');
+      }
+    });
+  }
+
+  if (downloadAgainBtn) {
+    downloadAgainBtn.addEventListener('click', function () {
+      if (downloadBtn) downloadBtn.click();
+    });
+  }
+
+  if (rebuildBtn) {
+    rebuildBtn.addEventListener('click', function () {
+      var setCard = document.getElementById('j2pSettingsCard');
+      if (setCard) setCard.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      if (confirm('Start another conversion? Current images will be cleared.')) {
+        images = [];
+        renderImages();
+        updateSummary();
+        updateLayoutPreview();
+        if (resultCard) resultCard.style.display = 'none';
+        var hero = document.querySelector('.j2p-hero');
+        if (hero) hero.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Social Sharing Functions
+  var currentUrl = encodeURIComponent(window.location.href);
+  var currentTitle = encodeURIComponent(document.title || 'Free JPG to PDF Converter');
+
+  var btnFb = document.getElementById('j2pShareFb');
+  if (btnFb) btnFb.addEventListener('click', function () {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + currentUrl, '_blank', 'width=600,height=400');
+  });
+
+  var btnTw = document.getElementById('j2pShareTw');
+  if (btnTw) btnTw.addEventListener('click', function () {
+    window.open('https://twitter.com/intent/tweet?url=' + currentUrl + '&text=' + currentTitle, '_blank', 'width=600,height=400');
+  });
+
+  var btnWa = document.getElementById('j2pShareWa');
+  if (btnWa) btnWa.addEventListener('click', function () {
+    window.open('https://api.whatsapp.com/send?text=' + currentTitle + '%20' + currentUrl, '_blank');
+  });
+
+  var btnLi = document.getElementById('j2pShareLi');
+  if (btnLi) btnLi.addEventListener('click', function () {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + currentUrl, '_blank', 'width=600,height=400');
+  });
+
+  var btnRd = document.getElementById('j2pShareRd');
+  if (btnRd) btnRd.addEventListener('click', function () {
+    window.open('https://reddit.com/submit?url=' + currentUrl + '&title=' + currentTitle, '_blank', 'width=600,height=400');
+  });
+
+  var btnTg = document.getElementById('j2pShareTg');
+  if (btnTg) btnTg.addEventListener('click', function () {
+    window.open('https://t.me/share/url?url=' + currentUrl + '&text=' + currentTitle, '_blank');
+  });
+
+  var btnEm = document.getElementById('j2pShareEm');
+  if (btnEm) btnEm.addEventListener('click', function () {
+    window.location.href = 'mailto:?subject=JPG%20to%20PDF%20Converter&body=' + currentTitle + '%20' + currentUrl;
+  });
+
+  var btnCp = document.getElementById('j2pShareCp');
+  if (btnCp) btnCp.addEventListener('click', function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        btnCp.textContent = 'Link Copied!';
+        setTimeout(function () { btnCp.textContent = 'Copy Link'; }, 3000);
+      });
+    } else {
+      prompt('Copy this link:', window.location.href);
+    }
+  });
+
+  var btnNt = document.getElementById('j2pShareNt');
+  if (btnNt) btnNt.addEventListener('click', function () {
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: window.location.href }).catch(function () {});
+    } else {
+      btnCp.click();
+    }
+  });
+
+  // Initial updates
+  updateSummary();
+  updateLayoutPreview();
+})();
+</script>
