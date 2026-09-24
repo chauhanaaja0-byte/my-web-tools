@@ -1,0 +1,1823 @@
+<!--
+BLOGGER TITLE:
+Free ATS Resume Checker & Job Description Keyword Matcher
+
+BLOGGER SEARCH DESCRIPTION:
+Check your resume against a job description, find matched and missing keywords, review ATS-friendly sections and get practical resume improvement suggestions for free.
+
+BLOGGER LABELS:
+ATS Resume Checker, Resume Keyword Matcher, Job Description Matcher, Resume Checker, ATS Checker, Resume Tools, Job Search Tools, Career Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+ats-resume-checker-job-description-keyword-matcher
+
+GITHUB FILE NAME:
+ats-resume-checker-job-description-keyword-matcher.html
+-->
+
+<!-- Client-side Document Extraction Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
+<style>
+#atsResumeBloggerApp,
+#atsResumeBloggerApp * {
+  box-sizing: border-box;
+}
+
+#atsResumeBloggerApp {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+.atspro-shell {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 12px;
+}
+
+.atspro-hero {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 28px;
+}
+
+.atspro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.atspro-title {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+
+.atspro-subtitle {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: #1d4ed8;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.atspro-desc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.atspro-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #047857;
+}
+
+.atspro-ad-box {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+  padding: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.atspro-ad-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.atspro-workspace {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.atspro-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .atspro-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.atspro-input-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.atspro-col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.atspro-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.atspro-upload-btn {
+  display: inline-block;
+  cursor: pointer;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.atspro-upload-btn:hover {
+  background: #dbeafe;
+}
+
+.atspro-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #0f172a;
+  resize: vertical;
+}
+
+.atspro-textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+}
+
+.atspro-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+.atspro-extra-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+@media (min-width: 768px) {
+  .atspro-extra-row {
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+  }
+}
+
+.atspro-input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.atspro-privacy-pill {
+  font-size: 11px;
+  color: #475569;
+  background: #ffffff;
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.atspro-alert {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.atspro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.atspro-btn-primary {
+  flex: 2;
+  min-width: 200px;
+  min-height: 44px;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(37,99,235,0.3);
+  transition: all 0.2s;
+}
+
+.atspro-btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.atspro-btn-secondary {
+  flex: 1;
+  min-height: 44px;
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.atspro-btn-secondary:hover {
+  background: #f1f5f9;
+}
+
+/* Results Section */
+.atspro-results {
+  display: none;
+  margin-bottom: 30px;
+}
+
+.atspro-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.atspro-score-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+@media (min-width: 768px) {
+  .atspro-score-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.atspro-score-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.atspro-score-box.atspro-primary {
+  grid-column: span 2;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+@media (min-width: 768px) {
+  .atspro-score-box.atspro-primary {
+    grid-column: span 1;
+  }
+}
+
+.atspro-score-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.atspro-score-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2563eb;
+  margin: 6px 0;
+}
+
+.atspro-progress {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.atspro-bar {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 9999px;
+}
+
+.atspro-chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.atspro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.atspro-chip.matched {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.atspro-chip.missing {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #9f1239;
+}
+
+.atspro-chip-count {
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.06);
+}
+
+.atspro-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 14px;
+}
+
+.atspro-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+
+.atspro-table th {
+  background: #f8fafc;
+  padding: 8px 10px;
+  border-bottom: 2px solid #e2e8f0;
+  color: #475569;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.atspro-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.atspro-export-bar {
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .atspro-export-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.atspro-export-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.atspro-btn-exp {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.atspro-exp-blue {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.atspro-exp-green {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.atspro-exp-dark {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+/* Feature Grid */
+.atspro-feat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .atspro-feat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .atspro-feat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.atspro-feat-item {
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.atspro-feat-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.atspro-feat-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* FAQ Details */
+.atspro-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #ffffff;
+  padding: 10px 14px;
+}
+
+.atspro-faq-item summary {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  list-style: none;
+}
+
+.atspro-faq-item p {
+  font-size: 12px;
+  color: #475569;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* Social Buttons */
+.atspro-social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+@media (min-width: 600px) {
+  .atspro-social-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .atspro-social-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.atspro-soc-btn {
+  min-height: 44px;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.atspro-soc-btn:hover {
+  opacity: 0.9;
+}
+
+.atspro-fb { background: #1877F2; }
+.atspro-x { background: #000000; }
+.atspro-wa { background: #25D366; }
+.atspro-li { background: #0A66C2; }
+.atspro-rd { background: #FF4500; }
+.atspro-tg { background: #229ED9; }
+.atspro-em { background: #475569; }
+.atspro-cp { background: #4f46e5; }
+.atspro-sh { background: #059669; grid-column: span 2; }
+
+@media (min-width: 900px) {
+  .atspro-sh { grid-column: span 1; }
+}
+
+.atspro-article h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+.atspro-article p {
+  font-size: 13px;
+  color: #334155;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+</style>
+
+<div id="atsResumeBloggerApp">
+  <div class="atspro-shell">
+
+    <!-- 1. HERO -->
+    <header class="atspro-hero">
+      <div class="atspro-badge">🇺🇸 Free Resume Matching Tool for U.S. Job Seekers</div>
+      <h1 class="atspro-title">ATS Resume Checker &amp; Job Description Keyword Matcher</h1>
+      <div class="atspro-subtitle">Compare Your Resume With a Job Description and Find Missing Keywords</div>
+      <p class="atspro-desc">
+        Paste or upload your resume, add the job description, and compare the language, skills and important terms used in both. Review keyword coverage, ATS-friendly resume signals and practical improvement opportunities directly in your browser.
+      </p>
+      <div class="atspro-trust">
+        <span>✓ 100% Free</span>
+        <span>✓ No Signup</span>
+        <span>✓ Browser-Based Analysis</span>
+        <span>✓ Keyword Matching</span>
+        <span>✓ Skills Analysis</span>
+        <span>✓ Missing Keywords</span>
+        <span>✓ ATS-Friendly Checks</span>
+        <span>✓ Copy Results</span>
+        <span>✓ Download Report</span>
+      </div>
+    </header>
+
+    <!-- 2. FIRST ADVERTISEMENT — 468×60 -->
+    <div class="atspro-ad-box">
+      <div class="atspro-ad-label">Advertisement</div>
+      <script>
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+
+    <!-- 3. MAIN WORKSPACE -->
+    <section class="atspro-workspace">
+      <div class="atspro-grid-2">
+        <!-- Resume Col -->
+        <div class="atspro-input-col">
+          <div class="atspro-col-header">
+            <span class="atspro-label">Your Resume</span>
+            <label class="atspro-upload-btn">
+              📁 Upload (.txt, .pdf, .docx)
+              <input type="file" id="atsproResumeFile" accept=".txt,.pdf,.docx" style="display:none;">
+            </label>
+          </div>
+          <textarea id="atsproResumeText" class="atspro-textarea" placeholder="Paste your resume text here..."></textarea>
+          <div class="atspro-meta-row">
+            <span>Words: <strong id="atsproRWords">0</strong> | Characters: <strong id="atsproRChars">0</strong></span>
+            <span>Length: <strong id="atsproRLength">Empty</strong></span>
+          </div>
+        </div>
+
+        <!-- Job Description Col -->
+        <div class="atspro-input-col">
+          <div class="atspro-col-header">
+            <span class="atspro-label">Job Description</span>
+            <span style="font-size:11px;color:#64748b;">Paste complete posting</span>
+          </div>
+          <textarea id="atsproJdText" class="atspro-textarea" placeholder="Paste the full job description here..."></textarea>
+          <div class="atspro-meta-row">
+            <span>Words: <strong id="atsproJWords">0</strong> | Characters: <strong id="atsproJChars">0</strong></span>
+            <span style="color:#059669;font-weight:600;">100% Client-Side Privacy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optional Target Title & Trust note -->
+      <div class="atspro-extra-row">
+        <div>
+          <label class="atspro-label" style="font-size:12px;margin-bottom:4px;display:block;">Target Job Title (Optional)</label>
+          <input type="text" id="atsproJobTitle" class="atspro-input" placeholder="e.g. Senior Financial Analyst, Product Manager">
+        </div>
+        <div class="atspro-privacy-pill">
+          🔒 <strong>Privacy Note:</strong> Your resume and job description are analyzed in your browser. No account is required.
+        </div>
+      </div>
+
+      <div id="atsproAlert" class="atspro-alert" style="display:none;"></div>
+
+      <div class="atspro-actions">
+        <button id="atsproAnalyzeBtn" class="atspro-btn-primary">🔍 Check Resume Match</button>
+        <button id="atsproExampleBtn" class="atspro-btn-secondary">Load Example</button>
+        <button id="atsproClearBtn" class="atspro-btn-secondary">Clear</button>
+        <button id="atsproResetBtn" class="atspro-btn-secondary">Reset Tool</button>
+      </div>
+    </section>
+
+    <!-- 4. RESULTS SECTION -->
+    <div id="atsproResultsContainer" class="atspro-results">
+
+      <!-- Score Dashboard -->
+      <div class="atspro-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9;padding-bottom:12px;">
+          <div>
+            <h2 style="font-size:20px;font-weight:800;margin:0;color:#0f172a;">Estimated Match Overview</h2>
+            <div style="font-size:12px;color:#64748b;">Text alignment, keyword coverage and structural signals.</div>
+          </div>
+          <div id="atsproScoreBadge" style="padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:700;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">
+            Evaluating...
+          </div>
+        </div>
+
+        <div class="atspro-score-grid">
+          <div class="atspro-score-box atspro-primary">
+            <div class="atspro-score-title">Resume Match</div>
+            <div id="atsproScoreOverall" class="atspro-score-num">0%</div>
+            <div class="atspro-progress"><div id="atsproBarOverall" class="atspro-bar" style="width:0%;"></div></div>
+            <div style="font-size:10px;color:#1d4ed8;margin-top:4px;font-weight:600;">Composite Score</div>
+          </div>
+
+          <div class="atspro-score-box">
+            <div class="atspro-score-title">Keyword Match</div>
+            <div id="atsproScoreKeyword" class="atspro-score-num">0%</div>
+            <div class="atspro-progress"><div id="atsproBarKeyword" class="atspro-bar" style="width:0%;"></div></div>
+            <div style="font-size:10px;color:#64748b;margin-top:4px;">JD Terms</div>
+          </div>
+
+          <div class="atspro-score-box">
+            <div class="atspro-score-title">Skills Match</div>
+            <div id="atsproScoreSkills" class="atspro-score-num">0%</div>
+            <div class="atspro-progress"><div id="atsproBarSkills" class="atspro-bar" style="width:0%;"></div></div>
+            <div style="font-size:10px;color:#64748b;margin-top:4px;">Hard &amp; Soft</div>
+          </div>
+
+          <div class="atspro-score-box">
+            <div class="atspro-score-title">Structure</div>
+            <div id="atsproScoreStructure" class="atspro-score-num">0%</div>
+            <div class="atspro-progress"><div id="atsproBarStructure" class="atspro-bar" style="width:0%;"></div></div>
+            <div style="font-size:10px;color:#64748b;margin-top:4px;">Headings</div>
+          </div>
+
+          <div class="atspro-score-box">
+            <div class="atspro-score-title">ATS Signals</div>
+            <div id="atsproScoreSignals" class="atspro-score-num">0%</div>
+            <div class="atspro-progress"><div id="atsproBarSignals" class="atspro-bar" style="width:0%;"></div></div>
+            <div style="font-size:10px;color:#64748b;margin-top:4px;">Format/Contact</div>
+          </div>
+        </div>
+
+        <details style="margin-top:12px;background:#f8fafc;padding:8px 12px;border-radius:6px;border:1px solid #e2e8f0;font-size:12px;">
+          <summary style="font-weight:700;color:#334155;cursor:pointer;">ℹ️ How This Score Is Calculated</summary>
+          <p style="margin:6px 0 0;color:#64748b;">
+            Keyword Coverage: 40% | Skills Alignment: 25% | Job Title Alignment: 10% | Resume Sections: 10% | Achievements &amp; Action Language: 10% | Basic ATS Signals: 5%.
+            <br><em>This score is an educational estimate and does not represent proprietary scoring from any single corporate ATS.</em>
+          </p>
+        </details>
+      </div>
+
+      <!-- Matched Keywords -->
+      <div class="atspro-card">
+        <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 4px;">Matched Keywords</h3>
+        <p style="font-size:12px;color:#64748b;margin:0 0 10px;">Keywords and phrases found in both your resume and the job description.</p>
+        <div id="atsproMatchedContainer" class="atspro-chip-wrap"></div>
+      </div>
+
+      <!-- Missing Keywords -->
+      <div class="atspro-card">
+        <h3 style="font-size:16px;font-weight:800;color:#9f1239;margin:0 0 4px;">Missing Keywords</h3>
+        <p style="font-size:12px;color:#64748b;margin:0 0 10px;">Relevant terms found in the job description but not detected in the resume.</p>
+        <div style="padding:10px 12px;background:#fffbeb;border-left:4px solid #f59e0b;font-size:12px;color:#92400e;margin-bottom:12px;border-radius:0 6px 6px 0;">
+          ⚠️ <strong>Notice:</strong> Only add keywords that accurately describe your real skills, experience or qualifications. Do not add terms that are not true for you.
+        </div>
+        <div id="atsproMissingContainer" class="atspro-chip-wrap"></div>
+      </div>
+
+      <!-- Keyword Comparison Table -->
+      <div class="atspro-card">
+        <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 4px;">Keyword Comparison Table</h3>
+        <div class="atspro-table-wrap">
+          <table class="atspro-table">
+            <thead>
+              <tr>
+                <th>Keyword / Phrase</th>
+                <th style="text-align:center;">Resume Count</th>
+                <th style="text-align:center;">Job Description Count</th>
+                <th style="text-align:right;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="atsproTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Hard & Soft Skills -->
+      <div class="atspro-grid-2">
+        <div class="atspro-card">
+          <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 8px;">🛠️ Hard Skills</h3>
+          <div style="font-size:11px;font-weight:700;color:#047857;margin-bottom:4px;">MATCHED HARD SKILLS:</div>
+          <div id="atsproMatchedHard" class="atspro-chip-wrap" style="margin-bottom:12px;"></div>
+          <div style="font-size:11px;font-weight:700;color:#be123c;margin-bottom:4px;">MISSING HARD SKILLS:</div>
+          <div id="atsproMissingHard" class="atspro-chip-wrap"></div>
+        </div>
+
+        <div class="atspro-card">
+          <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 8px;">🤝 Soft Skills</h3>
+          <div style="font-size:11px;font-weight:700;color:#1d4ed8;margin-bottom:4px;">MATCHED SOFT SKILLS:</div>
+          <div id="atsproMatchedSoft" class="atspro-chip-wrap" style="margin-bottom:12px;"></div>
+          <div style="font-size:11px;font-weight:700;color:#64748b;margin-bottom:4px;">MISSING SOFT SKILLS:</div>
+          <div id="atsproMissingSoft" class="atspro-chip-wrap"></div>
+        </div>
+      </div>
+
+      <!-- Role Alignment & Sections -->
+      <div class="atspro-grid-2">
+        <div class="atspro-card">
+          <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 8px;">🎯 Job Title Alignment</h3>
+          <div id="atsproTitleAlignmentBox" style="padding:10px;background:#f8fafc;border-radius:6px;font-size:12px;"></div>
+        </div>
+
+        <div class="atspro-card">
+          <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 8px;">📇 Contact Information Check</h3>
+          <div id="atsproContactBox" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;"></div>
+        </div>
+      </div>
+
+      <!-- Sections & Signals -->
+      <div class="atspro-card">
+        <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 8px;">📑 Resume Section Check</h3>
+        <div id="atsproSectionsBox" class="atspro-chip-wrap"></div>
+      </div>
+
+      <!-- Action Verbs, Quantified Achievements, Length -->
+      <div class="atspro-grid-2" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="atspro-card">
+          <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;">Impact Verbs</div>
+          <div id="atsproVerbsCount" style="font-size:26px;font-weight:800;color:#2563eb;margin:4px 0;">0</div>
+          <div id="atsproVerbsList" class="atspro-chip-wrap"></div>
+        </div>
+
+        <div class="atspro-card">
+          <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;">Quantified Metrics</div>
+          <div id="atsproQuantCount" style="font-size:26px;font-weight:800;color:#10b981;margin:4px 0;">0</div>
+          <div style="font-size:11px;color:#64748b;">Bullets with $, %, or numbers.</div>
+        </div>
+
+        <div class="atspro-card">
+          <div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;">Resume Length</div>
+          <div id="atsproLengthWords" style="font-size:26px;font-weight:800;color:#0f172a;margin:4px 0;">0</div>
+          <div id="atsproLengthRating" style="font-size:11px;color:#64748b;">Words (Moderate)</div>
+        </div>
+      </div>
+
+      <!-- Top Improvement Suggestions -->
+      <div class="atspro-card">
+        <h3 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 10px;">💡 Top Resume Improvement Opportunities</h3>
+        <div id="atsproSuggestionsList" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+      <!-- Export / Actions Bar -->
+      <div class="atspro-export-bar">
+        <div>
+          <div style="font-weight:800;font-size:15px;">Diagnostic Report Ready</div>
+          <div style="font-size:11px;color:#94a3b8;">Copy or download your summary without raw personal data.</div>
+        </div>
+        <div class="atspro-export-btns">
+          <button id="atsproCopyReportBtn" class="atspro-btn-exp atspro-exp-blue">📋 Copy Results</button>
+          <button id="atsproDownloadReportBtn" class="atspro-btn-exp atspro-exp-green">📥 Download Report (.txt)</button>
+          <button id="atsproPrintBtn" class="atspro-btn-exp atspro-exp-dark">🖨️ Print</button>
+          <button id="atsproResetBtn2" class="atspro-btn-exp atspro-exp-dark">🔄 Reset</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 5. SECOND ADVERTISEMENT — NATIVE -->
+    <div class="atspro-ad-box">
+      <div class="atspro-ad-label">Advertisement</div>
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+
+    <!-- 6. FEATURES SECTION -->
+    <section class="atspro-card">
+      <h2 style="font-size:20px;font-weight:800;text-align:center;margin:0 0 16px;color:#0f172a;">
+        Everything You Need to Compare Your Resume With a Job Description
+      </h2>
+      <div class="atspro-feat-grid">
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Resume Match Score</div>
+          <div class="atspro-feat-desc">Balanced weighted calculation across keywords, skills, titles, and structure.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Keyword Match</div>
+          <div class="atspro-feat-desc">Calculates target frequency and overlap for essential job-specific phrases.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Matched &amp; Missing Terms</div>
+          <div class="atspro-feat-desc">Identifies high, medium, and lower importance phrases from the job post.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Hard Skills Match</div>
+          <div class="atspro-feat-desc">Technical tools, software proficiencies, cloud platforms, and certifications.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Soft Skills Match</div>
+          <div class="atspro-feat-desc">Identifies communication, leadership, adaptability, and collaboration terms.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Job Title Alignment</div>
+          <div class="atspro-feat-desc">Checks whether your resume headline corresponds to the target job title.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Resume Sections</div>
+          <div class="atspro-feat-desc">Verifies standard headers: Summary, Experience, Skills, Education, Contact.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Action Verbs</div>
+          <div class="atspro-feat-desc">Highlights accomplishment verbs versus repetitive or passive phrasing.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Quantified Achievements</div>
+          <div class="atspro-feat-desc">Detects measurable metrics including revenue, costs, percentages, and scale.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Client-Side File Extraction</div>
+          <div class="atspro-feat-desc">Read plain text (.txt), PDF (.pdf), and Word (.docx) files locally in browser.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Browser-Based Privacy</div>
+          <div class="atspro-feat-desc">No accounts, no logins, and zero remote server storage of your resume.</div>
+        </div>
+        <div class="atspro-feat-item">
+          <div class="atspro-feat-title">✓ Copy &amp; Download Report</div>
+          <div class="atspro-feat-desc">Save clean diagnostic reports to guide your tailored resume revisions.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. HOW TO USE -->
+    <section class="atspro-card">
+      <h2 style="font-size:20px;font-weight:800;margin:0 0 12px;color:#0f172a;">How to Use the ATS Resume Checker</h2>
+      <ol style="font-size:13px;color:#334155;line-height:1.8;padding-left:20px;margin:0;">
+        <li>Paste or upload your current resume in text, PDF, or DOCX format.</li>
+        <li>Paste the complete job description from the target employer's posting.</li>
+        <li>Optionally enter the target job title to verify headline alignment.</li>
+        <li>Select <strong>Check Resume Match</strong> to execute the browser analysis.</li>
+        <li>Review your overall match score and keyword coverage percentage.</li>
+        <li>Inspect matched keywords and prioritize critical missing job requirements.</li>
+        <li>Compare hard skills (software, tools) and soft skills (leadership, teamwork).</li>
+        <li>Review ATS-friendly resume checks, section headers, and action verbs.</li>
+        <li>Use improvement suggestions carefully to refine bullet points.</li>
+        <li>Update your resume only with accurate, truthful career qualifications.</li>
+        <li>Recheck your revised resume or download the diagnostic summary.</li>
+      </ol>
+    </section>
+
+    <!-- 8. VISIBLE SEO INTRODUCTION -->
+    <section class="atspro-card" style="background:#f8fafc;">
+      <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 8px;">Why Resume Keyword Matching Matters in the U.S.</h3>
+      <p style="font-size:13px;color:#475569;line-height:1.6;margin:0;">
+        Navigating today's competitive United States job market requires more than sending generic resumes to dozens of listings. The vast majority of mid-sized and enterprise employers rely on Applicant Tracking Systems (ATS) to manage applicant volume, screen incoming applications, and surface qualified candidates for human recruiter review. An ATS resume checker and job description keyword matcher bridges the gap between your real-world experience and the specific vocabulary used in a job posting. By systematically analyzing the terminology, technical competencies, hard skills, and core qualifications outlined by hiring managers, job seekers can identify matched and missing keywords, verify ATS-friendly structural sections, and highlight quantified achievements. Tailoring your resume responsibly is not about tricking an algorithm or stuffing disconnected keywords—it is about presenting your genuine accomplishments using the precise language recruiters and automated screening software search for.
+      </p>
+    </section>
+
+    <!-- 9. EDUCATIONAL ARTICLE PART 1 -->
+    <article class="atspro-card atspro-article">
+      <h3>What Is an ATS Resume Checker?</h3>
+      <p>An Applicant Tracking System (ATS) is specialized software utilized by corporate employers, staffing agencies, and recruiting teams to organize, search, filter, and track candidates throughout the hiring cycle. Common platforms in the United States include Workday, Greenhouse, Lever, Taleo, iCIMS, and BambooHR. An ATS resume checker is a diagnostic tool designed to evaluate how clearly your resume communicates its content when processed by automated text parsers. Rather than evaluating subjective qualities, it measures objective text-based signals such as keyword frequency, skills overlap, section heading clarity, and quantifiable bullet point metrics.</p>
+
+      <h3>How Applicant Tracking Systems Work</h3>
+      <p>When you submit a resume online, the ATS extracts the plain text from your uploaded document. It strips out complex styling and segments the content into standard categories: contact details, work experience, educational history, and skills. When recruiters need to fill an open requisition, they often search the applicant database using targeted queries such as "Power BI AND financial modeling AND SQL." If your resume contains those exact phrases in clear context, your profile ranks higher in recruiter search results. If your resume uses non-standard phrasing or buries key competencies inside graphical text boxes, your qualifications may be overlooked.</p>
+
+      <h3>What Is a Resume Keyword Matcher?</h3>
+      <p>A resume keyword matcher is a tool that analyzes the specific language within a job description and compares it directly against your resume text. It identifies critical terms emphasized in the job requirements—such as software proficiencies, industry certifications, methodologies, and management responsibilities—and verifies whether those exact terms or synonymous concepts appear in your application materials.</p>
+
+      <h3>Why Compare a Resume With a Job Description?</h3>
+      <p>Job postings are essentially open-book study guides written by hiring teams. They outline the exact challenges the team is facing, the tools they use daily, and the prerequisites necessary for success. Comparing your resume directly against the job description ensures you haven't accidentally omitted vital skills that you possess simply because you referred to them with different terminology (e.g., writing "client accounts" when the employer specifically requests "B2B client relationship management").</p>
+
+      <h3>Matched Keywords vs. Missing Keywords</h3>
+      <p><strong>Matched Keywords:</strong> These are terms and phrases that appear prominently in both the job description and your resume. A strong set of matched keywords signals to recruiters that your background directly aligns with their day-to-day requirements.<br><br>
+      <strong>Missing Keywords:</strong> These are high-priority tools, competencies, or requirements emphasized in the posting that are absent from your resume. Reviewing missing keywords gives you an immediate action plan: if you possess experience with those missing tools, you can naturally integrate them into your work history or skills section.</p>
+
+      <h3>Hard Skills vs. Soft Skills</h3>
+      <p><strong>Hard Skills</strong> represent tangible, technical, and quantifiable capabilities learned through training, education, or hands-on practice. Examples include programming languages (Python, SQL), cloud platforms (AWS, Azure), analytics tools (Tableau, Excel), accounting principles (GAAP), or certifications (PMP, CPA). ATS scanners prioritize hard skills because recruiters frequently use them as non-negotiable screening filters.<br><br>
+      <strong>Soft Skills</strong> encompass interpersonal attributes, collaboration habits, communication style, and leadership approach. While essential during human interviews, soft skills should be supported by concrete evidence in your bullet points rather than simply listed as generic buzzwords.</p>
+    </article>
+
+    <!-- 10. THIRD ADVERTISEMENT — 300×250 -->
+    <div class="atspro-ad-box">
+      <div class="atspro-ad-label">Advertisement</div>
+      <script>
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+
+    <!-- 11. EDUCATIONAL ARTICLE PART 2 -->
+    <article class="atspro-card atspro-article">
+      <h3>Why Exact Phrases Can Matter</h3>
+      <p>While modern search algorithms have improved, many legacy corporate screening filters still rely on literal string matching. For example, if a job description specifies "Power BI" three times, listing only "Business Intelligence software" might not register as a direct keyword match in basic keyword filters. Where truthful and applicable, using the exact phrasing found in the job description ensures maximum clarity for both automated scanners and human recruiters scanning resumes in six to ten seconds.</p>
+
+      <h3>How to Tailor a Resume Responsibly</h3>
+      <p>Tailoring does not mean rewriting your entire career history for every submission. Follow this sustainable strategy:<br>
+      1. Maintain a comprehensive "master resume" containing all your career projects, technical skills, and achievements.<br>
+      2. For each specific application, review the top five missing keywords and required qualifications.<br>
+      3. Adjust your Professional Summary headline and the top three bullet points under your most recent roles to reflect the employer's specific priorities.<br>
+      4. Ensure your Skills section lists the exact tools requested in the posting that you are proficient in.</p>
+
+      <h3>Why Keyword Stuffing Can Hurt Readability</h3>
+      <p>In the early days of online recruiting, some applicants attempted "keyword stuffing"—pasting lists of buzzwords in white text or cramming repetitive lists at the bottom of a page. Today, modern applicant tracking systems parse text cleanly and display raw extracts directly to recruiters. If a human reviewer sees unnatural or repetitive keyword blocks, the application is typically rejected immediately. Every keyword you include must make grammatical sense within an authentic sentence describing real work.</p>
+
+      <h3>What Makes a Resume ATS Friendly?</h3>
+      <p>To ensure automated parsers accurately read your resume:<br>
+      • <strong>Use clean typography:</strong> Standard fonts like Arial, Calibri, Helvetica, or Georgia.<br>
+      • <strong>Stick to standard headings:</strong> "Work Experience", "Education", "Skills", and "Professional Summary". Avoid creative headers like "Where I've Been" or "My Superpowers".<br>
+      • <strong>Avoid complex layout traps:</strong> Steer clear of multi-column tables, text boxes, headers/footers for vital contact details, and embedded image icons.<br>
+      • <strong>Format dates consistently:</strong> Use standard month/year formats such as "05/2021 – Present" or "May 2021 – Present".</p>
+
+      <h3>Using Action Verbs and Measurable Achievements</h3>
+      <p>Strong bullet points follow the Google "X-Y-Z" formula: <em>Accomplished [X] as measured by [Y], by doing [Z]</em>. Instead of passive phrases such as "Responsible for managing monthly reports," write: <em>"Engineered automated reporting templates in SQL and Excel, accelerating month-end close by 3 days and eliminating manual reconciliation errors for 8 business units."</em></p>
+
+      <h3>PDF vs. DOCX for Job Applications</h3>
+      <p>Both file formats have advantages. A standard text-based PDF maintains your visual formatting perfectly across different operating systems. Microsoft Word (.docx) is universally accepted and easily digested by even the oldest legacy parsers. If an application form specifically requests Word or PDF, always follow the stated preference. If no format is specified, a clean, text-based single-column PDF is generally optimal.</p>
+
+      <h3>Why No Resume Checker Can Guarantee an Interview</h3>
+      <p>Match scores provide valuable structural guidance, but automated tools cannot assess company culture fit, hiring budget changes, internal referrals, or how convincingly you articulate your narrative in an interview. Use this tool as a trusted preparation compass to submit the most competitive, transparent, and compelling version of your genuine career story.</p>
+    </article>
+
+    <!-- 12. FAQ (26+ QUESTIONS) -->
+    <section class="atspro-card">
+      <h2 style="font-size:20px;font-weight:800;margin:0 0 12px;color:#0f172a;">Frequently Asked Questions</h2>
+      <div id="atsproFaqList">
+        <details class="atspro-faq-item"><summary>What is an ATS resume checker?</summary><p>An ATS (Applicant Tracking System) resume checker is a tool that analyzes your resume text against a job description. It identifies keyword overlap, required skills, formatting signals, and structural elements that automated recruitment software and human hiring teams review.</p></details>
+        <details class="atspro-faq-item"><summary>What is a resume keyword matcher?</summary><p>A keyword matcher compares the specific phrases, tools, technical competencies, and qualifications found in a job posting to the terms present in your resume, highlighting matched and missing terms.</p></details>
+        <details class="atspro-faq-item"><summary>How do I compare my resume to a job description?</summary><p>Paste or upload your resume text into the resume field, paste the complete job posting in the job description field, optionally specify the target job title, and run the analysis to view alignment metrics.</p></details>
+        <details class="atspro-faq-item"><summary>What is an ATS resume score?</summary><p>An ATS resume score is an educational estimate of how closely your resume's terminology, skills, sections, and metrics reflect the requirements described in the job listing.</p></details>
+        <details class="atspro-faq-item"><summary>Is the match score an official employer ATS score?</summary><p>No. Every employer and ATS platform (such as Workday, Greenhouse, Taleo, or Lever) configures their own screening criteria. This score is an independent reference estimate.</p></details>
+        <details class="atspro-faq-item"><summary>How are resume keywords detected?</summary><p>Keywords are detected using text normalization, tokenization, phrase extraction (1-word, 2-word, and 3-word n-grams), and comparison against specialized technical and soft skills dictionaries.</p></details>
+        <details class="atspro-faq-item"><summary>What are matched keywords?</summary><p>Matched keywords are relevant skills, qualifications, or industry-specific phrases that appear in both the target job description and your resume text.</p></details>
+        <details class="atspro-faq-item"><summary>What are missing keywords?</summary><p>Missing keywords are key requirements and tools explicitly emphasized in the job posting that do not appear anywhere in your resume.</p></details>
+        <details class="atspro-faq-item"><summary>Should I add every missing keyword?</summary><p>No. You should only add keywords that truthfully and accurately represent your real experience, skills, and qualifications. Never fabricate background details.</p></details>
+        <details class="atspro-faq-item"><summary>Can keyword stuffing hurt my resume?</summary><p>Yes. Stuffing disconnected keywords or repeating words unnaturally damages readability when a human recruiter reviews your resume and can trigger automated spam filters.</p></details>
+        <details class="atspro-faq-item"><summary>What are hard skills?</summary><p>Hard skills are teachable, quantifiable technical abilities, certifications, software proficiencies, and tools such as Python, SQL, Financial Modeling, or AWS.</p></details>
+        <details class="atspro-faq-item"><summary>What are soft skills?</summary><p>Soft skills are interpersonal attributes and work habits such as communication, collaboration, leadership, problem solving, and time management.</p></details>
+        <details class="atspro-faq-item"><summary>Does job title matching matter?</summary><p>Yes. Aligning your resume headline or professional summary with the target job title helps recruiters quickly verify your relevance for the opening.</p></details>
+        <details class="atspro-faq-item"><summary>Can this tool check resume sections?</summary><p>Yes. It verifies the presence of standard resume headings such as Contact Information, Professional Summary, Work Experience, Skills, and Education.</p></details>
+        <details class="atspro-faq-item"><summary>Can it check action verbs?</summary><p>Yes. It scans your bullet points for high-impact action verbs (such as 'spearheaded', 'managed', 'developed') and highlights weak or passive phrasing.</p></details>
+        <details class="atspro-faq-item"><summary>Can it detect measurable achievements?</summary><p>Yes. The scanner checks for quantified metrics such as dollar values ($), percentages (%), team sizes, time reductions, and project scale.</p></details>
+        <details class="atspro-faq-item"><summary>Can I upload a PDF resume?</summary><p>Yes. Text-based PDF files can be parsed directly in your browser using client-side text extraction.</p></details>
+        <details class="atspro-faq-item"><summary>Can I upload a DOCX resume?</summary><p>Yes. DOCX files can be read client-side to extract the raw text for comparison.</p></details>
+        <details class="atspro-faq-item"><summary>Can I upload a TXT resume?</summary><p>Yes. Standard plain text (.txt) files are read instantly using the browser's FileReader API.</p></details>
+        <details class="atspro-faq-item"><summary>Why might a scanned PDF not work?</summary><p>Scanned PDFs contain images of text rather than extractable digital text streams. For scanned files, copy and paste the plain text directly.</p></details>
+        <details class="atspro-faq-item"><summary>Does the tool use an AI API?</summary><p>No. The analyzer runs 100% locally in your browser using deterministic algorithms and transparent rule-based NLP.</p></details>
+        <details class="atspro-faq-item"><summary>Is my resume uploaded to a server?</summary><p>No. All text parsing, keyword extraction, and scoring occur entirely on your own device. Your data is never transmitted to an external server.</p></details>
+        <details class="atspro-faq-item"><summary>Can this tool guarantee an interview?</summary><p>No. No tool can guarantee an interview. Hiring decisions depend on recruiter judgment, qualifications, competition, and interview performance.</p></details>
+        <details class="atspro-faq-item"><summary>Can an ATS reject a resume because of formatting?</summary><p>Complex multi-column tables, text boxes, and embedded graphics can confuse automated text parsers. Simple single-column layouts parse most reliably.</p></details>
+        <details class="atspro-faq-item"><summary>Should I use PDF or DOCX?</summary><p>Both are widely accepted. A clean, single-column PDF preserves visual styling, while DOCX is universally supported across legacy parsing systems.</p></details>
+        <details class="atspro-faq-item"><summary>Can I download my results?</summary><p>Yes. You can download a clean text summary report or copy the full breakdown to your clipboard with one click.</p></details>
+      </div>
+    </section>
+
+    <!-- 13. PRIVACY & DISCLAIMER -->
+    <section class="atspro-card">
+      <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin:0 0 6px;">🔒 Privacy</h3>
+      <p style="font-size:12px;color:#475569;line-height:1.6;margin:0 0 16px;">
+        This tool analyzes the resume and job-description text in your browser and does not require an account or remote resume-analysis API. Supported resume files are read in the browser for text extraction.
+      </p>
+
+      <h3 style="font-size:16px;font-weight:800;color:#991b1b;margin:0 0 6px;">ATS Resume Checker Disclaimer</h3>
+      <p style="font-size:12px;color:#7f1d1d;line-height:1.6;margin:0;">
+        This tool provides an educational estimate based on keyword overlap, skills alignment, resume structure and other text-based signals. It does not reproduce the proprietary scoring rules of any specific applicant tracking system, employer or recruiting platform. A higher match score does not guarantee that a resume will pass an ATS, be reviewed by a recruiter, receive an interview or result in employment. Only add skills, keywords, achievements and qualifications that accurately reflect your real experience. Hiring systems, recruiter preferences and job requirements vary by employer.
+      </p>
+    </section>
+
+    <!-- 14. SOCIAL SHARING -->
+    <section class="atspro-card" style="text-align:center;">
+      <h3 style="font-size:18px;font-weight:800;color:#0f172a;margin:0 0 4px;">Share This ATS Resume Checker</h3>
+      <p style="font-size:12px;color:#64748b;margin:0 0 12px;">Help other job seekers match and tailor their resumes for free.</p>
+
+      <div class="atspro-social-grid">
+        <button id="atsproShareFb" class="atspro-soc-btn atspro-fb">Facebook</button>
+        <button id="atsproShareTw" class="atspro-soc-btn atspro-x">X / Twitter</button>
+        <button id="atsproShareWa" class="atspro-soc-btn atspro-wa">WhatsApp</button>
+        <button id="atsproShareLi" class="atspro-soc-btn atspro-li">LinkedIn</button>
+        <button id="atsproShareRd" class="atspro-soc-btn atspro-rd">Reddit</button>
+        <button id="atsproShareTg" class="atspro-soc-btn atspro-tg">Telegram</button>
+        <button id="atsproShareEm" class="atspro-soc-btn atspro-em">Email</button>
+        <button id="atsproShareCp" class="atspro-soc-btn atspro-cp">🔗 Copy Link</button>
+        <button id="atsproShareNt" class="atspro-soc-btn atspro-sh">📲 Share Tool</button>
+      </div>
+    </section>
+
+    <!-- 15. FOURTH ADVERTISEMENT — SOCIAL BAR -->
+    <div style="margin-top:20px;text-align:center;">
+      <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById('atsResumeBloggerApp');
+  if (!root) return;
+
+  // Dictionaries
+  var STOP_WORDS = new Set([
+    'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', 'as', 'at',
+    'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', 'can', 'cannot',
+    'could', 'did', 'do', 'does', 'doing', 'down', 'during', 'each', 'few', 'for', 'from', 'further', 'had',
+    'has', 'have', 'having', 'he', 'her', 'here', 'hers', 'herself', 'him', 'himself', 'his', 'how', 'i',
+    'if', 'in', 'into', 'is', 'it', 'its', 'itself', 'me', 'more', 'most', 'my', 'myself', 'no', 'nor',
+    'not', 'of', 'off', 'on', 'once', 'only', 'or', 'other', 'ought', 'our', 'ours', 'ourselves', 'out',
+    'over', 'own', 'same', 'she', 'should', 'so', 'some', 'such', 'than', 'that', 'the', 'their', 'theirs',
+    'them', 'themselves', 'then', 'there', 'these', 'they', 'this', 'those', 'through', 'to', 'too', 'under',
+    'until', 'up', 'very', 'was', 'we', 'were', 'what', 'when', 'where', 'which', 'while', 'who', 'whom',
+    'why', 'with', 'would', 'you', 'your', 'yours', 'yourself', 'yourselves', 'job', 'role', 'company',
+    'work', 'working', 'team', 'candidate', 'candidates', 'requirements', 'responsibilities', 'qualifications',
+    'experience', 'looking', 'skills', 'must', 'plus', 'including', 'years', 'preferred', 'required'
+  ]);
+
+  var HARD_SKILLS = [
+    'python', 'javascript', 'typescript', 'java', 'c++', 'c#', '.net', 'sql', 'mysql', 'postgresql', 'mongodb',
+    'nosql', 'aws', 'azure', 'google cloud', 'gcp', 'docker', 'kubernetes', 'git', 'github', 'ci/cd', 'linux',
+    'html', 'css', 'react', 'react.js', 'angular', 'vue', 'node.js', 'express', 'django', 'flask',
+    'spring boot', 'rest api', 'graphql', 'power bi', 'tableau', 'excel', 'microsoft excel',
+    'financial modeling', 'data analysis', 'data visualization', 'machine learning', 'artificial intelligence',
+    'nlp', 'pandas', 'numpy', 'jira', 'confluence', 'agile', 'scrum', 'devops', 'terraform', 'salesforce',
+    'hubspot', 'crm', 'seo', 'sem', 'google analytics', 'digital marketing', 'content strategy', 'figma',
+    'ui/ux', 'product management', 'project management', 'supply chain', 'risk management', 'financial reporting',
+    'budgeting', 'forecasting', 'accounting', 'quickbooks', 'gaap', 'sap', 'oracle', 'erp', 'cybersecurity',
+    'pmp', 'cpa', 'cfa', 'human resources', 'payroll'
+  ];
+
+  var SOFT_SKILLS = [
+    'communication', 'written communication', 'verbal communication', 'leadership', 'team leadership',
+    'collaboration', 'teamwork', 'problem solving', 'critical thinking', 'analytical thinking', 'organization',
+    'time management', 'prioritization', 'adaptability', 'flexibility', 'attention to detail', 'detail-oriented',
+    'interpersonal skills', 'negotiation', 'customer service', 'stakeholder management', 'presentation skills',
+    'decision making', 'multitasking', 'strategic thinking', 'mentorship'
+  ];
+
+  var ACTION_VERBS = [
+    'managed', 'led', 'created', 'developed', 'increased', 'reduced', 'improved', 'launched',
+    'implemented', 'analyzed', 'optimized', 'delivered', 'generated', 'negotiated', 'designed',
+    'built', 'coordinated', 'spearheaded', 'executed', 'streamlined', 'transformed', 'formulated',
+    'established', 'accelerated', 'authored', 'championed', 'engineered', 'forecasted', 'mentored'
+  ];
+
+  // DOM Elements
+  var resumeInput = document.getElementById('atsproResumeText');
+  var jdInput = document.getElementById('atsproJdText');
+  var titleInput = document.getElementById('atsproJobTitle');
+  var fileInput = document.getElementById('atsproResumeFile');
+  var alertBox = document.getElementById('atsproAlert');
+  var resultsBox = document.getElementById('atsproResultsContainer');
+
+  var rWordsEl = document.getElementById('atsproRWords');
+  var rCharsEl = document.getElementById('atsproRChars');
+  var rLengthEl = document.getElementById('atsproRLength');
+  var jWordsEl = document.getElementById('atsproJWords');
+  var jCharsEl = document.getElementById('atsproJChars');
+
+  // Text counters
+  function updateCounters() {
+    var rText = resumeInput.value || '';
+    var jText = jdInput.value || '';
+    var rw = rText.trim() ? rText.trim().split(/\s+/).length : 0;
+    var jw = jText.trim() ? jText.trim().split(/\s+/).length : 0;
+
+    rWordsEl.textContent = rw;
+    rCharsEl.textContent = rText.length;
+    jWordsEl.textContent = jw;
+    jCharsEl.textContent = jText.length;
+
+    var rating = 'Empty';
+    if (rw > 0 && rw < 150) rating = 'Brief';
+    else if (rw >= 150 && rw <= 800) rating = 'Optimal';
+    else if (rw > 800 && rw <= 1200) rating = 'Detailed';
+    else if (rw > 1200) rating = 'Long';
+    rLengthEl.textContent = rating;
+  }
+
+  resumeInput.addEventListener('input', updateCounters);
+  jdInput.addEventListener('input', updateCounters);
+
+  function countOccurrences(text, term) {
+    if (!text || !term) return 0;
+    var t = term.trim().toLowerCase();
+    var doc = text.toLowerCase();
+    if (/^[a-z0-9\s]+$/i.test(t)) {
+      var esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var reg = new RegExp('\\b' + esc + '\\b', 'gi');
+      var m = doc.match(reg);
+      return m ? m.length : 0;
+    } else {
+      var count = 0, pos = 0;
+      while ((pos = doc.indexOf(t, pos)) !== -1) {
+        var before = pos > 0 ? doc[pos - 1] : ' ';
+        var after = pos + t.length < doc.length ? doc[pos + t.length] : ' ';
+        var isWord = function(c) { return /[a-z0-9]/i.test(c); };
+        if (!isWord(before) && !isWord(after)) count++;
+        pos += t.length;
+      }
+      return count;
+    }
+  }
+
+  function extractPhrases(text) {
+    var map = {};
+    var norm = text.toLowerCase().replace(/[^a-z0-9+#.\s-]/g, ' ');
+    var words = norm.split(/\s+/).filter(function(w) { return w.length > 1; });
+
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i];
+      if (!STOP_WORDS.has(w) && w.length >= 3 && !/^\d+$/.test(w)) {
+        map[w] = (map[w] || 0) + 1;
+      }
+      if (i < words.length - 1) {
+        var w2 = words[i + 1];
+        if (!STOP_WORDS.has(w) && !STOP_WORDS.has(w2)) {
+          var p2 = w + ' ' + w2;
+          map[p2] = (map[p2] || 0) + 1;
+        }
+      }
+      if (i < words.length - 2) {
+        var w3 = words[i + 2];
+        if (!STOP_WORDS.has(w) && !STOP_WORDS.has(w3)) {
+          var p3 = w + ' ' + words[i + 1] + ' ' + w3;
+          map[p3] = (map[p3] || 0) + 1;
+        }
+      }
+    }
+
+    var lowerText = text.toLowerCase();
+    var allSkills = HARD_SKILLS.concat(SOFT_SKILLS);
+    for (var k = 0; k < allSkills.length; k++) {
+      var s = allSkills[k];
+      var sc = countOccurrences(lowerText, s);
+      if (sc > 0) map[s] = Math.max(sc, map[s] || 0);
+    }
+    return map;
+  }
+
+  var currentAnalysis = null;
+
+  function runAnalysis() {
+    alertBox.style.display = 'none';
+    var r = resumeInput.value.trim();
+    var j = jdInput.value.trim();
+    var targetTitle = titleInput.value.trim();
+
+    if (!r) {
+      alertBox.textContent = 'Please add your resume text to begin.';
+      alertBox.style.display = 'block';
+      return;
+    }
+    if (!j) {
+      alertBox.textContent = 'Please add the job description text to compare against.';
+      alertBox.style.display = 'block';
+      return;
+    }
+
+    var rw = r.split(/\s+/).length;
+    var jw = j.split(/\s+/).length;
+    if (rw < 30) {
+      alertBox.textContent = 'The resume text is too short to analyze meaningfully (minimum 30 words).';
+      alertBox.style.display = 'block';
+      return;
+    }
+    if (jw < 30) {
+      alertBox.textContent = 'The job description is too short to analyze meaningfully (minimum 30 words).';
+      alertBox.style.display = 'block';
+      return;
+    }
+
+    // Keyword Extraction
+    var jdPhrases = extractPhrases(j);
+    var candidateKeys = [];
+    for (var phrase in jdPhrases) {
+      var count = jdPhrases[phrase];
+      var isH = HARD_SKILLS.indexOf(phrase) !== -1;
+      var isS = SOFT_SKILLS.indexOf(phrase) !== -1;
+      var isMulti = phrase.indexOf(' ') !== -1;
+
+      var imp = 'Lower', wt = 1;
+      if (isH || count >= 3 || (isMulti && count >= 2)) {
+        imp = 'High'; wt = 3;
+      } else if (isS || count >= 2 || isMulti) {
+        imp = 'Medium'; wt = 2;
+      } else {
+        if (!isMulti && count < 2 && !isH && !isS) continue;
+      }
+      candidateKeys.push({ keyword: phrase, jdCount: count, importance: imp, weight: wt });
+    }
+
+    candidateKeys.sort(function(a, b) {
+      return (b.weight * 10 + b.jdCount) - (a.weight * 10 + a.jdCount);
+    });
+
+    var selected = candidateKeys.slice(0, 30);
+    var matchedKeys = [], missingKeys = [], comparison = [];
+    var totalWeight = 0, matchedWeight = 0;
+
+    for (var m = 0; m < selected.length; m++) {
+      var item = selected[m];
+      var rc = countOccurrences(r, item.keyword);
+      totalWeight += item.weight;
+      if (rc > 0) {
+        matchedWeight += item.weight;
+        matchedKeys.push({ keyword: item.keyword, rCount: rc, jCount: item.jdCount, importance: item.importance });
+        comparison.push({ keyword: item.keyword, rCount: rc, jCount: item.jdCount, status: (rc === 1 && item.jdCount >= 3) ? 'Underused' : 'Matched' });
+      } else {
+        missingKeys.push({ keyword: item.keyword, jCount: item.jdCount, importance: item.importance });
+        comparison.push({ keyword: item.keyword, rCount: 0, jCount: item.jdCount, status: 'Missing' });
+      }
+    }
+
+    var kwScore = totalWeight > 0 ? Math.min(100, Math.round((matchedWeight / totalWeight) * 100)) : 75;
+
+    // Hard & Soft Skills
+    var matchedH = [], missingH = [];
+    for (var h = 0; h < HARD_SKILLS.length; h++) {
+      var hsk = HARD_SKILLS[h];
+      if (countOccurrences(j, hsk) > 0) {
+        if (countOccurrences(r, hsk) > 0) matchedH.push(hsk);
+        else missingH.push(hsk);
+      }
+    }
+
+    var matchedS = [], missingS = [];
+    for (var s = 0; s < SOFT_SKILLS.length; s++) {
+      var ssk = SOFT_SKILLS[s];
+      if (countOccurrences(j, ssk) > 0) {
+        if (countOccurrences(r, ssk) > 0) matchedS.push(ssk);
+        else missingS.push(ssk);
+      }
+    }
+
+    var totSk = matchedH.length + missingH.length + (matchedS.length + missingS.length) * 0.7;
+    var skScore = totSk > 0 ? Math.min(100, Math.round(((matchedH.length + matchedS.length * 0.7) / totSk) * 100)) : 70;
+
+    // Title Alignment
+    var titleStatus = 'Not Specified', titleScore = 70, titleText = 'No target job title was entered; general alignment inferred.';
+    if (targetTitle) {
+      var cleanTitle = targetTitle.toLowerCase();
+      var tExact = countOccurrences(r, cleanTitle);
+      if (tExact > 0) {
+        titleStatus = 'Strong'; titleScore = 100; titleText = 'Target title "' + targetTitle + '" appears in your resume.';
+      } else {
+        var tWords = cleanTitle.split(/\s+/).filter(function(w) { return w.length > 2 && !STOP_WORDS.has(w); });
+        var twMatches = 0;
+        for (var tw = 0; tw < tWords.length; tw++) {
+          if (countOccurrences(r, tWords[tw]) > 0) twMatches++;
+        }
+        if (twMatches >= Math.ceil(tWords.length * 0.75)) {
+          titleStatus = 'Strong'; titleScore = 90; titleText = 'Core title terms from "' + targetTitle + '" were found.';
+        } else if (twMatches > 0) {
+          titleStatus = 'Related'; titleScore = 60; titleText = 'Related title terms were detected in your resume.';
+        } else {
+          titleStatus = 'Weak'; titleScore = 30; titleText = '"' + targetTitle + '" was not detected in your resume.';
+        }
+      }
+    }
+
+    // Sections
+    var secDefs = [
+      { name: 'Contact Info', re: /(email|phone|linkedin|contact|\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)/i, req: true },
+      { name: 'Summary', re: /(summary|profile|professional summary|objective)/i, req: true },
+      { name: 'Experience', re: /(experience|work history|employment|career history)/i, req: true },
+      { name: 'Skills', re: /(skills|technical skills|competencies|technologies)/i, req: true },
+      { name: 'Education', re: /(education|degree|university|college|bachelor|master)/i, req: true },
+      { name: 'Certifications', re: /(certifications|licenses|credentials)/i, req: false }
+    ];
+
+    var foundCoreSec = 0;
+    var sectionsResult = secDefs.map(function(s) {
+      var found = s.re.test(r);
+      if (found && s.req) foundCoreSec++;
+      return { name: s.name, found: found };
+    });
+    var structureScore = Math.min(100, Math.round((foundCoreSec / 5) * 100));
+
+    // Contact
+    var emailDet = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/.test(r);
+    var phoneDet = /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/.test(r);
+    var liDet = /(linkedin\.com\/in\/|linkedin)/i.test(r);
+    var locDet = /(remote|[A-Z][a-z]+,\s*[A-Z]{2}|\bUSA\b)/i.test(r);
+
+    // Verbs & Achievements
+    var foundVerbs = [];
+    for (var v = 0; v < ACTION_VERBS.length; v++) {
+      if (countOccurrences(r, ACTION_VERBS[v]) > 0) foundVerbs.push(ACTION_VERBS[v]);
+    }
+
+    var lines = r.split('\n');
+    var quantCount = 0;
+    var numRe = /(\$|\%|\b\d{1,3}(,\d{3})*(\.\d+)?(\+)?\b|\b\d+\s*(years|months|users|clients|team|percent|growth)\b)/i;
+    for (var l = 0; l < lines.length; l++) {
+      var line = lines[l].trim();
+      if (line.length > 20 && numRe.test(line)) quantCount++;
+    }
+
+    var atsSig = 0;
+    if (rw >= 250 && rw <= 1100) atsSig += 30;
+    if (emailDet && phoneDet) atsSig += 30;
+    if (foundCoreSec >= 4) atsSig += 40;
+    var atsSignalsScore = Math.min(100, atsSig);
+
+    // Composite Overall
+    var achievementsScore = Math.min(100, (quantCount * 15) + (foundVerbs.length * 10));
+    var overall = Math.min(100, Math.max(0, Math.round(
+      (kwScore * 0.40) +
+      (skScore * 0.25) +
+      (titleScore * 0.10) +
+      (structureScore * 0.10) +
+      (achievementsScore * 0.10) +
+      (atsSignalsScore * 0.05)
+    )));
+
+    var label = 'Needs More Alignment';
+    if (overall >= 80) label = 'Strong Alignment';
+    else if (overall >= 65) label = 'Good Alignment';
+    else if (overall >= 50) label = 'Moderate Alignment';
+
+    // Suggestions
+    var suggestions = [];
+    var highMiss = missingKeys.filter(function(k) { return k.importance === 'High'; }).slice(0, 3);
+    if (highMiss.length > 0) {
+      suggestions.push('Consider adding priority keywords like ' + highMiss.map(function(k) { return '"' + k.keyword + '"'; }).join(', ') + ' if accurate to your real career experience.');
+    }
+    if (missingH.length > 0) {
+      suggestions.push('The job description emphasizes tools like ' + missingH.slice(0, 4).map(function(s) { return '"' + s + '"'; }).join(', ') + ' which were not detected in your resume.');
+    }
+    if (quantCount < 3) {
+      suggestions.push('Strengthen bullet points by adding measurable metrics (percentages, dollar amounts, project volumes) to demonstrate impact.');
+    }
+    if (foundVerbs.length < 5) {
+      suggestions.push('Begin more bullet points with high-impact action verbs (e.g. spearheaded, engineered, optimized) instead of passive phrasing.');
+    }
+    if (foundCoreSec < 4) {
+      suggestions.push('Ensure your resume uses standard section headings (Professional Summary, Work Experience, Skills, Education) so parsers index your data accurately.');
+    }
+    if (!emailDet || !phoneDet) {
+      suggestions.push('Ensure your primary contact details (email and phone number) are clearly placed at the top in plain text.');
+    }
+
+    currentAnalysis = {
+      overall: overall,
+      label: label,
+      kwScore: kwScore,
+      skScore: skScore,
+      structureScore: structureScore,
+      signalsScore: atsSignalsScore,
+      matchedKeys: matchedKeys,
+      missingKeys: missingKeys,
+      comparison: comparison,
+      matchedH: matchedH,
+      missingH: missingH,
+      matchedS: matchedS,
+      missingS: missingS,
+      titleStatus: titleStatus,
+      titleText: titleText,
+      sections: sectionsResult,
+      contact: { email: emailDet, phone: phoneDet, li: liDet, loc: locDet },
+      verbs: foundVerbs,
+      quantCount: quantCount,
+      rw: rw,
+      suggestions: suggestions
+    };
+
+    renderResults(currentAnalysis);
+  }
+
+  function renderResults(data) {
+    document.getElementById('atsproScoreOverall').textContent = data.overall + '%';
+    document.getElementById('atsproBarOverall').style.width = data.overall + '%';
+    document.getElementById('atsproScoreKeyword').textContent = data.kwScore + '%';
+    document.getElementById('atsproBarKeyword').style.width = data.kwScore + '%';
+    document.getElementById('atsproScoreSkills').textContent = data.skScore + '%';
+    document.getElementById('atsproBarSkills').style.width = data.skScore + '%';
+    document.getElementById('atsproScoreStructure').textContent = data.structureScore + '%';
+    document.getElementById('atsproBarStructure').style.width = data.structureScore + '%';
+    document.getElementById('atsproScoreSignals').textContent = data.signalsScore + '%';
+    document.getElementById('atsproBarSignals').style.width = data.signalsScore + '%';
+
+    var badge = document.getElementById('atsproScoreBadge');
+    badge.textContent = '● ' + data.label;
+    if (data.label === 'Strong Alignment') {
+      badge.style.background = '#ecfdf5'; badge.style.color = '#065f46'; badge.style.borderColor = '#a7f3d0';
+    } else if (data.label === 'Good Alignment') {
+      badge.style.background = '#eff6ff'; badge.style.color = '#1d4ed8'; badge.style.borderColor = '#bfdbfe';
+    } else {
+      badge.style.background = '#fffbeb'; badge.style.color = '#92400e'; badge.style.borderColor = '#fde68a';
+    }
+
+    // Matched chips
+    var mBox = document.getElementById('atsproMatchedContainer');
+    mBox.innerHTML = '';
+    if (data.matchedKeys.length === 0) {
+      mBox.innerHTML = '<span style="font-size:12px;color:#64748b;">No direct matches found.</span>';
+    } else {
+      data.matchedKeys.forEach(function(k) {
+        var chip = document.createElement('div');
+        chip.className = 'atspro-chip matched';
+        chip.innerHTML = k.keyword + ' <span class="atspro-chip-count">R:' + k.rCount + ' | JD:' + k.jCount + '</span>';
+        mBox.appendChild(chip);
+      });
+    }
+
+    // Missing chips
+    var msBox = document.getElementById('atsproMissingContainer');
+    msBox.innerHTML = '';
+    if (data.missingKeys.length === 0) {
+      msBox.innerHTML = '<span style="font-size:12px;color:#047857;">Great! No major missing keywords.</span>';
+    } else {
+      data.missingKeys.slice(0, 20).forEach(function(k) {
+        var chip = document.createElement('div');
+        chip.className = 'atspro-chip missing';
+        chip.innerHTML = k.keyword + ' <span class="atspro-chip-count">[' + k.importance + '] ' + k.jCount + 'x</span>';
+        msBox.appendChild(chip);
+      });
+    }
+
+    // Table
+    var tb = document.getElementById('atsproTableBody');
+    tb.innerHTML = '';
+    data.comparison.slice(0, 30).forEach(function(row) {
+      var tr = document.createElement('tr');
+      var color = row.status === 'Matched' ? '#047857' : (row.status === 'Underused' ? '#b45309' : '#be123c');
+      tr.innerHTML = '<td><strong>' + row.keyword + '</strong></td>' +
+        '<td style="text-align:center;">' + row.rCount + '</td>' +
+        '<td style="text-align:center;">' + row.jCount + '</td>' +
+        '<td style="text-align:right;font-weight:700;color:' + color + ';">' + row.status + '</td>';
+      tb.appendChild(tr);
+    });
+
+    // Hard & Soft
+    renderChips('atsproMatchedHard', data.matchedH, 'matched');
+    renderChips('atsproMissingHard', data.missingH, 'missing');
+    renderChips('atsproMatchedSoft', data.matchedS, 'matched');
+    renderChips('atsproMissingSoft', data.missingS, 'missing');
+
+    // Title Alignment
+    var tBox = document.getElementById('atsproTitleAlignmentBox');
+    tBox.innerHTML = '<div><strong>Status:</strong> ' + data.titleStatus + '</div><div style="margin-top:4px;color:#475569;">' + data.titleText + '</div>';
+
+    // Contact
+    var cBox = document.getElementById('atsproContactBox');
+    cBox.innerHTML =
+      '<div>' + (data.contact.email ? '✓' : '✕') + ' Email Detected</div>' +
+      '<div>' + (data.contact.phone ? '✓' : '✕') + ' Phone Detected</div>' +
+      '<div>' + (data.contact.li ? '✓' : '✕') + ' LinkedIn Link</div>' +
+      '<div>' + (data.contact.loc ? '✓' : '✕') + ' Location Indicator</div>';
+
+    // Sections
+    var sBox = document.getElementById('atsproSectionsBox');
+    sBox.innerHTML = '';
+    data.sections.forEach(function(s) {
+      var el = document.createElement('div');
+      el.className = 'atspro-chip ' + (s.found ? 'matched' : 'missing');
+      el.textContent = (s.found ? '✓ ' : '✕ ') + s.name;
+      sBox.appendChild(el);
+    });
+
+    // Verbs, Quant, Length
+    document.getElementById('atsproVerbsCount').textContent = data.verbs.length;
+    var vList = document.getElementById('atsproVerbsList');
+    vList.innerHTML = '';
+    data.verbs.slice(0, 10).forEach(function(v) {
+      var chip = document.createElement('span');
+      chip.style.cssText = 'padding:2px 6px;background:#eff6ff;color:#1d4ed8;font-size:10px;font-weight:600;border-radius:4px;';
+      chip.textContent = v;
+      vList.appendChild(chip);
+    });
+
+    document.getElementById('atsproQuantCount').textContent = data.quantCount;
+    document.getElementById('atsproLengthWords').textContent = data.rw;
+
+    // Suggestions
+    var sugBox = document.getElementById('atsproSuggestionsList');
+    sugBox.innerHTML = '';
+    data.suggestions.forEach(function(sug, idx) {
+      var d = document.createElement('div');
+      d.style.cssText = 'padding:10px 12px;background:#f8fafc;border-left:3px solid #2563eb;font-size:12px;color:#1e293b;border-radius:0 6px 6px 0;';
+      d.innerHTML = '<strong>' + (idx + 1) + '.</strong> ' + sug;
+      sugBox.appendChild(d);
+    });
+
+    resultsBox.style.display = 'block';
+    resultsBox.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function renderChips(containerId, list, type) {
+    var c = document.getElementById(containerId);
+    c.innerHTML = '';
+    if (!list || list.length === 0) {
+      c.innerHTML = '<span style="font-size:11px;color:#94a3b8;font-style:italic;">None</span>';
+      return;
+    }
+    list.forEach(function(item) {
+      var el = document.createElement('span');
+      el.className = 'atspro-chip ' + type;
+      el.textContent = item;
+      c.appendChild(el);
+    });
+  }
+
+  // File Upload Handlers
+  fileInput.addEventListener('change', function(e) {
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    var name = file.name.toLowerCase();
+    if (name.endsWith('.txt')) {
+      var reader = new FileReader();
+      reader.onload = function(evt) {
+        resumeInput.value = evt.target.result;
+        updateCounters();
+      };
+      reader.readAsText(file);
+    } else if (name.endsWith('.pdf')) {
+      if (window.pdfjsLib) {
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+          var typedarray = new Uint8Array(evt.target.result);
+          window.pdfjsLib.getDocument({ data: typedarray }).promise.then(function(pdf) {
+            var maxPages = pdf.numPages;
+            var countPromises = [];
+            for (var j = 1; j <= maxPages; j++) {
+              countPromises.push(pdf.getPage(j).then(function(page) {
+                return page.getTextContent().then(function(text) {
+                  return text.items.map(function(s) { return s.str; }).join(' ');
+                });
+              }));
+            }
+            Promise.all(countPromises).then(function(texts) {
+              var full = texts.join('\n').trim();
+              if (!full) {
+                alert("We couldn't find readable text in this PDF. Try pasting the resume text or using a text-based PDF.");
+              } else {
+                resumeInput.value = full;
+                updateCounters();
+              }
+            });
+          }).catch(function(err) {
+            alert("Error parsing PDF: " + err.message);
+          });
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        alert("PDF parser not ready. Please copy and paste resume text directly.");
+      }
+    } else if (name.endsWith('.docx')) {
+      if (window.mammoth) {
+        var reader = new FileReader();
+        reader.onload = function(evt) {
+          window.mammoth.extractRawText({ arrayBuffer: evt.target.result }).then(function(result) {
+            if (result && result.value) {
+              resumeInput.value = result.value;
+              updateCounters();
+            } else {
+              alert("Unable to extract text from DOCX. Please paste text directly.");
+            }
+          }).catch(function(err) {
+            alert("Error reading DOCX: " + err.message);
+          });
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        alert("DOCX parser not ready. Please copy and paste resume text directly.");
+      }
+    } else {
+      alert("Please upload a .txt, .pdf, or .docx file.");
+    }
+    fileInput.value = '';
+  });
+
+  // Example Loader
+  document.getElementById('atsproExampleBtn').addEventListener('click', function() {
+    resumeInput.value = "ALEX MORGAN\nalex.morgan@email.com | (555) 234-5678 | San Francisco, CA | linkedin.com/in/alexmorgan\n\nPROFESSIONAL SUMMARY\nResults-driven Senior Financial Analyst with 6+ years of experience leading corporate financial modeling, forecasting, budgeting, and variance analysis. Proven track record in data visualization, financial reporting, and cross-functional leadership, optimizing annual operating expenses by $1.8M and accelerating quarterly reporting turnaround by 35%.\n\nCORE SKILLS\n• Financial Modeling, Forecasting & Budgeting\n• SQL, Python, Microsoft Excel (VLOOKUP, Pivot Tables, Macros)\n• Power BI, Tableau, Financial Reporting & Variance Analysis\n• GAAP, Quickbooks, ERP Systems (SAP, Oracle)\n• Cross-Functional Collaboration, Communication & Team Leadership\n\nPROFESSIONAL EXPERIENCE\n\nSENIOR FINANCIAL ANALYST | Apex Global Technologies | 2021 – Present\n• Managed annual budgeting process of $45M across 6 business divisions, improving forecast accuracy by 18%.\n• Developed dynamic financial modeling templates in Microsoft Excel and SQL, reducing monthly reporting cycle by 4 days.\n• Built interactive executive dashboards using Power BI and Tableau to track core SaaS KPIs, revenue, and gross margin trends.\n• Led cross-functional collaboration with sales, product, and operations teams to evaluate capital expenditure ROI.\n• Spearheaded variance analysis on operational costs, identifying cost-saving initiatives that generated $1.8M in annualized savings.\n\nFINANCIAL ANALYST | Beacon Ridge Capital | 2018 – 2021\n• Analyzed monthly financial reporting packages and conducted budget vs. actual variance analysis for 12 corporate entities.\n• Created automated data analysis pipelines utilizing SQL and Python to extract ledger transactions from SAP ERP.\n• Coordinated with department leaders to establish rolling quarterly forecasts and 3-year strategic financial projections.\n• Streamlined accounting audit preparation processes, cutting external audit inquiry response time by 25%.\n\nEDUCATION\nBachelor of Science in Finance | University of California, Berkeley";
+
+    jdInput.value = "Job Title: Senior Financial Analyst\nLocation: San Francisco, CA (Hybrid)\n\nAbout the Role:\nWe are seeking an experienced Senior Financial Analyst to drive financial modeling, forecasting, budgeting, and strategic data analysis. In this role, you will partner closely with executive leadership to guide capital allocation, evaluate performance metrics, and build scalable reporting solutions.\n\nKey Responsibilities:\n• Lead annual operating budgeting and monthly rolling financial forecasting processes.\n• Build advanced financial modeling solutions to assess new market opportunities, mergers, and capital projects.\n• Design, maintain, and automate dashboards in Power BI and Tableau to visualize key business metrics.\n• Perform thorough variance analysis between actual results and projected budgets, presenting actionable insights.\n• Utilize SQL and Python to query multi-entity databases and streamline complex financial reporting workflows.\n• Collaborate cross-functionally with Accounting, Sales, and Operations to optimize operational expenses.\n\nQualifications:\n• Bachelor's degree in Finance, Accounting, Economics, or related quantitative field.\n• 4+ years of progressive experience in corporate financial analysis, financial modeling, or investment banking.\n• Strong proficiency in Microsoft Excel, SQL, and business intelligence platforms (Power BI or Tableau).\n• Experience with ERP platforms such as SAP or Oracle is preferred.\n• Demonstrated knowledge of GAAP and corporate financial reporting standards.\n• Exceptional written and verbal communication skills, with ability to present complex data to senior leadership.";
+
+    titleInput.value = "Senior Financial Analyst";
+    updateCounters();
+    runAnalysis();
+  });
+
+  document.getElementById('atsproAnalyzeBtn').addEventListener('click', runAnalysis);
+
+  function resetAll() {
+    resumeInput.value = '';
+    jdInput.value = '';
+    titleInput.value = '';
+    alertBox.style.display = 'none';
+    resultsBox.style.display = 'none';
+    currentAnalysis = null;
+    updateCounters();
+  }
+
+  document.getElementById('atsproClearBtn').addEventListener('click', resetAll);
+  document.getElementById('atsproResetBtn').addEventListener('click', resetAll);
+  document.getElementById('atsproResetBtn2').addEventListener('click', resetAll);
+
+  // Export functions
+  function getReportText() {
+    if (!currentAnalysis) return '';
+    var d = currentAnalysis;
+    var txt = "ATS RESUME CHECKER RESULTS\n";
+    txt += "========================================\n";
+    txt += "Resume Match: " + d.overall + "% (" + d.label + ")\n";
+    txt += "Keyword Match: " + d.kwScore + "%\n";
+    txt += "Skills Match: " + d.skScore + "%\n";
+    txt += "Resume Words: " + d.rw + "\n\n";
+
+    txt += "TOP MATCHED KEYWORDS:\n";
+    d.matchedKeys.slice(0, 15).forEach(function(k) {
+      txt += "• " + k.keyword + " (Resume: " + k.rCount + "x | JD: " + k.jCount + "x)\n";
+    });
+
+    txt += "\nTOP MISSING KEYWORDS:\n";
+    d.missingKeys.slice(0, 15).forEach(function(k) {
+      txt += "• " + k.keyword + " [" + k.importance + "] (JD: " + k.jCount + "x)\n";
+    });
+
+    txt += "\nIMPROVEMENT OPPORTUNITIES:\n";
+    d.suggestions.forEach(function(s, i) {
+      txt += (i + 1) + ". " + s + "\n";
+    });
+
+    txt += "\nDisclaimer: Educational estimate only. A higher score does not guarantee interviews or hiring.\n";
+    return txt;
+  }
+
+  document.getElementById('atsproCopyReportBtn').addEventListener('click', function() {
+    var txt = getReportText();
+    navigator.clipboard.writeText(txt).then(function() {
+      alert("Results copied to clipboard!");
+    }).catch(function() {
+      alert("Results copied!");
+    });
+  });
+
+  document.getElementById('atsproDownloadReportBtn').addEventListener('click', function() {
+    var txt = getReportText();
+    var blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'ats-resume-match-report.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('atsproPrintBtn').addEventListener('click', function() {
+    window.print();
+  });
+
+  // Social Sharing (Privacy safe: URL & Title only)
+  function getShareUrl() { return encodeURIComponent(window.location.href); }
+  function getShareTitle() { return encodeURIComponent(document.title || "Free ATS Resume Checker & Job Description Keyword Matcher"); }
+
+  document.getElementById('atsproShareFb').addEventListener('click', function() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + getShareUrl(), '_blank');
+  });
+  document.getElementById('atsproShareTw').addEventListener('click', function() {
+    window.open('https://twitter.com/intent/tweet?text=' + getShareTitle() + '&url=' + getShareUrl(), '_blank');
+  });
+  document.getElementById('atsproShareWa').addEventListener('click', function() {
+    window.open('https://api.whatsapp.com/send?text=' + getShareTitle() + '%20' + getShareUrl(), '_blank');
+  });
+  document.getElementById('atsproShareLi').addEventListener('click', function() {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + getShareUrl(), '_blank');
+  });
+  document.getElementById('atsproShareRd').addEventListener('click', function() {
+    window.open('https://reddit.com/submit?url=' + getShareUrl() + '&title=' + getShareTitle(), '_blank');
+  });
+  document.getElementById('atsproShareTg').addEventListener('click', function() {
+    window.open('https://t.me/share/url?url=' + getShareUrl() + '&text=' + getShareTitle(), '_blank');
+  });
+  document.getElementById('atsproShareEm').addEventListener('click', function() {
+    window.location.href = 'mailto:?subject=' + getShareTitle() + '&body=Check%20out%20this%20tool:%20' + getShareUrl();
+  });
+  document.getElementById('atsproShareCp').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert("Page link copied to clipboard!");
+    });
+  });
+  document.getElementById('atsproShareNt').addEventListener('click', function() {
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: window.location.href }).catch(function(){});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        alert("Link copied!");
+      });
+    }
+  });
+
+})();
+</script>
