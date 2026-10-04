@@ -1,0 +1,2386 @@
+<!--
+BLOGGER TITLE:
+Free PDF to Word Converter – Convert PDF to DOCX Online
+
+BLOGGER SEARCH DESCRIPTION:
+Convert PDF files to editable Word DOCX documents online for free. Choose pages, preview extracted text and download a real Word file with no signup.
+
+BLOGGER LABELS:
+PDF to Word Converter, PDF to DOCX Converter, Convert PDF to Word, PDF Converter, Word Converter, PDF Tools, Document Tools, Productivity Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+pdf-to-word-converter
+
+GITHUB FILE NAME:
+pdf-to-word-converter.html
+-->
+<div id="pdfToWordBloggerApp">
+  <style>
+    #pdfToWordBloggerApp,
+    #pdfToWordBloggerApp * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    #pdfToWordBloggerApp {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      height: auto;
+      background: #ffffff;
+      color: #0f172a;
+      line-height: 1.6;
+      padding: 16px 12px 48px;
+    }
+    .p2w-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .p2w-hero {
+      text-align: center;
+      padding: 24px 16px 20px;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    }
+    .p2w-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .p2w-h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0 0 10px;
+      background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .p2w-subhead {
+      font-size: clamp(16px, 2.5vw, 19px);
+      font-weight: 600;
+      color: #1e293b;
+      margin: 0 0 12px;
+    }
+    .p2w-desc {
+      font-size: 15px;
+      color: #475569;
+      max-width: 720px;
+      margin: 0 auto 16px;
+    }
+    .p2w-trust-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 14px;
+      margin-top: 14px;
+    }
+    .p2w-trust-tag {
+      font-size: 13px;
+      color: #047857;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .p2w-ad-slot {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      margin: 20px 0;
+      min-height: 60px;
+    }
+    .p2w-engine-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .p2w-engine-loading {
+      background: #fffbeb;
+      border-color: #fde68a;
+      color: #b45309;
+    }
+    .p2w-engine-ready {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      color: #047857;
+    }
+    .p2w-engine-error {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+    .p2w-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+    }
+    .p2w-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .p2w-upload-box {
+      border: 2px dashed #93c5fd;
+      border-radius: 16px;
+      padding: 36px 20px;
+      text-align: center;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .p2w-upload-box:hover, .p2w-upload-box.p2w-dragover {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+    .p2w-upload-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 12px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+    .p2w-upload-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 8px;
+    }
+    .p2w-upload-desc {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0 0 20px;
+    }
+    .p2w-file-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    .p2w-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 10px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      user-select: none;
+    }
+    .p2w-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .p2w-btn:active {
+      transform: translateY(0);
+    }
+    .p2w-btn:disabled, .p2w-btn.p2w-disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    .p2w-btn-choose {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+    .p2w-btn-convert {
+      background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 14px 28px;
+      width: 100%;
+      box-shadow: 0 6px 18px rgba(29, 78, 216, 0.35);
+    }
+    .p2w-btn-download {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 14px 30px;
+      width: 100%;
+      box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35);
+    }
+    .p2w-btn-teal {
+      background: #0d9488;
+      color: #ffffff;
+    }
+    .p2w-btn-cyan {
+      background: #0891b2;
+      color: #ffffff;
+    }
+    .p2w-btn-purple {
+      background: #7c3aed;
+      color: #ffffff;
+    }
+    .p2w-btn-blue {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .p2w-btn-orange {
+      background: #ea580c;
+      color: #ffffff;
+    }
+    .p2w-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    .p2w-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+    .p2w-btn-sm {
+      min-height: 36px;
+      padding: 6px 12px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+    .p2w-fileinfo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+      gap: 14px;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+    .p2w-fileinfo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .p2w-fileinfo-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .p2w-fileinfo-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f172a;
+      word-break: break-all;
+    }
+    .p2w-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 10px 4px;
+    }
+    .p2w-thumb-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .p2w-thumb-card.p2w-selected {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+    .p2w-thumb-canvas {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      display: block;
+      background: #ffffff;
+    }
+    .p2w-thumb-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+    }
+    .p2w-page-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .p2w-settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+      gap: 16px;
+    }
+    .p2w-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .p2w-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+    .p2w-select, .p2w-input {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .p2w-select:focus, .p2w-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .p2w-toggle-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .p2w-toggle-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #1e293b;
+    }
+    .p2w-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: #2563eb;
+      margin-top: 2px;
+    }
+    .p2w-summary-box {
+      background: #f1f5f9;
+      border-left: 4px solid #2563eb;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #334155;
+    }
+    .p2w-progress-wrap {
+      margin: 18px 0;
+      display: none;
+    }
+    .p2w-progress-bar-bg {
+      width: 100%;
+      height: 14px;
+      background: #e2e8f0;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .p2w-progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2563eb 0%, #10b981 100%);
+      transition: width 0.2s ease;
+    }
+    .p2w-progress-status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+    }
+    .p2w-preview-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      max-height: 280px;
+      overflow-y: auto;
+      font-family: monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #334155;
+    }
+    .p2w-result-card {
+      background: #ecfdf5;
+      border: 2px solid #a7f3d0;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin: 20px 0;
+      display: none;
+    }
+    .p2w-result-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #065f46;
+      margin: 0 0 10px;
+    }
+    .p2w-result-meta {
+      font-size: 14px;
+      color: #047857;
+      margin-bottom: 18px;
+    }
+    .p2w-action-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .p2w-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .p2w-feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+    .p2w-feature-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin: 0 0 6px;
+    }
+    .p2w-feature-text {
+      font-size: 14px;
+      color: #475569;
+      margin: 0;
+    }
+    .p2w-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 16px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .p2w-step-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #f8fafc;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+    .p2w-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .p2w-article {
+      color: #334155;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .p2w-article h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin: 24px 0 10px;
+    }
+    .p2w-article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 18px 0 8px;
+    }
+    .p2w-article p {
+      margin: 0 0 14px;
+    }
+    .p2w-faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .p2w-faq-summary {
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      user-select: none;
+      background: #f8fafc;
+      outline: none;
+    }
+    .p2w-faq-summary:hover {
+      background: #f1f5f9;
+      color: #1d4ed8;
+    }
+    .p2w-faq-content {
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #475569;
+      border-top: 1px solid #e2e8f0;
+      line-height: 1.6;
+    }
+    .p2w-share-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 16px 0;
+    }
+    .p2w-share-btn {
+      min-height: 42px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+    }
+    .p2w-share-fb { background: #1877f2; }
+    .p2w-share-x { background: #0f1419; }
+    .p2w-share-wa { background: #25d366; }
+    .p2w-share-li { background: #0a66c2; }
+    .p2w-share-rd { background: #ff4500; }
+    .p2w-share-tg { background: #229ed9; }
+    .p2w-share-em { background: #ea4335; }
+    .p2w-share-cp { background: #475569; }
+    .p2w-share-nt { background: #7c3aed; }
+    .p2w-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      z-index: 99999;
+      display: none;
+    }
+  </style>
+
+  <div class="p2w-shell">
+    <!-- 1. Hero -->
+    <header class="p2w-hero">
+      <div class="p2w-badge">🇺🇸 Free PDF Tool for U.S. Users</div>
+      <h1 class="p2w-h1">PDF to Word Converter</h1>
+      <p class="p2w-subhead">Convert PDF Files to Editable Word DOCX Documents</p>
+      <p class="p2w-desc">
+        Convert searchable PDF files into editable Word documents directly in your browser. Choose pages, preview extracted text and download a real Microsoft Word DOCX file without using a remote PDF-conversion API.
+      </p>
+      <div class="p2w-trust-wrap">
+        <span class="p2w-trust-tag">✓ 100% Free</span>
+        <span class="p2w-trust-tag">✓ No Signup</span>
+        <span class="p2w-trust-tag">✓ No Remote Conversion API</span>
+        <span class="p2w-trust-tag">✓ Local PDF Processing</span>
+        <span class="p2w-trust-tag">✓ Real DOCX Download</span>
+        <span class="p2w-trust-tag">✓ Page Selection</span>
+        <span class="p2w-trust-tag">✓ Mobile Friendly</span>
+      </div>
+    </header>
+
+    <!-- 2. First Advertisement (468x60) -->
+    <div class="p2w-ad-slot">
+      <script>
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+
+    <!-- 3. PDF Engine Status -->
+    <div id="p2wEngineStatusBox" class="p2w-engine-status p2w-engine-loading">
+      <span id="p2wEngineStatusText">⏳ Loading PDF Engine...</span>
+      <button id="p2wRetryEngineBtn" class="p2w-btn p2w-btn-sm p2w-btn-orange" style="display:none;" data-p2w-action="retry-engine">Retry PDF Engine</button>
+    </div>
+
+    <!-- 4. Upload PDF Box -->
+    <section class="p2w-card">
+      <h2 class="p2w-card-title">Upload PDF Document</h2>
+      <div id="p2wUploadArea" class="p2w-upload-box">
+        <div class="p2w-upload-icon">📄</div>
+        <div class="p2w-upload-title">Convert PDF to Word</div>
+        <div class="p2w-upload-desc">Drag and drop your PDF here, or choose a file from your phone or computer.</div>
+        <input id="p2wPdfFileInput" type="file" accept=".pdf,application/pdf" class="p2w-file-input" />
+        <label for="p2wPdfFileInput" class="p2w-btn p2w-btn-choose">Choose PDF</label>
+      </div>
+      <div id="p2wUploadMsg" style="margin-top:10px; font-size:14px; font-weight:600; text-align:center; display:none;"></div>
+    </section>
+
+    <!-- 5. File Information -->
+    <section id="p2wFileInfoCard" class="p2w-card" style="display:none;">
+      <h2 class="p2w-card-title">File Information</h2>
+      <div class="p2w-fileinfo-grid">
+        <div class="p2w-fileinfo-item">
+          <span class="p2w-fileinfo-label">File Name</span>
+          <span id="p2wInfoName" class="p2w-fileinfo-value">-</span>
+        </div>
+        <div class="p2w-fileinfo-item">
+          <span class="p2w-fileinfo-label">File Size</span>
+          <span id="p2wInfoSize" class="p2w-fileinfo-value">-</span>
+        </div>
+        <div class="p2w-fileinfo-item">
+          <span class="p2w-fileinfo-label">Page Count</span>
+          <span id="p2wInfoPages" class="p2w-fileinfo-value">-</span>
+        </div>
+        <div class="p2w-fileinfo-item">
+          <span class="p2w-fileinfo-label">Text Status</span>
+          <span id="p2wInfoType" class="p2w-fileinfo-value">-</span>
+        </div>
+      </div>
+      <div id="p2wScanWarning" style="margin-top:12px; padding:12px; border-radius:8px; background:#fffbeb; border:1px solid #fde68a; color:#92400e; font-size:13px; display:none;">
+        ⚠️ <strong>Note:</strong> This PDF appears to contain scanned or image-based pages. This version converts searchable PDF text. Try a searchable PDF or use OCR software before conversion.
+      </div>
+    </section>
+
+    <!-- 6 & 7 & 8. Page Thumbnails & Page Selection -->
+    <section id="p2wPageSelectCard" class="p2w-card" style="display:none;">
+      <h2 class="p2w-card-title">Select Pages to Convert</h2>
+      <div class="p2w-page-actions">
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-all">All Pages</button>
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-none">Deselect All</button>
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-invert">Invert Selection</button>
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-odd">Odd Pages</button>
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-even">Even Pages</button>
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-first">First Page</button>
+        <button class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="select-last">Last Page</button>
+      </div>
+
+      <div class="p2w-form-group" style="margin-bottom: 14px;">
+        <label for="p2wPageRangeInput" class="p2w-label">Custom Page Range (e.g. 1-5, 1,3,5 or 2-6,8)</label>
+        <div style="display:flex; gap:8px;">
+          <input id="p2wPageRangeInput" type="text" placeholder="e.g. 1-3, 5" class="p2w-input" />
+          <button class="p2w-btn p2w-btn-blue p2w-btn-sm" data-p2w-action="apply-range">Apply Range</button>
+        </div>
+      </div>
+
+      <div id="p2wThumbGrid" class="p2w-thumb-grid"></div>
+    </section>
+
+    <!-- 9, 10, 11. Conversion Mode & Word Settings -->
+    <section id="p2wSettingsCard" class="p2w-card">
+      <h2 class="p2w-card-title">Word Document Settings</h2>
+      <div class="p2w-settings-grid">
+        <div class="p2w-form-group">
+          <label for="p2wModeSelect" class="p2w-label">Conversion Mode</label>
+          <select id="p2wModeSelect" class="p2w-select">
+            <option value="text">Editable Text</option>
+            <option value="breaks">Preserve Line Breaks</option>
+          </select>
+        </div>
+
+        <div class="p2w-form-group">
+          <label for="p2wPageSizeSelect" class="p2w-label">Page Size</label>
+          <select id="p2wPageSizeSelect" class="p2w-select">
+            <option value="letter" selected>US Letter (8.5 × 11 in)</option>
+            <option value="legal">US Legal (8.5 × 14 in)</option>
+            <option value="a4">A4 (8.27 × 11.69 in)</option>
+          </select>
+        </div>
+
+        <div class="p2w-form-group">
+          <label for="p2wOrientationSelect" class="p2w-label">Orientation</label>
+          <select id="p2wOrientationSelect" class="p2w-select">
+            <option value="portrait" selected>Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+
+        <div class="p2w-form-group">
+          <label for="p2wMarginsSelect" class="p2w-label">Margins</label>
+          <select id="p2wMarginsSelect" class="p2w-select">
+            <option value="narrow">Narrow (0.5 in)</option>
+            <option value="normal" selected>Normal (1.0 in)</option>
+            <option value="wide">Wide (1.25 in)</option>
+          </select>
+        </div>
+
+        <div class="p2w-form-group">
+          <label for="p2wFontSelect" class="p2w-label">Document Font</label>
+          <select id="p2wFontSelect" class="p2w-select">
+            <option value="Arial" selected>Arial</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+        </div>
+
+        <div class="p2w-form-group">
+          <label for="p2wFontSizeSelect" class="p2w-label">Font Size</label>
+          <select id="p2wFontSizeSelect" class="p2w-select">
+            <option value="9">9 pt</option>
+            <option value="10">10 pt</option>
+            <option value="11" selected>11 pt</option>
+            <option value="12">12 pt</option>
+            <option value="14">14 pt</option>
+            <option value="16">16 pt</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="p2w-toggle-list">
+        <label class="p2w-toggle-item">
+          <input id="p2wOptParagraphs" type="checkbox" class="p2w-checkbox" checked />
+          <span>Smart Paragraph Detection (uses text positions and gaps)</span>
+        </label>
+        <label class="p2w-toggle-item">
+          <input id="p2wOptHyphens" type="checkbox" class="p2w-checkbox" checked />
+          <span>Join Hyphenated Line Breaks (e.g. docu-ment &rarr; document)</span>
+        </label>
+        <label class="p2w-toggle-item">
+          <input id="p2wOptSpaces" type="checkbox" class="p2w-checkbox" checked />
+          <span>Clean Extra Spaces</span>
+        </label>
+        <label class="p2w-toggle-item">
+          <input id="p2wOptPageBreaks" type="checkbox" class="p2w-checkbox" checked />
+          <span>Start Each PDF Page on a New Word Page</span>
+        </label>
+      </div>
+
+      <div style="margin-top:10px; font-size:12px; color:#64748b;">
+        * Note: Complex columns and highly designed layouts may require manual editing after conversion.
+      </div>
+    </section>
+
+    <!-- 12, 13, 14, 15. Summary, Convert, Progress, Cancel -->
+    <section class="p2w-card">
+      <div id="p2wSummaryBox" class="p2w-summary-box">
+        Please upload a PDF to activate conversion.
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <button id="p2wConvertBtn" class="p2w-btn p2w-btn-convert p2w-disabled" disabled data-p2w-action="convert">
+          Convert PDF to Word
+        </button>
+      </div>
+
+      <div id="p2wProgressWrap" class="p2w-progress-wrap">
+        <div class="p2w-progress-bar-bg">
+          <div id="p2wProgressBarFill" class="p2w-progress-bar-fill"></div>
+        </div>
+        <div class="p2w-progress-status">
+          <span id="p2wProgressStage">Initializing conversion...</span>
+          <span id="p2wProgressPercent">0%</span>
+        </div>
+        <div style="margin-top:10px; text-align:right;">
+          <button id="p2wCancelBtn" class="p2w-btn p2w-btn-sm p2w-btn-orange" data-p2w-action="cancel">Cancel</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17, 18, 19. Result & Download Area -->
+    <div id="p2wResultCard" class="p2w-result-card">
+      <div class="p2w-result-title">🎉 Your Word Document Is Ready</div>
+      <div id="p2wResultMeta" class="p2w-result-meta">-</div>
+      
+      <div style="max-width: 420px; margin: 0 auto 16px;">
+        <button id="p2wDownloadWordBtn" class="p2w-btn p2w-btn-download" data-p2w-action="download">
+          ⬇️ Download Word File
+        </button>
+      </div>
+
+      <div class="p2w-action-grid">
+        <button class="p2w-btn p2w-btn-teal" data-p2w-action="download-again">Download Again</button>
+        <button class="p2w-btn p2w-btn-cyan" data-p2w-action="download-txt">Download Extracted Text (.txt)</button>
+        <button class="p2w-btn p2w-btn-purple" data-p2w-action="change-settings">Change Settings & Reconvert</button>
+        <button class="p2w-btn p2w-btn-blue" data-p2w-action="convert-another">Convert Another PDF</button>
+        <button class="p2w-btn p2w-btn-orange" data-p2w-action="reset">Reset Tool</button>
+      </div>
+    </div>
+
+    <!-- 16, 20, 21. Extracted Text Preview -->
+    <section id="p2wPreviewCard" class="p2w-card" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+        <h2 class="p2w-card-title" style="margin:0;">Extracted Text Preview</h2>
+        <div style="display:flex; gap:8px;">
+          <button class="p2w-btn p2w-btn-sm p2w-btn-cyan" data-p2w-action="copy-text">Copy Extracted Text</button>
+          <button id="p2wTogglePreviewBtn" class="p2w-btn p2w-btn-sm p2w-btn-secondary" data-p2w-action="toggle-preview">Show More</button>
+        </div>
+      </div>
+      <div id="p2wPreviewBox" class="p2w-preview-box"></div>
+    </section>
+
+    <!-- 25. Native Advertisement -->
+    <div class="p2w-ad-slot" style="margin: 28px 0;">
+      <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+      <div id="container-269e962c1215493328aeb78f4303284c"></div>
+    </div>
+
+    <!-- 26. Feature Cards -->
+    <section class="p2w-card">
+      <h2 class="p2w-card-title">Converter Features & Capabilities</h2>
+      <div class="p2w-features-grid">
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Real DOCX Document Generation</div>
+          <p class="p2w-feature-text">Produces a standard Microsoft Word .docx Office Open XML package, fully editable in Word, Google Docs, and LibreOffice.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Searchable PDF Text Extraction</div>
+          <p class="p2w-feature-text">Accurately extracts text streams and glyph positions from digital PDF documents using local browser engine processing.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Interactive Page Selection</div>
+          <p class="p2w-feature-text">Pick individual pages with quick toggles for all, odd, even, first, last, or custom selections before conversion.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Custom Page Range Support</div>
+          <p class="p2w-feature-text">Enter flexible page ranges such as 1-5, 1,3,5 or 2-6,8 to convert only the exact pages you need.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">PDF Page Preview Thumbnails</div>
+          <p class="p2w-feature-text">Visual rendering of page thumbnails directly on your screen so you can verify content prior to exporting.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Editable Text Mode</div>
+          <p class="p2w-feature-text">Reorganizes words and lines into flowing paragraphs with best-effort reading order for easy document drafting.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Preserve Line Breaks Mode</div>
+          <p class="p2w-feature-text">Maintains raw line boundaries, making it ideal for poetry, code blocks, lists, addresses, and invoice line items.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">US Letter & Legal Standards</div>
+          <p class="p2w-feature-text">Formats DOCX geometry with exact twip measurements for standard U.S. Letter (8.5 × 11 in) and U.S. Legal paper sizes.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">International A4 Support</div>
+          <p class="p2w-feature-text">Easily select standard ISO 216 A4 page dimensions for international business and academic submissions.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Custom Font Families</div>
+          <p class="p2w-feature-text">Choose from standard typography options including Arial, Calibri, Times New Roman, Georgia, and Verdana.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Configurable Margins</div>
+          <p class="p2w-feature-text">Select narrow (0.5 in), normal (1.0 in), or wide (1.25 in) margins converted directly into WordprocessingML XML.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Extracted Text Preview</div>
+          <p class="p2w-feature-text">Inspect the extracted document text in a clean preview container before opening your final Word file.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">One-Click Clipboard Copy</div>
+          <p class="p2w-feature-text">Instantly copy all extracted text to your device clipboard with automatic fallback support for older browsers.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Real DOCX Download</div>
+          <p class="p2w-feature-text">Delivers an authentic application/vnd.openxmlformats document blob with correct file signatures and headers.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Download Again Button</div>
+          <p class="p2w-feature-text">Re-download your generated Word file anytime during your session without re-parsing or waiting.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Mobile-Friendly Processing</div>
+          <p class="p2w-feature-text">Lightweight memory footprint with sequential page processing designed to work smoothly on mobile browsers.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">Zero Remote Conversion API</div>
+          <p class="p2w-feature-text">Your PDF bytes never leave your device to an external conversion server or third-party AI provider.</p>
+        </div>
+        <div class="p2w-feature-card">
+          <div class="p2w-feature-title">No Account or Signup Required</div>
+          <p class="p2w-feature-text">Start converting immediately without passwords, credit cards, subscription plans, or email registration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 27. How to Use -->
+    <section class="p2w-card">
+      <h2 class="p2w-card-title">How to Convert PDF to Word</h2>
+      <ol class="p2w-steps-list">
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">1</div>
+          <div><strong>Choose a PDF:</strong> Tap Choose PDF or drag and drop your document into the upload area.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">2</div>
+          <div><strong>Wait for PDF Engine:</strong> The local browser engine loads your PDF into memory and analyzes page structure.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">3</div>
+          <div><strong>Review Page Count & Thumbnails:</strong> Inspect the file details and visual preview cards of your document.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">4</div>
+          <div><strong>Choose Your Pages:</strong> Convert all pages or select specific pages and custom ranges (e.g. 1-3, 5).</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">5</div>
+          <div><strong>Select a Conversion Mode:</strong> Choose Editable Text for continuous paragraphs or Preserve Line Breaks for structured lists.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">6</div>
+          <div><strong>Configure Word Settings:</strong> Customize your target page size (US Letter, Legal, A4), margins, font family, and font size.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">7</div>
+          <div><strong>Select Convert PDF to Word:</strong> Click the conversion button to extract text and package the Office Open XML file.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">8</div>
+          <div><strong>Review Extracted Text:</strong> Inspect the converted text preview right on your screen or copy it to your clipboard.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">9</div>
+          <div><strong>Select Download Word File:</strong> Save the authentic .docx file directly to your downloads folder.</div>
+        </li>
+        <li class="p2w-step-item">
+          <div class="p2w-step-num">10</div>
+          <div><strong>Open in Microsoft Word:</strong> Launch Microsoft Word, Google Docs, Apple Pages, or LibreOffice to edit your content freely.</div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 28. Educational Article Part 1 -->
+    <article class="p2w-card p2w-article">
+      <h2>Comprehensive Guide: Converting PDF to Word Online</h2>
+      
+      <h3>What Is a PDF to Word Converter?</h3>
+      <p>
+        A PDF to Word converter is a specialized document utility that translates fixed-layout Portable Document Format (PDF) files into editable Microsoft Word documents (.docx). While PDFs are designed to display identically across every operating system, printer, and mobile device, their fixed layout makes routine text edits, rewriting, and formatting adjustments extremely difficult. A reliable converter parses the underlying text vectors, layout coordinates, and font metrics of the PDF and reconstructs them into dynamic WordprocessingML paragraphs and styles.
+      </p>
+
+      <h3>How to Convert PDF to Word Efficiently</h3>
+      <p>
+        Converting PDF documents to editable Word files requires balancing layout fidelity with text flexibility. To achieve the best outcome, ensure your source PDF contains genuine selectable text rather than flat photographic scans. By configuring custom page sizes such as US Letter or A4, setting appropriate paragraph margins, and choosing universal typography like Arial or Calibri, your exported DOCX file opens seamlessly in word processors without font-substitution discrepancies.
+      </p>
+
+      <h3>PDF vs. DOCX: Understanding Fundamental Differences</h3>
+      <p>
+        The architectural philosophies of PDF and DOCX represent opposite ends of the document spectrum. Adobe introduced PostScript and PDF as a digital printing press: every letter, comma, and image is locked onto an absolute X and Y coordinate grid on a virtual piece of paper. In contrast, Microsoft Word (.docx) is based on dynamic flowing streams of XML markup known as Office Open XML (ECMA-376). When text is added to a DOCX document, subsequent sentences wrap and push down naturally across pages. Converting from a static grid to a flowing document is the core engineering challenge of every PDF converter.
+      </p>
+
+      <h3>What Is a Searchable PDF?</h3>
+      <p>
+        A searchable PDF is a document created digitally from applications like Microsoft Word, Google Docs, InDesign, or modern virtual PDF printers. Within a searchable PDF, every character is encoded with Unicode character references and typographic positioning tables. This allows software to extract exact strings, words, sentences, and punctuation directly from the document streams without guessing or using optical pattern recognition.
+      </p>
+
+      <h3>What Is an Image-Based PDF?</h3>
+      <p>
+        An image-based PDF (often called a scanned PDF) is essentially a digital photograph wrapped inside a PDF container. This occurs when physical paper documents are scanned on multifunction office copiers, or when digital documents are flattened into bitmaps. In an image-based PDF, no underlying text characters exist—only pixels. Because this converter focuses on direct, high-fidelity local text extraction without sending your confidential files to remote optical recognition APIs, image-only files must be processed with dedicated OCR software before converting them to editable DOCX text.
+      </p>
+
+      <h3>How PDF Text Extraction Works</h3>
+      <p>
+        When you load a document into this converter, the internal engine parses the PDF binary cross-reference table and reads each page's content stream. It interprets text display operators (such as TJ and Tj) along with transformation matrices that determine character coordinates, baseline elevations, and rotation angles. The converter clusters these fragments by vertical line height and horizontal proximity, reassembling raw letters into intelligible sentences and structured paragraphs.
+      </p>
+
+      <h3>Why PDF Formatting Can Change in Word</h3>
+      <p>
+        Users often wonder why a converted Word file does not always match the original PDF down to the exact millimeter. The reason lies in how word processors render text. PDF files often specify custom letter-spacing (kerning) and word spacing for every individual word so lines fit tightly on a printed page. Word processors, on the other hand, recalculate word wraps based on font metrics, paragraph indents, and margin constraints. As a result, subtle shifts in line wraps and pagination are normal and expected when transitioning between fixed and flowing document formats.
+      </p>
+    </article>
+
+    <!-- 29. Third Advertisement (300x250) -->
+    <div class="p2w-ad-slot">
+      <script>
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+
+    <!-- 30. Educational Article Part 2 -->
+    <article class="p2w-card p2w-article">
+      <h3>Page Selection and Selective Extraction</h3>
+      <p>
+        Often, multi-page business proposals, legal contracts, or academic journals span dozens or hundreds of pages, yet you only require an excerpt or a single chapter in Word format. Selective page conversion saves valuable computer processing power and minimizes editing time. Our converter lets you choose specific individual pages, even or odd sets, or custom page ranges (such as pages 1 through 5 and page 8) so you export only the exact content relevant to your work.
+      </p>
+
+      <h3>US Letter vs. A4: Choosing the Right Standard</h3>
+      <p>
+        In the United States and Canada, the standard office paper dimension is US Letter (8.5 × 11 inches, or 215.9 × 279.4 mm). In the United Kingdom, Europe, Asia, and most international regions, standard A4 (8.27 × 11.69 inches, or 210 × 297 mm) is ubiquitous. WordprocessingML specifies page dimensions in twips (twentieths of an imperial point, where 1 inch equals 1,440 twips). Our tool configures the exact XML attributes for width and height (12,240 × 15,840 twips for Letter, and 11,906 × 16,838 twips for A4), guaranteeing your printed documents maintain correct physical dimensions.
+      </p>
+
+      <h3>Fonts and Margins: Optimizing Document Appearance</h3>
+      <p>
+        When converting text, font choice plays a vital role in professional presentation. Selecting clean typography such as Arial, Calibri, or Times New Roman ensures that recipient computers display your document with consistent metrics and line spacing. Similarly, configuring standard 1.0-inch margins (1,440 twips) adheres to standard American corporate guidelines, while narrow 0.5-inch margins (720 twips) maximize printable surface area for dense data tables and technical documentation.
+      </p>
+
+      <h3>Handling Complex PDF Tables and Multi-Column Layouts</h3>
+      <p>
+        Multi-column newsletters, magazines, and financial tables present unique challenges for text conversion. In a PDF, two text columns side by side might be stored in the file stream alternating line-by-line rather than column-by-column. Our converter employs coordinate sorting to maintain logical reading order whenever feasible. However, complex multi-column layouts and nested borders may require minor adjustments in Word, such as creating a native Word table or adjusting tab stops.
+      </p>
+
+      <h3>Browser-Based PDF Conversion and Data Privacy</h3>
+      <p>
+        Traditional online converters force users to upload sensitive corporate spreadsheets, tax returns, medical files, or legal agreements to third-party cloud servers. Once uploaded, documents may be stored in remote databases or indexed for machine learning. This converter operates entirely inside your local web browser session. All PDF decoding, text tokenization, and ZIP DOCX packaging occur in your device's memory using standard browser APIs. No third-party conversion server ever accesses your private document content.
+      </p>
+
+      <h3>Common Conversion Problems and Troubleshooting Tips</h3>
+      <p>
+        If your converted Word document appears empty or exhibits unusual characters, check whether your PDF is password-protected or uses proprietary font encodings without standard Unicode mappings. For best results with complex documents, convert in Editable Text mode with Smart Paragraph Detection enabled. When converting tabular invoices or code listings, switch to Preserve Line Breaks mode to prevent adjacent data rows from merging into single paragraphs.
+      </p>
+
+      <h3>Tips for Better Conversion Results</h3>
+      <p>
+        To ensure optimal conversion: 1) Verify that text in your PDF can be highlighted with your mouse cursor before converting. 2) Remove security passwords before conversion. 3) Choose matching page sizes (Letter for North America, A4 internationally). 4) Open the resulting DOCX file in Microsoft Word or Google Docs and perform a quick styling review to customize headings, bullet points, and line spacing according to your branding needs.
+      </p>
+    </article>
+
+    <!-- 31. FAQ Section (26 FAQs) -->
+    <section class="p2w-card">
+      <h2 class="p2w-card-title">Frequently Asked Questions (FAQ)</h2>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">What is a PDF to Word converter?</summary>
+        <div class="p2w-faq-content">A PDF to Word converter is an application that extracts text, page boundaries, and structure from Portable Document Format (PDF) files and packages them into an editable Microsoft Word document (.docx).</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Is this PDF to Word converter free?</summary>
+        <div class="p2w-faq-content">Yes, this tool is 100% free with no hidden fees, paid tiers, subscriptions, or credit card requirements.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Does it generate a real DOCX file?</summary>
+        <div class="p2w-faq-content">Yes. It creates a genuine Microsoft Office Open XML (.docx) archive containing valid [Content_Types].xml, _rels/.rels, and word/document.xml files, recognized by Microsoft Word, Google Docs, Apple Pages, and LibreOffice.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Does this converter use a remote API?</summary>
+        <div class="p2w-faq-content">No. The text extraction and DOCX compilation are executed strictly within your browser using client-side JavaScript. No remote conversion API is contacted.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Is my PDF uploaded to a conversion server?</summary>
+        <div class="p2w-faq-content">No. Your PDF file remains exclusively in your device's memory. It is never transmitted to an external file server or cloud processing backend.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I choose individual PDF pages?</summary>
+        <div class="p2w-faq-content">Yes. You can select individual pages, toggle odd or even pages, pick the first or last page, or select specific pages directly from the thumbnail view.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I enter a page range?</summary>
+        <div class="p2w-faq-content">Yes. Enter custom ranges such as "1-5", "1,3,5" or "2-6,8" in the Custom Page Range field and click Apply Range.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">What is a searchable PDF?</summary>
+        <div class="p2w-faq-content">A searchable PDF is a document containing selectable, highlightable text encoded with Unicode characters, usually exported directly from word processors or desktop publishing tools.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can it convert scanned PDFs?</summary>
+        <div class="p2w-faq-content">Scanned PDFs contain only photographic images of paper rather than digital text characters. This converter extracts digital searchable text. Scanned PDFs must be processed with OCR software prior to conversion.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Why does an image-based PDF contain no editable text?</summary>
+        <div class="p2w-faq-content">An image-based PDF is essentially a container holding a flat bitmap graphic. Without pre-existing text vectors or characters, there is no text stream for the browser engine to extract.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Will Word formatting look exactly like the PDF?</summary>
+        <div class="p2w-faq-content">PDF uses fixed absolute coordinate printing, whereas DOCX uses flowing text paragraphs. Content flows naturally in Word, but intricate desktop layouts or custom vector graphics may require slight manual adjustment.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can PDF tables change during conversion?</summary>
+        <div class="p2w-faq-content">Yes. Complex tables without formal cell structures may be extracted as tab-separated or line-separated text items, which can be quickly converted to Word tables using Word's "Convert Text to Table" tool.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can multi-column layouts change?</summary>
+        <div class="p2w-faq-content">Multi-column layouts are reconstructed using coordinate-based sorting. Highly complex newspaper or magazine layouts may occasionally need manual reading-order refinement in Word.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I use US Letter?</summary>
+        <div class="p2w-faq-content">Yes. US Letter (8.5 × 11 inches) is the default page size and is mapped to exactly 12,240 × 15,840 twips in the Office Open XML markup.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I use US Legal?</summary>
+        <div class="p2w-faq-content">Yes. You can select US Legal (8.5 × 14 inches), which configures dimensions of 12,240 × 20,160 twips in Word.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I use A4?</summary>
+        <div class="p2w-faq-content">Yes. Standard international A4 paper size (8.27 × 11.69 inches) is available and applies 11,906 × 16,838 twips in the document section.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I choose the Word font?</summary>
+        <div class="p2w-faq-content">Yes. Choose between popular, standard cross-platform fonts: Arial, Calibri, Times New Roman, Georgia, and Verdana.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I change margins?</summary>
+        <div class="p2w-faq-content">Yes. You can choose Normal (1.0 in / 1,440 twips), Narrow (0.5 in / 720 twips), or Wide (1.25 in / 1,800 twips).</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I preserve line breaks?</summary>
+        <div class="p2w-faq-content">Yes. Selecting "Preserve Line Breaks" mode respects raw line breaks, preventing words on adjacent lines from combining into single paragraphs.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I copy extracted PDF text?</summary>
+        <div class="p2w-faq-content">Yes. The "Copy Extracted Text" button immediately copies all converted text to your system clipboard for quick pasting anywhere.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I download extracted text as a TXT file?</summary>
+        <div class="p2w-faq-content">Yes. Click "Download Extracted Text (.txt)" to save a plain text file alongside your DOCX document.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I download my Word file again?</summary>
+        <div class="p2w-faq-content">Yes. The "Download Again" button allows instant re-downloading of your generated Word document without repeating the conversion process.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I use the converter on Android?</summary>
+        <div class="p2w-faq-content">Yes. The converter is fully touch-optimized and works reliably in modern Android mobile browsers like Chrome, Edge, and Samsung Internet.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Can I use it on iPhone and iPad?</summary>
+        <div class="p2w-faq-content">Yes. Safari and iOS Chrome support client-side file reading, canvas rendering, and blob downloads.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">Why does PDF Engine Error appear?</summary>
+        <div class="p2w-faq-content">A PDF Engine Error indicates that the browser failed to load or initialize the PDF parsing library, typically due to a temporary network blip or strict browser content filter. Tap "Retry PDF Engine" to reconnect using our automatic backup CDN.</div>
+      </details>
+
+      <details class="p2w-faq-item">
+        <summary class="p2w-faq-summary">How can I improve conversion quality?</summary>
+        <div class="p2w-faq-content">Use clean, searchable vector PDFs rather than scanned copies, verify matching paper sizes, and test "Editable Text" mode for continuous essays or "Preserve Line Breaks" for lists and technical sheets.</div>
+      </details>
+    </section>
+
+    <!-- 32. Privacy -->
+    <section class="p2w-card">
+      <h2 class="p2w-card-title">Privacy Policy</h2>
+      <p style="color:#475569; font-size:14px; margin:0;">
+        PDF reading, text extraction and DOCX generation are performed in your browser and do not require a remote PDF-conversion API. Your document binary data and extracted words remain strictly within your device's memory session and are never logged, stored in cookies, or sent to cloud storage backends.
+      </p>
+    </section>
+
+    <!-- 33. Disclaimer -->
+    <section class="p2w-card">
+      <h2 class="p2w-card-title">PDF to Word Converter Disclaimer</h2>
+      <p style="color:#475569; font-size:14px; margin:0;">
+        PDF is a fixed-layout format, while DOCX is an editable flowing-document format. Complex layouts, tables, columns, forms, unusual embedded fonts, vector graphics, and image-based pages may require manual adjustment after conversion. We do not guarantee pixel-perfect or identical reproduction across all possible PDF structures.
+      </p>
+    </section>
+
+    <!-- 34. Social Sharing -->
+    <section class="p2w-card" style="text-align:center;">
+      <h2 class="p2w-card-title" style="justify-content:center;">Share This PDF to Word Converter</h2>
+      <p style="font-size:14px; color:#64748b; margin:0 0 14px;">Help friends and colleagues convert PDF files to editable Word documents for free!</p>
+      <div class="p2w-share-grid">
+        <button class="p2w-share-btn p2w-share-fb" data-p2w-action="share-fb">Facebook</button>
+        <button class="p2w-share-btn p2w-share-x" data-p2w-action="share-x">X / Twitter</button>
+        <button class="p2w-share-btn p2w-share-wa" data-p2w-action="share-wa">WhatsApp</button>
+        <button class="p2w-share-btn p2w-share-li" data-p2w-action="share-li">LinkedIn</button>
+        <button class="p2w-share-btn p2w-share-rd" data-p2w-action="share-rd">Reddit</button>
+        <button class="p2w-share-btn p2w-share-tg" data-p2w-action="share-tg">Telegram</button>
+        <button class="p2w-share-btn p2w-share-em" data-p2w-action="share-em">Email</button>
+        <button class="p2w-share-btn p2w-share-cp" data-p2w-action="copy-link">Copy Link</button>
+        <button class="p2w-share-btn p2w-share-nt" data-p2w-action="share-native">Share Tool</button>
+      </div>
+    </section>
+
+    <!-- 35. Fourth Advertisement (Social Bar) -->
+    <div class="p2w-ad-slot">
+      <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+    </div>
+  </div>
+
+  <div id="p2wToast" class="p2w-toast"></div>
+
+  <!-- Primary Classic Scripts: PDF.js 3.11.174 & JSZip 3.10.1 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- Application Logic -->
+  <script>
+    (function () {
+      function bootPdfWordApp() {
+        var root = document.getElementById('pdfToWordBloggerApp');
+        if (!root) return;
+        if (root.getAttribute('data-p2w-booted') === '1') return;
+        root.setAttribute('data-p2w-booted', '1');
+
+        var STATE = {
+          engineStatus: 'loading', // loading, ready, error
+          engineTimeoutId: null,
+          pdfDoc: null,
+          currentFile: null,
+          fileName: '',
+          fileSize: 0,
+          totalPages: 0,
+          selectedPages: [], // 1-indexed integers
+          pageThumbnails: [],
+          extractedText: '',
+          previewExpanded: false,
+          currentDocxBlob: null,
+          currentDocxUrl: null,
+          blobWorkerUrl: null,
+          conversionCancelled: false,
+          isConverting: false
+        };
+
+        var DOM = {
+          engineStatusBox: document.getElementById('p2wEngineStatusBox'),
+          engineStatusText: document.getElementById('p2wEngineStatusText'),
+          retryEngineBtn: document.getElementById('p2wRetryEngineBtn'),
+          uploadArea: document.getElementById('p2wUploadArea'),
+          fileInput: document.getElementById('p2wPdfFileInput'),
+          uploadMsg: document.getElementById('p2wUploadMsg'),
+          fileInfoCard: document.getElementById('p2wFileInfoCard'),
+          infoName: document.getElementById('p2wInfoName'),
+          infoSize: document.getElementById('p2wInfoSize'),
+          infoPages: document.getElementById('p2wInfoPages'),
+          infoType: document.getElementById('p2wInfoType'),
+          scanWarning: document.getElementById('p2wScanWarning'),
+          pageSelectCard: document.getElementById('p2wPageSelectCard'),
+          pageRangeInput: document.getElementById('p2wPageRangeInput'),
+          thumbGrid: document.getElementById('p2wThumbGrid'),
+          modeSelect: document.getElementById('p2wModeSelect'),
+          pageSizeSelect: document.getElementById('p2wPageSizeSelect'),
+          orientationSelect: document.getElementById('p2wOrientationSelect'),
+          marginsSelect: document.getElementById('p2wMarginsSelect'),
+          fontSelect: document.getElementById('p2wFontSelect'),
+          fontSizeSelect: document.getElementById('p2wFontSizeSelect'),
+          optParagraphs: document.getElementById('p2wOptParagraphs'),
+          optHyphens: document.getElementById('p2wOptHyphens'),
+          optSpaces: document.getElementById('p2wOptSpaces'),
+          optPageBreaks: document.getElementById('p2wOptPageBreaks'),
+          summaryBox: document.getElementById('p2wSummaryBox'),
+          convertBtn: document.getElementById('p2wConvertBtn'),
+          progressWrap: document.getElementById('p2wProgressWrap'),
+          progressBarFill: document.getElementById('p2wProgressBarFill'),
+          progressStage: document.getElementById('p2wProgressStage'),
+          progressPercent: document.getElementById('p2wProgressPercent'),
+          cancelBtn: document.getElementById('p2wCancelBtn'),
+          resultCard: document.getElementById('p2wResultCard'),
+          resultMeta: document.getElementById('p2wResultMeta'),
+          downloadWordBtn: document.getElementById('p2wDownloadWordBtn'),
+          previewCard: document.getElementById('p2wPreviewCard'),
+          previewBox: document.getElementById('p2wPreviewBox'),
+          togglePreviewBtn: document.getElementById('p2wTogglePreviewBtn'),
+          toast: document.getElementById('p2wToast')
+        };
+
+        function showToast(msg) {
+          if (!DOM.toast) return;
+          DOM.toast.textContent = msg;
+          DOM.toast.style.display = 'block';
+          setTimeout(function() {
+            DOM.toast.style.display = 'none';
+          }, 3000);
+        }
+
+        function formatBytes(bytes) {
+          if (bytes === 0) return '0 Bytes';
+          var k = 1024;
+          var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+          var i = Math.floor(Math.log(bytes) / Math.log(k));
+          return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function escapeXml(str) {
+          if (!str) return '';
+          return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&apos;');
+        }
+
+        function loadScriptOnce(url, id, callback) {
+          if (id && document.getElementById(id)) {
+            if (callback) callback(null);
+            return;
+          }
+          var s = document.createElement('script');
+          if (id) s.id = id;
+          s.src = url;
+          s.async = true;
+          s.onload = function() { if (callback) callback(null); };
+          s.onerror = function(err) { if (callback) callback(err || new Error('Failed to load ' + url)); };
+          (document.head || document.documentElement).appendChild(s);
+        }
+
+        // Engine Initializer with Fallback CDNs and Blob Worker
+        function initPdfEngine() {
+          setEngineStatus('loading', '⏳ Loading PDF Engine...');
+          if (STATE.engineTimeoutId) clearTimeout(STATE.engineTimeoutId);
+
+          STATE.engineTimeoutId = setTimeout(function() {
+            if (STATE.engineStatus !== 'ready') {
+              tryFallbackEngine();
+            }
+          }, 12000);
+
+          if (window.pdfjsLib) {
+            setupPdfWorker('cdnjs');
+          } else {
+            loadScriptOnce(
+              'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
+              'p2w-pdfjs-primary',
+              function(err) {
+                if (!err && window.pdfjsLib) {
+                  setupPdfWorker('cdnjs');
+                } else {
+                  tryFallbackEngine();
+                }
+              }
+            );
+          }
+        }
+
+        function tryFallbackEngine() {
+          loadScriptOnce(
+            'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js',
+            'p2w-pdfjs-fallback',
+            function(err) {
+              if (!err && window.pdfjsLib) {
+                setupPdfWorker('jsdelivr');
+              } else {
+                setEngineStatus('error', '⚠️ We couldn\'t start the PDF processing engine. Tap Retry to try again.');
+              }
+            }
+          );
+        }
+
+        function setupPdfWorker(source) {
+          var workerUrl = (source === 'jsdelivr')
+            ? 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js'
+            : 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+          try {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+            // Verify worker with test or blob fallback
+            testWorkerOrFallback(workerUrl);
+          } catch(e) {
+            createBlobWorkerFallback(workerUrl);
+          }
+        }
+
+        function testWorkerOrFallback(workerUrl) {
+          // If in restricted iframe or Blogger post where external worker may be blocked:
+          fetch(workerUrl)
+            .then(function(res) {
+              if (!res.ok) throw new Error('Worker fetch failed');
+              return res.text();
+            })
+            .then(function(code) {
+              if (STATE.blobWorkerUrl) URL.revokeObjectURL(STATE.blobWorkerUrl);
+              var blob = new Blob([code], { type: 'text/javascript' });
+              STATE.blobWorkerUrl = URL.createObjectURL(blob);
+              window.pdfjsLib.GlobalWorkerOptions.workerSrc = STATE.blobWorkerUrl;
+              setEngineStatus('ready', '✅ PDF Engine Ready');
+            })
+            .catch(function() {
+              // Direct URL fallback
+              window.pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+              setEngineStatus('ready', '✅ PDF Engine Ready');
+            });
+        }
+
+        function createBlobWorkerFallback(workerUrl) {
+          fetch(workerUrl)
+            .then(function(r) { return r.text(); })
+            .then(function(code) {
+              var blob = new Blob([code], { type: 'text/javascript' });
+              STATE.blobWorkerUrl = URL.createObjectURL(blob);
+              window.pdfjsLib.GlobalWorkerOptions.workerSrc = STATE.blobWorkerUrl;
+              setEngineStatus('ready', '✅ PDF Engine Ready');
+            })
+            .catch(function() {
+              setEngineStatus('error', '⚠️ PDF Engine Error: Unable to configure worker. Tap Retry.');
+            });
+        }
+
+        function setEngineStatus(status, text) {
+          STATE.engineStatus = status;
+          if (DOM.engineStatusBox && DOM.engineStatusText) {
+            DOM.engineStatusBox.className = 'p2w-engine-status p2w-engine-' + status;
+            DOM.engineStatusText.textContent = text;
+            if (DOM.retryEngineBtn) {
+              DOM.retryEngineBtn.style.display = (status === 'error') ? 'inline-flex' : 'none';
+            }
+          }
+          if (status === 'ready' && STATE.currentFile && !STATE.pdfDoc) {
+            analyzePdfFile(STATE.currentFile);
+          }
+        }
+
+        // File Handler
+        function handleSelectedFile(file) {
+          if (!file) return;
+          if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
+            showUploadMsg('Please select a valid PDF file (.pdf extension).', '#dc2626');
+            return;
+          }
+          if (file.size === 0) {
+            showUploadMsg('The selected PDF file is empty (0 bytes).', '#dc2626');
+            return;
+          }
+
+          STATE.currentFile = file;
+          STATE.fileName = file.name;
+          STATE.fileSize = file.size;
+
+          if (STATE.engineStatus !== 'ready') {
+            showUploadMsg('PDF selected (' + file.name + '). Finishing PDF engine setup...', '#b45309');
+            return;
+          }
+
+          analyzePdfFile(file);
+        }
+
+        function showUploadMsg(msg, color) {
+          if (!DOM.uploadMsg) return;
+          DOM.uploadMsg.textContent = msg;
+          DOM.uploadMsg.style.color = color || '#0f172a';
+          DOM.uploadMsg.style.display = 'block';
+        }
+
+        function analyzePdfFile(file) {
+          showUploadMsg('Opening and reading PDF file...', '#2563eb');
+          
+          file.arrayBuffer().then(function(buffer) {
+            var data = new Uint8Array(buffer);
+            var loadingTask = window.pdfjsLib.getDocument({
+              data: data,
+              isEvalSupported: false
+            });
+
+            loadingTask.onPassword = function(callback, reason) {
+              var pwd = prompt('This PDF is password-protected. Please enter password:');
+              if (pwd) {
+                callback(pwd);
+              } else {
+                showUploadMsg('Password required to open this PDF.', '#dc2626');
+              }
+            };
+
+            return loadingTask.promise;
+          }).then(function(pdf) {
+            STATE.pdfDoc = pdf;
+            STATE.totalPages = pdf.numPages;
+            STATE.selectedPages = [];
+            for (var i = 1; i <= pdf.numPages; i++) {
+              STATE.selectedPages.push(i);
+            }
+
+            // Inspect representative page for searchable vs scanned
+            return inspectPdfTextSample(pdf);
+          }).then(function(isSearchable) {
+            displayFileInfo(isSearchable);
+            renderThumbnails();
+            updateSummary();
+            showUploadMsg('✓ PDF loaded successfully!', '#047857');
+            setTimeout(function() {
+              if (DOM.uploadMsg) DOM.uploadMsg.style.display = 'none';
+            }, 3000);
+          }).catch(function(err) {
+            showUploadMsg('Could not read PDF: ' + (err.message || 'Corrupt or unreadable file.'), '#dc2626');
+          });
+        }
+
+        function inspectPdfTextSample(pdf) {
+          var pagesToCheck = Math.min(3, pdf.numPages);
+          var promises = [];
+          for (var p = 1; p <= pagesToCheck; p++) {
+            promises.push(pdf.getPage(p).then(function(page) {
+              return page.getTextContent();
+            }).then(function(tc) {
+              var text = tc.items.map(function(item) { return item.str; }).join('').trim();
+              return text.length;
+            }));
+          }
+          return Promise.all(promises).then(function(lengths) {
+            var totalLength = lengths.reduce(function(acc, val) { return acc + val; }, 0);
+            return totalLength > 15;
+          }).catch(function() {
+            return false;
+          });
+        }
+
+        function displayFileInfo(isSearchable) {
+          if (DOM.infoName) DOM.infoName.textContent = STATE.fileName;
+          if (DOM.infoSize) DOM.infoSize.textContent = formatBytes(STATE.fileSize);
+          if (DOM.infoPages) DOM.infoPages.textContent = STATE.totalPages + ' page' + (STATE.totalPages > 1 ? 's' : '');
+          if (DOM.infoType) {
+            DOM.infoType.textContent = isSearchable ? 'Searchable PDF' : 'Possible Image-Based PDF';
+            DOM.infoType.style.color = isSearchable ? '#047857' : '#b45309';
+          }
+          if (DOM.scanWarning) {
+            DOM.scanWarning.style.display = isSearchable ? 'none' : 'block';
+          }
+          if (DOM.fileInfoCard) DOM.fileInfoCard.style.display = 'block';
+          if (DOM.pageSelectCard) DOM.pageSelectCard.style.display = 'block';
+          if (DOM.convertBtn) {
+            DOM.convertBtn.disabled = false;
+            DOM.convertBtn.classList.remove('p2w-disabled');
+          }
+        }
+
+        // Lightweight sequential thumbnail renderer
+        function renderThumbnails() {
+          if (!DOM.thumbGrid || !STATE.pdfDoc) return;
+          DOM.thumbGrid.innerHTML = '';
+
+          var total = STATE.totalPages;
+          function renderPage(pageNum) {
+            if (pageNum > total) return;
+            STATE.pdfDoc.getPage(pageNum).then(function(page) {
+              var viewport = page.getViewport({ scale: 0.25 });
+              var card = document.createElement('div');
+              card.className = 'p2w-thumb-card' + (STATE.selectedPages.indexOf(pageNum) !== -1 ? ' p2w-selected' : '');
+              card.setAttribute('data-page', pageNum);
+
+              var canvas = document.createElement('canvas');
+              canvas.className = 'p2w-thumb-canvas';
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              var ctx = canvas.getContext('2d');
+
+              var footer = document.createElement('div');
+              footer.className = 'p2w-thumb-footer';
+              var cb = document.createElement('input');
+              cb.type = 'checkbox';
+              cb.className = 'p2w-checkbox';
+              cb.checked = (STATE.selectedPages.indexOf(pageNum) !== -1);
+              var label = document.createElement('span');
+              label.textContent = 'p. ' + pageNum;
+
+              footer.appendChild(cb);
+              footer.appendChild(label);
+              card.appendChild(canvas);
+              card.appendChild(footer);
+              DOM.thumbGrid.appendChild(card);
+
+              page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
+                // Free canvas reference memory safely
+                renderPage(pageNum + 1);
+              }).catch(function() {
+                renderPage(pageNum + 1);
+              });
+            });
+          }
+          renderPage(1);
+        }
+
+        function updateThumbnailSelections() {
+          if (!DOM.thumbGrid) return;
+          var cards = DOM.thumbGrid.querySelectorAll('.p2w-thumb-card');
+          cards.forEach(function(card) {
+            var p = parseInt(card.getAttribute('data-page'), 10);
+            var isSelected = (STATE.selectedPages.indexOf(p) !== -1);
+            if (isSelected) {
+              card.classList.add('p2w-selected');
+            } else {
+              card.classList.remove('p2w-selected');
+            }
+            var cb = card.querySelector('input[type="checkbox"]');
+            if (cb) cb.checked = isSelected;
+          });
+          updateSummary();
+        }
+
+        function parsePageRange(rangeStr, maxPages) {
+          var pages = [];
+          if (!rangeStr) return pages;
+          var parts = rangeStr.split(',');
+          for (var i = 0; i < parts.length; i++) {
+            var part = parts[i].trim();
+            if (part.indexOf('-') !== -1) {
+              var bounds = part.split('-');
+              var start = parseInt(bounds[0], 10);
+              var end = parseInt(bounds[1], 10);
+              if (!isNaN(start) && !isNaN(end) && start > 0 && end >= start) {
+                for (var p = start; p <= Math.min(end, maxPages); p++) {
+                  if (pages.indexOf(p) === -1) pages.push(p);
+                }
+              }
+            } else {
+              var single = parseInt(part, 10);
+              if (!isNaN(single) && single >= 1 && single <= maxPages) {
+                if (pages.indexOf(single) === -1) pages.push(single);
+              }
+            }
+          }
+          return pages.sort(function(a, b) { return a - b; });
+        }
+
+        function updateSummary() {
+          if (!DOM.summaryBox) return;
+          if (!STATE.pdfDoc) {
+            DOM.summaryBox.textContent = 'Please upload a PDF to activate conversion.';
+            return;
+          }
+          var mode = (DOM.modeSelect && DOM.modeSelect.value === 'breaks') ? 'Preserve Line Breaks' : 'Editable Text';
+          var pSize = DOM.pageSizeSelect ? DOM.pageSizeSelect.options[DOM.pageSizeSelect.selectedIndex].text : 'US Letter';
+          var orient = DOM.orientationSelect ? DOM.orientationSelect.value : 'Portrait';
+          var font = DOM.fontSelect ? DOM.fontSelect.value : 'Arial';
+          var fSize = DOM.fontSizeSelect ? DOM.fontSizeSelect.value + ' pt' : '11 pt';
+
+          DOM.summaryBox.innerHTML =
+            '<strong>Conversion Plan:</strong><br>' +
+            '• PDF File: ' + escapeXml(STATE.fileName) + '<br>' +
+            '• Selected Pages: ' + STATE.selectedPages.length + ' of ' + STATE.totalPages + ' (' + (STATE.selectedPages.length > 0 ? STATE.selectedPages.join(', ') : 'None') + ')<br>' +
+            '• Mode: ' + mode + '<br>' +
+            '• Page Setup: ' + pSize + ' (' + orient + '), Font: ' + font + ' ' + fSize;
+
+          if (DOM.convertBtn) {
+            var canConvert = (STATE.selectedPages.length > 0 && !STATE.isConverting);
+            DOM.convertBtn.disabled = !canConvert;
+            if (canConvert) DOM.convertBtn.classList.remove('p2w-disabled');
+            else DOM.convertBtn.classList.add('p2w-disabled');
+          }
+        }
+
+        // Office Open XML Word Builder
+        function createDocxPackage(pagesText, options) {
+          if (!window.JSZip) {
+            throw new Error('JSZip library is not loaded. Cannot build DOCX package.');
+          }
+          var zip = new window.JSZip();
+
+          // 1. [Content_Types].xml
+          var contentTypes =
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+              '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+              '<Default Extension="xml" ContentType="application/xml"/>' +
+              '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+              '<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>' +
+            '</Types>';
+          zip.file('[Content_Types].xml', contentTypes);
+
+          // 2. _rels/.rels
+          var rels =
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+              '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+            '</Relationships>';
+          zip.file('_rels/.rels', rels);
+
+          // 3. word/_rels/document.xml.rels
+          var docRels =
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+              '<Relationship Id="rIdStyles" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' +
+            '</Relationships>';
+          zip.file('word/_rels/document.xml.rels', docRels);
+
+          // 4. word/styles.xml
+          var fontHalfPoints = (parseInt(options.fontSize, 10) || 11) * 2;
+          var stylesXml =
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+              '<w:docDefaults>' +
+                '<w:rPrDefault>' +
+                  '<w:rPr>' +
+                    '<w:rFonts w:ascii="' + escapeXml(options.font) + '" w:hAnsi="' + escapeXml(options.font) + '" w:cs="' + escapeXml(options.font) + '"/>' +
+                    '<w:sz w:val="' + fontHalfPoints + '"/>' +
+                    '<w:szCs w:val="' + fontHalfPoints + '"/>' +
+                  '</w:rPr>' +
+                '</w:rPrDefault>' +
+              '</w:docDefaults>' +
+            '</w:styles>';
+          zip.file('word/styles.xml', stylesXml);
+
+          // Calculate page dimensions in twips (1 inch = 1440 twips)
+          var widthTwips = 12240; // US Letter 8.5"
+          var heightTwips = 15840; // US Letter 11"
+          if (options.pageSize === 'legal') {
+            widthTwips = 12240; // 8.5"
+            heightTwips = 20160; // 14"
+          } else if (options.pageSize === 'a4') {
+            widthTwips = 11906; // 8.27"
+            heightTwips = 16838; // 11.69"
+          }
+
+          if (options.orientation === 'landscape') {
+            var temp = widthTwips;
+            widthTwips = heightTwips;
+            heightTwips = temp;
+          }
+
+          // Margins in twips
+          var marginTwips = 1440; // Normal 1 inch
+          if (options.margins === 'narrow') marginTwips = 720; // 0.5 in
+          else if (options.margins === 'wide') marginTwips = 1800; // 1.25 in
+
+          // 5. Build word/document.xml body paragraphs
+          var bodyXml = '';
+          for (var pIdx = 0; pIdx < pagesText.length; pIdx++) {
+            var pageItem = pagesText[pIdx];
+            var paragraphs = pageItem.paragraphs;
+
+            for (var k = 0; k < paragraphs.length; k++) {
+              var text = paragraphs[k].trim();
+              if (text.length === 0) continue;
+              bodyXml +=
+                '<w:p>' +
+                  '<w:r>' +
+                    '<w:rPr>' +
+                      '<w:rFonts w:ascii="' + escapeXml(options.font) + '" w:hAnsi="' + escapeXml(options.font) + '"/>' +
+                      '<w:sz w:val="' + fontHalfPoints + '"/>' +
+                    '</w:rPr>' +
+                    '<w:t xml:space="preserve">' + escapeXml(text) + '</w:t>' +
+                  '</w:r>' +
+                '</w:p>';
+            }
+
+            // Page Break between PDF pages if enabled and not final page
+            if (options.startEachPageOnNewWordPage && pIdx < pagesText.length - 1) {
+              bodyXml += '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+            }
+          }
+
+          // Document Section properties (page size, orientation, margins)
+          var sectPr =
+            '<w:sectPr>' +
+              '<w:pgSz w:w="' + widthTwips + '" w:h="' + heightTwips + '"' +
+              (options.orientation === 'landscape' ? ' w:orient="landscape"' : '') + '/>' +
+              '<w:pgMar w:top="' + marginTwips + '" w:right="' + marginTwips + '" w:bottom="' + marginTwips + '" w:left="' + marginTwips + '" w:header="720" w:footer="720" w:gutter="0"/>' +
+            '</w:sectPr>';
+
+          var documentXml =
+            '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+            '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+              '<w:body>' +
+                bodyXml +
+                sectPr +
+              '</w:body>' +
+            '</w:document>';
+
+          zip.file('word/document.xml', documentXml);
+
+          return zip.generateAsync({
+            type: 'blob',
+            mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            compression: 'DEFLATE',
+            compressionOptions: { level: 6 }
+          });
+        }
+
+        // Conversion Coordinator
+        function startConversion() {
+          if (!STATE.pdfDoc || STATE.selectedPages.length === 0) {
+            alert('Please select at least one page to convert.');
+            return;
+          }
+
+          STATE.isConverting = true;
+          STATE.conversionCancelled = false;
+          if (DOM.progressWrap) DOM.progressWrap.style.display = 'block';
+          if (DOM.resultCard) DOM.resultCard.style.display = 'none';
+          if (DOM.previewCard) DOM.previewCard.style.display = 'none';
+
+          updateProgress(5, 'Opening PDF pages...');
+
+          var pagesToProcess = STATE.selectedPages.slice();
+          var mode = DOM.modeSelect ? DOM.modeSelect.value : 'text';
+          var optParagraphs = DOM.optParagraphs ? DOM.optParagraphs.checked : true;
+          var optHyphens = DOM.optHyphens ? DOM.optHyphens.checked : true;
+          var optSpaces = DOM.optSpaces ? DOM.optSpaces.checked : true;
+          var optPageBreaks = DOM.optPageBreaks ? DOM.optPageBreaks.checked : true;
+
+          var docxOptions = {
+            pageSize: DOM.pageSizeSelect ? DOM.pageSizeSelect.value : 'letter',
+            orientation: DOM.orientationSelect ? DOM.orientationSelect.value : 'portrait',
+            margins: DOM.marginsSelect ? DOM.marginsSelect.value : 'normal',
+            font: DOM.fontSelect ? DOM.fontSelect.value : 'Arial',
+            fontSize: DOM.fontSizeSelect ? DOM.fontSizeSelect.value : '11',
+            startEachPageOnNewWordPage: optPageBreaks
+          };
+
+          var processedPagesData = [];
+          var totalCount = pagesToProcess.length;
+          var currentIndex = 0;
+
+          function processNext() {
+            if (STATE.conversionCancelled) {
+              STATE.isConverting = false;
+              if (DOM.progressWrap) DOM.progressWrap.style.display = 'none';
+              showToast('Conversion Canceled');
+              updateSummary();
+              return;
+            }
+
+            if (currentIndex >= totalCount) {
+              // Extraction finished, generate DOCX
+              updateProgress(88, 'Building Word Document (DOCX)...');
+              
+              var fullExtractedText = processedPagesData.map(function(item) {
+                return '--- Page ' + item.pageNum + ' ---\n' + item.paragraphs.join('\n\n');
+              }).join('\n\n');
+              STATE.extractedText = fullExtractedText;
+
+              createDocxPackage(processedPagesData, docxOptions)
+                .then(function(blob) {
+                  STATE.currentDocxBlob = blob;
+                  if (STATE.currentDocxUrl) URL.revokeObjectURL(STATE.currentDocxUrl);
+                  STATE.currentDocxUrl = URL.createObjectURL(blob);
+
+                  updateProgress(100, 'Preparing Download...');
+                  setTimeout(function() {
+                    STATE.isConverting = false;
+                    if (DOM.progressWrap) DOM.progressWrap.style.display = 'none';
+                    displayResults(blob, processedPagesData.length, mode);
+                  }, 400);
+                })
+                .catch(function(err) {
+                  STATE.isConverting = false;
+                  if (DOM.progressWrap) DOM.progressWrap.style.display = 'none';
+                  alert('Error generating DOCX: ' + (err.message || 'Unknown error.'));
+                  updateSummary();
+                });
+              return;
+            }
+
+            var pageNum = pagesToProcess[currentIndex];
+            var stepPercent = Math.round(10 + (currentIndex / totalCount) * 75);
+            updateProgress(stepPercent, 'Extracting Text (Page ' + (currentIndex + 1) + ' of ' + totalCount + ')...');
+
+            STATE.pdfDoc.getPage(pageNum).then(function(page) {
+              return page.getTextContent();
+            }).then(function(tc) {
+              var paragraphs = extractPageParagraphs(tc, mode, {
+                smartParagraphs: optParagraphs,
+                cleanHyphens: optHyphens,
+                cleanSpaces: optSpaces
+              });
+              processedPagesData.push({
+                pageNum: pageNum,
+                paragraphs: paragraphs
+              });
+              currentIndex++;
+              setTimeout(processNext, 10);
+            }).catch(function(err) {
+              processedPagesData.push({
+                pageNum: pageNum,
+                paragraphs: ['[Error reading page ' + pageNum + ']']
+              });
+              currentIndex++;
+              setTimeout(processNext, 10);
+            });
+          }
+
+          processNext();
+        }
+
+        // Coordinate-aware line & paragraph reconstruction
+        function extractPageParagraphs(textContent, mode, opts) {
+          var items = textContent.items || [];
+          if (items.length === 0) return ['[No text found on this page]'];
+
+          // Sort items primarily by Y descending (top to bottom), then X ascending (left to right)
+          var sorted = items.slice().sort(function(a, b) {
+            var yA = a.transform[5];
+            var yB = b.transform[5];
+            var xA = a.transform[4];
+            var xB = b.transform[4];
+            if (Math.abs(yA - yB) > 4) {
+              return yB - yA; // top to bottom
+            }
+            return xA - xB; // left to right
+          });
+
+          // Group into lines
+          var lines = [];
+          var currentLine = [];
+          var lastY = null;
+
+          for (var i = 0; i < sorted.length; i++) {
+            var item = sorted[i];
+            var str = item.str;
+            if (!str && str !== '') continue;
+            var y = item.transform[5];
+
+            if (lastY === null || Math.abs(y - lastY) <= 4) {
+              currentLine.push(str);
+            } else {
+              if (currentLine.length > 0) {
+                lines.push(currentLine.join(' '));
+              }
+              currentLine = [str];
+            }
+            lastY = y;
+          }
+          if (currentLine.length > 0) {
+            lines.push(currentLine.join(' '));
+          }
+
+          if (mode === 'breaks') {
+            return lines;
+          }
+
+          // Editable text mode: merge lines into paragraphs
+          var paragraphs = [];
+          var currentPara = '';
+
+          for (var j = 0; j < lines.length; j++) {
+            var line = lines[j].trim();
+            if (!line) continue;
+
+            if (opts.cleanSpaces) {
+              line = line.replace(/\s+/g, ' ');
+            }
+
+            if (!currentPara) {
+              currentPara = line;
+            } else {
+              // Check hyphenation
+              if (opts.cleanHyphens && currentPara.endsWith('-')) {
+                currentPara = currentPara.slice(0, -1) + line;
+              } else if (opts.smartParagraphs) {
+                // If previous line ends with terminal punctuation (. ? ! :), treat as likely new paragraph
+                var lastChar = currentPara.slice(-1);
+                if (['.', '?', '!', ':'].indexOf(lastChar) !== -1) {
+                  paragraphs.push(currentPara);
+                  currentPara = line;
+                } else {
+                  currentPara += ' ' + line;
+                }
+              } else {
+                currentPara += ' ' + line;
+              }
+            }
+          }
+          if (currentPara) {
+            paragraphs.push(currentPara);
+          }
+
+          return paragraphs.length > 0 ? paragraphs : ['[No readable text on this page]'];
+        }
+
+        function updateProgress(percent, stageText) {
+          if (DOM.progressBarFill) DOM.progressBarFill.style.width = percent + '%';
+          if (DOM.progressPercent) DOM.progressPercent.textContent = percent + '%';
+          if (DOM.progressStage) DOM.progressStage.textContent = stageText;
+        }
+
+        function displayResults(blob, pagesCount, mode) {
+          var outName = getOutputFileName();
+          if (DOM.resultMeta) {
+            DOM.resultMeta.textContent =
+              'File: ' + outName + ' • ' + pagesCount + ' Pages Converted • ' +
+              (mode === 'breaks' ? 'Preserve Line Breaks' : 'Editable Text') + ' • Size: ' + formatBytes(blob.size);
+          }
+          if (DOM.resultCard) {
+            DOM.resultCard.style.display = 'block';
+            DOM.resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+
+          // Extracted Text Preview
+          if (DOM.previewCard && DOM.previewBox) {
+            DOM.previewCard.style.display = 'block';
+            renderPreviewText();
+          }
+
+          updateSummary();
+        }
+
+        function renderPreviewText() {
+          if (!DOM.previewBox) return;
+          var text = STATE.extractedText || 'No text extracted.';
+          var limit = 3500;
+          if (!STATE.previewExpanded && text.length > limit) {
+            DOM.previewBox.textContent = text.slice(0, limit) + '\n\n... [Preview truncated. Tap "Show More" to see full extracted text] ...';
+            if (DOM.togglePreviewBtn) DOM.togglePreviewBtn.textContent = 'Show More';
+          } else {
+            DOM.previewBox.textContent = text;
+            if (DOM.togglePreviewBtn) DOM.togglePreviewBtn.textContent = 'Show Less';
+          }
+        }
+
+        function getOutputFileName() {
+          var base = STATE.fileName ? STATE.fileName.replace(/\.pdf$/i, '') : 'document';
+          // Sanitize unsafe characters
+          base = base.replace(/[^a-zA-Z0-9_\-\.]/g, '-').replace(/\-+/g, '-');
+          if (base.endsWith('-word')) return base + '.docx';
+          return base + '-word.docx';
+        }
+
+        function downloadDocx() {
+          if (!STATE.currentDocxBlob) {
+            alert('No converted Word file available.');
+            return;
+          }
+          var filename = getOutputFileName();
+          var url = STATE.currentDocxUrl || URL.createObjectURL(STATE.currentDocxBlob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function() {
+            document.body.removeChild(a);
+          }, 100);
+        }
+
+        function downloadTxt() {
+          if (!STATE.extractedText) {
+            alert('No extracted text to download.');
+            return;
+          }
+          var base = STATE.fileName ? STATE.fileName.replace(/\.pdf$/i, '') : 'document';
+          var filename = base + '-extracted.txt';
+          var blob = new Blob([STATE.extractedText], { type: 'text/plain;charset=utf-8' });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function() {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          }, 100);
+        }
+
+        function copyExtractedText() {
+          if (!STATE.extractedText) {
+            showToast('No text available to copy');
+            return;
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(STATE.extractedText).then(function() {
+              showToast('Extracted text copied to clipboard!');
+            }).catch(function() {
+              fallbackCopy(STATE.extractedText);
+            });
+          } else {
+            fallbackCopy(STATE.extractedText);
+          }
+        }
+
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          try {
+            document.execCommand('copy');
+            showToast('Extracted text copied to clipboard!');
+          } catch(e) {
+            showToast('Unable to copy automatically.');
+          }
+          document.body.removeChild(ta);
+        }
+
+        function resetAll() {
+          STATE.pdfDoc = null;
+          STATE.currentFile = null;
+          STATE.fileName = '';
+          STATE.fileSize = 0;
+          STATE.totalPages = 0;
+          STATE.selectedPages = [];
+          STATE.pageThumbnails = [];
+          STATE.extractedText = '';
+          STATE.isConverting = false;
+          STATE.conversionCancelled = false;
+
+          if (STATE.currentDocxUrl) {
+            URL.revokeObjectURL(STATE.currentDocxUrl);
+            STATE.currentDocxUrl = null;
+          }
+          STATE.currentDocxBlob = null;
+
+          if (DOM.fileInput) DOM.fileInput.value = '';
+          if (DOM.fileInfoCard) DOM.fileInfoCard.style.display = 'none';
+          if (DOM.pageSelectCard) DOM.pageSelectCard.style.display = 'none';
+          if (DOM.progressWrap) DOM.progressWrap.style.display = 'none';
+          if (DOM.resultCard) DOM.resultCard.style.display = 'none';
+          if (DOM.previewCard) DOM.previewCard.style.display = 'none';
+          if (DOM.thumbGrid) DOM.thumbGrid.innerHTML = '';
+          if (DOM.uploadMsg) DOM.uploadMsg.style.display = 'none';
+
+          updateSummary();
+          showToast('Converter Reset');
+        }
+
+        // Central Event Delegation
+        root.addEventListener('click', function(event) {
+          var control = event.target.closest('[data-p2w-action]');
+          if (!control) {
+            // Check thumbnail card click
+            var card = event.target.closest('.p2w-thumb-card');
+            if (card) {
+              var p = parseInt(card.getAttribute('data-page'), 10);
+              var idx = STATE.selectedPages.indexOf(p);
+              if (idx === -1) STATE.selectedPages.push(p);
+              else STATE.selectedPages.splice(idx, 1);
+              STATE.selectedPages.sort(function(a, b) { return a - b; });
+              updateThumbnailSelections();
+            }
+            return;
+          }
+
+          var action = control.getAttribute('data-p2w-action');
+          switch(action) {
+            case 'retry-engine':
+              initPdfEngine();
+              break;
+            case 'convert':
+              startConversion();
+              break;
+            case 'cancel':
+              STATE.conversionCancelled = true;
+              break;
+            case 'download':
+            case 'download-again':
+              downloadDocx();
+              break;
+            case 'download-txt':
+              downloadTxt();
+              break;
+            case 'copy-text':
+              copyExtractedText();
+              break;
+            case 'toggle-preview':
+              STATE.previewExpanded = !STATE.previewExpanded;
+              renderPreviewText();
+              break;
+            case 'change-settings':
+              if (DOM.resultCard) DOM.resultCard.style.display = 'none';
+              if (DOM.settingsCard) DOM.settingsCard.scrollIntoView({ behavior: 'smooth' });
+              break;
+            case 'convert-another':
+            case 'reset':
+              resetAll();
+              if (DOM.uploadArea) DOM.uploadArea.scrollIntoView({ behavior: 'smooth' });
+              break;
+            case 'select-all':
+              STATE.selectedPages = [];
+              for (var a = 1; a <= STATE.totalPages; a++) STATE.selectedPages.push(a);
+              updateThumbnailSelections();
+              break;
+            case 'select-none':
+              STATE.selectedPages = [];
+              updateThumbnailSelections();
+              break;
+            case 'select-invert':
+              var inverted = [];
+              for (var inv = 1; inv <= STATE.totalPages; inv++) {
+                if (STATE.selectedPages.indexOf(inv) === -1) inverted.push(inv);
+              }
+              STATE.selectedPages = inverted;
+              updateThumbnailSelections();
+              break;
+            case 'select-odd':
+              STATE.selectedPages = [];
+              for (var odd = 1; odd <= STATE.totalPages; odd += 2) STATE.selectedPages.push(odd);
+              updateThumbnailSelections();
+              break;
+            case 'select-even':
+              STATE.selectedPages = [];
+              for (var ev = 2; ev <= STATE.totalPages; ev += 2) STATE.selectedPages.push(ev);
+              updateThumbnailSelections();
+              break;
+            case 'select-first':
+              STATE.selectedPages = (STATE.totalPages >= 1) ? [1] : [];
+              updateThumbnailSelections();
+              break;
+            case 'select-last':
+              STATE.selectedPages = (STATE.totalPages >= 1) ? [STATE.totalPages] : [];
+              updateThumbnailSelections();
+              break;
+            case 'apply-range':
+              if (DOM.pageRangeInput) {
+                var val = DOM.pageRangeInput.value;
+                var parsed = parsePageRange(val, STATE.totalPages);
+                if (parsed.length > 0) {
+                  STATE.selectedPages = parsed;
+                  updateThumbnailSelections();
+                  showToast('Applied ' + parsed.length + ' page(s)');
+                } else {
+                  alert('Please enter a valid page range (e.g. 1-3, 5).');
+                }
+              }
+              break;
+            // Social Sharing Actions (strictly title & href, no document content)
+            case 'share-fb':
+              window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+              break;
+            case 'share-x':
+              window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href), '_blank');
+              break;
+            case 'share-wa':
+              window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank');
+              break;
+            case 'share-li':
+              window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank');
+              break;
+            case 'share-rd':
+              window.open('https://reddit.com/submit?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent(document.title), '_blank');
+              break;
+            case 'share-tg':
+              window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank');
+              break;
+            case 'share-em':
+              window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent('Check out this free tool: ' + window.location.href);
+              break;
+            case 'copy-link':
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href).then(function() {
+                  showToast('Link Copied to Clipboard!');
+                });
+              } else {
+                fallbackCopy(window.location.href);
+              }
+              break;
+            case 'share-native':
+              if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(function(){});
+              } else {
+                if (navigator.clipboard) {
+                  navigator.clipboard.writeText(window.location.href);
+                  showToast('Link Copied to Clipboard!');
+                }
+              }
+              break;
+          }
+        });
+
+        // Native file input change
+        if (DOM.fileInput) {
+          DOM.fileInput.addEventListener('change', function(e) {
+            var file = e.target.files && e.target.files[0];
+            if (file) handleSelectedFile(file);
+          });
+        }
+
+        // Drag and Drop
+        if (DOM.uploadArea) {
+          ['dragenter', 'dragover'].forEach(function(eventName) {
+            DOM.uploadArea.addEventListener(eventName, function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              DOM.uploadArea.classList.add('p2w-dragover');
+            });
+          });
+          ['dragleave', 'drop'].forEach(function(eventName) {
+            DOM.uploadArea.addEventListener(eventName, function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              DOM.uploadArea.classList.remove('p2w-dragover');
+            });
+          });
+          DOM.uploadArea.addEventListener('drop', function(e) {
+            var dt = e.dataTransfer;
+            var file = dt && dt.files && dt.files[0];
+            if (file) handleSelectedFile(file);
+          });
+        }
+
+        // Form change listeners
+        [DOM.modeSelect, DOM.pageSizeSelect, DOM.orientationSelect, DOM.marginsSelect, DOM.fontSelect, DOM.fontSizeSelect].forEach(function(el) {
+          if (el) el.addEventListener('change', updateSummary);
+        });
+
+        // Boot engine
+        initPdfEngine();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bootPdfWordApp, { once: true });
+      } else {
+        bootPdfWordApp();
+      }
+    })();
+  </script>
+</div>
