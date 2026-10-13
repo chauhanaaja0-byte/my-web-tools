@@ -1,0 +1,3363 @@
+<!--
+BLOGGER TITLE:
+Free Mortgage Refinance Calculator – Break-Even & Savings Calculator
+
+BLOGGER SEARCH DESCRIPTION:
+Compare your current mortgage with a refinance loan. Estimate monthly savings, closing costs, break-even time, interest savings and payoff dates for free.
+
+BLOGGER LABELS:
+Mortgage Refinance Calculator, Refinance Calculator, Mortgage Calculator, Refinance Break Even Calculator, Mortgage Savings Calculator, Home Loan Calculator, Mortgage Tools, Finance Tools, Real Estate Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+mortgage-refinance-calculator
+
+GITHUB FILE NAME:
+mortgage-refinance-calculator.html
+-->
+
+<style>
+/* ==========================================================================
+   FREE MORTGAGE REFINANCE CALCULATOR - SCOPED CSS
+   All styles scoped exclusively under #mortgageRefiBloggerApp
+   ========================================================================== */
+#mortgageRefiBloggerApp,
+#mortgageRefiBloggerApp * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+#mortgageRefiBloggerApp {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #ffffff;
+    color: #1e293b;
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* Base Utility Classes */
+.refi-shell {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+.refi-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.refi-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 25px -3px rgba(15, 23, 42, 0.08);
+}
+
+/* Gradients & Headings */
+.refi-title-gradient {
+    background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.refi-hero {
+    text-align: center;
+    padding: 32px 16px 20px;
+}
+
+.refi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+}
+
+.refi-hero h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+    .refi-hero h1 {
+        font-size: 3rem;
+    }
+}
+
+.refi-hero-sub {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e40af;
+    margin: 0 0 12px;
+}
+
+.refi-hero-desc {
+    font-size: 1.025rem;
+    color: #475569;
+    max-width: 820px;
+    margin: 0 auto 20px;
+}
+
+.refi-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+    margin: 16px 0 8px;
+}
+
+.refi-trust-pill {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.refi-trust-pill span {
+    color: #059669;
+}
+
+/* Ad Wrappers */
+.refi-ad-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 24px auto;
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 0;
+    background: #fafafa;
+    border: 1px dashed #e2e8f0;
+    border-radius: 12px;
+}
+
+.refi-ad-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Two-column Input Grid */
+.refi-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .refi-grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.refi-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 640px) {
+    .refi-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .refi-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.refi-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.refi-title-blue { color: #1d4ed8; }
+.refi-title-teal { color: #0d9488; }
+.refi-title-purple { color: #7c3aed; }
+.refi-title-emerald { color: #059669; }
+.refi-title-orange { color: #ea580c; }
+
+/* Input Groups */
+.refi-field {
+    margin-bottom: 16px;
+}
+
+.refi-label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.refi-label-help {
+    font-size: 12px;
+    font-weight: 400;
+    color: #64748b;
+    display: block;
+    margin-top: 3px;
+}
+
+.refi-input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.refi-input-box:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+}
+
+.refi-prefix,
+.refi-suffix {
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    background: #f8fafc;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    border-right: 1px solid #e2e8f0;
+}
+
+.refi-suffix {
+    border-right: none;
+    border-left: 1px solid #e2e8f0;
+}
+
+.refi-input,
+.refi-select {
+    width: 100%;
+    height: 46px;
+    padding: 10px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.refi-select {
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.refi-inline-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Custom Checkbox / Toggle */
+.refi-toggle-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.refi-toggle-box input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: #2563eb;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.refi-toggle-text {
+    flex: 1;
+}
+
+.refi-toggle-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    display: block;
+}
+
+.refi-toggle-sub {
+    font-size: 12px;
+    color: #64748b;
+    display: block;
+    margin-top: 2px;
+}
+
+/* Buttons */
+.refi-btn-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px 0;
+}
+
+.refi-btn {
+    min-height: 48px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    user-select: none;
+}
+
+.refi-btn:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.refi-btn-primary {
+    background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.35);
+}
+
+.refi-btn-primary:hover {
+    box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.45);
+    transform: translateY(-1px);
+}
+
+.refi-btn-emerald {
+    background: #059669;
+    color: #ffffff;
+}
+.refi-btn-emerald:hover { background: #047857; }
+
+.refi-btn-teal {
+    background: #0d9488;
+    color: #ffffff;
+}
+.refi-btn-teal:hover { background: #0f766e; }
+
+.refi-btn-indigo {
+    background: #4f46e5;
+    color: #ffffff;
+}
+.refi-btn-indigo:hover { background: #4338ca; }
+
+.refi-btn-cyan {
+    background: #0891b2;
+    color: #ffffff;
+}
+.refi-btn-cyan:hover { background: #0e7490; }
+
+.refi-btn-orange {
+    background: #ea580c;
+    color: #ffffff;
+}
+.refi-btn-orange:hover { background: #c2410c; }
+
+.refi-btn-outline {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    color: #334155;
+}
+.refi-btn-outline:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* Results Section */
+.refi-results-wrap {
+    margin-top: 32px;
+}
+
+.refi-stat-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.refi-stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+}
+
+.refi-stat-blue::before { background: #2563eb; }
+.refi-stat-emerald::before { background: #059669; }
+.refi-stat-purple::before { background: #7c3aed; }
+.refi-stat-orange::before { background: #ea580c; }
+.refi-stat-amber::before { background: #d97706; }
+.refi-stat-teal::before { background: #0d9488; }
+
+.refi-stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+.refi-stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.refi-val-emerald { color: #059669; }
+.refi-val-purple { color: #7c3aed; }
+.refi-val-orange { color: #ea580c; }
+.refi-val-blue { color: #1d4ed8; }
+.refi-val-amber { color: #d97706; }
+.refi-val-rose { color: #e11d48; }
+
+.refi-stat-note {
+    font-size: 12.5px;
+    color: #64748b;
+}
+
+/* Callout / Warning Banners */
+.refi-alert-card {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1px solid transparent;
+}
+
+.refi-alert-amber {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+.refi-alert-blue {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+}
+
+.refi-alert-emerald {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+.refi-alert-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.refi-alert-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.refi-alert-body {
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+/* Side-by-side Table */
+.refi-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin: 16px 0;
+}
+
+.refi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+    min-width: 520px;
+}
+
+.refi-table th,
+.refi-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.refi-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #334155;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+.refi-table tr:last-child td {
+    border-bottom: none;
+}
+
+.refi-table tr:hover td {
+    background-color: #fafaf9;
+}
+
+.refi-col-highlight {
+    background-color: #f0fdf4 !important;
+    font-weight: 700;
+    color: #065f46;
+}
+
+/* Charts */
+.refi-chart-container {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.refi-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.refi-chart-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.refi-chart-legend {
+    display: flex;
+    gap: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.refi-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.refi-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.refi-svg-box {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    overflow: visible;
+}
+
+/* Milestones Timeline */
+.refi-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.refi-milestone-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+.refi-milestone-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.refi-milestone-val {
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 4px;
+}
+
+/* Tabs */
+.refi-tab-nav {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+
+.refi-tab-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.refi-tab-btn.refi-tab-active {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+    font-weight: 700;
+}
+
+/* Features Grid */
+.refi-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.refi-feature-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.refi-feature-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.refi-feature-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.refi-feature-desc {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+/* How to Use Steps */
+.refi-steps-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+@media (min-width: 640px) {
+    .refi-steps-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 960px) {
+    .refi-steps-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.refi-step-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.refi-step-num {
+    background: #2563eb;
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.refi-step-text {
+    font-size: 13.5px;
+    color: #334155;
+    font-weight: 500;
+}
+
+/* Educational Content Styling */
+.refi-article {
+    line-height: 1.8;
+    color: #334155;
+}
+
+.refi-article h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 32px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.refi-article h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 24px 0 10px;
+}
+
+.refi-article p {
+    margin: 0 0 16px;
+    font-size: 15px;
+}
+
+.refi-article ul,
+.refi-article ol {
+    margin: 0 0 18px 20px;
+    padding: 0;
+}
+
+.refi-article li {
+    margin-bottom: 8px;
+    font-size: 14.5px;
+}
+
+/* FAQ Details/Summary Accordions */
+.refi-faq-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.refi-faq-item summary {
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.refi-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.refi-faq-item summary::after {
+    content: "+";
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-left: 12px;
+}
+
+.refi-faq-item[open] summary::after {
+    content: "−";
+}
+
+.refi-faq-item summary:hover {
+    background: #f8fafc;
+}
+
+.refi-faq-body {
+    padding: 0 20px 16px;
+    font-size: 14.5px;
+    color: #475569;
+    line-height: 1.65;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Social Sharing Bar */
+.refi-social-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.refi-social-btn {
+    min-height: 44px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.refi-social-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.refi-share-fb { background: #1877f2; }
+.refi-share-tw { background: #000000; }
+.refi-share-wa { background: #25d366; }
+.refi-share-li { background: #0a66c2; }
+.refi-share-rd { background: #ff4500; }
+.refi-share-tg { background: #229ed9; }
+.refi-share-em { background: #64748b; }
+.refi-share-cp { background: #0284c7; }
+.refi-share-nt { background: #7c3aed; }
+
+/* Toast Notification */
+.refi-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 99999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.refi-toast.refi-toast-show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Print Styles */
+@media print {
+    .refi-ad-wrapper,
+    .refi-btn-bar,
+    .refi-social-bar,
+    .refi-faq-item,
+    .refi-features-grid,
+    .refi-steps-list,
+    .refi-article,
+    #refiSocialSection,
+    #refiPrivacySection,
+    #refiDisclaimerSection {
+        display: none !important;
+    }
+
+    #mortgageRefiBloggerApp {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .refi-card {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<div id="mortgageRefiBloggerApp">
+    <div class="refi-shell">
+
+        <!-- 1. HERO SECTION -->
+        <header class="refi-hero">
+            <div class="refi-badge">
+                <span>🇺🇸</span> Free Refinance Tool for U.S. Homeowners
+            </div>
+            <h1>
+                <span class="refi-title-gradient">Mortgage Refinance Calculator</span>
+            </h1>
+            <p class="refi-hero-sub">
+                Compare Your Current Mortgage With a New Loan and Estimate Your Refinance Savings
+            </p>
+            <p class="refi-hero-desc">
+                Compare your existing mortgage with a potential refinance. Estimate your new monthly payment, closing costs, break-even point, interest savings, payoff timeline and total financial impact before deciding whether refinancing may make sense for you.
+            </p>
+
+            <div class="refi-trust-badges">
+                <span class="refi-trust-pill"><span>✓</span> 100% Free</span>
+                <span class="refi-trust-pill"><span>✓</span> No Signup</span>
+                <span class="refi-trust-pill"><span>✓</span> No Rate API</span>
+                <span class="refi-trust-pill"><span>✓</span> Break-Even Analysis</span>
+                <span class="refi-trust-pill"><span>✓</span> Closing Cost Analysis</span>
+                <span class="refi-trust-pill"><span>✓</span> Cash-Out Support</span>
+                <span class="refi-trust-pill"><span>✓</span> Amortization Comparison</span>
+                <span class="refi-trust-pill"><span>✓</span> Mobile Friendly</span>
+            </div>
+        </header>
+
+        <!-- 2. FIRST ADVERTISEMENT — 468x60 -->
+        <div class="refi-ad-wrapper" style="width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;">
+            <div class="refi-ad-label">Advertisement</div>
+            <script>
+              atOptions = {
+                'key' : '294198e908506e5d909d0b383f167eaa',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+        </div>
+
+        <!-- 3 & 4. MAIN INPUT WORKSPACE (CURRENT MORTGAGE VS NEW REFINANCE LOAN) -->
+        <section class="refi-card" style="margin-top: 16px;">
+            <h2 class="refi-section-title refi-title-blue">
+                <span>📊</span> Compare Your Current Mortgage With a Refinance
+            </h2>
+
+            <div class="refi-grid-2">
+                <!-- Current Mortgage Inputs -->
+                <div class="refi-current-card" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:20px;">
+                    <h3 class="refi-section-title refi-title-blue" style="font-size:1.15rem; margin-bottom:14px;">
+                        <span>🏠</span> Current Mortgage
+                    </h3>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCurBalance">Current Loan Balance</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiCurBalance" class="refi-input" value="325,000" placeholder="e.g. 325,000" inputmode="numeric" />
+                        </div>
+                        <span class="refi-label-help">Your outstanding principal remaining balance.</span>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCurRate">Current Interest Rate</label>
+                        <div class="refi-input-box">
+                            <input type="number" step="0.001" id="refiCurRate" class="refi-input" value="7.125" placeholder="e.g. 7.125" />
+                            <span class="refi-suffix">%</span>
+                        </div>
+                        <span class="refi-label-help">The interest rate currently on your monthly statement.</span>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label">Remaining Loan Term</label>
+                        <div class="refi-inline-2">
+                            <div class="refi-input-box">
+                                <input type="number" id="refiCurYears" class="refi-input" value="27" min="0" max="40" placeholder="Years" />
+                                <span class="refi-suffix">Yrs</span>
+                            </div>
+                            <div class="refi-input-box">
+                                <input type="number" id="refiCurMonths" class="refi-input" value="4" min="0" max="11" placeholder="Months" />
+                                <span class="refi-suffix">Mos</span>
+                            </div>
+                        </div>
+                        <span class="refi-label-help">How much time is left until your current loan is paid off.</span>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCurPayment">Current Monthly Principal &amp; Interest</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiCurPayment" class="refi-input" placeholder="Auto-calculated or enter custom" />
+                        </div>
+                        <span class="refi-label-help">Leave blank to auto-calculate from balance, rate &amp; term.</span>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCurStartDate">Current Loan Start Date (Optional)</label>
+                        <div class="refi-input-box">
+                            <input type="date" id="refiCurStartDate" class="refi-input" />
+                        </div>
+                        <span class="refi-label-help">Helps estimate your exact current payoff month.</span>
+                    </div>
+                </div>
+
+                <!-- New Refinance Inputs -->
+                <div class="refi-newloan-card" style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:14px; padding:20px;">
+                    <h3 class="refi-section-title refi-title-emerald" style="font-size:1.15rem; margin-bottom:14px;">
+                        <span>✨</span> Proposed Refinance Loan
+                    </h3>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiNewRate">New Refinance Rate</label>
+                        <div class="refi-input-box">
+                            <input type="number" step="0.001" id="refiNewRate" class="refi-input" value="6.125" placeholder="e.g. 6.125" />
+                            <span class="refi-suffix">%</span>
+                        </div>
+                        <span class="refi-label-help">Enter your quoted or estimated interest rate (No API lookup).</span>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiNewTermSelect">New Loan Term</label>
+                        <div class="refi-input-box" style="margin-bottom:8px;">
+                            <select id="refiNewTermSelect" class="refi-select">
+                                <option value="30" selected>30 Years (Fixed)</option>
+                                <option value="25">25 Years (Fixed)</option>
+                                <option value="20">20 Years (Fixed)</option>
+                                <option value="15">15 Years (Fixed)</option>
+                                <option value="10">10 Years (Fixed)</option>
+                                <option value="5">5 Years (Fixed)</option>
+                                <option value="custom">Custom Term</option>
+                            </select>
+                        </div>
+                        <div id="refiCustomTermRow" class="refi-inline-2" style="display:none;">
+                            <div class="refi-input-box">
+                                <input type="number" id="refiNewTermYears" class="refi-input" value="30" min="1" max="40" placeholder="Years" />
+                                <span class="refi-suffix">Yrs</span>
+                            </div>
+                            <div class="refi-input-box">
+                                <input type="number" id="refiNewTermMonths" class="refi-input" value="0" min="0" max="11" placeholder="Months" />
+                                <span class="refi-suffix">Mos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiNewStartDate">Refinance Start Date</label>
+                        <div class="refi-input-box">
+                            <input type="date" id="refiNewStartDate" class="refi-input" />
+                        </div>
+                        <span class="refi-label-help">When your first new refinance payment begins.</span>
+                    </div>
+
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiHomeValue">Estimated Home Value (Optional)</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiHomeValue" class="refi-input" value="450,000" placeholder="e.g. 450,000" inputmode="numeric" />
+                        </div>
+                        <span class="refi-label-help">Used to compute your estimated Loan-to-Value (LTV) ratio.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. CLOSING COSTS, POINTS, CREDITS, CASH-OUT & CASH-IN -->
+            <div style="margin-top:24px; border-top:1px solid #e2e8f0; padding-top:20px;">
+                <h3 class="refi-section-title refi-title-purple" style="font-size:1.15rem;">
+                    <span>💳</span> Closing Costs, Points, Credits &amp; Cash Adjustments
+                </h3>
+
+                <div class="refi-grid-3">
+                    <!-- Closing Cost Input -->
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCostMode">Closing Costs Mode</label>
+                        <div class="refi-input-box" style="margin-bottom:8px;">
+                            <select id="refiCostMode" class="refi-select">
+                                <option value="dollar">Dollar Amount ($)</option>
+                                <option value="percent">Percentage of Loan (%)</option>
+                            </select>
+                        </div>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix" id="refiCostPrefix">$</span>
+                            <input type="text" id="refiCostValue" class="refi-input" value="5,000" placeholder="e.g. 5,000" />
+                            <span class="refi-suffix" id="refiCostSuffix" style="display:none;">%</span>
+                        </div>
+                        <span class="refi-label-help" id="refiCostHint">Estimated lender fees, appraisal, title, recording, etc.</span>
+                    </div>
+
+                    <!-- Discount Points -->
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiPoints">Discount Points</label>
+                        <div class="refi-input-box">
+                            <input type="number" step="0.125" id="refiPoints" class="refi-input" value="0.0" placeholder="0" />
+                            <span class="refi-suffix">Points</span>
+                        </div>
+                        <span class="refi-label-help">1 point = 1% of loan amount paid upfront to lower rate.</span>
+                    </div>
+
+                    <!-- Lender Credits -->
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCredits">Lender Credits</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiCredits" class="refi-input" value="0" placeholder="0" inputmode="numeric" />
+                        </div>
+                        <span class="refi-label-help">Credits offered by lender to reduce upfront closing costs.</span>
+                    </div>
+
+                    <!-- Cash-Out Refinance -->
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCashOut">Cash-Out Amount</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiCashOut" class="refi-input" value="0" placeholder="0" inputmode="numeric" />
+                        </div>
+                        <span class="refi-label-help">Cash borrowed against equity (added to principal, not savings).</span>
+                    </div>
+
+                    <!-- Cash-In Refinance -->
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiCashIn">Cash-In at Closing</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiCashIn" class="refi-input" value="0" placeholder="0" inputmode="numeric" />
+                        </div>
+                        <span class="refi-label-help">Extra cash paid down at closing to reduce new loan balance.</span>
+                    </div>
+
+                    <!-- Holding Period -->
+                    <div class="refi-field">
+                        <label class="refi-label">How Long Will You Keep This Home?</label>
+                        <div class="refi-inline-2">
+                            <div class="refi-input-box">
+                                <input type="number" id="refiHoldYears" class="refi-input" value="5" min="0" max="40" placeholder="Yrs" />
+                                <span class="refi-suffix">Yrs</span>
+                            </div>
+                            <div class="refi-input-box">
+                                <input type="number" id="refiHoldMonths" class="refi-input" value="0" min="0" max="11" placeholder="Mos" />
+                                <span class="refi-suffix">Mos</span>
+                            </div>
+                        </div>
+                        <span class="refi-label-help">Evaluates real cash-flow savings before moving or refinancing.</span>
+                    </div>
+                </div>
+
+                <!-- Finance Closing Costs Toggle -->
+                <label class="refi-toggle-box" for="refiFinanceCosts">
+                    <input type="checkbox" id="refiFinanceCosts" />
+                    <div class="refi-toggle-text">
+                        <span class="refi-toggle-title">Finance Closing Costs Into New Loan</span>
+                        <span class="refi-toggle-sub">Check this to roll eligible closing costs into your new principal balance instead of paying out-of-pocket cash at closing.</span>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Optional Extra Payment Options -->
+            <div style="margin-top:16px; border-top:1px solid #e2e8f0; padding-top:16px;">
+                <h3 class="refi-section-title refi-title-teal" style="font-size:1.15rem;">
+                    <span>⚡</span> Accelerated Repayment Strategies
+                </h3>
+
+                <div class="refi-grid-2">
+                    <div class="refi-field">
+                        <label class="refi-label" for="refiExtraPrincipal">Extra Principal Per Month (New Loan)</label>
+                        <div class="refi-input-box">
+                            <span class="refi-prefix">$</span>
+                            <input type="text" id="refiExtraPrincipal" class="refi-input" value="0" placeholder="0" inputmode="numeric" />
+                        </div>
+                        <span class="refi-label-help">See how optional extra monthly payments slash interest &amp; payoff date.</span>
+                    </div>
+
+                    <div style="padding-top:24px;">
+                        <label class="refi-toggle-box" for="refiKeepSamePayment" style="margin-bottom:0;">
+                            <input type="checkbox" id="refiKeepSamePayment" />
+                            <div class="refi-toggle-text">
+                                <span class="refi-toggle-title">"Keep Paying Same Payment" Strategy</span>
+                                <span class="refi-toggle-sub">If new payment is lower, automatically apply savings as extra principal.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="refi-btn-bar">
+                <button type="button" id="refiBtnCalc" class="refi-btn refi-btn-primary">
+                    <span>🚀</span> Calculate Refinance
+                </button>
+                <button type="button" id="refiBtnExample" class="refi-btn refi-btn-outline">
+                    <span>💡</span> Load Example
+                </button>
+                <button type="button" id="refiBtnReset" class="refi-btn refi-btn-orange">
+                    <span>↺</span> Reset Calculator
+                </button>
+            </div>
+        </section>
+
+        <!-- 10. RESULTS SUMMARY DASHBOARD -->
+        <section id="refiResultsSection" class="refi-card refi-results-wrap" style="display:none;">
+            <h2 class="refi-section-title refi-title-purple">
+                <span>🎯</span> Your Refinance Comparison Dashboard
+            </h2>
+
+            <!-- Core Stat Metrics -->
+            <div class="refi-grid-3">
+                <div class="refi-stat-card refi-stat-blue">
+                    <div class="refi-stat-label">Current Monthly P&amp;I</div>
+                    <div class="refi-stat-value refi-val-blue" id="resCurPayment">$0</div>
+                    <div class="refi-stat-note" id="resCurRemaining">Over 0 yrs remaining</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-emerald">
+                    <div class="refi-stat-label">New Monthly P&amp;I</div>
+                    <div class="refi-stat-value refi-val-emerald" id="resNewPayment">$0</div>
+                    <div class="refi-stat-note" id="resNewTerm">Over 30 yrs (360 mos)</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-emerald" id="resDiffCard">
+                    <div class="refi-stat-label" id="resDiffLabel">Monthly Savings</div>
+                    <div class="refi-stat-value refi-val-emerald" id="resDiffValue">$0</div>
+                    <div class="refi-stat-note" id="resDiffNote">Difference in monthly P&amp;I</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-purple">
+                    <div class="refi-stat-label">Break-Even Point</div>
+                    <div class="refi-stat-value refi-val-purple" id="resBreakEvenMonths">0 Mos</div>
+                    <div class="refi-stat-note" id="resBreakEvenText">Approx. 0 yrs, 0 mos</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-purple">
+                    <div class="refi-stat-label">Break-Even Date</div>
+                    <div class="refi-stat-value refi-val-purple" id="resBreakEvenDate" style="font-size:1.45rem;">--</div>
+                    <div class="refi-stat-note">Estimated recovery date</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-orange">
+                    <div class="refi-stat-label">Net Refinance Costs</div>
+                    <div class="refi-stat-value refi-val-orange" id="resNetCosts">$0</div>
+                    <div class="refi-stat-note" id="resFinancedStatus">Paid at closing</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-teal">
+                    <div class="refi-stat-label">Interest Savings</div>
+                    <div class="refi-stat-value refi-val-teal" id="resInterestSavings">$0</div>
+                    <div class="refi-stat-note">Before closing costs</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-emerald">
+                    <div class="refi-stat-label">Net Lifetime Savings</div>
+                    <div class="refi-stat-value refi-val-emerald" id="resNetLifetimeSavings">$0</div>
+                    <div class="refi-stat-note">After all refinance costs</div>
+                </div>
+
+                <div class="refi-stat-card refi-stat-blue">
+                    <div class="refi-stat-label">Estimated LTV Ratio</div>
+                    <div class="refi-stat-value refi-val-blue" id="resLtv">0%</div>
+                    <div class="refi-stat-note" id="resLtvNote">Based on home value</div>
+                </div>
+            </div>
+
+            <!-- Holding Period Banner -->
+            <div id="resHoldingBanner" class="refi-alert-card refi-alert-blue" style="margin-top:20px;">
+                <div class="refi-alert-icon">⏱️</div>
+                <div>
+                    <div class="refi-alert-title" id="resHoldingTitle">Holding Period Analysis (5 Years)</div>
+                    <div class="refi-alert-body" id="resHoldingBody">
+                        Based on your expected stay, you will achieve estimated net savings of $0 after covering closing costs.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Term Reset Warning / Opportunity Card -->
+            <div id="resTermResetAlert" class="refi-alert-card refi-alert-amber">
+                <div class="refi-alert-icon">⚠️</div>
+                <div>
+                    <div class="refi-alert-title" id="resTermResetTitle">Loan Term Reset Notice</div>
+                    <div class="refi-alert-body" id="resTermResetBody">
+                        The refinance lowers your payment partly by extending the repayment period.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Neutral Summary Verdict -->
+            <div class="refi-alert-card refi-alert-emerald" id="resVerdictCard">
+                <div class="refi-alert-icon">💡</div>
+                <div>
+                    <div class="refi-alert-title" id="resVerdictTitle">Comparison Summary</div>
+                    <div class="refi-alert-body" id="resVerdictBody">
+                        Under these assumptions...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side-by-Side Comparison Table -->
+            <h3 class="refi-section-title refi-title-blue" style="margin-top:28px;">
+                <span>⚖️</span> Side-by-Side Loan Comparison
+            </h3>
+            <div class="refi-table-container">
+                <table class="refi-table">
+                    <thead>
+                        <tr>
+                            <th>Loan Comparison Metric</th>
+                            <th>Current Mortgage</th>
+                            <th class="refi-col-highlight">Proposed Refinance</th>
+                            <th>Difference / Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Starting Loan Amount</strong></td>
+                            <td id="tblCurPrincipal">$0</td>
+                            <td class="refi-col-highlight" id="tblNewPrincipal">$0</td>
+                            <td id="tblDiffPrincipal">$0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Interest Rate</strong></td>
+                            <td id="tblCurRate">0%</td>
+                            <td class="refi-col-highlight" id="tblNewRate">0%</td>
+                            <td id="tblDiffRate">0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Repayment Term</strong></td>
+                            <td id="tblCurTerm">0 mos</td>
+                            <td class="refi-col-highlight" id="tblNewTerm">0 mos</td>
+                            <td id="tblDiffTerm">0 mos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monthly P&amp;I Payment</strong></td>
+                            <td id="tblCurPmt">$0</td>
+                            <td class="refi-col-highlight" id="tblNewPmt">$0</td>
+                            <td id="tblDiffPmt">$0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estimated Total Interest</strong></td>
+                            <td id="tblCurInterest">$0</td>
+                            <td class="refi-col-highlight" id="tblNewInterest">$0</td>
+                            <td id="tblDiffInterest">$0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estimated Payoff Date</strong></td>
+                            <td id="tblCurPayoff">--</td>
+                            <td class="refi-col-highlight" id="tblNewPayoff">--</td>
+                            <td id="tblDiffPayoff">--</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Upfront / Net Closing Costs</strong></td>
+                            <td>$0</td>
+                            <td class="refi-col-highlight" id="tblNewCosts">$0</td>
+                            <td id="tblDiffCosts">$0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Financing Cost (P&amp;I + Costs)</strong></td>
+                            <td id="tblCurTotalCost">$0</td>
+                            <td class="refi-col-highlight" id="tblNewTotalCost">$0</td>
+                            <td id="tblDiffTotalCost">$0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Savings Milestones Timeline -->
+            <h3 class="refi-section-title refi-title-teal" style="margin-top:28px;">
+                <span>📈</span> Cumulative Net Savings Over Time
+            </h3>
+            <p style="font-size:13.5px; color:#64748b; margin-top:-8px; margin-bottom:14px;">
+                Cumulative monthly payment savings minus upfront refinance hurdle costs:
+            </p>
+            <div class="refi-timeline" id="resTimelineBox">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Interactive Visual SVG Charts -->
+            <div style="margin-top:28px;">
+                <h3 class="refi-section-title refi-title-purple">
+                    <span>📊</span> Visual Refinance Breakdown Charts
+                </h3>
+
+                <!-- Chart 1: Monthly Payment Comparison -->
+                <div class="refi-chart-container">
+                    <div class="refi-chart-header">
+                        <h4 class="refi-chart-title">Chart 1: Monthly Principal &amp; Interest Comparison</h4>
+                        <div class="refi-chart-legend">
+                            <span class="refi-legend-item"><span class="refi-legend-dot" style="background:#2563eb;"></span> Current Loan</span>
+                            <span class="refi-legend-item"><span class="refi-legend-dot" style="background:#059669;"></span> Refinance Loan</span>
+                        </div>
+                    </div>
+                    <div id="chartPaymentBox"></div>
+                </div>
+
+                <!-- Chart 2: Loan Balance Over Time -->
+                <div class="refi-chart-container">
+                    <div class="refi-chart-header">
+                        <h4 class="refi-chart-title">Chart 2: Loan Balance Amortization Trajectory</h4>
+                        <div class="refi-chart-legend">
+                            <span class="refi-legend-item"><span class="refi-legend-dot" style="background:#2563eb;"></span> Current Balance</span>
+                            <span class="refi-legend-item"><span class="refi-legend-dot" style="background:#059669;"></span> Refinance Balance</span>
+                        </div>
+                    </div>
+                    <div id="chartBalanceBox"></div>
+                </div>
+
+                <!-- Chart 3: Cumulative Savings Over Time -->
+                <div class="refi-chart-container">
+                    <div class="refi-chart-header">
+                        <h4 class="refi-chart-title">Chart 3: Cumulative Cash Savings &amp; Break-Even Curve</h4>
+                        <div class="refi-chart-legend">
+                            <span class="refi-legend-item"><span class="refi-legend-dot" style="background:#7c3aed;"></span> Net Savings</span>
+                            <span class="refi-legend-item"><span class="refi-legend-dot" style="background:#ea580c;"></span> Break-Even Line ($0)</span>
+                        </div>
+                    </div>
+                    <div id="chartSavingsBox"></div>
+                </div>
+            </div>
+
+            <!-- Amortization Schedules & Annual Summary -->
+            <div style="margin-top:28px;">
+                <h3 class="refi-section-title refi-title-blue">
+                    <span>📋</span> Amortization Comparison &amp; Annual Summary
+                </h3>
+
+                <div class="refi-tab-nav">
+                    <button type="button" class="refi-tab-btn refi-tab-active" data-tab="annualSummary">Annual Comparison Summary</button>
+                    <button type="button" class="refi-tab-btn" data-tab="newAmort">Refinance Monthly Schedule</button>
+                    <button type="button" class="refi-tab-btn" data-tab="curAmort">Current Mortgage Schedule</button>
+                </div>
+
+                <!-- Tab 1: Annual Comparison -->
+                <div id="tabAnnualSummary" class="refi-tab-content">
+                    <div class="refi-table-container" style="max-height: 480px; overflow-y: auto;">
+                        <table class="refi-table" id="tblAnnualSummary">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Current Principal</th>
+                                    <th>Current Interest</th>
+                                    <th>Current End Balance</th>
+                                    <th class="refi-col-highlight">New Principal</th>
+                                    <th class="refi-col-highlight">New Interest</th>
+                                    <th class="refi-col-highlight">New End Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 2: New Refinance Monthly Schedule -->
+                <div id="tabNewAmort" class="refi-tab-content" style="display:none;">
+                    <div class="refi-table-container" style="max-height: 480px; overflow-y: auto;">
+                        <table class="refi-table" id="tblNewAmort">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Beginning Balance</th>
+                                    <th>Payment</th>
+                                    <th>Principal</th>
+                                    <th>Interest</th>
+                                    <th>Extra Principal</th>
+                                    <th>Ending Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Current Monthly Schedule -->
+                <div id="tabCurAmort" class="refi-tab-content" style="display:none;">
+                    <div class="refi-table-container" style="max-height: 480px; overflow-y: auto;">
+                        <table class="refi-table" id="tblCurAmort">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Beginning Balance</th>
+                                    <th>Payment</th>
+                                    <th>Principal</th>
+                                    <th>Interest</th>
+                                    <th>Ending Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export, Copy, Print & CSV Buttons -->
+            <div class="refi-btn-bar" style="margin-top:28px;">
+                <button type="button" id="refiBtnDownloadReport" class="refi-btn refi-btn-emerald">
+                    <span>📥</span> Download Refinance Report
+                </button>
+                <button type="button" id="refiBtnDownloadNewCsv" class="refi-btn refi-btn-teal">
+                    <span>📊</span> Download Refinance CSV
+                </button>
+                <button type="button" id="refiBtnDownloadCurCsv" class="refi-btn refi-btn-teal">
+                    <span>📄</span> Download Current Loan CSV
+                </button>
+                <button type="button" id="refiBtnCopyResults" class="refi-btn refi-btn-cyan">
+                    <span>📋</span> Copy Refinance Summary
+                </button>
+                <button type="button" id="refiBtnPrint" class="refi-btn refi-btn-indigo">
+                    <span>🖨️</span> Print Refinance Analysis
+                </button>
+            </div>
+        </section>
+
+        <!-- 23. SECOND ADVERTISEMENT — NATIVE -->
+        <div class="refi-ad-wrapper" style="width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;">
+            <div class="refi-ad-label">Sponsored Content</div>
+            <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+            <div id="container-269e962c1215493328aeb78f4303284c"></div>
+        </div>
+
+        <!-- 24. FEATURES SHOWCASE -->
+        <section class="refi-card">
+            <h2 class="refi-section-title refi-title-blue">
+                <span>⭐</span> Complete Refinance Analysis Features
+            </h2>
+            <div class="refi-features-grid">
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🏠</div>
+                    <div class="refi-feature-title">Current Mortgage Comparison</div>
+                    <div class="refi-feature-desc">Analyzes existing balance, original or remaining terms, current interest rate, and precise monthly amortizing payments.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">💵</div>
+                    <div class="refi-feature-title">New Refinance Payment</div>
+                    <div class="refi-feature-desc">Accurately projects monthly principal &amp; interest under standard U.S. fixed-rate mortgage formulas.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">💰</div>
+                    <div class="refi-feature-title">Monthly Payment Savings</div>
+                    <div class="refi-feature-desc">Clearly separates payment reductions from payment increases so you never mistake an extended term for free savings.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">⏱️</div>
+                    <div class="refi-feature-title">Break-Even Calculator</div>
+                    <div class="refi-feature-desc">Calculates the exact number of months needed for payment savings to recover net upfront closing costs.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">📅</div>
+                    <div class="refi-feature-title">Break-Even Calendar Date</div>
+                    <div class="refi-feature-desc">Projects the exact future month and year when you will break even and begin capturing real positive net cash flow.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">💳</div>
+                    <div class="refi-feature-title">Closing Cost Calculator</div>
+                    <div class="refi-feature-desc">Input costs as a flat dollar amount or percentage of loan balance to capture lender, title, and escrow fees.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🎯</div>
+                    <div class="refi-feature-title">Discount Points Cost</div>
+                    <div class="refi-feature-desc">Evaluates upfront point expenses (1 point = 1% of the loan amount) and incorporates them into your break-even hurdle.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🎁</div>
+                    <div class="refi-feature-title">Lender Credits</div>
+                    <div class="refi-feature-desc">Deducts lender-provided credits from your upfront expenses to reflect real out-of-pocket cash needs.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🏦</div>
+                    <div class="refi-feature-title">Cash-Out Refinance</div>
+                    <div class="refi-feature-desc">Seamlessly models cashing out home equity for renovations or debt consolidation without falsely inflating savings.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">📥</div>
+                    <div class="refi-feature-title">Cash-In Refinance</div>
+                    <div class="refi-feature-desc">Supports paying down extra principal at closing to hit lower LTV tiers or avoid private mortgage insurance.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">📊</div>
+                    <div class="refi-feature-title">Loan-to-Value (LTV) Ratio</div>
+                    <div class="refi-feature-desc">Computes estimated LTV relative to home value so you can monitor your equity cushion.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🛡️</div>
+                    <div class="refi-feature-title">Loan Term Reset Analysis</div>
+                    <div class="refi-feature-desc">Alerts you when refinancing restarts a 30-year clock, exposing hidden lifetime interest costs behind lower payments.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">⏳</div>
+                    <div class="refi-feature-title">Holding-Period Savings</div>
+                    <div class="refi-feature-desc">Estimates your real net financial gains based on how many years you realistically intend to keep the home.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">⚡</div>
+                    <div class="refi-feature-title">Extra Principal Scenario</div>
+                    <div class="refi-feature-desc">Test the impact of contributing extra monthly principal to shave years off your mortgage and save thousands in interest.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🔄</div>
+                    <div class="refi-feature-title">Keep Current Payment Strategy</div>
+                    <div class="refi-feature-desc">Shows what happens if you refinance to a lower interest rate but maintain your higher current monthly payment.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">📑</div>
+                    <div class="refi-feature-title">Amortization Comparison</div>
+                    <div class="refi-feature-desc">Provides side-by-side full loan schedules tracking principal reduction, interest degradation, and balances.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🗓️</div>
+                    <div class="refi-feature-title">Annual Summary Table</div>
+                    <div class="refi-feature-desc">Annualized year-by-year principal, interest, and ending balances for easy long-term financial planning.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">📉</div>
+                    <div class="refi-feature-title">Visual Responsive Charts</div>
+                    <div class="refi-feature-desc">High-clarity local SVG charts showing payment comparison, amortization trajectory, and cumulative break-even lines.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">📥</div>
+                    <div class="refi-feature-title">CSV Schedule Download</div>
+                    <div class="refi-feature-desc">Export genuine text/csv amortization files for both your current mortgage and new refinance directly to Excel.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🖨️</div>
+                    <div class="refi-feature-title">Printable Executive Report</div>
+                    <div class="refi-feature-desc">Print-optimized layout that strips ads, menus, and sidebars for clean client or family presentation.</div>
+                </div>
+                <div class="refi-feature-card">
+                    <div class="refi-feature-icon">🔒</div>
+                    <div class="refi-feature-title">Private &amp; Client-Side</div>
+                    <div class="refi-feature-desc">100% of calculations execute inside your web browser. No financial data is sent to external servers or logged.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 25. HOW TO USE -->
+        <section class="refi-card">
+            <h2 class="refi-section-title refi-title-teal">
+                <span>📖</span> How to Use the Mortgage Refinance Calculator
+            </h2>
+            <div class="refi-steps-list">
+                <div class="refi-step-card">
+                    <div class="refi-step-num">1</div>
+                    <div class="refi-step-text"><strong>Current Balance:</strong> Enter your current outstanding loan balance from your most recent mortgage statement.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">2</div>
+                    <div class="refi-step-text"><strong>Current Rate &amp; Term:</strong> Input your existing interest rate and remaining years and months to pay off the loan.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">3</div>
+                    <div class="refi-step-text"><strong>New Proposed Rate:</strong> Enter the interest rate offered by your prospective lender or broker.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">4</div>
+                    <div class="refi-step-text"><strong>Choose New Term:</strong> Select 30, 20, 15, 10 years or set a custom term to match your financial goals.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">5</div>
+                    <div class="refi-step-text"><strong>Closing Costs &amp; Points:</strong> Enter estimated closing costs, discount points purchased, and any lender credits.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">6</div>
+                    <div class="refi-step-text"><strong>Finance Costs Toggle:</strong> Choose whether you want to roll closing costs into the loan balance or pay out-of-pocket.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">7</div>
+                    <div class="refi-step-text"><strong>Cash-Out or Cash-In:</strong> Add cash taken out for renovations or cash paid down toward principal at closing.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">8</div>
+                    <div class="refi-step-text"><strong>Holding Period:</strong> Indicate how long you plan to live in the home to verify whether you will pass the break-even point.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">9</div>
+                    <div class="refi-step-text"><strong>Calculate Refinance:</strong> Click Calculate to instantly generate payments, break-even timelines, and cost comparisons.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">10</div>
+                    <div class="refi-step-text"><strong>Review Term Reset:</strong> Inspect the term reset alert to ensure a lower payment does not create higher lifetime interest.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">11</div>
+                    <div class="refi-step-text"><strong>Explore Strategies:</strong> Check the "Keep Paying Same Payment" box or extra principal inputs to see accelerated payoffs.</div>
+                </div>
+                <div class="refi-step-card">
+                    <div class="refi-step-num">12</div>
+                    <div class="refi-step-text"><strong>Download &amp; Print:</strong> Export full amortization CSVs or a formatted report to consult with your mortgage advisor.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 26. VISIBLE SEO INTRODUCTION (250-350 Words) -->
+        <section class="refi-card refi-article">
+            <h2 class="refi-title-blue" style="margin-top:0;">Smart Mortgage Refinancing for American Homeowners</h2>
+            <p>
+                Mortgage refinancing is the financial process of replacing your current home loan with a brand-new mortgage featuring different loan terms, interest rates, or principal balances. For millions of U.S. homeowners, refinancing represents one of the most powerful financial moves available to optimize household cash flow, slash lifetime interest obligations, eliminate private mortgage insurance (PMI), or convert accumulated home equity into liquid capital for home remodeling and high-interest debt consolidation.
+            </p>
+            <p>
+                However, refinancing is not simply a matter of finding a lower advertised interest rate. A successful refinance requires carefully weighing the upfront transaction costs against your projected monthly savings to determine your true <strong>break-even point</strong>. Refinance closing costs typically range between 2% and 5% of the new loan amount, encompassing lender origination fees, appraisal charges, title insurance, attorney fees, and government recording taxes. If you move or refinance again before your accumulated monthly payment savings surpass these upfront expenses, refinancing can actually leave you worse off financially.
+            </p>
+            <p>
+                Equally crucial is understanding the <strong>loan term reset effect</strong>. Restarting a 30-year amortization clock after having already paid down 5 to 10 years on an existing mortgage will frequently lower your required monthly check, but it can quietly inflate your total lifetime interest expense by tens of thousands of dollars. This Free Mortgage Refinance Calculator provides independent, unbiased mathematical modeling so you can compare current and proposed loan schedules side by side, calculate exact break-even dates, explore cash-out consequences, and identify whether a refinance truly serves your long-term wealth building goals.
+            </p>
+        </section>
+
+        <!-- 27. EDUCATIONAL ARTICLE PART 1 -->
+        <article class="refi-card refi-article">
+            <h2>The Comprehensive Guide to Mortgage Refinancing</h2>
+
+            <h3>What Is Mortgage Refinancing and How Does It Work?</h3>
+            <p>
+                When you refinance a mortgage, your new lender pays off your existing home loan in full. In exchange, you enter into a new promissory note and mortgage contract that establishes a new principal balance, a new interest rate, and a new amortization schedule. The original loan is formally satisfied and discharged from county public records, and the new mortgage lien takes first position on your property title.
+            </p>
+            <p>
+                Borrowers typically pursue refinancing for one or more core objectives:
+            </p>
+            <ul>
+                <li><strong>Lowering the Interest Rate:</strong> Securing a lower annual percentage rate (APR) to reduce monthly carrying costs and build equity faster.</li>
+                <li><strong>Shortening the Loan Term:</strong> Moving from a 30-year mortgage into a 15-year or 20-year mortgage to pay off the house dramatically faster and save tens of thousands in finance charges.</li>
+                <li><strong>Switching Loan Structures:</strong> Converting from an Adjustable-Rate Mortgage (ARM) with variable rate risk into the certainty of a Fixed-Rate Mortgage.</li>
+                <li><strong>Cashing Out Home Equity:</strong> Borrowing more than the existing balance to obtain cash proceeds for major home repairs, tuition, or debt payoff.</li>
+                <li><strong>Eliminating Mortgage Insurance:</strong> Removing FHA Annual Mortgage Insurance Premiums (MIP) or private mortgage insurance (PMI) once property appreciation pushes loan-to-value below 80%.</li>
+            </ul>
+
+            <h3>What Is a Mortgage Refinance Calculator?</h3>
+            <p>
+                A mortgage refinance calculator is an advanced analytical financial tool designed to evaluate the trade-offs between your existing mortgage and a prospective replacement loan. Unlike a basic payment calculator that merely computes <em>P &amp; I</em> for a single loan, a comprehensive refinance calculator simulates two complete amortization schedules simultaneously, accounts for transactional friction (closing costs, points, and credits), and determines the exact duration required to recover your upfront investments.
+            </p>
+
+            <h3>How to Calculate a Refinance Payment</h3>
+            <p>
+                Fixed-rate monthly mortgage payments in the United States follow the standard amortizing annuity formula:
+            </p>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin:16px 0; font-family:monospace; font-size:14px;">
+                M = P &times; [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]
+            </div>
+            <p>
+                Where <strong>M</strong> is the monthly principal and interest payment, <strong>P</strong> is the new financed principal balance, <strong>r</strong> is the monthly interest rate (annual rate divided by 12 and converted to a decimal), and <strong>n</strong> represents the total number of monthly payments across the term (such as 360 for a 30-year mortgage or 180 for a 15-year mortgage).
+            </p>
+
+            <h3>What Are Refinance Closing Costs and How Do They Work?</h3>
+            <p>
+                Refinancing a mortgage is not free. Lenders, title companies, appraisers, and municipal governments all charge fees to underwrite, insure, and record the new loan. Common closing costs include:
+            </p>
+            <ul>
+                <li><strong>Lender Origination &amp; Processing Fees:</strong> Charges for underwriting the credit application and processing documents (typically 0.5% to 1.5% of loan balance).</li>
+                <li><strong>Appraisal Fee:</strong> A licensed independent appraisal verifying the current market valuation of the property ($400 to $900).</li>
+                <li><strong>Title Search &amp; Lender's Title Insurance:</strong> Verifying there are no mechanics' liens, unpaid property taxes, or legal encumbrances on the deed ($700 to $2,500).</li>
+                <li><strong>Government Recording Charges &amp; Transfer Taxes:</strong> Municipal fees to file the new deed of trust and release the prior lien.</li>
+                <li><strong>Credit Report &amp; Flood Certification:</strong> Verifying credit standing and FEMA flood zone status ($30 to $100).</li>
+            </ul>
+
+            <h3>What Is a Refinance Break-Even Point and Why Does It Matter?</h3>
+            <p>
+                The break-even point is the single most vital metric in mortgage refinancing. It defines the exact number of months required for cumulative monthly payment savings to equal the net upfront closing costs paid to obtain the loan.
+            </p>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin:16px 0; font-family:monospace; font-size:14px;">
+                Break-Even Months = Net Refinance Closing Costs &divide; Monthly Payment Savings
+            </div>
+            <p>
+                For example, if your closing costs total $5,000 and your new monthly payment is $200 lower than your current payment, your break-even point is exactly 25 months (2 years and 1 month). If you plan to remain in your home for 5, 10, or 20 years, refinancing represents an excellent financial return. However, if you plan to sell the home, relocate, or refinance again within 18 months, refinancing will result in an immediate net capital loss.
+            </p>
+        </article>
+
+        <!-- 28. THIRD ADVERTISEMENT — 300x250 (Between Article Part 1 and Part 2) -->
+        <div class="refi-ad-wrapper" style="width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;">
+            <div class="refi-ad-label">Advertisement</div>
+            <script>
+              atOptions = {
+                'key' : '224e7394c28834c8ac1ce24682c420e3',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+        </div>
+
+        <!-- 29. EDUCATIONAL ARTICLE PART 2 -->
+        <article class="refi-card refi-article">
+            <h3>Monthly Savings vs. Lifetime Savings: The Term Reset Trap</h3>
+            <p>
+                One of the most dangerous misconceptions in consumer finance is equating a lower monthly mortgage bill with overall mortgage savings. When a homeowner who is 7 years into a 30-year mortgage (with 23 years remaining) refinances into a fresh 30-year mortgage, they stretch the remaining balance across 84 additional months.
+            </p>
+            <p>
+                Because payments are amortized across an extended timeframe, the monthly obligation will almost always appear lower. However, because interest is assessed on the outstanding balance for seven additional years, total lifetime interest payments often end up higher than if the homeowner had simply kept their existing mortgage. Always compare <strong>Total Remaining Interest</strong> on your current loan against <strong>Total New Interest</strong> on the refinance before committing.
+            </p>
+
+            <h3>15-Year vs. 30-Year Refinance: Finding the Right Balance</h3>
+            <p>
+                A 15-year fixed refinance typically carries an interest rate between 0.50% and 0.85% lower than a comparable 30-year loan. Because the loan is compressed into 180 months, principal is repaid with extraordinary speed:
+            </p>
+            <ul>
+                <li><strong>The 15-Year Advantage:</strong> Total interest costs over the life of the loan are often cut by 60% or more, and your home is owned free and clear in half the time.</li>
+                <li><strong>The 15-Year Risk:</strong> Because the principal is compressed across 180 months rather than 360, your required monthly payment will be noticeably higher. If family income drops or unexpected medical expenses arise, this higher mandatory commitment cannot be lowered without another refinance.</li>
+                <li><strong>The Hybrid Strategy:</strong> Many sophisticated borrowers take a flexible 30-year refinance at a lower rate, and voluntarily make extra principal payments equivalent to a 15-year payment. If an emergency occurs, they can revert to the lower 30-year required payment at will.</li>
+            </ul>
+
+            <h3>Understanding Mortgage Discount Points and Lender Credits</h3>
+            <p>
+                Discount points allow borrowers to buy down their interest rate by paying prepaid interest at closing. One mortgage point costs exactly 1% of the loan amount. For example, on a $400,000 loan, 1 point costs $4,000. Lenders typically discount the interest rate by 0.25% per point purchased, although this varies based on secondary mortgage market conditions.
+            </p>
+            <p>
+                Conversely, <strong>lender credits</strong> work in reverse: you agree to accept a slightly higher interest rate in exchange for the lender paying a portion or all of your closing costs. This is often marketed as a "no-closing-cost refinance." While this eliminates out-of-pocket cash needs on closing day, the higher rate increases your monthly payment for the life of the loan.
+            </p>
+
+            <h3>Cash-Out vs. Cash-In Refinancing</h3>
+            <p>
+                A <strong>cash-out refinance</strong> involves borrowing a larger principal balance than your current mortgage debt and receiving the net difference in cash at closing. Under conventional Fannie Mae and Freddie Mac guidelines, cash-out refinances are generally limited to an 80% maximum Loan-to-Value (LTV) ratio on primary single-family residences. While cash-out refinancing can provide lower borrowing costs than credit cards or personal loans, it converts unsecured liabilities into a secured lien against your family home.
+            </p>
+            <p>
+                A <strong>cash-in refinance</strong> occurs when a borrower contributes cash toward their principal balance at closing. Homeowners utilize cash-in refinances to push their loan balance below 80% LTV to eliminate mandatory PMI, to qualify for lower interest rate tiers, or to keep loan balances within conforming loan limits to avoid jumbo loan interest rate premiums.
+            </p>
+
+            <h3>Should You Roll Closing Costs Into the Loan?</h3>
+            <p>
+                Financing closing costs preserves liquid cash savings in your emergency fund. However, doing so increases your principal balance, which means you will pay interest on those closing fees over the next 15 to 30 years. If your primary goal is maximizing long-term wealth and you have abundant liquid reserves, paying closing costs out of pocket minimizes total interest expenses.
+            </p>
+        </article>
+
+        <!-- 30. FAQ SECTION (35+ Comprehensive FAQs) -->
+        <section class="refi-card">
+            <h2 class="refi-section-title refi-title-blue">
+                <span>❓</span> Frequently Asked Questions (FAQ)
+            </h2>
+            <p style="font-size:14px; color:#64748b; margin-bottom:20px;">
+                Clear, factual answers to the most common questions regarding U.S. mortgage refinancing, break-even timelines, and closing costs:
+            </p>
+
+            <details class="refi-faq-item">
+                <summary>What is mortgage refinancing?</summary>
+                <div class="refi-faq-body">Mortgage refinancing is the process of paying off an existing home loan with a brand-new mortgage, typically to secure a lower interest rate, change the repayment term, lower monthly payments, or convert equity into cash.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What is a mortgage refinance calculator?</summary>
+                <div class="refi-faq-body">A refinance calculator is a financial tool that compares your current mortgage against a prospective new loan. It models monthly payments, closing expenses, break-even timelines, and lifetime interest differences.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>How do I calculate my new refinance payment?</summary>
+                <div class="refi-faq-body">You enter the new loan principal, proposed interest rate, and term length into standard amortizing loan formulas: M = P[r(1+r)^n] / [(1+r)^n - 1]. This calculator computes it automatically.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What is a refinance break-even point?</summary>
+                <div class="refi-faq-body">The break-even point is the exact number of months it takes for your cumulative monthly payment savings to pay back the net upfront closing costs paid to execute the refinance.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>How is refinance break-even calculated?</summary>
+                <div class="refi-faq-body">Divide your net upfront closing costs by your monthly payment savings. For example, $4,800 in closing costs divided by $200 in monthly savings equals a 24-month break-even point.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What are mortgage refinance closing costs?</summary>
+                <div class="refi-faq-body">Closing costs are administrative, legal, and third-party fees charged during loan origination. They include application fees, underwriting, appraisal, title examination, lender's title insurance, and recording charges.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Should I refinance for a lower interest rate?</summary>
+                <div class="refi-faq-body">Refinancing generally makes sense if the interest rate reduction is large enough to recover closing costs within the period you intend to stay in the property. A 0.75% to 1.00% rate decrease is a common benchmark, though smaller drops can be viable on large balances.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can refinancing lower my monthly payment?</summary>
+                <div class="refi-faq-body">Yes. Securing a lower interest rate, extending your repayment term, or eliminating private mortgage insurance (PMI) will reduce your required monthly principal and interest payment.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can refinancing increase my lifetime interest?</summary>
+                <div class="refi-faq-body">Yes. If you refinance a mortgage with 20 years remaining into a new 30-year loan, you may lower your monthly check but pay significantly more total interest over time due to the 10-year term extension.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What happens when I restart a 30-year mortgage?</summary>
+                <div class="refi-faq-body">Restarting a 30-year term resets the amortization schedule to month 1, where the majority of each payment goes toward interest rather than principal reduction.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Is a shorter refinance term better?</summary>
+                <div class="refi-faq-body">A shorter term (such as 15 or 20 years) offers lower interest rates and massive lifetime interest savings, but requires a higher mandatory monthly payment.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What are discount points?</summary>
+                <div class="refi-faq-body">Discount points are upfront fees paid directly to the lender at closing to buy down the interest rate on your loan. Each point costs 1% of the total loan amount.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>How much does one mortgage point cost?</summary>
+                <div class="refi-faq-body">One point equals exactly 1% of your loan amount. On a $350,000 mortgage, one discount point costs $3,500.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What are lender credits?</summary>
+                <div class="refi-faq-body">Lender credits are funds provided by the lender to offset your closing costs in exchange for you accepting a slightly higher interest rate.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can closing costs be financed?</summary>
+                <div class="refi-faq-body">Yes. Most conventional and government loans permit eligible closing costs to be rolled into the new loan balance, reducing out-of-pocket cash needs on closing day.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What is a no-closing-cost refinance?</summary>
+                <div class="refi-faq-body">A no-closing-cost refinance is one where closing fees are either financed into the new loan balance or offset by lender credits in exchange for a higher interest rate. The fees are not waived; they are simply restructured.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What is a cash-out refinance?</summary>
+                <div class="refi-faq-body">A cash-out refinance replaces your existing loan with a larger mortgage, allowing you to take out the difference between the two balances in cash from your accrued home equity.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Does cash-out increase my mortgage balance?</summary>
+                <div class="refi-faq-body">Yes. Cashing out equity directly increases your new loan principal, which increases monthly payments and lifetime interest. Cash-out proceeds are debt, not refinance savings.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What is a cash-in refinance?</summary>
+                <div class="refi-faq-body">A cash-in refinance is when you bring extra cash to the closing table to pay down your loan principal, helping you qualify for a lower interest rate or eliminate mortgage insurance.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>How is loan-to-value (LTV) calculated?</summary>
+                <div class="refi-faq-body">LTV is calculated by dividing your total new mortgage loan amount by your home's appraised property value and multiplying by 100. For instance, a $320,000 loan on a $400,000 home yields an 80% LTV.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>What does monthly refinance savings mean?</summary>
+                <div class="refi-faq-body">Monthly refinance savings is the positive difference between your current monthly principal and interest payment and your new proposed monthly payment.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>How do I calculate interest savings?</summary>
+                <div class="refi-faq-body">Calculate total remaining interest on your current loan through its payoff date, subtract total interest scheduled on the new loan, and subtract net refinance fees.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>How long should I keep the mortgage after refinancing?</summary>
+                <div class="refi-faq-body">You should plan to keep the mortgage at least until you pass your break-even point. Keeping the loan beyond the break-even point ensures you capture net positive financial gain.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can this calculator compare 15-year and 30-year loans?</summary>
+                <div class="refi-faq-body">Yes. You can compare a current 30-year loan with a proposed 15-year refinance (or vice versa) to see exact monthly differences, total interest shifts, and payoff dates.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can I add extra payments to the new loan?</summary>
+                <div class="refi-faq-body">Yes. Use the Extra Principal input to model how contributing extra cash each month accelerates your new payoff date and reduces lifetime interest.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can I keep paying my old monthly payment?</summary>
+                <div class="refi-faq-body">Yes. Enable the "Keep Paying Same Payment" strategy option. Any monthly savings created by the lower rate will be automatically channeled into extra principal.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can I download the refinance amortization schedule?</summary>
+                <div class="refi-faq-body">Yes. You can download genuine text/csv files for both your current loan and your new refinance loan directly into Microsoft Excel, Google Sheets, or Apple Numbers.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Does this calculator include property taxes?</summary>
+                <div class="refi-faq-body">Standard refinance comparison focuses strictly on Principal and Interest (P&amp;I). Property taxes are determined by your local municipality and generally remain unchanged by a refinance.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Does it include homeowners insurance?</summary>
+                <div class="refi-faq-body">Hazard insurance is an escrowed property expense paid to your insurance carrier and is not part of the amortized loan contract math.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Does it include private mortgage insurance (PMI)?</summary>
+                <div class="refi-faq-body">Core calculations focus on amortizing principal and interest. If your refinance lowers your LTV below 80%, you may also eliminate current PMI payments, generating additional monthly savings.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Does this calculator use live mortgage rates?</summary>
+                <div class="refi-faq-body">No. To ensure 100% independence, zero advertising bias, and complete privacy, this calculator does not fetch remote bank rates. You enter your own exact quotes.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Does this tool require signup or personal information?</summary>
+                <div class="refi-faq-body">No. There is no signup, no account creation, no email submission, and no credit check. All calculations execute entirely inside your local browser.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Can I use this calculator on an iPhone or Android phone?</summary>
+                <div class="refi-faq-body">Yes. The interface is engineered with responsive, touch-friendly layouts optimized for mobile devices with screen widths down to 320 pixels.</div>
+            </details>
+
+            <details class="refi-faq-item">
+                <summary>Why might my lender's Loan Estimate differ slightly?</summary>
+                <div class="refi-faq-body">Lenders calculate interest using exact 360-day or 365-day conventions, prepaid per diem interest based on the exact day of closing, and mandatory escrow reserves for taxes and insurance.</div>
+            </details>
+        </section>
+
+        <!-- 31. PRIVACY POLICY SECTION -->
+        <section class="refi-card" id="refiPrivacySection">
+            <h2 class="refi-section-title refi-title-blue">
+                <span>🔒</span> Privacy
+            </h2>
+            <p>
+                Mortgage refinance calculations are performed in your browser and do not require an account or remote mortgage-calculation API. None of your entered financial figures (including mortgage balances, rates, home value, closing costs, or cash-out amounts) are transmitted to our servers or stored in persistent client storage.
+            </p>
+        </section>
+
+        <!-- 32. DISCLAIMER SECTION -->
+        <section class="refi-card" id="refiDisclaimerSection">
+            <h2 class="refi-section-title refi-title-orange">
+                <span>⚖️</span> Mortgage Refinance Calculator Disclaimer
+            </h2>
+            <p style="font-size:13.5px; color:#64748b; line-height:1.6;">
+                This calculator provides estimates for educational and planning purposes only. Actual lender quotes and refinance results can differ because of interest calculation methods, closing costs, prepaid expenses, escrow, taxes, insurance, points, credits, appraisal results, underwriting requirements and lender policies. This tool does not provide lending, financial, tax or legal advice. Use official Loan Estimates and lender disclosures when making a refinance decision.
+            </p>
+        </section>
+
+        <!-- 33. SOCIAL SHARING SECTION -->
+        <section class="refi-card" id="refiSocialSection" style="text-align:center;">
+            <h2 class="refi-section-title refi-title-purple" style="justify-content:center;">
+                <span>📢</span> Share This Mortgage Refinance Calculator
+            </h2>
+            <p style="font-size:14px; color:#64748b; margin-bottom:16px;">
+                Help other homeowners analyze refinance options, compare monthly savings, and calculate break-even points:
+            </p>
+
+            <div class="refi-social-bar">
+                <button type="button" class="refi-social-btn refi-share-fb" id="refiShareFb">Facebook</button>
+                <button type="button" class="refi-social-btn refi-share-tw" id="refiShareTw">X / Twitter</button>
+                <button type="button" class="refi-social-btn refi-share-wa" id="refiShareWa">WhatsApp</button>
+                <button type="button" class="refi-social-btn refi-share-li" id="refiShareLi">LinkedIn</button>
+                <button type="button" class="refi-social-btn refi-share-rd" id="refiShareRd">Reddit</button>
+                <button type="button" class="refi-social-btn refi-share-tg" id="refiShareTg">Telegram</button>
+                <button type="button" class="refi-social-btn refi-share-em" id="refiShareEm">Email</button>
+                <button type="button" class="refi-social-btn refi-share-cp" id="refiShareCp">Copy Link</button>
+                <button type="button" class="refi-social-btn refi-share-nt" id="refiShareNt">Share Tool</button>
+            </div>
+        </section>
+
+        <!-- 34. FOURTH ADVERTISEMENT — SOCIAL BAR -->
+        <div class="refi-ad-wrapper" style="width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;">
+            <script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+        </div>
+
+    </div><!-- /.refi-shell -->
+
+    <!-- Toast Notification Element -->
+    <div id="refiToast" class="refi-toast">Notification message</div>
+</div><!-- /#mortgageRefiBloggerApp -->
+
+<script>
+/**
+ * ==========================================================================
+ * FREE MORTGAGE REFINANCE CALCULATOR - VANILLA JAVASCRIPT ENGINE
+ * Fully scoped IIFE, pure client-side math, no remote API calls.
+ * ==========================================================================
+ */
+(function () {
+    "use strict";
+
+    var root = document.getElementById("mortgageRefiBloggerApp");
+    if (!root) return;
+
+    // --- State Cache ---
+    var calcState = {
+        curBalance: 325000,
+        curRate: 7.125,
+        curRemainingMonths: 328,
+        curPayment: 0,
+        curTotalInterest: 0,
+        curSchedule: [],
+        curAnnual: [],
+        curPayoffDate: "",
+
+        newRate: 6.125,
+        newTermMonths: 360,
+        newLoanAmount: 325000,
+        netClosingCosts: 5000,
+        upfrontCashHurdle: 5000,
+        newPayment: 0,
+        newTotalInterest: 0,
+        newSchedule: [],
+        newAnnual: [],
+        newPayoffDate: "",
+
+        monthlySavings: 0,
+        breakEvenMonths: 0,
+        breakEvenDate: "",
+        interestSavings: 0,
+        lifetimeNetSavings: 0,
+        holdingPeriodSavings: 0,
+        holdingMonths: 60,
+        extraMonthlyPrincipal: 0,
+        keepSamePayment: false
+    };
+
+    // --- Helper Formatting Functions ---
+    function parseMoney(val) {
+        if (typeof val === "number") return isNaN(val) ? 0 : val;
+        if (!val) return 0;
+        var clean = String(val).replace(/[^0-9.-]+/g, "");
+        var num = parseFloat(clean);
+        return isNaN(num) ? 0 : num;
+    }
+
+    function parsePercent(val) {
+        if (typeof val === "number") return isNaN(val) ? 0 : val;
+        if (!val) return 0;
+        var clean = String(val).replace(/[^0-9.-]+/g, "");
+        var num = parseFloat(clean);
+        return isNaN(num) ? 0 : num;
+    }
+
+    function formatCurrency(num) {
+        if (num === null || num === undefined || isNaN(num)) return "$0";
+        var isNegative = num < 0;
+        var absVal = Math.abs(num);
+        var formatted = absVal.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+        return isNegative ? "-$" + formatted : "$" + formatted;
+    }
+
+    function formatCurrencyRound(num) {
+        if (num === null || num === undefined || isNaN(num)) return "$0";
+        var isNegative = num < 0;
+        var absVal = Math.abs(Math.round(num));
+        var formatted = absVal.toLocaleString("en-US");
+        return isNegative ? "-$" + formatted : "$" + formatted;
+    }
+
+    function formatPercent(num, decimals) {
+        if (num === null || num === undefined || isNaN(num)) return "0%";
+        var dec = typeof decimals === "number" ? decimals : 3;
+        return num.toFixed(dec).replace(/\.?0+$/, "") + "%";
+    }
+
+    function formatDate(dateObj) {
+        if (!dateObj || !(dateObj instanceof Date) || isNaN(dateObj.getTime())) return "--";
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return months[dateObj.getMonth()] + " " + dateObj.getFullYear();
+    }
+
+    function formatDuration(totalMonths) {
+        if (totalMonths <= 0 || !isFinite(totalMonths)) return "0 mos";
+        var yrs = Math.floor(totalMonths / 12);
+        var mos = Math.round(totalMonths % 12);
+        if (mos === 12) {
+            yrs += 1;
+            mos = 0;
+        }
+        if (yrs > 0 && mos > 0) return yrs + " yrs, " + mos + " mos";
+        if (yrs > 0) return yrs + " yrs";
+        return mos + " mos";
+    }
+
+    function showToast(msg) {
+        var toast = document.getElementById("refiToast");
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add("refi-toast-show");
+        setTimeout(function () {
+            toast.classList.remove("refi-toast-show");
+        }, 3000);
+    }
+
+    // --- Core Financial Mathematics ---
+    function calculateMonthlyPayment(principal, annualRate, totalMonths) {
+        if (principal <= 0 || totalMonths <= 0) return 0;
+        if (annualRate <= 0) {
+            return principal / totalMonths;
+        }
+        var r = (annualRate / 100) / 12;
+        var factor = Math.pow(1 + r, totalMonths);
+        if (!isFinite(factor) || factor <= 1) return principal / totalMonths;
+        return principal * (r * factor) / (factor - 1);
+    }
+
+    function generateAmortizationSchedule(principal, annualRate, totalMonths, startDate, extraPrincipal) {
+        var schedule = [];
+        if (principal <= 0 || totalMonths <= 0) return schedule;
+
+        var monthlyRate = (annualRate / 100) / 12;
+        var basePayment = calculateMonthlyPayment(principal, annualRate, totalMonths);
+        var extra = parseMoney(extraPrincipal);
+        var balance = principal;
+
+        var curDate = startDate instanceof Date && !isNaN(startDate.getTime())
+            ? new Date(startDate.getTime())
+            : new Date();
+
+        for (var p = 1; p <= totalMonths && balance > 0.001; p++) {
+            var interestForMonth = monthlyRate > 0 ? (balance * monthlyRate) : 0;
+            var paymentForMonth = basePayment + extra;
+
+            // Handle last payment adjustments
+            var principalForMonth = paymentForMonth - interestForMonth;
+            if (principalForMonth > balance) {
+                principalForMonth = balance;
+                paymentForMonth = principalForMonth + interestForMonth;
+            }
+
+            var endingBalance = Math.max(0, balance - principalForMonth);
+
+            // Month date
+            var pmtDate = new Date(curDate.getFullYear(), curDate.getMonth() + (p - 1), 1);
+
+            schedule.push({
+                paymentNum: p,
+                date: pmtDate,
+                dateStr: formatDate(pmtDate),
+                beginningBalance: balance,
+                payment: paymentForMonth,
+                principalPaid: principalForMonth,
+                interestPaid: interestForMonth,
+                extraPrincipal: extra,
+                endingBalance: endingBalance
+            });
+
+            balance = endingBalance;
+        }
+
+        return schedule;
+    }
+
+    function generateAnnualSummaryFromSchedule(schedule) {
+        var annual = [];
+        if (!schedule || schedule.length === 0) return annual;
+
+        var curYear = schedule[0].date.getFullYear();
+        var yearPrincipal = 0;
+        var yearInterest = 0;
+        var endBalance = schedule[0].beginningBalance;
+
+        for (var i = 0; i < schedule.length; i++) {
+            var item = schedule[i];
+            var itemYear = item.date.getFullYear();
+
+            if (itemYear !== curYear) {
+                annual.push({
+                    year: curYear,
+                    principalPaid: yearPrincipal,
+                    interestPaid: yearInterest,
+                    endingBalance: endBalance
+                });
+                curYear = itemYear;
+                yearPrincipal = 0;
+                yearInterest = 0;
+            }
+
+            yearPrincipal += item.principalPaid;
+            yearInterest += item.interestPaid;
+            endBalance = item.endingBalance;
+        }
+
+        annual.push({
+            year: curYear,
+            principalPaid: yearPrincipal,
+            interestPaid: yearInterest,
+            endingBalance: endBalance
+        });
+
+        return annual;
+    }
+
+    // --- Input DOM References ---
+    var elCurBalance = document.getElementById("refiCurBalance");
+    var elCurRate = document.getElementById("refiCurRate");
+    var elCurYears = document.getElementById("refiCurYears");
+    var elCurMonths = document.getElementById("refiCurMonths");
+    var elCurPayment = document.getElementById("refiCurPayment");
+    var elCurStartDate = document.getElementById("refiCurStartDate");
+
+    var elNewRate = document.getElementById("refiNewRate");
+    var elNewTermSelect = document.getElementById("refiNewTermSelect");
+    var elCustomTermRow = document.getElementById("refiCustomTermRow");
+    var elNewTermYears = document.getElementById("refiNewTermYears");
+    var elNewTermMonths = document.getElementById("refiNewTermMonths");
+    var elNewStartDate = document.getElementById("refiNewStartDate");
+    var elHomeValue = document.getElementById("refiHomeValue");
+
+    var elCostMode = document.getElementById("refiCostMode");
+    var elCostPrefix = document.getElementById("refiCostPrefix");
+    var elCostSuffix = document.getElementById("refiCostSuffix");
+    var elCostValue = document.getElementById("refiCostValue");
+    var elPoints = document.getElementById("refiPoints");
+    var elCredits = document.getElementById("refiCredits");
+    var elCashOut = document.getElementById("refiCashOut");
+    var elCashIn = document.getElementById("refiCashIn");
+    var elFinanceCosts = document.getElementById("refiFinanceCosts");
+
+    var elHoldYears = document.getElementById("refiHoldYears");
+    var elHoldMonths = document.getElementById("refiHoldMonths");
+    var elExtraPrincipal = document.getElementById("refiExtraPrincipal");
+    var elKeepSamePayment = document.getElementById("refiKeepSamePayment");
+
+    // Initialize Default Dates
+    var today = new Date();
+    var curDefaultStart = new Date(today.getFullYear(), today.getMonth() - 32, 1);
+    if (elCurStartDate) elCurStartDate.value = curDefaultStart.toISOString().split("T")[0];
+    if (elNewStartDate) elNewStartDate.value = today.toISOString().split("T")[0];
+
+    // --- Term Select Listener ---
+    if (elNewTermSelect) {
+        elNewTermSelect.addEventListener("change", function () {
+            if (this.value === "custom") {
+                elCustomTermRow.style.display = "grid";
+            } else {
+                elCustomTermRow.style.display = "none";
+                elNewTermYears.value = this.value;
+                elNewTermMonths.value = "0";
+            }
+        });
+    }
+
+    // --- Cost Mode Listener ---
+    if (elCostMode) {
+        elCostMode.addEventListener("change", function () {
+            if (this.value === "percent") {
+                elCostPrefix.style.display = "none";
+                elCostSuffix.style.display = "flex";
+                if (parseMoney(elCostValue.value) > 20) {
+                    elCostValue.value = "2.0";
+                }
+            } else {
+                elCostPrefix.style.display = "flex";
+                elCostSuffix.style.display = "none";
+                if (parsePercent(elCostValue.value) <= 10) {
+                    elCostValue.value = "5,000";
+                }
+            }
+        });
+    }
+
+    // --- Main Calculation Routine ---
+    function doRefinanceCalculation() {
+        var curBal = parseMoney(elCurBalance.value);
+        var curRate = parsePercent(elCurRate.value);
+        var curYrs = parseInt(elCurYears.value, 10) || 0;
+        var curMos = parseInt(elCurMonths.value, 10) || 0;
+        var curRemainingMonths = (curYrs * 12) + curMos;
+        if (curRemainingMonths <= 0) curRemainingMonths = 360;
+
+        // Custom entered current payment or formula
+        var customCurPmt = parseMoney(elCurPayment.value);
+        var curPmt = customCurPmt > 0 ? customCurPmt : calculateMonthlyPayment(curBal, curRate, curRemainingMonths);
+
+        // Current start date
+        var curStart = elCurStartDate && elCurStartDate.value ? new Date(elCurStartDate.value) : new Date();
+
+        // Current loan schedule & total remaining interest
+        var curSchedule = generateAmortizationSchedule(curBal, curRate, curRemainingMonths, curStart, 0);
+        var curTotalInterest = 0;
+        for (var i = 0; i < curSchedule.length; i++) {
+            curTotalInterest += curSchedule[i].interestPaid;
+        }
+        var curPayoff = curSchedule.length > 0 ? curSchedule[curSchedule.length - 1].dateStr : "--";
+
+        // Proposed Refinance inputs
+        var newRate = parsePercent(elNewRate.value);
+        var newTermYrs = 30;
+        var newTermMos = 0;
+        if (elNewTermSelect.value === "custom") {
+            newTermYrs = parseInt(elNewTermYears.value, 10) || 0;
+            newTermMos = parseInt(elNewTermMonths.value, 10) || 0;
+        } else {
+            newTermYrs = parseInt(elNewTermSelect.value, 10) || 30;
+        }
+        var newTermTotalMonths = (newTermYrs * 12) + newTermMos;
+        if (newTermTotalMonths <= 0) newTermTotalMonths = 360;
+
+        // Closing costs, points & credits
+        var costMode = elCostMode ? elCostMode.value : "dollar";
+        var rawCostVal = parseMoney(elCostValue.value);
+        var baseCosts = costMode === "percent" ? (rawCostVal / 100 * curBal) : rawCostVal;
+
+        var pointsNum = parsePercent(elPoints.value);
+        var pointsCost = (pointsNum / 100) * curBal;
+
+        var lenderCredits = parseMoney(elCredits.value);
+        var grossCosts = baseCosts + pointsCost;
+        var netCosts = Math.max(0, grossCosts - lenderCredits);
+
+        var cashOut = parseMoney(elCashOut.value);
+        var cashIn = parseMoney(elCashIn.value);
+        var financeCosts = elFinanceCosts ? elFinanceCosts.checked : false;
+
+        // Financed principal
+        var financedClosingCosts = financeCosts ? netCosts : 0;
+        var upfrontCashHurdle = financeCosts ? 0 : netCosts;
+        var newLoanPrincipal = Math.max(0, curBal + financedClosingCosts + cashOut - cashIn);
+
+        // Required base payment on new loan
+        var newBasePayment = calculateMonthlyPayment(newLoanPrincipal, newRate, newTermTotalMonths);
+
+        // Check Extra Principal & Same Payment Strategy
+        var extraPrincipal = parseMoney(elExtraPrincipal.value);
+        var keepSamePayment = elKeepSamePayment ? elKeepSamePayment.checked : false;
+        if (keepSamePayment && curPmt > newBasePayment) {
+            extraPrincipal += (curPmt - newBasePayment);
+        }
+
+        // New loan schedule
+        var newStart = elNewStartDate && elNewStartDate.value ? new Date(elNewStartDate.value) : new Date();
+        var newSchedule = generateAmortizationSchedule(newLoanPrincipal, newRate, newTermTotalMonths, newStart, extraPrincipal);
+        var newTotalInterest = 0;
+        for (var j = 0; j < newSchedule.length; j++) {
+            newTotalInterest += newSchedule[j].interestPaid;
+        }
+        var newPayoff = newSchedule.length > 0 ? newSchedule[newSchedule.length - 1].dateStr : "--";
+
+        // Monthly savings & difference
+        var monthlySavings = curPmt - newBasePayment;
+
+        // Break-Even Analysis (Uses total net costs as the recovery hurdle)
+        var breakEvenMonths = 0;
+        var breakEvenDateStr = "--";
+        var breakEvenDesc = "";
+
+        if (netCosts <= 0) {
+            breakEvenMonths = 0;
+            breakEvenDateStr = "Immediate";
+            breakEvenDesc = "0 months (Zero net costs)";
+        } else if (monthlySavings > 0) {
+            breakEvenMonths = Math.ceil(netCosts / monthlySavings);
+            var beDate = new Date(newStart.getFullYear(), newStart.getMonth() + breakEvenMonths, 1);
+            breakEvenDateStr = formatDate(beDate);
+            breakEvenDesc = "Approx. " + formatDuration(breakEvenMonths);
+        } else {
+            breakEvenMonths = Infinity;
+            breakEvenDateStr = "No payment break-even";
+            breakEvenDesc = "New payment is higher or equal to current";
+        }
+
+        // Total Interest Savings & Lifetime Net Savings
+        var interestSavings = curTotalInterest - newTotalInterest;
+        var lifetimeNetSavings = interestSavings - netCosts;
+
+        // Holding Period Net Savings
+        var holdYrs = parseInt(elHoldYears.value, 10) || 0;
+        var holdMos = parseInt(elHoldMonths.value, 10) || 0;
+        var totalHoldMonths = (holdYrs * 12) + holdMos;
+        if (totalHoldMonths <= 0) totalHoldMonths = 60; // 5 years default
+
+        var cumulativePmtSavingsAtHold = monthlySavings * totalHoldMonths;
+        var netSavingsAtHold = cumulativePmtSavingsAtHold - netCosts;
+
+        // LTV Calculation
+        var homeVal = parseMoney(elHomeValue.value);
+        var ltvPercent = homeVal > 0 ? (newLoanPrincipal / homeVal * 100) : 0;
+
+        // Save State
+        calcState = {
+            curBalance: curBal,
+            curRate: curRate,
+            curRemainingMonths: curRemainingMonths,
+            curPayment: curPmt,
+            curTotalInterest: curTotalInterest,
+            curSchedule: curSchedule,
+            curAnnual: generateAnnualSummaryFromSchedule(curSchedule),
+            curPayoffDate: curPayoff,
+
+            newRate: newRate,
+            newTermMonths: newTermTotalMonths,
+            newLoanAmount: newLoanPrincipal,
+            netClosingCosts: netCosts,
+            upfrontCashHurdle: upfrontCashHurdle,
+            newPayment: newBasePayment,
+            newTotalInterest: newTotalInterest,
+            newSchedule: newSchedule,
+            newAnnual: generateAnnualSummaryFromSchedule(newSchedule),
+            newPayoffDate: newPayoff,
+
+            monthlySavings: monthlySavings,
+            breakEvenMonths: breakEvenMonths,
+            breakEvenDate: breakEvenDateStr,
+            interestSavings: interestSavings,
+            lifetimeNetSavings: lifetimeNetSavings,
+            holdingPeriodSavings: netSavingsAtHold,
+            holdingMonths: totalHoldMonths,
+            extraMonthlyPrincipal: extraPrincipal,
+            keepSamePayment: keepSamePayment,
+            ltv: ltvPercent,
+            homeValue: homeVal
+        };
+
+        // Render Dashboard
+        renderResults();
+    }
+
+    // --- Render Results to DOM ---
+    function renderResults() {
+        var resSec = document.getElementById("refiResultsSection");
+        if (!resSec) return;
+        resSec.style.display = "block";
+
+        // Stat Cards
+        document.getElementById("resCurPayment").textContent = formatCurrency(calcState.curPayment);
+        document.getElementById("resCurRemaining").textContent = "Over " + formatDuration(calcState.curRemainingMonths) + " remaining";
+
+        document.getElementById("resNewPayment").textContent = formatCurrency(calcState.newPayment);
+        document.getElementById("resNewTerm").textContent = "Over " + formatDuration(calcState.newTermMonths) + " term";
+
+        // Monthly Savings or Increase Card
+        var diffLabel = document.getElementById("resDiffLabel");
+        var diffValue = document.getElementById("resDiffValue");
+        var diffCard = document.getElementById("resDiffCard");
+        var diffNote = document.getElementById("resDiffNote");
+
+        if (calcState.monthlySavings > 0) {
+            diffLabel.textContent = "Monthly Payment Savings";
+            diffValue.textContent = formatCurrency(calcState.monthlySavings);
+            diffValue.className = "refi-stat-value refi-val-emerald";
+            diffCard.className = "refi-stat-card refi-stat-emerald";
+            diffNote.textContent = "Cash freed up every month";
+        } else if (calcState.monthlySavings < 0) {
+            diffLabel.textContent = "Monthly Payment Increase";
+            diffValue.textContent = formatCurrency(Math.abs(calcState.monthlySavings));
+            diffValue.className = "refi-stat-value refi-val-rose";
+            diffCard.className = "refi-stat-card refi-stat-amber";
+            diffNote.textContent = "Higher monthly commitment";
+        } else {
+            diffLabel.textContent = "Monthly Payment Difference";
+            diffValue.textContent = "$0.00";
+            diffValue.className = "refi-stat-value refi-val-blue";
+            diffCard.className = "refi-stat-card refi-stat-blue";
+            diffNote.textContent = "No change in monthly payment";
+        }
+
+        // Break-Even Metrics
+        var beMonthsEl = document.getElementById("resBreakEvenMonths");
+        var beTextEl = document.getElementById("resBreakEvenText");
+        var beDateEl = document.getElementById("resBreakEvenDate");
+
+        if (isFinite(calcState.breakEvenMonths) && calcState.breakEvenMonths > 0) {
+            beMonthsEl.textContent = calcState.breakEvenMonths + " Mos";
+            beTextEl.textContent = "Approx. " + formatDuration(calcState.breakEvenMonths);
+            beDateEl.textContent = calcState.breakEvenDate;
+        } else if (calcState.breakEvenMonths === 0) {
+            beMonthsEl.textContent = "0 Mos";
+            beTextEl.textContent = "No closing costs to recover";
+            beDateEl.textContent = "Immediate";
+        } else {
+            beMonthsEl.textContent = "N/A";
+            beTextEl.textContent = "No payment-based break-even";
+            beDateEl.textContent = "--";
+        }
+
+        // Net Costs & Financed Status
+        document.getElementById("resNetCosts").textContent = formatCurrency(calcState.netClosingCosts);
+        var elFinStatus = document.getElementById("resFinancedStatus");
+        if (elFinanceCosts && elFinanceCosts.checked) {
+            elFinStatus.textContent = "Financed into new loan";
+        } else {
+            elFinStatus.textContent = "Paid out-of-pocket at closing";
+        }
+
+        // Interest & Lifetime Net Savings
+        var intSavEl = document.getElementById("resInterestSavings");
+        intSavEl.textContent = formatCurrency(calcState.interestSavings);
+        intSavEl.className = calcState.interestSavings >= 0 ? "refi-stat-value refi-val-teal" : "refi-stat-value refi-val-rose";
+
+        var lifeSavEl = document.getElementById("resNetLifetimeSavings");
+        lifeSavEl.textContent = formatCurrency(calcState.lifetimeNetSavings);
+        lifeSavEl.className = calcState.lifetimeNetSavings >= 0 ? "refi-stat-value refi-val-emerald" : "refi-stat-value refi-val-rose";
+
+        // LTV
+        var ltvEl = document.getElementById("resLtv");
+        var ltvNote = document.getElementById("resLtvNote");
+        if (calcState.ltv > 0) {
+            ltvEl.textContent = formatPercent(calcState.ltv, 1);
+            ltvNote.textContent = calcState.ltv <= 80 ? "≤ 80% LTV (Conventional Equity)" : "> 80% LTV (May Require PMI)";
+        } else {
+            ltvEl.textContent = "N/A";
+            ltvNote.textContent = "Home value not provided";
+        }
+
+        // Holding Period Banner
+        var holdYrs = Math.floor(calcState.holdingMonths / 12);
+        var holdMos = calcState.holdingMonths % 12;
+        var holdDurationStr = formatDuration(calcState.holdingMonths);
+        document.getElementById("resHoldingTitle").textContent = "Holding Period Net Impact (" + holdDurationStr + ")";
+        var holdBodyEl = document.getElementById("resHoldingBody");
+        if (calcState.holdingPeriodSavings >= 0) {
+            holdBodyEl.textContent = "If you keep this loan for " + holdDurationStr + ", your projected cumulative payment savings will exceed closing costs, generating an estimated net cash-flow gain of " + formatCurrencyRound(calcState.holdingPeriodSavings) + ".";
+        } else {
+            holdBodyEl.textContent = "Over " + holdDurationStr + ", your cumulative monthly payment savings (" + formatCurrencyRound(calcState.monthlySavings * calcState.holdingMonths) + ") will not yet fully recover the " + formatCurrencyRound(calcState.netClosingCosts) + " closing cost hurdle, leaving an estimated net cash deficit of " + formatCurrencyRound(calcState.holdingPeriodSavings) + ".";
+        }
+
+        // Term Reset Warning Card
+        var termAlert = document.getElementById("resTermResetAlert");
+        var termTitle = document.getElementById("resTermResetTitle");
+        var termBody = document.getElementById("resTermResetBody");
+
+        if (calcState.newTermMonths > calcState.curRemainingMonths) {
+            termAlert.style.display = "flex";
+            termAlert.className = "refi-alert-card refi-alert-amber";
+            termTitle.textContent = "Loan Term Reset Notice (Term Extended)";
+            var addedMonths = calcState.newTermMonths - calcState.curRemainingMonths;
+            termBody.textContent = "The proposed refinance extends your repayment timeline by " + formatDuration(addedMonths) + " compared to your remaining term. While monthly payments may decrease, extending your loan may result in paying more total interest over the life of your mortgage.";
+        } else if (calcState.newTermMonths < calcState.curRemainingMonths) {
+            termAlert.style.display = "flex";
+            termAlert.className = "refi-alert-card refi-alert-emerald";
+            termTitle.textContent = "Accelerated Loan Payoff (Term Shortened)";
+            var savedMonths = calcState.curRemainingMonths - calcState.newTermMonths;
+            termBody.textContent = "The proposed refinance shortens your repayment timeline by " + formatDuration(savedMonths) + "! You will own your home free and clear sooner and dramatically reduce total finance charges.";
+        } else {
+            termAlert.style.display = "none";
+        }
+
+        // Summary Verdict Card
+        var verdictBody = document.getElementById("resVerdictBody");
+        if (calcState.monthlySavings > 0 && calcState.lifetimeNetSavings > 0) {
+            verdictBody.textContent = "Under these assumptions, refinancing lowers your monthly payment by " + formatCurrency(calcState.monthlySavings) + " and delivers an estimated lifetime net savings of " + formatCurrencyRound(calcState.lifetimeNetSavings) + " after accounting for closing costs. You recover upfront expenses in approximately " + formatDuration(calcState.breakEvenMonths) + ".";
+        } else if (calcState.monthlySavings > 0 && calcState.lifetimeNetSavings <= 0) {
+            verdictBody.textContent = "Under these assumptions, refinancing frees up " + formatCurrency(calcState.monthlySavings) + " in monthly cash flow, but results in higher lifetime costs of " + formatCurrencyRound(Math.abs(calcState.lifetimeNetSavings)) + " primarily due to extending the loan term or transaction fees.";
+        } else if (calcState.monthlySavings <= 0 && calcState.lifetimeNetSavings > 0) {
+            verdictBody.textContent = "Under these assumptions, refinancing increases your monthly payment by " + formatCurrency(Math.abs(calcState.monthlySavings)) + " (likely due to a shorter term), but produces substantial lifetime interest savings of " + formatCurrencyRound(calcState.lifetimeNetSavings) + ".";
+        } else {
+            verdictBody.textContent = "Under these assumptions, the proposed refinance does not appear to offer monthly payment savings or lifetime interest reductions.";
+        }
+
+        // Side-by-Side Table Update
+        document.getElementById("tblCurPrincipal").textContent = formatCurrencyRound(calcState.curBalance);
+        document.getElementById("tblNewPrincipal").textContent = formatCurrencyRound(calcState.newLoanAmount);
+        document.getElementById("tblDiffPrincipal").textContent = formatCurrencyRound(calcState.newLoanAmount - calcState.curBalance);
+
+        document.getElementById("tblCurRate").textContent = formatPercent(calcState.curRate);
+        document.getElementById("tblNewRate").textContent = formatPercent(calcState.newRate);
+        var rateDiff = calcState.newRate - calcState.curRate;
+        document.getElementById("tblDiffRate").textContent = (rateDiff > 0 ? "+" : "") + formatPercent(rateDiff);
+
+        document.getElementById("tblCurTerm").textContent = formatDuration(calcState.curRemainingMonths);
+        document.getElementById("tblNewTerm").textContent = formatDuration(calcState.newTermMonths);
+        var termDiffMonths = calcState.newTermMonths - calcState.curRemainingMonths;
+        document.getElementById("tblDiffTerm").textContent = (termDiffMonths > 0 ? "+" : "") + formatDuration(Math.abs(termDiffMonths));
+
+        document.getElementById("tblCurPmt").textContent = formatCurrency(calcState.curPayment);
+        document.getElementById("tblNewPmt").textContent = formatCurrency(calcState.newPayment);
+        document.getElementById("tblDiffPmt").textContent = formatCurrency(-calcState.monthlySavings);
+
+        document.getElementById("tblCurInterest").textContent = formatCurrencyRound(calcState.curTotalInterest);
+        document.getElementById("tblNewInterest").textContent = formatCurrencyRound(calcState.newTotalInterest);
+        document.getElementById("tblDiffInterest").textContent = formatCurrencyRound(-calcState.interestSavings);
+
+        document.getElementById("tblCurPayoff").textContent = calcState.curPayoffDate;
+        document.getElementById("tblNewPayoff").textContent = calcState.newPayoffDate;
+        document.getElementById("tblDiffPayoff").textContent = calcState.newPayoffDate === calcState.curPayoffDate ? "Identical" : "Shifted";
+
+        document.getElementById("tblNewCosts").textContent = formatCurrency(calcState.netClosingCosts);
+        document.getElementById("tblDiffCosts").textContent = "+" + formatCurrency(calcState.netClosingCosts);
+
+        var curTotalCost = calcState.curBalance + calcState.curTotalInterest;
+        var newTotalCost = calcState.newLoanAmount + calcState.newTotalInterest + (elFinanceCosts && elFinanceCosts.checked ? 0 : calcState.netClosingCosts);
+        document.getElementById("tblCurTotalCost").textContent = formatCurrencyRound(curTotalCost);
+        document.getElementById("tblNewTotalCost").textContent = formatCurrencyRound(newTotalCost);
+        document.getElementById("tblDiffTotalCost").textContent = formatCurrencyRound(newTotalCost - curTotalCost);
+
+        // Timeline Milestones
+        renderTimeline();
+
+        // Render Pure SVG Charts
+        renderCharts();
+
+        // Populate Amortization Tables
+        renderAmortizationTables();
+
+        // Scroll into view gently on mobile if requested
+        resSec.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // --- Timeline Milestones ---
+    function renderTimeline() {
+        var box = document.getElementById("resTimelineBox");
+        if (!box) return;
+        box.innerHTML = "";
+
+        var milestones = [
+            { label: "Year 1", months: 12 },
+            { label: "Year 2", months: 24 },
+            { label: "Year 3", months: 36 },
+            { label: "Year 5", months: 60 },
+            { label: "Year 10", months: 120 }
+        ];
+
+        if (isFinite(calcState.breakEvenMonths) && calcState.breakEvenMonths > 0) {
+            milestones.push({
+                label: "Break-Even",
+                months: calcState.breakEvenMonths,
+                isBreakEven: true
+            });
+            milestones.sort(function (a, b) { return a.months - b.months; });
+        }
+
+        for (var i = 0; i < milestones.length; i++) {
+            var m = milestones[i];
+            var cumSavings = (calcState.monthlySavings * m.months) - calcState.netClosingCosts;
+
+            var card = document.createElement("div");
+            card.className = "refi-milestone-card";
+            if (m.isBreakEven) {
+                card.style.borderColor = "#7c3aed";
+                card.style.background = "#faf5ff";
+            }
+
+            var labelEl = document.createElement("div");
+            labelEl.className = "refi-milestone-label";
+            labelEl.textContent = m.label + (m.isBreakEven ? " (" + m.months + "m)" : "");
+
+            var valEl = document.createElement("div");
+            valEl.className = "refi-milestone-val";
+            valEl.style.color = cumSavings >= 0 ? "#059669" : "#ea580c";
+            valEl.textContent = formatCurrencyRound(cumSavings);
+
+            card.appendChild(labelEl);
+            card.appendChild(valEl);
+            box.appendChild(card);
+        }
+    }
+
+    // --- Pure SVG Chart Renderers (No External Libraries) ---
+    function renderCharts() {
+        renderPaymentBarChart();
+        renderBalanceLineChart();
+        renderSavingsBreakEvenChart();
+    }
+
+    function renderPaymentBarChart() {
+        var box = document.getElementById("chartPaymentBox");
+        if (!box) return;
+
+        var p1 = Math.round(calcState.curPayment);
+        var p2 = Math.round(calcState.newPayment);
+        var maxVal = Math.max(p1, p2, 100) * 1.25;
+
+        var svgWidth = 600;
+        var svgHeight = 220;
+        var barWidth = 100;
+
+        var h1 = (p1 / maxVal) * 130;
+        var h2 = (p2 / maxVal) * 130;
+        var y1 = 170 - h1;
+        var y2 = 170 - h2;
+
+        var svgHtml = [
+            '<svg viewBox="0 0 ' + svgWidth + ' ' + svgHeight + '" class="refi-svg-box">',
+            '<line x1="60" y1="170" x2="540" y2="170" stroke="#cbd5e1" stroke-width="2"/>',
+            // Bar 1 - Current Loan
+            '<rect x="150" y="' + y1 + '" width="' + barWidth + '" height="' + h1 + '" rx="8" fill="#2563eb"/>',
+            '<text x="200" y="' + (y1 - 10) + '" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">$' + p1.toLocaleString() + '/mo</text>',
+            '<text x="200" y="195" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">Current Mortgage</text>',
+            // Bar 2 - Refinance Loan
+            '<rect x="350" y="' + y2 + '" width="' + barWidth + '" height="' + h2 + '" rx="8" fill="#059669"/>',
+            '<text x="400" y="' + (y2 - 10) + '" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">$' + p2.toLocaleString() + '/mo</text>',
+            '<text x="400" y="195" text-anchor="middle" font-size="13" font-weight="600" fill="#64748b">Proposed Refinance</text>',
+            '</svg>'
+        ].join("");
+
+        box.innerHTML = svgHtml;
+    }
+
+    function renderBalanceLineChart() {
+        var box = document.getElementById("chartBalanceBox");
+        if (!box) return;
+
+        var curSched = calcState.curSchedule;
+        var newSched = calcState.newSchedule;
+        if (!curSched.length && !newSched.length) {
+            box.innerHTML = '<div style="padding:20px;text-align:center;color:#94a3b8;">No schedule data available</div>';
+            return;
+        }
+
+        var maxMonths = Math.max(curSched.length, newSched.length, 1);
+        var maxBalance = Math.max(
+            curSched.length ? curSched[0].beginningBalance : 0,
+            newSched.length ? newSched[0].beginningBalance : 0,
+            100000
+        ) * 1.1;
+
+        var svgW = 600;
+        var svgH = 240;
+        var padL = 70;
+        var padR = 30;
+        var padT = 20;
+        var padB = 40;
+        var plotW = svgW - padL - padR;
+        var plotH = svgH - padT - padB;
+
+        function getX(month) { return padL + (month / maxMonths) * plotW; }
+        function getY(bal) { return padT + plotH - (bal / maxBalance) * plotH; }
+
+        // Path for Current Loan
+        var curPath = "M " + getX(0) + " " + getY(curSched[0].beginningBalance);
+        for (var i = 0; i < curSched.length; i += Math.max(1, Math.floor(curSched.length / 30))) {
+            curPath += " L " + getX(curSched[i].paymentNum) + " " + getY(curSched[i].endingBalance);
+        }
+        curPath += " L " + getX(curSched.length) + " " + getY(0);
+
+        // Path for New Loan
+        var newPath = "M " + getX(0) + " " + getY(newSched[0].beginningBalance);
+        for (var j = 0; j < newSched.length; j += Math.max(1, Math.floor(newSched.length / 30))) {
+            newPath += " L " + getX(newSched[j].paymentNum) + " " + getY(newSched[j].endingBalance);
+        }
+        newPath += " L " + getX(newSched.length) + " " + getY(0);
+
+        var svgHtml = [
+            '<svg viewBox="0 0 ' + svgW + ' ' + svgH + '" class="refi-svg-box">',
+            '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (padL + plotW) + '" y2="' + (padT + plotH) + '" stroke="#cbd5e1" stroke-width="2"/>',
+            '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '" stroke="#cbd5e1" stroke-width="2"/>',
+            // Gridlines & Labels
+            '<text x="' + (padL - 10) + '" y="' + padT + '" text-anchor="end" font-size="11" fill="#64748b">$' + Math.round(maxBalance / 1000) + 'k</text>',
+            '<text x="' + (padL - 10) + '" y="' + (padT + plotH / 2) + '" text-anchor="end" font-size="11" fill="#64748b">$' + Math.round(maxBalance / 2000) + 'k</text>',
+            '<text x="' + (padL - 10) + '" y="' + (padT + plotH) + '" text-anchor="end" font-size="11" fill="#64748b">$0</text>',
+            '<text x="' + padL + '" y="' + (svgH - 12) + '" text-anchor="middle" font-size="11" fill="#64748b">Yr 0</text>',
+            '<text x="' + (padL + plotW / 2) + '" y="' + (svgH - 12) + '" text-anchor="middle" font-size="11" fill="#64748b">Yr ' + Math.round(maxMonths / 24) + '</text>',
+            '<text x="' + (padL + plotW) + '" y="' + (svgH - 12) + '" text-anchor="middle" font-size="11" fill="#64748b">Yr ' + Math.round(maxMonths / 12) + '</text>',
+            // Lines
+            '<path d="' + curPath + '" fill="none" stroke="#2563eb" stroke-width="3"/>',
+            '<path d="' + newPath + '" fill="none" stroke="#059669" stroke-width="3" stroke-dasharray="4 2"/>',
+            '</svg>'
+        ].join("");
+
+        box.innerHTML = svgHtml;
+    }
+
+    function renderSavingsBreakEvenChart() {
+        var box = document.getElementById("chartSavingsBox");
+        if (!box) return;
+
+        var netCosts = calcState.netClosingCosts;
+        var monthlySav = calcState.monthlySavings;
+        var maxMonths = Math.min(120, Math.max(60, (calcState.breakEvenMonths || 0) * 1.5));
+
+        var svgW = 600;
+        var svgH = 240;
+        var padL = 70;
+        var padR = 40;
+        var padT = 20;
+        var padB = 40;
+        var plotW = svgW - padL - padR;
+        var plotH = svgH - padT - padB;
+
+        var minVal = -netCosts * 1.1;
+        var maxVal = Math.max(netCosts, (monthlySav * maxMonths) - netCosts, 5000) * 1.15;
+        var range = maxVal - minVal;
+
+        function getX(m) { return padL + (m / maxMonths) * plotW; }
+        function getY(v) { return padT + plotH - ((v - minVal) / range) * plotH; }
+
+        var zeroY = getY(0);
+
+        var path = "M " + getX(0) + " " + getY(-netCosts);
+        for (var m = 1; m <= maxMonths; m += 3) {
+            var val = (monthlySav * m) - netCosts;
+            path += " L " + getX(m) + " " + getY(val);
+        }
+
+        var beX = isFinite(calcState.breakEvenMonths) && calcState.breakEvenMonths > 0 ? getX(calcState.breakEvenMonths) : null;
+
+        var svgHtml = [
+            '<svg viewBox="0 0 ' + svgW + ' ' + svgH + '" class="refi-svg-box">',
+            // Zero Line (Break-Even Line)
+            '<line x1="' + padL + '" y1="' + zeroY + '" x2="' + (padL + plotW) + '" y2="' + zeroY + '" stroke="#ea580c" stroke-width="2" stroke-dasharray="4 4"/>',
+            '<text x="' + (padL + plotW) + '" y="' + (zeroY - 6) + '" text-anchor="end" font-size="11" font-weight="700" fill="#ea580c">Break-Even ($0)</text>',
+            // Axes
+            '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (padL + plotW) + '" y2="' + (padT + plotH) + '" stroke="#cbd5e1" stroke-width="1.5"/>',
+            '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '" stroke="#cbd5e1" stroke-width="1.5"/>',
+            // Labels
+            '<text x="' + (padL - 8) + '" y="' + padT + '" text-anchor="end" font-size="11" fill="#64748b">+$' + Math.round(maxVal / 1000) + 'k</text>',
+            '<text x="' + (padL - 8) + '" y="' + (padT + plotH) + '" text-anchor="end" font-size="11" fill="#64748b">-$' + Math.round(Math.abs(minVal) / 1000) + 'k</text>',
+            '<text x="' + padL + '" y="' + (svgH - 12) + '" text-anchor="middle" font-size="11" fill="#64748b">Mo 0</text>',
+            '<text x="' + (padL + plotW / 2) + '" y="' + (svgH - 12) + '" text-anchor="middle" font-size="11" fill="#64748b">Mo ' + Math.round(maxMonths / 2) + '</text>',
+            '<text x="' + (padL + plotW) + '" y="' + (svgH - 12) + '" text-anchor="middle" font-size="11" fill="#64748b">Mo ' + Math.round(maxMonths) + '</text>',
+            // Net Savings Curve
+            '<path d="' + path + '" fill="none" stroke="#7c3aed" stroke-width="3"/>'
+        ];
+
+        // Break-even circle indicator
+        if (beX && beX >= padL && beX <= (padL + plotW)) {
+            svgHtml.push('<circle cx="' + beX + '" cy="' + zeroY + '" r="5" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>');
+            svgHtml.push('<text x="' + beX + '" y="' + (zeroY + 18) + '" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">Month ' + calcState.breakEvenMonths + '</text>');
+        }
+
+        svgHtml.push('</svg>');
+        box.innerHTML = svgHtml.join("");
+    }
+
+    // --- Amortization Table Renderers ---
+    function renderAmortizationTables() {
+        // Tab 1: Annual Summary Table
+        var annualTbody = document.querySelector("#tblAnnualSummary tbody");
+        if (annualTbody) {
+            annualTbody.innerHTML = "";
+            var curAnn = calcState.curAnnual;
+            var newAnn = calcState.newAnnual;
+            var maxYears = Math.max(curAnn.length, newAnn.length);
+
+            for (var y = 0; y < maxYears; y++) {
+                var c = curAnn[y] || { year: "--", principalPaid: 0, interestPaid: 0, endingBalance: 0 };
+                var n = newAnn[y] || { year: "--", principalPaid: 0, interestPaid: 0, endingBalance: 0 };
+                var yearLabel = n.year !== "--" ? n.year : c.year;
+
+                var tr = document.createElement("tr");
+                tr.innerHTML = [
+                    "<td><strong>" + yearLabel + "</strong></td>",
+                    "<td>" + formatCurrencyRound(c.principalPaid) + "</td>",
+                    "<td>" + formatCurrencyRound(c.interestPaid) + "</td>",
+                    "<td>" + formatCurrencyRound(c.endingBalance) + "</td>",
+                    "<td class=\"refi-col-highlight\">" + formatCurrencyRound(n.principalPaid) + "</td>",
+                    "<td class=\"refi-col-highlight\">" + formatCurrencyRound(n.interestPaid) + "</td>",
+                    "<td class=\"refi-col-highlight\">" + formatCurrencyRound(n.endingBalance) + "</td>"
+                ].join("");
+                annualTbody.appendChild(tr);
+            }
+        }
+
+        // Tab 2: New Loan Monthly Schedule
+        var newTbody = document.querySelector("#tblNewAmort tbody");
+        if (newTbody) {
+            newTbody.innerHTML = "";
+            var newSched = calcState.newSchedule;
+            var frag1 = document.createDocumentFragment();
+            for (var i = 0; i < newSched.length; i++) {
+                var row = newSched[i];
+                var tr1 = document.createElement("tr");
+                tr1.innerHTML = [
+                    "<td>" + row.paymentNum + "</td>",
+                    "<td>" + row.dateStr + "</td>",
+                    "<td>" + formatCurrency(row.beginningBalance) + "</td>",
+                    "<td>" + formatCurrency(row.payment) + "</td>",
+                    "<td>" + formatCurrency(row.principalPaid) + "</td>",
+                    "<td>" + formatCurrency(row.interestPaid) + "</td>",
+                    "<td>" + formatCurrency(row.extraPrincipal) + "</td>",
+                    "<td>" + formatCurrency(row.endingBalance) + "</td>"
+                ].join("");
+                frag1.appendChild(tr1);
+            }
+            newTbody.appendChild(frag1);
+        }
+
+        // Tab 3: Current Loan Monthly Schedule
+        var curTbody = document.querySelector("#tblCurAmort tbody");
+        if (curTbody) {
+            curTbody.innerHTML = "";
+            var curSched = calcState.curSchedule;
+            var frag2 = document.createDocumentFragment();
+            for (var j = 0; j < curSched.length; j++) {
+                var r2 = curSched[j];
+                var tr2 = document.createElement("tr");
+                tr2.innerHTML = [
+                    "<td>" + r2.paymentNum + "</td>",
+                    "<td>" + r2.dateStr + "</td>",
+                    "<td>" + formatCurrency(r2.beginningBalance) + "</td>",
+                    "<td>" + formatCurrency(r2.payment) + "</td>",
+                    "<td>" + formatCurrency(r2.principalPaid) + "</td>",
+                    "<td>" + formatCurrency(r2.interestPaid) + "</td>",
+                    "<td>" + formatCurrency(r2.endingBalance) + "</td>"
+                ].join("");
+                frag2.appendChild(tr2);
+            }
+            curTbody.appendChild(frag2);
+        }
+    }
+
+    // --- Tab Switching Logic ---
+    var tabBtns = root.querySelectorAll(".refi-tab-btn");
+    tabBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            tabBtns.forEach(function (b) { b.classList.remove("refi-tab-active"); });
+            this.classList.add("refi-tab-active");
+
+            var target = this.getAttribute("data-tab");
+            document.getElementById("tabAnnualSummary").style.display = target === "annualSummary" ? "block" : "none";
+            document.getElementById("tabNewAmort").style.display = target === "newAmort" ? "block" : "none";
+            document.getElementById("tabCurAmort").style.display = target === "curAmort" ? "block" : "none";
+        });
+    });
+
+    // --- CSV Download Routines ---
+    function downloadCsv(content, filename) {
+        var blob = new Blob([content], { type: "text/csv;charset=utf-8;" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast("✓ Downloaded " + filename);
+    }
+
+    function generateCsvFromSchedule(schedule, title) {
+        var lines = [
+            "# " + title,
+            "Payment Number,Payment Date,Beginning Balance,Payment,Principal,Interest,Extra Principal,Ending Balance"
+        ];
+        for (var i = 0; i < schedule.length; i++) {
+            var r = schedule[i];
+            lines.push([
+                r.paymentNum,
+                '"' + r.dateStr + '"',
+                r.beginningBalance.toFixed(2),
+                r.payment.toFixed(2),
+                r.principalPaid.toFixed(2),
+                r.interestPaid.toFixed(2),
+                (r.extraPrincipal || 0).toFixed(2),
+                r.endingBalance.toFixed(2)
+            ].join(","));
+        }
+        return lines.join("\r\n");
+    }
+
+    var btnCurCsv = document.getElementById("refiBtnDownloadCurCsv");
+    if (btnCurCsv) {
+        btnCurCsv.addEventListener("click", function () {
+            if (!calcState.curSchedule.length) doRefinanceCalculation();
+            var csv = generateCsvFromSchedule(calcState.curSchedule, "Current Mortgage Amortization Schedule");
+            downloadCsv(csv, "current_mortgage_amortization.csv");
+        });
+    }
+
+    var btnNewCsv = document.getElementById("refiBtnDownloadNewCsv");
+    if (btnNewCsv) {
+        btnNewCsv.addEventListener("click", function () {
+            if (!calcState.newSchedule.length) doRefinanceCalculation();
+            var csv = generateCsvFromSchedule(calcState.newSchedule, "Refinance Loan Amortization Schedule");
+            downloadCsv(csv, "refinance_mortgage_amortization.csv");
+        });
+    }
+
+    // --- Text / Print Report Download ---
+    var btnReport = document.getElementById("refiBtnDownloadReport");
+    if (btnReport) {
+        btnReport.addEventListener("click", function () {
+            if (!calcState.newSchedule.length) doRefinanceCalculation();
+            var lines = [
+                "============================================================",
+                "FREE MORTGAGE REFINANCE CALCULATOR - EXECUTIVE ANALYSIS",
+                "Generated: " + new Date().toLocaleDateString("en-US"),
+                "============================================================",
+                "",
+                "1. CURRENT MORTGAGE SUMMARY",
+                "   Current Balance:       " + formatCurrency(calcState.curBalance),
+                "   Current Interest Rate: " + formatPercent(calcState.curRate),
+                "   Remaining Term:        " + formatDuration(calcState.curRemainingMonths),
+                "   Current Monthly P&I:   " + formatCurrency(calcState.curPayment),
+                "   Total Interest Left:   " + formatCurrency(calcState.curTotalInterest),
+                "   Estimated Payoff Date: " + calcState.curPayoffDate,
+                "",
+                "2. PROPOSED REFINANCE LOAN",
+                "   New Loan Principal:    " + formatCurrency(calcState.newLoanAmount),
+                "   New Interest Rate:     " + formatPercent(calcState.newRate),
+                "   New Term Length:       " + formatDuration(calcState.newTermMonths),
+                "   New Monthly P&I:       " + formatCurrency(calcState.newPayment),
+                "   New Total Interest:    " + formatCurrency(calcState.newTotalInterest),
+                "   New Estimated Payoff:  " + calcState.newPayoffDate,
+                "",
+                "3. COST & BREAK-EVEN ANALYSIS",
+                "   Net Closing Costs:     " + formatCurrency(calcState.netClosingCosts),
+                "   Monthly Savings:       " + formatCurrency(calcState.monthlySavings),
+                "   Break-Even Period:     " + (isFinite(calcState.breakEvenMonths) ? calcState.breakEvenMonths + " Months" : "N/A"),
+                "   Break-Even Date:       " + calcState.breakEvenDate,
+                "   Gross Interest Saved:  " + formatCurrency(calcState.interestSavings),
+                "   Net Lifetime Savings:  " + formatCurrency(calcState.lifetimeNetSavings),
+                "   Estimated LTV Ratio:   " + (calcState.ltv > 0 ? formatPercent(calcState.ltv, 1) : "N/A"),
+                "",
+                "============================================================",
+                "DISCLAIMER: For educational & planning purposes only.",
+                "Consult licensed U.S. mortgage lenders for official Loan Estimates.",
+                "============================================================"
+            ];
+
+            var blob = new Blob([lines.join("\r\n")], { type: "text/plain;charset=utf-8;" });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "mortgage_refinance_summary.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast("✓ Downloaded Refinance Report");
+        });
+    }
+
+    // --- Copy Results to Clipboard ---
+    var btnCopy = document.getElementById("refiBtnCopyResults");
+    if (btnCopy) {
+        btnCopy.addEventListener("click", function () {
+            if (!calcState.newSchedule.length) doRefinanceCalculation();
+            var text = [
+                "Mortgage Refinance Comparison Summary",
+                "-------------------------------------",
+                "Current Balance: " + formatCurrency(calcState.curBalance),
+                "Current Rate: " + formatPercent(calcState.curRate),
+                "New Rate: " + formatPercent(calcState.newRate),
+                "Current Payment: " + formatCurrency(calcState.curPayment) + "/mo",
+                "New Payment: " + formatCurrency(calcState.newPayment) + "/mo",
+                "Monthly Savings: " + formatCurrency(calcState.monthlySavings) + "/mo",
+                "Net Closing Costs: " + formatCurrency(calcState.netClosingCosts),
+                "Break-Even Time: " + (isFinite(calcState.breakEvenMonths) ? calcState.breakEvenMonths + " months" : "N/A"),
+                "Estimated Break-Even Date: " + calcState.breakEvenDate,
+                "Estimated Lifetime Net Savings: " + formatCurrency(calcState.lifetimeNetSavings)
+            ].join("\n");
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () {
+                    showToast("✓ Refinance Summary Copied to Clipboard!");
+                }).catch(function () {
+                    fallbackCopyText(text);
+                });
+            } else {
+                fallbackCopyText(text);
+            }
+        });
+    }
+
+    function fallbackCopyText(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+            document.execCommand("copy");
+            showToast("✓ Copied to Clipboard!");
+        } catch (e) {
+            showToast("Press Ctrl+C to copy");
+        }
+        document.body.removeChild(ta);
+    }
+
+    // --- Print Routine ---
+    var btnPrint = document.getElementById("refiBtnPrint");
+    if (btnPrint) {
+        btnPrint.addEventListener("click", function () {
+            window.print();
+        });
+    }
+
+    // --- Load Example Routine ---
+    var btnExample = document.getElementById("refiBtnExample");
+    if (btnExample) {
+        btnExample.addEventListener("click", function () {
+            elCurBalance.value = "350,000";
+            elCurRate.value = "7.250";
+            elCurYears.value = "26";
+            elCurMonths.value = "0";
+            elCurPayment.value = "";
+
+            elNewRate.value = "6.125";
+            elNewTermSelect.value = "30";
+            elCustomTermRow.style.display = "none";
+            elHomeValue.value = "480,000";
+
+            elCostMode.value = "dollar";
+            elCostPrefix.style.display = "flex";
+            elCostSuffix.style.display = "none";
+            elCostValue.value = "5,500";
+            elPoints.value = "0";
+            elCredits.value = "0";
+            elCashOut.value = "0";
+            elCashIn.value = "0";
+            elFinanceCosts.checked = false;
+
+            elHoldYears.value = "7";
+            elHoldMonths.value = "0";
+            elExtraPrincipal.value = "0";
+            elKeepSamePayment.checked = false;
+
+            doRefinanceCalculation();
+            showToast("✓ Loaded Example Refinance Scenario");
+        });
+    }
+
+    // --- Reset Calculator ---
+    var btnReset = document.getElementById("refiBtnReset");
+    if (btnReset) {
+        btnReset.addEventListener("click", function () {
+            elCurBalance.value = "325,000";
+            elCurRate.value = "7.125";
+            elCurYears.value = "27";
+            elCurMonths.value = "4";
+            elCurPayment.value = "";
+
+            elNewRate.value = "6.125";
+            elNewTermSelect.value = "30";
+            elCustomTermRow.style.display = "none";
+            elHomeValue.value = "450,000";
+
+            elCostMode.value = "dollar";
+            elCostPrefix.style.display = "flex";
+            elCostSuffix.style.display = "none";
+            elCostValue.value = "5,000";
+            elPoints.value = "0";
+            elCredits.value = "0";
+            elCashOut.value = "0";
+            elCashIn.value = "0";
+            elFinanceCosts.checked = false;
+
+            elHoldYears.value = "5";
+            elHoldMonths.value = "0";
+            elExtraPrincipal.value = "0";
+            elKeepSamePayment.checked = false;
+
+            var resSec = document.getElementById("refiResultsSection");
+            if (resSec) resSec.style.display = "none";
+            showToast("↺ Calculator Reset to Defaults");
+        });
+    }
+
+    // --- Calculate Primary CTA ---
+    var btnCalc = document.getElementById("refiBtnCalc");
+    if (btnCalc) {
+        btnCalc.addEventListener("click", function () {
+            doRefinanceCalculation();
+        });
+    }
+
+    // --- Social Sharing Handlers (Sharing ONLY document.title + window.location.href) ---
+    function getShareTitle() { return encodeURIComponent(document.title || "Free Mortgage Refinance Calculator"); }
+    function getShareUrl() { return encodeURIComponent(window.location.href || ""); }
+
+    var shareFb = document.getElementById("refiShareFb");
+    if (shareFb) {
+        shareFb.addEventListener("click", function () {
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + getShareUrl(), "_blank", "width=600,height=400");
+        });
+    }
+
+    var shareTw = document.getElementById("refiShareTw");
+    if (shareTw) {
+        shareTw.addEventListener("click", function () {
+            window.open("https://twitter.com/intent/tweet?url=" + getShareUrl() + "&text=" + getShareTitle(), "_blank", "width=600,height=400");
+        });
+    }
+
+    var shareWa = document.getElementById("refiShareWa");
+    if (shareWa) {
+        shareWa.addEventListener("click", function () {
+            window.open("https://api.whatsapp.com/send?text=" + getShareTitle() + "%20" + getShareUrl(), "_blank");
+        });
+    }
+
+    var shareLi = document.getElementById("refiShareLi");
+    if (shareLi) {
+        shareLi.addEventListener("click", function () {
+            window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + getShareUrl(), "_blank", "width=600,height=500");
+        });
+    }
+
+    var shareRd = document.getElementById("refiShareRd");
+    if (shareRd) {
+        shareRd.addEventListener("click", function () {
+            window.open("https://reddit.com/submit?url=" + getShareUrl() + "&title=" + getShareTitle(), "_blank");
+        });
+    }
+
+    var shareTg = document.getElementById("refiShareTg");
+    if (shareTg) {
+        shareTg.addEventListener("click", function () {
+            window.open("https://t.me/share/url?url=" + getShareUrl() + "&text=" + getShareTitle(), "_blank");
+        });
+    }
+
+    var shareEm = document.getElementById("refiShareEm");
+    if (shareEm) {
+        shareEm.addEventListener("click", function () {
+            window.location.href = "mailto:?subject=" + getShareTitle() + "&body=Check%20out%20this%20free%20mortgage%20refinance%20tool:%20" + getShareUrl();
+        });
+    }
+
+    var shareCp = document.getElementById("refiShareCp");
+    if (shareCp) {
+        shareCp.addEventListener("click", function () {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href).then(function () {
+                    showToast("Link Copied");
+                }).catch(function () {
+                    fallbackCopyText(window.location.href);
+                });
+            } else {
+                fallbackCopyText(window.location.href);
+            }
+        });
+    }
+
+    var shareNt = document.getElementById("refiShareNt");
+    if (shareNt) {
+        shareNt.addEventListener("click", function () {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                }).catch(function () {});
+            } else {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(window.location.href);
+                    showToast("Link Copied");
+                }
+            }
+        });
+    }
+
+    // Auto-calculate on initial page load
+    doRefinanceCalculation();
+
+})();
+</script>
