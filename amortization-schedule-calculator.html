@@ -1,0 +1,3166 @@
+<!--
+BLOGGER TITLE:
+Free Amortization Schedule Calculator – Loan Payment & Payoff Schedule
+
+BLOGGER SEARCH DESCRIPTION:
+Calculate monthly loan payments, principal, interest, payoff date and a complete amortization schedule. Add extra payments and download your schedule for free.
+
+BLOGGER LABELS:
+Amortization Schedule Calculator, Loan Amortization Calculator, Loan Payment Calculator, Mortgage Calculator, Extra Payment Calculator, Loan Payoff Calculator, Finance Tools, Calculator Tools, Free Online Tools
+
+BLOGGER CUSTOM PERMALINK:
+amortization-schedule-calculator
+
+GITHUB FILE NAME:
+amortization-schedule-calculator.html
+-->
+
+<style>
+/* ==========================================================================
+   AMORTIZATION SCHEDULE CALCULATOR – SCOPED BLOGGER STYLES
+   ========================================================================== */
+#amortizationCalculatorBloggerApp,
+#amortizationCalculatorBloggerApp * {
+  box-sizing: border-box;
+}
+
+#amortizationCalculatorBloggerApp {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  margin: 0 auto;
+  padding: 16px 12px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography & Colored Headings */
+#amortizationCalculatorBloggerApp h1,
+#amortizationCalculatorBloggerApp h2,
+#amortizationCalculatorBloggerApp h3,
+#amortizationCalculatorBloggerApp h4 {
+  margin-top: 0;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#amortizationCalculatorBloggerApp .amort-hero-title {
+  color: #1e3a8a;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+#amortizationCalculatorBloggerApp .amort-hero-sub {
+  color: #2563eb;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+#amortizationCalculatorBloggerApp .amort-hero-desc {
+  color: #475569;
+  font-size: 1.05rem;
+  max-width: 820px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+#amortizationCalculatorBloggerApp .amort-section-title {
+  color: #0f172a;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#amortizationCalculatorBloggerApp .amort-section-sub {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: -10px;
+  margin-bottom: 18px;
+}
+
+/* Badge & Trust Indicators */
+#amortizationCalculatorBloggerApp .amort-badge-wrap {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#amortizationCalculatorBloggerApp .amort-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+#amortizationCalculatorBloggerApp .amort-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px auto 24px;
+  max-width: 900px;
+}
+
+#amortizationCalculatorBloggerApp .amort-trust-pill {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #0f766e;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+/* Layout Cards */
+#amortizationCalculatorBloggerApp .amort-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+#amortizationCalculatorBloggerApp .amort-card-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+/* Grids */
+#amortizationCalculatorBloggerApp .amort-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+#amortizationCalculatorBloggerApp .amort-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+#amortizationCalculatorBloggerApp .amort-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+/* Form Controls */
+#amortizationCalculatorBloggerApp .amort-form-group {
+  margin-bottom: 16px;
+}
+
+#amortizationCalculatorBloggerApp .amort-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+#amortizationCalculatorBloggerApp .amort-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#amortizationCalculatorBloggerApp .amort-input-prefix,
+#amortizationCalculatorBloggerApp .amort-input-suffix {
+  position: absolute;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#amortizationCalculatorBloggerApp .amort-input-prefix {
+  left: 14px;
+}
+
+#amortizationCalculatorBloggerApp .amort-input-suffix {
+  right: 14px;
+}
+
+#amortizationCalculatorBloggerApp input[type="text"],
+#amortizationCalculatorBloggerApp input[type="number"],
+#amortizationCalculatorBloggerApp input[type="date"],
+#amortizationCalculatorBloggerApp select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #0f172a;
+  background-color: #ffffff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+#amortizationCalculatorBloggerApp input.amort-has-prefix {
+  padding-left: 30px;
+}
+
+#amortizationCalculatorBloggerApp input.amort-has-suffix {
+  padding-right: 34px;
+}
+
+#amortizationCalculatorBloggerApp input:focus,
+#amortizationCalculatorBloggerApp select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Preset Buttons */
+#amortizationCalculatorBloggerApp .amort-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+#amortizationCalculatorBloggerApp .amort-preset-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#amortizationCalculatorBloggerApp .amort-preset-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+#amortizationCalculatorBloggerApp .amort-preset-btn.amort-active {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+
+/* Action Buttons */
+#amortizationCalculatorBloggerApp .amort-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  flex: 1 1 240px;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-download {
+  background: #059669;
+  color: #ffffff;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-download:hover {
+  background: #047857;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-print {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-print:hover {
+  background: #4338ca;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-copy {
+  background: #0d9488;
+  color: #ffffff;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-copy:hover {
+  background: #0f766e;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-secondary {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-secondary:hover {
+  background: #1d4ed8;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-reset {
+  background: #f97316;
+  color: #ffffff;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-reset:hover {
+  background: #ea580c;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-outline {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #475569;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-outline:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* Stat Result Cards */
+#amortizationCalculatorBloggerApp .amort-stat-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+#amortizationCalculatorBloggerApp .amort-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+#amortizationCalculatorBloggerApp .amort-stat-primary::before { background: #2563eb; }
+#amortizationCalculatorBloggerApp .amort-stat-interest::before { background: #d97706; }
+#amortizationCalculatorBloggerApp .amort-stat-savings::before { background: #059669; }
+#amortizationCalculatorBloggerApp .amort-stat-balance::before { background: #7c3aed; }
+#amortizationCalculatorBloggerApp .amort-stat-payoff::before { background: #0d9488; }
+#amortizationCalculatorBloggerApp .amort-stat-total::before { background: #3b82f6; }
+
+#amortizationCalculatorBloggerApp .amort-stat-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+#amortizationCalculatorBloggerApp .amort-stat-value {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+#amortizationCalculatorBloggerApp .amort-stat-primary .amort-stat-value { color: #1d4ed8; }
+#amortizationCalculatorBloggerApp .amort-stat-interest .amort-stat-value { color: #d97706; }
+#amortizationCalculatorBloggerApp .amort-stat-savings .amort-stat-value { color: #059669; }
+#amortizationCalculatorBloggerApp .amort-stat-balance .amort-stat-value { color: #7c3aed; }
+#amortizationCalculatorBloggerApp .amort-stat-payoff .amort-stat-value { color: #0d9488; }
+
+#amortizationCalculatorBloggerApp .amort-stat-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Progress / Ratio Bar */
+#amortizationCalculatorBloggerApp .amort-bar-wrap {
+  margin: 20px 0;
+}
+
+#amortizationCalculatorBloggerApp .amort-bar {
+  display: flex;
+  height: 24px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+#amortizationCalculatorBloggerApp .amort-bar-principal {
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+#amortizationCalculatorBloggerApp .amort-bar-interest {
+  background: #f59e0b;
+  transition: width 0.3s ease;
+}
+
+#amortizationCalculatorBloggerApp .amort-bar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+#amortizationCalculatorBloggerApp .amort-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#amortizationCalculatorBloggerApp .amort-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+#amortizationCalculatorBloggerApp .amort-dot-principal { background: #2563eb; }
+#amortizationCalculatorBloggerApp .amort-dot-interest { background: #f59e0b; }
+
+/* Tabs & Toggles */
+#amortizationCalculatorBloggerApp .amort-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+#amortizationCalculatorBloggerApp .amort-tab-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#amortizationCalculatorBloggerApp .amort-tab-btn:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+#amortizationCalculatorBloggerApp .amort-tab-btn.amort-active {
+  background: #eff6ff;
+  color: #2563eb;
+  box-shadow: inset 0 -2px 0 #2563eb;
+}
+
+/* Tables */
+#amortizationCalculatorBloggerApp .amort-table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 16px 0;
+  background: #ffffff;
+}
+
+#amortizationCalculatorBloggerApp table.amort-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+#amortizationCalculatorBloggerApp table.amort-table th,
+#amortizationCalculatorBloggerApp table.amort-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+#amortizationCalculatorBloggerApp table.amort-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+#amortizationCalculatorBloggerApp table.amort-table th:first-child,
+#amortizationCalculatorBloggerApp table.amort-table td:first-child,
+#amortizationCalculatorBloggerApp table.amort-table th:nth-child(2),
+#amortizationCalculatorBloggerApp table.amort-table td:nth-child(2) {
+  text-align: left;
+}
+
+#amortizationCalculatorBloggerApp table.amort-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+#amortizationCalculatorBloggerApp table.amort-table tbody tr:nth-child(even) {
+  background-color: #fafbfd;
+}
+
+#amortizationCalculatorBloggerApp .amort-td-principal { color: #1d4ed8; font-weight: 500; }
+#amortizationCalculatorBloggerApp .amort-td-interest { color: #d97706; font-weight: 500; }
+#amortizationCalculatorBloggerApp .amort-td-extra { color: #059669; font-weight: 600; }
+#amortizationCalculatorBloggerApp .amort-td-balance { color: #7c3aed; font-weight: 600; }
+
+/* SVG Charts */
+#amortizationCalculatorBloggerApp .amort-chart-box {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 14px;
+}
+
+#amortizationCalculatorBloggerApp .amort-chart-svg {
+  width: 100%;
+  height: 280px;
+  display: block;
+}
+
+/* Dynamic Custom Payments Rows */
+#amortizationCalculatorBloggerApp .amort-custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-remove {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 40px;
+}
+
+#amortizationCalculatorBloggerApp .amort-btn-remove:hover {
+  background: #fecaca;
+}
+
+/* Notification & Alert Banners */
+#amortizationCalculatorBloggerApp .amort-toast {
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: none;
+}
+
+#amortizationCalculatorBloggerApp .amort-toast-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#amortizationCalculatorBloggerApp .amort-toast-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  display: block;
+}
+
+/* Feature Cards */
+#amortizationCalculatorBloggerApp .amort-feature-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#amortizationCalculatorBloggerApp .amort-feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -2px rgba(0,0,0,0.06);
+}
+
+#amortizationCalculatorBloggerApp .amort-feature-icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+#amortizationCalculatorBloggerApp .amort-feature-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+#amortizationCalculatorBloggerApp .amort-feature-text {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* How to Use Steps */
+#amortizationCalculatorBloggerApp .amort-step-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+#amortizationCalculatorBloggerApp .amort-step-num {
+  width: 32px;
+  height: 32px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#amortizationCalculatorBloggerApp .amort-step-body {
+  font-size: 0.98rem;
+  color: #334155;
+  padding-top: 3px;
+}
+
+/* FAQ Details */
+#amortizationCalculatorBloggerApp details.amort-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+#amortizationCalculatorBloggerApp details.amort-faq-item summary {
+  padding: 14px 18px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  background: #f8fafc;
+  user-select: none;
+  outline: none;
+  transition: background-color 0.15s ease;
+}
+
+#amortizationCalculatorBloggerApp details.amort-faq-item summary:hover {
+  background: #f1f5f9;
+  color: #1d4ed8;
+}
+
+#amortizationCalculatorBloggerApp details.amort-faq-item[open] summary {
+  border-bottom: 1px solid #e2e8f0;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+#amortizationCalculatorBloggerApp .amort-faq-answer {
+  padding: 16px 18px;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* Social Share Buttons */
+#amortizationCalculatorBloggerApp .amort-share-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+#amortizationCalculatorBloggerApp .amort-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  min-height: 44px;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#amortizationCalculatorBloggerApp .amort-share-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+#amortizationCalculatorBloggerApp .amort-share-fb { background: #1877f2; }
+#amortizationCalculatorBloggerApp .amort-share-x { background: #000000; }
+#amortizationCalculatorBloggerApp .amort-share-wa { background: #25d366; }
+#amortizationCalculatorBloggerApp .amort-share-in { background: #0a66c2; }
+#amortizationCalculatorBloggerApp .amort-share-rd { background: #ff4500; }
+#amortizationCalculatorBloggerApp .amort-share-tg { background: #229ed9; }
+#amortizationCalculatorBloggerApp .amort-share-mail { background: #475569; }
+#amortizationCalculatorBloggerApp .amort-share-copy { background: #0d9488; }
+#amortizationCalculatorBloggerApp .amort-share-native { background: #7c3aed; }
+
+/* Escrow Box */
+#amortizationCalculatorBloggerApp .amort-escrow-box {
+  background: #faf5ff;
+  border: 1px dashed #c084fc;
+  border-radius: 8px;
+  padding: 18px;
+  margin-top: 18px;
+}
+
+/* Educational Article Styles */
+#amortizationCalculatorBloggerApp .amort-article-content {
+  color: #334155;
+  line-height: 1.75;
+}
+
+#amortizationCalculatorBloggerApp .amort-article-content h2 {
+  color: #1e3a8a;
+  font-size: 1.45rem;
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+
+#amortizationCalculatorBloggerApp .amort-article-content h3 {
+  color: #0f766e;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+#amortizationCalculatorBloggerApp .amort-article-content p {
+  margin-bottom: 14px;
+}
+
+#amortizationCalculatorBloggerApp .amort-article-content ul,
+#amortizationCalculatorBloggerApp .amort-article-content ol {
+  margin-bottom: 14px;
+  padding-left: 24px;
+}
+
+#amortizationCalculatorBloggerApp .amort-article-content li {
+  margin-bottom: 6px;
+}
+
+/* Ad Wrappers */
+#amortizationCalculatorBloggerApp .amort-ad-wrapper {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 24px auto;
+}
+
+/* Print Specific Rules */
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+  #amortizationCalculatorBloggerApp .amort-no-print,
+  #amortizationCalculatorBloggerApp .amort-ad-wrapper,
+  #amortizationCalculatorBloggerApp .amort-share-grid,
+  #amortizationCalculatorBloggerApp .amort-btn-row,
+  #amortizationCalculatorBloggerApp .amort-article-content,
+  #amortizationCalculatorBloggerApp details.amort-faq-item,
+  #amortizationCalculatorBloggerApp .amort-toast {
+    display: none !important;
+  }
+  #amortizationCalculatorBloggerApp .amort-card {
+    border: 1px solid #94a3b8 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin-bottom: 14px !important;
+    padding: 12px !important;
+  }
+  #amortizationCalculatorBloggerApp table.amort-table th,
+  #amortizationCalculatorBloggerApp table.amort-table td {
+    font-size: 7.5pt !important;
+    padding: 4px 6px !important;
+  }
+}
+
+/* Mobile responsive fine-tuning (320px safe) */
+@media (max-width: 480px) {
+  #amortizationCalculatorBloggerApp {
+    padding: 10px 6px;
+  }
+  #amortizationCalculatorBloggerApp .amort-card {
+    padding: 16px 12px;
+  }
+  #amortizationCalculatorBloggerApp .amort-stat-value {
+    font-size: 1.35rem;
+  }
+  #amortizationCalculatorBloggerApp .amort-btn {
+    width: 100%;
+  }
+}
+</style>
+
+<div id="amortizationCalculatorBloggerApp">
+  <!-- 1. HERO -->
+  <header class="amort-hero">
+    <div class="amort-badge-wrap">
+      <span class="amort-badge">
+        <span>🇺🇸</span> Free Loan Calculator for U.S. Borrowers
+      </span>
+    </div>
+    <h1 class="amort-hero-title">Amortization Schedule Calculator</h1>
+    <p class="amort-hero-sub">Calculate Monthly Payments, Interest &amp; Your Complete Loan Payoff Schedule</p>
+    <p class="amort-hero-desc">
+      Calculate your loan payment and see exactly how each payment is divided between principal and interest.
+      Explore your full monthly or annual amortization schedule, add extra payments, compare payoff strategies,
+      and download your results for free.
+    </p>
+    <div class="amort-trust-bar">
+      <span class="amort-trust-pill">✓ 100% Free</span>
+      <span class="amort-trust-pill">✓ No Signup</span>
+      <span class="amort-trust-pill">✓ Monthly Schedule</span>
+      <span class="amort-trust-pill">✓ Extra Payments</span>
+      <span class="amort-trust-pill">✓ Interest Savings</span>
+      <span class="amort-trust-pill">✓ Payoff Date</span>
+      <span class="amort-trust-pill">✓ CSV Download</span>
+      <span class="amort-trust-pill">✓ Mobile Friendly</span>
+    </div>
+  </header>
+
+  <!-- Notification Toast -->
+  <div id="amortToast" class="amort-toast amort-toast-success" style="display:none;" role="status" aria-live="polite">
+    <span id="amortToastMsg">Operation completed successfully.</span>
+  </div>
+
+  <!-- 2. FIRST ADVERTISEMENT (468x60) -->
+  <div class="amort-ad-wrapper amort-no-print">
+    <div style="display:inline-block;min-width:468px;min-height:60px;">
+      <script>
+        atOptions = {
+          'key' : '294198e908506e5d909d0b383f167eaa',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/294198e908506e5d909d0b383f167eaa/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- 3. MAIN CALCULATOR WORKSPACE -->
+  <section class="amort-card amort-calculator-card">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#1e3a8a;margin-bottom:4px;">
+        Calculate Your Loan Amortization
+      </h2>
+      <p class="amort-section-sub">
+        Enter your loan details below. All calculations run instantly in your browser with zero remote processing.
+      </p>
+    </div>
+
+    <!-- Loan Type, Amount, Interest Rate, Term -->
+    <div class="amort-grid-2">
+      <div class="amort-form-group">
+        <label class="amort-label" for="amortLoanType">Loan Type</label>
+        <select id="amortLoanType">
+          <option value="Mortgage" selected>Mortgage (Home Loan)</option>
+          <option value="Auto Loan">Auto Loan (Car / Truck)</option>
+          <option value="Personal Loan">Personal Loan</option>
+          <option value="Student Loan">Student Loan</option>
+          <option value="Business Loan">Business Loan</option>
+          <option value="Other Loan">Other Fixed-Rate Loan</option>
+        </select>
+      </div>
+
+      <div class="amort-form-group">
+        <label class="amort-label" for="amortLoanAmount">Loan Amount ($)</label>
+        <div class="amort-input-wrap">
+          <span class="amort-input-prefix">$</span>
+          <input type="number" id="amortLoanAmount" class="amort-has-prefix" value="350000" min="1" max="100000000" step="100" placeholder="350,000" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="amort-grid-2">
+      <div class="amort-form-group">
+        <label class="amort-label" for="amortInterestRate">Annual Interest Rate (APR %)</label>
+        <div class="amort-input-wrap">
+          <input type="number" id="amortInterestRate" class="amort-has-suffix" value="6.5" min="0" max="99.9" step="0.01" placeholder="6.5" required />
+          <span class="amort-input-suffix">%</span>
+        </div>
+      </div>
+
+      <div class="amort-form-group">
+        <label class="amort-label" for="amortStartDate">Loan Start Date</label>
+        <input type="date" id="amortStartDate" required />
+      </div>
+    </div>
+
+    <!-- Loan Term with Quick Presets -->
+    <div class="amort-form-group">
+      <label class="amort-label">Loan Term</label>
+      <div class="amort-grid-2">
+        <div class="amort-input-wrap">
+          <input type="number" id="amortTermYears" class="amort-has-suffix" value="30" min="0" max="50" step="1" placeholder="Years" />
+          <span class="amort-input-suffix">Years</span>
+        </div>
+        <div class="amort-input-wrap">
+          <input type="number" id="amortTermMonths" class="amort-has-suffix" value="0" min="0" max="11" step="1" placeholder="Months" />
+          <span class="amort-input-suffix">Months</span>
+        </div>
+      </div>
+      <div class="amort-presets">
+        <button type="button" class="amort-preset-btn" data-years="1" data-months="0">1 Yr</button>
+        <button type="button" class="amort-preset-btn" data-years="3" data-months="0">3 Yrs</button>
+        <button type="button" class="amort-preset-btn" data-years="5" data-months="0">5 Yrs</button>
+        <button type="button" class="amort-preset-btn" data-years="10" data-months="0">10 Yrs</button>
+        <button type="button" class="amort-preset-btn" data-years="15" data-months="0">15 Yrs</button>
+        <button type="button" class="amort-preset-btn" data-years="20" data-months="0">20 Yrs</button>
+        <button type="button" class="amort-preset-btn" data-years="25" data-months="0">25 Yrs</button>
+        <button type="button" class="amort-preset-btn amort-active" data-years="30" data-months="0">30 Yrs</button>
+        <button type="button" class="amort-preset-btn" data-years="40" data-months="0">40 Yrs</button>
+      </div>
+    </div>
+
+    <!-- Optional Housing Escrow Add-Ons -->
+    <div class="amort-escrow-box">
+      <details>
+        <summary style="font-weight:600;color:#6b21a8;cursor:pointer;">
+          🏡 Optional Monthly Housing Cost Add-Ons (Taxes, Insurance &amp; HOA)
+        </summary>
+        <p style="font-size:0.86rem;color:#64748b;margin:8px 0 12px;">
+          Note: Taxes, insurance, and fees do not amortize or pay down loan principal. They are tracked here solely to estimate your total monthly housing outflow.
+        </p>
+        <div class="amort-grid-4">
+          <div class="amort-form-group">
+            <label class="amort-label" for="amortPropertyTax">Property Tax ($/mo)</label>
+            <div class="amort-input-wrap">
+              <span class="amort-input-prefix">$</span>
+              <input type="number" id="amortPropertyTax" class="amort-has-prefix" value="0" min="0" step="10" placeholder="0" />
+            </div>
+          </div>
+          <div class="amort-form-group">
+            <label class="amort-label" for="amortHomeInsurance">Home Insurance ($/mo)</label>
+            <div class="amort-input-wrap">
+              <span class="amort-input-prefix">$</span>
+              <input type="number" id="amortHomeInsurance" class="amort-has-prefix" value="0" min="0" step="10" placeholder="0" />
+            </div>
+          </div>
+          <div class="amort-form-group">
+            <label class="amort-label" for="amortPmi">PMI ($/mo)</label>
+            <div class="amort-input-wrap">
+              <span class="amort-input-prefix">$</span>
+              <input type="number" id="amortPmi" class="amort-has-prefix" value="0" min="0" step="10" placeholder="0" />
+            </div>
+          </div>
+          <div class="amort-form-group">
+            <label class="amort-label" for="amortHoa">HOA Fees ($/mo)</label>
+            <div class="amort-input-wrap">
+              <span class="amort-input-prefix">$</span>
+              <input type="number" id="amortHoa" class="amort-has-prefix" value="0" min="0" step="10" placeholder="0" />
+            </div>
+          </div>
+        </div>
+        <div id="amortEscrowSummary" style="font-size:0.92rem;font-weight:600;color:#581c87;margin-top:4px;">
+          Total Monthly Housing Outflow (P&amp;I + Escrow): <span id="amortTotalHousingVal">$0.00</span>
+        </div>
+      </details>
+    </div>
+
+    <!-- 4. OPTIONAL EXTRA PAYMENT SETTINGS -->
+    <div style="margin-top:24px;border-top:1px solid #f1f5f9;padding-top:20px;">
+      <h3 style="color:#059669;font-size:1.25rem;margin-bottom:6px;">
+        💰 Extra Payment Options
+      </h3>
+      <p style="font-size:0.9rem;color:#64748b;margin-bottom:14px;">
+        Apply additional principal payments to shorten your payoff date and save thousands on interest.
+      </p>
+
+      <div class="amort-grid-3">
+        <!-- Monthly Extra -->
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortExtraMonthly">Extra Monthly Payment ($)</label>
+          <div class="amort-input-wrap">
+            <span class="amort-input-prefix">$</span>
+            <input type="number" id="amortExtraMonthly" class="amort-has-prefix" value="0" min="0" step="25" placeholder="0" />
+          </div>
+        </div>
+
+        <!-- Annual Extra -->
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortExtraAnnual">Extra Annual Payment ($)</label>
+          <div class="amort-input-wrap">
+            <span class="amort-input-prefix">$</span>
+            <input type="number" id="amortExtraAnnual" class="amort-has-prefix" value="0" min="0" step="100" placeholder="0" />
+          </div>
+        </div>
+
+        <!-- Annual Extra Month -->
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortExtraAnnualMonth">Month for Annual Extra</label>
+          <select id="amortExtraAnnualMonth">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12" selected>December</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="amort-grid-2">
+        <!-- One-Time Extra Payment -->
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortExtraOneTime">One-Time Extra Principal ($)</label>
+          <div class="amort-input-wrap">
+            <span class="amort-input-prefix">$</span>
+            <input type="number" id="amortExtraOneTime" class="amort-has-prefix" value="0" min="0" step="500" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortExtraOneTimeDate">One-Time Extra Date</label>
+          <input type="date" id="amortExtraOneTimeDate" />
+        </div>
+      </div>
+
+      <!-- Round-Up Payment Option -->
+      <div class="amort-form-group" style="margin-top:8px;">
+        <label class="amort-label" for="amortRoundUp">Round Up Payment to Nearest</label>
+        <select id="amortRoundUp">
+          <option value="0" selected>Do Not Round Up</option>
+          <option value="10">Round Up to Nearest $10</option>
+          <option value="50">Round Up to Nearest $50</option>
+          <option value="100">Round Up to Nearest $100</option>
+        </select>
+      </div>
+
+      <!-- Advanced Custom Extra Payments -->
+      <details style="margin-top:12px;">
+        <summary style="font-weight:600;color:#0d9488;cursor:pointer;">
+          ➕ Advanced: Add Custom Lump-Sum Payments
+        </summary>
+        <p style="font-size:0.86rem;color:#64748b;margin:8px 0 10px;">
+          Add specific lump-sum payments applied at custom payment numbers or dates.
+        </p>
+        <div id="amortCustomRowsContainer"></div>
+        <button type="button" id="amortBtnAddCustom" class="amort-btn amort-btn-outline" style="min-height:38px;padding:6px 14px;font-size:0.88rem;margin-top:6px;">
+          + Add Lump Sum Entry
+        </button>
+      </details>
+    </div>
+
+    <!-- 5. CALCULATE BUTTONS ROW -->
+    <div class="amort-btn-row">
+      <button type="button" id="amortBtnCalculate" class="amort-btn amort-btn-primary">
+        ⚡ Calculate Amortization
+      </button>
+      <button type="button" id="amortBtnExample" class="amort-btn amort-btn-outline">
+        📋 Load Sample Loan ($350k @ 6.5%)
+      </button>
+      <button type="button" id="amortBtnReset" class="amort-btn amort-btn-reset">
+        🔄 Reset Calculator
+      </button>
+    </div>
+  </section>
+
+  <!-- 6. PRIMARY RESULTS DASHBOARD -->
+  <section class="amort-card amort-results-card" id="amortResultsDashboard" aria-live="polite">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#1d4ed8;margin-bottom:4px;">
+        Your Loan Summary
+      </h2>
+      <p class="amort-section-sub">
+        Complete principal, interest, and payoff projection based on your inputs.
+      </p>
+    </div>
+
+    <div class="amort-grid-4">
+      <div class="amort-stat-card amort-stat-primary">
+        <div class="amort-stat-label">Monthly Payment (P&amp;I)</div>
+        <div class="amort-stat-value" id="amortResMonthly">$0.00</div>
+        <div class="amort-stat-sub">Principal + Interest</div>
+      </div>
+
+      <div class="amort-stat-card amort-stat-interest">
+        <div class="amort-stat-label">Total Interest Paid</div>
+        <div class="amort-stat-value" id="amortResTotalInterest">$0.00</div>
+        <div class="amort-stat-sub" id="amortResInterestPct">0.0% of total cost</div>
+      </div>
+
+      <div class="amort-stat-card amort-stat-total">
+        <div class="amort-stat-label">Total Loan Cost</div>
+        <div class="amort-stat-value" id="amortResTotalCost">$0.00</div>
+        <div class="amort-stat-sub">Principal + Total Interest</div>
+      </div>
+
+      <div class="amort-stat-card amort-stat-payoff">
+        <div class="amort-stat-label">Estimated Payoff Date</div>
+        <div class="amort-stat-value" id="amortResPayoffDate" style="font-size:1.35rem;">—</div>
+        <div class="amort-stat-sub" id="amortResNumPayments">0 Payments</div>
+      </div>
+    </div>
+
+    <!-- 7. PRINCIPAL VS. INTEREST SUMMARY BAR -->
+    <div class="amort-bar-wrap">
+      <h3 style="font-size:1.05rem;color:#0f172a;margin-bottom:6px;">
+        Principal vs. Interest Ratio
+      </h3>
+      <div class="amort-bar">
+        <div id="amortBarPrincipal" class="amort-bar-principal" style="width:50%;"></div>
+        <div id="amortBarInterest" class="amort-bar-interest" style="width:50%;"></div>
+      </div>
+      <div class="amort-bar-legend">
+        <div class="amort-legend-item">
+          <span class="amort-dot amort-dot-principal"></span>
+          <span>Principal: <strong id="amortLegendPrincipal">$0.00</strong> (<span id="amortLegendPrincipalPct">50%</span>)</span>
+        </div>
+        <div class="amort-legend-item">
+          <span class="amort-dot amort-dot-interest"></span>
+          <span>Interest: <strong id="amortLegendInterest">$0.00</strong> (<span id="amortLegendInterestPct">50%</span>)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. FIRST PAYMENT BREAKDOWN -->
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px;margin-top:16px;">
+      <h4 style="color:#334155;font-size:0.98rem;margin-bottom:10px;">
+        📌 First Scheduled Payment Allocation
+      </h4>
+      <div class="amort-grid-3">
+        <div>
+          <span style="font-size:0.82rem;color:#64748b;display:block;">Scheduled Payment</span>
+          <strong id="amortFirstPaymentTotal" style="font-size:1.15rem;color:#0f172a;">$0.00</strong>
+        </div>
+        <div>
+          <span style="font-size:0.82rem;color:#64748b;display:block;">Goes to Principal</span>
+          <strong id="amortFirstPaymentPrincipal" style="font-size:1.15rem;color:#1d4ed8;">$0.00</strong>
+        </div>
+        <div>
+          <span style="font-size:0.82rem;color:#64748b;display:block;">Goes to Interest</span>
+          <strong id="amortFirstPaymentInterest" style="font-size:1.15rem;color:#d97706;">$0.00</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. EXTRA PAYMENT IMPACT (shown if extra payments exist) -->
+    <div id="amortExtraImpactSection" style="margin-top:24px;display:none;">
+      <div style="background:#ecfdf5;border:1.5px solid #a7f3d0;border-radius:10px;padding:18px;">
+        <h3 style="color:#065f46;font-size:1.25rem;margin-bottom:4px;">
+          🎉 Extra Payment Impact &amp; Savings
+        </h3>
+        <p style="font-size:0.9rem;color:#047857;margin-bottom:14px;">
+          By making additional principal payments, you accelerate your payoff and reduce overall interest expense:
+        </p>
+        <div class="amort-grid-4">
+          <div class="amort-stat-card amort-stat-savings">
+            <div class="amort-stat-label">Total Interest Saved</div>
+            <div class="amort-stat-value" id="amortResInterestSaved">$0.00</div>
+            <div class="amort-stat-sub">Direct money saved</div>
+          </div>
+          <div class="amort-stat-card amort-stat-savings">
+            <div class="amort-stat-label">Time Saved</div>
+            <div class="amort-stat-value" id="amortResTimeSaved" style="font-size:1.35rem;">0 yrs</div>
+            <div class="amort-stat-sub">Shorter loan term</div>
+          </div>
+          <div class="amort-stat-card amort-stat-payoff">
+            <div class="amort-stat-label">New Payoff Date</div>
+            <div class="amort-stat-value" id="amortResNewPayoff" style="font-size:1.35rem;">—</div>
+            <div class="amort-stat-sub">vs. <span id="amortResOrigPayoff">—</span></div>
+          </div>
+          <div class="amort-stat-card amort-stat-total">
+            <div class="amort-stat-label">Total Extra Paid</div>
+            <div class="amort-stat-value" id="amortResTotalExtraPaid">$0.00</div>
+            <div class="amort-stat-sub">Accelerated principal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. STANDARD VS EXTRA PAYOFF COMPARISON -->
+    <div id="amortComparisonSection" style="margin-top:24px;">
+      <h3 style="color:#0f172a;font-size:1.15rem;margin-bottom:10px;">
+        📊 Standard Plan vs. Extra Payment Plan
+      </h3>
+      <div class="amort-table-container">
+        <table class="amort-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Metric</th>
+              <th>Standard Schedule</th>
+              <th>With Extra Payments</th>
+              <th>Difference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:left;font-weight:600;">Monthly Base Payment</td>
+              <td id="amortCompStdPayment">$0.00</td>
+              <td id="amortCompExtPayment">$0.00</td>
+              <td id="amortCompDiffPayment">$0.00</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;font-weight:600;">Total Number of Payments</td>
+              <td id="amortCompStdCount">0</td>
+              <td id="amortCompExtCount">0</td>
+              <td id="amortCompDiffCount" style="color:#059669;font-weight:600;">0 saved</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;font-weight:600;">Payoff Date</td>
+              <td id="amortCompStdDate">—</td>
+              <td id="amortCompExtDate">—</td>
+              <td id="amortCompDiffDate" style="color:#059669;font-weight:600;">—</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;font-weight:600;">Total Interest Expense</td>
+              <td id="amortCompStdInterest" style="color:#d97706;">$0.00</td>
+              <td id="amortCompExtInterest" style="color:#d97706;">$0.00</td>
+              <td id="amortCompDiffInterest" style="color:#059669;font-weight:700;">$0.00 saved</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;font-weight:600;">Total Overall Cost</td>
+              <td id="amortCompStdTotal">$0.00</td>
+              <td id="amortCompExtTotal">$0.00</td>
+              <td id="amortCompDiffTotal" style="color:#059669;font-weight:700;">$0.00 saved</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. CHARTS -->
+  <section class="amort-card">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#7c3aed;margin-bottom:4px;">
+        Visual Loan Trajectory
+      </h2>
+      <p class="amort-section-sub">
+        Explore how your remaining balance declines and how your principal-to-interest payment ratio shifts over time.
+      </p>
+    </div>
+
+    <div class="amort-tabs">
+      <button type="button" class="amort-tab-btn amort-active" id="amortBtnTabChartBalance">
+        📉 Remaining Balance Over Time
+      </button>
+      <button type="button" class="amort-tab-btn" id="amortBtnTabChartShare">
+        📊 Principal vs. Interest Over Time
+      </button>
+    </div>
+
+    <div id="amortChartBalanceWrap" class="amort-chart-box">
+      <h3 style="font-size:0.95rem;color:#475569;margin-bottom:8px;">Loan Balance Decline ($ vs. Payment Number)</h3>
+      <svg id="amortSvgBalance" class="amort-chart-svg" viewBox="0 0 800 280" preserveAspectRatio="none" aria-label="Loan Balance Chart"></svg>
+    </div>
+
+    <div id="amortChartShareWrap" class="amort-chart-box" style="display:none;">
+      <h3 style="font-size:0.95rem;color:#475569;margin-bottom:8px;">Monthly Payment Breakdown: Principal (Blue) vs Interest (Amber)</h3>
+      <svg id="amortSvgShare" class="amort-chart-svg" viewBox="0 0 800 280" preserveAspectRatio="none" aria-label="Principal vs Interest Share Chart"></svg>
+    </div>
+  </section>
+
+  <!-- 12 & 13. SCHEDULE TABLES -->
+  <section class="amort-card">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#0f172a;margin-bottom:4px;">
+        Amortization Schedule
+      </h2>
+      <p class="amort-section-sub">
+        Review payment-by-payment breakdowns or view consolidated annual summaries.
+      </p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;">
+      <div class="amort-tabs" style="border:none;margin:0;padding:0;">
+        <button type="button" class="amort-tab-btn amort-active" id="amortBtnTabMonthly">
+          📅 Monthly Schedule
+        </button>
+        <button type="button" class="amort-tab-btn" id="amortBtnTabAnnual">
+          📆 Annual Summary
+        </button>
+      </div>
+
+      <div id="amortScheduleViewControls" style="display:flex;gap:8px;">
+        <button type="button" id="amortBtnToggleRows" class="amort-preset-btn amort-active">
+          Show First 12 Payments
+        </button>
+        <button type="button" id="amortBtnShowAllRows" class="amort-preset-btn">
+          Show All Payments
+        </button>
+      </div>
+    </div>
+
+    <!-- Monthly Schedule Table -->
+    <div id="amortMonthlyTableWrap" class="amort-table-container">
+      <table class="amort-table" id="amortTableMonthly">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Beginning Balance</th>
+            <th>Payment</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Extra Pay</th>
+            <th>Ending Balance</th>
+            <th>Cum. Interest</th>
+          </tr>
+        </thead>
+        <tbody id="amortTbodyMonthly">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Annual Summary Table -->
+    <div id="amortAnnualTableWrap" class="amort-table-container" style="display:none;">
+      <table class="amort-table" id="amortTableAnnual">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Starting Balance</th>
+            <th>Principal Paid</th>
+            <th>Interest Paid</th>
+            <th>Extra Payments</th>
+            <th>Ending Balance</th>
+          </tr>
+        </thead>
+        <tbody id="amortTbodyAnnual">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 14. BALANCE LOOKUP & 15. EARLY PAYOFF TARGET -->
+  <section class="amort-card">
+    <div class="amort-grid-2">
+      <!-- Payment & Date Lookup -->
+      <div>
+        <h3 style="color:#1e3a8a;font-size:1.15rem;margin-bottom:6px;">
+          🔍 Balance &amp; Payment Lookup
+        </h3>
+        <p style="font-size:0.88rem;color:#64748b;margin-bottom:12px;">
+          Find your exact remaining balance and equity at any specific month.
+        </p>
+
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortLookupPmt">Payment Number (#)</label>
+          <div style="display:flex;gap:8px;">
+            <input type="number" id="amortLookupPmt" value="12" min="1" step="1" style="max-width:140px;" />
+            <button type="button" id="amortBtnLookup" class="amort-btn amort-btn-outline" style="min-height:48px;padding:8px 16px;">
+              Lookup
+            </button>
+          </div>
+        </div>
+
+        <div id="amortLookupResult" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;font-size:0.9rem;">
+          <div>Remaining Balance: <strong id="amortLookupBal" style="color:#7c3aed;">$0.00</strong></div>
+          <div>Principal Paid to Date: <strong id="amortLookupPrin" style="color:#1d4ed8;">$0.00</strong></div>
+          <div>Interest Paid to Date: <strong id="amortLookupInt" style="color:#d97706;">$0.00</strong></div>
+        </div>
+      </div>
+
+      <!-- Early Payoff Target Solver -->
+      <div>
+        <h3 style="color:#059669;font-size:1.15rem;margin-bottom:6px;">
+          🎯 Early Payoff Goal Solver
+        </h3>
+        <p style="font-size:0.88rem;color:#64748b;margin-bottom:12px;">
+          Calculate the exact monthly payment required to pay off your loan in fewer years.
+        </p>
+
+        <div class="amort-form-group">
+          <label class="amort-label" for="amortTargetYears">Desired Payoff Time (Years)</label>
+          <div style="display:flex;gap:8px;">
+            <input type="number" id="amortTargetYears" value="15" min="1" max="40" step="1" style="max-width:140px;" />
+            <button type="button" id="amortBtnSolveTarget" class="amort-btn amort-btn-secondary" style="min-height:48px;padding:8px 16px;">
+              Calculate Target
+            </button>
+          </div>
+        </div>
+
+        <div id="amortTargetResult" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px;font-size:0.9rem;">
+          <div>Required Monthly Payment: <strong id="amortTargetPmt" style="color:#059669;">$0.00</strong></div>
+          <div>Additional Amount Needed/mo: <strong id="amortTargetDiff" style="color:#0f766e;">$0.00</strong></div>
+          <div>Estimated Interest Savings: <strong id="amortTargetSav" style="color:#15803d;">$0.00</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly vs. Biweekly Payment Comparison -->
+    <div style="margin-top:24px;border-top:1px solid #f1f5f9;padding-top:16px;">
+      <h3 style="color:#0d9488;font-size:1.15rem;margin-bottom:6px;">
+        🔄 Monthly vs. Biweekly Payments Comparison
+      </h3>
+      <p style="font-size:0.88rem;color:#64748b;margin-bottom:12px;">
+        An accelerated biweekly payment schedule divides your monthly payment by 2 and pays every two weeks (26 half-payments per year). This equals 13 full payments per year, paying down principal faster.
+      </p>
+
+      <div class="amort-table-container">
+        <table class="amort-table">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Schedule Type</th>
+              <th>Payment Frequency</th>
+              <th>Payment Amount</th>
+              <th>Payments / Year</th>
+              <th>Payoff Time</th>
+              <th>Total Interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:left;font-weight:600;">Standard Monthly</td>
+              <td>12 per year</td>
+              <td id="amortBwMonthlyAmt">$0.00</td>
+              <td>12</td>
+              <td id="amortBwMonthlyTime">—</td>
+              <td id="amortBwMonthlyInterest" style="color:#d97706;">$0.00</td>
+            </tr>
+            <tr style="background:#f0fdfa;">
+              <td style="text-align:left;font-weight:600;color:#0d9488;">Accelerated Biweekly</td>
+              <td>Every 2 weeks</td>
+              <td id="amortBwBiweeklyAmt" style="font-weight:600;color:#0d9488;">$0.00</td>
+              <td>26 (13 full pmt equiv.)</td>
+              <td id="amortBwBiweeklyTime" style="font-weight:600;color:#059669;">—</td>
+              <td id="amortBwBiweeklyInterest" style="color:#059669;font-weight:700;">$0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.82rem;color:#64748b;margin-top:6px;">
+        *Note: Lender payment processing policies can vary. Confirm how extra or biweekly payments are applied to principal with your lender.
+      </p>
+    </div>
+  </section>
+
+  <!-- 16. DOWNLOAD CSV / PRINT / COPY ACTIONS -->
+  <section class="amort-card amort-no-print">
+    <h3 style="color:#0f172a;font-size:1.15rem;margin-bottom:12px;">
+      📥 Export &amp; Share Your Amortization Schedule
+    </h3>
+    <div class="amort-btn-row">
+      <button type="button" id="amortBtnDownloadCsv" class="amort-btn amort-btn-download">
+        📄 Download Monthly CSV
+      </button>
+      <button type="button" id="amortBtnDownloadAnnualCsv" class="amort-btn amort-btn-download" style="background:#047857;">
+        📑 Download Annual CSV
+      </button>
+      <button type="button" id="amortBtnPrint" class="amort-btn amort-btn-print">
+        🖨️ Print Amortization Schedule
+      </button>
+      <button type="button" id="amortBtnCopySummary" class="amort-btn amort-btn-copy">
+        📋 Copy Loan Summary
+      </button>
+    </div>
+  </section>
+
+  <!-- 17. SECOND ADVERTISEMENT (NATIVE) -->
+  <div class="amort-ad-wrapper amort-no-print">
+    <script async="async" data-cfasync="false" src="https://pl30728026.effectivecpmnetwork.com/269e962c1215493328aeb78f4303284c/invoke.js"></script>
+    <div id="container-269e962c1215493328aeb78f4303284c"></div>
+  </div>
+
+  <!-- 18. FEATURES -->
+  <section class="amort-card">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#1e3a8a;">
+        Everything You Need to Understand Your Loan
+      </h2>
+      <p class="amort-section-sub">
+        Explore enterprise-grade financial calculation tools built directly for American borrowers and home buyers.
+      </p>
+    </div>
+
+    <div class="amort-grid-3">
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🔢</div>
+        <div class="amort-feature-title">Monthly Payment Calculator</div>
+        <p class="amort-feature-text">Calculates exact monthly principal and interest payments using standard fixed-rate amortizing formulas.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">📑</div>
+        <div class="amort-feature-title">Full Amortization Schedule</div>
+        <p class="amort-feature-text">Generates every single scheduled payment showing beginning balance, principal, interest, and ending balance.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">📆</div>
+        <div class="amort-feature-title">Annual Loan Summary</div>
+        <p class="amort-feature-text">Consolidates 12 monthly payments per calendar year into clean annual totals for tax and budgeting reviews.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">⚖️</div>
+        <div class="amort-feature-title">Principal &amp; Interest Breakdown</div>
+        <p class="amort-feature-text">Visualizes how much of each payment goes toward your equity vs. lender interest charges over the entire term.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">💵</div>
+        <div class="amort-feature-title">Total Interest Calculator</div>
+        <p class="amort-feature-text">Reveals the true cost of borrowing across 15, 30, or custom year terms so you can make informed decisions.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🏁</div>
+        <div class="amort-feature-title">Payoff Date Tracking</div>
+        <p class="amort-feature-text">Accurately projects your final loan payoff month and day, adjusting instantly when extra payments are applied.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">➕</div>
+        <div class="amort-feature-title">Extra Monthly Payments</div>
+        <p class="amort-feature-text">Test recurring extra principal payments to see how adding $50, $100, or $500 monthly saves interest.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🎁</div>
+        <div class="amort-feature-title">Annual Extra Payments</div>
+        <p class="amort-feature-text">Model applying annual tax refunds or year-end bonuses directly toward your principal balance.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🎯</div>
+        <div class="amort-feature-title">One-Time Extra Principal</div>
+        <p class="amort-feature-text">Simulate single lump-sum payments made at any date to see immediate long-term compounding savings.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🧩</div>
+        <div class="amort-feature-title">Custom Extra Payments</div>
+        <p class="amort-feature-text">Add custom multiple lump-sum payments at specific payment milestones with flexible row management.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">💰</div>
+        <div class="amort-feature-title">Interest Savings Calculation</div>
+        <p class="amort-feature-text">Directly calculates dollar-for-dollar interest eliminated by shortening loan duration.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">⏳</div>
+        <div class="amort-feature-title">Time Saved Tracking</div>
+        <p class="amort-feature-text">Displays the exact years and months shaved off your loan commitment by accelerating principal payoff.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🚀</div>
+        <div class="amort-feature-title">Early Payoff Goal Solver</div>
+        <p class="amort-feature-text">Input your dream payoff timeline (such as 15 years on a 30-year loan) and find the exact monthly payment needed.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🔄</div>
+        <div class="amort-feature-title">Biweekly Payment Comparison</div>
+        <p class="amort-feature-text">Compares standard 12-payment schedules with 26-payment accelerated biweekly plans side-by-side.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🔍</div>
+        <div class="amort-feature-title">Balance After Payment Lookup</div>
+        <p class="amort-feature-text">Instant lookup of remaining principal balance, total principal paid, and total interest paid at any month.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">📈</div>
+        <div class="amort-feature-title">Interactive SVG Charts</div>
+        <p class="amort-feature-text">Zero external charting libraries. Native SVG visualizes the curve of amortization cleanly on any screen.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">📥</div>
+        <div class="amort-feature-title">CSV Schedule Download</div>
+        <p class="amort-feature-text">Export fully formatted CSV spreadsheets compatible with Microsoft Excel, Google Sheets, and Apple Numbers.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🖨️</div>
+        <div class="amort-feature-title">Printable Schedule</div>
+        <p class="amort-feature-text">Clean print-ready CSS formats the calculation summary and tables cleanly while omitting ads and navigation.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">📋</div>
+        <div class="amort-feature-title">One-Click Copy Summary</div>
+        <p class="amort-feature-text">Copy an executive loan summary to your clipboard to paste into emails, text messages, or loan notes.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">💲</div>
+        <div class="amort-feature-title">U.S. Dollar Formatting</div>
+        <p class="amort-feature-text">Uses standardized American financial formatting with two decimal places, commas, and dollar symbols.</p>
+      </div>
+
+      <div class="amort-feature-card">
+        <div class="amort-feature-icon">🛡️</div>
+        <div class="amort-feature-title">100% Free &amp; Private</div>
+        <p class="amort-feature-text">No accounts, no phone numbers, no email forms, and zero cookies. Financial numbers stay inside your browser.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19. HOW TO USE -->
+  <section class="amort-card">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#0f766e;">
+        How to Use the Amortization Schedule Calculator
+      </h2>
+      <p class="amort-section-sub">
+        Follow these 10 easy steps to analyze any home mortgage, car loan, or personal loan in seconds.
+      </p>
+    </div>
+
+    <div class="amort-step-item">
+      <div class="amort-step-num">1</div>
+      <div class="amort-step-body"><strong>Enter your loan amount:</strong> Type the total principal balance you plan to borrow (for example, $350,000 for a mortgage or $30,000 for an auto loan).</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">2</div>
+      <div class="amort-step-body"><strong>Enter the annual interest rate:</strong> Input your lender's annual percentage rate (APR) as a percentage (such as 6.50% or 3.75%).</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">3</div>
+      <div class="amort-step-body"><strong>Choose the loan term:</strong> Click a quick preset button (like 15 or 30 years) or type your custom term in years and additional months.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">4</div>
+      <div class="amort-step-body"><strong>Select the loan start date:</strong> Pick the month and year your loan payments begin to establish accurate calendar payoff dates.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">5</div>
+      <div class="amort-step-body"><strong>Click Calculate Amortization:</strong> The engine immediately processes the standard monthly payment and total lifetime interest.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">6</div>
+      <div class="amort-step-body"><strong>Review your loan summary:</strong> Examine the Monthly Payment, Total Interest, Total Loan Cost, and exact Estimated Payoff Date.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">7</div>
+      <div class="amort-step-body"><strong>Explore the amortization schedule:</strong> Scroll through payment-by-payment breakdowns or toggle to the Annual Summary view.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">8</div>
+      <div class="amort-step-body"><strong>Add optional extra payments:</strong> Experiment with extra monthly, annual, one-time lump sum, or round-up payments.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">9</div>
+      <div class="amort-step-body"><strong>Compare payoff strategies:</strong> Check the Extra Payment Impact card to see exact dollar interest saved and years shaved off the term.</div>
+    </div>
+    <div class="amort-step-item">
+      <div class="amort-step-num">10</div>
+      <div class="amort-step-body"><strong>Export your results:</strong> Download a comprehensive CSV spreadsheet for Excel or Google Sheets, or print a formatted document for your records.</div>
+    </div>
+  </section>
+
+  <!-- 20. VISIBLE SEO INTRODUCTION -->
+  <section class="amort-card amort-article-content">
+    <h2 style="color:#1e3a8a;margin-top:0;">Understanding Loan Amortization in the United States</h2>
+    <p>
+      When you take out a fixed-rate loan in the United States—whether it is a 30-year home mortgage, a 5-year auto loan, or a personal installment loan—the process that governs how your monthly payments repay the debt is known as <strong>amortization</strong>. The word amortization stems from the Latin root meaning to extinguish or put to death, which accurately describes how regular, equal installment payments steadily reduce a debt balance down to zero over an agreed timeframe.
+    </p>
+    <p>
+      In a standard fully amortizing loan, your required monthly payment remains constant every month. However, the internal distribution of that payment changes drastically over time. During the early years of a loan, the outstanding principal balance is at its highest, meaning that the majority of each payment is consumed by interest charges payable to the lender. As you make each payment, a portion chips away at the principal. Because subsequent interest calculations are based on the new, lower balance, the monthly interest charge decreases slightly, allowing a larger portion of your next installment to apply toward principal.
+    </p>
+    <p>
+      Using a free amortization schedule calculator allows borrowers to visualize this financial trajectory clearly. By generating an exact month-by-month amortization table, you can see your remaining balance at any point in the future, understand when your equity begins outpacing lender interest, and discover how modest extra principal payments can save tens of thousands of dollars in lifetime borrowing costs.
+    </p>
+  </section>
+
+  <!-- 21. EDUCATIONAL ARTICLE PART 1 -->
+  <section class="amort-card amort-article-content">
+    <h2>Comprehensive Guide to Amortization Schedules &amp; Loan Payoff Strategies</h2>
+    
+    <h3>What Is an Amortization Schedule?</h3>
+    <p>
+      An amortization schedule is an itemized financial table that details every periodic installment payment throughout the entire lifespan of an amortizing debt. For each individual payment period, the schedule displays the payment number, due date, beginning loan balance, scheduled payment amount, portion allocated to principal reduction, portion allocated to interest expense, any extra principal applied, and the final ending balance.
+    </p>
+
+    <h3>How Does Loan Amortization Work?</h3>
+    <p>
+      Loan amortization operates on a compounding periodic interest cycle. Each month, your lender determines interest by multiplying your current unpaid principal balance by the periodic monthly interest rate (your annual interest rate divided by 12). The remaining portion of your fixed monthly installment is then credited toward reducing your outstanding principal balance.
+    </p>
+
+    <h3>How to Calculate a Monthly Loan Payment</h3>
+    <p>
+      The mathematical formula used by financial institutions, mortgage lenders, and our amortization schedule calculator to compute the fixed monthly payment (<em>Pmt</em>) on a standard installment loan is:
+    </p>
+    <div style="background:#f1f5f9;border-left:4px solid #2563eb;padding:12px 16px;margin:12px 0;font-family:monospace;font-size:1.05rem;">
+      Pmt = P &times; [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]
+    </div>
+    <p>
+      In this formula, <strong>P</strong> represents the initial loan principal borrowed, <strong>r</strong> represents the periodic monthly interest rate (Annual Interest Rate / 12 / 100), and <strong>n</strong> represents the total number of monthly payment installments (Loan Term in Years &times; 12). If a loan carries a 0% interest rate, the formula simplifies to <em>P / n</em>.
+    </p>
+
+    <h3>Principal vs. Interest: The Shifting Balance</h3>
+    <p>
+      One of the most critical concepts for borrowers to recognize is that amortization is non-linear. On a conventional 30-year fixed-rate mortgage at 6.50%, the borrower might spend the first 15 to 18 years paying predominantly interest rather than building home equity. For instance, on a $350,000 mortgage at 6.50%, the initial monthly payment is approximately $2,212.24. In month one, $1,895.83 goes toward interest and only $316.41 reduces principal. Only after many years does the principal portion overtake the interest portion.
+    </p>
+
+    <h3>Mortgage Amortization vs. Auto &amp; Personal Loans</h3>
+    <p>
+      While the core mathematical formulas are identical, loan types differ substantially in term length and risk profile:
+    </p>
+    <ul>
+      <li><strong>Mortgages:</strong> Typically span 15 to 30 years with significant total interest costs, often making early principal prepayment highly impactful.</li>
+      <li><strong>Auto Loans:</strong> Usually range from 36 to 84 months. Because vehicle values depreciate quickly, understanding amortization helps car buyers avoid negative equity (being "underwater" on a car loan).</li>
+      <li><strong>Personal Loans:</strong> Typically unsecured debts ranging from 12 to 60 months with higher APRs, where rapid amortization is vital to minimizing borrowing fees.</li>
+    </ul>
+  </section>
+
+  <!-- 22. THIRD ADVERTISEMENT (300x250) -->
+  <div class="amort-ad-wrapper amort-no-print">
+    <div style="display:inline-block;min-width:300px;min-height:250px;">
+      <script>
+        atOptions = {
+          'key' : '224e7394c28834c8ac1ce24682c420e3',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/224e7394c28834c8ac1ce24682c420e3/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- 23. EDUCATIONAL ARTICLE PART 2 -->
+  <section class="amort-card amort-article-content">
+    <h2>Accelerating Debt Payoff &amp; Strategic Prepayment Options</h2>
+
+    <h3>How Extra Payments Transform Your Amortization Curve</h3>
+    <p>
+      When you designate an extra payment toward <strong>principal only</strong>, that entire dollar amount immediately bypasses interest and shrinks your outstanding balance. This produces a compounding savings effect: every future month incurs slightly less interest, allowing even more of your scheduled monthly installment to target principal.
+    </p>
+
+    <h3>Strategies for Adding Extra Payments</h3>
+    <ol>
+      <li><strong>Extra Monthly Payment:</strong> Adding even $50 to $200 each month to your regular payment can shorten a 30-year mortgage by 3 to 6 years and save tens of thousands in interest.</li>
+      <li><strong>Annual Lump-Sum Prepayment:</strong> Committing an annual tax refund, work bonus, or seasonal profit to a once-a-year principal reduction.</li>
+      <li><strong>One-Time Windfall:</strong> Applying an inheritance, asset sale, or windfall to immediately drop your balance and permanently truncate the repayment term.</li>
+      <li><strong>Rounding Up Payments:</strong> Rounding your monthly bill up to the next $50 or $100 interval provides a frictionless, automated savings accelerator.</li>
+    </ol>
+
+    <h3>Monthly vs. Accelerated Biweekly Payment Plans</h3>
+    <p>
+      A popular mortgage prepayment technique is the accelerated biweekly payment plan. Rather than paying 12 monthly payments per year, you pay half of your monthly payment every two weeks. Because there are 52 weeks in a calendar year, you make 26 half-payments, which equals 13 full payments per year. That single extra monthly payment per year applied directly to principal can shave between 4 and 6 years off a standard 30-year home loan.
+    </p>
+
+    <h3>Important Financial Accuracy: Why Lender Statements May Differ Slightly</h3>
+    <p>
+      While this calculator uses the exact mathematical amortization standards used across U.S. banking, real-world statements from loan servicers may reflect minor discrepancies due to:
+    </p>
+    <ul>
+      <li><strong>Day-Count Conventions:</strong> Some auto or commercial lenders use an exact 365/365 or 360-day simple interest calculation that accounts for daily calendar timing.</li>
+      <li><strong>Payment Posting Dates:</strong> Payments posted before or after scheduled due dates may accrue different daily per-diem interest.</li>
+      <li><strong>Escrow Accounts:</strong> Mortgages often include escrow collections for local property taxes and homeowners insurance, which fluctuate annually.</li>
+      <li><strong>Prepayment Rules:</strong> Ensure with your loan servicer that extra payments are explicitly marked as "Principal Only Prepayment" rather than prepaying future monthly interest.</li>
+    </ul>
+  </section>
+
+  <!-- 24. FAQ (OVER 30 DETAILED FAQS) -->
+  <section class="amort-card">
+    <div class="amort-card-header">
+      <h2 class="amort-section-title" style="color:#0f172a;">
+        Frequently Asked Questions (FAQ)
+      </h2>
+      <p class="amort-section-sub">
+        Explore answers to 35 common questions regarding loan amortization, payment calculations, and payoff optimization.
+      </p>
+    </div>
+
+    <details class="amort-faq-item">
+      <summary>What is an amortization schedule?</summary>
+      <div class="amort-faq-answer">An amortization schedule is a complete chronological table detailing each installment payment on an amortizing loan. It breaks down each payment into interest, principal, extra payments, and the remaining loan balance.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is an amortization schedule calculator?</summary>
+      <div class="amort-faq-answer">An amortization schedule calculator is an interactive financial tool that calculates your monthly installment payment and generates the entire payment-by-payment repayment schedule based on principal, interest rate, and loan term.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>How is a monthly loan payment calculated?</summary>
+      <div class="amort-faq-answer">A fixed monthly loan payment is calculated using the formula: Pmt = P &times; [r(1+r)^n] / [(1+r)^n - 1], where P is principal, r is monthly interest rate, and n is the total number of payments.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is loan principal?</summary>
+      <div class="amort-faq-answer">Principal is the original sum of money borrowed from a lender, or the remaining balance that has not yet been repaid, excluding interest and finance charges.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is loan interest?</summary>
+      <div class="amort-faq-answer">Interest is the cost of borrowing money charged by the lender, calculated as a percentage of your unpaid principal balance over time.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is a fully amortizing loan?</summary>
+      <div class="amort-faq-answer">A fully amortizing loan is a debt structured so that regular periodic payments over the term will completely pay off both principal and accrued interest, leaving an exact $0 balance at maturity.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Why is more interest paid at the beginning of a loan?</summary>
+      <div class="amort-faq-answer">Interest is calculated directly on your remaining unpaid balance. Because your balance is highest during the early years of the loan, the dollar amount of monthly interest is also at its peak.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>How many payments are in a 30-year mortgage?</summary>
+      <div class="amort-faq-answer">A 30-year monthly mortgage requires exactly 360 payments (30 years &times; 12 months).</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>How many payments are in a 15-year loan?</summary>
+      <div class="amort-faq-answer">A 15-year monthly loan requires exactly 180 payments (15 years &times; 12 months).</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I calculate a 0% interest loan?</summary>
+      <div class="amort-faq-answer">Yes. On a 0% interest loan, no interest accrues, and the monthly payment simply equals the total loan principal divided equally by the number of months.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is an amortization table?</summary>
+      <div class="amort-faq-answer">An amortization table is the tabular view of an amortization schedule showing starting balances, principal, interest, ending balances, and cumulative interest for each period.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What does remaining balance mean?</summary>
+      <div class="amort-faq-answer">The remaining balance is the outstanding principal amount you still owe the lender at any given moment before future interest is applied.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>How is total interest calculated?</summary>
+      <div class="amort-faq-answer">Total interest is calculated by summing the interest portions of every scheduled payment over the life of the loan, or subtracting the original principal from total payments made.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is the payoff date?</summary>
+      <div class="amort-faq-answer">The payoff date is the calendar date of the final scheduled payment when your remaining loan balance drops to exactly $0.00.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I add extra monthly payments?</summary>
+      <div class="amort-faq-answer">Yes! You can enter any recurring monthly extra amount into our Extra Monthly Payment field to model accelerated payoff and interest savings.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>How do extra payments affect interest?</summary>
+      <div class="amort-faq-answer">Extra principal payments directly reduce the balance upon which future interest is calculated, compounding into substantial lifetime interest savings.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can extra payments shorten my loan?</summary>
+      <div class="amort-faq-answer">Yes, applying extra principal reduces the number of payments required, shortening your loan term by months or even years.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What is a one-time extra principal payment?</summary>
+      <div class="amort-faq-answer">A one-time extra payment is a single lump-sum payment applied directly to your principal on a specific date (such as a bonus or inheritance), which permanently accelerates your payoff.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I add an annual extra payment?</summary>
+      <div class="amort-faq-answer">Yes, our calculator supports recurring annual extra payments, allowing you to select which calendar month the annual payment occurs.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>What happens if I pay an extra $100 per month on my mortgage?</summary>
+      <div class="amort-faq-answer">On a typical $350,000, 30-year mortgage at 6.50%, paying an extra $100 per month can save over $30,000 in interest and shave more than 3 years off your payoff date.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>How does biweekly payment comparison work?</summary>
+      <div class="amort-faq-answer">Biweekly payment plans make 26 half-payments per year (every 2 weeks), which equals 13 full payments each year, reducing loan terms dramatically.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Does every lender handle biweekly payments the same way?</summary>
+      <div class="amort-faq-answer">No. Some lenders hold half-payments in an escrow holding account until the full monthly payment arrives. Always verify with your servicer that biweekly payments are credited immediately to principal.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I calculate an auto loan amortization schedule?</summary>
+      <div class="amort-faq-answer">Yes. Select "Auto Loan" and enter your vehicle loan amount, interest rate, and term (typically 36 to 72 months).</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I calculate a personal loan schedule?</summary>
+      <div class="amort-faq-answer">Yes. Personal loans follow standard fixed-rate amortizing schedules and are fully supported.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I use this for a mortgage?</summary>
+      <div class="amort-faq-answer">Yes. This calculator is optimized for 15, 20, and 30-year fixed-rate mortgages commonly issued across the United States.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Does this calculator include property taxes?</summary>
+      <div class="amort-faq-answer">Property taxes can be tracked in our optional Housing Cost Add-Ons section, but they are kept separate from the core principal and interest amortization calculations.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Does this calculator include homeowners insurance?</summary>
+      <div class="amort-faq-answer">Yes, through our optional housing cost section, allowing you to calculate total monthly housing expense without distorting loan principal reduction.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Does this calculator include PMI?</summary>
+      <div class="amort-faq-answer">Private Mortgage Insurance (PMI) can be entered under the optional housing cost add-ons so you can track total monthly outflow.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I download my amortization schedule?</summary>
+      <div class="amort-faq-answer">Yes! You can download your full monthly schedule or annual summary as a standard CSV file directly to your device.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I download it as CSV?</summary>
+      <div class="amort-faq-answer">Yes, clicking "Download Monthly CSV" instantly generates a clean .csv spreadsheet file ready for Excel, Numbers, or Google Sheets.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I print my schedule?</summary>
+      <div class="amort-faq-answer">Yes, click "Print Amortization Schedule" to open a printer-friendly layout styled to hide advertisements, navigation, and unnecessary text.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Does this tool require signup?</summary>
+      <div class="amort-faq-answer">No. This tool is 100% free with no registration, no account creation, and no subscription fees.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Does this calculator use an API?</summary>
+      <div class="amort-faq-answer">No. All calculations are executed locally inside your web browser using vanilla JavaScript.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I use it on Android?</summary>
+      <div class="amort-faq-answer">Yes. The calculator is completely mobile-responsive and functions smoothly on Chrome, Samsung Internet, and other Android browsers.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Can I use it on iPhone?</summary>
+      <div class="amort-faq-answer">Yes. It is fully optimized for Mobile Safari and Chrome on iOS devices.</div>
+    </details>
+
+    <details class="amort-faq-item">
+      <summary>Why might my lender's schedule be slightly different?</summary>
+      <div class="amort-faq-answer">Lenders may apply simple interest daily accrual, round payment cents slightly differently, post payments on irregular banking days, or deduct processing fees.</div>
+    </details>
+  </section>
+
+  <!-- 25. PRIVACY -->
+  <section class="amort-card">
+    <h3 style="color:#0f172a;font-size:1.15rem;margin-bottom:8px;">
+      🔒 Privacy Policy &amp; Data Security
+    </h3>
+    <p style="font-size:0.92rem;color:#475569;margin:0;">
+      Loan calculations are performed in your browser and do not require an account or remote calculation API.
+      Your sensitive financial figures, loan balances, interest rates, and extra payment schedules are never transmitted to our servers or stored in remote databases.
+    </p>
+  </section>
+
+  <!-- 26. DISCLAIMER -->
+  <section class="amort-card">
+    <h3 style="color:#0f172a;font-size:1.15rem;margin-bottom:8px;">
+      ⚠️ Amortization Calculator Disclaimer
+    </h3>
+    <p style="font-size:0.9rem;color:#475569;line-height:1.6;margin:0;">
+      This calculator provides estimates for educational and planning purposes.
+      Actual lender payment schedules can vary because of payment dates, rounding methods, fees, daily-interest calculations, escrow, payment processing policies and other loan terms.
+      This tool is not financial, lending, tax or legal advice.
+      Review your loan agreement or contact your lender for official payoff and payment information.
+    </p>
+  </section>
+
+  <!-- 27. SOCIAL SHARING -->
+  <section class="amort-card amort-no-print">
+    <h3 style="color:#1e3a8a;font-size:1.15rem;margin-bottom:6px;">
+      🔗 Share This Amortization Calculator
+    </h3>
+    <p style="font-size:0.88rem;color:#64748b;margin-bottom:12px;">
+      Share this free loan tool with friends, homebuyers, and family. (Note: Only the page link is shared; your private financial entries are never shared.)
+    </p>
+
+    <div class="amort-share-grid">
+      <button type="button" class="amort-share-btn amort-share-fb" id="amortShareFb">Facebook</button>
+      <button type="button" class="amort-share-btn amort-share-x" id="amortShareX">X / Twitter</button>
+      <button type="button" class="amort-share-btn amort-share-wa" id="amortShareWa">WhatsApp</button>
+      <button type="button" class="amort-share-btn amort-share-in" id="amortShareIn">LinkedIn</button>
+      <button type="button" class="amort-share-btn amort-share-rd" id="amortShareRd">Reddit</button>
+      <button type="button" class="amort-share-btn amort-share-tg" id="amortShareTg">Telegram</button>
+      <button type="button" class="amort-share-btn amort-share-mail" id="amortShareMail">Email</button>
+      <button type="button" class="amort-share-btn amort-share-copy" id="amortShareCopy">Copy Link</button>
+      <button type="button" class="amort-share-btn amort-share-native" id="amortShareNative">Share Tool</button>
+    </div>
+  </section>
+</div>
+
+<!-- 28. FOURTH ADVERTISEMENT (SOCIAL BAR) -->
+<script src="https://pl30728025.effectivecpmnetwork.com/d5/6e/e6/d56ee6158a3db5a83c5741fdfdc705ce.js"></script>
+
+<!-- COMPLETE VANILLA JAVASCRIPT ENGINE -->
+<script>
+(function () {
+  var root = document.getElementById('amortizationCalculatorBloggerApp');
+  if (!root) return;
+
+  // State
+  var state = {
+    monthlySchedule: [],
+    annualSummary: [],
+    standardSummary: null,
+    extraSummary: null,
+    showAllRows: false,
+    activeChartTab: 'balance',
+    activeScheduleTab: 'monthly'
+  };
+
+  // DOM Elements cache
+  var elLoanType = root.querySelector('#amortLoanType');
+  var elLoanAmount = root.querySelector('#amortLoanAmount');
+  var elInterestRate = root.querySelector('#amortInterestRate');
+  var elStartDate = root.querySelector('#amortStartDate');
+  var elTermYears = root.querySelector('#amortTermYears');
+  var elTermMonths = root.querySelector('#amortTermMonths');
+  var elExtraMonthly = root.querySelector('#amortExtraMonthly');
+  var elExtraAnnual = root.querySelector('#amortExtraAnnual');
+  var elExtraAnnualMonth = root.querySelector('#amortExtraAnnualMonth');
+  var elExtraOneTime = root.querySelector('#amortExtraOneTime');
+  var elExtraOneTimeDate = root.querySelector('#amortExtraOneTimeDate');
+  var elRoundUp = root.querySelector('#amortRoundUp');
+
+  // Escrow elements
+  var elPropTax = root.querySelector('#amortPropertyTax');
+  var elHomeIns = root.querySelector('#amortHomeInsurance');
+  var elPmi = root.querySelector('#amortPmi');
+  var elHoa = root.querySelector('#amortHoa');
+  var elTotalHousingVal = root.querySelector('#amortTotalHousingVal');
+
+  // Custom Extra Payments Container
+  var elCustomContainer = root.querySelector('#amortCustomRowsContainer');
+  var elBtnAddCustom = root.querySelector('#amortBtnAddCustom');
+
+  // Buttons
+  var elBtnCalculate = root.querySelector('#amortBtnCalculate');
+  var elBtnExample = root.querySelector('#amortBtnExample');
+  var elBtnReset = root.querySelector('#amortBtnReset');
+  var elBtnDownloadCsv = root.querySelector('#amortBtnDownloadCsv');
+  var elBtnDownloadAnnualCsv = root.querySelector('#amortBtnDownloadAnnualCsv');
+  var elBtnPrint = root.querySelector('#amortBtnPrint');
+  var elBtnCopySummary = root.querySelector('#amortBtnCopySummary');
+
+  // Table wrappers
+  var elTbodyMonthly = root.querySelector('#amortTbodyMonthly');
+  var elTbodyAnnual = root.querySelector('#amortTbodyAnnual');
+  var elMonthlyWrap = root.querySelector('#amortMonthlyTableWrap');
+  var elAnnualWrap = root.querySelector('#amortAnnualTableWrap');
+  var elBtnTabMonthly = root.querySelector('#amortBtnTabMonthly');
+  var elBtnTabAnnual = root.querySelector('#amortBtnTabAnnual');
+  var elBtnToggleRows = root.querySelector('#amortBtnToggleRows');
+  var elBtnShowAllRows = root.querySelector('#amortBtnShowAllRows');
+
+  // Chart tabs & SVGs
+  var elBtnTabChartBalance = root.querySelector('#amortBtnTabChartBalance');
+  var elBtnTabChartShare = root.querySelector('#amortBtnTabChartShare');
+  var elChartBalanceWrap = root.querySelector('#amortChartBalanceWrap');
+  var elChartShareWrap = root.querySelector('#amortChartShareWrap');
+  var elSvgBalance = root.querySelector('#amortSvgBalance');
+  var elSvgShare = root.querySelector('#amortSvgShare');
+
+  // Lookup & Target elements
+  var elLookupPmt = root.querySelector('#amortLookupPmt');
+  var elBtnLookup = root.querySelector('#amortBtnLookup');
+  var elLookupBal = root.querySelector('#amortLookupBal');
+  var elLookupPrin = root.querySelector('#amortLookupPrin');
+  var elLookupInt = root.querySelector('#amortLookupInt');
+  var elTargetYears = root.querySelector('#amortTargetYears');
+  var elBtnSolveTarget = root.querySelector('#amortBtnSolveTarget');
+  var elTargetPmt = root.querySelector('#amortTargetPmt');
+  var elTargetDiff = root.querySelector('#amortTargetDiff');
+  var elTargetSav = root.querySelector('#amortTargetSav');
+
+  // Toast
+  var elToast = root.querySelector('#amortToast');
+  var elToastMsg = root.querySelector('#amortToastMsg');
+
+  // Formatters
+  function formatCurrency(val) {
+    if (isNaN(val) || !isFinite(val)) return '$0.00';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(val);
+  }
+
+  function formatPercent(val) {
+    if (isNaN(val) || !isFinite(val)) return '0.00%';
+    return (val).toFixed(2) + '%';
+  }
+
+  function formatDate(d) {
+    if (!d || !(d instanceof Date) || isNaN(d.getTime())) return '—';
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function formatMonthYear(d) {
+    if (!d || !(d instanceof Date) || isNaN(d.getTime())) return '—';
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function formatDuration(totalMonths) {
+    if (!totalMonths || totalMonths <= 0) return '0 months';
+    var y = Math.floor(totalMonths / 12);
+    var m = totalMonths % 12;
+    var parts = [];
+    if (y > 0) parts.push(y + (y === 1 ? ' yr' : ' yrs'));
+    if (m > 0) parts.push(m + (m === 1 ? ' mo' : ' mos'));
+    return parts.length ? parts.join(', ') : '0 months';
+  }
+
+  function showToast(msg, isError) {
+    if (!elToast) return;
+    elToastMsg.textContent = msg;
+    elToast.className = 'amort-toast ' + (isError ? 'amort-toast-error' : 'amort-toast-success');
+    elToast.style.display = 'block';
+    setTimeout(function () {
+      elToast.style.display = 'none';
+    }, 4000);
+  }
+
+  // Set default start date to next month's 1st
+  function initDates() {
+    var now = new Date();
+    var nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    var yyyy = nextMonth.getFullYear();
+    var mm = String(nextMonth.getMonth() + 1).padStart(2, '0');
+    var dd = String(nextMonth.getDate()).padStart(2, '0');
+    if (elStartDate) elStartDate.value = yyyy + '-' + mm + '-' + dd;
+
+    var oneTimeDate = new Date(now.getFullYear() + 1, now.getMonth() + 1, 1);
+    var oY = oneTimeDate.getFullYear();
+    var oM = String(oneTimeDate.getMonth() + 1).padStart(2, '0');
+    var oD = String(oneTimeDate.getDate()).padStart(2, '0');
+    if (elExtraOneTimeDate) elExtraOneTimeDate.value = oY + '-' + oM + '-' + oD;
+  }
+
+  // Parse date safely without timezone day shifts
+  function parseLocalDate(dateStr) {
+    if (!dateStr) return new Date();
+    var parts = dateStr.split('-');
+    if (parts.length === 3) {
+      return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    }
+    return new Date(dateStr);
+  }
+
+  // Add months calendar-safely
+  function addMonths(baseDate, monthsToAdd) {
+    var d = new Date(baseDate.getFullYear(), baseDate.getMonth() + monthsToAdd, baseDate.getDate());
+    return d;
+  }
+
+  // Calculate Base Monthly Payment Formula
+  function calculateMonthlyPayment(principal, annualRate, totalMonths) {
+    if (totalMonths <= 0) return 0;
+    if (annualRate <= 0) {
+      return principal / totalMonths;
+    }
+    var r = (annualRate / 100) / 12;
+    var factor = Math.pow(1 + r, totalMonths);
+    if (!isFinite(factor) || factor <= 1) return principal / totalMonths;
+    return principal * (r * factor) / (factor - 1);
+  }
+
+  // Parse Inputs
+  function getInputs() {
+    var p = parseFloat(elLoanAmount.value) || 0;
+    var rate = parseFloat(elInterestRate.value);
+    if (isNaN(rate) || rate < 0) rate = 0;
+    var yrs = parseInt(elTermYears.value, 10) || 0;
+    var mos = parseInt(elTermMonths.value, 10) || 0;
+    var totalMonths = (yrs * 12) + mos;
+    if (totalMonths <= 0) totalMonths = 360; // fallback to 30 years
+
+    var startDate = parseLocalDate(elStartDate.value);
+
+    // Extra payments
+    var extraMonthly = parseFloat(elExtraMonthly.value) || 0;
+    var extraAnnual = parseFloat(elExtraAnnual.value) || 0;
+    var extraAnnualMonth = parseInt(elExtraAnnualMonth.value, 10) || 12;
+    var extraOneTime = parseFloat(elExtraOneTime.value) || 0;
+    var extraOneTimeDateStr = elExtraOneTimeDate ? elExtraOneTimeDate.value : '';
+    var roundUpNearest = parseInt(elRoundUp ? elRoundUp.value : 0, 10) || 0;
+
+    // Custom lump sums
+    var customEntries = [];
+    var customRows = root.querySelectorAll('.amort-custom-row');
+    customRows.forEach(function (row) {
+      var pNum = parseInt(row.querySelector('.amort-custom-pmt').value, 10);
+      var amt = parseFloat(row.querySelector('.amort-custom-amt').value);
+      if (pNum > 0 && amt > 0) {
+        customEntries.push({ pmtNum: pNum, amount: amt });
+      }
+    });
+
+    // Escrow
+    var propTax = parseFloat(elPropTax ? elPropTax.value : 0) || 0;
+    var homeIns = parseFloat(elHomeIns ? elHomeIns.value : 0) || 0;
+    var pmi = parseFloat(elPmi ? elPmi.value : 0) || 0;
+    var hoa = parseFloat(elHoa ? elHoa.value : 0) || 0;
+
+    return {
+      principal: p,
+      rate: rate,
+      totalMonths: totalMonths,
+      startDate: startDate,
+      extraMonthly: extraMonthly,
+      extraAnnual: extraAnnual,
+      extraAnnualMonth: extraAnnualMonth,
+      extraOneTime: extraOneTime,
+      extraOneTimeDateStr: extraOneTimeDateStr,
+      roundUpNearest: roundUpNearest,
+      customEntries: customEntries,
+      propTax: propTax,
+      homeIns: homeIns,
+      pmi: pmi,
+      hoa: hoa
+    };
+  }
+
+  // Core Amortization Schedule Calculation Engine
+  function generateSchedule(inp, applyExtra) {
+    var p = inp.principal;
+    var r = (inp.rate / 100) / 12;
+    var totalMonths = inp.totalMonths;
+    var basePayment = calculateMonthlyPayment(p, inp.rate, totalMonths);
+
+    // Round-up extra payment if applicable
+    var roundUpAdd = 0;
+    if (applyExtra && inp.roundUpNearest > 0) {
+      var roundedTotal = Math.ceil(basePayment / inp.roundUpNearest) * inp.roundUpNearest;
+      roundUpAdd = Math.max(0, roundedTotal - basePayment);
+    }
+
+    var balance = p;
+    var schedule = [];
+    var cumInterest = 0;
+    var totalExtraPaid = 0;
+
+    var oneTimeDate = inp.extraOneTimeDateStr ? parseLocalDate(inp.extraOneTimeDateStr) : null;
+    var oneTimeApplied = false;
+
+    // Safety loop limit (up to 600 months = 50 years)
+    var maxIterations = Math.max(totalMonths + 60, 600);
+
+    for (var i = 1; i <= maxIterations; i++) {
+      if (balance <= 0.005) break;
+
+      var pmtDate = addMonths(inp.startDate, i - 1);
+      var begBal = balance;
+      var interest = (inp.rate === 0) ? 0 : begBal * r;
+
+      // Scheduled payment
+      var pmt = basePayment;
+      var scheduledPrincipal = pmt - interest;
+
+      // Extra principal calculation
+      var extraForThisPeriod = 0;
+      if (applyExtra) {
+        extraForThisPeriod += inp.extraMonthly;
+        extraForThisPeriod += roundUpAdd;
+
+        // Annual extra in selected month (1-12)
+        if (inp.extraAnnual > 0 && (pmtDate.getMonth() + 1) === inp.extraAnnualMonth) {
+          extraForThisPeriod += inp.extraAnnual;
+        }
+
+        // One-time extra matching date or payment
+        if (!oneTimeApplied && inp.extraOneTime > 0 && oneTimeDate) {
+          if (pmtDate.getFullYear() === oneTimeDate.getFullYear() && pmtDate.getMonth() === oneTimeDate.getMonth()) {
+            extraForThisPeriod += inp.extraOneTime;
+            oneTimeApplied = true;
+          }
+        }
+
+        // Custom entries
+        if (inp.customEntries && inp.customEntries.length) {
+          inp.customEntries.forEach(function (c) {
+            if (c.pmtNum === i) {
+              extraForThisPeriod += c.amount;
+            }
+          });
+        }
+      }
+
+      // Check if scheduled payment exceeds remaining balance + interest
+      if (scheduledPrincipal + extraForThisPeriod >= begBal) {
+        // Final payoff payment
+        scheduledPrincipal = Math.min(begBal, scheduledPrincipal);
+        extraForThisPeriod = Math.max(0, begBal - scheduledPrincipal);
+        pmt = scheduledPrincipal + interest;
+        balance = 0;
+      } else {
+        var totalPrincipalPaid = scheduledPrincipal + extraForThisPeriod;
+        balance = begBal - totalPrincipalPaid;
+      }
+
+      cumInterest += interest;
+      totalExtraPaid += extraForThisPeriod;
+
+      schedule.push({
+        paymentNumber: i,
+        date: pmtDate,
+        beginningBalance: begBal,
+        payment: pmt + extraForThisPeriod,
+        basePayment: pmt,
+        principal: scheduledPrincipal,
+        interest: interest,
+        extraPayment: extraForThisPeriod,
+        endingBalance: Math.max(0, balance),
+        cumulativeInterest: cumInterest
+      });
+
+      if (balance <= 0.005) {
+        schedule[schedule.length - 1].endingBalance = 0;
+        break;
+      }
+    }
+
+    var totalInterestPaid = cumInterest;
+    var totalCost = p + totalInterestPaid;
+    var lastPayment = schedule[schedule.length - 1] || null;
+
+    return {
+      schedule: schedule,
+      baseMonthlyPayment: basePayment,
+      totalPayments: schedule.length,
+      totalPrincipalPaid: p,
+      totalInterestPaid: totalInterestPaid,
+      totalCost: totalCost,
+      totalExtraPaid: totalExtraPaid,
+      payoffDate: lastPayment ? lastPayment.date : inp.startDate
+    };
+  }
+
+  // Aggregate Annual Summary
+  function generateAnnualSummary(schedule) {
+    var yearsMap = {};
+    schedule.forEach(function (row) {
+      var y = row.date.getFullYear();
+      if (!yearsMap[y]) {
+        yearsMap[y] = {
+          year: y,
+          startingBalance: row.beginningBalance,
+          principalPaid: 0,
+          interestPaid: 0,
+          extraPaid: 0,
+          endingBalance: row.endingBalance
+        };
+      }
+      yearsMap[y].principalPaid += row.principal;
+      yearsMap[y].interestPaid += row.interest;
+      yearsMap[y].extraPaid += row.extraPayment;
+      yearsMap[y].endingBalance = row.endingBalance;
+    });
+
+    var summaryList = [];
+    Object.keys(yearsMap).sort().forEach(function (yKey) {
+      summaryList.push(yearsMap[yKey]);
+    });
+    return summaryList;
+  }
+
+  // Render Loan Summary Dashboard
+  function renderLoanSummary(std, ext, inp) {
+    var hasExtra = (ext.totalExtraPaid > 0);
+    var activePlan = hasExtra ? ext : std;
+
+    root.querySelector('#amortResMonthly').textContent = formatCurrency(std.baseMonthlyPayment);
+    root.querySelector('#amortResTotalInterest').textContent = formatCurrency(activePlan.totalInterestPaid);
+    
+    var interestPct = (activePlan.totalCost > 0) ? (activePlan.totalInterestPaid / activePlan.totalCost) * 100 : 0;
+    root.querySelector('#amortResInterestPct').textContent = formatPercent(interestPct) + ' of total cost';
+    
+    root.querySelector('#amortResTotalCost').textContent = formatCurrency(activePlan.totalCost);
+    root.querySelector('#amortResPayoffDate').textContent = formatMonthYear(activePlan.payoffDate);
+    root.querySelector('#amortResNumPayments').textContent = activePlan.totalPayments + ' Payments';
+
+    // Ratio Bar
+    var prinPct = (activePlan.totalCost > 0) ? (inp.principal / activePlan.totalCost) * 100 : 100;
+    var intPct = (activePlan.totalCost > 0) ? (activePlan.totalInterestPaid / activePlan.totalCost) * 100 : 0;
+    root.querySelector('#amortBarPrincipal').style.width = prinPct + '%';
+    root.querySelector('#amortBarInterest').style.width = intPct + '%';
+    root.querySelector('#amortLegendPrincipal').textContent = formatCurrency(inp.principal);
+    root.querySelector('#amortLegendPrincipalPct').textContent = formatPercent(prinPct);
+    root.querySelector('#amortLegendInterest').textContent = formatCurrency(activePlan.totalInterestPaid);
+    root.querySelector('#amortLegendInterestPct').textContent = formatPercent(intPct);
+
+    // First Payment Breakdown
+    if (activePlan.schedule.length > 0) {
+      var first = activePlan.schedule[0];
+      root.querySelector('#amortFirstPaymentTotal').textContent = formatCurrency(first.payment);
+      root.querySelector('#amortFirstPaymentPrincipal').textContent = formatCurrency(first.principal + first.extraPayment);
+      root.querySelector('#amortFirstPaymentInterest').textContent = formatCurrency(first.interest);
+    }
+
+    // Escrow Total Outflow
+    var monthlyEscrow = inp.propTax + inp.homeIns + inp.pmi + inp.hoa;
+    var totalHousing = std.baseMonthlyPayment + monthlyEscrow;
+    if (elTotalHousingVal) {
+      elTotalHousingVal.textContent = formatCurrency(totalHousing) + ' ($' + monthlyEscrow.toFixed(2) + ' escrow)';
+    }
+
+    // Extra Payment Impact Card
+    var impactSec = root.querySelector('#amortExtraImpactSection');
+    if (hasExtra) {
+      impactSec.style.display = 'block';
+      var intSaved = Math.max(0, std.totalInterestPaid - ext.totalInterestPaid);
+      var timeSavedMos = Math.max(0, std.totalPayments - ext.totalPayments);
+
+      root.querySelector('#amortResInterestSaved').textContent = formatCurrency(intSaved);
+      root.querySelector('#amortResTimeSaved').textContent = formatDuration(timeSavedMos);
+      root.querySelector('#amortResNewPayoff').textContent = formatMonthYear(ext.payoffDate);
+      root.querySelector('#amortResOrigPayoff').textContent = formatMonthYear(std.payoffDate);
+      root.querySelector('#amortResTotalExtraPaid').textContent = formatCurrency(ext.totalExtraPaid);
+
+      // Comparison Table
+      root.querySelector('#amortCompStdPayment').textContent = formatCurrency(std.baseMonthlyPayment);
+      root.querySelector('#amortCompExtPayment').textContent = formatCurrency(std.baseMonthlyPayment + inp.extraMonthly);
+      root.querySelector('#amortCompDiffPayment').textContent = '+' + formatCurrency(inp.extraMonthly);
+
+      root.querySelector('#amortCompStdCount').textContent = std.totalPayments + ' mos';
+      root.querySelector('#amortCompExtCount').textContent = ext.totalPayments + ' mos';
+      root.querySelector('#amortCompDiffCount').textContent = timeSavedMos + ' mos sooner';
+
+      root.querySelector('#amortCompStdDate').textContent = formatMonthYear(std.payoffDate);
+      root.querySelector('#amortCompExtDate').textContent = formatMonthYear(ext.payoffDate);
+      root.querySelector('#amortCompDiffDate').textContent = formatDuration(timeSavedMos) + ' saved';
+
+      root.querySelector('#amortCompStdInterest').textContent = formatCurrency(std.totalInterestPaid);
+      root.querySelector('#amortCompExtInterest').textContent = formatCurrency(ext.totalInterestPaid);
+      root.querySelector('#amortCompDiffInterest').textContent = formatCurrency(intSaved) + ' saved';
+
+      root.querySelector('#amortCompStdTotal').textContent = formatCurrency(std.totalCost);
+      root.querySelector('#amortCompExtTotal').textContent = formatCurrency(ext.totalCost);
+      root.querySelector('#amortCompDiffTotal').textContent = formatCurrency(intSaved) + ' saved';
+    } else {
+      impactSec.style.display = 'none';
+
+      // Comparison table with 0 diff
+      root.querySelector('#amortCompStdPayment').textContent = formatCurrency(std.baseMonthlyPayment);
+      root.querySelector('#amortCompExtPayment').textContent = formatCurrency(std.baseMonthlyPayment);
+      root.querySelector('#amortCompDiffPayment').textContent = '$0.00';
+
+      root.querySelector('#amortCompStdCount').textContent = std.totalPayments + ' mos';
+      root.querySelector('#amortCompExtCount').textContent = std.totalPayments + ' mos';
+      root.querySelector('#amortCompDiffCount').textContent = 'None';
+
+      root.querySelector('#amortCompStdDate').textContent = formatMonthYear(std.payoffDate);
+      root.querySelector('#amortCompExtDate').textContent = formatMonthYear(std.payoffDate);
+      root.querySelector('#amortCompDiffDate').textContent = 'None';
+
+      root.querySelector('#amortCompStdInterest').textContent = formatCurrency(std.totalInterestPaid);
+      root.querySelector('#amortCompExtInterest').textContent = formatCurrency(std.totalInterestPaid);
+      root.querySelector('#amortCompDiffInterest').textContent = '$0.00 saved';
+
+      root.querySelector('#amortCompStdTotal').textContent = formatCurrency(std.totalCost);
+      root.querySelector('#amortCompExtTotal').textContent = formatCurrency(std.totalCost);
+      root.querySelector('#amortCompDiffTotal').textContent = '$0.00 saved';
+    }
+
+    // Biweekly Table
+    renderBiweeklyComparison(std, inp);
+  }
+
+  // Render Accelerated Biweekly Payment Comparison
+  function renderBiweeklyComparison(std, inp) {
+    var bwPayment = std.baseMonthlyPayment / 2;
+    // Accelerated biweekly makes 26 payments per year = 13 full payments per year (1 extra monthly payment per year)
+    // Equivalent to adding 1/12th of monthly payment each month:
+    var equivExtraMonthly = std.baseMonthlyPayment / 12;
+    var bwPlan = generateSchedule({
+      principal: inp.principal,
+      rate: inp.rate,
+      totalMonths: inp.totalMonths,
+      startDate: inp.startDate,
+      extraMonthly: equivExtraMonthly,
+      extraAnnual: 0,
+      extraAnnualMonth: 12,
+      extraOneTime: 0,
+      extraOneTimeDateStr: '',
+      roundUpNearest: 0,
+      customEntries: []
+    }, true);
+
+    root.querySelector('#amortBwMonthlyAmt').textContent = formatCurrency(std.baseMonthlyPayment);
+    root.querySelector('#amortBwMonthlyTime').textContent = formatDuration(std.totalPayments);
+    root.querySelector('#amortBwMonthlyInterest').textContent = formatCurrency(std.totalInterestPaid);
+
+    root.querySelector('#amortBwBiweeklyAmt').textContent = formatCurrency(bwPayment);
+    root.querySelector('#amortBwBiweeklyTime').textContent = formatDuration(bwPlan.totalPayments) + ' (' + formatDuration(std.totalPayments - bwPlan.totalPayments) + ' faster)';
+    root.querySelector('#amortBwBiweeklyInterest').textContent = formatCurrency(bwPlan.totalInterestPaid) + ' (Save ' + formatCurrency(std.totalInterestPaid - bwPlan.totalInterestPaid) + ')';
+  }
+
+  // Render Monthly Schedule Table
+  function renderMonthlyTable(schedule) {
+    elTbodyMonthly.innerHTML = '';
+    var limit = state.showAllRows ? schedule.length : Math.min(12, schedule.length);
+
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < limit; i++) {
+      var row = schedule[i];
+      var tr = document.createElement('tr');
+      tr.innerHTML = 
+        '<td>' + row.paymentNumber + '</td>' +
+        '<td>' + formatMonthYear(row.date) + '</td>' +
+        '<td>' + formatCurrency(row.beginningBalance) + '</td>' +
+        '<td>' + formatCurrency(row.payment) + '</td>' +
+        '<td class="amort-td-principal">' + formatCurrency(row.principal) + '</td>' +
+        '<td class="amort-td-interest">' + formatCurrency(row.interest) + '</td>' +
+        '<td class="amort-td-extra">' + (row.extraPayment > 0 ? formatCurrency(row.extraPayment) : '—') + '</td>' +
+        '<td class="amort-td-balance">' + formatCurrency(row.endingBalance) + '</td>' +
+        '<td>' + formatCurrency(row.cumulativeInterest) + '</td>';
+      fragment.appendChild(tr);
+    }
+    elTbodyMonthly.appendChild(fragment);
+
+    // Update buttons
+    if (state.showAllRows) {
+      elBtnToggleRows.className = 'amort-preset-btn';
+      elBtnShowAllRows.className = 'amort-preset-btn amort-active';
+    } else {
+      elBtnToggleRows.className = 'amort-preset-btn amort-active';
+      elBtnShowAllRows.className = 'amort-preset-btn';
+    }
+  }
+
+  // Render Annual Table
+  function renderAnnualTable(annualSummary) {
+    elTbodyAnnual.innerHTML = '';
+    var fragment = document.createDocumentFragment();
+    annualSummary.forEach(function (row) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = 
+        '<td style="font-weight:600;">' + row.year + '</td>' +
+        '<td>' + formatCurrency(row.startingBalance) + '</td>' +
+        '<td class="amort-td-principal">' + formatCurrency(row.principalPaid) + '</td>' +
+        '<td class="amort-td-interest">' + formatCurrency(row.interestPaid) + '</td>' +
+        '<td class="amort-td-extra">' + (row.extraPaid > 0 ? formatCurrency(row.extraPaid) : '—') + '</td>' +
+        '<td class="amort-td-balance">' + formatCurrency(row.endingBalance) + '</td>';
+      fragment.appendChild(tr);
+    });
+    elTbodyAnnual.appendChild(fragment);
+  }
+
+  // Render SVG Charts
+  function renderCharts(schedule, principal) {
+    if (!schedule || !schedule.length) return;
+
+    var n = schedule.length;
+    var maxBal = principal || 1;
+
+    // SVG Dimensions
+    var w = 800;
+    var h = 280;
+    var padLeft = 70;
+    var padRight = 30;
+    var padTop = 20;
+    var padBottom = 40;
+    var chartW = w - padLeft - padRight;
+    var chartH = h - padTop - padBottom;
+
+    // --- CHART 1: Balance Over Time ---
+    var pathPts = [];
+    var areaPts = [];
+    areaPts.push(padLeft + ',' + (padTop + chartH));
+
+    for (var i = 0; i < n; i++) {
+      var x = padLeft + (i / (n - 1)) * chartW;
+      var y = padTop + (1 - (schedule[i].endingBalance / maxBal)) * chartH;
+      pathPts.push(x.toFixed(1) + ',' + y.toFixed(1));
+      areaPts.push(x.toFixed(1) + ',' + y.toFixed(1));
+    }
+    areaPts.push((padLeft + chartW) + ',' + (padTop + chartH));
+
+    var svgContent1 = 
+      '<defs>' +
+        '<linearGradient id="amortGradBal" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35"/>' +
+          '<stop offset="100%" stop-color="#7c3aed" stop-opacity="0.0"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      '<!-- Grid lines -->' +
+      '<line x1="' + padLeft + '" y1="' + padTop + '" x2="' + (padLeft + chartW) + '" y2="' + padTop + '" stroke="#e2e8f0" stroke-width="1"/>' +
+      '<line x1="' + padLeft + '" y1="' + (padTop + chartH * 0.5) + '" x2="' + (padLeft + chartW) + '" y2="' + (padTop + chartH * 0.5) + '" stroke="#e2e8f0" stroke-width="1"/>' +
+      '<line x1="' + padLeft + '" y1="' + (padTop + chartH) + '" x2="' + (padLeft + chartW) + '" y2="' + (padTop + chartH) + '" stroke="#cbd5e1" stroke-width="1.5"/>' +
+      '<!-- Y-Axis Labels -->' +
+      '<text x="' + (padLeft - 10) + '" y="' + (padTop + 4) + '" text-anchor="end" fill="#64748b" font-size="11">' + formatCurrency(maxBal) + '</text>' +
+      '<text x="' + (padLeft - 10) + '" y="' + (padTop + chartH * 0.5 + 4) + '" text-anchor="end" fill="#64748b" font-size="11">' + formatCurrency(maxBal * 0.5) + '</text>' +
+      '<text x="' + (padLeft - 10) + '" y="' + (padTop + chartH + 4) + '" text-anchor="end" fill="#64748b" font-size="11">$0</text>' +
+      '<!-- X-Axis Labels -->' +
+      '<text x="' + padLeft + '" y="' + (h - 10) + '" text-anchor="start" fill="#64748b" font-size="11">Start</text>' +
+      '<text x="' + (padLeft + chartW * 0.5) + '" y="' + (h - 10) + '" text-anchor="middle" fill="#64748b" font-size="11">' + Math.round(n * 0.5) + ' Mos</text>' +
+      '<text x="' + (padLeft + chartW) + '" y="' + (h - 10) + '" text-anchor="end" fill="#64748b" font-size="11">' + n + ' Mos (Payoff)</text>' +
+      '<!-- Balance Path & Area -->' +
+      '<polygon points="' + areaPts.join(' ') + '" fill="url(#amortGradBal)"/>' +
+      '<polyline points="' + pathPts.join(' ') + '" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>';
+
+    elSvgBalance.innerHTML = svgContent1;
+
+    // --- CHART 2: Principal vs Interest Over Time ---
+    var maxMonthlyPmt = 0;
+    schedule.forEach(function (r) {
+      if (r.payment > maxMonthlyPmt) maxMonthlyPmt = r.payment;
+    });
+    if (maxMonthlyPmt <= 0) maxMonthlyPmt = 1;
+
+    var prinPts = [];
+    var intPts = [];
+    for (var j = 0; j < n; j++) {
+      var x2 = padLeft + (j / (n - 1)) * chartW;
+      var yPrin = padTop + (1 - ((schedule[j].principal + schedule[j].extraPayment) / maxMonthlyPmt)) * chartH;
+      var yInt = padTop + (1 - (schedule[j].interest / maxMonthlyPmt)) * chartH;
+      prinPts.push(x2.toFixed(1) + ',' + yPrin.toFixed(1));
+      intPts.push(x2.toFixed(1) + ',' + yInt.toFixed(1));
+    }
+
+    var svgContent2 = 
+      '<!-- Grid lines -->' +
+      '<line x1="' + padLeft + '" y1="' + padTop + '" x2="' + (padLeft + chartW) + '" y2="' + padTop + '" stroke="#e2e8f0" stroke-width="1"/>' +
+      '<line x1="' + padLeft + '" y1="' + (padTop + chartH * 0.5) + '" x2="' + (padLeft + chartW) + '" y2="' + (padTop + chartH * 0.5) + '" stroke="#e2e8f0" stroke-width="1"/>' +
+      '<line x1="' + padLeft + '" y1="' + (padTop + chartH) + '" x2="' + (padLeft + chartW) + '" y2="' + (padTop + chartH) + '" stroke="#cbd5e1" stroke-width="1.5"/>' +
+      '<!-- Labels -->' +
+      '<text x="' + (padLeft - 10) + '" y="' + (padTop + 4) + '" text-anchor="end" fill="#64748b" font-size="11">' + formatCurrency(maxMonthlyPmt) + '</text>' +
+      '<text x="' + (padLeft - 10) + '" y="' + (padTop + chartH + 4) + '" text-anchor="end" fill="#64748b" font-size="11">$0</text>' +
+      '<text x="' + padLeft + '" y="' + (h - 10) + '" text-anchor="start" fill="#64748b" font-size="11">Start</text>' +
+      '<text x="' + (padLeft + chartW) + '" y="' + (h - 10) + '" text-anchor="end" fill="#64748b" font-size="11">' + n + ' Mos</text>' +
+      '<!-- Lines -->' +
+      '<polyline points="' + intPts.join(' ') + '" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,2"/>' +
+      '<polyline points="' + prinPts.join(' ') + '" fill="none" stroke="#2563eb" stroke-width="3"/>' +
+      '<!-- Legend inside SVG -->' +
+      '<circle cx="' + (padLeft + 20) + '" cy="' + (padTop + 15) + '" r="5" fill="#2563eb"/>' +
+      '<text x="' + (padLeft + 32) + '" y="' + (padTop + 19) + '" fill="#1e293b" font-size="12" font-weight="600">Principal Portion (Rising)</text>' +
+      '<circle cx="' + (padLeft + 240) + '" cy="' + (padTop + 15) + '" r="5" fill="#f59e0b"/>' +
+      '<text x="' + (padLeft + 252) + '" y="' + (padTop + 19) + '" fill="#1e293b" font-size="12" font-weight="600">Interest Portion (Falling)</text>';
+
+    elSvgShare.innerHTML = svgContent2;
+  }
+
+  // Master Run Calculations Function
+  function runCalculation() {
+    var inp = getInputs();
+    if (inp.principal <= 0) {
+      showToast('Please enter a valid loan amount greater than zero.', true);
+      return;
+    }
+
+    var stdPlan = generateSchedule(inp, false);
+    var extPlan = generateSchedule(inp, true);
+
+    state.standardSummary = stdPlan;
+    state.extraSummary = extPlan;
+    state.monthlySchedule = extPlan.schedule;
+    state.annualSummary = generateAnnualSummary(extPlan.schedule);
+
+    renderLoanSummary(stdPlan, extPlan, inp);
+    renderMonthlyTable(state.monthlySchedule);
+    renderAnnualTable(state.annualSummary);
+    renderCharts(state.monthlySchedule, inp.principal);
+
+    // Initial lookup trigger for default payment 12
+    handleLookup();
+    handleTargetSolver();
+  }
+
+  // Payment Number Lookup Handler
+  function handleLookup() {
+    var pNum = parseInt(elLookupPmt ? elLookupPmt.value : 12, 10);
+    if (!state.monthlySchedule || !state.monthlySchedule.length) return;
+    
+    var idx = Math.min(Math.max(1, pNum), state.monthlySchedule.length) - 1;
+    var row = state.monthlySchedule[idx];
+
+    var cumPrin = 0;
+    for (var i = 0; i <= idx; i++) {
+      cumPrin += (state.monthlySchedule[i].principal + state.monthlySchedule[i].extraPayment);
+    }
+
+    if (elLookupBal) elLookupBal.textContent = formatCurrency(row.endingBalance);
+    if (elLookupPrin) elLookupPrin.textContent = formatCurrency(cumPrin);
+    if (elLookupInt) elLookupInt.textContent = formatCurrency(row.cumulativeInterest);
+  }
+
+  // Early Payoff Target Solver Handler
+  function handleTargetSolver() {
+    var inp = getInputs();
+    var targetYrs = parseInt(elTargetYears ? elTargetYears.value : 15, 10);
+    if (targetYrs <= 0) targetYrs = 15;
+    var targetMonths = targetYrs * 12;
+
+    var reqPayment = calculateMonthlyPayment(inp.principal, inp.rate, targetMonths);
+    var stdPayment = state.standardSummary ? state.standardSummary.baseMonthlyPayment : calculateMonthlyPayment(inp.principal, inp.rate, inp.totalMonths);
+
+    var diff = Math.max(0, reqPayment - stdPayment);
+
+    // Solve target total interest
+    var targetSchedule = generateSchedule({
+      principal: inp.principal,
+      rate: inp.rate,
+      totalMonths: targetMonths,
+      startDate: inp.startDate,
+      extraMonthly: 0,
+      extraAnnual: 0,
+      extraAnnualMonth: 12,
+      extraOneTime: 0,
+      extraOneTimeDateStr: '',
+      roundUpNearest: 0,
+      customEntries: []
+    }, false);
+
+    var intSavings = Math.max(0, (state.standardSummary ? state.standardSummary.totalInterestPaid : 0) - targetSchedule.totalInterestPaid);
+
+    if (elTargetPmt) elTargetPmt.textContent = formatCurrency(reqPayment);
+    if (elTargetDiff) elTargetDiff.textContent = '+' + formatCurrency(diff) + ' / month';
+    if (elTargetSav) elTargetSav.textContent = formatCurrency(intSavings);
+  }
+
+  // Download CSV Engine
+  function downloadCsv(type) {
+    var isAnnual = (type === 'annual');
+    var filename = isAnnual ? 'annual-loan-summary.csv' : 'amortization-schedule.csv';
+    var csvContent = '';
+
+    if (isAnnual) {
+      csvContent += 'Year,Starting Balance,Principal Paid,Interest Paid,Extra Payments,Ending Balance\r\n';
+      state.annualSummary.forEach(function (row) {
+        csvContent += [
+          row.year,
+          row.startingBalance.toFixed(2),
+          row.principalPaid.toFixed(2),
+          row.interestPaid.toFixed(2),
+          row.extraPaid.toFixed(2),
+          row.endingBalance.toFixed(2)
+        ].join(',') + '\r\n';
+      });
+    } else {
+      csvContent += 'Payment Number,Payment Date,Beginning Balance,Payment,Principal,Interest,Extra Payment,Ending Balance,Cumulative Interest\r\n';
+      state.monthlySchedule.forEach(function (row) {
+        csvContent += [
+          row.paymentNumber,
+          '"' + formatMonthYear(row.date) + '"',
+          row.beginningBalance.toFixed(2),
+          row.payment.toFixed(2),
+          row.principal.toFixed(2),
+          row.interest.toFixed(2),
+          row.extraPayment.toFixed(2),
+          row.endingBalance.toFixed(2),
+          row.cumulativeInterest.toFixed(2)
+        ].join(',') + '\r\n';
+      });
+    }
+
+    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast((isAnnual ? 'Annual summary' : 'Monthly amortization schedule') + ' downloaded as CSV.');
+  }
+
+  // Copy Loan Summary
+  function copySummary() {
+    if (!state.standardSummary) return;
+    var inp = getInputs();
+    var active = (state.extraSummary && state.extraSummary.totalExtraPaid > 0) ? state.extraSummary : state.standardSummary;
+
+    var text = [
+      '--- Free Amortization Schedule Calculator ---',
+      'Loan Type: ' + elLoanType.value,
+      'Loan Amount: ' + formatCurrency(inp.principal),
+      'Interest Rate: ' + formatPercent(inp.rate),
+      'Loan Term: ' + elTermYears.value + ' Years ' + (elTermMonths.value > 0 ? elTermMonths.value + ' Months' : ''),
+      'Monthly Payment: ' + formatCurrency(state.standardSummary.baseMonthlyPayment),
+      'Total Interest: ' + formatCurrency(active.totalInterestPaid),
+      'Total Loan Cost: ' + formatCurrency(active.totalCost),
+      'Payoff Date: ' + formatMonthYear(active.payoffDate),
+      'Number of Payments: ' + active.totalPayments
+    ];
+
+    if (state.extraSummary && state.extraSummary.totalExtraPaid > 0) {
+      var intSaved = state.standardSummary.totalInterestPaid - state.extraSummary.totalInterestPaid;
+      var timeSaved = state.standardSummary.totalPayments - state.extraSummary.totalPayments;
+      text.push('--- Extra Payment Savings ---');
+      text.push('Interest Saved: ' + formatCurrency(intSaved));
+      text.push('Time Saved: ' + formatDuration(timeSaved));
+      text.push('New Payoff Date: ' + formatMonthYear(state.extraSummary.payoffDate));
+    }
+
+    var fullText = text.join('\n');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(fullText).then(function () {
+        showToast('Loan summary copied to clipboard!');
+      }).catch(function () {
+        fallbackCopy(fullText);
+      });
+    } else {
+      fallbackCopy(fullText);
+    }
+  }
+
+  function fallbackCopy(str) {
+    var textarea = document.createElement('textarea');
+    textarea.value = str;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showToast('Loan summary copied to clipboard!');
+    } catch (err) {
+      showToast('Could not copy automatically. Please copy manually.', true);
+    }
+    document.body.removeChild(textarea);
+  }
+
+  // Print Schedule
+  function printSchedule() {
+    window.print();
+  }
+
+  // Load Sample Example
+  function loadExample() {
+    elLoanType.value = 'Mortgage';
+    elLoanAmount.value = '350000';
+    elInterestRate.value = '6.5';
+    elTermYears.value = '30';
+    elTermMonths.value = '0';
+    elExtraMonthly.value = '100';
+    elExtraAnnual.value = '0';
+    elExtraOneTime.value = '0';
+    if (elRoundUp) elRoundUp.value = '0';
+
+    // Highlight 30 Yr preset
+    root.querySelectorAll('.amort-preset-btn[data-years]').forEach(function (btn) {
+      btn.classList.toggle('amort-active', btn.getAttribute('data-years') === '30');
+    });
+
+    runCalculation();
+    showToast('Sample loan loaded: $350k @ 6.5% with $100 extra monthly payment.');
+  }
+
+  // Reset Calculator
+  function resetCalculator() {
+    elLoanType.value = 'Mortgage';
+    elLoanAmount.value = '350000';
+    elInterestRate.value = '6.5';
+    elTermYears.value = '30';
+    elTermMonths.value = '0';
+    elExtraMonthly.value = '0';
+    elExtraAnnual.value = '0';
+    elExtraOneTime.value = '0';
+    if (elRoundUp) elRoundUp.value = '0';
+    if (elPropTax) elPropTax.value = '0';
+    if (elHomeIns) elHomeIns.value = '0';
+    if (elPmi) elPmi.value = '0';
+    if (elHoa) elHoa.value = '0';
+
+    if (elCustomContainer) elCustomContainer.innerHTML = '';
+
+    initDates();
+    runCalculation();
+    showToast('Calculator reset to default settings.');
+  }
+
+  // Custom Lump Sum Row Adder
+  function addCustomRow() {
+    var rowCount = root.querySelectorAll('.amort-custom-row').length;
+    if (rowCount >= 10) {
+      showToast('Maximum 10 custom lump-sum entries reached.', true);
+      return;
+    }
+    var div = document.createElement('div');
+    div.className = 'amort-custom-row';
+    div.innerHTML = 
+      '<div style="flex:1 1 120px;">' +
+        '<label style="font-size:0.78rem;color:#64748b;display:block;">Payment #</label>' +
+        '<input type="number" class="amort-custom-pmt" min="1" max="480" value="' + (rowCount * 12 + 12) + '" style="min-height:38px;padding:6px 10px;"/>' +
+      '</div>' +
+      '<div style="flex:1 1 160px;">' +
+        '<label style="font-size:0.78rem;color:#64748b;display:block;">Lump Sum Extra ($)</label>' +
+        '<input type="number" class="amort-custom-amt" min="1" step="50" value="1000" style="min-height:38px;padding:6px 10px;"/>' +
+      '</div>' +
+      '<div style="flex:0 0 auto;padding-top:16px;">' +
+        '<button type="button" class="amort-btn-remove">Remove</button>' +
+      '</div>';
+    
+    div.querySelector('.amort-btn-remove').addEventListener('click', function () {
+      div.remove();
+      runCalculation();
+    });
+
+    elCustomContainer.appendChild(div);
+  }
+
+  // Social Sharing Engine (Strictly document.title & window.location.href)
+  function initSocialSharing() {
+    var title = encodeURIComponent(document.title || 'Free Amortization Schedule Calculator');
+    var url = encodeURIComponent(window.location.href);
+
+    var shareFb = root.querySelector('#amortShareFb');
+    if (shareFb) {
+      shareFb.addEventListener('click', function () {
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank', 'width=600,height=500');
+      });
+    }
+
+    var shareX = root.querySelector('#amortShareX');
+    if (shareX) {
+      shareX.addEventListener('click', function () {
+        window.open('https://twitter.com/intent/tweet?text=' + title + '&url=' + url, '_blank', 'width=600,height=500');
+      });
+    }
+
+    var shareWa = root.querySelector('#amortShareWa');
+    if (shareWa) {
+      shareWa.addEventListener('click', function () {
+        window.open('https://api.whatsapp.com/send?text=' + title + '%20' + url, '_blank');
+      });
+    }
+
+    var shareIn = root.querySelector('#amortShareIn');
+    if (shareIn) {
+      shareIn.addEventListener('click', function () {
+        window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'width=600,height=500');
+      });
+    }
+
+    var shareRd = root.querySelector('#amortShareRd');
+    if (shareRd) {
+      shareRd.addEventListener('click', function () {
+        window.open('https://reddit.com/submit?url=' + url + '&title=' + title, '_blank', 'width=700,height=600');
+      });
+    }
+
+    var shareTg = root.querySelector('#amortShareTg');
+    if (shareTg) {
+      shareTg.addEventListener('click', function () {
+        window.open('https://t.me/share/url?url=' + url + '&text=' + title, '_blank');
+      });
+    }
+
+    var shareMail = root.querySelector('#amortShareMail');
+    if (shareMail) {
+      shareMail.addEventListener('click', function () {
+        window.location.href = 'mailto:?subject=' + encodeURIComponent('Amortization Schedule Calculator') + '&body=' + title + '%0A' + url;
+      });
+    }
+
+    var shareCopy = root.querySelector('#amortShareCopy');
+    if (shareCopy) {
+      shareCopy.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(window.location.href).then(function () {
+            showToast('Page link copied to clipboard!');
+          }).catch(function () {
+            fallbackCopy(window.location.href);
+          });
+        } else {
+          fallbackCopy(window.location.href);
+        }
+      });
+    }
+
+    var shareNative = root.querySelector('#amortShareNative');
+    if (shareNative) {
+      shareNative.addEventListener('click', function () {
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: window.location.href
+          }).catch(function () {});
+        } else {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(window.location.href);
+            showToast('Page link copied to clipboard!');
+          }
+        }
+      });
+    }
+  }
+
+  // Setup Event Listeners
+  function initEvents() {
+    if (elBtnCalculate) elBtnCalculate.addEventListener('click', runCalculation);
+    if (elBtnExample) elBtnExample.addEventListener('click', loadExample);
+    if (elBtnReset) elBtnReset.addEventListener('click', resetCalculator);
+    if (elBtnDownloadCsv) elBtnDownloadCsv.addEventListener('click', function () { downloadCsv('monthly'); });
+    if (elBtnDownloadAnnualCsv) elBtnDownloadAnnualCsv.addEventListener('click', function () { downloadCsv('annual'); });
+    if (elBtnPrint) elBtnPrint.addEventListener('click', printSchedule);
+    if (elBtnCopySummary) elBtnCopySummary.addEventListener('click', copySummary);
+
+    // Preset term buttons
+    root.querySelectorAll('.amort-preset-btn[data-years]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        root.querySelectorAll('.amort-preset-btn[data-years]').forEach(function (b) { b.classList.remove('amort-active'); });
+        btn.classList.add('amort-active');
+        elTermYears.value = btn.getAttribute('data-years');
+        elTermMonths.value = btn.getAttribute('data-months') || '0';
+        runCalculation();
+      });
+    });
+
+    // Toggle 12 vs All Rows
+    if (elBtnToggleRows) {
+      elBtnToggleRows.addEventListener('click', function () {
+        state.showAllRows = false;
+        renderMonthlyTable(state.monthlySchedule);
+      });
+    }
+    if (elBtnShowAllRows) {
+      elBtnShowAllRows.addEventListener('click', function () {
+        state.showAllRows = true;
+        renderMonthlyTable(state.monthlySchedule);
+      });
+    }
+
+    // Schedule view tabs (Monthly vs Annual)
+    if (elBtnTabMonthly) {
+      elBtnTabMonthly.addEventListener('click', function () {
+        elBtnTabMonthly.classList.add('amort-active');
+        elBtnTabAnnual.classList.remove('amort-active');
+        elMonthlyWrap.style.display = 'block';
+        elAnnualWrap.style.display = 'none';
+        root.querySelector('#amortScheduleViewControls').style.display = 'flex';
+      });
+    }
+    if (elBtnTabAnnual) {
+      elBtnTabAnnual.addEventListener('click', function () {
+        elBtnTabAnnual.classList.add('amort-active');
+        elBtnTabMonthly.classList.remove('amort-active');
+        elMonthlyWrap.style.display = 'none';
+        elAnnualWrap.style.display = 'block';
+        root.querySelector('#amortScheduleViewControls').style.display = 'none';
+      });
+    }
+
+    // Chart tabs
+    if (elBtnTabChartBalance) {
+      elBtnTabChartBalance.addEventListener('click', function () {
+        elBtnTabChartBalance.classList.add('amort-active');
+        elBtnTabChartShare.classList.remove('amort-active');
+        elChartBalanceWrap.style.display = 'block';
+        elChartShareWrap.style.display = 'none';
+      });
+    }
+    if (elBtnTabChartShare) {
+      elBtnTabChartShare.addEventListener('click', function () {
+        elBtnTabChartShare.classList.add('amort-active');
+        elBtnTabChartBalance.classList.remove('amort-active');
+        elChartBalanceWrap.style.display = 'none';
+        elChartShareWrap.style.display = 'block';
+      });
+    }
+
+    // Lookup & Target triggers
+    if (elBtnLookup) elBtnLookup.addEventListener('click', handleLookup);
+    if (elLookupPmt) elLookupPmt.addEventListener('input', handleLookup);
+    if (elBtnSolveTarget) elBtnSolveTarget.addEventListener('click', handleTargetSolver);
+
+    // Custom row adder
+    if (elBtnAddCustom) elBtnAddCustom.addEventListener('click', addCustomRow);
+
+    // Dynamic re-calculation on input changes
+    var autoInputs = [
+      elLoanAmount, elInterestRate, elTermYears, elTermMonths, elStartDate,
+      elExtraMonthly, elExtraAnnual, elExtraAnnualMonth, elExtraOneTime,
+      elExtraOneTimeDate, elRoundUp, elPropTax, elHomeIns, elPmi, elHoa
+    ];
+    autoInputs.forEach(function (inp) {
+      if (inp) {
+        inp.addEventListener('change', runCalculation);
+      }
+    });
+
+    initSocialSharing();
+  }
+
+  // Initialize
+  initDates();
+  initEvents();
+  runCalculation();
+})();
+</script>
